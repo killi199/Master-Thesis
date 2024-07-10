@@ -1,0 +1,115 @@
+\documentclass[a4paper,DIV=12]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage{paralist}
+\usepackage[table]{xcolor}
+\usepackage{helvet}
+\usepackage{pgfgantt}
+\usepackage{textcomp}
+\usepackage{paralist}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{eurosym}
+\usepackage[nolist]{acronym}
+\usepackage{enumitem}
+\usepackage{xspace}
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{subcaption}
+\usepackage{breakurl}
+\usepackage{amssymb}
+\usepackage[originalparameters]{ragged2e}
+\usepackage{csquotes}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\newcommand*{\corpus}{\textsc SoMeSci}
+\usepackage{todonotes}
+\usepackage[ngerman]{babel}
+
+% \usepackage[numbers]{natbib}
+\usepackage[headsep=15mm]{geometry}
+\geometry{a4paper,left=2cm,right=2cm, top=3.0cm, bottom=2.5cm}
+
+\usepackage[backend=biber, defernums=true, sorting=none,
+             style=numeric, giveninits=true, natbib=true,
+             url=true, doi=true, isbn=false, bibencoding=utf8,backref=false,maxbibnames=20,maxcitenames=3]{biblatex}
+\usepackage{hyperref}
+
+\addbibresource{Software_Authors.bib}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+
+
+% \addbibresource{Beitritt.bib}
+\setlength{\parindent}{0pt}
+% \newcommand{\itodo}[1]{{\leavevmode\color{orange}[#1]}}
+
+
+\begin{document}
+\thispagestyle{empty}
+
+\vspace*{.2cm}
+
+\begin{minipage}{.7\textwidth}
+Hochschule Wismar\\
+University of Applied Sciences\\
+Technology, Business and Design\\
+Fakultät für Ingenieurwissenschaften\\
+Bereich Elektrotechnik und Informatik\\
+\end{minipage}\hfill
+\begin{minipage}{.3\textwidth}
+    Wismar, \today{}
+    
+    \vfill{}
+\end{minipage}
+
+
+{\Large\centerline{\textbf{Master-Thesis}}}
+
+\vspace*{1em}
+
+für: Herr \textbf{Kevin Jahrens}
+
+\vspace*{1em}
+
+Identifikation und Vergleich von Autorenangaben zu Software zwischen verschiedenen Datenquellen
+
+\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
+Identifikation and comparison of authors of software across different data sources
+
+\noindent\makebox[\linewidth]{\rule{\linewidth}{0.4pt}}
+
+\textbf{Disposition}
+\vspace*{.1cm}
+
+Software spielt eine zentrale Rolle in der Wissenschaft und sollte daher in wissenschaftlichen Arbeiten zitiert werden.
+Insbesondere für Autoren wissenschaftlicher Software ist die Zitation wesentlicher Bestandteil der wissenschaftlichen Anerkennung, sodass diese auch zunehmend in wissenschaftlichen Lebensläufen genannt werden und Beachtung finden.
+Anders als bei wissenschaftlichen Publikationen ist bei wissenschaftlicher Software aktuell noch unklar, welcher Anteil an der Entwicklung zu einer Nennung als Autor führt.
+Darüber hinaus existieren in verschiedenen Datenquellen widersprüchliche Angaben für Zitationsvorschläge bzgl. der Autoren einer Software.
+
+Ziel dieser Masterarbeit ist es zu untersuchen inwieweit sich die Angaben von Autoren für Open Source Software unterscheiden. 
+Dazu sollen öffentlich verfügbare Repositorien mit R und Python Paketen -- als Stellvertreter für wissenschaftliche Software -- hinsichtlich ihrer Autorenangaben untersucht werden.
+Insbesondere sollen die angegebenen Metadaten in den Repositorien (z.B. citation.cff) mit den Metadaten in Paketdatenbanken (\url{https://pypi.org/} und \url{https://cran.r-project.org/}) und den Entwicklungsanteilen automatisch verglichen werden.
+
+\begin{compactenum}
+    \item Literaturrecherche Autorenrolle in Open Source Software und zur Disambiguierung von Autorennamen 
+    \item Datensammlung: Identifikation und Download verfügbarer Metadaten zu \enquote{wichtigen} Softwarepaketen
+    \item Automatische Auflösung und Abgleich der Autorennennungen aller Datenquellen
+    \item Analyse von Unterschieden in der Nennung von Autoren
+    \item Dokumentation der Ergebnisse in einer schriftlichen Master-Thesis
+\end{compactenum}
+
+\vfill{}
+
+\noindent\rule{5cm}{.4pt}\hfill\rule{5cm}{.4pt}\par
+\noindent Prof.\ Dr.\ rer.\ nat.\ Litschke \hfill Prof.\ Dr.-Ing. Krüger\par
+\noindent {\footnotesize Chairman of the Examination Committee} \hfill {\footnotesize Supervisor}
+
+\printbibliography
+
+
+
+
+
+\end{document}
