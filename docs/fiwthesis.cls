@@ -55,8 +55,7 @@
   listof=totoc,
   headsepline=on,
   bibliography=totoc,
-  numbers=noenddot,
-  captions=tableheading
+  numbers=noenddot
 ]{scrreprt}
 
 % ===================
@@ -126,6 +125,7 @@
 
 % PDF hyperlinks
 % TODO use colored links for the digital version
+\PassOptionsToPackage{hyphens}{url}
 \RequirePackage[
   hidelinks,
   hyperindex=true,
@@ -150,9 +150,7 @@
 
 % bibliography settings
 \RequirePackage[
-  style=numeric,  % IEEE style
-  sorting=nyt,
-  sortcites,      % sort references by appearance
+  style=authoryear-ibid,
   backend=biber   % use modern bibliography backend
 ]{biblatex}
 
@@ -313,14 +311,6 @@
 \counterwithout{figure}{chapter}
 \counterwithout{table}{chapter}
 \counterwithout{listing}{chapter}
-
-% spacing between captions and floats
-\setlength{\textfloatsep}{17pt}
-\setlength{\floatsep}{15pt}
-\setlength{\intextsep}{17pt plus 3pt minus 0pt}
-\setlength{\belowcaptionskip}{-5pt}
-\setlength{\abovecaptionskip}{11pt}
-% \setlength{\parskip}{1cm plus4mm minus3mm}
 
 % \BeforeBeginEnvironment{minted}{\vspace{-0.7\baselineskip}}
 % \AfterEndEnvironment{minted}{\vspace{-1.2\baselineskip}}

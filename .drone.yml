@@ -10,15 +10,15 @@ steps:
     - make nuke
     - make all
 
-- name: pdf push master
+- name: pdf push main
   image: leplusorg/latex
   commands:
-    - git add thesis.pdf
+    - git add ./docs/thesis.pdf
     - git commit -m "Update PDF automatically [CI SKIP]"
-    - git push --set-upstream origin master  
+    - git push --set-upstream origin main  
   when:
     branch:
-      - master
+      - main
     status:
       - success
   depends_on:
