@@ -1,5 +1,5 @@
-[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://git.fiw.hs-wismar.de/HSW-Vorlagen/fiw-thesis/src/branch/master/README.en.md)
-[![de](https://img.shields.io/badge/lang-de-blue.svg)](https://git.fiw.hs-wismar.de/HSW-Vorlagen/fiw-thesis/src/branch/master/README.de.md)
+[![en](https://img.shields.io/badge/lang-en-blue.svg)](https://git.fiw.hs-wismar.de/DSML/T20240710-SoftwareAuthors-KJ/src/branch/main/docs/README.en.md)
+[![de](https://img.shields.io/badge/lang-de-blue.svg)](https://git.fiw.hs-wismar.de/DSML/T20240710-SoftwareAuthors-KJ/src/branch/main/docs/README.de.md)
 
 # LaTeX Thesis-Vorlage FIW
 
