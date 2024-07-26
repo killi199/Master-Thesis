@@ -1,4 +1,10 @@
-def matching(df, git_contributors_df):
+import re
+from datetime import datetime
+import pandas as pd
+from git import Repo
+import subprocess
+
+def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
     insertions = []
     deletions = []
@@ -65,3 +71,55 @@ def matching(df, git_contributors_df):
     df["last_commit"] = last_commit
     df["score"] = scores
     return df
+
+def parse_contribution_stats(data: str) -> list:
+    author_pattern = re.compile(
+        r"\s*(.+) <(.+)>:\s*"
+        r"insertions:\s*(\d+)\s*\((\d+)%\)\s*"
+        r"deletions:\s*(\d+)\s*\((\d+)%\)\s*"
+        r"files:\s*(\d+)\s*\((\d+)%\)\s*"
+        r"commits:\s*(\d+)\s*\((\d+)%\)\s*"
+        r"lines changed:\s*(\d+)\s*\((\d+)%\)\s*"
+        r"first commit:\s*(.+)\s*"
+        r"last commit:\s*(.+)\s*"
+    )
+
+    authors = []
+    for match in author_pattern.finditer(data):
+        (name, email, insertions, insertions_pct, deletions, deletions_pct, files, files_pct, 
+         commits, commits_pct, lines_changed, lines_changed_pct, first_commit, last_commit) = match.groups()
+        authors.append({
+            'name': name,
+            'email': email,
+            'insertions': int(insertions),
+            'deletions': int(deletions),
+            'files': int(files),
+            'commits': int(commits),
+            'first_commit': datetime.strptime(first_commit, '%a %b %d %H:%M:%S %Y %z'),
+            'last_commit': datetime.strptime(last_commit, '%a %b %d %H:%M:%S %Y %z'),
+            'lines_changed': int(lines_changed),
+        })
+
+    return authors
+
+def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
+    Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
+
+    # Stark unterschiedliche Anzahl der commits abhängig vom Programm
+    git_quick_stat = subprocess.run(['git-quick-stats', '-T'], capture_output=True, text=True, cwd=f'./repos/{owner}/{repo}')
+    
+    # Doppelte Leute, da unterschiedliche Namen beim commiten angegeben -> Das Problem besteht beim benutzen der GitHub API nicht. -> Teilweise Gelöst mittels group auf E-Mail
+    data = git_quick_stat.stdout
+
+    # Parse the data
+    authors_data = parse_contribution_stats(data)
+
+    # Convert authors data to DataFrame
+    git_contributors_df = pd.DataFrame(authors_data)
+    git_contributors_df['email'] = git_contributors_df['email'].str.lower()
+    git_contributors_df = git_contributors_df.groupby(['email']).agg({'name':'sum', 'insertions':'sum', 'deletions':'sum', 'lines_changed':'sum', 'files':'sum', 'commits':'sum', 'first_commit':'min', 'last_commit':'max'}).reset_index()
+    git_contributors_df = git_contributors_df.sort_values(by=['commits'], ascending=False)
+    git_contributors_df = git_contributors_df.reset_index(drop=True)
+    git_contributors_df = git_contributors_df[['name', 'email', 'insertions', 'deletions', 'lines_changed', 'files', 'commits', 'first_commit', 'last_commit']]
+
+    return git_contributors_df
