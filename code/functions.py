@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 import pandas as pd
-from git import Repo
+from git import GitCommandError, Repo
 import subprocess
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
@@ -104,7 +104,10 @@ def parse_contribution_stats(data: str) -> list:
     return authors
 
 def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
-    Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
+    try:
+        Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
+    except GitCommandError:
+        print("Repo already exists")
 
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
     git_quick_stat = subprocess.run(['git-quick-stats', '-T'], capture_output=True, text=True, cwd=f'./repos/{owner}/{repo}')
