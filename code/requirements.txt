@@ -2,3 +2,4 @@ requests==2.32.3
 pandas==2.2.2
 gitpython==3.1.43
 rpy2==3.5.16
+pyyaml==6.0.2

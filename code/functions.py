@@ -3,6 +3,7 @@ from datetime import datetime
 import pandas as pd
 from git import GitCommandError, Repo
 import subprocess
+import yaml
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -127,3 +128,47 @@ def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
     git_contributors_df = git_contributors_df[['name', 'email', 'insertions', 'deletions', 'lines_changed', 'files', 'commits', 'first_commit', 'last_commit']]
 
     return git_contributors_df
+
+def get_cff_list(authors) -> list[dict[str, str]]:
+    authors_dic: list[dict[str, str]] = list()
+    for author in authors:
+        if "orcid" not in author:
+            author["orcid"] = None
+        if "email" not in author:
+            author["email"] = None
+
+        if "given-names" in author and "family-names" in author:
+            authors_dic.append({"name": author["given-names"] + " " + author["family-names"]})
+        elif "family-names" in author:
+            authors_dic.append({"name": author["family-names"]})
+        elif "given-names" in author:
+            authors_dic.append({"name": author["given-names"]})
+        elif "name" in author:
+            authors_dic.append({"name": author["name"]})
+
+        authors_dic[-1]["email"] = author["email"]
+        authors_dic[-1]["ORCID"] = author["orcid"]
+
+    return authors_dic
+
+def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
+    try:
+        with open(f'./repos/{owner}/{repo}/CITATION.cff', 'r') as file:
+            cff = yaml.safe_load(file)
+        cff_authors = cff["authors"]
+        list = get_cff_list(cff_authors)
+        cff_df = pd.DataFrame(list)
+    except FileNotFoundError:
+        cff_df = pd.DataFrame()
+    return cff_df
+
+def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
+    try:
+        with open(f'./repos/{owner}/{repo}/CITATION.cff', 'r') as file:
+            cff = yaml.safe_load(file)
+        cff_preferred_citation_authors = cff["preferred-citation"]["authors"]
+        list = get_cff_list(cff_preferred_citation_authors)
+        cff_df = pd.DataFrame(list)
+    except FileNotFoundError:
+        cff_df = pd.DataFrame()
+    return cff_df
