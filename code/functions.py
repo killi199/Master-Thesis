@@ -71,8 +71,7 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
     df["first_commit"] = first_commit
     df["last_commit"] = last_commit
     df["score"] = scores
-    df.sort_values(by=['commits'], ascending=False)
-    return df
+    return df.sort_values(by=['commits'], ascending=False)
 
 def parse_contribution_stats(data: str) -> list:
     author_pattern = re.compile(
