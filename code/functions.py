@@ -106,8 +106,9 @@ def parse_contribution_stats(data: str) -> list:
 def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
     try:
         Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
-    except GitCommandError:
+    except GitCommandError as ex:
         print("Repo already exists")
+        print(ex)
 
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
     git_quick_stat = subprocess.run(['git-quick-stats', '-T'], capture_output=True, text=True, cwd=f'./repos/{owner}/{repo}')
