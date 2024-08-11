@@ -157,10 +157,9 @@ def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
             cff = yaml.safe_load(file)
         cff_authors = cff["authors"]
         list = get_cff_list(cff_authors)
-        cff_df = pd.DataFrame(list)
+        return pd.DataFrame(list)
     except FileNotFoundError:
-        cff_df = pd.DataFrame()
-    return cff_df
+        return pd.DataFrame()
 
 def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
     try:
@@ -172,3 +171,37 @@ def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
     except FileNotFoundError:
         cff_df = pd.DataFrame()
     return cff_df
+
+def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
+    dic = []
+
+    if len(names) >= len(emails):
+        i = 0
+        while i < len(names):
+            if i >= len(emails):
+                dic.append({
+                    "name": names[i],
+                    "email": None
+                })
+            else:
+                dic.append({
+                    "name": names[i],
+                    "email": emails[i]
+                })
+            i += 1
+    else:
+        i = 0
+        while i < len(emails):
+            if i >= len(names):
+                dic.append({
+                    "name": None,
+                    "email": emails[i]
+                })
+            else:
+                dic.append({
+                    "name": names[i],
+                    "email": emails[i]
+                })
+            i += 1
+
+    return pd.DataFrame(dic)
