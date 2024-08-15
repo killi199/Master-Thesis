@@ -176,23 +176,11 @@ def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
 
 def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
     authors: list = list()
-    layers = [m.SeparateCoAuthors(), m.SplitNameParts()]
+    layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
     library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
-    entries = []
-
-    try:
-        entries = library.entries[0]['author']
-    except KeyError:
-        pass
-
-    try:
-        entries = library.entries[0]['Author']
-    except KeyError:
-        pass
-
-    if isinstance(entries, str):
-        authors.append(entries)
-    elif entries is not None:
+    entries = library.entries[0]['author']
+    
+    if entries is not None:
         for entry in entries:
             authors.append(' '.join(entry.first) + " " + ' '.join(entry.last))
     return pd.DataFrame(authors, columns=['name'])
