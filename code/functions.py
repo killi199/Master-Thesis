@@ -4,6 +4,8 @@ import pandas as pd
 from git import GitCommandError, Repo
 import subprocess
 import yaml
+import bibtexparser
+import bibtexparser.middlewares as m
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -171,6 +173,29 @@ def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
     except FileNotFoundError:
         cff_df = pd.DataFrame()
     return cff_df
+
+def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
+    authors: list = list()
+    layers = [m.SeparateCoAuthors(), m.SplitNameParts()]
+    library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
+    entries = []
+
+    try:
+        entries = library.entries[0]['author']
+    except KeyError:
+        pass
+
+    try:
+        entries = library.entries[0]['Author']
+    except KeyError:
+        pass
+
+    if isinstance(entries, str):
+        authors.append(entries)
+    elif entries is not None:
+        for entry in entries:
+            authors.append(' '.join(entry.first) + " " + ' '.join(entry.last))
+    return pd.DataFrame(authors, columns=['name'])
 
 def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
     dic = []
