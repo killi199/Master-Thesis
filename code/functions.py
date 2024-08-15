@@ -6,6 +6,7 @@ import subprocess
 import yaml
 import bibtexparser
 import bibtexparser.middlewares as m
+from pathlib import Path
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -175,15 +176,19 @@ def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
     return cff_df
 
 def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
-    authors: list = list()
-    layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
-    library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
-    entries = library.entries[0]['author']
-    
-    if entries is not None:
-        for entry in entries:
-            authors.append(' '.join(entry.first) + " " + ' '.join(entry.last))
-    return pd.DataFrame(authors, columns=['name'])
+    file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
+    if(file.is_file()):
+        authors: list = list()
+        layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
+        library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
+        entries = library.entries[0]['author']
+
+        if entries is not None:
+            for entry in entries:
+                authors.append(' '.join(entry.first) + " " + ' '.join(entry.last))
+        return pd.DataFrame(authors, columns=['name'])
+    else:
+        return pd.DataFrame()
 
 def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
     dic = []
