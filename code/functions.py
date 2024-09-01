@@ -293,6 +293,22 @@ def get_cran_maintainers(cran_data) -> pd.DataFrame:
 
     return pd.DataFrame(data)
 
+def get_pypi_repo(pypi_data) -> tuple[str, str, str]:
+    repo_link = pypi_data["info"]["project_urls"].get("Source code") or pypi_data["info"]["project_urls"].get("GitHub: repo") or pypi_data["info"]["project_urls"].get("Source") or pypi_data["info"]["project_urls"].get("Download")
+    owner = repo_link.split("/")[3]
+    repo = repo_link.split("/")[4]
+    repo_link = repo_link.split("/")[:5]
+    repo_link = '/'.join(str(x) for x in repo_link)
+    return owner, repo, repo_link
+
+def get_cran_repo(cran_data) -> tuple[str, str, str]:
+    url = cran_data["URL"]
+    urls = [x.strip() for x in url.split(',')]
+    repo_link = [url for url in urls if "github" in url][0]
+    owner = repo_link.split("/")[3]
+    repo = repo_link.split("/")[4]
+    return owner, repo, repo_link
+
 def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
     dic = []
 
