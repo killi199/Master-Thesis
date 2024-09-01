@@ -294,7 +294,7 @@ def get_cran_maintainers(cran_data) -> pd.DataFrame:
     return pd.DataFrame(data)
 
 def get_pypi_repo(pypi_data) -> tuple[str, str, str]:
-    repo_link = pypi_data["info"]["project_urls"].get("Source code") or pypi_data["info"]["project_urls"].get("GitHub: repo") or pypi_data["info"]["project_urls"].get("Source") or pypi_data["info"]["project_urls"].get("Download")
+    repo_link = pypi_data["info"]["project_urls"].get("Source code") or pypi_data["info"]["project_urls"].get("GitHub: repo") or pypi_data["info"]["project_urls"].get("Source") or pypi_data["info"]["project_urls"].get("Download") or pypi_data["info"]["project_urls"].get("Code")
     owner = repo_link.split("/")[3]
     repo = repo_link.split("/")[4]
     repo_link = repo_link.split("/")[:5]
