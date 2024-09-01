@@ -119,7 +119,7 @@ def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
         print(ex)
 
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
-    git_quick_stat = subprocess.run(['git-quick-stats', '-T'], capture_output=True, text=True, cwd=f'./repos/{owner}/{repo}')
+    git_quick_stat = subprocess.run(['git', 'quick-stats', '-T'], capture_output=True, encoding='utf-8', cwd=f'.\\repos\\{owner}\\{repo}')
     
     # Doppelte Leute, da unterschiedliche Namen beim commiten angegeben -> Das Problem besteht beim benutzen der GitHub API nicht. -> Teilweise Gelöst mittels group auf E-Mail
     data = git_quick_stat.stdout
