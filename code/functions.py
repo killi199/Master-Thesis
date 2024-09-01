@@ -158,26 +158,25 @@ def get_cff_list(authors) -> list[dict[str, str]]:
 
     return authors_dic
 
-def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
+def load_cff_authors_from_path(path: str, key: str) -> pd.DataFrame:
+    """Helper function to load authors from a CITATION.cff file."""
     try:
-        with open(f'./repos/{owner}/{repo}/CITATION.cff', 'r') as file:
+        with open(path, 'r') as file:
             cff = yaml.safe_load(file)
-        cff_authors = cff["authors"]
-        list = get_cff_list(cff_authors)
-        return pd.DataFrame(list)
-    except FileNotFoundError:
+        authors = cff
+        for k in key.split('.'):
+            authors = authors[k]
+        return pd.DataFrame(get_cff_list(authors))
+    except (FileNotFoundError, KeyError):
         return pd.DataFrame()
 
+def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
+    path = f'./repos/{owner}/{repo}/CITATION.cff'
+    return load_cff_authors_from_path(path, 'authors')
+
 def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
-    try:
-        with open(f'./repos/{owner}/{repo}/CITATION.cff', 'r') as file:
-            cff = yaml.safe_load(file)
-        cff_preferred_citation_authors = cff["preferred-citation"]["authors"]
-        list = get_cff_list(cff_preferred_citation_authors)
-        cff_df = pd.DataFrame(list)
-    except FileNotFoundError:
-        cff_df = pd.DataFrame()
-    return cff_df
+    path = f'./repos/{owner}/{repo}/CITATION.cff'
+    return load_cff_authors_from_path(path, 'preferred-citation.authors')
 
 def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
     file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
