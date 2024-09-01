@@ -11,6 +11,8 @@ from xmlrpc.client import ServerProxy
 import aiohttp
 from bs4 import BeautifulSoup
 import rpy2
+import asyncio
+import concurrent.futures
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -110,17 +112,28 @@ def parse_contribution_stats(data: str) -> list:
 
     return authors
 
-def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
+async def run_git_quick_stat(repo_path: Path) -> str:
+    loop = asyncio.get_running_loop()
+    with concurrent.futures.ThreadPoolExecutor() as pool:
+        # Run the command in a separate thread
+        result = await loop.run_in_executor(
+            pool,
+            lambda: subprocess.run(['git', 'quick-stats', '-T'], capture_output=True, encoding='utf-8',
+                                   cwd=str(repo_path))
+        )
+    return result.stdout
+
+async def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
     try:
         Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
     except GitCommandError:
         pass
 
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
-    git_quick_stat = subprocess.run(['git', 'quick-stats', '-T'], capture_output=True, encoding='utf-8', cwd=f'.\\repos\\{owner}\\{repo}')
+    git_quick_stat = await run_git_quick_stat(Path(f'.\\repos\\{owner}\\{repo}'))
     
     # Doppelte Leute, da unterschiedliche Namen beim commiten angegeben -> Das Problem besteht beim benutzen der GitHub API nicht. -> Teilweise Gelöst mittels group auf E-Mail
-    data = git_quick_stat.stdout
+    data = git_quick_stat
 
     # Parse the data
     authors_data = parse_contribution_stats(data)
