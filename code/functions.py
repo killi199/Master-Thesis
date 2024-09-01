@@ -214,35 +214,23 @@ async def get_pypi_maintainers(package_name: str) -> pd.DataFrame:
 
     return pd.DataFrame(pypi_maintainers_names, columns=['login', 'name'])
 
+def extract_names_and_emails(data: dict, name_key: str, email_key: str) -> pd.DataFrame:
+    """Helper function to extract and combine names and emails from PyPI data."""
+    names = data.get(name_key, "")
+    emails = data.get(email_key, "")
+
+    name_list = names.split(", ") if names else []
+    email_list = emails.split(", ") if emails else []
+
+    return combine_name_email(name_list, email_list)
+
 def get_python_authors(pypi_data) -> pd.DataFrame:
-    python_author_email = pypi_data["info"]["author_email"]
-    if python_author_email == '' or python_author_email == None:
-        python_author_emails = []
-    else:
-        python_author_emails = python_author_email.split(", ")
-
-    python_author = pypi_data["info"]["author"]
-    if python_author == '' or python_author == None:
-        python_authors = []
-    else:
-        python_authors = python_author.split(", ")
-
-    return combine_name_email(python_authors, python_author_emails)
+    """Extract authors from PyPI data."""
+    return extract_names_and_emails(pypi_data["info"], "author", "author_email")
 
 def get_python_maintainers(pypi_data) -> pd.DataFrame:
-    python_maintainer_email = pypi_data["info"]["maintainer_email"]
-    if python_maintainer_email == '' or python_maintainer_email == None:
-        python_maintainer_emails = []
-    else:
-        python_maintainer_emails = python_maintainer_email.split(", ")
-
-    python_maintainer = pypi_data["info"]["maintainer"]
-    if python_maintainer == '' or python_maintainer == None:
-        python_maintainers = []
-    else:
-        python_maintainers = python_maintainer.split(", ")
-
-    return combine_name_email(python_maintainers, python_maintainer_emails)
+    """Extract maintainers from PyPI data."""
+    return extract_names_and_emails(pypi_data["info"], "maintainer", "maintainer_email")
 
 def get_cran_authors(cran_data) -> pd.DataFrame:
     import rpy2.robjects as ro
