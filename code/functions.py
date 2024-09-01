@@ -7,6 +7,9 @@ import yaml
 import bibtexparser
 import bibtexparser.middlewares as m
 from pathlib import Path
+from xmlrpc.client import ServerProxy
+import aiohttp
+from bs4 import BeautifulSoup
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -189,6 +192,27 @@ def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
         return pd.DataFrame(authors, columns=['name'])
     else:
         return pd.DataFrame()
+    
+async def get_pypi_maintainers(package_name: str) -> pd.DataFrame:
+    pypi_maintainers = ServerProxy("https://pypi.org/pypi").package_roles(package_name)
+    pypi_maintainers_names = []
+    assert isinstance(pypi_maintainers, list)
+    for maintainer in pypi_maintainers:
+        assert isinstance(maintainer, list)
+        user_name = maintainer[1]
+        async with aiohttp.ClientSession() as session:
+            async with session.get(f'https://pypi.org/user/{user_name}/') as response:
+                if response.status == 200:
+                    html = await response.text()
+                    soup = BeautifulSoup(html, features="html.parser")
+                    h1 = soup.find_all("h1", {"class": "author-profile__name"})
+                    if h1:
+                        name = h1[0].string
+                        pypi_maintainers_names.append([user_name, name])
+                    else:
+                        pypi_maintainers_names.append([user_name, None])
+
+    return pd.DataFrame(pypi_maintainers_names, columns=['login', 'name'])
 
 def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
     dic = []
