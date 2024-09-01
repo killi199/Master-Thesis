@@ -10,7 +10,6 @@ from pathlib import Path
 from xmlrpc.client import ServerProxy
 import aiohttp
 from bs4 import BeautifulSoup
-import rpy2.robjects as ro
 import rpy2
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
@@ -247,6 +246,7 @@ def get_python_maintainers(pypi_data) -> pd.DataFrame:
     return combine_name_email(python_maintainers, python_maintainer_emails)
 
 def get_cran_authors(cran_data) -> pd.DataFrame:
+    import rpy2.robjects as ro
     cran_author = cran_data["Authors@R"]
     authors = ro.r(f'''eval(parse(text = '{cran_author}'))''')
 
