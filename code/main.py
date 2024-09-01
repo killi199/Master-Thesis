@@ -19,7 +19,7 @@ async def process_package(package):
         git_contributors_df = await functions.get_git_contributors(owner, repo, repo_link)
         git_contributors_df.to_csv(f'results/{package_name}/git_contributors.csv', index=False)
 
-        # currently not fully accessible through the API -> limiting factor HTTP is limited
+        # currently not fully accessible through the API -> limiting factor HTTP is limited if this is not used more semaphores possible
         pypi_maintainers_df = await functions.get_pypi_maintainers(package_name)
         result = functions.matching(pypi_maintainers_df, git_contributors_df)
         if not result.empty: result.to_csv(f'results/{package_name}/pypi_maintainers.csv', index=False)
