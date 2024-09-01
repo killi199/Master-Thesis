@@ -10,6 +10,8 @@ from pathlib import Path
 from xmlrpc.client import ServerProxy
 import aiohttp
 from bs4 import BeautifulSoup
+import rpy2.robjects as ro
+import rpy2
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -243,6 +245,53 @@ def get_python_maintainers(pypi_data) -> pd.DataFrame:
         python_maintainers = python_maintainer.split(", ")
 
     return combine_name_email(python_maintainers, python_maintainer_emails)
+
+def get_cran_authors(cran_data) -> pd.DataFrame:
+    cran_author = cran_data["Authors@R"]
+    authors = ro.r(f'''eval(parse(text = '{cran_author}'))''')
+
+    cran_authors_df = pd.DataFrame(columns=["name", "email", "ORCID"])
+
+    for author in authors:
+        if "aut" in author[2]:
+            if type(author[0]) == rpy2.rinterface_lib.sexp.NULLType and type(author[1]) == rpy2.rinterface_lib.sexp.NULLType:
+                name = None
+            elif type(author[0]) == rpy2.rinterface_lib.sexp.NULLType:
+                name = author[1][0]
+            elif type(author[1]) == rpy2.rinterface_lib.sexp.NULLType:
+                name = author[0][0]
+            else:
+                name = f"{author[0][0]} {author[1][0]}"
+            
+            
+            if type(author[3]) == rpy2.rinterface_lib.sexp.NULLType:
+                email = None
+            else:
+                email = author[3][0]
+
+            if type(author[4]) == rpy2.rinterface_lib.sexp.NULLType:
+                orcid = None
+            else:
+                orcid = author[4][0]
+
+            cran_authors_df = pd.concat([cran_authors_df, pd.DataFrame({"name": name, "email": email, "ORCID": orcid}, index=[0])], ignore_index=True)
+
+    return cran_authors_df
+
+def get_cran_maintainers(cran_data) -> pd.DataFrame:
+    cran_maintainer = cran_data["Maintainer"]
+
+    match = re.match(r"^(.*?)\s*<(.+)>$", cran_maintainer)
+    if match:
+        name = match.group(1)
+        email = match.group(2)
+    else:
+        name = None
+        email = None
+
+    data = {'name': [name], 'email': [email]}
+
+    return pd.DataFrame(data)
 
 def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
     dic = []
