@@ -259,7 +259,11 @@ def get_python_maintainers(pypi_data) -> pd.DataFrame:
     return extract_names_and_emails(pypi_data["info"], "maintainer", "maintainer_email")
 
 def get_cran_authors(cran_data) -> pd.DataFrame:
-    cran_author = cran_data["Authors@R"]
+    cran_author = cran_data.get("Authors@R")
+
+    if cran_author is None:
+        return get_cran_author(cran_data)
+    
     authors = ro.r(f'''eval(parse(text = '{cran_author}'))''')
 
     cran_authors_df = pd.DataFrame(columns=["name", "email", "ORCID"])
@@ -289,6 +293,28 @@ def get_cran_authors(cran_data) -> pd.DataFrame:
             cran_authors_df = pd.concat([cran_authors_df, pd.DataFrame({"name": name, "email": email, "ORCID": orcid}, index=[0])], ignore_index=True)
 
     return cran_authors_df
+
+def get_cran_author(cran_data) -> pd.DataFrame:
+    cran_author = cran_data["Author"]
+
+    orcid_pattern = re.compile(r'\s*\(<https://orcid.org/[^>]+>\)')
+
+    cran_author = re.sub(orcid_pattern, '', cran_author)
+
+    pattern = re.compile(r"(?P<name>[^,\[\]]+)(?:\s*\[(?P<roles>[^\]]*)\])?\s*(?:,\s*ORCID:\s*(?P<orcid>[^\s,]+))?")
+
+    # List to hold parsed data
+    parsed_data = []
+
+    # Find all matches in the data string
+    for match in pattern.finditer(cran_author):
+        name = match.group('name').strip()
+        
+        parsed_data.append({
+            'name': name,
+        })
+
+    return pd.DataFrame(parsed_data)
 
 def get_cran_maintainers(cran_data) -> pd.DataFrame:
     cran_maintainer = cran_data["Maintainer"]
