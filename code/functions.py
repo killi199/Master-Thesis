@@ -130,7 +130,7 @@ def parse_contribution_stats(data: str, package_name: str) -> list:
 async def run_git_quick_stat(repo_path: Path) -> str:
     loop = asyncio.get_running_loop()
     with concurrent.futures.ThreadPoolExecutor() as pool:
-        # Doppelte Leute, da unterschiedliche Namen beim commiten angegeben -> Das Problem besteht beim benutzen der GitHub API nicht. -> Teilweise Gelöst mittels group auf E-Mail
+        # Doppelte Leute, da unterschiedliche Namen beim commit angegeben → Das Problem besteht beim Benutzen der GitHub API nicht. → Teilweise gelöst mittels group auf E-Mail
         result = await loop.run_in_executor(
             pool,
             lambda: subprocess.run(['git', 'quick-stats', '-T'], capture_output=True, encoding='utf-8',
