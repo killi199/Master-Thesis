@@ -142,7 +142,8 @@ async def get_git_contributors(owner: str, repo: str, repo_link: str, package_na
     try:
         Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
     except GitCommandError as ex:
-        print(f"Error cloning {repo_link}: {ex}")
+        if not "already exists and is not an empty directory" in str(ex):
+            print(f"Error cloning {repo_link}: {ex}")
         pass
 
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
