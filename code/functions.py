@@ -15,6 +15,8 @@ import asyncio
 import concurrent.futures
 from pytz import utc
 import rpy2.robjects as ro
+from rpy2.rinterface_lib._rinterface_capi import RParsingError
+
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -264,7 +266,10 @@ def get_cran_authors(cran_data) -> pd.DataFrame:
     if cran_author is None:
         return get_cran_author(cran_data)
     
-    authors = ro.r(f'''eval(parse(text = '{cran_author}'))''')
+    try:
+        authors = ro.r(f'''eval(parse(text = '{cran_author}'))''')
+    except RParsingError:
+        return get_cran_author(cran_data)
 
     cran_authors_df = pd.DataFrame(columns=["name", "email", "ORCID"])
 
