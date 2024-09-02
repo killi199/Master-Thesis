@@ -310,7 +310,7 @@ def get_pypi_repo(pypi_data) -> tuple[str, str, str]:
     repo_link = None
 
     for url in pypi_data["info"]["project_urls"].values():
-        if "github" in url:
+        if "github.com" in url:
             repo_link = url
 
     if repo_link is None:
@@ -325,9 +325,13 @@ def get_pypi_repo(pypi_data) -> tuple[str, str, str]:
 def get_cran_repo(cran_data) -> tuple[str, str, str]:
     url = cran_data["URL"]
     urls = [x.strip() for x in url.split(',')]
-    repo_link = [url for url in urls if "github" in url][0]
+    repo_link = [url for url in urls if "github.com" in url][0]
+    repo_link = repo_link.split("#")[0]
     owner = repo_link.split("/")[3]
     repo = repo_link.split("/")[4]
+    repo_link = repo_link.split("/")[:5]
+    repo_link = '/'.join(str(x) for x in repo_link)
+
     return owner, repo, repo_link
 
 def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
