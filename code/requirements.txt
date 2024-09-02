@@ -7,3 +7,4 @@ aiohttp==3.10.3
 beautifulsoup4==4.12.3
 bibtexparser @ git+https://github.com/sciunto-org/python-bibtexparser@main
 tqdm==4.66.5
+pytz==2024.1
