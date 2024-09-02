@@ -140,13 +140,13 @@ async def run_git_quick_stat(repo_path: Path) -> str:
 
 async def get_git_contributors(owner: str, repo: str, repo_link: str, package_name: str) -> pd.DataFrame:
     try:
-        Repo.clone_from(repo_link, f'.\\repos\\{owner}\\{repo}')
+        Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
     except GitCommandError as ex:
         print(f"Error cloning {repo_link}: {ex}")
         pass
 
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
-    data = await run_git_quick_stat(Path(f'.\\repos\\{owner}\\{repo}'))
+    data = await run_git_quick_stat(Path(f'./repos/{owner}/{repo}'))
 
     # Parse the data
     authors_data = parse_contribution_stats(data, package_name)
@@ -205,7 +205,7 @@ def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
 
 def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
     file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
-    if(file.is_file()):
+    if file.is_file():
         authors: list = list()
         layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
         library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
