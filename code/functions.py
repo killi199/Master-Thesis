@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 import rpy2
 import asyncio
 import concurrent.futures
+from pytz import utc
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -82,7 +83,7 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
     df["score"] = scores
     return df.sort_values(by=['commits'], ascending=False)
 
-def parse_contribution_stats(data: str) -> list:
+def parse_contribution_stats(data: str, package_name: str) -> list:
     author_pattern = re.compile(
         r"\s*(.+) <(.+)>:\s*"
         r"insertions:\s*(\d+)\s*\((\d+)%\)\s*"
@@ -96,8 +97,21 @@ def parse_contribution_stats(data: str) -> list:
 
     authors = []
     for match in author_pattern.finditer(data):
-        (name, email, insertions, insertions_pct, deletions, deletions_pct, files, files_pct, 
+        (name, email, insertions, insertions_pct, deletions, deletions_pct, files, files_pct,
          commits, commits_pct, lines_changed, lines_changed_pct, first_commit, last_commit) = match.groups()
+
+        try:
+            first_commit_parsed = datetime.strptime(first_commit, '%a %b %d %H:%M:%S %Y %z')
+        except ValueError:
+            first_commit_parsed = utc.localize(datetime.min)
+            print(f'Error parsing author: {name} in {package_name}')
+
+        try:
+            last_commit_parsed = datetime.strptime(last_commit, '%a %b %d %H:%M:%S %Y %z')
+        except ValueError:
+            last_commit_parsed = utc.localize(datetime.max)
+            print(f'Error parsing author: {name} in {package_name}')
+
         authors.append({
             'name': name,
             'email': email,
@@ -105,8 +119,8 @@ def parse_contribution_stats(data: str) -> list:
             'deletions': int(deletions),
             'files': int(files),
             'commits': int(commits),
-            'first_commit': datetime.strptime(first_commit, '%a %b %d %H:%M:%S %Y %z'),
-            'last_commit': datetime.strptime(last_commit, '%a %b %d %H:%M:%S %Y %z'),
+            'first_commit': first_commit_parsed,
+            'last_commit': last_commit_parsed,
             'lines_changed': int(lines_changed),
         })
 
@@ -123,7 +137,7 @@ async def run_git_quick_stat(repo_path: Path) -> str:
         )
     return result.stdout
 
-async def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.DataFrame:
+async def get_git_contributors(owner: str, repo: str, repo_link: str, package_name: str) -> pd.DataFrame:
     try:
         Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
     except GitCommandError:
@@ -136,7 +150,7 @@ async def get_git_contributors(owner: str, repo: str, repo_link: str) -> pd.Data
     data = git_quick_stat
 
     # Parse the data
-    authors_data = parse_contribution_stats(data)
+    authors_data = parse_contribution_stats(data, package_name)
 
     # Convert authors data to DataFrame
     git_contributors_df = pd.DataFrame(authors_data)
