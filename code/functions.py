@@ -14,6 +14,7 @@ import rpy2
 import asyncio
 import concurrent.futures
 from pytz import utc
+import rpy2.robjects as ro
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
     rank = []
@@ -257,7 +258,6 @@ def get_python_maintainers(pypi_data) -> pd.DataFrame:
     return extract_names_and_emails(pypi_data["info"], "maintainer", "maintainer_email")
 
 def get_cran_authors(cran_data) -> pd.DataFrame:
-    import rpy2.robjects as ro
     cran_author = cran_data["Authors@R"]
     authors = ro.r(f'''eval(parse(text = '{cran_author}'))''')
 
