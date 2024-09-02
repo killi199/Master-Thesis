@@ -339,7 +339,7 @@ def get_pypi_repo(pypi_data) -> tuple[str, str, str]:
             repo_link = url
 
     if repo_link is None:
-        raise ValueError(f"No GitHub repository found in PyPI data for {pypi_data['info']['name']}.")
+        raise ValueError(f"No GitHub repository found in PyPI data.")
 
     owner = repo_link.split("/")[3]
     repo = repo_link.split("/")[4]
@@ -351,13 +351,13 @@ def get_cran_repo(cran_data) -> tuple[str, str, str]:
     url = cran_data.get("URL")
 
     if not url:
-        raise ValueError(f"No GitHub repository found in CRAN data for {cran_data['Package']}.")
+        raise ValueError(f"No GitHub repository found in CRAN data.")
 
     urls = [x.strip() for x in url.split(',')]
 
     repo_link = [url for url in urls if "github.com" in url]
     if not repo_link:
-        raise ValueError(f"No GitHub repository found in CRAN data for {cran_data['Package']}.")
+        raise ValueError(f"No GitHub repository found in CRAN data.")
     
     repo_link = repo_link[0]
     repo_link = repo_link.split("#")[0]
