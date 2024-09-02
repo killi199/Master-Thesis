@@ -348,7 +348,11 @@ def get_pypi_repo(pypi_data) -> tuple[str, str, str]:
     return owner, repo, repo_link
 
 def get_cran_repo(cran_data) -> tuple[str, str, str]:
-    url = cran_data["URL"]
+    url = cran_data.get("URL")
+
+    if not url:
+        raise ValueError(f"No GitHub repository found in CRAN data for {cran_data['Package']}.")
+
     urls = [x.strip() for x in url.split(',')]
 
     repo_link = [url for url in urls if "github.com" in url]
