@@ -16,6 +16,7 @@ import concurrent.futures
 from pytz import utc
 import rpy2.robjects as ro
 from rpy2.rinterface_lib._rinterface_capi import RParsingError
+from thefuzz import fuzz
 
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
@@ -40,12 +41,14 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
         dic = []
         for contributor_index, contributor in git_contributors_df.iterrows():
             counter = 0
-            if 'name' in df.columns and author["name"] is not None and contributor["name"] is not None and author["name"].lower() in contributor["name"].lower():
+            if 'name' in df.columns and author["name"] is not None and contributor["name"] is not None and (author["name"].lower() in contributor["name"].lower() or fuzz.ratio(author["name"].lower(), contributor["name"].lower()) >= 80):
                 counter += 1
-            if 'email' in df.columns and author["email"] is not None and contributor["email"] is not None and author["email"].lower() in contributor["email"].lower():
+            if 'email' in df.columns and author["email"] is not None and contributor["email"] is not None and (author["email"].lower() in contributor["email"].lower() or fuzz.ratio(author["email"].lower(), contributor["email"].lower()) >= 80):
                 counter += 1
-            if 'login' in df.columns and author["login"] is not None and contributor["email"] is not None and author["login"].lower() in contributor["email"].lower():
-                counter += 1
+            if 'login' in df.columns and author["login"] is not None and contributor["email"] is not None:
+                contributor_email_edited = contributor['email'].split('@')[0].lower()
+                if author["login"].lower() in contributor_email_edited or fuzz.ratio(author["login"].lower(), contributor_email_edited) >= 80:
+                    counter += 1
 
             if counter > 0:
                 dic.append({
