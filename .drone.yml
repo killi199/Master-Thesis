@@ -5,15 +5,15 @@ name: make
 
 steps:
 - name: make project
-  image: leplusorg/latex
+  image: aergus/latex
   commands:
-    - make nuke
-    - make all
+    - make clean -C ./docs
+    - make all -C ./docs
 
 - name: pdf push main
-  image: leplusorg/latex
+  image: aergus/latex
   commands:
-    - git add ./docs/thesis.pdf
+    - git add ./docs/thesis.pdf -f
     - git commit -m "Update PDF automatically [CI SKIP]"
     - git push --set-upstream origin main  
   when:
