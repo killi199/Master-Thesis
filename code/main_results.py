@@ -13,32 +13,38 @@ def calculate_percentage(matches, non_matches):
         return 0
     return (matches / total) * 100
 
+def process_directory(directory):
+    file_type_percentages = {}
+
+    for root, _, files in os.walk(directory):
+        for file in files:
+            if file == 'git_contributors.csv':
+                continue
+            file_path = os.path.join(root, file)
+            matches, non_matches = check_matches(file_path)
+
+            file = os.path.splitext(file)[0]
+            if file not in file_type_percentages:
+                file_type_percentages[file] = {'matches': 0, 'non_matches': 0}
+            file_type_percentages[file]['matches'] += matches
+            file_type_percentages[file]['non_matches'] += non_matches
+
+    file_type_percentages = {ft: (data['matches'], data['non_matches'] + data['matches']) for ft, data in file_type_percentages.items()}
+
+    return file_type_percentages
+
 def main():
     cran_dir = 'results/cran'
     pypi_dir = 'results/pypi'
-    total_matches = 0
-    total_non_matches = 0
 
-    for root, _, files in os.walk(cran_dir):
-        for file in files:
-            if file == 'git_contributors.csv':
-                continue
-            file_path = os.path.join(root, file)
-            matches, non_matches = check_matches(file_path)
-            total_matches += matches
-            total_non_matches += non_matches
+    cran_file_types = process_directory(cran_dir)
+    pypi_file_types = process_directory(pypi_dir)
 
-    for root, _, files in os.walk(pypi_dir):
-        for file in files:
-            if file == 'git_contributors.csv':
-                continue
-            file_path = os.path.join(root, file)
-            matches, non_matches = check_matches(file_path)
-            total_matches += matches
-            total_non_matches += non_matches
+    for file_type, percentage in cran_file_types.items():
+        print(f"CRAN {file_type} {percentage[0]}/{percentage[1]}")
 
-    percentage = calculate_percentage(total_matches, total_non_matches)
-    print(f"Percentage of matches: {percentage:.2f}%")
+    for file_type, percentage in pypi_file_types.items():
+        print(f"PyPi {file_type} {percentage[0]}/{percentage[1]}")
 
 if __name__ == "__main__":
     main()
