@@ -577,13 +577,9 @@
   % add this chapter to the TOC
   \addcontentsline{toc}{chapter}{\@doiwtitle}
   \@doiwtext
-  \vspace{4cm}\\
-  \begin{minipage}{0.5\textwidth}
-    \@doiwplace,~\@doiwdate
-  \end{minipage}
-  \begin{minipage}{0.5\textwidth}
-    \@doiwsign
-  \end{minipage}
+  \vspace{1cm}\\
+  Wismar, den \today \hspace{1cm} \includegraphics[scale=0.2]{bilder/Kevin_Unterschrift.PNG} \\
+  Ort, Datum \hspace{4.5cm} Unterschrift
   % \newpage
 }
 
