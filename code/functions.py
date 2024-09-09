@@ -336,6 +336,14 @@ def get_cran_author(cran_data) -> pd.DataFrame:
                     'name': name,
                 })
 
+    if len(parsed_data) == 0:
+        for match in pattern.finditer(cran_author):
+            name = match.group('name').strip()
+            
+            parsed_data.append({
+                'name': name,
+            })
+
     return pd.DataFrame(parsed_data)
 
 def get_cran_maintainers(cran_data) -> pd.DataFrame:
