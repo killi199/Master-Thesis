@@ -319,10 +319,13 @@ def get_cran_author(cran_data) -> pd.DataFrame:
     # Find all matches in the data string
     for match in pattern.finditer(cran_author):
         name = match.group('name').strip()
-        
-        parsed_data.append({
-            'name': name,
-        })
+        roles = match.group('roles')
+
+        if roles is not None:
+            if "aut" in roles or "ctb" in roles:
+                parsed_data.append({
+                    'name': name,
+                })
 
     return pd.DataFrame(parsed_data)
 
