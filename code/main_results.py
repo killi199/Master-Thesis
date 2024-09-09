@@ -36,21 +36,25 @@ def main():
     cran_file_types = process_directory(cran_dir)
     pypi_file_types = process_directory(pypi_dir)
 
-    entries = 0
-    matches = 0
+    entries_result = 0
+    matches_result = 0
 
     for file_type, matches in cran_file_types.items():
         print(f"CRAN {file_type} {matches[0]}/{matches[2]} non matches {matches[1]}")
-        entries += matches[2]
-        matches += matches[0]
+        entries_result += matches[2]
+        matches_result += matches[0]
+
+    print()
 
     for file_type, matches in pypi_file_types.items():
         print(f"PyPi {file_type} {matches[0]}/{matches[2]} non matches {matches[1]}")
-        entries += matches[2]
-        matches += matches[0]
+        entries_result += matches[2]
+        matches_result += matches[0]
 
-    percentage = matches/entries*100
-    print(f"Total matches {matches}/{entries} ({percentage:.2f}%)")
+    print()
+
+    percentage = matches_result/entries_result*100
+    print(f"Total matches {matches_result}/{entries_result} ({percentage:.2f}%)")
 
 if __name__ == "__main__":
     main()
