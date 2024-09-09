@@ -322,7 +322,7 @@ def get_cran_author(cran_data) -> pd.DataFrame:
         roles = match.group('roles')
 
         if roles is not None:
-            if "aut" in roles or "ctb" in roles:
+            if "aut" in roles:
                 parsed_data.append({
                     'name': name,
                 })
