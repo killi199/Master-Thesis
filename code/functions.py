@@ -58,7 +58,7 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
                     counter += 1
             if counter == 0 and 'name' in df.columns and 'email' in df.columns and author["name"] is not None and contributor["email"] is not None:
                 contributor_email_edited = contributor['email'].split('@')[0].lower()
-                if author["name"].lower() in contributor_email_edited or contributor_email_edited in author["name"].lower() or fuzz.ratio(author["name"].lower(), contributor_email_edited) >= 80:
+                if fuzz.ratio(author["name"].lower(), contributor_email_edited) >= 80:
                     counter += 1
 
             if counter > 0:
