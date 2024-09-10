@@ -253,12 +253,24 @@ def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
         authors: list = list()
         layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
         library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
+
         entries = library.entries[0]['author']
+
+        entry_type = library.entries[0].entry_type
+        entry_year = library.entries[0].get('year', None)
+
+        if entry_year is not None:
+            entry_year = entry_year.value
 
         if entries is not None:
             for entry in entries:
                 authors.append(' '.join(entry.first) + " " + ' '.join(entry.last))
-        return pd.DataFrame(authors, columns=['name'])
+
+        authors_df = pd.DataFrame(authors, columns=['name'])
+        authors_df['type'] = entry_type
+        authors_df['year'] = entry_year
+
+        return authors_df
     else:
         return pd.DataFrame()
     
