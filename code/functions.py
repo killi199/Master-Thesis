@@ -206,25 +206,46 @@ def get_cff_list(authors) -> list[dict[str, str]]:
 
     return authors_dic
 
-def load_cff_authors_from_path(path: str, key: str) -> pd.DataFrame:
-    """Helper function to load authors from a CITATION.cff file."""
+def load_cff_data(path: str) -> dict:
     try:
         with open(path, 'r') as file:
             cff = yaml.safe_load(file)
+        return cff
+    except (FileNotFoundError, yaml.YAMLError):
+        return {}
+
+def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
+    try:
         authors = cff
         for k in key.split('.'):
             authors = authors[k]
-        return pd.DataFrame(get_cff_list(authors))
-    except (FileNotFoundError, KeyError):
+        authors_df = pd.DataFrame(get_cff_list(authors))
+        return authors_df
+    except KeyError:
         return pd.DataFrame()
 
 def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
     path = f'./repos/{owner}/{repo}/CITATION.cff'
-    return load_cff_authors_from_path(path, 'authors')
+    cff_data = load_cff_data(path)
+
+    authors_df = load_cff_authors_from_data(cff_data, 'authors')
+
+    authors_df['type'] = cff_data.get('type', None)
+    authors_df['date-released'] = cff_data.get('date-released', None)
+
+    return authors_df
 
 def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
     path = f'./repos/{owner}/{repo}/CITATION.cff'
-    return load_cff_authors_from_path(path, 'preferred-citation.authors')
+    cff_data = load_cff_data(path)
+
+    authors_df = load_cff_authors_from_data(cff_data, 'preferred-citation.authors')
+
+    authors_df['type'] = cff_data.get('preferred-citation', {}).get('type', None)
+    authors_df['year'] = cff_data.get('preferred-citation', {}).get('year', None)
+    authors_df['date-published'] = cff_data.get('preferred-citation', {}).get('date-published', None)
+
+    return authors_df
 
 def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
     file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
