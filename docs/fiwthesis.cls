@@ -704,15 +704,12 @@
 }
 
 % abstract
-\newcommand{\makeabstract}[2]{%
-  \pdfbookmark{\if@en{Abstract}\else{Kurzfassung/Abstract}\fi}{abstract}
-  \markright{\if@en{Abstract}\else{Kurzfassung}\fi}
-
-  \section*{Kurzfassung}
-  #1
+\newcommand{\makeabstract}[1]{%
+  \pdfbookmark{Abstract}{abstract}
+  \markright{Abstract}
 
   \section*{Abstract}
-  #2
+  #1
 
   \newpage{}
 }
