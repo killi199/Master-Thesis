@@ -19,6 +19,7 @@
 \usepackage{subcaption}          % mehrere Bilder in einem Bild
 \usepackage{pgfplots}            % Grafiken erzeugen
 \usepackage{smartdiagram}        % schnelle und einfache Grafiken
+\usepackage{pdfpages}            % Einbinden von PDFs
 \usetikzlibrary{positioning}     % bessere Ortsbezeichnung
 \usetikzlibrary{shapes}          % typische Formen wie Rechtecke, Ellipsen usw. einfach zeichnen
 \usetikzlibrary{intersections}   % Schnittpunkt von Geraden adressieren
@@ -99,7 +100,7 @@
 \maketitle
 
 % Aufgabenstellung
-\maketask{\input{kapitel/aufgabenstellung}}
+\includepdf[pages=-]{anlagen/aufgabenstellung_print.pdf}
 
 % Abstract
 \makeabstract{

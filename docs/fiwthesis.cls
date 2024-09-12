@@ -693,16 +693,6 @@
   }
 }
 
-% task (placeholder)
-\newcommand{\maketask}[1]{%
-  \pdfbookmark{\@tasktitle}{task}
-  \thispagestyle{empty}
-  \markright{\@tasktitle}
-  \section*{\@tasktitle}
-  #1
-  \newpage
-}
-
 % abstract
 \newcommand{\makeabstract}[1]{%
   \pdfbookmark{Abstract}{abstract}
