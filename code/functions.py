@@ -33,7 +33,7 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
     last_commit = []
     scores = []
     matching_columns = 0
-    if 'name' in df.columns:
+    if 'name' in df.columns or 'name/login' in df.columns:
         matching_columns += 1
     if 'email' in df.columns:
         matching_columns += 1
@@ -52,6 +52,12 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
                 if author["name"].lower() in contributor["name"].lower() or contributor["name"].lower() in author["name"].lower() or fuzz.ratio(author["name"].lower(), contributor["name"].lower()) >= 80 or author["name"].lower() in contributor_without_brackets or contributor_without_brackets in author["name"].lower() or fuzz.ratio(author["name"].lower(), contributor_without_brackets) >= 80:
                     counter += 1
                     name_match = True
+            if 'name/login' in df.columns and author["name/login"] is not None and contributor["name"] is not None:
+                contributor_without_brackets = re.sub(r'\(.*?\)', '', contributor["name"].lower()).strip()
+                contributor_without_brackets = re.sub(' +', ' ', contributor_without_brackets)
+                if author["name/login"].lower() in contributor["name"].lower() or contributor["name"].lower() in author["name/login"].lower() or fuzz.ratio(author["name/login"].lower(), contributor["name"].lower()) >= 80 or author["name/login"].lower() in contributor_without_brackets or contributor_without_brackets in author["name/login"].lower() or fuzz.ratio(author["name/login"].lower(), contributor_without_brackets) >= 80:
+                    counter += 1
+                    name_match = True
             if 'email' in df.columns and author["email"] is not None and contributor["email"] is not None:
                 if author["email"].lower() in contributor["email"].lower() or contributor["email"].lower() in author["email"].lower() or fuzz.ratio(author["email"].lower(), contributor["email"].lower()) >= 80 or (not name_match and (author["email"].lower() in contributor["name"].lower() or contributor["name"].lower() in author["email"].lower() or fuzz.ratio(author["email"].lower(), contributor["name"].lower()) >= 80)):
                     counter += 1
@@ -68,6 +74,10 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
             if counter == 0 and 'name' in df.columns and author["name"] is not None and contributor["email"] is not None:
                 contributor_email_edited = contributor['email'].split('@')[0].lower()
                 if fuzz.ratio(author["name"].lower(), contributor_email_edited) >= 80:
+                    counter += 1
+            if counter == 0 and 'name/login' in df.columns and author["name/login"] is not None and contributor["email"] is not None:
+                contributor_email_edited = contributor['email'].split('@')[0].lower()
+                if fuzz.ratio(author["name/login"].lower(), contributor_email_edited) >= 80 or contributor_email_edited in author["name/login"].lower() or author["name/login"].lower() in contributor_email_edited:
                     counter += 1
 
             if counter > 0:
@@ -483,4 +493,4 @@ def get_description_authors(description: str) -> pd.DataFrame:
             if ent.text not in authors:
                 authors.append(ent.text)
 
-    return pd.DataFrame(authors, columns=['name'])
+    return pd.DataFrame(authors, columns=['name/login'])
