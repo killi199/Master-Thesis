@@ -17,6 +17,8 @@ from pytz import utc
 import rpy2.robjects as ro
 from rpy2.rinterface_lib._rinterface_capi import RParsingError
 from thefuzz import fuzz
+import spacy
+import en_core_web_trf
 
 
 def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFrame:
@@ -470,3 +472,14 @@ def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
             i += 1
 
     return pd.DataFrame(dic)
+
+def get_description_authors(description: str) -> pd.DataFrame:
+    nlp = spacy.load("en_core_web_trf")
+    nlp = en_core_web_trf.load()
+    doc = nlp(description)
+    authors: list = list()
+    for ent in doc.ents:
+        if ent.label_ == "PERSON":
+            authors.append(ent.text)
+
+    return pd.DataFrame(authors, columns=['name'])

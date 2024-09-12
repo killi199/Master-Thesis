@@ -42,6 +42,10 @@ async def process_pypi_package(package):
 
         bib_df = functions.get_bib_authors(owner, repo)
         await process_and_save(bib_df, 'bib_authors')
+
+        description = pypi_data['info']['description']
+        description_df = functions.get_description_authors(description)
+        await process_and_save(description_df, 'description_authors')
     except Exception as e:
         print(f"Error processing {package_name}: {e}")
 
@@ -78,6 +82,10 @@ async def process_cran_package(package):
 
         bib_df = functions.get_bib_authors(owner, repo)
         await process_and_save(bib_df, 'bib_authors')
+
+        description = cran_data['Description']
+        description_df = functions.get_description_authors(description)
+        await process_and_save(description_df, 'description_authors')
     except Exception as e:
         print(f"Error processing {package_name}: {e}")
 
