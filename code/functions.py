@@ -480,6 +480,7 @@ def get_description_authors(description: str) -> pd.DataFrame:
     authors: list = list()
     for ent in doc.ents:
         if ent.label_ == "PERSON":
-            authors.append(ent.text)
+            if ent.text not in authors:
+                authors.append(ent.text)
 
     return pd.DataFrame(authors, columns=['name'])
