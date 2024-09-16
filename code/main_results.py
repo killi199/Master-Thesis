@@ -38,23 +38,41 @@ def main():
 
     entries_result = 0
     matches_result = 0
+    non_matches_result = 0
+    pypi_entries_result = 0
+    pypi_matches_result = 0
+    pypi_non_matches_result = 0
+    cran_entries_result = 0
+    cran_matches_result = 0
+    cran_non_matches_result = 0
 
     for file_type, matches in cran_file_types.items():
-        print(f"CRAN {file_type} {matches[0]}/{matches[2]} non matches {matches[1]}")
+        print(f"CRAN {file_type} {matches[0]}/{matches[2]} ({matches[0]/matches[2] * 100:.2f}%) non matches {matches[1]}")
         entries_result += matches[2]
+        non_matches_result += matches[1]
         matches_result += matches[0]
+        cran_entries_result += matches[2]
+        cran_non_matches_result += matches[1]
+        cran_matches_result += matches[0]
+
+    print(f"CRAN total matches {cran_matches_result}/{cran_entries_result} ({cran_matches_result/cran_entries_result * 100:.2f}%) non matches {cran_non_matches_result}")
 
     print()
 
     for file_type, matches in pypi_file_types.items():
-        print(f"PyPi {file_type} {matches[0]}/{matches[2]} non matches {matches[1]}")
+        print(f"PyPi {file_type} {matches[0]}/{matches[2]} ({matches[0]/matches[2] * 100:.2f}%) non matches {matches[1]}")
         entries_result += matches[2]
+        non_matches_result += matches[1]
         matches_result += matches[0]
+        pypi_entries_result += matches[2]
+        pypi_non_matches_result += matches[1]
+        pypi_matches_result += matches[0]
+
+    print(f"PyPi total matches {pypi_matches_result}/{pypi_entries_result} ({pypi_matches_result / pypi_entries_result * 100:.2f}%) non matches {pypi_non_matches_result}")
 
     print()
 
-    percentage = matches_result/entries_result*100
-    print(f"Total matches {matches_result}/{entries_result} ({percentage:.2f}%)")
+    print(f"Total matches {matches_result}/{entries_result} ({matches_result/entries_result * 100:.2f}%) non matches {non_matches_result}")
 
 if __name__ == "__main__":
     main()
