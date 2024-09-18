@@ -1,6 +1,25 @@
 \chapter{Grundlagen}
 \label{chap:grundlagen}
 % TODO Auf Zenodo eingehen? Checken was das ist
+In \autoref{sec:software-zitation} wird auf die Prinzipien der Software Zitation eingegangen.
+Es wird beschrieben, warum die Zitation von Software genauso wichtig ist, wie die Zitation von anderen wissenschaftlichen Arbeiten.
+Außerdem wird darauf eingegangen, dass ebenfalls Personen zitiert werden sollten, welche nicht aktiv an der Software Programmieren.
+
+Autoren von Software werden in unterschiedlichen Quellen zitiert.
+Einige dieser Quellen sind stark mit der Softwareentwicklung verbunden.
+So gibt es verschiedene Systeme, die ein Entwickler verwenden kann, um seine Arbeit zu erleichtern bzw. überhaupt sinnvoll zu ermöglichen, in denen Sie anschließend als Autoren genannt werden.
+In den Abschnitten \ref{sec:versionsverwaltung} und \ref{sec:paketverwaltung} wird auf die Versions- und Paketverwaltung eingegangen, welche zwei dieser Systeme darstellen.
+Des Weiteren existieren spezielle Zitationsformate, in welchen Autoren explizit angegeben werden können.
+Auf diese Formate wird in \autoref{sec:zitationsformate} eingegangen.
+Außerdem können in Fließtexten, beispielsweise der Beschreibung einer Software, ebenfalls Autoren genannt werden.
+In \autoref{sec:named-entity-recognition} wird auf die \emph{Named Entity Recognition} eingegangen, welche eine Methode darstellt, um Personen in Texten zu erkennen.
+
+Alle Quellen, welche beschrieben werden dienen im Verlauf der Masterarbeit als Grundlage für die Extraktion von Autoren und deren Metainformationen.
+Die extrahierten Autoren müssen anschließend zugeordnet werden.
+Der Prozess dafür heißt \emph{Author Name Disambiguation}, welcher in \autoref{sec:author-name-disambiguation} beschrieben wird.
+Eine weitere einfache Möglichkeit des Abgleichs ist ein einfacher String Abgleich.
+Dieser funktioniert jedoch nicht immer, da Autoren unterschiedliche Schreibweisen ihres Namens verwenden können.
+Aus diesem Grund wird in \autoref{sec:fuzzy} auf die Fuzzy-Suche eingegangen, welche eine Möglichkeit darstellt, um ähnliche Strings miteinander zu vergleichen, beispielsweise für den Abgleich von Namen mit oder ohne genannten Zwischennamen.
 \input{kapitel/grundlagen/software-zitation.tex}
 \input{kapitel/grundlagen/versionsverwaltung.tex}
 \input{kapitel/grundlagen/paketverwaltung.tex}
