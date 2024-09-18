@@ -1,2 +1,33 @@
 \section{Versionsverwaltung}
 \label{sec:versionsverwaltung}
+% TODO Das ändern ist erstmal nur kopiert und auch anpassen wie zitiert wird er mag es nicht wenn ganze abschnitte eine quelle haben. Immer nur den Teil der wirklich aus der Quelle ist zitieren
+Die Versionsverwaltung ist ein System, um verschiedene Versionen von Software zu verwalten.
+Es bietet Zugang zu Code und dessen Änderungen in der Vergangenheit.
+Der Code und getätigte Änderungen werden in einem Repository gespeichert.
+Dadurch ist die Versionsverwaltung eine Art Logbuch, in dem alle Änderungen festgehalten werden.
+Dabei wird zusätzlich zu der Änderung der Autor und der Zeitpunkt der Änderung festgehalten.
+Dies ermöglicht es in dem Forschungsseminar empirisch die Menge an Arbeit der einzelnen Autoren zu ermitteln. \autocite{ponuthorai_version_2022}
+
+Es gibt zwei verschiedene Arten von Versionsverwaltungssystemen.
+Zum einen gibt es die zentralen Systeme, bei denen alle Änderungen zentral verwaltet werden, beispielsweise SVN.
+Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopie des gesamten Repository und dessen Vergangenheit hat.
+Ein solches System ist Git, welches sich mit einem Marktanteil von ungefähr 75 \% gegenüber anderen Systemen durchgesetzt hat \autocite{lindner_version_2024}.
+Aus diesem Grund und weil Git-Repositorys in der Arbeit untersucht werden, wird auf Git eingegangen.
+Dabei werden Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen. \autocite{ponuthorai_version_2022}
+
+In Repositorys gibt es verschiedene Arten von Statistiken.
+In Git werden Revisionen als ein \emph{Snapshot} gespeichert.
+Anders als in anderen Systemen wird keine Serie von Änderungen gespeichert, sondern ein \emph{Snapshot} der Änderungen zu einem bestimmten Zeitpunkt erstellt.
+Dies wird ein Commit genannt.
+An einem Commit werden verschiedene Metainformationen gespeichert.
+Unter anderem wird eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen gespeichert.
+Mehrere Commits bilden die Commit-Historie bzw. die Vergangenheit eines Repositorys.
+Weitere Eigenschaften, welche sich aus dem Repository exportieren lassen, sind die Anzahl der eingefügten und gelöschten Zeilen.
+Außerdem lässt sich die Anzahl der geänderten Dateien ermitteln.
+Diese Werte können für das gesamte Repository oder für einzelne Autoren ermittelt werden. \autocite{ponuthorai_version_2022}
+
+Die Statistiken der Repositorys können auf verschiedene Arten aufgearbeitet werden.
+Zum einen können einige direkt mittels Git-Befehlen ausgelesen werden \autocite{chacon_git_2024}.
+Andere wiederum benötigen komplexere Abfragen, welche beispielsweise mittels Skripten oder speziellen Programmen ausgelesen werden können.
+Ein Beispiel für ein Programm, welches Git-Statistiken aufarbeitet, ist \emph{git-quick-stats} \autocite{mestan_git-quick-stats_2024}.
+Außerdem bieten Onlinedienste zur Versionsverwaltung, wie GitHub, Statistiken über APIs an, welche jedoch im Umfang der Anfragen limitiert sind \autocite{github_rate_2022}.
