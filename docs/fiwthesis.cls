@@ -683,9 +683,6 @@
 % remove red borders from 'SyntaxErrors' in `minted' environments
 \AtBeginEnvironment{minted}{\renewcommand{\fcolorbox}[4][]{#4}}
 
-% create a list of symbols
-\newglossary[slg]{symbolslist}{syi}{syg}{\@lsymtitle}
-
 % define a new glossary style to utilize the entire text width
 \newglossarystyle{superx}{%
   \setglossarystyle{super}
