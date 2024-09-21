@@ -1,7 +1,5 @@
 \section{Zitation von Software}
 \label{sec:software-zitation}
-% TODO Auch Zitation von Personen, welche nicht aktiv an der Software entwickeln (All Contributors) beschreiben warum diese auch zitiert werden sollten
-% TODO auf Autorenrolle in Open Source Software eingehen
 Software ist ein wesentlicher Bestandteil moderner Forschung.
 In der wissenschaftlichen Literatur ist es üblich, Quellen zu zitieren, um die Nachvollziehbarkeit und Reproduzierbarkeit von wissenschaftlichen Arbeiten zu gewährleisten.
 Im Gegensatz dazu ist dies bei wissenschaftlicher Software aktuell in diesem Umfang noch nicht gegeben.
@@ -31,3 +29,30 @@ Einige dieser Gründe werden im Folgenden genannt \autocite{smith_software_2016}
     \item Software entdecken: Mithilfe von Zitaten kann die in einem Forschungsprodukt verwendete Software gefunden werden. Weitere Forscher können dann dieselbe Software für andere Zwecke verwenden, was zu einer Anerkennung der für die Software Verantwortlichen führt.
     \item Reproduzierbarkeit: Die Angabe der verwendeten Software ist für die Reproduzierbarkeit notwendig, aber nicht ausreichend. Zusätzliche Informationen wie Konfigurationen und Probleme auf der Plattform sind ebenfalls erforderlich.
 \end{itemize}
+
+Wie bereits erwähnt werden Autoren in unterschiedlichen Quellen angegeben.
+Einige dieser Quellen werden in dieser Masterarbeit untersucht, wie beispielsweise das \gls{cff} und Bib\TeX{} Format.
+Die Autoren in diesen Quellen werden von dem jeweiligen Softwareprojekt angegeben.
+Falls an dem Projekt nicht nur Softwareentwickler beteiligt sind, sondern beispielsweise auch Grafikdesigner oder Übersetzer, so sollten diese ebenfalls in den Quellen angegeben werden.
+Dies ist wichtig, da diese Personen ebenfalls einen Beitrag zum Projekt geleistet haben und somit auch Anerkennung verdienen.
+
+Es gibt ebenfalls bereits Projekte, welche sich für die halb automatische Nennung von Autoren ohne Code Beitrag einsetzen.
+Ein Beispiel für ein solches Projekt ist \glqq All Contributors\grqq{} \autocite{all_contributors_recognize_2024}.
+Bei der Verwendung von \glqq All Contributors\grqq{} werden die Mitwirkenden jedoch nicht in einem speziellen Format angegeben, sondern standardmäßig in der Readme-Datei, welche im Projekt enthalten ist.
+Die Liste wird dabei von einem Bot automatisch generiert und aktualisiert, sodass sie der Spezifikation von \glqq All Contributors\grqq{} entspricht.
+Über einen Befehl in einem Issue oder einem Pull Request kann ein neuer Mitwirkender hinzugefügt werden.
+Autoren, welche keinen Code beigetragen haben, stellen im weiteren Verlauf der Masterarbeit ein Problem dar, da diese nicht mit den Autoren aus den Quellen abgeglichen werden können, da sie keine Commits haben.
+Dies wird in \autoref{sec:abgleich} genauer erläutert.
+
+Die untersuchten Pakete in dieser Arbeit sind Open Source, welche auf GitHub veröffentlicht werden.
+Open Source Software ist Software, deren Quellcode öffentlich zugänglich ist und von einer Gemeinschaft von Entwicklern entwickelt wird.
+Die Entwickler arbeiten dabei in der Regel ehrenamtlich und ohne Bezahlung an der Software, wobei einige der untersuchten Pakete auch von Organisationen veröffentlicht werden, wie beispielsweise die \glqq google-auth-library-python
+\grqq{} von Google.
+Diese wird primär von Google Mitarbeitern entwickelt und gepflegt.
+Wie bereits beschrieben sind Prinzipien und Gründe definiert, warum Software ebenfalls zitiert werden sollte.
+Welche Autoren in den Quellen angegeben werden sollten, ist jedoch nicht so genau definiert wie es beispielsweise im Bereich von wissenschaftlichen medizinischen Artikel der Fall ist.
+In diesem Bereich hat das \glqq International Commitee of Medical Journal Editors\grqq{} Richtlinien für die Rolle von Autoren und Beitragenden in wissenschaftlichen Artikeln definiert \autocite{noauthor_icmje_nodate}.
+Unter anderem aus diesem Grund ist die Menge der Autoren, welche in den Quellen angegeben werden, unterschiedlich und hängt von dem jeweiligen Projekt ab.
+Außerdem ist es möglich, dass ausschließlich Autoren in den Quellen angegeben werden, welche aktuell nicht mehr an dem Projekt beteiligt sind, aber beispielsweise vor fünf Jahren aktiv das Projekt geführt haben.
+Diese und weitere Auffälligkeiten werden in der Masterarbeit untersucht.
+Auch dies ist in anderen Bereichen anders definiert, sodass auch die neuen Autoren genannt werden müssen wie beispielsweise bei Neuauflagen von Büchern.
