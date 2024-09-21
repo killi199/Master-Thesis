@@ -484,3 +484,15 @@ def get_description_authors(description: str) -> pd.DataFrame:
                 authors.append(ent.text)
 
     return pd.DataFrame(authors, columns=['name'])
+
+def load_readme_data(owner: str, repo: str) -> str:
+    try:
+        with open(f'./repos/{owner}/{repo}/README.md', 'r') as file:
+            readme = file.read()
+        return readme
+    except FileNotFoundError:
+        return ""
+
+def get_readme_authors(owner: str, repo: str) -> pd.DataFrame:
+    readme = load_readme_data(owner, repo)
+    return get_description_authors(readme)
