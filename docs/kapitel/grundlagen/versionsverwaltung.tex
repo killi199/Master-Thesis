@@ -8,7 +8,7 @@ Es bietet Zugang zu Code und dessen Änderungen in der Vergangenheit.
 Der Code und getätigte Änderungen werden in einem Repository gespeichert.
 Dadurch ist die Versionsverwaltung eine Art Logbuch, in dem alle Änderungen festgehalten werden.
 Dabei wird zusätzlich zu der Änderung der Autor und der Zeitpunkt der Änderung festgehalten \autocite{ponuthorai_version_2022}.
-Dies ermöglicht es in dem Forschungsseminar empirisch die Menge an Arbeit der einzelnen Autoren zu ermitteln.
+Dies ermöglicht es in der Masterarbeit empirisch die Menge an Arbeit der einzelnen Autoren zu ermitteln.
 
 Es gibt zwei verschiedene Arten von Versionsverwaltungssystemen.
 Zum einen gibt es die zentralen Systeme, bei denen alle Änderungen zentral verwaltet werden, beispielsweise SVN.
@@ -16,9 +16,47 @@ Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopi
 Ein solches System ist Git, welches sich mit einem Marktanteil von ungefähr 75 \% gegenüber anderen Systemen durchgesetzt hat \autocite{lindner_version_2024}.
 Aus diesem Grund und weil Git-Repositorys in der Arbeit untersucht werden, wird auf Git eingegangen.
 Dabei werden Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen.
+Der Aufbau der einzelnen Git Komponenten ist in \autoref{fig:git} dargestellt.
 
-In Repositorys gibt es verschiedene Arten von Statistiken.
-In Git werden Revisionen als ein \emph{Snapshot} gespeichert.
+\begin{figure}
+    {
+        \centering
+        \begin{tikzpicture}
+            [
+                block/.style = {rectangle, draw, fill=blue!20, text width=8cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
+                client/.style = {rectangle, draw, fill=blue!20, text width=3.5cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
+                arrow/.style = {thick,<->,>=stealth}
+            ]
+    
+            \node (server) [block] {Git-Repository-Hosting-Plattform};
+            \node (cli) [client, below=of server, xshift=-2.25cm] {Git-Befehlszeile};
+            \node (gui) [client, below=of server, xshift=+2.25cm] {Git-GUI Anwendungen};
+        
+            \draw[arrow] (cli.north) -- (server.south -| cli.north);
+            \draw[arrow] (gui.north) -- (server.south -| gui.north);
+            \draw[arrow] (cli) -- (gui);
+
+            \node[left=0.1cm of server] {Git-Server};
+            \node[left=0.1cm of cli] {Git-Anwendungen};
+        
+        \end{tikzpicture}
+        \caption{Übersicht über die Git-Komponenten}
+        \label{fig:git}
+        \small
+        Die Git-Komponenten bestehen aus einem Git-Server, welcher das Repository hostet, und Git-Anwendungen, welche auf das Repository zugreifen (indirekt aus \cite{ponuthorai_version_2022}).
+    }
+\end{figure}
+
+Bei der Benutzung von Git ist ein Server nicht zwingend erforderlich, jedoch steigert dies die Komplexität der Verwaltung und ist komplizierter in der Handhabung.
+Der Git-Server ermöglicht die einfache kollaborative Entwicklung von Code, da dieser ständig erreichbar ist und zentral verwaltet wird \autocite{ponuthorai_version_2022}.
+Standardmäßig wird auf dem Git-Server die neuste Version des Repositorys gespeichert.
+Ein möglicher Git-Server ist GitHub, auf welchen im späteren Verlauf weiter eingegangen wird.
+Git-Anwendungen sind Programme, welche mit dem lokalen Repository interagieren \autocite{ponuthorai_version_2022}.
+Diese können auf entfernte Git-Repositorys zugreifen wie beispielsweise Repositorys, welche auf GitHub gehostet werden.
+Anschließend arbeiten die Programme auf der lokalen Kopie und können die Änderungen, wenn nötig, auf das entfernte Repository übertragen.
+
+In Repositorys werden verschiedene Arten von Statistiken gespeichert.
+Git verwaltet Revisionen als \emph{Snapshot}.
 Anders als in anderen Systemen wird keine Serie von Änderungen gespeichert, sondern ein \emph{Snapshot} der Änderungen zu einem bestimmten Zeitpunkt erstellt \autocite{ponuthorai_version_2022}.
 Dies wird ein Commit genannt.
 An einem Commit werden verschiedene Metainformationen gespeichert.
