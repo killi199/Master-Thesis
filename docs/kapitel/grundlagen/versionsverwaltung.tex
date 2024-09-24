@@ -1,6 +1,6 @@
 \section{Versionsverwaltung}
 \label{sec:versionsverwaltung}
-% TODO noch mehr schreiben sollte auf 3 Seiten kommen
+% TODO noch mehr schreiben sollte auf 3 Seiten kommen habe jetzt 2,5 vllt reicht das
 Die Versionsverwaltung ist ein System, um verschiedene Versionen von Software zu verwalten.
 Es bietet Zugang zu Code und dessen Änderungen in der Vergangenheit.
 Der Code und getätigte Änderungen werden in einem Repository gespeichert.
@@ -64,6 +64,15 @@ Weitere Eigenschaften, welche sich aus dem Repository exportieren lassen, sind d
 Außerdem lässt sich die Anzahl der geänderten Dateien ermitteln.
 Diese Werte können für das gesamte Repository oder für einzelne Autoren ermittelt werden.
 
+Ein Repository kann verschiedene Branches enthalten, muss jedoch mindestens einen enthalten.
+In der Vergangenheit wurde der Hauptbranch \emph{master} genannt.
+Seit 2020 wird dieser jedoch in \emph{main} umbenannt, um rassistische Konnotationen zu vermeiden \autocite{github_githubrenaming_2024}.
+Ein Branch ist eine separate Entwicklungslinie, welche unabhängig von anderen Branches ist.
+Beim Erstellen von einem Branch wird der aktuelle Zustand des Branches, auf welchem der neue Branch erstellt wird, kopiert \autocite{ponuthorai_version_2022}.
+Dadurch können Änderungen in dem neuen Branch durchgeführt werden, ohne dass diese Änderungen den ursprünglichen Branch beeinflussen.
+Diese Änderungen werden mittels Commits festgehalten.
+Unterschiedliche Branches können anschließend zusammengeführt werden, um die Änderungen in einem Branch in einen anderen Branch zu übernehmen.
+
 Die Statistiken der Repositorys können auf verschiedene Arten aufgearbeitet werden.
 Zum einen können einige direkt mittels Git-Befehlen ausgelesen werden \autocite{chacon_git_2024}.
 Andere wiederum benötigen komplexere Abfragen, welche beispielsweise mittels Skripten oder speziellen Programmen ausgelesen werden können.
@@ -76,6 +85,7 @@ Diese umfassen unter anderem die kollaborative Entwicklung von Code, Automatisat
 Aktuell benutzen GitHub über 100 Millionen Entwickler und mehr als 4 Millionen Organisationen.
 Insgesamt verwaltet die Plattform über 420 Millionen Repositorys.
 Außerdem ist GitHub in 90 \% der Fortune 100 Unternehmen im Einsatz \autocite{github_about_2024}.
-Um die zusätzlichen Funktionen von GitHub bereitzustellen werden sogenannte Issues, Pull Requests, Geschützte Branches, Actions, Diskussionen und Wikis eingesetzt.
-% TODO Issue und Pull Request in der Versionsverwaltung erwähnen und erklären
-% TODO Darauf eingehen, dass GitHub auch Anwendungen bereitstellt z.B. GitHub Desktop
+Um die zusätzlichen Funktionen von GitHub bereitzustellen werden sogenannte Issues, Pull Requests, geschützte Branches, Actions, Diskussionen und Wikis eingesetzt.
+GitHub Issues sind eine Möglichkeit, um Probleme und Aufgaben zu verfolgen.
+Pull Requests dienen dazu Änderungen in einem Branch eines Repositorys anzufragen und über diese zu informieren.
+In dem Pull Requests kann der Code überprüft und diskutiert werden.
