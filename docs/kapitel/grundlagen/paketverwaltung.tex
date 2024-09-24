@@ -1,6 +1,5 @@
 \section{Paketverwaltung}
 \label{sec:paketverwaltung}
-% TODO Das ändern ist erstmal nur kopiert und auch anpassen wie zitiert wird er mag es nicht wenn ganze abschnitte eine quelle haben. Immer nur den Teil der wirklich aus der Quelle ist zitieren
 % TODO noch mehr schreiben sollte auf 3 Seiten kommen
 % TODO sagen, dass standardmäßig die README.md als Description in PyPi dient
 Im Gegensatz zur Versionsverwaltung verwaltet die Paketverwaltung keinen Code und dessen Änderungen, sondern fertige Softwarepakete, welche von Entwicklern erstellt und in einem Repository abgelegt werden.
@@ -9,7 +8,7 @@ Zusätzlich werden in einem Paket Metadaten gespeichert.
 Diese Metadaten können beispielsweise eine Beschreibung, Version, Abhängigkeiten und Autoren des Paketes enthalten.
 Sie lassen sich aus dem Paket mithilfe des Paketverwaltungssystems auslesen.
 Außerdem übernimmt das Paketverwaltungssystem das Installieren und meistens auch das Aktualisieren und Deinstallieren von Paketen.
-Zusätzlich wird das System verwendet, um fehlende Abhängigkeiten von Paketen automatisch zu installieren. \autocite{spinellis_package_2012}
+Zusätzlich wird das System verwendet, um fehlende Abhängigkeiten von Paketen automatisch zu installieren \autocite{spinellis_package_2012}.
 
 In dieser Arbeit wird auf zwei Paketverwaltungssysteme eingegangen.
 Zum einen wird auf PyPi eingegangen, welches das Paketverwaltungssystem für Python ist.
@@ -18,13 +17,13 @@ In PyPi sind aktuell mehr als 500.000 unterschiedliche Projekte mit über 5 Mill
 Im Gegensatz dazu sind in CRAN aktuell mehr als 20.000 Pakete verfügbar \autocite{cran_team_comprehensive_2024}.
 
 PyPi stellt eine JSON API zur Verfügung, um die Metadaten einzelner Pakete abzufragen.
-Sie ist nicht in der Anzahl der Anfragen beschränkt.
+Sie ist nicht in der Anzahl der Anfragen beschränkt \autocite{python_software_foundation_warehouse_2024}.
 Zusätzlich zur API werden auf der Webseite von PyPi verifizierte Owner und Betreuer der Pakete angezeigt, welche nicht über die API abgefragt werden können.
-Ebenfalls bietet PyPi über Google BigQuery einen Datensatz an, in denen sämtliche Pakete mit ihren Versionen und Metadaten enthalten sind. \autocite{python_software_foundation_warehouse_2024}
+Ebenfalls bietet PyPi über Google BigQuery einen Datensatz an, in denen sämtliche Pakete mit ihren Versionen und Metadaten enthalten sind.
 
 CRAN selbst bietet keine API an, um die Metadaten der Pakete abzufragen.
 Jedoch gibt es das METACRAN-Projekt, welches eine Kollektion von kleinen Diensten für das CRAN-Repository bereitstellt.
 Eines dieser Dienste ist eine CouchDB, welche die Metadaten aller Pakete von CRAN bereitstellt.
 Eine CouchDB ist eine Apache Datenbank, welche nativ eine HTTP/JSON API bereitstellt \autocite{the_apache_software_foundation_apache_2024}.
-Die Datenbank ist eine Kopie des CRAN-Repository und wird regelmäßig aktualisiert.
-Die Ausgabe der API erfolgt in JSON und teilweise sind einzelne Felder in R formatiert. \autocite{csardi_pkgsearch_2023}
+Die Datenbank ist eine Kopie des CRAN-Repository und wird regelmäßig aktualisiert \autocite{csardi_pkgsearch_2023}.
+Die Ausgabe der API erfolgt in JSON und teilweise sind einzelne Felder in R formatiert.
