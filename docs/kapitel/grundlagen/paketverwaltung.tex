@@ -1,29 +1,78 @@
-\section{Paketverwaltung}
+\section{Software-Verzeichnisse und Paketverwaltung}
 \label{sec:paketverwaltung}
 % TODO noch mehr schreiben sollte auf 3 Seiten kommen
-% TODO die Readme, welche auf GitHub angezeigt wird kann auch für die PyPi Description verwendet werden muss sie aber nicht
-Im Gegensatz zur Versionsverwaltung verwaltet die Paketverwaltung keinen Code und dessen Änderungen, sondern fertige Softwarepakete, welche von Entwicklern erstellt und in einem Repository abgelegt werden.
+Im Gegensatz zur Versionsverwaltung verwaltet die Paketverwaltung keinen Code und dessen Änderungen, sondern fertige Softwarepakete, welche von Entwicklern erstellt und in einem Software-Verzeichnis abgelegt werden.
 Inhalt eines Pakets können beispielsweise standardisierter Code von Software Modulen sein oder kompilierter Code.
 Zusätzlich werden in einem Paket Metadaten gespeichert.
 Diese Metadaten können beispielsweise eine Beschreibung, Version, Abhängigkeiten und Autoren des Paketes enthalten.
-Sie lassen sich aus dem Paket mithilfe des Paketverwaltungssystems auslesen.
+Sie lassen sich aus dem Paket mithilfe des Paketverwaltungssystems auslesen oder über APIs des Software-Verzeichnisses abrufen.
 Außerdem übernimmt das Paketverwaltungssystem das Installieren und meistens auch das Aktualisieren und Deinstallieren von Paketen.
 Zusätzlich wird das System verwendet, um fehlende Abhängigkeiten von Paketen automatisch zu installieren \autocite{spinellis_package_2012}.
 
-In dieser Arbeit wird auf zwei Paketverwaltungssysteme eingegangen.
-Zum einen wird auf PyPi eingegangen, welches das Paketverwaltungssystem für Python ist.
-Zum anderen wird auf CRAN eingegangen, welches das Paketverwaltungssystem für R ist.
-In PyPi sind aktuell mehr als 500.000 unterschiedliche Projekte mit über 5 Millionen Veröffentlichungen verfügbar \autocite{python_software_foundation_pypi_2024}.
-Im Gegensatz dazu sind in CRAN aktuell mehr als 20.000 Pakete verfügbar \autocite{cran_team_comprehensive_2024}.
+In dieser Arbeit wird auf zwei Software-Verzeichnisse eingegangen.
+Zum einen wird auf \gls{pypi} eingegangen, welches das Verzeichnis für Python ist und von der Paketverwaltung \emph{pip} verwendet wird.
+Zum anderen wird auf \gls{cran} eingegangen, welches das Verzeichnis für R ist.
+In \gls{pypi} sind aktuell mehr als 500.000 unterschiedliche Projekte mit über 5 Millionen Veröffentlichungen verfügbar \autocite{python_software_foundation_pypi_2024}.
+Im Gegensatz dazu sind in \gls{cran} aktuell mehr als 20.000 Pakete verfügbar \autocite{cran_team_comprehensive_2024}.
 
-PyPi stellt eine JSON API zur Verfügung, um die Metadaten einzelner Pakete abzufragen.
+\subsection{PyPI}
+\label{subsec:pypi}
+\gls{pypi} hat zu Beginn des Jahres 2024 ein \gls{pep} veröffentlicht, welches die Verifizierung von Daten auf \gls{pypi} beschreibt \autocite{python_software_foundation_pep_2024}.
+In dem \gls{pep} werden Änderungen an der API beschrieben, welche zum Hochladen von Paketen genutzt wird, um sogenannte \glqq Attestation objects \grqq{} zu unterstützen, in denen digitale Signaturen enthalten sind.
+Das Ziel ist es Verifizierte Daten auf \gls{pypi} zu ermöglichen, sodass Anwender direkt erkennen können, ob die Daten vertrauenswürdig sind.
+Aktuell wird dieses \gls{pep} umgesetzt, wodurch es zu vielen Änderungen in der API und auch in der Weboberfläche von \gls{pypi} kommt.
+Außerdem sind noch nicht alle Daten über die APIs erreichbar und es ist auch aktuell nicht über die API erkennbar, ob es sich um verifizierte oder nicht verifizierte Daten handelt.
+Ein Beispiel für verifizierte Daten sind Links, beispielsweise auf GitHub.
+Diese Links werden von \gls{pypi} als verifiziert angesehen, wenn der Upload des Paketes auf \gls{pypi} über eine GitHub Action erfolgt.
+Außerdem werden die Personen als verifiziert dargestellt, welche in \gls{pypi} als Owner oder Betreuer des Pakets eingetragen sind, sie haben somit einen Account bei \gls{pypi}.
+Owner können dabei alle Änderungen am \gls{pypi} Projekt vornehmen und Betreuer können neue Versionen des Paketes veröffentlichen \autocite{ingram_deprecate_2023}.
+In \autoref{fig:pypi_verified_unverified_details} ist dargestellt, wie verifizierte und unverifizierte Daten auf \gls{pypi} dargestellt werden.
+Die dargestellten GitHub Statistiken werden dabei von \gls{pypi} ermittelt und nicht über APIs ausgegeben.
+Das Ziel von \gls{pypi} ist es, dass alle Daten verifiziert werden können und keine Daten mehr in der unverifizierten Form vorliegen.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{bilder/pypi.png}
+    \caption{\gls{pypi} Verifizierte und unverifizierte Daten}
+    \label{fig:pypi_verified_unverified_details}
+    \small
+    Die Abbildung stellt die verifizierten und unverifizierten Daten des Pakets \emph{matplotlib} auf \gls{pypi} dar \autocite{python_software_foundation_pypi_2024}.
+\end{figure}
+
+\gls{pypi} bietet verschiedene APIs und Quellen an, um die Daten der Pakete abzufragen.
+Im Folgenden werden auf einige der Zugriffsmöglichkeiten eingegangen, welche mit Ausnahme der BigQuery alle in dieser Arbeit verwendet werden.
+
+\subsubsection*{JSON API}
+\label{subsubsec:pypi_json_api}
+% TODO sagen, dass das die neue API ist und verwendet werden sollte
+% TODO Die nicht verifizierten Daten stammen aus der Python toml (stammen die Daten wirklich alle aus der toml?)
+% TODO sagen, dass die API das ausgibt was die entwickler eintragen gibt noch nicht an was verifiziert ist und was nicht liest die TOML aus (ist das wirklich so?)
+% TODO sagen, dass das andere entwickler sein können, als die verifizierten Betreuer und Owner von pypi aber auch die Daten können verifiziert (ist in dem Screenshot jetzt nicht der Fall) werden aber aktuell wird das noch nicht über die API ausgegeben
+% TODO Über die JSON API auch die Description erreichbar 
+% TODO die Readme, welche auf GitHub angezeigt wird kann auch für die PyPI Description verwendet werden muss sie aber nicht
+% TODO sagen, dass in fig:pypi_verified_unverified_details alle Daten erreicht werden können über die api außer die Owner und Betreuer die müssen über die XML-RPC API abgefragt werden
+
+\gls{pypi} stellt eine JSON API zur Verfügung, um die Metadaten einzelner Pakete abzufragen.
 Sie ist nicht in der Anzahl der Anfragen beschränkt \autocite{python_software_foundation_warehouse_2024}.
-Zusätzlich zur API werden auf der Webseite von PyPi verifizierte Owner und Betreuer der Pakete angezeigt, welche nicht über die API abgefragt werden können.
-Ebenfalls bietet PyPi über Google BigQuery einen Datensatz an, in denen sämtliche Pakete mit ihren Versionen und Metadaten enthalten sind.
 
-CRAN selbst bietet keine API an, um die Metadaten der Pakete abzufragen.
-Jedoch gibt es das METACRAN-Projekt, welches eine Kollektion von kleinen Diensten für das CRAN-Repository bereitstellt.
-Eines dieser Dienste ist eine CouchDB, welche die Metadaten aller Pakete von CRAN bereitstellt.
+\subsubsection*{PyPI XML-RPC}
+\label{subsubsec:pypi_xml_rpc}
+% TODO auf PyPI XML-RPC API eingehen, dass die veraltet ist aber einzige möglichkeit aktuell an die Betreuer und owner auf pypi zu kommen -> stark rate limitiert https://warehouse.pypa.io/api-reference/xml-rpc.html
+% TODO sagen, dass es keine API gibt um die namen von logins zu bekommen
+% TODO Es existiert aktuell keine API für user (https://github.com/pypi/warehouse/issues/15769) aus diesem Grund muss ich die aus dem HTML besorgen.
+Zusätzlich zur API werden auf der Webseite von \gls{pypi} verifizierte Owner und Betreuer der Pakete angezeigt, welche nicht über die JSON API abgefragt werden können aber über veraltete XML-RPC Methoden.
+
+\subsubsection*{BigQuery}
+\label{subsubsec:pypi_bigquery}
+Ebenfalls bietet \gls{pypi} über Google BigQuery einen Datensatz an, in denen sämtliche Pakete mit ihren Versionen und Metadaten enthalten sind.
+% TODO BigQuery kurz erklären
+% TODO und aufzeigen, welche Daten alle vorhanden sind (soweit ich weiß alles, was auch die JSON API ausgibt aber nicht mehr wie Owner oder Betreuer)
+
+\subsection{CRAN}
+\label{subsec:cran}
+\gls{cran} selbst bietet keine API an, um die Metadaten der Pakete abzufragen.
+Jedoch gibt es das METACRAN-Projekt, welches eine Kollektion von kleinen Diensten für das \gls{cran}-Repository bereitstellt.
+Eines dieser Dienste ist eine CouchDB, welche die Metadaten aller Pakete von \gls{cran} bereitstellt.
 Eine CouchDB ist eine Apache Datenbank, welche nativ eine HTTP/JSON API bereitstellt \autocite{the_apache_software_foundation_apache_2024}.
-Die Datenbank ist eine Kopie des CRAN-Repository und wird regelmäßig aktualisiert \autocite{csardi_pkgsearch_2023}.
+Die Datenbank ist eine Kopie des \gls{cran}-Repository und wird regelmäßig aktualisiert \autocite{csardi_pkgsearch_2023}.
 Die Ausgabe der API erfolgt in JSON und teilweise sind einzelne Felder in R formatiert.
