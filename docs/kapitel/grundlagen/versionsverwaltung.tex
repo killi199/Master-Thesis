@@ -1,8 +1,6 @@
 \section{Versionsverwaltung}
 \label{sec:versionsverwaltung}
 % TODO noch mehr schreiben sollte auf 3 Seiten kommen habe jetzt 2,5 vllt reicht das
-% TODO git settings erklären, dass email und name frei gewählt werden darf
-% TODO erklären, dass GitHub die E-Mails automatisch über die E-Mails matcht, welche in GH registriert sind (Wenn zugriff über API oder im web dargestellt wird)
 Die Versionsverwaltung ist ein System, um verschiedene Versionen von Software zu verwalten.
 Es bietet Zugang zu Code und dessen Änderungen in der Vergangenheit.
 Der Code und getätigte Änderungen werden in einem Repository gespeichert.
@@ -16,7 +14,9 @@ Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopi
 Ein solches System ist Git, welches sich mit einem Marktanteil von ungefähr 75 \% gegenüber anderen Systemen durchgesetzt hat \autocite{lindner_version_2024}.
 Aus diesem Grund und weil Git-Repositorys in der Arbeit untersucht werden, wird auf Git eingegangen.
 Dabei werden Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen.
+Außerdem wird auf grundlegende Funktionen von Git eingegangen, da diese für die Arbeit relevant sind.
 Der Aufbau der einzelnen Git Komponenten ist in \autoref{fig:git} dargestellt.
+Dabei ist zu erkennen, dass Git in einem Git-Server und Git-Anwendungen aufgeteilt wurde.
 
 \begin{figure}
     {
@@ -61,6 +61,7 @@ Anders als in anderen Systemen wird keine Serie von Änderungen gespeichert, son
 Dies wird ein Commit genannt.
 An einem Commit werden verschiedene Metainformationen gespeichert.
 Unter anderem wird eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen gespeichert.
+Die Commit-Nachricht, sowie der Autor mit E-Mail-Adresse und Name können in den Einstellungen von Git frei gewählt werden, müssen jedoch vorhanden sein, um einen Commit erstellen zu können.
 Mehrere Commits bilden die Commit-Historie bzw. die Vergangenheit eines Repositorys.
 Weitere Eigenschaften, welche sich aus dem Repository exportieren lassen, sind die Anzahl der eingefügten und gelöschten Zeilen.
 Außerdem lässt sich die Anzahl der geänderten Dateien ermitteln.
@@ -80,6 +81,9 @@ Zum einen können einige direkt mittels Git-Befehlen ausgelesen werden \autocite
 Andere wiederum benötigen komplexere Abfragen, welche beispielsweise mittels Skripten oder speziellen Programmen ausgelesen werden können.
 Ein Beispiel für ein Programm, welches Git-Statistiken aufarbeitet, ist \emph{git-quick-stats} \autocite{mestan_git-quick-stats_2024}.
 Außerdem bieten Onlinedienste zur Versionsverwaltung, wie GitHub, Statistiken über APIs an, welche jedoch im Umfang der Anfragen limitiert sind \autocite{github_rate_2022}.
+Bei der Benutzung der API von GitHub zum Abfragen der Autoren eines Repositorys werden automatisch alle E-Mail-Adressen der Autoren in Git mit den E-Mail-Adressen, welche die Autoren in GitHub angegeben haben abgeglichen \autocite{github_rest-api-endpunkte_2022}.
+Dadurch werden die Autoren eindeutig zugeordnet und deren Commits addiert.
+Diese Werte werden ebenfalls in der Weboberfläche von GitHub angezeigt.
 
 GitHub ist eine Plattform, auf welcher Git-Repositorys gehostet werden können und dient somit als ein Git-Server.
 GitHub bietet zusätzliche Funktionen an, welche über die Standardfunktionen von Git hinausgehen.
