@@ -16,7 +16,7 @@ In \gls{pypi} sind aktuell mehr als 500.000 unterschiedliche Projekte mit über 
 Im Gegensatz dazu sind in \gls{cran} aktuell mehr als 20.000 Pakete verfügbar \autocite{cran_team_comprehensive_2024}.
 
 \subsection{PyPI}
-\label{subsec:pypi}
+\label{subsec:paketverwaltung_pypi}
 \gls{pypi} hat zu Beginn des Jahres 2024 ein \gls{pep} veröffentlicht, welches die Verifizierung von Daten auf \gls{pypi} beschreibt \autocite{python_software_foundation_pep_2024}.
 In dem \gls{pep} werden Änderungen an der API beschrieben, welche zum Hochladen von Paketen genutzt wird, um sogenannte \glqq Attestation objects \grqq{} zu unterstützen, in denen digitale Signaturen enthalten sind.
 Das Ziel ist es Verifizierte Daten auf \gls{pypi} zu ermöglichen, sodass Anwender direkt erkennen können, ob die Daten vertrauenswürdig sind.
@@ -80,7 +80,7 @@ Ebenfalls bietet \gls{pypi} über Google BigQuery einen Datensatz an, in denen s
 % TODO und aufzeigen, welche Daten alle vorhanden sind (soweit ich weiß alles, was auch die JSON API ausgibt aber nicht mehr wie Owner oder Betreuer)
 
 \subsection{CRAN}
-\label{subsec:cran}
+\label{subsec:paketverwaltung_cran}
 \gls{cran} selbst bietet keine API an, um die Metadaten der Pakete abzufragen.
 Jedoch gibt es das METACRAN-Projekt, welches eine Kollektion von kleinen Diensten für das \gls{cran}-Repository bereitstellt.
 Eines dieser Dienste ist eine CouchDB, welche die Metadaten aller Pakete von \gls{cran} bereitstellt.
