@@ -81,9 +81,17 @@ Aktuell stellt \gls{pypi} keine API bereit, um den Namen eines Benutzers abzufra
 
 \subsubsection*{BigQuery}
 \label{subsubsec:pypi_bigquery}
-Ebenfalls bietet \gls{pypi} über Google BigQuery einen Datensatz an, in denen sämtliche Pakete mit ihren Versionen und Metadaten enthalten sind.
-% TODO BigQuery kurz erklären
-% TODO und aufzeigen, welche Daten alle vorhanden sind (soweit ich weiß alles, was auch die JSON API ausgibt aber nicht mehr wie Owner oder Betreuer)
+Ebenfalls bietet \gls{pypi} über Google BigQuery einen Datensatz an, in dem alle Pakete mit ihren Versionen und Metadaten enthalten sind \autocite{python_software_foundation_warehouse_2024}.
+BigQuery ist ein Dienst von Google, welcher auf der Infrastruktur der Google Cloud Plattform ausgeführt wird \autocite{google_bigquery_2024}.
+Es ist möglich den kompletten Datensatz auf BigQuery in mehreren einzelnen CSV-Dateien herunterzuladen.
+Dabei kann ausgewählt werden, welche Daten heruntergeladen werden sollen.
+
+Nicht alle Metadaten, welche über die JSON API abgefragt werden können stehen in der BigQuery zur Verfügung.
+Ebenfalls stehen nicht alle Daten der BigQuery in der JSON API zur Verfügung.
+Die wichtigsten Daten sind in beiden Quellen enthalten.
+So ist beispielsweise der Autor und Maintainer und deren E-Mail-Adressen in beiden Quellen enthalten.
+Auch die Beschreibung, Version und Abhängigkeiten sind in beiden Quellen enthalten.
+Die jeweiligen Daten, wie die Autoren eines Pakets, sind in beiden Quellen identisch.
 
 \subsection{CRAN}
 \label{subsec:paketverwaltung_cran}
