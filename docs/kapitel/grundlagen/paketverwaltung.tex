@@ -68,10 +68,16 @@ Die verifizierten Betreuer und Owner können aktuell nicht über die JSON API ab
 
 \subsubsection*{PyPI XML-RPC}
 \label{subsubsec:pypi_xml_rpc}
-% TODO auf PyPI XML-RPC API eingehen, dass die veraltet ist aber einzige möglichkeit aktuell an die Betreuer und owner auf pypi zu kommen -> stark rate limitiert https://warehouse.pypa.io/api-reference/xml-rpc.html
-% TODO sagen, dass es keine API gibt um die namen von logins zu bekommen
-% TODO Es existiert aktuell keine API für user (https://github.com/pypi/warehouse/issues/15769) aus diesem Grund muss ich die aus dem HTML besorgen.
-Zusätzlich zur API werden auf der Webseite von \gls{pypi} verifizierte Owner und Betreuer der Pakete angezeigt, welche nicht über die JSON API abgefragt werden können aber über veraltete XML-RPC Methoden.
+Die \gls{pypi} XML-RPC API ist eine veraltete API, welche jedoch noch genutzt werden kann, um einige Informationen zu den Paketen abzufragen.
+Es wird empfohlen diesen API nicht mehr zu verwenden und auf den RSS Feed oder die JSON API umzusteigen \autocite{python_software_foundation_warehouse_2024}.
+Dadurch ist die API stark limitiert in der Anzahl der möglichen Anfragen und auch die Abstände zwischen den Anfragen müssen relativ groß sein.
+\gls{pypi} macht keine genauen Angaben darüber, wie viele Anfragen in welchem Zeitraum möglich sind.
+Diese API ist jedoch die einzige Quelle, um die Betreuer und Owner eines Pakets abzufragen, ohne einen Web-Scraper einsetzen zu müssen.
+Web-Scraping bezeichnet dabei das Extrahieren von Daten aus Webseiten, indem der HTML-Code der Webseite analysiert wird \autocite{richardson_beautifulsoup4_2024}.
+
+Die Owner und Betreuer, welche über die API ausgegeben werden, enthalten den Benutzernamen auf \gls{pypi}, ein Vollname wird hierbei nicht ausgegeben.
+Der Benutzername für die Betreuer des Pakets \emph{matplotlib} sind in \autoref{fig:pypi_verified_unverified_details} unter dem Punkt \glqq Betreuer\grqq{} dargestellt.
+Aktuell stellt \gls{pypi} keine API bereit, um den Namen eines Benutzers abzufragen, sodass nur der Benutzername über eine API abgefragt werden kann \autocite{python_software_foundation_add_2024}.
 
 \subsubsection*{BigQuery}
 \label{subsubsec:pypi_bigquery}
