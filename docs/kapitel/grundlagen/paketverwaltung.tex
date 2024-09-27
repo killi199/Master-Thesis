@@ -44,7 +44,7 @@ Im Folgenden werden auf einige der Zugriffsmöglichkeiten eingegangen, welche mi
 \subsubsection*{JSON API}
 \label{subsubsec:pypi_json_api}
 % TODO Die nicht verifizierten Daten stammen aus der Python toml (stammen die Daten wirklich alle aus der toml?) Falls ja das erwähnen und erklären, dass die Daten direkt von dem Python paket stammen und pypi diese nur durchreicht
-Die JSON API ist die bevorzugt zu verwendende API von \gls{pypi} und bietet die Möglichkeit die Metadaten (Info) eines Pakets abzufragen.
+Die JSON API ist die bevorzugt zu verwendende API von \gls{pypi} und bietet die Möglichkeit die Metadaten eines Pakets abzufragen \autocite{python_software_foundation_warehouse_2024}.
 Diese API ist nicht in der Anzahl der Anfragen beschränkt.
 Dabei werden die Daten der neustens Version des Pakets zurückgegeben.
 Die Werte der Metadaten stammen aus den Daten, welche beim Hochladen auf \gls{pypi} angegeben wurden.
@@ -63,7 +63,7 @@ Zum einen sind es die Benutzer, welche Rechte auf \gls{pypi} haben um das Paket 
 Die Autoren und Maintainer können jedoch ebenfalls verifiziert sein, wobei dies über die API noch nicht abgefragt werden kann, jedoch in der Weboberfläche bereits für einige Pakete dargestellt wird.
 Es gibt aktuell wenig Pakete, bei denen die Autoren verifiziert sind, ein Beispiel ist das Paket \emph{hololinked}, welches zum Zeitpunkt des Schreibens darüber verfügt.
 \emph{Matplotlib} unterstützt dies aktuell noch nicht, wie in \autoref{fig:pypi_verified_unverified_details} dargestellt ist.
-Die verifizierten Betreuer und Owner können aktuell nicht über die JSON API abgefragt werden, sondern müssen über die XML-RPC API abgefragt werden, welche im Folgenden erläutert wird.
+Die verifizierten Betreuer und Owner können aktuell nicht über die JSON API abgefragt werden, sondern müssen über die XML-RPC API abgefragt werden, da diese die einzige API ist, welche die Daten zur Verfügung stellt.
 
 \subsubsection*{PyPI XML-RPC}
 \label{subsubsec:pypi_xml_rpc}
