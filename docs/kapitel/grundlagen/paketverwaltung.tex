@@ -97,6 +97,23 @@ Die jeweiligen Daten, wie die Autoren eines Pakets, sind in beiden Quellen ident
 \gls{cran} selbst bietet keine API an, um die Metadaten der Pakete abzufragen.
 Jedoch gibt es das METACRAN-Projekt, welches eine Kollektion von kleinen Diensten für das \gls{cran}-Repository bereitstellt.
 Eines dieser Dienste ist eine CouchDB, welche die Metadaten aller Pakete von \gls{cran} bereitstellt.
+Dieser Dienst wird ebenfalls von dem R Paket \emph{pkgsearch} genutzt welches dazu dient in R die Metadaten anderer Pakete abzufragen.
+Die beiden Projekte sind keine \gls{cran} Projekte, was bedeutet, dass sie nicht von den Entwicklern von \gls{cran} betrieben werden.
 Eine CouchDB ist eine Apache Datenbank, welche nativ eine HTTP/JSON API bereitstellt \autocite{the_apache_software_foundation_apache_2024}.
 Die Datenbank ist eine Kopie des \gls{cran}-Repository und wird regelmäßig aktualisiert \autocite{csardi_pkgsearch_2023}.
-Die Ausgabe der API erfolgt in JSON und teilweise sind einzelne Felder in R formatiert.
+
+Um in \gls{cran} ein Paket hinzufügen zu können muss ein Formular ausgefüllt werden.
+Dabei muss der eigene Name, sowie eine E-Mail-Adresse und das Paket angegeben werden.
+Anschließend werden die Daten von einem teilweise automatisierten Prozess überprüft und nach einer erfolgreichen Überprüfung wird das Paket in \gls{cran} veröffentlicht \autocite{altmann_comprehensive_2024}.
+Aus diesem Grund gibt es in \gls{cran} keine Unterscheidung zwischen verifizierten und nicht verifizierten Daten, da sie im Gegensatz zu \gls{pypi} manuell geprüft werden.
+
+Die Metadaten der einzelnen Pakete, welche über die METACRAN-API erreichbar sind, sind dabei ähnlich zu denen in \gls{pypi} \autocite{csardi_pkgsearch_2023}.
+Es werden beispielsweise die Autoren, Maintainer, eine Beschreibung, die Version und Abhängigkeiten über die API ausgegeben.
+Die Autoren werden in zwei unterschiedlichen Formaten ausgegeben.
+Zum einen wird ein Feld \glqq Author\grqq{} ausgegeben, welches die Autoren in einem String enthält.
+Dieses Feld enthält den Namen der Autoren, sowie ggf. deren Rolle und ORCID iD.
+Zum anderen wird ein Feld \glqq Authors@R\grqq{} ausgegeben, welches die Autoren in einem R Format ausgibt.
+Dieses Feld enthält ebenfalls die Werte des Feldes \glqq Author\grqq{}, sowie ggf. eine E-Mail-Adresse des jeweiligen Autors. 
+Im Gegensatz zu \gls{pypi} gibt es bei \gls{cran} keine Benutzer für das Software-Verzeichnis.
+Außerdem lassen sich alle Metadaten über die gleiche API abfragen.
+Es wurden keine Informationen über mögliche Limitierungen in der Anzahl der Anfragen gefunden.

@@ -3,3 +3,6 @@ PyPI
 README-Datei
 BigQuery
 Maintainer
+METACRAN-API
+METACRAN-Projekt
+CouchDB
