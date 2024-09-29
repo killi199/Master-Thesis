@@ -1,10 +1,39 @@
 \section{Zitierformate}
 \label{sec:zitierformate}
+In der Wissenschaft gibt es viele verschiedene Zitierweisen, die sich je nach Fachgebiet unterscheiden.
+In dieser Arbeit soll jedoch nicht auf die verschiedenen Zitierweisen eingegangen werden, sondern auf Zitierformate, welche für die Zitation verwendet werden können und die Datenstruktur hinter der Zitation beschreiben.
+Hierbei gibt es ebenfalls unterschiedliche Formate, wobei sich in dieser Arbeit auf das \gls{cff} und das Bib\TeX{}-Format beschränkt werden.
+Das \gls{cff} ist ein Format, welches speziell für die Zitation von Software entwickelt wurde, weshalb es in dieser Arbeit besonders interessant ist.
+Das Bib\TeX{}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann und von vielen eingesetzt wird.
+
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
-% Auf normale Zitation eingehen "authors"
-% Preferred Citation erklären
-% auf type, year, date-release, date-published eingehen und ggf. weitere flags welche wichtig sein könnten aber das sind die dich ich verwende
-% Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka
+Das \gls{cff} ist ein Format, welches in der Datei \mintinline{text}{CITATION.cff} gespeichert wird und in YAML 1.2 geschrieben wird. 
+Das Format beschreibt die Zitation von Software und kann von Menschen und Maschinen gelesen werden.
+Es enthält Metadaten, welche für die Zitation von Software benötigt werden.
+Außerdem wird es öffentlich auf GitHub verwaltet \autocite{druskat_citation_2021}.
+Softwareentwickler können das \gls{cff} in ihre Repositorys einbinden, um anderen die Zitation ihrer Software zu erleichtern und vorzugeben, wie die Software richtig zu zitieren ist.
+
+Das \gls{cff} wird von unterschiedlichen Plattformen unterstützt, wie zum Beispiel von GitHub.
+Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann unter anderem direkt im Bib\TeX{}-Format kopiert werden.
+Ebenfalls ist es möglich die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren.
+Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.5\textwidth]{bilder/GH_CFF_link.png}
+    \caption{GitHub-Repository mit \mintinline{text}{CITATION.cff}-Datei}
+    \label{fig:gh_cff_link}
+    \small
+    Die Abbildung stellt den Link auf die \mintinline{text}{CITATION.cff}-Datei dar, wie ihn GitHub aktuell darstellt.
+    Außerdem ist die Möglichkeit sichtbar, die Datei im Bib\TeX{}-Format und in der APA-Zitierweise zu kopieren.
+\end{figure}
+
+% TODO Auf normale Zitation eingehen "authors"
+% TODO Preferred Citation erklären
+% TODO auf type, year, date-release, date-published eingehen und ggf. weitere flags welche wichtig sein könnten aber das sind die dich ich verwende
+% TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka
 \subsection{Bib\TeX{}}
 \label{subsec:bibtex_format}
+% TODO darauf eingehen, dass BibTe ein Tool und ein Dateiformat ist.
+% TODO ist es ebenfalls möglich hier auf GitHub automatisch was zu kopieren wie bei CFF?

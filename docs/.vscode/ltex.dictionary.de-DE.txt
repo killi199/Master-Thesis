@@ -6,3 +6,5 @@ Maintainer
 METACRAN-API
 METACRAN-Projekt
 CouchDB
+Standardbranch
+APA-Zitierweise
