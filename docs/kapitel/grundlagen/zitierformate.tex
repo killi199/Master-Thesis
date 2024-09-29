@@ -8,15 +8,18 @@ Das Bib\TeX{}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} 
 
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
+% https://citation-file-format.github.io/
+% https://citation-file-format.github.io/about/
+% https://citation-file-format.github.io/assets/pdf/cff-specifications-1.0.3.pdf
 Das \gls{cff} ist ein Format, welches in der Datei \mintinline{text}{CITATION.cff} gespeichert wird und in YAML 1.2 geschrieben wird. 
 Das Format beschreibt die Zitation von Software und kann von Menschen und Maschinen gelesen werden.
 Es enthält Metadaten, welche für die Zitation von Software benötigt werden.
-Außerdem wird es öffentlich auf GitHub verwaltet \autocite{druskat_citation_2021}.
-Softwareentwickler können das \gls{cff} in ihre Repositorys einbinden, um anderen die Zitation ihrer Software zu erleichtern und vorzugeben, wie die Software richtig zu zitieren ist.
+Außerdem wird es öffentlich auf GitHub verwaltet.
+Softwareentwickler können das \gls{cff} in ihre Repositorys einbinden, um anderen die Zitation ihrer Software zu erleichtern und vorzugeben, wie die Software richtig zu zitieren ist \autocite{druskat_citation_2021}.
 
 Das \gls{cff} wird von unterschiedlichen Plattformen unterstützt, wie zum Beispiel von GitHub.
 Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann unter anderem direkt im Bib\TeX{}-Format kopiert werden.
-Ebenfalls ist es möglich die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren.
+Ebenfalls ist es möglich die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren \autocite{github_about_2024-1}.
 Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
 
 \begin{figure}
