@@ -233,7 +233,7 @@ def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
 
     authors_df = load_cff_authors_from_data(cff_data, 'authors')
 
-    authors_df['type'] = cff_data.get('type', None)
+    authors_df['type'] = cff_data.get('type', 'software')
     authors_df['date-released'] = cff_data.get('date-released', None)
 
     return authors_df
