@@ -248,6 +248,7 @@ def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
     authors_df['type'] = cff_data.get('preferred-citation', {}).get('type', None)
     authors_df['year'] = cff_data.get('preferred-citation', {}).get('year', None)
     authors_df['date-published'] = cff_data.get('preferred-citation', {}).get('date-published', None)
+    authors_df['date-released'] = cff_data.get('preferred-citation', {}).get('date-released', None)
 
     return authors_df
 
