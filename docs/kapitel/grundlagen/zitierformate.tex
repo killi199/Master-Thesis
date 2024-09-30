@@ -8,19 +8,24 @@ Das Bib\TeX{}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} 
 
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
-% https://citation-file-format.github.io/
-% https://citation-file-format.github.io/about/
-% https://citation-file-format.github.io/assets/pdf/cff-specifications-1.0.3.pdf
 Das \gls{cff} ist ein Format, welches in der Datei \mintinline{text}{CITATION.cff} gespeichert wird und in YAML 1.2 geschrieben wird. 
 Das Format beschreibt die Zitation von Software und kann von Menschen und Maschinen gelesen werden.
 Es enthält Metadaten, welche für die Zitation von Software benötigt werden.
 Außerdem wird es öffentlich auf GitHub verwaltet.
 Softwareentwickler können das \gls{cff} in ihre Repositorys einbinden, um anderen die Zitation ihrer Software zu erleichtern und vorzugeben, wie die Software richtig zu zitieren ist \autocite{druskat_citation_2021}.
 
-Das \gls{cff} wird von unterschiedlichen Plattformen unterstützt, wie zum Beispiel von GitHub.
+Da die Datei von Menschen gelesen werden kann, kann diese manuell erstellt werden und in das Repository eingebunden werden.
+Die Spezifikationen für das \gls{cff} werden auf GitHub verwaltet und sind öffentlich einsehbar \autocite{druskat_citation_2021}.
+Ebenfalls existieren Programme, welche das \gls{cff} verarbeiten können.
+Beispielsweise kann das Programm \emph{cffinit} genutzt werden, um eine \mintinline{text}{CITATION.cff}-Datei zu erstellen, sodass der Prozess der Erstellung vereinfacht wird \autocite{spaaks_cffinit_2023}.
+Ein weiteres Beispiel ist das Programm \textit{cffconvert}, welches das \gls{cff} in verschiedene Formate umwandeln kann, wie zum Beispiel Bib\TeX{} oder RIS \autocite{spaaks_cffconvert_2021}.
+
+Zusätzlich wird das \gls{cff} von unterschiedlichen Plattformen unterstützt, wie zum Beispiel von GitHub.
 Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann direkt im Bib\TeX{}-Format kopiert werden \autocite{druskat_citation_2021}.
 Ebenfalls ist es möglich die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren.
 Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
+Eine weitere Plattform, welche unterstützt wird, ist Zotero, welches ein Literaturverwaltungsprogramm ist \autocite{druskat_citation_2021}.
+Falls der Benutzer das Browser-Plugin von Zotero installiert hat, liest dieses die Daten aus der \mintinline{text}{CITATION.cff}-Datei, welche in dem GitHub Repository gespeichert ist und importiert die Daten in Zotero.
 
 \begin{figure}
     \centering
@@ -32,11 +37,66 @@ Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
     Außerdem ist die Möglichkeit sichtbar, die Datei im Bib\TeX{}-Format und in der APA-Zitierweise zu kopieren.
 \end{figure}
 
-% TODO Auf normale Zitation eingehen "authors"
-% TODO Preferred Citation erklären
-% TODO auf type, year, date-release, date-published eingehen und ggf. weitere flags welche wichtig sein könnten aber das sind die dich ich verwende
-% TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka
+In dem \gls{cff} existieren verschiedene Felder, welche für die Zitation von Software relevant sind.
+In dieser Masterarbeit wird auf einige dieser Felder eingegangen, welche für die spätere Auswertung relevant sind.
+Das wichtigste Feld ist das \glqq authors\grqq{}-Feld, welches die Autoren der Software enthält und zwingend erforderlich ist.
+In diesem Feld können die Autoren als Liste angegeben werden.
+Ein Autor ist dabei entweder eine Person oder eine Entität.
+Eine Entität kann beispielsweise eine Organisation oder ein Unternehmen sein.
+Die Entität kann mit einem Namen mittels \glqq name\grqq{} angegeben werden \autocite{druskat_citation_2021}.
+Sie kann ebenfalls eine ORCID iD und eine E-Mail-Adresse enthalten.
+Besonders wichtig für diese Arbeit ist die Referenz auf eine Person, da dies die einzige Information ist, welche aus Git extrahiert werden kann.
+Eine Person enthält ebenfalls die genannten Werte einer Entität und wird jedoch über den Vor- und Nachname separiert mittels \glqq given-names\grqq{} und \glqq family-names\grqq{} angegeben.
+Dadurch ist es möglich die Personen von den Entitäten zu unterscheiden.
+
+Ein weiteres Feld, welches in der Masterarbeit relevant ist, ist das \glqq preferred-citation\grqq{}-Feld.
+Mit diesem Feld ist es möglich die Anerkennung für die Arbeit auf eine andere Arbeit zu übertragen \autocite{druskat_citation_2021}.
+Ein Beispiel hierfür ist ein Paper über die Software, welches bevorzugt zitiert werden soll anstelle der eigentlichen Software.
+Hierbei können ebenfalls Personen und Entitäten angegeben werden in dem gleichen Format wie bereits beschrieben.
+Durch die Angabe einer \glqq preferred-citation\grqq{} kann das Prinzip der Wichtigkeit vernachlässigt werden.
+Auf dieses Verhalten wird in den Ergebnissen konkreter eingegangen.
+
+Weitere in der Arbeit verwendete Felder sind \glqq type\grqq{}, \glqq year\grqq{}, \glqq month\grqq{}, \glqq date-released\grqq{} und \glqq date-published\grqq{} \autocite{druskat_citation_2021}.
+Das Feld \glqq type\grqq{} ist zwingend erforderlich, hat jedoch als Standardwert \glqq software\grqq{}, sodass dies nicht angegeben werden muss.
+Das Feld gibt an, ob es sich um eine Software oder einen Datensatz handelt.
+Falls das Feld unter dem Feld \glqq preferred-citation\grqq{} angegeben wird, kann es viele weitere Typen enthalten wie Beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
+Das Feld \glqq date-released\grqq{} gibt an, wann die Software oder der Datensatz veröffentlicht wurde.
+Die Felder \glqq year\grqq{}, \glqq month\grqq{} und \glqq date-published\grqq{} können zusätzlich zu dem Feld \glqq date-released\grqq{} unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um das Jahr und das Datum der Veröffentlichung anzugeben.
+Ein Beispiel einer \mintinline{text}{CITATION.cff}-Datei ist in \autoref{lst:cff_example} dargestellt.
+Dabei sind wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
+
+% TODO Update date with my actual date
+\begin{listing}
+    \begin{minted}{yaml}
+        cff-version: 1.2.0
+        title: "CompAuthorsBetweenDS"
+        message: "If you use this software, please cite it using the metadata from this file."
+        type: software
+        authors:
+          - given-names: "Kevin"
+            family-names: "Jahrens"
+            email: "k.jahrens@stud.hs-wismar.de"
+          - name: "Hochschule Wismar"
+        date-released: "2025-01-01"
+        preferred-citation:
+          title: "Identifikation und Vergleich von Autorenangaben zu Software zwischen verschiedenen Datenquellen"
+          type: thesis
+          year: 2025
+          month: 01
+          date-published: "2025-01-01"
+          date-released: "2025-01-01"
+          authors:
+            - given-names: "Kevin"
+              family-names: "Jahrens"
+              email: "k.jahrens@stud.hs-wismar.de"
+            - name: "Hochschule Wismar"
+    \end{minted}
+    \caption{Beispiel einer \mintinline{text}{CITATION.cff}-Datei}
+    \label{lst:cff_example}
+\end{listing}
+
 \subsection{Bib\TeX{}}
 \label{subsec:bibtex_format}
 % TODO darauf eingehen, dass BibTe ein Tool und ein Dateiformat ist.
 % TODO ist es ebenfalls möglich hier auf GitHub automatisch was zu kopieren wie bei CFF?
+% TODO BibTex beispiel ähnlich wie CFF Beispiel mit gleichem Inhalt
