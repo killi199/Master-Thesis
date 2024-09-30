@@ -190,6 +190,9 @@ async def get_git_contributors(owner: str, repo: str, repo_link: str, package_na
 def get_cff_list(authors) -> list[dict[str, str]]:
     authors_dic: list[dict[str, str]] = list()
     for author in authors:
+        if "given-names" not in author or "family-names" not in author:
+            continue
+
         if "orcid" not in author:
             author["orcid"] = None
         if "email" not in author:
@@ -201,8 +204,6 @@ def get_cff_list(authors) -> list[dict[str, str]]:
             authors_dic.append({"name": author["family-names"]})
         elif "given-names" in author:
             authors_dic.append({"name": author["given-names"]})
-        elif "name" in author:
-            authors_dic.append({"name": author["name"]})
 
         authors_dic[-1]["email"] = author["email"]
         authors_dic[-1]["ORCID"] = author["orcid"]
