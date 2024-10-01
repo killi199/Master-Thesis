@@ -264,9 +264,13 @@ def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
 
         entry_type = library.entries[0].entry_type
         entry_year = library.entries[0].get('year', None)
+        entry_month = library.entries[0].get('month', None)
 
         if entry_year is not None:
             entry_year = entry_year.value
+
+        if entry_month is not None:
+            entry_month = entry_month.value
 
         if entries is not None:
             for entry in entries:
@@ -275,6 +279,7 @@ def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
         authors_df = pd.DataFrame(authors, columns=['name'])
         authors_df['type'] = entry_type
         authors_df['year'] = entry_year
+        authors_df['month'] = entry_month
 
         return authors_df
     else:
