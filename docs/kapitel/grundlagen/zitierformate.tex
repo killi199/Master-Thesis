@@ -2,9 +2,9 @@
 \label{sec:zitierformate}
 In der Wissenschaft gibt es viele verschiedene Zitierweisen, die sich je nach Fachgebiet unterscheiden.
 In dieser Arbeit soll jedoch nicht auf die verschiedenen Zitierweisen eingegangen werden, sondern auf Zitierformate, welche für die Zitation verwendet werden können und die Datenstruktur hinter der Zitation beschreiben.
-Hierbei gibt es ebenfalls unterschiedliche Formate, wobei sich in dieser Arbeit auf das \gls{cff} und das Bib\TeX{}-Format beschränkt werden.
+Hierbei gibt es ebenfalls unterschiedliche Formate, wobei sich in dieser Arbeit auf das \gls{cff} und das \hologo{BibTeX}-Format beschränkt werden.
 Das \gls{cff} ist ein Format, welches speziell für die Zitation von Software entwickelt wurde, weshalb es in dieser Arbeit besonders interessant ist.
-Das Bib\TeX{}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann und von vielen eingesetzt wird.
+Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann und von vielen eingesetzt wird.
 
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
@@ -18,13 +18,13 @@ Da die Datei von Menschen gelesen werden kann, kann diese manuell erstellt werde
 Die Spezifikationen für das \gls{cff} werden auf GitHub verwaltet und sind öffentlich einsehbar \autocite{druskat_citation_2021}.
 Ebenfalls existieren Programme, welche das \gls{cff} verarbeiten können.
 Beispielsweise kann das Programm \emph{cffinit} genutzt werden, um eine \mintinline{text}{CITATION.cff}-Datei zu erstellen, sodass der Prozess der Erstellung vereinfacht wird \autocite{spaaks_cffinit_2023}.
-Ein weiteres Beispiel ist das Programm \textit{cffconvert}, welches das \gls{cff} in verschiedene Formate umwandeln kann, wie zum Beispiel Bib\TeX{} oder RIS \autocite{spaaks_cffconvert_2021}.
+Ein weiteres Beispiel ist das Programm \textit{cffconvert}, welches das \gls{cff} in verschiedene Formate umwandeln kann, wie zum Beispiel \hologo{BibTeX} oder RIS \autocite{spaaks_cffconvert_2021}.
 
 Zusätzlich wird das \gls{cff} von unterschiedlichen Plattformen unterstützt, wie zum Beispiel von GitHub.
-Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann direkt im Bib\TeX{}-Format kopiert werden \autocite{druskat_citation_2021}.
+Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann direkt im \hologo{BibTeX}-Format kopiert werden \autocites{druskat_citation_2021}{github_about_2024-2}.
 Ebenfalls ist es möglich die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren.
 Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
-Eine weitere Plattform, welche unterstützt wird, ist Zotero, welches ein Literaturverwaltungsprogramm ist \autocite{druskat_citation_2021}.
+Eine weitere Plattform, welche unterstützt wird, ist Zotero, welches ein Literaturverwaltungsprogramm ist \autocites{druskat_citation_2021}{zotero_zotero_2024}.
 Falls der Benutzer das Browser-Plugin von Zotero installiert hat, liest dieses die Daten aus der \mintinline{text}{CITATION.cff}-Datei, welche in dem GitHub Repository gespeichert ist und importiert die Daten in Zotero.
 
 \begin{figure}
@@ -34,7 +34,7 @@ Falls der Benutzer das Browser-Plugin von Zotero installiert hat, liest dieses d
     \label{fig:gh_cff_link}
     \small
     Die Abbildung stellt den Link auf die \mintinline{text}{CITATION.cff}-Datei dar, wie ihn GitHub aktuell darstellt.
-    Außerdem ist die Möglichkeit sichtbar, die Datei im Bib\TeX{}-Format und in der APA-Zitierweise zu kopieren.
+    Außerdem ist die Möglichkeit sichtbar, die Datei im \hologo{BibTeX}-Format und in der APA-Zitierweise zu kopieren.
 \end{figure}
 
 In dem \gls{cff} existieren verschiedene Felder, welche für die Zitation von Software relevant sind.
@@ -95,7 +95,7 @@ Dabei sind wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
     \label{lst:cff_example}
 \end{listing}
 
-\subsection{Bib\TeX{}}
+\subsection{\hologo{BibTeX}}
 \label{subsec:bibtex_format}
 % TODO darauf eingehen, dass BibTe ein Tool und ein Dateiformat ist.
 % TODO ist es ebenfalls möglich hier auf GitHub automatisch was zu kopieren wie bei CFF?
