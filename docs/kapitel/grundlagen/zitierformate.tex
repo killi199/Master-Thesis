@@ -74,6 +74,35 @@ Dabei sind wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
 
 \subsection{\hologo{BibTeX}}
 \label{subsec:bibtex_format}
-% TODO darauf eingehen, dass BibTe ein Tool und ein Dateiformat ist.
-% TODO ist es ebenfalls möglich hier auf GitHub automatisch was zu kopieren wie bei CFF?
-% TODO BibTex beispiel ähnlich wie CFF Beispiel mit gleichem Inhalt
+\hologo{BibTeX} ist eine Software, welche zur Erstellung von Literaturangaben und -verzeichnissen in \LaTeX{}-Dokumenten verwendet wird.
+Außerdem existiert mit \hologo{BibTeX} ein gleichnamiges Format, welches in der Datei \mintinline{text}{CITATION.bib} gespeichert wird und auf keinem anderen Format basiert.
+\hologo{BibTeX} ist ein weit verbreiteter Standard und wird von vielen verwendet, um Literatur zu zitieren. % TODO ggf. finde ich hier noch genaue zahlen? -> ist immer ganz nett sowas zu haben
+Das Format beschreibt die Zitation von Literatur und kann von Menschen und Maschinen gelesen werden.
+Es beschränkt sich dabei nicht auf eine spezielle Art von Literatur, sondern kann für viele unterschiedliche Arten von Literatur verwendet werden.
+Beispielsweise können Bücher und Masterarbeiten in \hologo{BibTeX} zitiert werden \autocite{patashnik_bibtexing_1988}.
+Ein offizieller Literaturtyp für Software existiert nicht.
+In der Datei können mehrere Einträge vorhanden sein, wobei jeder Eintrag eine Literaturangabe darstellt.
+
+\hologo{BibTeX}-Dateien können von Menschen manuell erstellt werden und in das Repository eingebunden werden.
+Außerdem existieren viele Literaturverwaltungsprogramme wie Zotero, welche \hologo{BibTeX}-Dateien erstellen und verarbeiten können \autocite{zotero_zotero_2024}.
+Ebenfalls ist die Integration in andere Plattformen möglich, wie zum Beispiel in GitHub.
+Hier wird die \mintinline{text}{CITATION.bib}-Datei auf der Repository-Startseite verlinkt, sie lässt sich jedoch im Gegensatz zu dem \gls{cff} nicht direkt kopieren oder in andere Formate umwandeln \autocite{github_about_2024-2}.
+
+In dem \hologo{BibTeX}-Format existieren verschiedene Felder, welche für die Zitation von Literatur relevant sind.
+Einige Felder sind dabei zwingend erforderlich und andere nicht.
+Welche Felder zwingend erforderlich sind, hängt vom Literaturtyp ab.
+Außerdem sind die verfügbaren Felder vom Literaturtyp abhängig \autocite{patashnik_bibtexing_1988}.
+In dieser Arbeit wird auf einige dieser Felder eingegangen, welche für die spätere Auswertung relevant sind.
+Das wichtigste Feld ist das \glqq author\grqq{}-Feld, welches die Autoren der Literatur enthält und zwingend erforderlich ist.
+Die Vor- und Nachnamen der Autoren werden mit einem Komma separiert und mehrere Autoren über ein \glqq and\grqq{} getrennt.
+Weitere Felder, welche für die Masterarbeit verwendet werden, sind \glqq year\grqq{} und \glqq month\grqq{}, welche das Jahr und den Monat der Veröffentlichung angeben.
+Ein Beispiel einer \mintinline{text}{CITATION.bib}-Datei ist in \autoref{lst:bibtex_example} dargestellt.
+Es ist zu erkennen, dass in dem \hologo{BibTeX}-Eintrag Informationen fehlen, welche in dem \gls{cff}-Eintrag vorhanden waren.
+Dies liegt daran, dass in dem \hologo{BibTeX}-Eintrag nur eine Referenz auf die Masterarbeit möglich ist und nicht auf die entwickelte Software.
+
+% TODO Update date with my actual date
+\begin{listing}
+  \inputminted{text}{../CITATION.bib}
+  \caption{Beispiel einer \mintinline{text}{CITATION.bib}-Datei}
+  \label{lst:bibtex_example}
+\end{listing}
