@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 async def process_and_save(dataframe: pd.DataFrame, git_contributors_df: pd.DataFrame, package_name: str, filename: str, index: str):
     result = functions.matching(dataframe, git_contributors_df)
-    if not result.empty:
+    if not result.empty or 'cff_not_valid' in result.columns:
         result.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False)
 
 async def process_general_package(owner: str, repo: str, git_contributors_df, package_name: str, index: str):

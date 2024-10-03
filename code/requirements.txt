@@ -11,3 +11,4 @@ pytz==2024.1
 bibtexparser==2.0.0b7
 thefuzz==0.22.1
 spacy==3.7.6
+cffconvert==2.0.0

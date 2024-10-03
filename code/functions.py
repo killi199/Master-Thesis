@@ -1,6 +1,10 @@
 import glob
 import re
 from datetime import datetime
+import cffconvert.cli
+import cffconvert.cli.create_citation
+import cffconvert.cli.read_from_file
+import cffconvert.cli.validate_or_write_output
 import pandas as pd
 from git import GitCommandError, Repo
 import subprocess
@@ -20,6 +24,9 @@ from rpy2.rinterface_lib._rinterface_capi import RParsingError
 from thefuzz import fuzz
 import spacy
 import warnings
+from cffconvert import Citation
+from jsonschema.exceptions import ValidationError as JsonschemaSchemaError
+from pykwalify.errors import SchemaError as PykwalifySchemaError
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -211,15 +218,11 @@ def get_cff_list(authors) -> list[dict[str, str]]:
 
     return authors_dic
 
-def load_cff_data(paths: list[str]) -> dict:
+def load_cff_data(path: str) -> dict:
     try:
-        if len(paths) > 0:
-            path = paths[0]
-            with open(path, 'r') as file:
-                cff = yaml.safe_load(file)
-            return cff
-        else:
-            return {}
+        with open(path, 'r', encoding="utf8") as file:
+            cff = yaml.safe_load(file)
+        return cff
     except (FileNotFoundError, yaml.YAMLError):
         return {}
 
@@ -232,31 +235,63 @@ def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
         return authors_df
     except KeyError:
         return pd.DataFrame()
+    
+def get_cff_data(owner: str, repo: str) -> tuple[dict, str]:
+    paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
+    if len(paths) > 0:
+            path = paths[0]
+            return load_cff_data(path), path
+    else:
+        return {}, ""
+    
+def validate_cff(cff_path: str, owner: str, repo: str, authors_df: pd.DataFrame) -> pd.DataFrame:
+    with open(cff_path, "r", encoding="utf8") as file:
+        data = file.read()
+
+    citation = Citation(data, src=cff_path)
+
+    try:
+        citation.validate()
+        authors_df['cff_valid'] = "True"
+        return authors_df
+    except (PykwalifySchemaError, JsonschemaSchemaError) as ex:
+        authors_df['cff_not_valid'] = "True"
+        print(f'Error validating CFF: {owner}/{repo}: {ex}')
+        return authors_df
 
 def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
-    paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
-    cff_data = load_cff_data(paths)
+    cff_data, cff_path = get_cff_data(owner, repo)
 
-    authors_df = load_cff_authors_from_data(cff_data, 'authors')
+    if cff_path:
+        authors_df = load_cff_authors_from_data(cff_data, 'authors')
 
-    authors_df['type'] = cff_data.get('type', 'software')
-    authors_df['date-released'] = cff_data.get('date-released', None)
+        authors_df = validate_cff(cff_path, owner, repo, authors_df)
 
-    return authors_df
+        authors_df['type'] = cff_data.get('type', 'software')
+        authors_df['date-released'] = cff_data.get('date-released', None)
+
+        return authors_df
+    else:
+        return pd.DataFrame()
+
 
 def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
-    paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
-    cff_data = load_cff_data(paths)
+    cff_data, cff_path = get_cff_data(owner, repo)
 
-    authors_df = load_cff_authors_from_data(cff_data, 'preferred-citation.authors')
+    if cff_path:
+        authors_df = load_cff_authors_from_data(cff_data, 'preferred-citation.authors')
 
-    authors_df['type'] = cff_data.get('preferred-citation', {}).get('type', None)
-    authors_df['date-released'] = cff_data.get('preferred-citation', {}).get('date-released', None)
-    authors_df['date-published'] = cff_data.get('preferred-citation', {}).get('date-published', None)
-    authors_df['year'] = cff_data.get('preferred-citation', {}).get('year', None)
-    authors_df['month'] = cff_data.get('preferred-citation', {}).get('month', None)
+        authors_df = validate_cff(cff_path, owner, repo, authors_df)
 
-    return authors_df
+        authors_df['type'] = cff_data.get('preferred-citation', {}).get('type', None)
+        authors_df['date-released'] = cff_data.get('preferred-citation', {}).get('date-released', None)
+        authors_df['date-published'] = cff_data.get('preferred-citation', {}).get('date-published', None)
+        authors_df['year'] = cff_data.get('preferred-citation', {}).get('year', None)
+        authors_df['month'] = cff_data.get('preferred-citation', {}).get('month', None)
+
+        return authors_df
+    else:
+        return pd.DataFrame()
 
 def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
     file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
