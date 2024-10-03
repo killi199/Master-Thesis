@@ -1,3 +1,4 @@
+import glob
 import re
 from datetime import datetime
 import pandas as pd
@@ -210,11 +211,15 @@ def get_cff_list(authors) -> list[dict[str, str]]:
 
     return authors_dic
 
-def load_cff_data(path: str) -> dict:
+def load_cff_data(paths: list[str]) -> dict:
     try:
-        with open(path, 'r') as file:
-            cff = yaml.safe_load(file)
-        return cff
+        if len(paths) > 0:
+            path = paths[0]
+            with open(path, 'r') as file:
+                cff = yaml.safe_load(file)
+            return cff
+        else:
+            return {}
     except (FileNotFoundError, yaml.YAMLError):
         return {}
 
@@ -229,8 +234,8 @@ def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
         return pd.DataFrame()
 
 def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
-    path = f'./repos/{owner}/{repo}/CITATION.cff'
-    cff_data = load_cff_data(path)
+    paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
+    cff_data = load_cff_data(paths)
 
     authors_df = load_cff_authors_from_data(cff_data, 'authors')
 
@@ -240,8 +245,8 @@ def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
     return authors_df
 
 def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
-    path = f'./repos/{owner}/{repo}/CITATION.cff'
-    cff_data = load_cff_data(path)
+    paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
+    cff_data = load_cff_data(paths)
 
     authors_df = load_cff_authors_from_data(cff_data, 'preferred-citation.authors')
 
