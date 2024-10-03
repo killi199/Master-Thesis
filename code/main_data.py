@@ -10,18 +10,21 @@ from tqdm import tqdm
 
 async def process_and_save(dataframe: pd.DataFrame, git_contributors_df: pd.DataFrame, package_name: str, filename: str, index: str):
     result = functions.matching(dataframe, git_contributors_df)
-    if not result.empty or 'cff_not_valid' in result.columns:
+    if not result.empty:
         result.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False)
 
 async def process_general_package(owner: str, repo: str, git_contributors_df, package_name: str, index: str):
-    cff_df = functions.get_cff_authors(owner, repo)
-    await process_and_save(cff_df, git_contributors_df, package_name, 'cff_authors', index)
+    cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
+    await process_and_save(cff_authors_df, git_contributors_df, package_name, 'cff_authors', index)
+    await process_and_save(cff_df, git_contributors_df, package_name, 'cff', index)
 
-    cff_preferred_df = functions.get_cff_preferred_citation_authors(owner, repo)
-    await process_and_save(cff_preferred_df, git_contributors_df, package_name, 'cff_preferred_citation_authors', index)
+    cff_preferred_authors_df, cff_preferred_df = functions.get_cff_preferred_citation_data(owner, repo)
+    await process_and_save(cff_preferred_authors_df, git_contributors_df, package_name, 'cff_preferred_citation_authors', index)
+    await process_and_save(cff_preferred_df, git_contributors_df, package_name, 'cff_preferred_citation', index)
 
-    bib_df = functions.get_bib_authors(owner, repo)
-    await process_and_save(bib_df, git_contributors_df, package_name, 'bib_authors', index)
+    bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
+    await process_and_save(bib_authors_df, git_contributors_df, package_name, 'bib_authors', index)
+    await process_and_save(bib_df, git_contributors_df, package_name, 'bib', index)
 
     readme_df = functions.get_readme_authors(owner, repo)
     await process_and_save(readme_df, git_contributors_df, package_name, 'readme_authors', index)

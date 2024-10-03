@@ -13,7 +13,7 @@ def process_directory(directory):
 
     for root, _, files in os.walk(directory):
         for file in files:
-            if file == 'git_contributors.csv':
+            if file.endswith('authors.csv') or file.endswith('maintainers.csv'):
                 continue
             file_path = os.path.join(root, file)
             matches, non_matches, entries = check_matches(file_path)

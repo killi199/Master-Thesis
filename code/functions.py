@@ -236,7 +236,7 @@ def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
     except KeyError:
         return pd.DataFrame()
     
-def get_cff_data(owner: str, repo: str) -> tuple[dict, str]:
+def get_cff_data_from_file(owner: str, repo: str) -> tuple[dict, str]:
     paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
     if len(paths) > 0:
             path = paths[0]
@@ -244,7 +244,7 @@ def get_cff_data(owner: str, repo: str) -> tuple[dict, str]:
     else:
         return {}, ""
     
-def validate_cff(cff_path: str, owner: str, repo: str, authors_df: pd.DataFrame) -> pd.DataFrame:
+def validate_cff(cff_path: str, owner: str, repo: str) -> bool:
     with open(cff_path, "r", encoding="utf8") as file:
         data = file.read()
 
@@ -252,56 +252,50 @@ def validate_cff(cff_path: str, owner: str, repo: str, authors_df: pd.DataFrame)
 
     try:
         citation.validate()
-        authors_df['cff_valid'] = "True"
-        return authors_df
+        return True
     except (PykwalifySchemaError, JsonschemaSchemaError) as ex:
-        authors_df['cff_not_valid'] = "True"
         print(f'Error validating CFF: {owner}/{repo}: {ex}')
-        return authors_df
-
-def get_cff_authors(owner: str, repo: str) -> pd.DataFrame:
-    cff_data, cff_path = get_cff_data(owner, repo)
-
-    if cff_path:
-        authors_df = load_cff_authors_from_data(cff_data, 'authors')
-
-        authors_df = validate_cff(cff_path, owner, repo, authors_df)
-
-        authors_df['type'] = cff_data.get('type', 'software')
-        authors_df['date-released'] = cff_data.get('date-released', None)
-
-        return authors_df
-    else:
-        return pd.DataFrame()
-
-
-def get_cff_preferred_citation_authors(owner: str, repo: str) -> pd.DataFrame:
-    cff_data, cff_path = get_cff_data(owner, repo)
+        return False
+    
+def get_cff_data(owner: str, repo: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+    cff_data, cff_path = get_cff_data_from_file(owner, repo)
 
     if cff_path:
-        authors_df = load_cff_authors_from_data(cff_data, 'preferred-citation.authors')
+        valid = validate_cff(cff_path, owner, repo)
 
-        authors_df = validate_cff(cff_path, owner, repo, authors_df)
+        cff_df = pd.DataFrame({'cff_valid': valid,
+                      'type': cff_data.get('type', 'software'),
+                      'date-released': cff_data.get('date-released', None),
+                      'doi': cff_data.get('doi', None),
+                      'identifier-doi': next((item['value'] for item in cff_data.get('identifiers', []) if item['type'] == 'doi'), None)}, index=['current'])
 
-        authors_df['type'] = cff_data.get('preferred-citation', {}).get('type', None)
-        authors_df['date-released'] = cff_data.get('preferred-citation', {}).get('date-released', None)
-        authors_df['date-published'] = cff_data.get('preferred-citation', {}).get('date-published', None)
-        authors_df['year'] = cff_data.get('preferred-citation', {}).get('year', None)
-        authors_df['month'] = cff_data.get('preferred-citation', {}).get('month', None)
-
-        return authors_df
+        return load_cff_authors_from_data(cff_data, 'authors'), cff_df
     else:
-        return pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame()
 
-def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
+def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+    cff_data, cff_path = get_cff_data_from_file(owner, repo)
+
+    if cff_path:
+        cff_df = pd.DataFrame({'type': cff_data.get('preferred-citation', {}).get('type', None),
+                               'date-released': cff_data.get('preferred-citation', {}).get('date-released', None),
+                               'date-published': cff_data.get('preferred-citation', {}).get('date-published', None),
+                               'year': cff_data.get('preferred-citation', {}).get('year', None),
+                               'month': cff_data.get('preferred-citation', {}).get('month', None),
+                               'doi': cff_data.get('preferred-citation', {}).get('doi', None),
+                               'collection-doi': cff_data.get('preferred-citation', {}).get('collection-doi', None),
+                               'identifier-doi': next((item['value'] for item in cff_data.get('preferred-citation', {}).get('identifiers', []) if item['type'] == 'doi'), None)}, index=['current'])
+
+        return load_cff_authors_from_data(cff_data, 'preferred-citation.authors'), cff_df
+    else:
+        return pd.DataFrame(), pd.DataFrame()
+    
+def get_bib_data(owner: str, repo: str) -> tuple[pd.DataFrame, pd.DataFrame]:
     file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
     if file.is_file():
-        authors: list = list()
         layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
         library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
-
-        entries = library.entries[0]['author']
-
+        
         entry_type = library.entries[0].entry_type
         entry_year = library.entries[0].get('year', None)
         entry_month = library.entries[0].get('month', None)
@@ -312,18 +306,26 @@ def get_bib_authors(owner: str, repo: str) -> pd.DataFrame:
         if entry_month is not None:
             entry_month = entry_month.value
 
-        if entries is not None:
-            for entry in entries:
-                authors.append(' '.join(entry.first) + " " + ' '.join(entry.last))
-
-        authors_df = pd.DataFrame(authors, columns=['name'])
-        authors_df['type'] = entry_type
-        authors_df['year'] = entry_year
-        authors_df['month'] = entry_month
-
-        return authors_df
+        bib_df = pd.DataFrame({'type': entry_type,
+                               'year': entry_year,
+                               'month': entry_month}, index=['current'])
+        
+        return get_bib_authors(library), bib_df
     else:
-        return pd.DataFrame()
+        return pd.DataFrame(), pd.DataFrame()
+
+def get_bib_authors(library: bibtexparser.Library) -> pd.DataFrame:
+    authors: list = list()
+
+    entries = library.entries[0]['author']
+
+    if entries is not None:
+        for entry in entries:
+            authors.append(' '.join(entry.first) + " " + ' '.join(entry.last))
+
+    authors_df = pd.DataFrame(authors, columns=['name'])
+
+    return authors_df
     
 async def get_pypi_maintainers(package_name: str) -> pd.DataFrame:
     pypi_maintainers = ServerProxy("https://pypi.org/pypi").package_roles(package_name)
