@@ -8,28 +8,31 @@ import json
 from tqdm import tqdm
 
 
-async def process_and_save(dataframe: pd.DataFrame, git_contributors_df: pd.DataFrame, package_name: str, filename: str, index: str):
-    result = functions.matching(dataframe, git_contributors_df)
-    if not result.empty:
-        result.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False)
+async def process_and_save(dataframe: pd.DataFrame, package_name: str, filename: str, index: str):
+    if not dataframe.empty:
+        dataframe.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False)
 
 async def process_general_package(owner: str, repo: str, git_contributors_df, package_name: str, index: str):
     cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
     for cff_author_df in cff_authors_df:
-        await process_and_save(cff_author_df[0], git_contributors_df, package_name, str(cff_author_df[1]) + 'cff_authors', index)
-    await process_and_save(cff_df, git_contributors_df, package_name, 'cff', index)
+        result = functions.matching(cff_author_df[0], git_contributors_df)
+        await process_and_save(result, package_name, str(cff_author_df[1]) + 'cff_authors', index)
+    await process_and_save(cff_df, package_name, 'cff', index)
 
     cff_preferred_authors_df, cff_preferred_df = functions.get_cff_preferred_citation_data(owner, repo)
     for cff_preferred_author_df in cff_preferred_authors_df:
-        await process_and_save(cff_preferred_author_df[0], git_contributors_df, package_name, str(cff_preferred_author_df[1]) + 'cff_preferred_citation_authors', index)
-    await process_and_save(cff_preferred_df, git_contributors_df, package_name, 'cff_preferred_citation', index)
+        result = functions.matching(cff_preferred_author_df[0], git_contributors_df)
+        await process_and_save(result, package_name, str(cff_preferred_author_df[1]) + 'cff_preferred_citation_authors', index)
+    await process_and_save(cff_preferred_df, package_name, 'cff_preferred_citation', index)
 
     bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
-    await process_and_save(bib_authors_df, git_contributors_df, package_name, 'bib_authors', index)
-    await process_and_save(bib_df, git_contributors_df, package_name, 'bib', index)
+    result = functions.matching(bib_authors_df, git_contributors_df)
+    await process_and_save(result, package_name, 'bib_authors', index)
+    await process_and_save(bib_df, package_name, 'bib', index)
 
     readme_df = functions.get_readme_authors(owner, repo)
-    await process_and_save(readme_df, git_contributors_df, package_name, 'readme_authors', index)
+    result = functions.matching(readme_df, git_contributors_df)
+    await process_and_save(result, package_name, 'readme_authors', index)
 
 async def process_pypi_package(package):
     package_name = package.strip()
@@ -47,17 +50,21 @@ async def process_pypi_package(package):
 
         # currently not fully accessible through the API -> limiting factor HTTP is limited if this is not used more semaphores possible
         pypi_maintainers_df = await functions.get_pypi_maintainers(package_name)
-        await process_and_save(pypi_maintainers_df, git_contributors_df, package_name, 'pypi_maintainers', 'pypi')
+        result = functions.matching(pypi_maintainers_df, git_contributors_df)
+        await process_and_save(result, package_name, 'pypi_maintainers', 'pypi')
 
         python_authors_df = functions.get_python_authors(pypi_data)
-        await process_and_save(python_authors_df, git_contributors_df, package_name, 'python_authors', 'pypi')
+        result = functions.matching(python_authors_df, git_contributors_df)
+        await process_and_save(result, package_name, 'python_authors', 'pypi')
 
         python_maintainers_df = functions.get_python_maintainers(pypi_data)
-        await process_and_save(python_maintainers_df, git_contributors_df, package_name, 'python_maintainers', 'pypi')
+        result = functions.matching(python_maintainers_df, git_contributors_df)
+        await process_and_save(result, package_name, 'python_maintainers', 'pypi')
 
         description = pypi_data['info']['description']
         description_df = functions.get_description_authors(description)
-        await process_and_save(description_df, git_contributors_df, package_name, 'description_authors', 'pypi')
+        result = functions.matching(description_df, git_contributors_df)
+        await process_and_save(result, package_name, 'description_authors', 'pypi')
 
         await process_general_package(owner, repo, git_contributors_df, package_name, 'pypi')
     except Exception as e:
@@ -78,14 +85,17 @@ async def process_cran_package(package):
         git_contributors_df.to_csv(f'results/cran/{package_name}/git_contributors.csv', index=False)
 
         cran_authors_df = functions.get_cran_authors(cran_data)
-        await process_and_save(cran_authors_df, git_contributors_df, package_name, 'cran_authors', 'cran')
+        result = functions.matching(cran_authors_df, git_contributors_df)
+        await process_and_save(result, package_name, 'cran_authors', 'cran')
 
         cran_maintainers_df = functions.get_cran_maintainers(cran_data)
-        await process_and_save(cran_maintainers_df, git_contributors_df, package_name, 'cran_maintainers', 'cran')
+        result = functions.matching(cran_maintainers_df, git_contributors_df)
+        await process_and_save(result, package_name, 'cran_maintainers', 'cran')
 
         description = cran_data['Description']
         description_df = functions.get_description_authors(description)
-        await process_and_save(description_df, git_contributors_df, package_name, 'description_authors', 'cran')
+        result = functions.matching(description_df, git_contributors_df)
+        await process_and_save(result, package_name, 'description_authors', 'cran')
 
         await process_general_package(owner, repo, git_contributors_df, package_name, 'cran')
     except Exception as e:
