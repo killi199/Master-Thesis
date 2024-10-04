@@ -218,12 +218,10 @@ def get_cff_list(authors) -> list[dict[str, str]]:
 
     return authors_dic
 
-def load_cff_data(path: str) -> dict:
+def load_cff_data(content: str) -> dict:
     try:
-        with open(path, 'r', encoding="utf8") as file:
-            cff = yaml.safe_load(file)
-        return cff
-    except (FileNotFoundError, yaml.YAMLError):
+        return yaml.safe_load(content)
+    except (yaml.YAMLError):
         return {}
 
 def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
@@ -236,59 +234,79 @@ def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
     except KeyError:
         return pd.DataFrame()
     
-def get_cff_data_from_file(owner: str, repo: str) -> tuple[dict, str]:
+def get_cff_path(owner: str, repo: str) ->str:
     paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
     if len(paths) > 0:
-            path = paths[0]
-            return load_cff_data(path), path
+            return paths[0]
     else:
-        return {}, ""
+        return ""
     
-def validate_cff(cff_path: str, owner: str, repo: str) -> bool:
-    with open(cff_path, "r", encoding="utf8") as file:
-        data = file.read()
-
-    citation = Citation(data, src=cff_path)
+def validate_cff(cff_path: str, cff_data: str) -> bool:
+    citation = Citation(cff_data, src=cff_path)
 
     try:
         citation.validate()
         return True
-    except (PykwalifySchemaError, JsonschemaSchemaError) as ex:
-        print(f'Error validating CFF: {owner}/{repo}: {ex}')
+    except (PykwalifySchemaError, JsonschemaSchemaError):
         return False
     
-def get_cff_data(owner: str, repo: str) -> tuple[pd.DataFrame, pd.DataFrame]:
-    cff_data, cff_path = get_cff_data_from_file(owner, repo)
+def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
+    cff_path = get_cff_path(owner, repo)
 
     if cff_path:
-        valid = validate_cff(cff_path, owner, repo)
+        file_data = []
+        authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
+        print_file = cff_path.split('/')[-1]
+        git_repo = Repo(f'./repos/{owner}/{repo}')
+        commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
+        for commit_for_file in commits_for_file:
+            tree = commit_for_file.tree
+            blob = tree[print_file]
+            cff_string = blob.data_stream.read().decode()
+            cff_yaml_data = load_cff_data(cff_string)
+            valid = validate_cff(cff_path, cff_string)
 
-        cff_df = pd.DataFrame({'cff_valid': valid,
-                      'type': cff_data.get('type', 'software'),
-                      'date-released': cff_data.get('date-released', None),
-                      'doi': cff_data.get('doi', None),
-                      'identifier-doi': next((item['value'] for item in cff_data.get('identifiers', []) if item['type'] == 'doi'), None)}, index=['current'])
+            file_data.append({'cff_valid': valid,
+                    'type': cff_yaml_data.get('type', 'software'),
+                    'date-released': cff_yaml_data.get('date-released', None),
+                    'doi': cff_yaml_data.get('doi', None),
+                    'identifier-doi': next((item['value'] for item in cff_yaml_data.get('identifiers', []) if item['type'] == 'doi'), None),
+                    'committed_datetime': str(commit_for_file.committed_datetime),
+                    'authored_datetime': str(commit_for_file.authored_datetime)})
+            authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'authors'), commit_for_file.committed_datetime))
 
-        return load_cff_authors_from_data(cff_data, 'authors'), cff_df
+        return authors_data, pd.DataFrame(file_data)
     else:
-        return pd.DataFrame(), pd.DataFrame()
+        return [(pd.DataFrame(), None)], pd.DataFrame()
 
-def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[pd.DataFrame, pd.DataFrame]:
-    cff_data, cff_path = get_cff_data_from_file(owner, repo)
+def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
+    cff_path = get_cff_path(owner, repo)
 
     if cff_path:
-        cff_df = pd.DataFrame({'type': cff_data.get('preferred-citation', {}).get('type', None),
-                               'date-released': cff_data.get('preferred-citation', {}).get('date-released', None),
-                               'date-published': cff_data.get('preferred-citation', {}).get('date-published', None),
-                               'year': cff_data.get('preferred-citation', {}).get('year', None),
-                               'month': cff_data.get('preferred-citation', {}).get('month', None),
-                               'doi': cff_data.get('preferred-citation', {}).get('doi', None),
-                               'collection-doi': cff_data.get('preferred-citation', {}).get('collection-doi', None),
-                               'identifier-doi': next((item['value'] for item in cff_data.get('preferred-citation', {}).get('identifiers', []) if item['type'] == 'doi'), None)}, index=['current'])
+        file_data = []
+        authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
+        print_file = cff_path.split('/')[-1]
+        git_repo = Repo(f'./repos/{owner}/{repo}')
+        commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
+        for commit_for_file in commits_for_file:
+            tree = commit_for_file.tree
+            blob = tree[print_file]
+            cff_string = blob.data_stream.read().decode()
+            cff_yaml_data = load_cff_data(cff_string)
 
-        return load_cff_authors_from_data(cff_data, 'preferred-citation.authors'), cff_df
+            file_data.append({'type': cff_yaml_data.get('preferred-citation', {}).get('type', None),
+                                'date-released': cff_yaml_data.get('preferred-citation', {}).get('date-released', None),
+                                'date-published': cff_yaml_data.get('preferred-citation', {}).get('date-published', None),
+                                'year': cff_yaml_data.get('preferred-citation', {}).get('year', None),
+                                'month': cff_yaml_data.get('preferred-citation', {}).get('month', None),
+                                'doi': cff_yaml_data.get('preferred-citation', {}).get('doi', None),
+                                'collection-doi': cff_yaml_data.get('preferred-citation', {}).get('collection-doi', None),
+                                'identifier-doi': next((item['value'] for item in cff_yaml_data.get('preferred-citation', {}).get('identifiers', []) if item['type'] == 'doi'), None)})
+            authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'preferred-citation.authors'), commit_for_file.committed_datetime))
+
+        return authors_data, pd.DataFrame(file_data)
     else:
-        return pd.DataFrame(), pd.DataFrame()
+        return [(pd.DataFrame(), None)], pd.DataFrame()
     
 def get_bib_data(owner: str, repo: str) -> tuple[pd.DataFrame, pd.DataFrame]:
     file = Path(f'./repos/{owner}/{repo}/CITATION.bib')

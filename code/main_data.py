@@ -15,11 +15,13 @@ async def process_and_save(dataframe: pd.DataFrame, git_contributors_df: pd.Data
 
 async def process_general_package(owner: str, repo: str, git_contributors_df, package_name: str, index: str):
     cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
-    await process_and_save(cff_authors_df, git_contributors_df, package_name, 'cff_authors', index)
+    for cff_author_df in cff_authors_df:
+        await process_and_save(cff_author_df[0], git_contributors_df, package_name, str(cff_author_df[1]) + 'cff_authors', index)
     await process_and_save(cff_df, git_contributors_df, package_name, 'cff', index)
 
     cff_preferred_authors_df, cff_preferred_df = functions.get_cff_preferred_citation_data(owner, repo)
-    await process_and_save(cff_preferred_authors_df, git_contributors_df, package_name, 'cff_preferred_citation_authors', index)
+    for cff_preferred_author_df in cff_preferred_authors_df:
+        await process_and_save(cff_preferred_author_df[0], git_contributors_df, package_name, str(cff_preferred_author_df[1]) + 'cff_preferred_citation_authors', index)
     await process_and_save(cff_preferred_df, git_contributors_df, package_name, 'cff_preferred_citation', index)
 
     bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
