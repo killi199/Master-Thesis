@@ -293,15 +293,19 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
             blob = tree[print_file]
             cff_string = blob.data_stream.read().decode()
             cff_yaml_data = load_cff_data(cff_string)
+            valid = validate_cff(cff_path, cff_string)
 
-            file_data.append({'type': cff_yaml_data.get('preferred-citation', {}).get('type', None),
+            file_data.append({'cff_valid': valid,
+                                'type': cff_yaml_data.get('preferred-citation', {}).get('type', None),
                                 'date-released': cff_yaml_data.get('preferred-citation', {}).get('date-released', None),
                                 'date-published': cff_yaml_data.get('preferred-citation', {}).get('date-published', None),
                                 'year': cff_yaml_data.get('preferred-citation', {}).get('year', None),
                                 'month': cff_yaml_data.get('preferred-citation', {}).get('month', None),
                                 'doi': cff_yaml_data.get('preferred-citation', {}).get('doi', None),
                                 'collection-doi': cff_yaml_data.get('preferred-citation', {}).get('collection-doi', None),
-                                'identifier-doi': next((item['value'] for item in cff_yaml_data.get('preferred-citation', {}).get('identifiers', []) if item['type'] == 'doi'), None)})
+                                'identifier-doi': next((item['value'] for item in cff_yaml_data.get('preferred-citation', {}).get('identifiers', []) if item['type'] == 'doi'), None),
+                                'committed_datetime': str(commit_for_file.committed_datetime),
+                                'authored_datetime': str(commit_for_file.authored_datetime)})
             authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'preferred-citation.authors'), commit_for_file.committed_datetime))
 
         return authors_data, pd.DataFrame(file_data)
