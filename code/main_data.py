@@ -16,13 +16,15 @@ async def process_general_package(owner: str, repo: str, git_contributors_df, pa
     cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
     for cff_author_df in cff_authors_df:
         result = functions.matching(cff_author_df[0], git_contributors_df)
-        await process_and_save(result, package_name, cff_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_authors', index)
+        if not result.empty:
+            await process_and_save(result, package_name, cff_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_authors', index)
     await process_and_save(cff_df, package_name, 'cff', index)
 
     cff_preferred_authors_df, cff_preferred_df = functions.get_cff_preferred_citation_data(owner, repo)
     for cff_preferred_author_df in cff_preferred_authors_df:
         result = functions.matching(cff_preferred_author_df[0], git_contributors_df)
-        await process_and_save(result, package_name, cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_preferred_citation_authors', index)
+        if not result.empty:
+            await process_and_save(result, package_name, cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_preferred_citation_authors', index)
     await process_and_save(cff_preferred_df, package_name, 'cff_preferred_citation', index)
 
     bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
