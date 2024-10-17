@@ -360,7 +360,6 @@ def get_bib_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
     else:
         return [(pd.DataFrame(), None)], pd.DataFrame()
 
-
 def get_bib_authors(library: bibtexparser.Library) -> pd.DataFrame:
     authors: list = list()
 
@@ -582,14 +581,24 @@ def get_description_authors(description: str) -> pd.DataFrame:
 
     return pd.DataFrame(authors, columns=['name'])
 
-def load_readme_data(owner: str, repo: str) -> str:
-    try:
-        with open(f'./repos/{owner}/{repo}/README.md', 'r') as file:
-            readme = file.read()
-        return readme
-    except FileNotFoundError:
-        return ""
+def get_readme_authors(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
+    file = Path(f'./repos/{owner}/{repo}/README.md')
+    if file.is_file():
+        file_data = []
+        authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
+        print_file = 'README.md'
+        git_repo = Repo(f'./repos/{owner}/{repo}')
+        commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
+        for commit_for_file in commits_for_file:
+            tree = commit_for_file.tree
+            blob = tree[print_file]
+            readme_string = blob.data_stream.read().decode()
 
-def get_readme_authors(owner: str, repo: str) -> pd.DataFrame:
-    readme = load_readme_data(owner, repo)
-    return get_description_authors(readme)
+            file_data.append({'committed_datetime': str(commit_for_file.committed_datetime),
+                              'authored_datetime': str(commit_for_file.authored_datetime)})
+
+            authors_data.append((get_description_authors(readme_string), commit_for_file.committed_datetime))
+
+        return authors_data, pd.DataFrame(file_data)
+    else:
+        return [(pd.DataFrame(), None)], pd.DataFrame()
