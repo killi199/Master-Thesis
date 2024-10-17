@@ -1,4 +1,5 @@
 import glob
+import os.path
 import re
 from datetime import datetime
 import cffconvert.cli
@@ -221,7 +222,7 @@ def get_cff_list(authors) -> list[dict[str, str]]:
 def load_cff_data(content: str) -> dict:
     try:
         return yaml.safe_load(content)
-    except (yaml.YAMLError):
+    except yaml.YAMLError:
         return {}
 
 def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
@@ -312,29 +313,53 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
     else:
         return [(pd.DataFrame(), None)], pd.DataFrame()
     
-def get_bib_data(owner: str, repo: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+def get_bib_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
     file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
     if file.is_file():
-        layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
-        library = bibtexparser.parse_file(f'./repos/{owner}/{repo}/CITATION.bib', append_middleware=layers)
-        
-        entry_type = library.entries[0].entry_type
-        entry_year = library.entries[0].get('year', None)
-        entry_month = library.entries[0].get('month', None)
+        file_data = []
+        authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
+        print_file = 'CITATION.bib'
+        git_repo = Repo(f'./repos/{owner}/{repo}')
+        commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
+        for commit_for_file in commits_for_file:
+            tree = commit_for_file.tree
+            blob = tree[print_file]
+            bib_string = blob.data_stream.read().decode()
+            layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
+            library = bibtexparser.parse_string(bib_string, append_middleware=layers)
+            
+            entry_type = library.entries[0].entry_type
+            entry_year = library.entries[0].get('year', None)
+            entry_month = library.entries[0].get('month', None)
+            entry_doi = library.entries[0].get('doi', None)
+            entry_isbn = library.entries[0].get('isbn', None)
 
-        if entry_year is not None:
-            entry_year = entry_year.value
+            if entry_year is not None:
+                entry_year = entry_year.value
 
-        if entry_month is not None:
-            entry_month = entry_month.value
+            if entry_month is not None:
+                entry_month = entry_month.value
 
-        bib_df = pd.DataFrame({'type': entry_type,
-                               'year': entry_year,
-                               'month': entry_month}, index=['current'])
-        
-        return get_bib_authors(library), bib_df
+            if entry_doi is not None:
+                entry_doi = entry_doi.value
+
+            if entry_isbn is not None:
+                entry_isbn = entry_isbn.value
+
+            file_data.append({'type': entry_type,
+                              'year': entry_year,
+                              'month': entry_month,
+                              'doi': entry_doi,
+                              'isbn': entry_isbn,
+                              'committed_datetime': str(commit_for_file.committed_datetime),
+                              'authored_datetime': str(commit_for_file.authored_datetime)})
+
+            authors_data.append((get_bib_authors(library), commit_for_file.committed_datetime))
+            
+        return authors_data, pd.DataFrame(file_data)
     else:
-        return pd.DataFrame(), pd.DataFrame()
+        return [(pd.DataFrame(), None)], pd.DataFrame()
+
 
 def get_bib_authors(library: bibtexparser.Library) -> pd.DataFrame:
     authors: list = list()
