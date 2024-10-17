@@ -28,13 +28,18 @@ async def process_general_package(owner: str, repo: str, git_contributors_df, pa
     await process_and_save(cff_preferred_df, package_name, 'cff_preferred_citation', index)
 
     bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
-    result = functions.matching(bib_authors_df, git_contributors_df)
-    await process_and_save(result, package_name, 'bib_authors', index)
+    for bib_author_df in bib_authors_df:
+        result = functions.matching(bib_author_df[0], git_contributors_df)
+        if not result.empty:
+            await process_and_save(result, package_name, bib_author_df[1].strftime("%Y%m%d_%H%M%S") + '_bib_authors', index)
     await process_and_save(bib_df, package_name, 'bib', index)
 
-    readme_df = functions.get_readme_authors(owner, repo)
-    result = functions.matching(readme_df, git_contributors_df)
-    await process_and_save(result, package_name, 'readme_authors', index)
+    readme_authors_df, readme_df = functions.get_readme_authors(owner, repo)
+    for readme_author_df in readme_authors_df:
+        result = functions.matching(readme_author_df[0], git_contributors_df)
+        if not result.empty:
+            await process_and_save(result, package_name, readme_author_df[1].strftime("%Y%m%d_%H%M%S") + '_readme_authors', index)
+    await process_and_save(readme_df, package_name, 'readme', index)
 
 async def process_pypi_package(package):
     package_name = package.strip()
