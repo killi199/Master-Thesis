@@ -261,20 +261,23 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
         for commit_for_file in commits_for_file:
-            tree = commit_for_file.tree
-            blob = tree[print_file]
-            cff_string = blob.data_stream.read().decode()
-            cff_yaml_data = load_cff_data(cff_string)
-            valid = validate_cff(cff_path, cff_string)
+            try:
+                tree = commit_for_file.tree
+                blob = tree[print_file]
+                cff_string = blob.data_stream.read().decode()
+                cff_yaml_data = load_cff_data(cff_string)
+                valid = validate_cff(cff_path, cff_string)
 
-            file_data.append({'cff_valid': valid,
-                    'type': cff_yaml_data.get('type', 'software'),
-                    'date-released': cff_yaml_data.get('date-released', None),
-                    'doi': cff_yaml_data.get('doi', None),
-                    'identifier-doi': next((item['value'] for item in cff_yaml_data.get('identifiers', []) if item['type'] == 'doi'), None),
-                    'committed_datetime': str(commit_for_file.committed_datetime),
-                    'authored_datetime': str(commit_for_file.authored_datetime)})
-            authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'authors'), commit_for_file.committed_datetime))
+                file_data.append({'cff_valid': valid,
+                        'type': cff_yaml_data.get('type', 'software'),
+                        'date-released': cff_yaml_data.get('date-released', None),
+                        'doi': cff_yaml_data.get('doi', None),
+                        'identifier-doi': next((item['value'] for item in cff_yaml_data.get('identifiers', []) if item['type'] == 'doi'), None),
+                        'committed_datetime': str(commit_for_file.committed_datetime),
+                        'authored_datetime': str(commit_for_file.authored_datetime)})
+                authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'authors'), commit_for_file.committed_datetime))
+            except KeyError:
+                continue
 
         return authors_data, pd.DataFrame(file_data)
     else:
@@ -290,24 +293,27 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
         for commit_for_file in commits_for_file:
-            tree = commit_for_file.tree
-            blob = tree[print_file]
-            cff_string = blob.data_stream.read().decode()
-            cff_yaml_data = load_cff_data(cff_string)
-            valid = validate_cff(cff_path, cff_string)
+            try:
+                tree = commit_for_file.tree
+                blob = tree[print_file]
+                cff_string = blob.data_stream.read().decode()
+                cff_yaml_data = load_cff_data(cff_string)
+                valid = validate_cff(cff_path, cff_string)
 
-            file_data.append({'cff_valid': valid,
-                                'type': cff_yaml_data.get('preferred-citation', {}).get('type', None),
-                                'date-released': cff_yaml_data.get('preferred-citation', {}).get('date-released', None),
-                                'date-published': cff_yaml_data.get('preferred-citation', {}).get('date-published', None),
-                                'year': cff_yaml_data.get('preferred-citation', {}).get('year', None),
-                                'month': cff_yaml_data.get('preferred-citation', {}).get('month', None),
-                                'doi': cff_yaml_data.get('preferred-citation', {}).get('doi', None),
-                                'collection-doi': cff_yaml_data.get('preferred-citation', {}).get('collection-doi', None),
-                                'identifier-doi': next((item['value'] for item in cff_yaml_data.get('preferred-citation', {}).get('identifiers', []) if item['type'] == 'doi'), None),
-                                'committed_datetime': str(commit_for_file.committed_datetime),
-                                'authored_datetime': str(commit_for_file.authored_datetime)})
-            authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'preferred-citation.authors'), commit_for_file.committed_datetime))
+                file_data.append({'cff_valid': valid,
+                                    'type': cff_yaml_data.get('preferred-citation', {}).get('type', None),
+                                    'date-released': cff_yaml_data.get('preferred-citation', {}).get('date-released', None),
+                                    'date-published': cff_yaml_data.get('preferred-citation', {}).get('date-published', None),
+                                    'year': cff_yaml_data.get('preferred-citation', {}).get('year', None),
+                                    'month': cff_yaml_data.get('preferred-citation', {}).get('month', None),
+                                    'doi': cff_yaml_data.get('preferred-citation', {}).get('doi', None),
+                                    'collection-doi': cff_yaml_data.get('preferred-citation', {}).get('collection-doi', None),
+                                    'identifier-doi': next((item['value'] for item in cff_yaml_data.get('preferred-citation', {}).get('identifiers', []) if item['type'] == 'doi'), None),
+                                    'committed_datetime': str(commit_for_file.committed_datetime),
+                                    'authored_datetime': str(commit_for_file.authored_datetime)})
+                authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'preferred-citation.authors'), commit_for_file.committed_datetime))
+            except KeyError:
+                continue
 
         return authors_data, pd.DataFrame(file_data)
     else:
@@ -322,39 +328,42 @@ def get_bib_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
         for commit_for_file in commits_for_file:
-            tree = commit_for_file.tree
-            blob = tree[print_file]
-            bib_string = blob.data_stream.read().decode()
-            layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
-            library = bibtexparser.parse_string(bib_string, append_middleware=layers)
-            
-            entry_type = library.entries[0].entry_type
-            entry_year = library.entries[0].get('year', None)
-            entry_month = library.entries[0].get('month', None)
-            entry_doi = library.entries[0].get('doi', None)
-            entry_isbn = library.entries[0].get('isbn', None)
+            try:
+                tree = commit_for_file.tree
+                blob = tree[print_file]
+                bib_string = blob.data_stream.read().decode()
+                layers = [m.NormalizeFieldKeys(), m.SeparateCoAuthors(), m.SplitNameParts()]
+                library = bibtexparser.parse_string(bib_string, append_middleware=layers)
+                
+                entry_type = library.entries[0].entry_type
+                entry_year = library.entries[0].get('year', None)
+                entry_month = library.entries[0].get('month', None)
+                entry_doi = library.entries[0].get('doi', None)
+                entry_isbn = library.entries[0].get('isbn', None)
 
-            if entry_year is not None:
-                entry_year = entry_year.value
+                if entry_year is not None:
+                    entry_year = entry_year.value
 
-            if entry_month is not None:
-                entry_month = entry_month.value
+                if entry_month is not None:
+                    entry_month = entry_month.value
 
-            if entry_doi is not None:
-                entry_doi = entry_doi.value
+                if entry_doi is not None:
+                    entry_doi = entry_doi.value
 
-            if entry_isbn is not None:
-                entry_isbn = entry_isbn.value
+                if entry_isbn is not None:
+                    entry_isbn = entry_isbn.value
 
-            file_data.append({'type': entry_type,
-                              'year': entry_year,
-                              'month': entry_month,
-                              'doi': entry_doi,
-                              'isbn': entry_isbn,
-                              'committed_datetime': str(commit_for_file.committed_datetime),
-                              'authored_datetime': str(commit_for_file.authored_datetime)})
+                file_data.append({'type': entry_type,
+                                  'year': entry_year,
+                                  'month': entry_month,
+                                  'doi': entry_doi,
+                                  'isbn': entry_isbn,
+                                  'committed_datetime': str(commit_for_file.committed_datetime),
+                                  'authored_datetime': str(commit_for_file.authored_datetime)})
 
-            authors_data.append((get_bib_authors(library), commit_for_file.committed_datetime))
+                authors_data.append((get_bib_authors(library), commit_for_file.committed_datetime))
+            except KeyError:
+                continue
             
         return authors_data, pd.DataFrame(file_data)
     else:
@@ -590,15 +599,17 @@ def get_readme_authors(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, 
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
         for commit_for_file in commits_for_file:
-            tree = commit_for_file.tree
-            blob = tree[print_file]
-            readme_string = blob.data_stream.read().decode()
+            try:
+                tree = commit_for_file.tree
+                blob = tree[print_file]
+                readme_string = blob.data_stream.read().decode()
 
-            file_data.append({'committed_datetime': str(commit_for_file.committed_datetime),
-                              'authored_datetime': str(commit_for_file.authored_datetime)})
+                file_data.append({'committed_datetime': str(commit_for_file.committed_datetime),
+                                  'authored_datetime': str(commit_for_file.authored_datetime)})
 
-            authors_data.append((get_description_authors(readme_string), commit_for_file.committed_datetime))
-
+                authors_data.append((get_description_authors(readme_string), commit_for_file.committed_datetime))
+            except KeyError:
+                continue
         return authors_data, pd.DataFrame(file_data)
     else:
         return [(pd.DataFrame(), None)], pd.DataFrame()
