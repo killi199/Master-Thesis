@@ -1,7 +1,7 @@
 import glob
 import os.path
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 import cffconvert.cli
 import cffconvert.cli.create_citation
 import cffconvert.cli.read_from_file
@@ -13,7 +13,7 @@ import yaml
 import bibtexparser
 import bibtexparser.middlewares as m
 from pathlib import Path
-from xmlrpc.client import ServerProxy
+from xmlrpc.client import ServerProxy, DateTime
 import aiohttp
 from bs4 import BeautifulSoup
 import rpy2
@@ -161,18 +161,20 @@ def parse_contribution_stats(data: str, package_name: str) -> list:
 
     return authors
 
-async def run_git_quick_stat(repo_path: Path) -> str:
+async def run_git_quick_stat(repo_path: Path, timestamp: datetime) -> str:
     loop = asyncio.get_running_loop()
     with concurrent.futures.ThreadPoolExecutor() as pool:
         # Doppelte Leute, da unterschiedliche Namen beim commit angegeben → Das Problem besteht beim Benutzen der GitHub API nicht. → Teilweise gelöst mittels group auf E-Mail
+        timestamp = timestamp + timedelta(minutes=1)
+        time_string = timestamp.strftime("%Y-%m-%d %H-%M")
         result = await loop.run_in_executor(
             pool,
             lambda: subprocess.run(['git', 'quick-stats', '-T'], capture_output=True, encoding='utf-8',
-                                   cwd=str(repo_path))
+                                   cwd=str(repo_path), env={'_GIT_UNTIL':time_string})
         )
     return result.stdout
 
-async def get_git_contributors(owner: str, repo: str, repo_link: str, package_name: str) -> pd.DataFrame:
+def clone_git_repo(owner: str, repo: str, repo_link: str):
     try:
         Repo.clone_from(repo_link, f'./repos/{owner}/{repo}')
     except GitCommandError as ex:
@@ -180,8 +182,9 @@ async def get_git_contributors(owner: str, repo: str, repo_link: str, package_na
             print(f"Error cloning {repo_link}: {ex}")
         pass
 
+async def get_git_contributors(owner: str, repo: str, package_name: str, timestamp: datetime) -> pd.DataFrame:
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
-    data = await run_git_quick_stat(Path(f'./repos/{owner}/{repo}'))
+    data = await run_git_quick_stat(Path(f'./repos/{owner}/{repo}'), timestamp)
 
     # Parse the data
     authors_data = parse_contribution_stats(data, package_name)

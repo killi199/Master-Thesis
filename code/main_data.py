@@ -1,3 +1,5 @@
+from datetime import datetime
+
 import aiohttp
 import pandas as pd
 
@@ -12,9 +14,12 @@ async def process_and_save(dataframe: pd.DataFrame, package_name: str, filename:
     if not dataframe.empty:
         dataframe.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False)
 
-async def process_general_package(owner: str, repo: str, git_contributors_df, package_name: str, index: str):
+async def process_general_package(owner: str, repo: str, package_name: str, index: str):
     cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
     for cff_author_df in cff_authors_df:
+        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, cff_author_df[1])
+        await process_and_save(git_contributors_df, package_name,
+                               cff_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
         result = functions.matching(cff_author_df[0], git_contributors_df)
         if not result.empty:
             await process_and_save(result, package_name, cff_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_authors', index)
@@ -22,6 +27,9 @@ async def process_general_package(owner: str, repo: str, git_contributors_df, pa
 
     cff_preferred_authors_df, cff_preferred_df = functions.get_cff_preferred_citation_data(owner, repo)
     for cff_preferred_author_df in cff_preferred_authors_df:
+        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, cff_preferred_author_df[1])
+        await process_and_save(git_contributors_df, package_name,
+                               cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
         result = functions.matching(cff_preferred_author_df[0], git_contributors_df)
         if not result.empty:
             await process_and_save(result, package_name, cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_preferred_citation_authors', index)
@@ -29,6 +37,9 @@ async def process_general_package(owner: str, repo: str, git_contributors_df, pa
 
     bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
     for bib_author_df in bib_authors_df:
+        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, bib_author_df[1])
+        await process_and_save(git_contributors_df, package_name,
+                               bib_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
         result = functions.matching(bib_author_df[0], git_contributors_df)
         if not result.empty:
             await process_and_save(result, package_name, bib_author_df[1].strftime("%Y%m%d_%H%M%S") + '_bib_authors', index)
@@ -36,6 +47,9 @@ async def process_general_package(owner: str, repo: str, git_contributors_df, pa
 
     readme_authors_df, readme_df = functions.get_readme_authors(owner, repo)
     for readme_author_df in readme_authors_df:
+        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, readme_author_df[1])
+        await process_and_save(git_contributors_df, package_name,
+                               readme_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
         result = functions.matching(readme_author_df[0], git_contributors_df)
         if not result.empty:
             await process_and_save(result, package_name, readme_author_df[1].strftime("%Y%m%d_%H%M%S") + '_readme_authors', index)
@@ -52,10 +66,10 @@ async def process_pypi_package(package, semaphore: asyncio.Semaphore):
 
         os.mkdir(f'results/pypi/{package_name}')
 
-        git_contributors_df = await functions.get_git_contributors(owner, repo, repo_link, package_name)
-        git_contributors_df.to_csv(f'results/pypi/{package_name}/git_contributors.csv', index=False)
+        functions.clone_git_repo(owner, repo, repo_link)
+        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
+        await process_and_save(git_contributors_df, package_name, 'git_contributors', 'pypi')
 
-        # currently not fully accessible through the API -> limiting factor HTTP is limited if this is not used more semaphores possible
         async with semaphore:
             pypi_maintainers_df = await functions.get_pypi_maintainers(package_name)
             result = functions.matching(pypi_maintainers_df, git_contributors_df)
@@ -74,7 +88,7 @@ async def process_pypi_package(package, semaphore: asyncio.Semaphore):
         result = functions.matching(description_df, git_contributors_df)
         await process_and_save(result, package_name, 'description_authors', 'pypi')
 
-        await process_general_package(owner, repo, git_contributors_df, package_name, 'pypi')
+        await process_general_package(owner, repo, package_name, 'pypi')
     except Exception as e:
         print(f"Error processing {package_name}: {e}")
 
@@ -89,8 +103,9 @@ async def process_cran_package(package, _: asyncio.Semaphore):
 
         os.mkdir(f'results/cran/{package_name}')
 
-        git_contributors_df = await functions.get_git_contributors(owner, repo, repo_link, package_name)
-        git_contributors_df.to_csv(f'results/cran/{package_name}/git_contributors.csv', index=False)
+        functions.clone_git_repo(owner, repo, repo_link)
+        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
+        await process_and_save(git_contributors_df, package_name, 'git_contributors', 'cran')
 
         cran_authors_df = functions.get_cran_authors(cran_data)
         result = functions.matching(cran_authors_df, git_contributors_df)
@@ -105,7 +120,7 @@ async def process_cran_package(package, _: asyncio.Semaphore):
         result = functions.matching(description_df, git_contributors_df)
         await process_and_save(result, package_name, 'description_authors', 'cran')
 
-        await process_general_package(owner, repo, git_contributors_df, package_name, 'cran')
+        await process_general_package(owner, repo, package_name, 'cran')
     except Exception as e:
         print(f"Error processing {package_name}: {e}")
 
