@@ -1,18 +1,18 @@
 from datetime import datetime
+from pathlib import Path
 
 import aiohttp
 import pandas as pd
 
 import functions
 import asyncio
-import os
 import json
 from tqdm import tqdm
 
 
 async def process_and_save(dataframe: pd.DataFrame, package_name: str, filename: str, index: str):
     if not dataframe.empty:
-        dataframe.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False)
+        dataframe.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False, mode='w')
 
 async def process_general_package(owner: str, repo: str, package_name: str, index: str):
     cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
@@ -64,7 +64,7 @@ async def process_pypi_package(package, semaphore: asyncio.Semaphore):
 
         owner, repo, repo_link = functions.get_pypi_repo(pypi_data)
 
-        os.mkdir(f'results/pypi/{package_name}')
+        Path(f'results/pypi/{package_name}').mkdir(parents=True, exist_ok=True)
 
         functions.clone_git_repo(owner, repo, repo_link)
         git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
@@ -101,7 +101,7 @@ async def process_cran_package(package, _: asyncio.Semaphore):
 
         owner, repo, repo_link = functions.get_cran_repo(cran_data)
 
-        os.mkdir(f'results/cran/{package_name}')
+        Path(f'results/pypi/{package_name}').mkdir(parents=True, exist_ok=True)
 
         functions.clone_git_repo(owner, repo, repo_link)
         git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
