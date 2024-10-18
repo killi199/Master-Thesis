@@ -166,7 +166,7 @@ async def run_git_quick_stat(repo_path: Path, timestamp: datetime) -> str:
     with concurrent.futures.ThreadPoolExecutor() as pool:
         # Doppelte Leute, da unterschiedliche Namen beim commit angegeben → Das Problem besteht beim Benutzen der GitHub API nicht. → Teilweise gelöst mittels group auf E-Mail
         timestamp = timestamp + timedelta(minutes=1)
-        time_string = timestamp.strftime("%Y-%m-%d %H-%M")
+        time_string = timestamp.strftime("%Y-%m-%d %H:%M")
         result = await loop.run_in_executor(
             pool,
             lambda: subprocess.run(['git', 'quick-stats', '-T'], capture_output=True, encoding='utf-8',
@@ -612,7 +612,7 @@ def get_readme_authors(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, 
 
                 authors_data.append((get_description_authors(readme_string), commit_for_file.committed_datetime))
             except KeyError:
-                continue
+                pass
         return authors_data, pd.DataFrame(file_data)
     else:
         return [(pd.DataFrame(), None)], pd.DataFrame()
