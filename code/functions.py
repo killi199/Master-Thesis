@@ -122,7 +122,7 @@ def parse_contribution_stats(data: str, package_name: str) -> list:
     author_pattern = re.compile(
         r"\s*(.+) <(.+)>:\s*"
         r"insertions:\s*(\d+)\s*\((\d+)%\)\s*"
-        r"deletions:\s*(\d+)\s*\((\d+)%\)\s*"
+        r"(?:deletions:\s*(\d+)\s*\((\d+)%\)\s*)?"
         r"files:\s*(\d+)\s*\((\d+)%\)\s*"
         r"commits:\s*(\d+)\s*\((\d+)%\)\s*"
         r"lines changed:\s*(\d+)\s*\((\d+)%\)\s*"
@@ -153,7 +153,7 @@ def parse_contribution_stats(data: str, package_name: str) -> list:
             'name': name,
             'email': email,
             'insertions': int(insertions),
-            'deletions': int(deletions),
+            'deletions': int(0 if deletions is None else deletions),
             'files': int(files),
             'commits': int(commits),
             'first_commit': first_commit_parsed,
