@@ -280,7 +280,7 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
                         'authored_datetime': str(commit_for_file.authored_datetime)})
                 authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'authors'), commit_for_file.committed_datetime))
             except KeyError:
-                continue
+                pass
 
         return authors_data, pd.DataFrame(file_data)
     else:
@@ -316,7 +316,7 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
                                     'authored_datetime': str(commit_for_file.authored_datetime)})
                 authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'preferred-citation.authors'), commit_for_file.committed_datetime))
             except KeyError:
-                continue
+                pass
 
         return authors_data, pd.DataFrame(file_data)
     else:
@@ -366,7 +366,7 @@ def get_bib_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
 
                 authors_data.append((get_bib_authors(library), commit_for_file.committed_datetime))
             except KeyError:
-                continue
+                pass
             
         return authors_data, pd.DataFrame(file_data)
     else:
