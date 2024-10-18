@@ -140,12 +140,14 @@ def parse_contribution_stats(data: str, package_name: str) -> list:
         except ValueError:
             first_commit_parsed = utc.localize(datetime.min)
             print(f'Error parsing author: {name} in {package_name}')
+            pass
 
         try:
             last_commit_parsed = datetime.strptime(last_commit, '%a %b %d %H:%M:%S %Y %z')
         except ValueError:
             last_commit_parsed = utc.localize(datetime.max)
             print(f'Error parsing author: {name} in {package_name}')
+            pass
 
         authors.append({
             'name': name,
