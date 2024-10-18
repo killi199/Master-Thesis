@@ -141,7 +141,7 @@ async def main():
         json_object = json.loads(packages[0])
         cran_rows = json_object['downloads'][:100]
 
-    semaphore = asyncio.Semaphore(10)
+    semaphore = asyncio.Semaphore(12)
     pypi_api_semaphore = asyncio.Semaphore(1)
 
     pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore) for package in pypi_rows]
