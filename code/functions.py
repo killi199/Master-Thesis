@@ -1,5 +1,4 @@
 import glob
-import os.path
 import re
 from datetime import datetime, timedelta
 import cffconvert.cli
@@ -13,7 +12,7 @@ import yaml
 import bibtexparser
 import bibtexparser.middlewares as m
 from pathlib import Path
-from xmlrpc.client import ServerProxy, DateTime
+from xmlrpc.client import ServerProxy
 import aiohttp
 from bs4 import BeautifulSoup
 import rpy2
@@ -138,15 +137,15 @@ def parse_contribution_stats(data: str, package_name: str) -> list:
         try:
             first_commit_parsed = datetime.strptime(first_commit, '%a %b %d %H:%M:%S %Y %z')
         except ValueError:
-            first_commit_parsed = utc.localize(datetime.min)
-            print(f'Error parsing author: {name} in {package_name}')
+            first_commit_parsed = datetime.strptime(first_commit[:-7], '%a %b %d %H:%M:%S %Y')
+            first_commit_parsed = first_commit_parsed.replace(tzinfo=utc)
             pass
 
         try:
             last_commit_parsed = datetime.strptime(last_commit, '%a %b %d %H:%M:%S %Y %z')
         except ValueError:
-            last_commit_parsed = utc.localize(datetime.max)
-            print(f'Error parsing author: {name} in {package_name}')
+            last_commit_parsed = datetime.strptime(last_commit[:-7], '%a %b %d %H:%M:%S %Y')
+            last_commit_parsed = last_commit_parsed.replace(tzinfo=utc)
             pass
 
         authors.append({
