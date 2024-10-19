@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 import requests
-import time
 from tqdm import tqdm  # Import tqdm for progress bar
 
 # Load GitHub personal access token from a file
@@ -54,7 +53,6 @@ with tqdm(total=len(repos), desc='Processing Repositories') as pbar:
     for repo_url in repos:
         if repo_url in existing_repos:
             pbar.update(1)  # Update progress bar
-            print(f"Skipping already processed repo: {repo_url}")
             continue  # Skip already processed repos
 
         stars = get_repo_stars(repo_url)
@@ -66,10 +64,6 @@ with tqdm(total=len(repos), desc='Processing Repositories') as pbar:
             # Save the current results to CSV, overwriting the file
             pd.DataFrame(results).to_csv('github_repo_stars.csv', index=False)
 
-        # Rate limit handling
-        if len(results) % 5000 == 0:
-            print("Reached 5000 API calls, waiting for the next hour...")
-            time.sleep(3600)  # Sleep for an hour if limit is reached
 
         pbar.update(1)  # Update progress bar for each processed repository
 
