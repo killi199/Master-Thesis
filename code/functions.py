@@ -537,7 +537,16 @@ def get_cran_repo(cran_data) -> tuple[str, str, str]:
 
     repo_link = [url for url in urls if "github.com" in url]
     if not repo_link:
-        raise ValueError(f"No GitHub repository found in CRAN data.")
+        url = cran_data.get("BugReports")
+        if not url:
+            raise ValueError(f"No GitHub repository found in CRAN data.")
+
+        urls = [x.strip() for x in url.split(',')]
+
+        repo_link = [url for url in urls if "github.com" in url]
+        if not repo_link:
+            url = cran_data.get("BugReports")
+            raise ValueError(f"No GitHub repository found in CRAN data.")
     
     repo_link = repo_link[0]
     repo_link = repo_link.split("#")[0]
