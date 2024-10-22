@@ -247,12 +247,11 @@ def get_cff_path(owner: str, repo: str) ->str:
         return ""
     
 def validate_cff(cff_path: str, cff_data: str) -> bool:
-    citation = Citation(cff_data, src=cff_path)
-
     try:
+        citation = Citation(cff_data, src=cff_path)
         citation.validate()
         return True
-    except (PykwalifySchemaError, JsonschemaSchemaError):
+    except (PykwalifySchemaError, JsonschemaSchemaError, ValueError):
         return False
     
 def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
