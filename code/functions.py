@@ -27,6 +27,7 @@ import warnings
 from cffconvert import Citation
 from jsonschema.exceptions import ValidationError as JsonschemaSchemaError
 from pykwalify.errors import SchemaError as PykwalifySchemaError
+from tqdm import tqdm
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -602,7 +603,7 @@ def get_description_authors(description: str) -> pd.DataFrame:
 
     return pd.DataFrame(authors, columns=['name'])
 
-def get_readme_authors(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
+def get_readme_authors(owner: str, repo: str, position: int) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
     file = Path(f'./repos/{owner}/{repo}/README.md')
     if file.is_file():
         file_data = []
@@ -610,7 +611,7 @@ def get_readme_authors(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, 
         print_file = 'README.md'
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
-        for commit_for_file in commits_for_file:
+        for commit_for_file in tqdm(commits_for_file, desc=f'{repo} README', position=position):
             try:
                 tree = commit_for_file.tree
                 blob = tree[print_file]

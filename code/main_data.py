@@ -14,7 +14,7 @@ async def process_and_save(dataframe: pd.DataFrame, package_name: str, filename:
     if not dataframe.empty:
         dataframe.to_csv(f'results/{index}/{package_name}/{filename}.csv', index=False, mode='w')
 
-async def process_general_package(owner: str, repo: str, package_name: str, index: str):
+async def process_general_package(owner: str, repo: str, package_name: str, index: str, position: int):
     cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
     for cff_author_df in cff_authors_df:
         if not cff_author_df[0].empty:
@@ -45,7 +45,7 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
             await process_and_save(result, package_name, bib_author_df[1].strftime("%Y%m%d_%H%M%S") + '_bib_authors', index)
     await process_and_save(bib_df, package_name, 'bib', index)
 
-    readme_authors_df, readme_df = functions.get_readme_authors(owner, repo)
+    readme_authors_df, readme_df = await asyncio.to_thread(functions.get_readme_authors, owner, repo, position)
     for readme_author_df in readme_authors_df:
         if not readme_author_df[0].empty:
             git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, readme_author_df[1])
@@ -55,7 +55,7 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
             await process_and_save(result, package_name, readme_author_df[1].strftime("%Y%m%d_%H%M%S") + '_readme_authors', index)
     await process_and_save(readme_df, package_name, 'readme', index)
 
-async def process_pypi_package(package, semaphore: asyncio.Semaphore, url: str, index: str):
+async def process_pypi_package(package, semaphore: asyncio.Semaphore, url: str, index: str, position: int):
     package_name = package.strip()
     try:
         async with aiohttp.ClientSession() as session:
@@ -93,13 +93,13 @@ async def process_pypi_package(package, semaphore: asyncio.Semaphore, url: str, 
         result = functions.matching(description_df, git_contributors_df)
         await process_and_save(result, package_name, 'description_authors', index)
 
-        await process_general_package(owner, repo, package_name, index)
+        await process_general_package(owner, repo, package_name, index, position)
     except ValueError as e:
         print(f"Error processing {package_name}: {e}")
     except Exception:
         print(f"Error processing {package_name}: {traceback.format_exc()}")
 
-async def process_cran_package(package, _: asyncio.Semaphore, url: str, index: str):
+async def process_cran_package(package, _: asyncio.Semaphore, url: str, index: str, position: int):
     package_name = package.strip()
     try:
         async with aiohttp.ClientSession() as session:
@@ -132,21 +132,21 @@ async def process_cran_package(package, _: asyncio.Semaphore, url: str, index: s
         result = functions.matching(description_df, git_contributors_df)
         await process_and_save(result, package_name, 'description_authors', index)
 
-        await process_general_package(owner, repo, package_name, index)
+        await process_general_package(owner, repo, package_name, index, position)
     except ValueError as e:
         print(f"Error processing {package_name}: {e}")
     except Exception:
         print(f"Error processing {package_name}: {traceback.format_exc()}")
 
-async def process_cff_package(package, semaphore: asyncio.Semaphore, _: str, index: str):
+async def process_cff_package(package, semaphore: asyncio.Semaphore, _: str, index: str, position: int):
     if package['Ecosystem'] == 'pypi':
-        await process_pypi_package(package['Name'], semaphore, package['Repository'], index)
+        await process_pypi_package(package['Name'], semaphore, package['Repository'], index, position)
     if package['Ecosystem'] == 'cran':
-        await process_cran_package(package['Name'], semaphore, package['Repository'], index)
+        await process_cran_package(package['Name'], semaphore, package['Repository'], index, position)
 
-async def process_package_semaphore(package_name, semaphore: asyncio.Semaphore, function, pypi_api_semaphore, url: str, index: str):
+async def process_package_semaphore(package_name, semaphore: asyncio.Semaphore, function, pypi_api_semaphore, url: str, index: str, position: int):
     async with semaphore:
-        await function(package_name, pypi_api_semaphore, url, index)
+        await function(package_name, pypi_api_semaphore, url, index, position)
 
 async def main():
     # https://hugovk.github.io/top-pypi-packages/
@@ -166,17 +166,17 @@ async def main():
     semaphore = asyncio.Semaphore(multiprocessing.cpu_count()/2)
     pypi_api_semaphore = asyncio.Semaphore(1)
 
-    #pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, "", 'pypi') for package in pypi_rows]
-    cran_tasks = [process_package_semaphore(package['package'], semaphore, process_cran_package, pypi_api_semaphore, "", 'cran') for package in cran_rows]
-    cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cff') for index, package in cff_df.iterrows()]
+    #pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, '', 'pypi', index + 1) for index, package in enumerate(pypi_rows)]
+    cran_tasks = [process_package_semaphore(package['package'], semaphore, process_cran_package, pypi_api_semaphore, '', 'cran', index + 1) for index, package in enumerate(cran_rows)]
+    cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cff', index + 1) for index, (_, package) in enumerate(cff_df.iterrows())]
 
-    #for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks)):
+    #for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks), desc='PyPI', position=0):
      #   await task
 
-    for task in tqdm(asyncio.as_completed(cran_tasks), total=len(cran_tasks)):
+    for task in tqdm(asyncio.as_completed(cran_tasks), total=len(cran_tasks), desc='CRAN', position=0):
         await task
 
-    for task in tqdm(asyncio.as_completed(cff_tasks), total=len(cff_tasks)):
+    for task in tqdm(asyncio.as_completed(cff_tasks), total=len(cff_tasks), desc='CFF', position=0):
         await task
 
 if __name__ == "__main__":
