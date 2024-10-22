@@ -163,7 +163,7 @@ async def main():
 
     cff_df = pd.read_csv('github_repo_stars_sorted_100.csv')
 
-    semaphore = asyncio.Semaphore(multiprocessing.cpu_count()/2)
+    semaphore = asyncio.Semaphore(5)
     pypi_api_semaphore = asyncio.Semaphore(1)
 
     #pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, '', 'pypi', index + 1) for index, package in enumerate(pypi_rows)]
