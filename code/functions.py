@@ -611,7 +611,7 @@ def get_readme_authors(owner: str, repo: str, position: int) -> tuple[list[tuple
         print_file = 'README.md'
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
-        for commit_for_file in tqdm(commits_for_file, desc=f'{repo} README', position=position):
+        for commit_for_file in tqdm(commits_for_file, desc=f'{repo} README', position=position, dynamic_ncols=True):
             try:
                 tree = commit_for_file.tree
                 blob = tree[print_file]

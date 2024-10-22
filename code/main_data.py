@@ -170,13 +170,13 @@ async def main():
     cran_tasks = [process_package_semaphore(package['package'], semaphore, process_cran_package, pypi_api_semaphore, '', 'cran', index + 1) for index, package in enumerate(cran_rows)]
     cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cff', index + 1) for index, (_, package) in enumerate(cff_df.iterrows())]
 
-    #for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks), desc='PyPI', position=0):
+    #for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks), desc='PyPI', position=0, dynamic_ncols=True):
      #   await task
 
-    for task in tqdm(asyncio.as_completed(cran_tasks), total=len(cran_tasks), desc='CRAN', position=0):
+    for task in tqdm(asyncio.as_completed(cran_tasks), total=len(cran_tasks), desc='CRAN', position=0, dynamic_ncols=True):
         await task
 
-    for task in tqdm(asyncio.as_completed(cff_tasks), total=len(cff_tasks), desc='CFF', position=0):
+    for task in tqdm(asyncio.as_completed(cff_tasks), total=len(cff_tasks), desc='CFF', position=0, dynamic_ncols=True):
         await task
 
 if __name__ == "__main__":
