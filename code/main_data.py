@@ -1,4 +1,5 @@
 import multiprocessing
+import traceback
 from datetime import datetime
 from pathlib import Path
 import aiohttp
@@ -93,8 +94,10 @@ async def process_pypi_package(package, semaphore: asyncio.Semaphore, url: str, 
         await process_and_save(result, package_name, 'description_authors', index)
 
         await process_general_package(owner, repo, package_name, index)
-    except Exception as e:
+    except ValueError as e:
         print(f"Error processing {package_name}: {e}")
+    except Exception:
+        print(f"Error processing {package_name}: {traceback.format_exc()}")
 
 async def process_cran_package(package, _: asyncio.Semaphore, url: str, index: str):
     package_name = package.strip()
@@ -130,8 +133,10 @@ async def process_cran_package(package, _: asyncio.Semaphore, url: str, index: s
         await process_and_save(result, package_name, 'description_authors', index)
 
         await process_general_package(owner, repo, package_name, index)
-    except Exception as e:
+    except ValueError as e:
         print(f"Error processing {package_name}: {e}")
+    except Exception:
+        print(f"Error processing {package_name}: {traceback.format_exc()}")
 
 async def process_cff_package(package, semaphore: asyncio.Semaphore, _: str, index: str):
     if package['Ecosystem'] == 'pypi':
