@@ -166,12 +166,12 @@ async def main():
     semaphore = asyncio.Semaphore(multiprocessing.cpu_count()/2)
     pypi_api_semaphore = asyncio.Semaphore(1)
 
-    pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, "", 'pypi') for package in pypi_rows]
+    #pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, "", 'pypi') for package in pypi_rows]
     cran_tasks = [process_package_semaphore(package['package'], semaphore, process_cran_package, pypi_api_semaphore, "", 'cran') for package in cran_rows]
     cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cff') for index, package in cff_df.iterrows()]
 
-    for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks)):
-        await task
+    #for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks)):
+     #   await task
 
     for task in tqdm(asyncio.as_completed(cran_tasks), total=len(cran_tasks)):
         await task
