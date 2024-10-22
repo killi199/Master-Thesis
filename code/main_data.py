@@ -1,3 +1,4 @@
+import multiprocessing
 from datetime import datetime
 from pathlib import Path
 import aiohttp
@@ -157,7 +158,7 @@ async def main():
 
     cff_df = pd.read_csv('github_repo_stars_sorted_100.csv')
 
-    semaphore = asyncio.Semaphore(12)
+    semaphore = asyncio.Semaphore(multiprocessing.cpu_count()/2)
     pypi_api_semaphore = asyncio.Semaphore(1)
 
     pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, "", 'pypi') for package in pypi_rows]
