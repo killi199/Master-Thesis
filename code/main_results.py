@@ -12,6 +12,11 @@ def check_matches(file_path):
 
 
 def process_directory(directory, full=True):
+    total_valid_cff_full = 0
+    total_valid_cff = 0
+    total_cff_full = 0
+    total_cff = 0
+
     file_type_percentages = {}
 
     # Regular expressions to extract timestamp and file type
@@ -59,6 +64,12 @@ def process_directory(directory, full=True):
                         file_type_percentages[file_type]['matches'] += matches
                         file_type_percentages[file_type]['non_matches'] += non_matches
                         file_type_percentages[file_type]['entries'] += entries
+
+                if file == 'cff.csv':
+                    file_path = os.path.join(root, file)
+                    df = pd.read_csv(file_path)
+                    total_cff_full += len(df)
+                    total_valid_cff_full += df['cff_valid'].sum()
             else:
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
@@ -71,6 +82,15 @@ def process_directory(directory, full=True):
                         _, latest_time = latest_files_by_folder[folder_name][file_type]
                         if latest_time is None or timestamp > latest_time:
                             latest_files_by_folder[folder_name][file_type] = (os.path.join(root, file), timestamp)
+
+                if file == 'cff.csv':
+                    file_path = os.path.join(root, file)
+                    df = pd.read_csv(file_path)
+                    df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
+                    df_sorted = df.sort_values(by='committed_datetime', ascending=False)
+                    total_cff += 1
+                    if df_sorted.iloc[0]['cff_valid']:
+                        total_valid_cff += 1
 
     # After the loop, process the latest files if 'full' is False
     if not full:
@@ -87,6 +107,12 @@ def process_directory(directory, full=True):
     # Convert percentages to tuple format before returning
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in
                              file_type_percentages.items()}
+
+    if full:
+        print(
+            f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff_full}/{total_cff_full} ({total_valid_cff_full / total_cff_full * 100:.2f}%)")
+    else:
+        print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff}/{total_cff} ({total_valid_cff / total_cff * 100:.2f}%)")
 
     return file_type_percentages
 
