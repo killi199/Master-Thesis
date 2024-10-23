@@ -90,50 +90,64 @@ def process_directory(directory, full=True):
 
     return file_type_percentages
 
-def main():
-    cran_dir = 'results/cran'
-    pypi_dir = 'results/pypi'
 
-    cran_file_types = process_directory(cran_dir, full=False)
-    pypi_file_types = process_directory(pypi_dir, full=False)
-
+def process_results(file_types, source_name):
     entries_result = 0
     matches_result = 0
     non_matches_result = 0
-    pypi_entries_result = 0
-    pypi_matches_result = 0
-    pypi_non_matches_result = 0
-    cran_entries_result = 0
-    cran_matches_result = 0
-    cran_non_matches_result = 0
 
-    for file_type, matches in cran_file_types.items():
-        print(f"CRAN {file_type} {matches[0]}/{matches[2]} ({matches[0]/matches[2] * 100:.2f}%) non matches {matches[1]}")
+    for file_type, matches in file_types.items():
+        print(
+            f"{source_name} {file_type} {matches[0]}/{matches[2]} ({matches[0] / matches[2] * 100:.2f}%) non matches {matches[1]}")
         entries_result += matches[2]
         non_matches_result += matches[1]
         matches_result += matches[0]
-        cran_entries_result += matches[2]
-        cran_non_matches_result += matches[1]
-        cran_matches_result += matches[0]
 
-    print(f"CRAN total matches {cran_matches_result}/{cran_entries_result} ({cran_matches_result/cran_entries_result * 100:.2f}%) non matches {cran_non_matches_result}")
+    print(
+        f"{source_name} total matches {matches_result}/{entries_result} ({matches_result / entries_result * 100:.2f}%) non matches {non_matches_result}")
+    return matches_result, non_matches_result, entries_result
 
-    print()
 
-    for file_type, matches in pypi_file_types.items():
-        print(f"PyPi {file_type} {matches[0]}/{matches[2]} ({matches[0]/matches[2] * 100:.2f}%) non matches {matches[1]}")
-        entries_result += matches[2]
-        non_matches_result += matches[1]
-        matches_result += matches[0]
-        pypi_entries_result += matches[2]
-        pypi_non_matches_result += matches[1]
-        pypi_matches_result += matches[0]
+def print_results(directory, full):
+    cran_dir = os.path.join(directory, 'cran')
+    pypi_dir = os.path.join(directory, 'pypi')
 
-    print(f"PyPi total matches {pypi_matches_result}/{pypi_entries_result} ({pypi_matches_result / pypi_entries_result * 100:.2f}%) non matches {pypi_non_matches_result}")
+    cran_file_types = process_directory(cran_dir, full=full)
+    pypi_file_types = process_directory(pypi_dir, full=full)
 
     print()
 
-    print(f"Total matches {matches_result}/{entries_result} ({matches_result/entries_result * 100:.2f}%) non matches {non_matches_result}")
+    # Process and print CRAN results
+    cran_matches_result, cran_non_matches_result, cran_entries_result = process_results(cran_file_types, "CRAN")
+    print()
+
+    # Process and print PyPi results
+    pypi_matches_result, pypi_non_matches_result, pypi_entries_result = process_results(pypi_file_types, "PyPi")
+    print()
+
+    # Calculate total results
+    total_matches_result = cran_matches_result + pypi_matches_result
+    total_non_matches_result = cran_non_matches_result + pypi_non_matches_result
+    total_entries_result = cran_entries_result + pypi_entries_result
+
+    print(
+        f"Total matches {total_matches_result}/{total_entries_result} ({total_matches_result / total_entries_result * 100:.2f}%) non matches {total_non_matches_result}")
+
+
+def print_latest():
+    print_results('results', full=False)
+
+
+def print_full():
+    print_results('results', full=True)
+
+
+def main():
+    print("Latest results")
+    print_latest()
+    print("\n\nFull results")
+    print_full()
+
 
 if __name__ == "__main__":
     main()
