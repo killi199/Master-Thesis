@@ -22,9 +22,9 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
         if not cff_author_df[0].empty:
             git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, cff_author_df[1])
             await process_and_save(git_contributors_df, package_name,
-                                   cff_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
+                                   cff_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(cff_author_df[0], git_contributors_df)
-            await process_and_save(result, package_name, cff_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_authors', index)
+            await process_and_save(result, package_name, cff_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_cff_authors', index)
     await process_and_save(cff_df, package_name, 'cff', index)
 
     cff_preferred_authors_df, cff_preferred_df = functions.get_cff_preferred_citation_data(owner, repo)
@@ -32,9 +32,9 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
         if not cff_preferred_author_df[0].empty:
             git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, cff_preferred_author_df[1])
             await process_and_save(git_contributors_df, package_name,
-                                   cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
+                                   cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(cff_preferred_author_df[0], git_contributors_df)
-            await process_and_save(result, package_name, cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S") + '_cff_preferred_citation_authors', index)
+            await process_and_save(result, package_name, cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_cff_preferred_citation_authors', index)
         await process_and_save(cff_preferred_df, package_name, 'cff_preferred_citation', index)
 
     bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
@@ -42,9 +42,9 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
         if not bib_author_df[0].empty:
             git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, bib_author_df[1])
             await process_and_save(git_contributors_df, package_name,
-                                   bib_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
+                                   bib_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(bib_author_df[0], git_contributors_df)
-            await process_and_save(result, package_name, bib_author_df[1].strftime("%Y%m%d_%H%M%S") + '_bib_authors', index)
+            await process_and_save(result, package_name, bib_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_bib_authors', index)
     await process_and_save(bib_df, package_name, 'bib', index)
 
     readme_authors_df, readme_df = await asyncio.to_thread(functions.get_readme_authors, owner, repo, position)
@@ -52,9 +52,9 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
         if not readme_author_df[0].empty:
             git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, readme_author_df[1])
             await process_and_save(git_contributors_df, package_name,
-                                   readme_author_df[1].strftime("%Y%m%d_%H%M%S") + '_git_contributors', index)
+                                   readme_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(readme_author_df[0], git_contributors_df)
-            await process_and_save(result, package_name, readme_author_df[1].strftime("%Y%m%d_%H%M%S") + '_readme_authors', index)
+            await process_and_save(result, package_name, readme_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_readme_authors', index)
     await process_and_save(readme_df, package_name, 'readme', index)
 
 async def process_pypi_package(package, semaphore: asyncio.Semaphore, url: str, index: str, position: int):
