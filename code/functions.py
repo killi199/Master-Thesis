@@ -611,7 +611,7 @@ def get_readme_authors(owner: str, repo: str, position: int) -> tuple[list[tuple
         authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
         print_file = 'README.md'
         git_repo = Repo(f'./repos/{owner}/{repo}')
-        commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
+        commits_for_file = list(git_repo.iter_commits(paths=print_file, max_count=50))
         for commit_for_file in tqdm(commits_for_file, desc=f'{repo} README', position=position, dynamic_ncols=True):
             try:
                 tree = commit_for_file.tree
