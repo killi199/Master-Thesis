@@ -21,6 +21,7 @@ import concurrent.futures
 from pytz import utc
 import rpy2.robjects as ro
 from rpy2.rinterface_lib._rinterface_capi import RParsingError
+from ruamel.yaml.constructor import DuplicateKeyError
 from thefuzz import fuzz
 import spacy
 import warnings
@@ -252,7 +253,7 @@ def validate_cff(cff_path: str, cff_data: str) -> bool:
         citation = Citation(cff_data, src=cff_path)
         citation.validate()
         return True
-    except (PykwalifySchemaError, JsonschemaSchemaError, ValueError):
+    except (PykwalifySchemaError, JsonschemaSchemaError, ValueError, DuplicateKeyError):
         return False
     
 def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
