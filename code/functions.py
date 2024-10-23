@@ -1,4 +1,5 @@
 import glob
+import os
 import re
 from datetime import datetime, timedelta, timezone
 import cffconvert.cli
@@ -241,13 +242,18 @@ def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
     except KeyError:
         return pd.DataFrame()
     
-def get_cff_path(owner: str, repo: str) ->str:
-    paths = glob.glob(f'./repos/{owner}/{repo}/*.cff')
-    if len(paths) > 0:
-            return paths[0]
-    else:
-        return ""
-    
+def get_file_path(owner: str, repo: str, pattern: str) -> str:
+    target_dir = os.path.join('./repos/', owner, repo)
+
+    for root, _, _ in os.walk(target_dir):
+        full_pattern = os.path.join(root, pattern)
+        matched_files = glob.glob(full_pattern)
+        
+        if matched_files:
+            return matched_files[0]
+
+    return ""
+
 def validate_cff(cff_path: str, cff_data: str) -> bool:
     try:
         citation = Citation(cff_data, src=cff_path)
@@ -257,12 +263,13 @@ def validate_cff(cff_path: str, cff_data: str) -> bool:
         return False
     
 def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
-    cff_path = get_cff_path(owner, repo)
+    cff_path = get_file_path(owner, repo, '*.cff')
 
     if cff_path:
         file_data = []
         authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
-        print_file = cff_path.split('/')[-1]
+        path_parts = cff_path.split('/')
+        print_file = '/'.join(path_parts[4:])
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
         for commit_for_file in commits_for_file:
@@ -289,12 +296,13 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
         return [(pd.DataFrame(), None)], pd.DataFrame()
 
 def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
-    cff_path = get_cff_path(owner, repo)
+    cff_path = get_file_path(owner, repo, '*.cff')
 
     if cff_path:
         file_data = []
         authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
-        print_file = cff_path.split('/')[-1]
+        path_parts = cff_path.split('/')
+        print_file = '/'.join(path_parts[4:])
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
         for commit_for_file in commits_for_file:
@@ -325,11 +333,13 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
         return [(pd.DataFrame(), None)], pd.DataFrame()
     
 def get_bib_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
-    file = Path(f'./repos/{owner}/{repo}/CITATION.bib')
-    if file.is_file():
+    bib_path = get_file_path(owner, repo, '*.bib')
+    
+    if bib_path:
         file_data = []
         authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
-        print_file = 'CITATION.bib'
+        path_parts = bib_path.split('/')
+        print_file = '/'.join(path_parts[4:])
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(all=True, paths=print_file))
         for commit_for_file in commits_for_file:
