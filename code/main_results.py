@@ -111,9 +111,11 @@ def process_results(file_types, source_name):
 def print_results(directory, full):
     cran_dir = os.path.join(directory, 'cran')
     pypi_dir = os.path.join(directory, 'pypi')
+    cff_dir = os.path.join(directory, 'cff')
 
     cran_file_types = process_directory(cran_dir, full=full)
     pypi_file_types = process_directory(pypi_dir, full=full)
+    cff_file_types = process_directory(cff_dir, full=full)
 
     print()
 
@@ -125,10 +127,14 @@ def print_results(directory, full):
     pypi_matches_result, pypi_non_matches_result, pypi_entries_result = process_results(pypi_file_types, "PyPi")
     print()
 
+    # Process and print CFF results
+    cff_matches_result, cff_non_matches_result, cff_entries_result = process_results(cff_file_types, "CFF")
+    print()
+
     # Calculate total results
-    total_matches_result = cran_matches_result + pypi_matches_result
-    total_non_matches_result = cran_non_matches_result + pypi_non_matches_result
-    total_entries_result = cran_entries_result + pypi_entries_result
+    total_matches_result = cran_matches_result + pypi_matches_result + cff_matches_result
+    total_non_matches_result = cran_non_matches_result + pypi_non_matches_result + cff_non_matches_result
+    total_entries_result = cran_entries_result + pypi_entries_result + cff_entries_result
 
     print(
         f"Total matches {total_matches_result}/{total_entries_result} ({total_matches_result / total_entries_result * 100:.2f}%) non matches {total_non_matches_result}")
@@ -147,7 +153,6 @@ def main():
     print_latest()
     print("\n\nFull results")
     print_full()
-
 
 if __name__ == "__main__":
     main()
