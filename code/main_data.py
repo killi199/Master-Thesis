@@ -146,8 +146,9 @@ async def process_cff_package(package, semaphore: asyncio.Semaphore, _: str, ind
     if package['Ecosystem'] == 'cran':
         await process_cran_package(package['Name'], semaphore, package['Repository'], index, bar_id)
 
-async def process_package_semaphore(package_name, semaphore: asyncio.Semaphore, function, pypi_api_semaphore, url: str, index: str, bar_id: int):
+async def process_package_semaphore(package_name, semaphore: asyncio.Semaphore, function, pypi_api_semaphore, url: str, index: str):
     async with semaphore:
+        bar_id = bar_queue.get()
         await function(package_name, pypi_api_semaphore, url, index, bar_id)
         bar_queue.put(bar_id)
 
@@ -172,9 +173,9 @@ async def main():
     for i in range(1, semaphore_count + 1):
         bar_queue.put(i)
 
-    pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, '', 'pypi', bar_queue.get()) for package in pypi_rows]
-    cran_tasks = [process_package_semaphore(package['package'], semaphore, process_cran_package, pypi_api_semaphore, '', 'cran', bar_queue.get()) for package in cran_rows]
-    cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cff', bar_queue.get()) for _, package in cff_df.iterrows()]
+    pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, '', 'pypi') for package in pypi_rows]
+    cran_tasks = [process_package_semaphore(package['package'], semaphore, process_cran_package, pypi_api_semaphore, '', 'cran') for package in cran_rows]
+    cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cff') for _, package in cff_df.iterrows()]
 
     for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks), desc='PyPI', position=0, dynamic_ncols=True, smoothing=0):
         await task
