@@ -276,7 +276,7 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
                         'type': cff_yaml_data.get('type', 'software'),
                         'date-released': cff_yaml_data.get('date-released', None),
                         'doi': cff_yaml_data.get('doi', None),
-                        'identifier-doi': next((item['value'] for item in cff_yaml_data.get('identifiers', []) if item['type'] == 'doi'), None),
+                        'identifier-doi': next((item['value'] for item in cff_yaml_data.get('identifiers', []) or [] if item['type'] == 'doi'), None),
                         'committed_datetime': str(commit_for_file.committed_datetime),
                         'authored_datetime': str(commit_for_file.authored_datetime)})
                 authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'authors'), commit_for_file.committed_datetime))
