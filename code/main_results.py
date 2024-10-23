@@ -13,17 +13,35 @@ def process_directory(directory):
 
     for root, _, files in os.walk(directory):
         for file in files:
-            if not (file.endswith('authors.csv') or file.endswith('maintainers.csv')):
-                continue
-            file_path = os.path.join(root, file)
-            matches, non_matches, entries = check_matches(file_path)
+            if file == 'pypi_maintainers.csv' or file == 'python_authors.csv' or file == 'python_maintainers.csv' or file == 'description_authors.csv' or file == 'cran_authors.csv' or file == 'cran_maintainers.csv':
+                file_path = os.path.join(root, file)
+                matches, non_matches, entries = check_matches(file_path)
 
-            file = os.path.splitext(file)[0]
-            if file not in file_type_percentages:
-                file_type_percentages[file] = {'matches': 0, 'non_matches': 0, 'entries': 0}
-            file_type_percentages[file]['matches'] += matches
-            file_type_percentages[file]['non_matches'] += non_matches
-            file_type_percentages[file]['entries'] += entries
+                file = os.path.splitext(file)[0]
+                if file not in file_type_percentages:
+                    file_type_percentages[file] = {'matches': 0, 'non_matches': 0, 'entries': 0}
+                file_type_percentages[file]['matches'] += matches
+                file_type_percentages[file]['non_matches'] += non_matches
+                file_type_percentages[file]['entries'] += entries
+
+            file_types = [
+                'readme_authors.csv',
+                'cff_authors.csv',
+                'cff_preferred_citation_authors.csv',
+                'bib_authors.csv'
+            ]
+
+            for file_type in file_types:
+                if file.endswith(file_type):
+                    file_path = os.path.join(root, file)
+                    matches, non_matches, entries = check_matches(file_path)
+
+                    if file_type not in file_type_percentages:
+                        file_type_percentages[file_type] = {'matches': 0, 'non_matches': 0, 'entries': 0}
+
+                    file_type_percentages[file_type]['matches'] += matches
+                    file_type_percentages[file_type]['non_matches'] += non_matches
+                    file_type_percentages[file_type]['entries'] += entries
 
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in file_type_percentages.items()}
 
