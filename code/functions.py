@@ -604,7 +604,7 @@ def get_description_authors(description: str) -> pd.DataFrame:
 
     return pd.DataFrame(authors, columns=['name'])
 
-def get_readme_authors(owner: str, repo: str, position: int) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
+def get_readme_authors(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
     file = Path(f'./repos/{owner}/{repo}/README.md')
     if file.is_file():
         file_data = []
@@ -612,7 +612,7 @@ def get_readme_authors(owner: str, repo: str, position: int) -> tuple[list[tuple
         print_file = 'README.md'
         git_repo = Repo(f'./repos/{owner}/{repo}')
         commits_for_file = list(git_repo.iter_commits(paths=print_file, max_count=50))
-        for commit_for_file in tqdm(commits_for_file, desc=f'{repo} README', position=position, dynamic_ncols=True):
+        for commit_for_file in commits_for_file:
             try:
                 tree = commit_for_file.tree
                 blob = tree[print_file]
