@@ -594,7 +594,7 @@ def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
     return pd.DataFrame(dic)
 
 def get_description_authors(description: str) -> pd.DataFrame:
-    nlp = spacy.load("en_core_web_trf")
+    nlp = spacy.load("en_core_web_sm")
     doc = nlp(description)
     authors: list = list()
     for ent in doc.ents:
