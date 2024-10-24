@@ -24,6 +24,7 @@ def process_directory(directory, full=True):
     identifier_doi_cff_full = 0
     citation_counts_cff = {}
     citation_counts_cff_full = {}
+    average_time_between_updates_cff = []
 
     # Preferred citation CFF
     total_preferred_citation_cff = 0
@@ -36,6 +37,12 @@ def process_directory(directory, full=True):
     collection_doi_preferred_citation_cff_full = 0
     citation_counts_preferred_citation_cff = {}
     citation_counts_preferred_citation_cff_full = {}
+
+    # Bib
+    average_time_between_updates_bib = []
+
+    # Readme
+    average_time_between_updates_readme = []
 
     file_type_percentages = {}
 
@@ -94,7 +101,23 @@ def process_directory(directory, full=True):
                     identifier_doi_cff_full += df['identifier-doi'].notna().sum()
                     for key, value in df['type'].value_counts().to_dict().items():
                         citation_counts_cff_full[key] = citation_counts_cff_full.get(key, 0) + value
+                    df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
+                    df_sorted = df.sort_values(by='committed_datetime')
+                    average_time_between_updates_cff.append(df_sorted['committed_datetime'].diff().dropna().mean())
 
+                if file == 'bib.csv':
+                    file_path = os.path.join(root, file)
+                    df = pd.read_csv(file_path)
+                    df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
+                    df_sorted = df.sort_values(by='committed_datetime')
+                    average_time_between_updates_bib.append(df_sorted['committed_datetime'].diff().dropna().mean())
+
+                if file == 'readme.csv':
+                    file_path = os.path.join(root, file)
+                    df = pd.read_csv(file_path)
+                    df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
+                    df_sorted = df.sort_values(by='committed_datetime')
+                    average_time_between_updates_readme.append(df_sorted['committed_datetime'].diff().dropna().mean())
 
                 if file == 'cff_preferred_citation.csv':
                     file_path = os.path.join(root, file)
@@ -175,6 +198,12 @@ def process_directory(directory, full=True):
             print(f"Citation counts for {key} CFF: {value}/{total_cff_full}")
         for key, value in citation_counts_preferred_citation_cff_full.items():
             print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff_full}")
+        average_time_between_updates_cff = pd.Series(average_time_between_updates_cff).mean()
+        print(f"Average time between updates for {directory.split('/')[-1]} CFF: {average_time_between_updates_cff}")
+        average_time_between_updates_bib = pd.Series(average_time_between_updates_bib).mean()
+        print(f"Average time between updates for {directory.split('/')[-1]} Bib: {average_time_between_updates_bib}")
+        average_time_between_updates_readme = pd.Series(average_time_between_updates_readme).mean()
+        print(f"Average time between updates for {directory.split('/')[-1]} Readme: {average_time_between_updates_readme}")
         print()
     else:
         print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff}/{total_cff}")
