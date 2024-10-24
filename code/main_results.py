@@ -10,6 +10,11 @@ def check_matches(file_path):
     entries = len(df)
     return matches, non_matches, entries
 
+def get_git_contributors_df(root) -> pd.DataFrame:
+    git_contributors_df = pd.read_csv(os.path.join(root, 'git_contributors.csv'))
+    git_contributors_df['last_commit'] = pd.to_datetime(git_contributors_df['last_commit'], utc=True)
+    return git_contributors_df
+
 
 def process_directory(directory, full=True):
     total_valid_cff_full = 0
@@ -25,6 +30,7 @@ def process_directory(directory, full=True):
     citation_counts_cff = {}
     citation_counts_cff_full = {}
     average_time_between_updates_cff = []
+    difference_last_update_cff_list = []
 
     # Preferred citation CFF
     total_preferred_citation_cff = 0
@@ -40,9 +46,11 @@ def process_directory(directory, full=True):
 
     # Bib
     average_time_between_updates_bib = []
+    difference_last_update_bib_list = []
 
     # Readme
     average_time_between_updates_readme = []
+    difference_last_update_readme_list = []
 
     file_type_percentages = {}
 
@@ -142,6 +150,7 @@ def process_directory(directory, full=True):
                             latest_files_by_folder[folder_name][file_type] = (os.path.join(root, file), timestamp)
 
                 if file == 'cff.csv':
+                    git_contributors_df = get_git_contributors_df(root)
                     file_path = os.path.join(root, file)
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
@@ -155,6 +164,7 @@ def process_directory(directory, full=True):
                         identifier_doi_cff += 1
                     key = df_sorted.iloc[0]['type']
                     citation_counts_cff[key] = citation_counts_cff.get(key, 0) + 1
+                    difference_last_update_cff_list.append(git_contributors_df['last_commit'].max() - df_sorted.iloc[0]['committed_datetime'])
 
                 if file == 'cff_preferred_citation.csv':
                     file_path = os.path.join(root, file)
@@ -170,6 +180,22 @@ def process_directory(directory, full=True):
                         collection_doi_preferred_citation_cff += 1
                     key = df_sorted.iloc[0]['type']
                     citation_counts_preferred_citation_cff[key] = citation_counts_preferred_citation_cff.get(key, 0) + 1
+
+                if file == 'bib.csv':
+                    git_contributors_df = get_git_contributors_df(root)
+                    file_path = os.path.join(root, file)
+                    df = pd.read_csv(file_path)
+                    df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
+                    df_sorted = df.sort_values(by='committed_datetime', ascending=False)
+                    difference_last_update_bib_list.append(git_contributors_df['last_commit'].max() - df_sorted.iloc[0]['committed_datetime'])
+
+                if file == 'readme.csv':
+                    git_contributors_df = get_git_contributors_df(root)
+                    file_path = os.path.join(root, file)
+                    df = pd.read_csv(file_path)
+                    df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
+                    df_sorted = df.sort_values(by='committed_datetime', ascending=False)
+                    difference_last_update_readme_list.append(git_contributors_df['last_commit'].max() - df_sorted.iloc[0]['committed_datetime'])
 
     # After the loop, process the latest files if 'full' is False
     if not full:
@@ -216,6 +242,12 @@ def process_directory(directory, full=True):
             print(f"Citation counts for {key} CFF: {value}/{total_cff}")
         for key, value in citation_counts_preferred_citation_cff.items():
             print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff}")
+        average_time_last_update_cff = pd.Series(difference_last_update_cff_list).mean()
+        print(f"Average time between last update and last commit for {directory.split('/')[-1]} CFF: {average_time_last_update_cff}")
+        average_time_last_update_bib = pd.Series(difference_last_update_bib_list).mean()
+        print(f"Average time between last update and last commit for {directory.split('/')[-1]} Bib: {average_time_last_update_bib}")
+        average_time_last_update_readme = pd.Series(difference_last_update_readme_list).mean()
+        print(f"Average time between last update and last commit for {directory.split('/')[-1]} Readme: {average_time_last_update_readme}")
         print()
 
     return file_type_percentages
