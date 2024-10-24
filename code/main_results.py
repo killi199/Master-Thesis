@@ -22,6 +22,8 @@ def process_directory(directory, full=True):
     doi_cff_full = 0
     identifier_doi_cff = 0
     identifier_doi_cff_full = 0
+    citation_counts_cff = {}
+    citation_counts_cff_full = {}
 
     # Preferred citation CFF
     total_preferred_citation_cff = 0
@@ -32,6 +34,8 @@ def process_directory(directory, full=True):
     identifier_doi_preferred_citation_cff_full = 0
     collection_doi_preferred_citation_cff = 0
     collection_doi_preferred_citation_cff_full = 0
+    citation_counts_preferred_citation_cff = {}
+    citation_counts_preferred_citation_cff_full = {}
 
     file_type_percentages = {}
 
@@ -88,6 +92,9 @@ def process_directory(directory, full=True):
                     total_valid_cff_full += df['cff_valid'].sum()
                     doi_cff_full += df['doi'].notna().sum()
                     identifier_doi_cff_full += df['identifier-doi'].notna().sum()
+                    for key, value in df['type'].value_counts().to_dict().items():
+                        citation_counts_cff_full[key] = citation_counts_cff_full.get(key, 0) + value
+
 
                 if file == 'cff_preferred_citation.csv':
                     file_path = os.path.join(root, file)
@@ -96,6 +103,8 @@ def process_directory(directory, full=True):
                     doi_preferred_citation_cff_full += df['doi'].notna().sum()
                     identifier_doi_preferred_citation_cff_full += df['identifier-doi'].notna().sum()
                     collection_doi_preferred_citation_cff_full += df['collection-doi'].notna().sum()
+                    for key, value in df['type'].value_counts().to_dict().items():
+                        citation_counts_preferred_citation_cff_full[key] = citation_counts_preferred_citation_cff_full.get(key, 0) + value
             else:
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
@@ -121,6 +130,8 @@ def process_directory(directory, full=True):
                         doi_cff += 1
                     if not pd.isna(df_sorted.iloc[0]['identifier-doi']):
                         identifier_doi_cff += 1
+                    key = df_sorted.iloc[0]['type']
+                    citation_counts_cff[key] = citation_counts_cff.get(key, 0) + 1
 
                 if file == 'cff_preferred_citation.csv':
                     file_path = os.path.join(root, file)
@@ -134,6 +145,8 @@ def process_directory(directory, full=True):
                         identifier_doi_preferred_citation_cff += 1
                     if not pd.isna(df_sorted.iloc[0]['collection-doi']):
                         collection_doi_preferred_citation_cff += 1
+                    key = df_sorted.iloc[0]['type']
+                    citation_counts_preferred_citation_cff[key] = citation_counts_preferred_citation_cff.get(key, 0) + 1
 
     # After the loop, process the latest files if 'full' is False
     if not full:
@@ -158,6 +171,10 @@ def process_directory(directory, full=True):
         print(f"DOI preferred citation {directory.split('/')[-1]} CFF: {doi_preferred_citation_cff_full}/{total_preferred_citation_cff_full}")
         print(f"Identifier DOI preferred citation {directory.split('/')[-1]} CFF: {identifier_doi_preferred_citation_cff_full}/{total_preferred_citation_cff_full}")
         print(f"Collection DOI preferred citation {directory.split('/')[-1]} CFF: {collection_doi_preferred_citation_cff_full}/{total_preferred_citation_cff_full}")
+        for key, value in citation_counts_cff_full.items():
+            print(f"Citation counts for {key} CFF: {value}/{total_cff_full}")
+        for key, value in citation_counts_preferred_citation_cff_full.items():
+            print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff_full}")
         print()
     else:
         print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff}/{total_cff}")
@@ -166,6 +183,10 @@ def process_directory(directory, full=True):
         print(f"DOI preferred citation {directory.split('/')[-1]} CFF: {doi_preferred_citation_cff}/{total_preferred_citation_cff}")
         print(f"Identifier DOI preferred citation {directory.split('/')[-1]} CFF: {identifier_doi_preferred_citation_cff}/{total_preferred_citation_cff}")
         print(f"Collection DOI preferred citation {directory.split('/')[-1]} CFF: {collection_doi_preferred_citation_cff}/{total_preferred_citation_cff}")
+        for key, value in citation_counts_cff.items():
+            print(f"Citation counts for {key} CFF: {value}/{total_cff}")
+        for key, value in citation_counts_preferred_citation_cff.items():
+            print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff}")
         print()
 
     return file_type_percentages
