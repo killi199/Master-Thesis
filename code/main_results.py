@@ -52,6 +52,8 @@ def process_directory(directory, full=True):
     difference_last_update_readme_list = []
 
     file_type_percentages = {}
+    total_authors = {}
+    total_authors_no_commits = {}
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -138,6 +140,17 @@ def process_directory(directory, full=True):
                     file_type_percentages[file_base]['non_matches'] += non_matches
                     file_type_percentages[file_base]['entries'] += entries
 
+                    git_contributors_df = get_git_contributors_df(root)
+
+                    if file not in total_authors:
+                        total_authors[file] = 0
+                        total_authors_no_commits[file] = {'1_year': 0, '2_years': 0, '5_years': 0}
+
+                    total_authors[file] += len(df[df['score'] > 0])
+                    total_authors_no_commits[file]['1_year'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365)])
+                    total_authors_no_commits[file]['2_years'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*2)])
+                    total_authors_no_commits[file]['5_years'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*5)])
+
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
                     match = pattern.search(file)
@@ -204,12 +217,24 @@ def process_directory(directory, full=True):
             for file_type, (latest_file_path, _) in file_data.items():
                 if latest_file_path:
                     authors_df = pd.read_csv(latest_file_path)
+                    authors_df['last_commit'] = pd.to_datetime(authors_df['last_commit'], utc=True)
                     matches, non_matches, entries = check_matches(authors_df)
                     if file_type not in file_type_percentages:
                         file_type_percentages[file_type] = {'matches': 0, 'non_matches': 0, 'entries': 0}
+
                     file_type_percentages[file_type]['matches'] += matches
                     file_type_percentages[file_type]['non_matches'] += non_matches
                     file_type_percentages[file_type]['entries'] += entries
+
+                    git_contributors_df = get_git_contributors_df(os.path.dirname(latest_file_path))
+                    if file_type not in total_authors:
+                        total_authors[file_type] = 0
+                        total_authors_no_commits[file_type] = {'1_year': 0, '2_years': 0, '5_years': 0}
+
+                    total_authors[file_type] += len(authors_df[authors_df['score'] > 0])
+                    total_authors_no_commits[file_type]['1_year'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365)])
+                    total_authors_no_commits[file_type]['2_years'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*2)])
+                    total_authors_no_commits[file_type]['5_years'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*5)])
 
     # Convert percentages to tuple format before returning
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in
@@ -250,6 +275,10 @@ def process_directory(directory, full=True):
         print(f"Average time between last update and last commit for {directory.split('/')[-1]} Bib: {average_time_last_update_bib}")
         average_time_last_update_readme = pd.Series(difference_last_update_readme_list).mean()
         print(f"Average time between last update and last commit for {directory.split('/')[-1]} Readme: {average_time_last_update_readme}")
+        for total_authors_no_commits_key, total_authors_no_commits_value in total_authors_no_commits.items():
+            print(f"Total authors with no commits in the last year or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['1_year']}/{total_authors[total_authors_no_commits_key]}")
+            print(f"Total authors with no commits in the last 2 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['2_years']}/{total_authors[total_authors_no_commits_key]}")
+            print(f"Total authors with no commits in the last 5 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['5_years']}/{total_authors[total_authors_no_commits_key]}")
         print()
 
     return file_type_percentages
@@ -315,7 +344,7 @@ def print_full():
 def main():
     print("Latest results")
     print_latest()
-    print("\n\nFull results")
+    print("\n\nResults over time")
     print_full()
 
 if __name__ == "__main__":
