@@ -72,19 +72,6 @@ def process_directory(directory, full=True):
             latest_files_by_folder[folder_name] = {file_type: (None, None) for file_type in file_patterns}
 
         for file in files:
-            # Process non-timestamped common CSV files
-            if file in ['pypi_maintainers.csv', 'python_authors.csv', 'python_maintainers.csv',
-                        'description_authors.csv', 'cran_authors.csv', 'cran_maintainers.csv']:
-                file_path = os.path.join(root, file)
-                matches, non_matches, entries = check_matches(file_path)
-
-                file_base = os.path.splitext(file)[0]
-                if file_base not in file_type_percentages:
-                    file_type_percentages[file_base] = {'matches': 0, 'non_matches': 0, 'entries': 0}
-                file_type_percentages[file_base]['matches'] += matches
-                file_type_percentages[file_base]['non_matches'] += non_matches
-                file_type_percentages[file_base]['entries'] += entries
-
             # Process timestamped files if 'full' is False, otherwise process all files
             if full:
                 # Process all timestamped file types
@@ -137,6 +124,20 @@ def process_directory(directory, full=True):
                     for key, value in df['type'].value_counts().to_dict().items():
                         citation_counts_preferred_citation_cff_full[key] = citation_counts_preferred_citation_cff_full.get(key, 0) + value
             else:
+                if file in ['pypi_maintainers.csv', 'python_authors.csv', 'python_maintainers.csv',
+                            'description_authors.csv', 'cran_authors.csv', 'cran_maintainers.csv']:
+                    file_path = os.path.join(root, file)
+                    df = pd.read_csv(file_path)
+                    df['last_commit'] = pd.to_datetime(df['last_commit'], utc=True)
+                    matches, non_matches, entries = check_matches(df)
+
+                    file_base = os.path.splitext(file)[0]
+                    if file_base not in file_type_percentages:
+                        file_type_percentages[file_base] = {'matches': 0, 'non_matches': 0, 'entries': 0}
+                    file_type_percentages[file_base]['matches'] += matches
+                    file_type_percentages[file_base]['non_matches'] += non_matches
+                    file_type_percentages[file_base]['entries'] += entries
+
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
                     match = pattern.search(file)
