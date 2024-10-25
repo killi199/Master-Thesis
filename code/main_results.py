@@ -3,8 +3,7 @@ import re
 import pandas as pd
 from datetime import datetime
 
-def check_matches(file_path):
-    df = pd.read_csv(file_path)
+def check_matches(df: pd.DataFrame):
     matches = (df['score'] > 0).sum()
     non_matches = (df['score'] == 0).sum()
     entries = len(df)
@@ -78,7 +77,8 @@ def process_directory(directory, full=True):
                 for file_type, pattern in file_patterns.items():
                     if file.endswith(file_type):
                         file_path = os.path.join(root, file)
-                        matches, non_matches, entries = check_matches(file_path)
+                        df = pd.read_csv(file_path)
+                        matches, non_matches, entries = check_matches(df)
 
                         if file_type not in file_type_percentages:
                             file_type_percentages[file_type] = {'matches': 0, 'non_matches': 0, 'entries': 0}
@@ -203,7 +203,8 @@ def process_directory(directory, full=True):
         for folder, file_data in latest_files_by_folder.items():
             for file_type, (latest_file_path, _) in file_data.items():
                 if latest_file_path:
-                    matches, non_matches, entries = check_matches(latest_file_path)
+                    authors_df = pd.read_csv(latest_file_path)
+                    matches, non_matches, entries = check_matches(authors_df)
                     if file_type not in file_type_percentages:
                         file_type_percentages[file_type] = {'matches': 0, 'non_matches': 0, 'entries': 0}
                     file_type_percentages[file_type]['matches'] += matches
