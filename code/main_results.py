@@ -21,6 +21,29 @@ def get_authors_df(file_path: str) -> pd.DataFrame:
     df['last_commit'] = pd.to_datetime(df['last_commit'], utc=True, format='%Y-%m-%d %H:%M:%S%z')
     return df
 
+def get_common_authors(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
+    common_fields = ['insertions', 'deletions', 'lines_changed', 'files', 'commits', 'first_commit', 'last_commit']
+    merged_df = pd.merge(df1, df2, on=common_fields, how='inner')
+    return merged_df
+
+def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str) -> dict:
+    if file not in common_authors:
+        common_authors[file] = {'1': (0, 0), '5': (0, 0), '10': (0, 0)}
+
+    most_1_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(1).index]
+    common_1_authors = get_common_authors(most_1_commits_entry, df)
+    common_authors[file]['1'] = common_authors[file]['1'][0] + len(common_1_authors), common_authors[file]['1'][1] + len(most_1_commits_entry)
+
+    most_5_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(5).index]
+    common_5_authors = get_common_authors(most_5_commits_entry, df)
+    common_authors[file]['5'] = common_authors[file]['5'][0] + len(common_5_authors), common_authors[file]['5'][1] + len(most_5_commits_entry)
+
+    most_10_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(10).index]
+    common_10_authors = get_common_authors(most_10_commits_entry, df)
+    common_authors[file]['10'] = common_authors[file]['10'][0] + len(common_10_authors), common_authors[file]['10'][1] + len(most_10_commits_entry)
+
+    return common_authors
+
 def process_directory(directory, full=True):
     total_valid_cff_full = 0
     total_valid_cff = 0
@@ -60,6 +83,7 @@ def process_directory(directory, full=True):
     file_type_percentages = {}
     total_authors = {}
     total_authors_no_commits = {}
+    common_authors = {}
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -156,6 +180,8 @@ def process_directory(directory, full=True):
                     total_authors_no_commits[file]['2_years'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*2)])
                     total_authors_no_commits[file]['5_years'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*5)])
 
+                    common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file)
+
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
                     match = pattern.search(file)
@@ -240,6 +266,8 @@ def process_directory(directory, full=True):
                     total_authors_no_commits[file_type]['2_years'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*2)])
                     total_authors_no_commits[file_type]['5_years'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*5)])
 
+                    common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type)
+
     # Convert percentages to tuple format before returning
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in
                              file_type_percentages.items()}
@@ -282,7 +310,12 @@ def process_directory(directory, full=True):
         for total_authors_no_commits_key, total_authors_no_commits_value in total_authors_no_commits.items():
             print(f"Total authors with no commits in the last year or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['1_year']}/{total_authors[total_authors_no_commits_key]}")
             print(f"Total authors with no commits in the last 2 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['2_years']}/{total_authors[total_authors_no_commits_key]}")
-            print(f"Total authors with no commits in the last 5 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['5_years']}/{total_authors[total_authors_no_commits_key]}")
+            print(f"Total authors with no commits in the last 5 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['5_years']}/{total_authors[total_authors_no_commits_key]}")#
+
+        for file, common_authors_data in common_authors.items():
+            print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (1 most committer): {common_authors_data['1'][0]}/{common_authors_data['1'][1]}")
+            print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (5 most committer): {common_authors_data['5'][0]}/{common_authors_data['5'][1]}")
+            print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (10 most committer): {common_authors_data['10'][0]}/{common_authors_data['10'][1]}")
         print()
 
     return file_type_percentages
