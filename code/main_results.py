@@ -11,9 +11,15 @@ def check_matches(df: pd.DataFrame):
 
 def get_git_contributors_df(root) -> pd.DataFrame:
     git_contributors_df = pd.read_csv(os.path.join(root, 'git_contributors.csv'))
-    git_contributors_df['last_commit'] = pd.to_datetime(git_contributors_df['last_commit'], utc=True)
+    git_contributors_df['first_commit'] = pd.to_datetime(git_contributors_df['first_commit'], utc=True, format='%Y-%m-%d %H:%M:%S%z')
+    git_contributors_df['last_commit'] = pd.to_datetime(git_contributors_df['last_commit'], utc=True, format='%Y-%m-%d %H:%M:%S%z')
     return git_contributors_df
 
+def get_authors_df(file_path: str) -> pd.DataFrame:
+    df = pd.read_csv(file_path)
+    df['first_commit'] = pd.to_datetime(df['first_commit'], utc=True, format='%Y-%m-%d %H:%M:%S%z')
+    df['last_commit'] = pd.to_datetime(df['last_commit'], utc=True, format='%Y-%m-%d %H:%M:%S%z')
+    return df
 
 def process_directory(directory, full=True):
     total_valid_cff_full = 0
@@ -79,7 +85,7 @@ def process_directory(directory, full=True):
                 for file_type, pattern in file_patterns.items():
                     if file.endswith(file_type):
                         file_path = os.path.join(root, file)
-                        df = pd.read_csv(file_path)
+                        df = get_authors_df(file_path)
                         matches, non_matches, entries = check_matches(df)
 
                         if file_type not in file_type_percentages:
@@ -129,8 +135,7 @@ def process_directory(directory, full=True):
                 if file in ['pypi_maintainers.csv', 'python_authors.csv', 'python_maintainers.csv',
                             'description_authors.csv', 'cran_authors.csv', 'cran_maintainers.csv']:
                     file_path = os.path.join(root, file)
-                    df = pd.read_csv(file_path)
-                    df['last_commit'] = pd.to_datetime(df['last_commit'], utc=True)
+                    df = get_authors_df(file_path)
                     matches, non_matches, entries = check_matches(df)
 
                     file_base = os.path.splitext(file)[0]
@@ -216,8 +221,7 @@ def process_directory(directory, full=True):
         for folder, file_data in latest_files_by_folder.items():
             for file_type, (latest_file_path, _) in file_data.items():
                 if latest_file_path:
-                    authors_df = pd.read_csv(latest_file_path)
-                    authors_df['last_commit'] = pd.to_datetime(authors_df['last_commit'], utc=True)
+                    authors_df = get_authors_df(latest_file_path)
                     matches, non_matches, entries = check_matches(authors_df)
                     if file_type not in file_type_percentages:
                         file_type_percentages[file_type] = {'matches': 0, 'non_matches': 0, 'entries': 0}
