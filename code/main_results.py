@@ -5,7 +5,7 @@ from datetime import datetime
 
 def check_matches(df: pd.DataFrame):
     matches = (df['score'] > 0).sum()
-    non_matches = (df['score'] == 0).sum()
+    non_matches = (df['score'] <= 0).sum()
     entries = len(df)
     return matches, non_matches, entries
 
@@ -108,7 +108,7 @@ def process_directory(directory, full=True):
                 # Process all timestamped file types
                 for file_type, pattern in file_patterns.items():
                     if file.endswith(file_type):
-                        file_path = os.path.join(root, file)
+                        file_path = str(os.path.join(root, file))
                         df = get_authors_df(file_path)
                         matches, non_matches, entries = check_matches(df)
 
@@ -120,7 +120,7 @@ def process_directory(directory, full=True):
                         file_type_percentages[file_type]['entries'] += entries
 
                 if file == 'cff.csv':
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_cff_full += len(df)
                     total_valid_cff_full += df['cff_valid'].sum()
@@ -133,21 +133,21 @@ def process_directory(directory, full=True):
                     average_time_between_updates_cff.append(df_sorted['committed_datetime'].diff().dropna().mean())
 
                 if file == 'bib.csv':
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime')
                     average_time_between_updates_bib.append(df_sorted['committed_datetime'].diff().dropna().mean())
 
                 if file == 'readme.csv':
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime')
                     average_time_between_updates_readme.append(df_sorted['committed_datetime'].diff().dropna().mean())
 
                 if file == 'cff_preferred_citation.csv':
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_preferred_citation_cff_full += len(df)
                     doi_preferred_citation_cff_full += df['doi'].notna().sum()
@@ -158,7 +158,7 @@ def process_directory(directory, full=True):
             else:
                 if file in ['pypi_maintainers.csv', 'python_authors.csv', 'python_maintainers.csv',
                             'description_authors.csv', 'cran_authors.csv', 'cran_maintainers.csv']:
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = get_authors_df(file_path)
                     matches, non_matches, entries = check_matches(df)
 
@@ -196,7 +196,7 @@ def process_directory(directory, full=True):
 
                 if file == 'cff.csv':
                     git_contributors_df = get_git_contributors_df(root)
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime', ascending=False)
@@ -212,7 +212,7 @@ def process_directory(directory, full=True):
                     difference_last_update_cff_list.append(git_contributors_df['last_commit'].max() - df_sorted.iloc[0]['committed_datetime'])
 
                 if file == 'cff_preferred_citation.csv':
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime', ascending=False)
@@ -228,7 +228,7 @@ def process_directory(directory, full=True):
 
                 if file == 'bib.csv':
                     git_contributors_df = get_git_contributors_df(root)
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime', ascending=False)
@@ -236,7 +236,7 @@ def process_directory(directory, full=True):
 
                 if file == 'readme.csv':
                     git_contributors_df = get_git_contributors_df(root)
-                    file_path = os.path.join(root, file)
+                    file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime', ascending=False)
