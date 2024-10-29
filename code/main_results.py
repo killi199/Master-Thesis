@@ -2,6 +2,7 @@ import os
 import re
 import pandas as pd
 from datetime import datetime
+from pandas._libs.missing import NAType
 
 def check_matches(df: pd.DataFrame):
     matches = (df['score'] > 0).sum()
@@ -44,6 +45,48 @@ def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame
 
     return common_authors
 
+def calculate_similarity_with_non_matches(df_list: list[pd.DataFrame]) -> NAType | float:
+    similarities = []
+    for i in range(len(df_list)):
+        for j in range(i + 1, len(df_list)):
+            first_df = df_list[i]
+            second_df = df_list[j]
+            first_df = first_df[first_df['commits'].notna()]
+            second_df = second_df[second_df['commits'].notna()]
+            common_authors = get_common_authors(first_df, second_df)
+            if len(df_list[i]) >= len(df_list[j]):
+                similarity = len(common_authors) / len(df_list[i])
+                similarities.append(similarity)
+            else:
+                similarity = len(common_authors) / len(df_list[j])
+                similarities.append(similarity)
+
+    if len(similarities) == 0:
+        return pd.NA
+
+    return sum(similarities) / len(similarities)
+
+def calculate_similarity_without_non_matches(df_list: list[pd.DataFrame]) -> NAType | float:
+    similarities = []
+    for i in range(len(df_list)):
+        for j in range(i + 1, len(df_list)):
+            first_df = df_list[i]
+            second_df = df_list[j]
+            first_df = first_df[first_df['commits'].notna()]
+            second_df = second_df[second_df['commits'].notna()]
+            common_authors = get_common_authors(first_df, second_df)
+            if len(first_df) >= len(second_df) and len(first_df) > 0:
+                similarity = len(common_authors) / len(first_df)
+                similarities.append(similarity)
+            elif len(second_df) > 0:
+                similarity = len(common_authors) / len(second_df)
+                similarities.append(similarity)
+
+    if len(similarities) == 0:
+        return pd.NA
+
+    return sum(similarities) / len(similarities)
+
 def process_directory(directory, full=True):
     total_valid_cff_full = 0
     total_valid_cff = 0
@@ -84,6 +127,7 @@ def process_directory(directory, full=True):
     total_authors = {}
     total_authors_no_commits = {}
     common_authors = {}
+    dfs = {}
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -160,6 +204,11 @@ def process_directory(directory, full=True):
                             'description_authors.csv', 'cran_authors.csv', 'cran_maintainers.csv']:
                     file_path = str(os.path.join(root, file))
                     df = get_authors_df(file_path)
+
+                    if folder_name not in dfs:
+                        dfs[folder_name] = list()
+
+                    dfs[folder_name].append(df)
                     matches, non_matches, entries = check_matches(df)
 
                     file_base = os.path.splitext(file)[0]
@@ -248,6 +297,11 @@ def process_directory(directory, full=True):
             for file_type, (latest_file_path, _) in file_data.items():
                 if latest_file_path:
                     authors_df = get_authors_df(latest_file_path)
+
+                    if folder not in dfs:
+                        dfs[folder] = list()
+
+                    dfs[folder].append(authors_df)
                     matches, non_matches, entries = check_matches(authors_df)
                     if file_type not in file_type_percentages:
                         file_type_percentages[file_type] = {'matches': 0, 'non_matches': 0, 'entries': 0}
@@ -267,6 +321,13 @@ def process_directory(directory, full=True):
                     total_authors_no_commits[file_type]['5_years'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*5)])
 
                     common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type)
+
+        similarity_with_non_matches = []
+        similarity_without_non_matches = []
+        for folder, df_list in dfs.items():
+            if len(df_list) > 1:
+                similarity_with_non_matches.append(calculate_similarity_with_non_matches(df_list))
+                similarity_without_non_matches.append(calculate_similarity_without_non_matches(df_list))
 
     # Convert percentages to tuple format before returning
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in
@@ -316,6 +377,12 @@ def process_directory(directory, full=True):
             print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (1 most committer): {common_authors_data['1'][0]}/{common_authors_data['1'][1]}")
             print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (5 most committer): {common_authors_data['5'][0]}/{common_authors_data['5'][1]}")
             print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (10 most committer): {common_authors_data['10'][0]}/{common_authors_data['10'][1]}")
+
+        if similarity_with_non_matches:
+            print(f"Similarity between the latest files with non-matches: {pd.Series(similarity_with_non_matches).mean() * 100:.2f}%")
+
+        if similarity_without_non_matches:
+            print(f"Similarity between the latest files without non-matches: {pd.Series(similarity_without_non_matches).mean() * 100:.2f}%")
         print()
 
     return file_type_percentages
