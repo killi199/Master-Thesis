@@ -1,4 +1,31 @@
-\section{Disambiguierung von Autorennamen}
+\section{Named Entity Disambiguation}
 \label{sec:author-name-disambiguation}
-% TODO auf Entity Resolution oder Author name disambiguation eingehen? Oder Entity Disambiguation? Entity Linking?
-% TODO ENTITY Disambiguation?
+% TODO ggf. noch weiter ausführen?
+Die \gls{ned} ist ein automatischer Prozess, bei dem ein Name einer Entität einer gegebenen Datenmenge zugeordnet wird \autocites{cucerzan_large-scale_2007}{yamada_global_2022}.
+Die Entitäten können beispielsweise durch die \gls{ner} extrahiert worden sein.
+Dabei kann es dazu kommen, dass eine Entität mehrfach extrahiert wird und mehrfach in der Datenmenge vorhanden ist, jedoch mit anderen Bedeutungen.
+In der natürlichen Sprachverarbeitung ist dies das Problem der Polysemie, auf welches bereits eingegangen wurde.
+Es ist aber auch möglich, dass Personen mit dem gleichen Namen, sogenannte Namensvetter extrahiert werden, welche unterschieden werden müssen.
+Dies beschreibt die Author name disambiguation, welche konkret individuelle Personen disambiguiert und ein Teil der \gls{ned} ist.
+Diese Probleme kann die \gls{ner} mittels Modellen lösen, die die Entitäten anhand von Kontexten disambiguieren.
+Beispiele für erkannte Entitäten sind \autocite{cucerzan_large-scale_2007}:
+
+\begin{itemize}
+  \item George W. Bush (George W. Bush)
+  \item George Bush (George W. Bush)
+  \item Bush (George W. Bush)
+  \item Reggie Bush (Reggie Bush)
+  \item Bush (Reggie Bush)
+  \item Bush (Rock band)
+\end{itemize}
+
+In dem Beispiel ist die Entität dargestellt gefolgt von der Entität in der Datenmenge, welche in Klammern steht.
+Hierbei ist auffällig, dass Nennungen von \glqq Bush\grqq{} mehrfach vorkommen und durch den Kontext, in dem sie stehen, durch die \gls{ned} unterschieden werden müssen.
+
+\gls{ned} wird in vielen Bereichen eingesetzt, wie zum Beispiel Text Analysen, semantische Suche und der Gruppierung von Software Nennungen in wissenschaftlichen Arbeiten \autocites{cucerzan_large-scale_2007}{yamada_global_2022}{schindler_somesci-_2021}.
+In der Masterarbeit kann die \gls{ned} verwendet werden, um Autoren aus verschiedenen Quellen miteinander abzugleichen.
+
+Ähnlich zu der \gls{ner} gibt es für die \gls{ned} verschiedene Modelle, welche verwendet werden können.
+Viele Modelle sind jedoch spezifisch auf einzelne Aufgabenbereiche trainiert.
+Allgemeine Modelle sind primär für die Disambiguierung von Entitäten in Texten trainiert, welche in der Arbeit nicht immer vorhanden sind.
+Ein Beispiel ist ein Modell, welches auf BERT basiert und Wörter, sowohl als auch Entitäten als Tokens erhält und diese mit Entitäten aus einem Text disambiguiert \autocite{yamada_global_2022}.
