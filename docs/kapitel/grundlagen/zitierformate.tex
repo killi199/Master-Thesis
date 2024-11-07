@@ -8,7 +8,6 @@ Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \La
 
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
-% TODO noch mehr auf cffconvert eingehen -> darauf, dass es zum validieren verwendet werden kann
 % TODO auf DOI eingehen, dass die jeweils für die Software und preferred citation vorhanden ist (und das mit ins bsp bauen.) alle möglichkeiten natürlich zeigen
 Das \gls{cff} ist ein Format, welches in der Datei \mintinline{text}{CITATION.cff} gespeichert wird und in YAML 1.2 geschrieben wird. 
 Das Format beschreibt die Zitation von Software und kann von Menschen und Maschinen gelesen werden.
@@ -20,7 +19,8 @@ Da die Datei von Menschen gelesen werden kann, kann diese manuell erstellt werde
 Die Spezifikationen für das \gls{cff} werden auf GitHub verwaltet und sind öffentlich einsehbar \autocite{druskat_citation_2021}.
 Ebenfalls existieren Programme, welche das \gls{cff} verarbeiten können.
 Beispielsweise kann das Programm \emph{cffinit} genutzt werden, um eine \mintinline{text}{CITATION.cff}-Datei zu erstellen, sodass der Prozess der Erstellung vereinfacht wird \autocite{spaaks_cffinit_2023}.
-Ein weiteres Beispiel ist das Programm \textit{cffconvert}, welches das \gls{cff} in verschiedene Formate umwandeln kann, wie zum Beispiel \hologo{BibTeX} oder RIS \autocite{spaaks_cffconvert_2021}.
+Ein weiteres Beispiel ist das Programm \textit{cffconvert}, welches das \gls{cff} in verschiedene Formate umwandeln kann, wie zum Beispiel \hologo{BibTeX} oder RIS.
+Außerdem kann das Programm genutzt werden um \gls{cff}-Dateien zu validieren \autocite{spaaks_cffconvert_2021}.
 
 Zusätzlich wird das \gls{cff} von unterschiedlichen Plattformen unterstützt, wie zum Beispiel von GitHub.
 Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann direkt im \hologo{BibTeX}-Format kopiert werden \autocites{druskat_citation_2021}{github_about_2024-2}.
