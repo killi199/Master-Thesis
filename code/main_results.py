@@ -131,10 +131,10 @@ def process_directory(directory, full=True):
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
-        'readme_authors.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_readme_authors\.csv'),
-        'cff_authors.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_cff_authors\.csv'),
-        'cff_preferred_citation_authors.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_cff_preferred_citation_authors\.csv'),
-        'bib_authors.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_bib_authors\.csv')
+        'readme_authors_new.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_readme_authors_new\.csv'),
+        'cff_authors_new.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_cff_authors_new\.csv'),
+        'cff_preferred_citation_authors_new.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_cff_preferred_citation_authors_new\.csv'),
+        'bib_authors_new.csv': re.compile(r'(\d{8}_\d{6}[+-]\d{4})_bib_authors_new\.csv')
     }
 
     # Track the latest file for each type
