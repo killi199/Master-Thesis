@@ -8,7 +8,6 @@ Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \La
 
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
-% TODO auf DOI eingehen, dass die jeweils für die Software und preferred citation vorhanden ist (und das mit ins bsp bauen.) alle möglichkeiten natürlich zeigen
 Das \gls{cff} ist ein Format, welches in der Datei \mintinline{text}{CITATION.cff} gespeichert wird und in YAML 1.2 geschrieben wird. 
 Das Format beschreibt die Zitation von Software und kann von Menschen und Maschinen gelesen werden.
 Es enthält Metadaten, welche für die Zitation von Software benötigt werden.
@@ -59,14 +58,19 @@ Hierbei können ebenfalls Personen und Entitäten angegeben werden in dem gleich
 Durch die Angabe einer \glqq preferred-citation\grqq{} kann das Prinzip der Wichtigkeit vernachlässigt werden.
 Auf dieses Verhalten wird in den Ergebnissen konkreter eingegangen.
 
-Weitere in der Arbeit verwendete Felder sind \glqq type\grqq{}, \glqq year\grqq{}, \glqq month\grqq{}, \glqq date-released\grqq{} und \glqq date-published\grqq{} \autocite{druskat_citation_2021}.
+Weitere in der Arbeit verwendete Felder sind \glqq type\grqq{}, \glqq year\grqq{}, \glqq month\grqq{}, \glqq date-released\grqq{}, \glqq date-published\grqq{}, \glqq doi\grqq{}, \glqq collection-doi\grqq{} und \glqq identifiers\grqq{} \autocite{druskat_citation_2021}.
 Das Feld \glqq type\grqq{} ist zwingend erforderlich, hat jedoch als Standardwert \glqq software\grqq{}, sodass dies nicht angegeben werden muss.
-Das Feld gibt an, ob es sich um eine Software oder einen Datensatz handelt.
-Falls das Feld unter dem Feld \glqq preferred-citation\grqq{} angegeben wird, kann es viele weitere Typen enthalten wie Beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
+Es gibt an, ob es sich um eine Software oder einen Datensatz handelt.
 Das Feld \glqq date-released\grqq{} gibt an, wann die Software oder der Datensatz veröffentlicht wurde.
+Das Feld \glqq doi\grqq{} kann eine DOI der Software oder des Datensatzes enthalten.
+Mittels \glqq identifiers\grqq{} können weitere Identifikatoren angegeben werden, wie zum Beispiel eine DOI oder eine URL, wobei die \glqq identifiers\grqq{} mit einer Beschreibung erweitert werden können.
+Die beschriebenen Felder können zusätzlich alle unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um eine andere Arbeit zu referenzieren.
+
 Die Felder \glqq year\grqq{}, \glqq month\grqq{} und \glqq date-published\grqq{} können zusätzlich zu dem Feld \glqq date-released\grqq{} unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um das Jahr und das Datum der Veröffentlichung anzugeben.
+Außerdem können weitere Typen mittels \glqq type\grqq{} angegeben werden, wie Beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
+Zusätzlich kann das Feld \glqq collection-doi\grqq{} angegeben werden, um auf eine Sammlung von Arbeiten zu verweisen, die die Arbeit enthält.
 Ein Beispiel einer \mintinline{text}{CITATION.cff}-Datei ist in \autoref{lst:cff_example} dargestellt.
-Dabei sind wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
+Dabei wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
 
 % TODO Update date with my actual date
 \begin{listing}

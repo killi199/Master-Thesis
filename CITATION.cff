@@ -8,6 +8,14 @@ authors:
     email: "k.jahrens@stud.hs-wismar.de"
   - name: "Hochschule Wismar"
 date-released: "2025-01-01"
+doi: "10.1000/182"
+identifiers:
+  - description: "The DOI of the work."
+    type: "doi"
+    value: "10.1000/182"
+  - description: "The versioned DOI for version 1.0.0 of the work"
+    type: "doi"
+    value: "10.1000/182"
 preferred-citation:
   title: "Identifikation und Vergleich von Autorenangaben zu Software zwischen verschiedenen Datenquellen"
   type: thesis
@@ -15,6 +23,15 @@ preferred-citation:
   month: 01
   date-published: "2025-01-01"
   date-released: "2025-01-01"
+  doi: "10.1000/182"
+  collection-doi: "10.1000/182"
+  identifiers:
+    - description: "The DOI of the work."
+      type: "doi"
+      value: "10.1000/182"
+    - description: "The versioned DOI for version 1.0.0 of the work"
+      type: "doi"
+      value: "10.1000/182"
   authors:
     - given-names: "Kevin"
       family-names: "Jahrens"
