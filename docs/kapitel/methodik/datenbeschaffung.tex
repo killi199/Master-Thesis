@@ -1,7 +1,22 @@
 \section{Datenbeschaffung}
 \label{sec:datenbeschaffung}
-\subsection{Git}
+% TODO MEINE SOFTWARE ZITIEREN! Sonst bin ich nicht besser als alle anderen und auch Probleme und Konfiguration darstellen -> steht in dem Paper smith_software_2016 wie zitiert werden soll? \autocite{richardson_beautifulsoup4_2024}
+In diesem Abschnitt wird beschrieben wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
+Es wird tqdm in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
+Die Datenbeschaffung wird in die einzelnen Quellen untergliedert.
+
+Aus den Quellen \nameref{subsec:datenbeschaffung_git}, \nameref{subsec:datenbeschaffung_beschreibung}, \nameref{subsec:datenbeschaffung_cff} und \nameref{subsec:datenbeschaffung_bibtex} können zeitliche Informationen extrahiert werden, da diese in Git verwaltet werden.
+Aus diesem Grund werden die Daten jeweils zu der Änderung der Quelle gespeichert.
+Dabei ist die maximale Anzahl der Änderungen in die Vergangenheit auf 50 beschränkt, um die Laufzeit des Skripts zu begrenzen.
+
+In \nameref{subsec:datenbeschaffung_cran} ist es nicht möglich die Änderungen in der Zeit zu betrachten.
+In der \nameref{subsec:datenbeschaffung_pypi} Quelle ist es teilweise möglich die Änderungszeitpunkte zu erhalten, jedoch ist dies mit Kosten verbunden und erfordert eine andere Vorgehensweise als bei den anderen zeitlichen Daten, da diese nicht direkt aus Git extrahiert werden können.
+Die beiden Quellen werden aus diesem Grund nur in der neusten Version betrachtet und enthalten keine Änderungshistorie.
+
+\subsection{Git} % 2 Seiten
 \label{subsec:datenbeschaffung_git}
+Die Git Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
+Sämtliche anderen Quellen werden mit den Git Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
 % TODO Beschreiben wie die Commits gezählt wurden.
 % Git quick-stats erwähnen
 % Zeit Möglich
