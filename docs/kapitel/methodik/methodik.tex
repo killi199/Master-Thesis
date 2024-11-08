@@ -1,8 +1,60 @@
 \chapter{Methodik}
 \label{chap:methodik}
-% TODO MEINE SOFTWARE ZITIEREN! Sonst bin ich nicht besser als alle anderen und auch Probleme und Konfiguration darstellen -> steht in dem Paper smith_software_2016 wie zitiert werden soll? \autocite{richardson_beautifulsoup4_2024}
-% TODO auf meine verwendete Software eigehen z.B. git-quick-stats
-% TODO erklären auf welchen branch ich untersuche ist es immer der Github default? oder nehme ich main? oder master? wie wird das entschieden?
-% TODO irgendwo auf pandas eingehen hier ist es so, dass die CFF auf eine Internet seite verlinkt, auf der alle contributor gelistet werden. Das parse ich natürlich nicht.
+% TODO Grafik hier einfügen vom Prozess
+In diesem Kapitel wird beschrieben wie die Daten der einzelnen Quellen beschafft, abgeglichen und anschließend ausgewertet werden.
+Die Datenbeschaffung wird in \autoref{sec:datenbeschaffung}, der Abgleich in \autoref{sec:abgleich} und die Auswertung in \autoref{sec:auswertung} beschrieben.
+
+Die Datenbeschaffung in wurde in die einzelnen Quellen untergliedert.
+Einige Methoden zur Datenbeschaffung sind dabei ähnlich, worauf im konkreten Fall eingegangen wird.
+Diese werden jedoch nicht doppelt erläutert.
+
+Der Abgleich findet jeweils zwischen Git und einer weiteren Quelle statt.
+Es existiert kein Abgleich zwischen einzelnen Quellen wie den Daten aus \gls{pypi} und der Beschreibung.
+Der Abgleich wird in jeder Datenbeschaffung außer der von Git automatisch durchgeführt.
+Die Ergebnisse des Abgleichs werden in einer CSV-Datei gespeichert.
+Allgemeine Daten, beispielsweise ob die Quelle valide ist, werden ebenfalls in einer CSV-Datei gespeichert.
+Falls in einer Quelle keine Daten vorhanden sind, wird keine CSV-Datei für diese erstellt.
+
+Sämtliche Ergebnisse werden, falls verfügbar, zu verschiedenen Zeitpunkten in denen Änderungen an der Quelle vorgenommen wurden ermittelt und gespeichert.
+Falls aus der Quelle verschiedene Zeitpunkte der Änderungen vorliegen, wird der Abgleich mit Git jeweils mit der neusten Version durchgeführt und mit der Version, welche zu dem Zeitpunkt der Änderung in der Quelle vorhanden war.
+Dadurch entstehen für ein Paket mehrere Dateien, welche unterschiedliche Werte enthalten.
+Es entsteht die in \autoref{fig:datenbeschaffung_ergebnisse} dargestellte Ordnerstruktur, welche die Ergebnisse der Datenbeschaffung darstellt.
+
+\begin{figure}
+    \centering
+    \dirtree{%
+        .1 /\DTcomment{Wurzelverzeichnis}.
+        .2 20210819\_161452-0400\_bib\_authors.csv\DTcomment{\hologo{BibTeX} Autoren abgeglichen mit den Git Werten zu diesem Zeitpunkt}.
+        .2 20210819\_161452-0400\_bib\_authors\_new.csv\DTcomment{\hologo{BibTeX} Autoren abgeglichen mit den Git Werten zum neusten Zeitpunkt}.
+        .2 20210819\_161452-0400\_git\_contributors.csv\DTcomment{Git Autoren zu diesem Zeitpunkt}.
+        .2 bib.csv\DTcomment{Allgemeine informationen zur \hologo{BibTeX}-Datei zu allen Zeitpunkten z. B. eingetragene DOI}.
+        .2 git\_contributors.csv\DTcomment{Git Autoren zum neusten Zeitpunkt}.
+        .2 pypi\_maintainers.csv\DTcomment{\gls{pypi} Maintainer}.
+        .2 python\_authors.csv\DTcomment{In Python angegebene Autoren}.
+    }
+    \caption{Ergebnisse der Datenbeschaffung}
+    \label{fig:datenbeschaffung_ergebnisse}
+    \small
+    Die Abbildung stellt einen Ausschnitt der CSV-Dateien der Datenbeschaffung dar.
+\end{figure}
+
+Der Prozess findet für jedes zu untersuchende Paket statt.
+Die Pakete werden dabei aus dem \gls{pypi} und dem \gls{cran} Software-Verzeichnis entnommen.
+Es werden die Top 100 \gls{pypi} Pakete im August 2024 untersucht, welche am häufigsten heruntergeladen wurden \autocite{kemenade_hugovktop-pypi-packages_2024}.
+Von \gls{cran} werden die Top 100 meist heruntergeladenen Pakete im Zeitraum von 02.08.2024 bis 31.08.2024 untersucht \autocite{csardi_r-hubcranlogsapp_2024}.
+Außerdem werden die Top 100 Pakete, welche eine \gls{cff}-Datei in GitHub haben untersucht.
+Die Top 100 werden dabei durch die Anzahl der Sterne auf GitHub definiert.
+Die Liste wurde am 19.10.2024 erstellt.
+In der Liste sind Pakete enthalten, welche nicht im \gls{pypi} oder \gls{cran} verfügbar sind.
+Diese Pakete werden nicht betrachtet.
+
+Die Ergebnisse werden in drei Ordnern gespeichert jeweils für \gls{pypi} \gls{cran} und \gls{cff}.
+In jedem Ordner sind jeweils Unterordner für die einzelnen Pakete.
+Diese Daten werden für die anschließende Auswertung in \autoref{sec:auswertung} verwendet.
+Hier werden die Ergebnisse der Abgleiche ausgewertet und zusammengefasst, um über alle Pakete hinweg Aussagen treffen zu können.
+Die Datenbeschaffung, der Abgleich und die Auswertung sind in Python programmiert und verwenden \gls{oss} auf welche in den jeweiligen Abschnitten eingegangen wird.
+Über alle Abschnitte hinweg wird Pandas in der Version 2.2.2 verwendet, um die Tabellen zu erstellen und zu verarbeiten \autocite{the_pandas_development_team_pandas-devpandas_2024}.
+
 \input{kapitel/methodik/datenbeschaffung.tex}
 \input{kapitel/methodik/abgleich.tex}
+\input{kapitel/methodik/auswertung.tex}
