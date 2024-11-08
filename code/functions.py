@@ -169,7 +169,7 @@ async def run_git_quick_stat(repo_path: Path, timestamp: datetime) -> str:
     loop = asyncio.get_running_loop()
     with concurrent.futures.ThreadPoolExecutor() as pool:
         # Doppelte Leute, da unterschiedliche Namen beim commit angegeben → Das Problem besteht beim Benutzen der GitHub API nicht. → Teilweise gelöst mittels group auf E-Mail
-        timestamp = timestamp + timedelta(minutes=1, hours=1) # TODO change when timezone changes hours=2 MESZ hours=1 CET maybe do it variable
+        timestamp = timestamp + timedelta(minutes=1, hours=2)
         time_string = timestamp.astimezone(timezone.utc).strftime("%Y-%m-%d %H:%M")
         result = await loop.run_in_executor(
             pool,
