@@ -263,7 +263,7 @@ def validate_cff(cff_path: str, cff_data: str) -> bool:
         return False
     
 def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
-    cff_path = get_file_path(owner, repo, '*.cff')
+    cff_path = get_file_path(owner, repo, '*CITATION.cff')
 
     if cff_path:
         file_data = []
@@ -296,7 +296,7 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
         return [(pd.DataFrame(), None)], pd.DataFrame()
 
 def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
-    cff_path = get_file_path(owner, repo, '*.cff')
+    cff_path = get_file_path(owner, repo, '*CITATION.cff')
 
     if cff_path:
         file_data = []
@@ -336,7 +336,7 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
         return [(pd.DataFrame(), None)], pd.DataFrame()
     
 def get_bib_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
-    bib_path = get_file_path(owner, repo, '*.bib')
+    bib_path = get_file_path(owner, repo, '*CITATION.bib')
     
     if bib_path:
         file_data = []
