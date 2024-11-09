@@ -15,15 +15,30 @@ Die beiden Quellen werden aus diesem Grund nur in der neusten Version betrachtet
 
 \subsection{Git} % 2 Seiten
 \label{subsec:datenbeschaffung_git}
+% TODO Beschreiben wie die Commits gezählt wurden. -> Mit oder ohne merges?
+% TODO email in komplett kleinschreibung umgewandelt anschließend grouby auf email -> kurz erwähnen weil leute frei entscheiden können was sie angeben
 Die Git Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
 Sämtliche anderen Quellen werden mit den Git Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
-% TODO Beschreiben wie die Commits gezählt wurden.
-% Git quick-stats erwähnen
-% Zeit Möglich
-% TODO auf meine verwendete Software eigehen z.B. git-quick-stats
-% TODO gitpython==3.1.43, pytz==2024.2
+Zu Beginn muss das Repository von GitHub geclont werden, um die Daten Lokal verarbeiten zu können.
+Dabei kommt die \gls{oss} GitPython in der Version 3.1.43 zum Einsatz, welches eine Bibliothek für die einfache Interaktion mittels Python und Git Befehlen darstellt \autocite{thiel_gitpython-developersgitpython_2024}.
+Für das Clonen wird der Link zum GitHub Repository benötigt, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
+Auf diese Quellen wird in dem \autoref{subsec:datenbeschaffung_pypi} und \autoref{subsec:datenbeschaffung_cran} eingegangen.
+
+Die Auswertung des Repositorys wird mit git-quick-stats in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-statsgit-quick-stats_2021}.
+Git-Quick-stats bietet einfache und effiziente Möglichkeiten um verschiedene Statistiken in einem Git Repository zu ermitteln.
+Das Tool wird in dem Python Skript mit dem Befehl \texttt{git-quick-stats -T} aufgerufen, um detaillierte Statistiken zu erhalten.
+Ausgegeben wird eine Liste aller Autoren, welche in dem Repository Änderungen vorgenommen haben.
+Diese Liste enthält unter anderem den Namen, die E-Mail, die Anzahl der Einfügungen, Löschungen, geänderten Zeilen, Dateien, Commits, sowie den ersten und letzten Commit.
+Die Daten werden in der Datei \texttt{git\_contributors.csv} gespeichert.
+
+Außerdem bietet das Tool die Möglichkeit mit der gesetzten Umgebungsvariablen \textit{\_GIT\_UNTIL=}, alle Änderungen nur bis zu einem bestimmten Zeitpunkt zu betrachten.
+Diese Funktion wird verwendet, um die Änderungen bis zu der Aktualisierung einer Quelle zu betrachten.
+Die Daten werden beispielsweise in der Datei \texttt{20210819\_161452-0400\_git\_contributors.csv} gespeichert, wobei der erste Teil des Dateinamens den konkreten Tag und Uhrzeit mit zugehöriger Zeitzone angibt.
+Für die Verarbeitung der Zeiten in unterschiedlichen Zeitzonen wird das Modul pytz in der Version 2024.2 verwendet \autocite{bishop_stub42pytz_2024}.
+
 \subsection{PyPI} % 2 Seiten
 \label{subsec:datenbeschaffung_pypi}
+% TODO Daten aus PyPi werden benötigt um das GitHub repo zu finden -> sagen, dass die nicht immer vorhanden sind
 % TODO erklären warum BigQuery nicht eingesetzt wird aktuell aber dennoch sinnvoll eingesetzt werden könnte bei anderen anforderungen (z.B. liste mit repo links auf github)
 % TODO erklären warum die API verwendet wird und nicht nur die TOML beispielsweise ausgelesen wird -> habe ein pypi paket und brauche die GitHub URL
 % TODO sagen warum beides also verifizierte Owner und Maintainer sowhl als auch die Daten aus der TOML abgefragt werden -> sind unterschiedliche Leute und werden unterschiedlich angegeben die einen dürfen sachen auf pypi machen die anderen werden in der toml angegeben und dürfen ggf. nichts in pypi machen
@@ -31,28 +46,28 @@ Sämtliche anderen Quellen werden mit den Git Daten über den in \autoref{sec:ab
 % TODO In MA beschreiben, warum oder warum nicht Mehrwert (PyPI Verifizierte Nutzer)
 % TODO Sagen warum die Owner nicht berücksichtigt werden hatte dafür auch irgendwo eine Qulle -> es sind immer org.
 % TODO erklären, dass ich den Namen des Betreuers brauche und nicht nur den Benutzernamen über die API und wie ich das gelöst habe mit einem WebScraper
-% Zeit nicht möglich
 % TODO erklären auf welchen branch ich untersuche ist es immer der Github default? oder nehme ich main? oder master? wie wird das entschieden?
 % aiohttp==3.10.3, beautifulsoup4==4.12.3, spacy==3.7.6
+
 \subsection{CRAN} % 2 Seiten
 \label{subsec:datenbeschaffung_cran}
-% Zeit nicht möglich
+% TODO Daten aus CRAN werden benötigt um das GitHub repo zu finden -> sagen, dass die nicht immer vorhanden sind
 % TODO rpy2==3.5.16, aiohttp==3.10.3
+
 \subsection{Beschreibung} % 2 Seiten
 \label{subsec:datenbeschaffung_beschreibung}
 % TODO Es werden alle Namen ausgegeben aber auch eben solche, die gar nichts mit dem Paket zu tun haben wie im fall von highr für CRAN: "Provides syntax highlighting for R source Code. Currently it supports LaTeX and HTML output. Source Code of other languages is supported via Andre Simon's highlight package (https://gitlab.com/saalen/highlight)." Es gibt noch weitere Beispiele z.B. in CRAN magrittr -> vllt eher ergebnis?
-% Zeit Möglich
 % spacy==3.7.6
+
 \subsection{Citation File Format} % 2 Seiten
 \label{subsec:datenbeschaffung_cff}
 % TODO darauf eingehen, dass ich händisch aktuell geprüft habe ob das GH repo in cran oder pypi ist und daraus meine listen gebaut habe. Dies wäre aber auch automatisch möglich aber mit viel Aufwand und man bräuchte google big query für 100 pakete war dieser weg schneller außerdem gibt es auf PyPi mehrere Pakete die auf ein GitHub repo verlinken. Da müsste einiges beachtet werden um das genau zu machen für 100 war dies besser. Falls es für mehr gemacht werden sollte müsste das überdacht werden.
 % TODO darauf eingehen wie die CFF geholt und verarbeitet wurde mit stars verknüpft und dann händisch pypi cran raus gesucht und den namen auf pypi
 % TODO in der gegebenen Liste waren mehrere Repos auf GH doppelt mit unterschiedlichen Links. diese wurden entfernt.
 % TODO sagen, dass nur die erste identifier-doi beschafft wird, da nur geguckt wird in den Ergebnissen ob überhaupt eine vorhanden ist
-% Zeit Möglich
 % pyyaml==6.0.2, cffconvert==2.0.0, jsonschema==4.23.0, pykwalify==1.8.0
 % CFF und preferred citation getrennt
+
 \subsection{\hologo{BibTeX}} % 2 Seiten
 \label{subsec:datenbeschaffung_bibtex}
-% Zeit Möglich
 % bibtexparser @ git+https://github.com/sciunto-org/python-bibtexparser@main
