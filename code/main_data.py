@@ -54,7 +54,7 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
     await process_and_save(bib_df, package_name, 'bib', index)
 
     readme_authors_df, readme_df = await asyncio.to_thread(functions.get_readme_authors, owner, repo, position)
-    for readme_author_df in readme_authors_df:
+    for readme_author_df in tqdm(readme_authors_df, desc=f'{repo} README Git', position=position, dynamic_ncols=True):
         if not readme_author_df[0].empty:
             git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, readme_author_df[1])
             await process_and_save(git_contributors_df, package_name,
