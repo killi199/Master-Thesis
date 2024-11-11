@@ -2,7 +2,7 @@
 \label{sec:datenbeschaffung}
 % TODO MEINE SOFTWARE ZITIEREN! Sonst bin ich nicht besser als alle anderen und auch Probleme und Konfiguration darstellen -> steht in dem Paper smith_software_2016 wie zitiert werden soll? \autocite{richardson_beautifulsoup4_2024}
 In diesem Abschnitt wird beschrieben wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
-Es wird tqdm in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
+Es wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
 Die Datenbeschaffung wird in die einzelnen Quellen untergliedert.
 
 Aus den Quellen \nameref{subsec:datenbeschaffung_git}, \nameref{subsec:datenbeschaffung_beschreibung}, \nameref{subsec:datenbeschaffung_cff} und \nameref{subsec:datenbeschaffung_bibtex} können zeitliche Informationen extrahiert werden, da diese in Git verwaltet werden.
@@ -15,18 +15,16 @@ Die beiden Quellen werden aus diesem Grund nur in der neusten Version betrachtet
 
 \subsection{Git} % 2 Seiten
 \label{subsec:datenbeschaffung_git}
-% TODO Beschreiben wie die Commits gezählt wurden. -> Mit oder ohne merges?
-% TODO email in komplett kleinschreibung umgewandelt anschließend grouby auf email -> kurz erwähnen weil leute frei entscheiden können was sie angeben
 Die Git Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
 Sämtliche anderen Quellen werden mit den Git Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
 Zu Beginn muss das Repository von GitHub geclont werden, um die Daten Lokal verarbeiten zu können.
-Dabei kommt die \gls{oss} GitPython in der Version 3.1.43 zum Einsatz, welches eine Bibliothek für die einfache Interaktion mittels Python und Git Befehlen darstellt \autocite{thiel_gitpython-developersgitpython_2024}.
+Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz, welches eine Bibliothek für die einfache Interaktion mittels Python und Git Befehlen darstellt \autocite{thiel_gitpython-developersgitpython_2024}.
 Für das Clonen wird der Link zum GitHub Repository benötigt, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
 Auf diese Quellen wird in dem \autoref{subsec:datenbeschaffung_pypi} und \autoref{subsec:datenbeschaffung_cran} eingegangen.
 
-Die Auswertung des Repositorys wird mit git-quick-stats in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-statsgit-quick-stats_2021}.
-Git-Quick-stats bietet einfache und effiziente Möglichkeiten um verschiedene Statistiken in einem Git Repository zu ermitteln.
-Das Tool wird in dem Python Skript mit dem Befehl \texttt{git-quick-stats -T} aufgerufen, um detaillierte Statistiken zu erhalten.
+Die Auswertung des Repositorys wird mit \emph{git-quick-stats} in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-statsgit-quick-stats_2021}.
+\emph{Git-Quick-stats} bietet einfache und effiziente Möglichkeiten um verschiedene Statistiken in einem Git Repository zu ermitteln.
+Das Tool wird in dem Python Skript mit dem Befehl \emph{git-quick-stats -T} aufgerufen, um detaillierte Statistiken zu erhalten.
 Ausgegeben wird eine Liste aller Autoren, welche in dem Repository Änderungen vorgenommen haben.
 Diese Liste enthält unter anderem den Namen, die E-Mail, die Anzahl der Einfügungen, Löschungen, geänderten Zeilen, Dateien, Commits, sowie den ersten und letzten Commit.
 Die Anzahl der Commits beinhaltet keine Merge-Commits.
