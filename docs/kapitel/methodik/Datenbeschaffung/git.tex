@@ -4,8 +4,10 @@ Die Git Daten sind die grundlegenden Daten, welche für die weiteren Schritte be
 Sämtliche anderen Quellen werden mit den Git Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
 Zu Beginn muss das Repository von GitHub geclont werden, um die Daten Lokal verarbeiten zu können.
 Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz, welches eine Bibliothek für die einfache Interaktion mittels Python und Git Befehlen darstellt \autocite{thiel_gitpython-developersgitpython_2024}.
-Für das Clonen wird der Link zum GitHub Repository benötigt, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
-Auf diese Quellen wird in dem \autoref{subsec:datenbeschaffung_pypi} und \autoref{subsec:datenbeschaffung_cran} eingegangen.
+Beim Aufruf der Funktion wurde kein Branch spezifiziert, weshalb der Branch ausgewählt wird, auf welchen aktuell der \emph{HEAD} vom remote Repository zeigt.
+Dieser Branch ist in der Regel der Standardbranch, auf welchem die Analyse durchgeführt werden soll.
+Für das Clonen muss außerdem der Link zum GitHub Repository angegeben werden, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
+Auf diese Quellen wird in den nächsten Abschnitten eingegangen.
 
 Die Auswertung des Repositorys wird mit \emph{git-quick-stats} in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-statsgit-quick-stats_2021}.
 \emph{Git-Quick-stats} bietet einfache und effiziente Möglichkeiten um verschiedene Statistiken in einem Git Repository zu ermitteln.
