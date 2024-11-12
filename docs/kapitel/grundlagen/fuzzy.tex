@@ -17,9 +17,9 @@ Als Ergebnis der unscharfen Suche wird in vielen Implementierungen die Distanz z
 Die Levenshtein-Distanz verwendet drei Arten von einzelzeichen-basierten Editieroperationen, um die Distanz zwischen zwei Zeichenfolgen zu berechnen.
 
 \begin{enumerate}
-    \item Einfügen eines Zeichens zur Zeichenkette (Suhe \rightarrow{} Su\textbf{c}he)
-    \item Löschen eines Zeichens aus der Zeichenkette (Suche\textbf{e} \rightarrow{} Suche)
-    \item Ersetzen eines Zeichens in der Zeichenkette (S\textbf{i}che \rightarrow{} S\textbf{u}che)
+    \item Einfügen eines Zeichens zur Zeichenfolge (Suhe \rightarrow{} Su\textbf{c}he)
+    \item Löschen eines Zeichens aus der Zeichenfolge (Suche\textbf{e} \rightarrow{} Suche)
+    \item Ersetzen eines Zeichens in der Zeichenfolge (S\textbf{i}che \rightarrow{} S\textbf{u}che)
 \end{enumerate}
 
 Zusätzlich zu der Levenshtein-Distanz existiert eine Erweiterung, die Damerau-Levenshtein-Distanz \autocite{damerau_technique_1964}.
@@ -28,7 +28,7 @@ Mittels dieser vier Operationen werden ungefähr 80 \% der menschlichen Tippfehl
 
 \begin{enumerate}
     \setcounter{enumi}{3}
-    \item Vertauschen von zwei benachbarten Zeichen in der Zeichenkette (Su\textbf{hc}e \rightarrow{} Su\textbf{ch}e)
+    \item Vertauschen von zwei benachbarten Zeichen in der Zeichenfolge (Su\textbf{hc}e \rightarrow{} Su\textbf{ch}e)
 \end{enumerate}
 
 Eine Herausforderung bei der unscharfen Suche ist die Laufzeit.
