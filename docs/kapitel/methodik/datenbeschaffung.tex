@@ -1,6 +1,5 @@
 \section{Datenbeschaffung}
 \label{sec:datenbeschaffung}
-% Sollte heute am ende des Tages 10 Seiten haben
 % TODO MEINE SOFTWARE ZITIEREN! Sonst bin ich nicht besser als alle anderen und auch Probleme und Konfiguration darstellen -> steht in dem Paper smith_software_2016 wie zitiert werden soll? \autocite{richardson_beautifulsoup4_2024}
 In diesem Abschnitt wird beschrieben wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
 Es wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
@@ -15,8 +14,8 @@ In \nameref{subsec:datenbeschaffung_cran} ist es nicht möglich die Änderungen 
 In der \nameref{subsec:datenbeschaffung_pypi} Quelle ist es teilweise mit BigQuery möglich die Änderungszeitpunkte zu erhalten, jedoch ist dies mit Kosten verbunden und erfordert eine andere Vorgehensweise als bei den anderen zeitlichen Daten, da diese nicht direkt aus Git extrahiert werden können.
 Die beiden Quellen werden aus diesem Grund nur in der neusten Version betrachtet und enthalten keine Änderungshistorie.
 
-\input{kapitel/methodik/datenbeschaffung/git.tex} % 2 Seiten
-\input{kapitel/methodik/datenbeschaffung/pypi.tex} % 2 Seiten
+\input{kapitel/methodik/datenbeschaffung/git.tex}
+\input{kapitel/methodik/datenbeschaffung/pypi.tex}
 \input{kapitel/methodik/Datenbeschaffung/cran.tex} % 2 Seiten
 \input{kapitel/methodik/Datenbeschaffung/beschreibung.tex} % 2 Seiten
 \input{kapitel/methodik/Datenbeschaffung/cff.tex} % 2 Seiten
