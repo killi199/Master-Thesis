@@ -20,12 +20,13 @@ Im Gegensatz dazu sind in \gls{cran} aktuell mehr als 20.000 Pakete verfügbar \
 In dem \gls{pep} werden Änderungen an der API beschrieben, welche zum Hochladen von Paketen genutzt wird, um sogenannte \glqq Attestation objects \grqq{} zu unterstützen, in denen digitale Signaturen enthalten sind.
 Das Ziel ist es Verifizierte Daten auf \gls{pypi} zu ermöglichen, sodass Anwender direkt erkennen können, ob die Daten vertrauenswürdig sind.
 Aktuell wird dieses \gls{pep} umgesetzt, wodurch es zu vielen Änderungen in der API und auch in der Weboberfläche von \gls{pypi} kommt.
+
 Außerdem sind noch nicht alle Daten über die APIs erreichbar und es ist auch aktuell nicht über die API erkennbar, ob es sich um verifizierte oder nicht verifizierte Daten handelt.
 Ein Beispiel für verifizierte Daten sind Links, beispielsweise auf GitHub.
 Diese Links werden von \gls{pypi} als verifiziert angesehen, wenn der Upload des Paketes auf \gls{pypi} über eine GitHub Action erfolgt.
 Außerdem werden die Personen als verifiziert dargestellt, welche in \gls{pypi} als Owner oder Betreuer des Pakets eingetragen sind, sie haben somit einen Account bei \gls{pypi}.
-Owner können dabei alle Änderungen am \gls{pypi} Projekt vornehmen und Betreuer können neue Versionen des Paketes veröffentlichen \autocite{ingram_deprecate_2023}.
-In \autoref{fig:pypi_verified_unverified_details} ist dargestellt, wie verifizierte und unverifizierte Daten auf \gls{pypi} dargestellt werden.
+Der dargestellte Owner kann nicht über eine API abgefragt werden.
+
 Die dargestellten GitHub Statistiken werden dabei von \gls{pypi} ermittelt und nicht über APIs ausgegeben.
 Das Ziel von \gls{pypi} ist es, dass alle Daten verifiziert werden können und keine Daten mehr in der unverifizierten Form vorliegen.
 
@@ -71,10 +72,12 @@ Die \gls{pypi} XML-RPC API ist eine veraltete API, welche jedoch noch genutzt we
 Es wird empfohlen diesen API nicht mehr zu verwenden und auf den RSS Feed oder die JSON API umzusteigen \autocite{python_software_foundation_warehouse_2024}.
 Dadurch ist die API stark limitiert in der Anzahl der möglichen Anfragen und auch die Abstände zwischen den Anfragen müssen relativ groß sein.
 \gls{pypi} macht keine genauen Angaben darüber, wie viele Anfragen in welchem Zeitraum möglich sind.
-Diese API ist jedoch die einzige Quelle, um die Betreuer und Owner eines Pakets abzufragen, ohne einen Web-Scraper einsetzen zu müssen.
+Diese API ist jedoch die einzige Quelle, um die Betreuer eines Pakets abzufragen, ohne einen Web-Scraper einsetzen zu müssen.
 Web-Scraping bezeichnet dabei das Extrahieren von Daten aus Webseiten, indem der HTML-Code der Webseite analysiert wird \autocite{richardson_beautifulsoup4_2024}.
 
-Die Owner und Betreuer, welche über die API ausgegeben werden, enthalten den Benutzernamen auf \gls{pypi}, ein Vollname wird hierbei nicht ausgegeben.
+Die Betreuer, welche über die API ausgegeben werden, enthalten den Benutzernamen auf \gls{pypi}, ein Vollname wird hierbei nicht ausgegeben.
+Außerdem enthalten sie eine Rollenbezeichnung, welche entweder \emph{Maintainer} oder \emph{Owner} sein kann, welcher in der Oberfläche nicht dargestellt wird.
+Owner können dabei alle Änderungen am \gls{pypi} Projekt vornehmen und Betreuer können neue Versionen des Paketes veröffentlichen \autocite{ingram_deprecate_2023}.
 Der Benutzername für die Betreuer des Pakets \emph{matplotlib} sind in \autoref{fig:pypi_verified_unverified_details} unter dem Punkt \glqq Betreuer\grqq{} dargestellt.
 Aktuell stellt \gls{pypi} keine API bereit, um den Namen eines Benutzers abzufragen, sodass nur der Benutzername über eine API abgefragt werden kann \autocite{python_software_foundation_add_2024}.
 
