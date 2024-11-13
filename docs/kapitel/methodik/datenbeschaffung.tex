@@ -9,6 +9,7 @@ Aus den Quellen \nameref{subsec:datenbeschaffung_git}, \nameref{subsec:datenbesc
 Aus diesem Grund werden die Daten jeweils zu der Änderung der Quelle gespeichert.
 Dabei ist die maximale Anzahl der Änderungen in die Vergangenheit für die Beschreibung auf 50 beschränkt, um die Laufzeit des Skripts zu begrenzen.
 Die anderen Quellen haben keine Beschränkung, da diese nicht so häufig aktualisiert werden.
+Außerdem werden die Quellen jeweils für \gls{pypi} und \gls{cran} betrachtet, da sie Allgemein für alle Pakete unabhängig von der Paketverwaltung verfügbar sind.
 
 In \nameref{subsec:datenbeschaffung_cran} ist es nicht möglich die Änderungen in der Zeit zu betrachten.
 In der \nameref{subsec:datenbeschaffung_pypi} Quelle ist es teilweise mit BigQuery möglich die Änderungszeitpunkte zu erhalten, jedoch ist dies mit Kosten verbunden und erfordert eine andere Vorgehensweise als bei den anderen zeitlichen Daten, da diese nicht direkt aus Git extrahiert werden können.
