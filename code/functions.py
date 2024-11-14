@@ -527,6 +527,9 @@ def get_cran_maintainers(cran_data) -> pd.DataFrame:
     return pd.DataFrame(data)
 
 def get_pypi_repo(pypi_data) -> tuple[str, str, str]:
+    if not pypi_data["info"]["project_urls"]:
+        raise ValueError(f"No GitHub repository found in PyPI data.")
+
     repo_link = None
 
     for url in pypi_data["info"]["project_urls"].values():
