@@ -261,6 +261,9 @@ def validate_cff(cff_path: str, cff_data: str) -> bool:
         return True
     except (PykwalifySchemaError, JsonschemaSchemaError, ValueError, DuplicateKeyError):
         return False
+
+def cff_init_used(cff_data: str) -> bool:
+    return "This CITATION.cff file was generated with cffinit." in cff_data
     
 def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
     cff_path = get_file_path(owner, repo, '*CITATION.cff')
@@ -279,8 +282,11 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
                 cff_string = blob.data_stream.read().decode()
                 cff_yaml_data = load_cff_data(cff_string)
                 valid = validate_cff(cff_path, cff_string)
+                cff_init = cff_init_used(cff_string)
 
-                file_data.append({'cff_valid': valid,
+                file_data.append({
+                        'cff_valid': valid,
+                        'cff_init': cff_init,
                         'type': cff_yaml_data.get('type', 'software'),
                         'date-released': cff_yaml_data.get('date-released', None),
                         'doi': cff_yaml_data.get('doi', None),
@@ -312,11 +318,14 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
                 cff_string = blob.data_stream.read().decode()
                 cff_yaml_data = load_cff_data(cff_string)
                 valid = validate_cff(cff_path, cff_string)
+                cff_init = cff_init_used(cff_string)
 
                 if cff_yaml_data.get('preferred-citation', None) is None:
                     continue
 
-                file_data.append({'cff_valid': valid,
+                file_data.append({
+                                    'cff_valid': valid,
+                                    'cff_init': cff_init,
                                     'type': cff_yaml_data.get('preferred-citation', {}).get('type', None),
                                     'date-released': cff_yaml_data.get('preferred-citation', {}).get('date-released', None),
                                     'date-published': cff_yaml_data.get('preferred-citation', {}).get('date-published', None),
