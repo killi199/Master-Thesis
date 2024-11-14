@@ -173,7 +173,9 @@ async def main():
         json_object = json.loads(packages[0])
         cran_rows = json_object['downloads'][:100]
 
-    cff_df = pd.read_csv('github_repo_stars_sorted_100.csv')
+    cff_df = pd.read_csv('top_100_cff.csv')
+    cran_cff_df = pd.read_csv('top_100_cran_cff.csv')
+    pypi_cff_df = pd.read_csv('top_100_pypi_cff.csv')
     semaphore_count = 5
     semaphore = asyncio.Semaphore(semaphore_count)
     pypi_api_semaphore = asyncio.Semaphore(1)
@@ -184,6 +186,8 @@ async def main():
     pypi_tasks = [process_package_semaphore(package['project'], semaphore, process_pypi_package, pypi_api_semaphore, '', 'pypi') for package in pypi_rows]
     cran_tasks = [process_package_semaphore(package['package'], semaphore, process_cran_package, pypi_api_semaphore, '', 'cran') for package in cran_rows]
     cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cff') for _, package in cff_df.iterrows()]
+    pypi_cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'pypi_cff') for _, package in pypi_cff_df.iterrows()]
+    cran_cff_tasks = [process_package_semaphore(package, semaphore, process_cff_package, pypi_api_semaphore, '', 'cran_cff') for _, package in cran_cff_df.iterrows()]
 
     for task in tqdm(asyncio.as_completed(pypi_tasks), total=len(pypi_tasks), desc='PyPI', position=0, dynamic_ncols=True, smoothing=0):
         await task
@@ -192,6 +196,12 @@ async def main():
         await task
 
     for task in tqdm(asyncio.as_completed(cff_tasks), total=len(cff_tasks), desc='CFF', position=0, dynamic_ncols=True, smoothing=0):
+        await task
+
+    for task in tqdm(asyncio.as_completed(pypi_cff_tasks), total=len(pypi_cff_tasks), desc='PyPI CFF', position=0, dynamic_ncols=True, smoothing=0):
+        await task
+
+    for task in tqdm(asyncio.as_completed(cran_cff_tasks), total=len(cran_cff_tasks), desc='CRAN CFF', position=0, dynamic_ncols=True, smoothing=0):
         await task
 
 if __name__ == "__main__":
