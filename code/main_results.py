@@ -90,10 +90,10 @@ def calculate_similarity_without_non_matches(df_list: list[pd.DataFrame]) -> NAT
 def process_directory(directory, full=True):
     total_valid_cff_full = 0
     total_valid_cff = 0
-    total_cff_full = 0
-    total_cff = 0
 
     # CFF
+    total_cff = 0
+    total_cff_full = 0
     doi_cff = 0
     doi_cff_full = 0
     identifier_doi_cff = 0
@@ -116,8 +116,12 @@ def process_directory(directory, full=True):
     citation_counts_preferred_citation_cff_full = {}
 
     # Bib
+    total_bib = 0
+    total_bib_full = 0
     average_time_between_updates_bib = []
     difference_last_update_bib_list = []
+    citation_counts_bib = {}
+    citation_counts_bib_full = {}
 
     # Readme
     average_time_between_updates_readme = []
@@ -179,6 +183,9 @@ def process_directory(directory, full=True):
                 if file == 'bib.csv':
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
+                    total_bib_full += len(df)
+                    for key, value in df['type'].value_counts().to_dict().items():
+                        citation_counts_bib_full[key] = citation_counts_bib_full.get(key, 0) + value
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime')
                     average_time_between_updates_bib.append(df_sorted['committed_datetime'].diff().dropna().mean())
@@ -281,7 +288,10 @@ def process_directory(directory, full=True):
                     df = pd.read_csv(file_path)
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime', ascending=False)
+                    total_bib += 1
                     difference_last_update_bib_list.append(git_contributors_df['last_commit'].max() - df_sorted.iloc[0]['committed_datetime'])
+                    key = df_sorted.iloc[0]['type']
+                    citation_counts_bib[key] = citation_counts_bib.get(key, 0) + 1
 
                 if file == 'readme.csv':
                     git_contributors_df = get_git_contributors_df(root)
@@ -344,6 +354,8 @@ def process_directory(directory, full=True):
             print(f"Citation counts for {key} CFF: {value}/{total_cff_full}")
         for key, value in citation_counts_preferred_citation_cff_full.items():
             print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff_full}")
+        for key, value in citation_counts_bib_full.items():
+            print(f"Citation counts for {key} Bib: {value}/{total_bib_full}")
         average_time_between_updates_cff = pd.Series(average_time_between_updates_cff).mean()
         print(f"Average time between updates for {directory.split('/')[-1]} CFF: {average_time_between_updates_cff}")
         average_time_between_updates_bib = pd.Series(average_time_between_updates_bib).mean()
@@ -362,6 +374,8 @@ def process_directory(directory, full=True):
             print(f"Citation counts for {key} CFF: {value}/{total_cff}")
         for key, value in citation_counts_preferred_citation_cff.items():
             print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff}")
+        for key, value in citation_counts_bib.items():
+            print(f"Citation counts for {key} Bib: {value}/{total_bib}")
         average_time_last_update_cff = pd.Series(difference_last_update_cff_list).mean()
         print(f"Average time between last update and last commit for {directory.split('/')[-1]} CFF: {average_time_last_update_cff}")
         average_time_last_update_bib = pd.Series(difference_last_update_bib_list).mean()
