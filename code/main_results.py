@@ -453,10 +453,14 @@ def print_results(directory, full):
     cran_dir = os.path.join(directory, 'cran')
     pypi_dir = os.path.join(directory, 'pypi')
     cff_dir = os.path.join(directory, 'cff')
+    pypi_cff_dir = os.path.join(directory, 'pypi_cff')
+    cran_cff_dir = os.path.join(directory, 'cran_cff')
 
     cran_file_types = process_directory(cran_dir, full=full)
     pypi_file_types = process_directory(pypi_dir, full=full)
     cff_file_types = process_directory(cff_dir, full=full)
+    pypi_cff_file_types = process_directory(pypi_cff_dir, full=full)
+    cran_cff_file_types = process_directory(cran_cff_dir, full=full)
 
     print()
 
@@ -472,10 +476,18 @@ def print_results(directory, full):
     cff_matches_result, cff_non_matches_result, cff_entries_result = process_results(cff_file_types, "CFF")
     print()
 
+    # Process and print PyPi CFF results
+    pypi_cff_matches_result, pypi_cff_non_matches_result, pypi_cff_entries_result = process_results(pypi_cff_file_types, "PyPi CFF")
+    print()
+
+    # Process and print CRAN CFF results
+    cran_cff_matches_result, cran_cff_non_matches_result, cran_cff_entries_result = process_results(cran_cff_file_types, "CRAN CFF")
+    print()
+
     # Calculate total results
-    total_matches_result = cran_matches_result + pypi_matches_result + cff_matches_result
-    total_non_matches_result = cran_non_matches_result + pypi_non_matches_result + cff_non_matches_result
-    total_entries_result = cran_entries_result + pypi_entries_result + cff_entries_result
+    total_matches_result = cran_matches_result + pypi_matches_result + cff_matches_result + pypi_cff_matches_result + cran_cff_matches_result
+    total_non_matches_result = cran_non_matches_result + pypi_non_matches_result + cff_non_matches_result + pypi_cff_non_matches_result + cran_cff_non_matches_result
+    total_entries_result = cran_entries_result + pypi_entries_result + cff_entries_result + pypi_cff_entries_result + cran_cff_entries_result
 
     print(
         f"Total matches {total_matches_result}/{total_entries_result} ({total_matches_result / total_entries_result * 100:.2f}%) non matches {total_non_matches_result}")
