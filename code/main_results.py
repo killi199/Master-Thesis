@@ -88,12 +88,21 @@ def calculate_similarity_without_non_matches(df_list: list[pd.DataFrame]) -> NAT
     return sum(similarities) / len(similarities)
 
 def process_directory(directory, full=True):
-    total_valid_cff_full = 0
-    total_valid_cff = 0
-
     # CFF
     total_cff = 0
     total_cff_full = 0
+    total_valid_cff = 0
+    total_valid_cff_full = 0
+    total_cff_init_used = 0
+    total_cff_init_used_full = 0
+    total_valid_cff_cff_init_used = 0
+    total_valid_cff_cff_init_used_full = 0
+    total_valid_cff_cff_init_not_used = 0
+    total_valid_cff_cff_init_not_used_full = 0
+    total_invalid_cff_cff_init_used = 0
+    total_invalid_cff_cff_init_used_full = 0
+    total_invalid_cff_cff_init_not_used = 0
+    total_invalid_cff_cff_init_not_used_full = 0
     doi_cff = 0
     doi_cff_full = 0
     identifier_doi_cff = 0
@@ -172,6 +181,11 @@ def process_directory(directory, full=True):
                     df = pd.read_csv(file_path)
                     total_cff_full += len(df)
                     total_valid_cff_full += df['cff_valid'].sum()
+                    total_cff_init_used_full += df['cff_init'].sum()
+                    total_valid_cff_cff_init_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == True)].shape[0]
+                    total_valid_cff_cff_init_not_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == False)].shape[0]
+                    total_invalid_cff_cff_init_used_full += df[(df['cff_valid'] == False) & (df['cff_init'] == True)].shape[0]
+                    total_invalid_cff_cff_init_not_used_full += df[(df['cff_valid'] == False) & (df['cff_init'] == False)].shape[0]
                     doi_cff_full += df['doi'].notna().sum()
                     identifier_doi_cff_full += df['identifier-doi'].notna().sum()
                     for key, value in df['type'].value_counts().to_dict().items():
@@ -259,6 +273,16 @@ def process_directory(directory, full=True):
                     total_cff += 1
                     if df_sorted.iloc[0]['cff_valid']:
                         total_valid_cff += 1
+                    if df_sorted.iloc[0]['cff_init']:
+                        total_cff_init_used += 1
+                    if df_sorted.iloc[0]['cff_valid'] and df_sorted.iloc[0]['cff_init']:
+                        total_valid_cff_cff_init_used += 1
+                    if df_sorted.iloc[0]['cff_valid'] and not df_sorted.iloc[0]['cff_init']:
+                        total_valid_cff_cff_init_not_used += 1
+                    if not df_sorted.iloc[0]['cff_valid'] and df_sorted.iloc[0]['cff_init']:
+                        total_invalid_cff_cff_init_used += 1
+                    if not df_sorted.iloc[0]['cff_valid'] and not df_sorted.iloc[0]['cff_init']:
+                        total_invalid_cff_cff_init_not_used += 1
                     if not pd.isna(df_sorted.iloc[0]['doi']):
                         doi_cff += 1
                     if not pd.isna(df_sorted.iloc[0]['identifier-doi']):
@@ -345,6 +369,11 @@ def process_directory(directory, full=True):
 
     if full:
         print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff_full}/{total_cff_full}")
+        print(f"Total cff_init used {directory.split('/')[-1]} CFF: {total_cff_init_used_full}/{total_cff_full}")
+        print(f"Total valid CFF cff_init used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_used_full}/{total_cff_full}")
+        print(f"Total valid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_not_used_full}/{total_cff_full}")
+        print(f"Total invalid CFF cff_init used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_used_full}/{total_cff_full}")
+        print(f"Total invalid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_not_used_full}/{total_cff_full}")
         print(f"DOI {directory.split('/')[-1]} CFF: {doi_cff_full}/{total_cff_full}")
         print(f"Identifier DOI {directory.split('/')[-1]} CFF: {identifier_doi_cff_full}/{total_cff_full}")
         print(f"DOI preferred citation {directory.split('/')[-1]} CFF: {doi_preferred_citation_cff_full}/{total_preferred_citation_cff_full}")
@@ -365,6 +394,11 @@ def process_directory(directory, full=True):
         print()
     else:
         print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff}/{total_cff}")
+        print(f"Total cff_init used {directory.split('/')[-1]} CFF: {total_cff_init_used}/{total_cff}")
+        print(f"Total valid CFF cff_init used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_used}/{total_cff}")
+        print(f"Total valid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_not_used}/{total_cff}")
+        print(f"Total invalid CFF cff_init used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_used}/{total_cff}")
+        print(f"Total invalid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_not_used}/{total_cff}")
         print(f"DOI {directory.split('/')[-1]} CFF: {doi_cff}/{total_cff}")
         print(f"Identifier DOI {directory.split('/')[-1]} CFF: {identifier_doi_cff}/{total_cff}")
         print(f"DOI preferred citation {directory.split('/')[-1]} CFF: {doi_preferred_citation_cff}/{total_preferred_citation_cff}")
