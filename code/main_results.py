@@ -1,5 +1,7 @@
 import os
 import re
+from pathlib import Path
+
 import pandas as pd
 from datetime import datetime
 from pandas._libs.missing import NAType
@@ -30,10 +32,10 @@ def get_common_authors(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
 def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str) -> dict:
     if file not in common_authors:
         common_authors[file] = {}
-        for i in range(1, 51):
+        for i in range(1, 101):
             common_authors[file][i] = (0, 0)
 
-    for i in range(1, 51):
+    for i in range(1, 101):
         most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
         common_authors_entry = get_common_authors(most_commits_entry, df)
         common_authors[file][i] = common_authors[file][i][0] + len(common_authors_entry), common_authors[file][i][1] + len(most_commits_entry)
@@ -417,8 +419,8 @@ def process_directory(directory, full=True):
             print(f"Total authors with no commits in the last 5 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['5_years']}/{total_authors[total_authors_no_commits_key]}")#
 
         for file, common_authors_data in common_authors.items():
-            for i in range(1, 51):
-                print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} ({i} most committer): {common_authors_data[i][0]}/{common_authors_data[i][1]}")
+            Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_{file}.csv", index=False)
 
         if similarity_with_non_matches:
             print(f"Similarity between the latest files with non-matches: {pd.Series(similarity_with_non_matches).mean() * 100:.2f}%")
