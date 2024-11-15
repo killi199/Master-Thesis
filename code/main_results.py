@@ -29,19 +29,14 @@ def get_common_authors(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
 
 def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str) -> dict:
     if file not in common_authors:
-        common_authors[file] = {'1': (0, 0), '5': (0, 0), '10': (0, 0)}
+        common_authors[file] = {}
+        for i in range(1, 51):
+            common_authors[file][i] = (0, 0)
 
-    most_1_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(1).index]
-    common_1_authors = get_common_authors(most_1_commits_entry, df)
-    common_authors[file]['1'] = common_authors[file]['1'][0] + len(common_1_authors), common_authors[file]['1'][1] + len(most_1_commits_entry)
-
-    most_5_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(5).index]
-    common_5_authors = get_common_authors(most_5_commits_entry, df)
-    common_authors[file]['5'] = common_authors[file]['5'][0] + len(common_5_authors), common_authors[file]['5'][1] + len(most_5_commits_entry)
-
-    most_10_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(10).index]
-    common_10_authors = get_common_authors(most_10_commits_entry, df)
-    common_authors[file]['10'] = common_authors[file]['10'][0] + len(common_10_authors), common_authors[file]['10'][1] + len(most_10_commits_entry)
+    for i in range(1, 51):
+        most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
+        common_authors_entry = get_common_authors(most_commits_entry, df)
+        common_authors[file][i] = common_authors[file][i][0] + len(common_authors_entry), common_authors[file][i][1] + len(most_commits_entry)
 
     return common_authors
 
@@ -422,9 +417,8 @@ def process_directory(directory, full=True):
             print(f"Total authors with no commits in the last 5 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['5_years']}/{total_authors[total_authors_no_commits_key]}")#
 
         for file, common_authors_data in common_authors.items():
-            print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (1 most committer): {common_authors_data['1'][0]}/{common_authors_data['1'][1]}")
-            print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (5 most committer): {common_authors_data['5'][0]}/{common_authors_data['5'][1]}")
-            print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} (10 most committer): {common_authors_data['10'][0]}/{common_authors_data['10'][1]}")
+            for i in range(1, 51):
+                print(f"Common authors with the most commits for {directory.split('/')[-1]} {file} ({i} most committer): {common_authors_data[i][0]}/{common_authors_data[i][1]}")
 
         if similarity_with_non_matches:
             print(f"Similarity between the latest files with non-matches: {pd.Series(similarity_with_non_matches).mean() * 100:.2f}%")
