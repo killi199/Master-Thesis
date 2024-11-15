@@ -217,11 +217,11 @@ def get_cff_list(authors) -> list[dict[str, str]]:
         if "email" not in author:
             author["email"] = None
 
-        if "given-names" in author and "family-names" in author:
+        if "given-names" in author and "family-names" in author and author["given-names"] and author["family-names"]:
             authors_dic.append({"name": author["given-names"] + " " + author["family-names"]})
-        elif "family-names" in author:
+        elif "family-names" in author and author["family-names"]:
             authors_dic.append({"name": author["family-names"]})
-        elif "given-names" in author:
+        elif "given-names" in author and author["given-names"]:
             authors_dic.append({"name": author["given-names"]})
 
         authors_dic[-1]["email"] = author["email"]
