@@ -305,6 +305,8 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
                 authors_data.append((load_cff_authors_from_data(cff_yaml_data, 'authors'), commit_for_file.committed_datetime))
             except KeyError:
                 pass
+            except AttributeError:
+                pass
 
         return authors_data, pd.DataFrame(file_data)
     else:
