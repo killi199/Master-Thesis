@@ -1,3 +1,4 @@
+import contextlib
 import glob
 import os
 import re
@@ -31,6 +32,7 @@ from cffconvert import Citation
 from jsonschema.exceptions import ValidationError as JsonschemaSchemaError
 from pykwalify.errors import SchemaError as PykwalifySchemaError
 from tqdm import tqdm
+import sys
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -256,12 +258,13 @@ def get_file_path(owner: str, repo: str, pattern: str) -> str:
     return ""
 
 def validate_cff(cff_path: str, cff_data: str) -> bool:
-    try:
-        citation = Citation(cff_data, src=cff_path)
-        citation.validate()
-        return True
-    except (PykwalifySchemaError, JsonschemaSchemaError, ValueError, DuplicateKeyError, ParserError):
-        return False
+    with contextlib.redirect_stderr(open(os.devnull, "w")):
+        try:
+            citation = Citation(cff_data, src=cff_path)
+            citation.validate()
+            return True
+        except (PykwalifySchemaError, JsonschemaSchemaError, ValueError, DuplicateKeyError, ParserError):
+            return False
 
 def cff_init_used(cff_data: str) -> bool:
     return "This CITATION.cff file was generated with cffinit." in cff_data
@@ -282,7 +285,11 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
                 blob = tree[print_file]
                 cff_string = blob.data_stream.read().decode()
                 cff_yaml_data = load_cff_data(cff_string)
+                stderr = sys.stderr
+                stdout = sys.stdout
                 valid = validate_cff(cff_path, cff_string)
+                sys.stderr = stderr
+                sys.stdout = stdout
                 cff_init = cff_init_used(cff_string)
 
                 file_data.append({
