@@ -70,6 +70,8 @@ async def process_pypi_package(package, semaphore: asyncio.Semaphore, url: str, 
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(f"https://pypi.org/pypi/{package_name}/json") as response:
+                if response.status == 404:
+                    raise ValueError(f"Package not found in PyPI")
                 pypi_data = await response.json()
 
         if not url:
@@ -114,6 +116,8 @@ async def process_cran_package(package, _: asyncio.Semaphore, url: str, index: s
     try:
         async with aiohttp.ClientSession() as session:
             async with session.get(f"https://crandb.r-pkg.org/{package_name}") as response:
+                if response.status == 404:
+                    raise ValueError(f"Package not found in CRAN")
                 cran_data = await response.json()
 
         if not url:
