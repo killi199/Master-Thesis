@@ -188,6 +188,7 @@ def process_directory(directory, full=True):
                         if file_type not in last_timed_df:
                             last_timed_df[file_type] = df
                         else:
+                            # Matche über den Namen was natürlich dazu führt, dass namensänderungen neue Autoren sind
                             common_authors_in_time = pd.merge(last_timed_df[file_type], df, on=['name'], how='inner')
                             authors_added[file_type] += len(df) - len(common_authors_in_time)
                             authors_removed[file_type] += len(last_timed_df[file_type]) - len(common_authors_in_time)
