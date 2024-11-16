@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 
 import pandas as pd
+from tqdm import tqdm
 from datetime import datetime
 from pandas._libs.missing import NAType
 
@@ -162,7 +163,11 @@ def process_directory(directory, full=True):
     # Track the latest file for each type
     latest_files_by_folder = {}
 
+    folder_count = -1
     for root, _, files in os.walk(directory):
+        folder_count += 1
+
+    for root, _, files in tqdm(os.walk(directory), total=folder_count):
         folder_name = os.path.basename(root)
 
         if folder_name not in latest_files_by_folder:
