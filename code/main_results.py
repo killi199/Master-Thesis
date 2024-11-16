@@ -151,6 +151,8 @@ def process_directory(directory, full=True):
     total_authors_no_commits = {}
     common_authors = {}
     dfs = {}
+    authors_added = {}
+    authors_removed = {}
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -167,20 +169,29 @@ def process_directory(directory, full=True):
     for root, _, files in os.walk(directory):
         folder_count += 1
 
-    for root, _, files in tqdm(os.walk(directory), total=folder_count):
+    for root, dirs, files in tqdm(os.walk(directory), total=folder_count):
         folder_name = os.path.basename(root)
+        last_timed_df = {}
 
         if folder_name not in latest_files_by_folder:
             latest_files_by_folder[folder_name] = {file_type: (None, None) for file_type in file_patterns}
 
-        for file in files:
-            # Process timestamped files if 'full' is False, otherwise process all files
+        for file in sorted(files):
             if full:
-                # Process all timestamped file types
                 for file_type, pattern in file_patterns.items():
                     if file.endswith(file_type):
                         file_path = str(os.path.join(root, file))
                         df = get_authors_df(file_path)
+                        if file_type not in authors_added:
+                            authors_added[file_type] = 0
+                            authors_removed[file_type] = 0
+                        if file_type not in last_timed_df:
+                            last_timed_df[file_type] = df
+                        else:
+                            common_authors_in_time = pd.merge(last_timed_df[file_type], df, on=['name'], how='inner')
+                            authors_added[file_type] += len(df) - len(common_authors_in_time)
+                            authors_removed[file_type] += len(last_timed_df[file_type]) - len(common_authors_in_time)
+                            last_timed_df[file_type] = df
                         matches, non_matches, entries = check_matches(df)
 
                         if file_type not in file_type_percentages:
@@ -391,6 +402,10 @@ def process_directory(directory, full=True):
         print(f"Average time between updates for {directory.split('/')[-1]} Bib: {average_time_between_updates_bib}")
         average_time_between_updates_readme = pd.Series(average_time_between_updates_readme).mean()
         print(f"Average time between updates for {directory.split('/')[-1]} Readme: {average_time_between_updates_readme}")
+        for authors_added_key, authors_added_value in authors_added.items():
+            print(f"Authors added for {authors_added_key}: {authors_added_value}")
+        for authors_removed_key, authors_remove_value in authors_removed.items():
+            print(f"Authors removed for {authors_removed_key}: {authors_remove_value}")
         print()
     else:
         print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff}/{total_cff}")
