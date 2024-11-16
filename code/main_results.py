@@ -42,6 +42,19 @@ def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame
 
     return common_authors
 
+def get_total_authors_no_commits(git_contributors_df: pd.DataFrame, df: pd.DataFrame, total_authors_no_commits: dict, file: str) -> dict:
+    if file not in total_authors_no_commits:
+        total_authors_no_commits[file] = {0: {}, 1: 0}
+        for i in range(1, 3651):
+            total_authors_no_commits[file][0][i] = 0
+
+    total_authors_no_commits[file][1] += len(df[df['score'] > 0])
+
+    for i in range(1, 3651):
+        total_authors_no_commits[file][0][i] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=i)])
+
+    return total_authors_no_commits
+
 def calculate_similarity_with_non_matches(df_list: list[pd.DataFrame]) -> NAType | float:
     similarities = []
     for i in range(len(df_list)):
@@ -134,7 +147,6 @@ def process_directory(directory, full=True):
     difference_last_update_readme_list = []
 
     file_type_percentages = {}
-    total_authors = {}
     total_authors_no_commits = {}
     common_authors = {}
     dfs = {}
@@ -238,14 +250,7 @@ def process_directory(directory, full=True):
 
                     git_contributors_df = get_git_contributors_df(root)
 
-                    if file not in total_authors:
-                        total_authors[file] = 0
-                        total_authors_no_commits[file] = {'1_year': 0, '2_years': 0, '5_years': 0}
-
-                    total_authors[file] += len(df[df['score'] > 0])
-                    total_authors_no_commits[file]['1_year'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365)])
-                    total_authors_no_commits[file]['2_years'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*2)])
-                    total_authors_no_commits[file]['5_years'] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*5)])
+                    total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file)
 
                     common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file)
 
@@ -342,14 +347,7 @@ def process_directory(directory, full=True):
                     file_type_percentages[file_type]['entries'] += entries
 
                     git_contributors_df = get_git_contributors_df(os.path.dirname(latest_file_path))
-                    if file_type not in total_authors:
-                        total_authors[file_type] = 0
-                        total_authors_no_commits[file_type] = {'1_year': 0, '2_years': 0, '5_years': 0}
-
-                    total_authors[file_type] += len(authors_df[authors_df['score'] > 0])
-                    total_authors_no_commits[file_type]['1_year'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365)])
-                    total_authors_no_commits[file_type]['2_years'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*2)])
-                    total_authors_no_commits[file_type]['5_years'] += len(authors_df[authors_df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=365*5)])
+                    total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type)
 
                     common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type)
 
@@ -413,10 +411,10 @@ def process_directory(directory, full=True):
         print(f"Average time between last update and last commit for {directory.split('/')[-1]} Bib: {average_time_last_update_bib}")
         average_time_last_update_readme = pd.Series(difference_last_update_readme_list).mean()
         print(f"Average time between last update and last commit for {directory.split('/')[-1]} Readme: {average_time_last_update_readme}")
+
         for total_authors_no_commits_key, total_authors_no_commits_value in total_authors_no_commits.items():
-            print(f"Total authors with no commits in the last year or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['1_year']}/{total_authors[total_authors_no_commits_key]}")
-            print(f"Total authors with no commits in the last 2 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['2_years']}/{total_authors[total_authors_no_commits_key]}")
-            print(f"Total authors with no commits in the last 5 years or longer for {directory.split('/')[-1]} {total_authors_no_commits_key}: {total_authors_no_commits_value['5_years']}/{total_authors[total_authors_no_commits_key]}")#
+            Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(total_authors_no_commits_value).to_csv(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits_{total_authors_no_commits_key}.csv", index=False)
 
         for file, common_authors_data in common_authors.items():
             Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
