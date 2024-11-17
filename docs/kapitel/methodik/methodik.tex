@@ -1,7 +1,6 @@
 \chapter{Methodik}
 \label{chap:methodik}
 % TODO Grafik hier einfügen vom Prozess
-% TODO davon sollte einiges wohl in die einleitung der Datenbeschaffung und hat hier nichts zu suchen
 In diesem Kapitel wird beschrieben wie die Daten der einzelnen Quellen beschafft, abgeglichen und anschließend ausgewertet werden.
 Die Datenbeschaffung wird in \autoref{sec:datenbeschaffung}, der Abgleich in \autoref{sec:abgleich} und die Auswertung in \autoref{sec:auswertung} beschrieben.
 
@@ -46,28 +45,14 @@ Es entsteht die in \autoref{fig:datenbeschaffung_ergebnisse} dargestellte Ordner
 
 Der Prozess findet für jedes zu untersuchende Paket statt.
 Die Pakete werden dabei aus dem \gls{pypi} und dem \gls{cran} Software-Verzeichnis entnommen.
-Es werden die Top 100 \gls{pypi} Pakete im August 2024 untersucht, welche am häufigsten heruntergeladen wurden \autocite{kemenade_hugovktop-pypi-packages_2024}.
-% TODO auf TOP 100 CRAN liste von METACRAN eingehen https://github.com/r-hub/cranlogs.app sagen, dass das von metacran wieder verwendet wird
-Von \gls{cran} werden die Top 100 meist heruntergeladenen Pakete im Zeitraum von 02.08.2024 bis 31.08.2024 untersucht \autocite{csardi_r-hubcranlogsapp_2024}.
-Außerdem werden die Top 100 Pakete, welche eine \gls{cff}-Datei in GitHub haben untersucht.
-Die Top 100 werden dabei durch die Anzahl der Sterne auf GitHub definiert.
-% TODO allgemein noch besser beschreiben wie die TOP 100 Listen entstanden sind (Top 100 PyPI, Top 100 CRAN, Top 100 CFF, Top 100 PyPI CFF, Top 100 CRAN CFF)
-% TODO auf weitere TOP 100 listen cff eingehen nämlich die von pypi und die von cran mit cff
-% TODO irgendwo darauf eingehen, wie die 3 TOP 100 Listen erstellt wurden. die eine händisch die anderen mit einem automatischen Prozess
-% TODO auch sagen an welchem Tag die Liste mit den tausenden Paketen überhaupt erstellt worden ist nicht nur wann die Sterne hinzugefügt wurden
-% TODO auch darauf eingehen, wie die Liste mit cff und stars erstellt wurde also wie da noch die Stars dazu kamen
-% TODO doppelte einträge in der CFF Liste die ich bekommen habe. Gebe auch wieder doppelte einträge aus, da ich die Liste nicht verändere außerdem hat ecosystems manchmal für die neuen Links noch keine Daten aber für die alten schon. Allgemein hat ecosystems nicht alle einträge z.B. für https://github.com/fastapi/fastapi gibt es keine response von ecosystems aber das gibt es auch als pypi paket
-Die Liste wurde am 19.10.2024 erstellt.
-In der Liste sind Pakete enthalten, welche nicht im \gls{pypi} oder \gls{cran} verfügbar sind.
-Diese Pakete werden nicht betrachtet.
-
-Die Ergebnisse werden in drei Ordnern gespeichert jeweils für \gls{pypi} \gls{cran} und \gls{cff}.
+Die Ergebnisse des Prozesses werden in fünf Ordnern gespeichert jeweils für \gls{pypi}, \gls{cran}, \gls{cff}, \gls{pypi} \gls{cff} und \gls{cran} \gls{cff}.
+Die Ordner stellen die 5 Top 100 Listen dar, welche in \autoref{sec:datenbeschaffung} beschrieben werden.
 In jedem Ordner sind jeweils Unterordner für die einzelnen Pakete.
 Diese Daten werden für die anschließende Auswertung in \autoref{sec:auswertung} verwendet.
 Hier werden die Ergebnisse der Abgleiche ausgewertet und zusammengefasst, um über alle Pakete hinweg Aussagen treffen zu können.
 Die Datenbeschaffung, der Abgleich und die Auswertung sind in Python programmiert und verwenden \gls{oss} auf welche in den jeweiligen Abschnitten eingegangen wird.
 Über alle Abschnitte hinweg wird Pandas in der Version 2.2.2 verwendet, um die Tabellen zu erstellen und zu verarbeiten \autocite{the_pandas_development_team_pandas-devpandas_2024}.
 
-\input{kapitel/methodik/datenbeschaffung.tex} % 12.5 Seiten
-\input{kapitel/methodik/abgleich.tex} % 2 Seiten
-\input{kapitel/methodik/auswertung.tex} % 2 Seiten
+\input{kapitel/methodik/datenbeschaffung.tex}
+\input{kapitel/methodik/abgleich.tex}
+\input{kapitel/methodik/auswertung.tex}

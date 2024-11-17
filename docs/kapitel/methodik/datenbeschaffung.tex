@@ -1,9 +1,28 @@
 \section{Datenbeschaffung}
 \label{sec:datenbeschaffung}
 % TODO MEINE SOFTWARE ZITIEREN! Sonst bin ich nicht besser als alle anderen und auch Probleme und Konfiguration darstellen -> steht in dem Paper smith_software_2016 wie zitiert werden soll? \autocite{richardson_beautifulsoup4_2024}
-In diesem Abschnitt wird beschrieben wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
-Es wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
-Die Datenbeschaffung wird in die einzelnen Quellen untergliedert.
+
+
+In diesem Abschnitt wird beschrieben, weie die Top 100 Listen der Pakete erstellt wurden, welche in der Masterarbeit untersucht werden.
+Außerdem wird beschrieben wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
+Hierbei wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
+Der Abschnitt ist in die einzelnen zu untersuchenden Quellen untergliedert.
+
+% TODO auf TOP 100 CRAN liste von METACRAN eingehen https://github.com/r-hub/cranlogs.app sagen, dass das von metacran wieder verwendet wird
+% TODO allgemein noch besser beschreiben wie die TOP 100 Listen entstanden sind (Top 100 PyPI, Top 100 CRAN, Top 100 CFF, Top 100 PyPI CFF, Top 100 CRAN CFF)
+% TODO auf weitere TOP 100 listen cff eingehen nämlich die von pypi und die von cran mit cff
+% TODO irgendwo darauf eingehen, wie die 3 TOP 100 Listen erstellt wurden. die eine händisch die anderen mit einem automatischen Prozess
+% TODO auch sagen an welchem Tag die Liste mit den tausenden Paketen überhaupt erstellt worden ist nicht nur wann die Sterne hinzugefügt wurden
+% TODO auch darauf eingehen, wie die Liste mit cff und stars erstellt wurde also wie da noch die Stars dazu kamen
+% TODO doppelte einträge in der CFF Liste die ich bekommen habe. Gebe auch wieder doppelte einträge aus, da ich die Liste nicht verändere außerdem hat ecosystems manchmal für die neuen Links noch keine Daten aber für die alten schon. Allgemein hat ecosystems nicht alle einträge z.B. für https://github.com/fastapi/fastapi gibt es keine response von ecosystems aber das gibt es auch als pypi paket
+Insgesamt werden in der Masterarbeit 5 Top 100 Listen untersucht.
+Die erste Liste enthält die Top 100 \gls{pypi} Pakete, welche am häufigsten im August 2024 heruntergeladen wurden \autocite{kemenade_hugovktop-pypi-packages_2024}.
+Die zweite Liste enthält die Top 100 meist heruntergeladenen \gls{cran} Pakete im Zeitraum von 02.08.2024 bis 31.08.2024 \autocite{csardi_r-hubcranlogsapp_2024}.
+Außerdem werden die Top 100 Pakete, welche eine \gls{cff}-Datei in GitHub haben untersucht.
+Die Top 100 werden dabei durch die Anzahl der Sterne auf GitHub definiert.
+Die Liste wurde am 19.10.2024 erstellt.
+In der Liste sind Pakete enthalten, welche nicht im \gls{pypi} oder \gls{cran} verfügbar sind.
+Diese Pakete werden nicht betrachtet.
 
 Aus den Quellen \nameref{subsec:datenbeschaffung_git}, \nameref{subsec:datenbeschaffung_beschreibung}, \nameref{subsec:datenbeschaffung_cff} und \nameref{subsec:datenbeschaffung_bibtex} können zeitliche Informationen extrahiert werden, da diese in Git verwaltet werden.
 Aus diesem Grund werden die Daten jeweils zu der Änderung der Quelle gespeichert.
