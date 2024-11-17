@@ -1,9 +1,17 @@
 \subsection{Citation File Format}
 \label{subsec:datenbeschaffung_cff}
-% TODO darauf eingehen, dass ich händisch aktuell geprüft habe ob das GH repo in cran oder pypi ist und daraus meine listen gebaut habe. Dies wäre aber auch automatisch möglich aber mit viel Aufwand und man bräuchte google big query für 100 pakete war dieser weg schneller außerdem gibt es auf PyPi mehrere Pakete die auf ein GitHub repo verlinken. Da müsste einiges beachtet werden um das genau zu machen für 100 war dies besser. Falls es für mehr gemacht werden sollte müsste das überdacht werden.
-% TODO darauf eingehen wie die CFF geholt und verarbeitet wurde mit stars verknüpft und dann händisch pypi cran raus gesucht und den namen auf pypi
-% TODO in der gegebenen Liste waren mehrere Repos auf GH doppelt mit unterschiedlichen Links. diese wurden entfernt.
-% TODO sagen, dass nur die erste identifier-doi beschafft wird, da nur geguckt wird in den Ergebnissen ob überhaupt eine vorhanden ist
 % pyyaml==6.0.2, cffconvert==2.0.0, jsonschema==4.23.0, pykwalify==1.8.0
-% CFF und preferred citation getrennt
-% beschreiben wie die Top 100 Liste entstanden ist -> händisch
+
+% Allgemein für CFF und Preferred Citation
+% TODO Untersucht wird die CITATION.cff Datei
+% TODO sagen, dass nur die erste identifier-doi beschafft wird, da nur geguckt wird in den Ergebnissen ob überhaupt eine vorhanden ist
+% TODO Wie in Beschreibung wird für jeden Änderungszeitpunkt die Daten beschafft diesmal aber nicht nur für 50 sondern für alle Änderungen
+% TODO für jede Änderung wieder die git contributors in TIMESTAMP_git_contributors.csv
+
+% CFF
+% TODO gespeichert in TIMESTAMP_cff_authors.csv und TIMESTAMP_cff_authors_new.csv (Inhalt: name, email, orcid, git Daten durch abgleich)
+% TODO allgemeine Infos in cff.csv (Inhalt: cff_valid, cff_init, type, daterelease, doi, identifier-doi, committed_datetime, authored_datetime)
+
+% Preferred Citation
+% TODO gespeichert in TIMESTAMP_cff_preferred_citation_authors.csv und TIMESTAMP_cff_preferred_citation_authors_new.csv (Inhalt: name, email, orcid, git Daten durch abgleich) 
+% TODO allgemeine Infos in cff_preferred_citation.csv (Inhalt: cff_valid, cff_init, type, date-released, date-published, year, month, doi, collection-doi, identifier-doi, committed_datetime, authored_datetime)
