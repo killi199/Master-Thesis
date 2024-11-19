@@ -9,6 +9,7 @@ Anschließend wird für jede Änderung die Beschreibung wie zuvor mit \emph{spaC
 Für jeden Zeitpunkt wird eine CSV-Datei mit dem Namen \path{TIMESTAMP_readme_authors_new.csv} erstellt, wobei \emph{TIMESTAMP} durch den konkreten Zeitpunkt der Änderung der Datei ersetzt wird.
 Hierbei wird der \emph{commit date} Zeitpunkt aus Git verwendet.
 Die erstellte Datei enthält die extrahierten Namen aus der Beschreibung, welche mit den neusten Git Daten abgeglichen wurden.
+Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 Der neuste Zeitpunkt entspricht hierbei dem Zeitpunkt, an dem die Repositorys heruntergeladen wurden, also der Tag an dem der Prozess durchlaufen wurde.
 
 Zusätzlich wird zu jedem Änderungszeitpunkt der Git Prozess aus \autoref{subsec:datenbeschaffung_git} bis zu diesem Zeitpunkt durchlaufen.
@@ -16,7 +17,25 @@ Dies dient dazu, eine Liste aller Autoren zu erhalten, welche bis zu diesem Zeit
 Die Liste wird in der Datei \path{TIMESTAMP_git_contributors.csv} gespeichert, wobei \emph{TIMESTAMP} durch den konkreten Zeitpunkt ersetzt wird.
 Der Inhalt ist der gleiche wie in \autoref{subsec:datenbeschaffung_git}, jedoch nur bis zu dem Zeitpunkt, an dem die \path{README.md} Datei jeweils geändert wurde.
 Diese Daten werden ebenfalls mit den Autoren, welche aus der Beschreibung extrahiert wurden, abgeglichen und in der Datei \path{TIMESTAMP_readme_authors.csv} gespeichert.
+Die Felder der Datei sind ebenfalls in \autoref{tab:description_authors} aufgelistet.
 Inhalt ist hierbei der Name des Autors und weitere Informationen, welche durch den Abgleich ermittelt wurden.
 
 Im Prozess werden ebenfalls allgemeine Informationen zur Beschreibung beschafft und anschließend in der Datei \path{readme.csv} gespeichert.
 Die Datei beinhaltet die Zeitpunkte \emph{commit date} und \emph{author date} für jede Änderung der Beschreibung.
+Die Felder der Datei sind in \autoref{tab:readme} dargestellt.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{4cm}|p{9.5cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{committed\_datetime} & Zeitpunkt des \emph{commit date} \\
+        \emph{authored\_datetime} & Zeitpunkt des \emph{author date} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder der \texttt{readme.csv} Datei}
+    \label{tab:readme}
+    \small
+    Die Tabelle zeigt die Felder der \path{readme.csv} Datei. Für jede Änderung der Beschreibung werden die dargestellten Werte gespeichert.
+\end{table}

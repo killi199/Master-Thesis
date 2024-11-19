@@ -32,6 +32,7 @@ Die Daten aus der Zeichenfolge werden mit der Software \emph{rpy2} in der Versio
 Die Software wird mit dem R Befehl \code{eval(parse(text = '\{cran\_author\}'))} ausgeführt, wobei \code{cran\_author} die R Zeichenfolge der Autoren ist.
 Anschließend werden die Autoren, welche die Rolle \emph{aut} zugeordnet haben nach dem Abgleich mit den Git Daten in der Datei \path{cran_authors.csv} gespeichert.
 In der Datei wird, falls vorhanden, der Name, die E-Mail-Adresse und die ORCID-ID der Autoren gespeichert.
+Die Felder der Datei sind in \autoref{tab:cran_authors} aufgelistet.
 
 Falls das Feld \glqq Authors@R\grqq{} keine Zeichenfolge enthält oder beim Verarbeiten der Zeichenfolge ein Fehler auftritt, wird das durch die API zurückgegebene Feld \glqq Author\grqq{} verarbeitet.
 In dem Feld stehen ebenfalls die Autoren des Pakets, jedoch ohne die zusätzliche Information der E-Mail.
@@ -52,9 +53,28 @@ In ihr ist lediglich der Name und die E-Mail-Adresse des Maintainers enthalten.
 Außerdem ist immer nur ein Maintainer angegeben, welcher verarbeitet wird.
 Die Daten werden nach dem Abgleich mit den Daten aus Git in der Datei \path{cran_maintainers.csv} gespeichert.
 Ausgegeben wird in der Datei der Name und die E-Mail Adresse des Maintainers.
+Die Felder der Dateien sind in \autoref{tab:python_authors} aufgelistet.
 
 Das letzte Feld, welches von der API verarbeitet wird ist das Feld \glqq Description\grqq{}.
 In diesem Feld ist die Beschreibung des Pakets enthalten.
 Dabei wird die Verarbeitung wie in \autoref{subsec:datenbeschaffung_pypi} für die Beschreibung von \gls{pypi} durchgeführt.
 Es wird ebenfalls die \gls{ner} Bibliothek \emph{spaCy} verwendet, um die Autoren zu extrahieren.
 Anschließend werden Namen der extrahierten Autoren in der Datei \path{description_authors.csv} nach einem Abgleich mit den Git Daten gespeichert.
+Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{3.5cm}|p{10cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{name} & Name des Autors \\
+        \emph{email} & E-Mail des Autors \\
+        \emph{orcid} & ORCID-ID des Autors \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder der \texttt{cran\_authors.csv}, \texttt{TIMESTAMP\_cff\_authors(\_new).csv} und \texttt{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei}
+    \label{tab:cran_authors}
+    \small
+    Die Tabelle zeigt die Felder der \texttt{cran\_authors.csv}, \texttt{TIMESTAMP\_cff\_authors(\_new).csv} und \texttt{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei. Für jeden Autor der betrachteten Software wird der Name, die E-Mail und die ORCID-ID angegeben, falls diese vorhanden sind. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+\end{table}

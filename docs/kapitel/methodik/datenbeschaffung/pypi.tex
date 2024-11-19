@@ -22,6 +22,7 @@ In diesen Sonderfällen wird keine weitere Betrachtung vorgenommen und die Daten
 Anschließend werden die Daten mit dem in \autoref{sec:abgleich} beschriebenen Prozess mit den zuvor beschafften Git Daten abgeglichen, dabei werden die verschiedenen Sonderfälle, welche auftreten können berücksichtigt.
 Anschließend werden die Daten in den Dateien \path{python_authors.csv} und \path{python_maintainers.csv} gespeichert.
 Inhalt ist dabei der Name und die E-Mail des Autors oder Maintainers, sowohl als auch die Daten aus dem Abgleich mit Git.
+Die Felder der Dateien sind in \autoref{tab:python_authors} aufgelistet.
 
 Zusätzlich zu den Informationen der Autoren und Maintainer wird die Beschreibung des Pakets von der API zurückgegeben.
 Einige Pakete haben in der Beschreibung ebenfalls Autoren angegeben, welche zusätzlich verarbeitet werden.
@@ -33,6 +34,7 @@ Durch die Verwendung des genaueren Modells ist die Laufzeit erhöht.
 In Experimenten hat sich jedoch gezeigt, dass das kleinere Modell keine guten Ergebnisse für die Beschreibungen liefert, da sehr viele Entitäten fälschlicherweise als Autoren erkannt werden.
 Die extrahierten Autoren werden ebenfalls mit den Git Daten abgeglichen und in der Datei \path{description_authors.csv} gespeichert.
 Inhalt ist dabei der Name des Autors, sowohl als auch die Daten aus dem Abgleich mit Git.
+Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 
 Außerdem werden die verifizierten Maintainer, welche auf \gls{pypi} angegeben sind verarbeitet, da diese unter Umständen nicht den Autoren entsprechen, welche durch die API ausgegeben werden.
 Diese werden durch \gls{pypi} nicht mittels der JSON API ausgegeben, weshalb die Daten mittels der XML-RPC API abgefragt werden.
@@ -48,5 +50,76 @@ Da die Autoren ausschließlich mit dem Benutzernamen zurückgegeben werden, wird
 Falls ein Autor einen Namen angegeben hat, wird dieser auf der Profilseite des Benutzers dargestellt.
 Um diesen zu erhalten wird eine Anfrage mittels \emph{aiohttp} an die Profilseite des Benutzers gestellt.
 Anschließend wird mittels \emph{BeautifulSoup} in der Version 4.12.3 der Name aus dem HTML extrahiert \autocite{richardson_beautifulsoup4_2024}.
-Die Daten werden nachdem sie mit den Git Daten abgeglichen wurden in der Datei \path{pypi_maintainers.csv} gespeichert.
+Die Daten werden, nachdem sie mit den Git Daten abgeglichen wurden, in der Datei \path{pypi_maintainers.csv} gespeichert.
 Inhalt ist dabei der Benutzername und der Name des Autors, sowohl als auch die Daten aus dem Abgleich mit Git.
+Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{3.5cm}|p{10cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{rank} & Rang des Autors sortiert nach der Anzahl der Commits \\
+        \emph{insertions} & Hinzugefügte Zeilen des Autors \\
+        \emph{deletions} & Gelöschte Zeilen des Autors \\
+        \emph{lines\_changed} & Geänderte Zeilen des Autors \\
+        \emph{files} & Geänderte Dateien des Autors \\
+        \emph{commits} & Anzahl der Commits des Autors \\
+        \emph{first\_commit} & Zeitpunkt des ersten Commits des Autors \\
+        \emph{last\_commit} & Zeitpunkt des letzten Commits des Autors \\
+        \emph{score} & Zu wie viel Prozent der Abgleich mit Git übereinstimmt \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder, welche durch den Abgleich mit Git entstehen}
+    \label{tab:abgleich_felder}
+    \small
+    Die Tabelle zeigt die Felder, welche durch den Abgleich mit Git entstehen. Für jeden Autor oder Maintainer der betrachteten Software werden die dargestellten Werte gespeichert, falls der Autor abgeglichen werden konnte. Falls der Autor nicht abgeglichen werden konnte sind die Felder leer und der Score ist 0.
+\end{table}
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{3.5cm}|p{10cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{name} & Name des Autors \\
+        \emph{email} & E-Mail des Autors \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder der \texttt{python\_authors.csv}, \texttt{python\_maintainers.csv} und \texttt{cran\_maintainers.csv} Datei}
+    \label{tab:python_authors}
+    \small
+    Die Tabelle zeigt die Felder der \texttt{python\_authors.csv}, \texttt{python\_maintainers.csv} und \texttt{cran\_maintainers.csv} Datei. Für jeden Autor oder Maintainer der betrachteten Software wird der Name und die E-Mail gespeichert, falls diese angegeben wurde. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+\end{table}
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{3.5cm}|p{10cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{login} & Benutzername des Autors \\
+        \emph{name} & Name des Autors \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder der \texttt{pypi\_maintainers.csv} Datei}
+    \label{tab:pypi_maintainers}
+    \small
+    Die Tabelle zeigt die Felder der \path{pypi_maintainers.csv} Datei. Für jeden Maintainer der betrachteten Software wird der Benutzername angegeben. Der Name kann leer sein, da er nicht angegeben werden muss. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+\end{table}
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{3.5cm}|p{10cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{name} & Name des Autors \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder der \texttt{description\_authors.csv}, \texttt{TIMESTAMP\_readme\_authors(\_new).csv} und \texttt{TIMESTAMP\_bib\_authors(\_new).csv} Datei}
+    \label{tab:description_authors}
+    \small
+    Die Tabelle zeigt die Felder der \texttt{description\_authors.csv}, \texttt{TIMESTAMP\_readme\_authors(\_new).csv} und \texttt{TIMESTAMP\_bib\_authors(\_new).csv} Datei. Für jeden Autor der betrachteten Software wird der Name gespeichert, welcher durch die \gls{ner} ermittelt wurde. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+\end{table}

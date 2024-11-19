@@ -23,8 +23,33 @@ Der Name des Autors wird dabei ebenfalls summiert, was in dem Kontext bedeutet, 
 Das Gruppieren ist notwendig, da die Autoren den Namen und die E-Mail-Adressen in Git eigenständig festlegen können wie in \autoref{sec:versionsverwaltung} beschrieben wurde.
 Durch dieses Vorgehen wird gewährleistet, dass zumindest keine E-Mail-Adressen doppelt vorhanden sind, falls ein Autor unterschiedliche Schreibweisen für seinen Namen verwendet.
 Die ermittelten und gruppierten Daten werden nach der Anzahl der Commits sortiert in der Datei \path{git_contributors.csv} gespeichert.
+In \autoref{tab:git_contributors} sind die Felder der Datei aufgelistet.
 
 Außerdem bietet das Tool die Möglichkeit mit der gesetzten Umgebungsvariablen \texttt{\_GIT\_UNTIL=}, alle Änderungen nur bis zu einem bestimmten Zeitpunkt zu betrachten.
 Diese Funktion wird verwendet, um die Änderungen bis zu der Aktualisierung einer Quelle zu betrachten.
 Die Daten werden beispielsweise in der Datei \path{20210819_161452-0400_git_contributors.csv} gespeichert, wobei der erste Teil des Dateinamens den konkreten Tag und Uhrzeit mit zugehöriger Zeitzone angibt.
+Dabei hat die Datei die gleichen Felder wie die \path{git_contributors.csv} Datei, welche in \autoref{tab:git_contributors} dargestellt ist, jedoch nur für die Änderungen bis zu dem angegebenen Zeitpunkt.
 Für die Verarbeitung der Zeiten in unterschiedlichen Zeitzonen wird das Modul \emph{pytz} in der Version 2024.2 verwendet \autocite{bishop_stub42pytz_2024}.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{3.5cm}|p{10cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{name} & Name des Autors \\
+        \emph{email} & E-Mail des Autors \\
+        \emph{insertions} & Hinzugefügte Zeilen des Autors \\
+        \emph{deletions} & Gelöschte Zeilen des Autors \\
+        \emph{lines\_changed} & Geänderte Zeilen des Autors \\
+        \emph{files} & Geänderte Dateien des Autors \\
+        \emph{commits} & Anzahl der Commits des Autors \\
+        \emph{first\_commit} & Zeitpunkt des ersten Commits des Autors \\
+        \emph{last\_commit} & Zeitpunkt des letzten Commits des Autors \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder der \texttt{git\_contributors.csv} Datei}
+    \label{tab:git_contributors}
+    \small
+    Die Tabelle zeigt die Felder der \path{git_contributors.csv} oder der \path{TIMESTAMP_git_contributors.csv} Datei. Für jeden Autor der betrachteten Software werden die dargestellten Werte gespeichert.
+\end{table}

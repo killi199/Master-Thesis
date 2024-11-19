@@ -11,12 +11,13 @@ Die verwendete Commit-ID ist: 214ef38eabd60538cc96349bc31d219897029f70.
 Die Autoren werden aus der \hologo{BibTeX} Datei extrahiert und mit den neusten Git Daten abgeglichen.
 Die erstellte Liste wird in der Datei \path{TIMESTAMP_bib_authors_new.csv} gespeichert, wobei \emph{TIMESTAMP} durch den Zeitpunkt der Änderung ersetzt wird.
 Dabei wird in der Datei ausschließlich der Name des Autors zuzüglich der Daten aus dem Abgleich mit Git gespeichert.
+Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 
 Ebenfalls wird erneut der Git Prozess aus \autoref{subsec:datenbeschaffung_git} bis zu diesem Zeitpunkt durchlaufen.
 Die Liste der Autoren wird in der Datei \path{TIMESTAMP_git_contributors.csv} gespeichert.
 Der Inhalt ist identisch, wie bereits in den anderen Quellen beschrieben.
 Außerdem wird die Liste der Autoren, welche aus der \hologo{BibTeX} extrahiert wurden, mit den Git Autoren bis zu diesem Zeitpunkt abgeglichen.
-Die Daten werden in der Datei \path{TIMESTAMP_bib_authors.csv} gespeichert.
+Die Daten werden in der Datei \path{TIMESTAMP_bib_authors.csv} gespeichert und die Inhalte ist identisch mit der \glqq new\grqq{} Datei.
 Hierbei wird ebenfalls ausschließlich der Name des Autors und die Daten aus dem Git Abgleich gespeichert.
 
 Außerdem können erneut allgemeine Daten für die \hologo{BibTeX} Datei extrahiert werden.
@@ -27,3 +28,25 @@ Die Literaturtypen können dabei unterschiedlich sein, verschiedene Typen sind i
 Zusätzlich wird das Jahr und der Monat der Veröffentlichung extrahiert und gespeichert.
 Diese Werte müssen nicht für jeden Literaturtypen vorhanden sein und können aus diesem Grund leer sein.
 Ebenfalls müssen die DOI und die ISBN nicht für jeden Literaturtypen vorhanden sein, falls sie jedoch vorhanden sind, werden sie extrahiert und gespeichert.
+Die Felder der Datei sind in \autoref{tab:bib} aufgelistet.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{p{4cm}|p{9.5cm}}
+        \toprule
+        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
+        \emph{type} & Literaturtyp der \hologo{BibTeX} Datei \\
+        \emph{year} & Veröffentlichungsjahr \\
+        \emph{month} & Veröffentlichungsmonat \\
+        \emph{doi} & Zu zitierende DOI \\
+        \emph{isbn} & Zu zitierende ISBN \\
+        \emph{committed\_datetime} & Zeitpunkt des \emph{commit date} \\
+        \emph{authored\_datetime} & Zeitpunkt des \emph{author date} \\
+        \bottomrule
+    \end{tabular}
+    \caption{Felder der \texttt{bib.csv} Datei}
+    \label{tab:bib}
+    \small
+    Die Tabelle zeigt die Felder der \path{bib.csv} Datei. Für jede Änderung der \hologo{BibTeX} Datei werden die dargestellten Werte gespeichert. Die Felder \emph{year}, \emph{month}, \emph{doi} und \emph{isbn} sind abhängig vom Literaturtyp optional.
+\end{table}
