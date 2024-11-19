@@ -22,9 +22,9 @@ Anschließend wird eine Gruppierung auf der E-Mail durchgeführt und die anderen
 Der Name des Autors wird dabei ebenfalls summiert, was in dem Kontext bedeutet, dass Namen aneinander gehängt werden.
 Das Gruppieren ist notwendig, da die Autoren den Namen und die E-Mail-Adressen in Git eigenständig festlegen können wie in \autoref{sec:versionsverwaltung} beschrieben wurde.
 Durch dieses Vorgehen wird gewährleistet, dass zumindest keine E-Mail-Adressen doppelt vorhanden sind, falls ein Autor unterschiedliche Schreibweisen für seinen Namen verwendet.
-Die ermittelten und gruppierten Daten werden nach der Anzahl der Commits sortiert in der Datei \texttt{git\_contributors.csv} gespeichert.
+Die ermittelten und gruppierten Daten werden nach der Anzahl der Commits sortiert in der Datei \path{git_contributors.csv} gespeichert.
 
 Außerdem bietet das Tool die Möglichkeit mit der gesetzten Umgebungsvariablen \texttt{\_GIT\_UNTIL=}, alle Änderungen nur bis zu einem bestimmten Zeitpunkt zu betrachten.
 Diese Funktion wird verwendet, um die Änderungen bis zu der Aktualisierung einer Quelle zu betrachten.
-Die Daten werden beispielsweise in der Datei \texttt{20210819\_161452-0400\_git\_contributors.csv} gespeichert, wobei der erste Teil des Dateinamens den konkreten Tag und Uhrzeit mit zugehöriger Zeitzone angibt.
+Die Daten werden beispielsweise in der Datei \path{20210819_161452-0400_git_contributors.csv} gespeichert, wobei der erste Teil des Dateinamens den konkreten Tag und Uhrzeit mit zugehöriger Zeitzone angibt.
 Für die Verarbeitung der Zeiten in unterschiedlichen Zeitzonen wird das Modul \emph{pytz} in der Version 2024.2 verwendet \autocite{bishop_stub42pytz_2024}.

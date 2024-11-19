@@ -20,18 +20,18 @@ Ebenfalls geben einige Paketentwickler keine E-Mail im E-Mail Feld an, sondern n
 Es gibt noch verschiedene weitere Sonderfälle, welche jedoch nicht alle aufgezählt werden, da sie gleich behandelt werden.
 In diesen Sonderfällen wird keine weitere Betrachtung vorgenommen und die Daten so gespeichert, wie sie von der API zurückgegeben wurden.
 Anschließend werden die Daten mit dem in \autoref{sec:abgleich} beschriebenen Prozess mit den zuvor beschafften Git Daten abgeglichen, dabei werden die verschiedenen Sonderfälle, welche auftreten können berücksichtigt.
-Anschließend werden die Daten in den Dateien \texttt{python\_authors.csv} und \texttt{python\_maintainers.csv} gespeichert.
+Anschließend werden die Daten in den Dateien \path{python_authors.csv} und \path{python_maintainers.csv} gespeichert.
 Inhalt ist dabei der Name und die E-Mail des Autors oder Maintainers, sowohl als auch die Daten aus dem Abgleich mit Git.
 
 Zusätzlich zu den Informationen der Autoren und Maintainer wird die Beschreibung des Pakets von der API zurückgegeben.
 Einige Pakete haben in der Beschreibung ebenfalls Autoren angegeben, welche zusätzlich verarbeitet werden.
 Die Beschreibung wird als unstrukturierter Text zurückgegeben.
 Dieser Text wird mittels der \gls{ner} Bibliothek \emph{spaCy} in der Version 3.7.6 verarbeitet, um die Autoren zu extrahieren \autocite{honnibal_spacy_2020}.
-Dabei wird das Programm so verwendet, dass nur die Entitäten \texttt{PERSON} extrahiert werden.
+Dabei wird das Programm so verwendet, dass nur die Entitäten \emph{PERSON} extrahiert werden.
 Als Modell wurde das \texttt{en\_core\_web\_trf} verwendet, welches auf Englisch trainiert ist und eine höhere Genauigkeit aufweist als das \texttt{en\_core\_web\_sm} Modell.
 Durch die Verwendung des genaueren Modells ist die Laufzeit erhöht. 
 In Experimenten hat sich jedoch gezeigt, dass das kleinere Modell keine guten Ergebnisse für die Beschreibungen liefert, da sehr viele Entitäten fälschlicherweise als Autoren erkannt werden.
-Die extrahierten Autoren werden ebenfalls mit den Git Daten abgeglichen und in der Datei \texttt{description\_authors.csv} gespeichert.
+Die extrahierten Autoren werden ebenfalls mit den Git Daten abgeglichen und in der Datei \path{description_authors.csv} gespeichert.
 Inhalt ist dabei der Name des Autors, sowohl als auch die Daten aus dem Abgleich mit Git.
 
 Außerdem werden die verifizierten Maintainer, welche auf \gls{pypi} angegeben sind verarbeitet, da diese unter Umständen nicht den Autoren entsprechen, welche durch die API ausgegeben werden.
@@ -48,5 +48,5 @@ Da die Autoren ausschließlich mit dem Benutzernamen zurückgegeben werden, wird
 Falls ein Autor einen Namen angegeben hat, wird dieser auf der Profilseite des Benutzers dargestellt.
 Um diesen zu erhalten wird eine Anfrage mittels \emph{aiohttp} an die Profilseite des Benutzers gestellt.
 Anschließend wird mittels \emph{BeautifulSoup} in der Version 4.12.3 der Name aus dem HTML extrahiert \autocite{richardson_beautifulsoup4_2024}.
-Die Daten werden nachdem sie mit den Git Daten abgeglichen wurden in der Datei \texttt{pypi\_maintainers.csv} gespeichert.
+Die Daten werden nachdem sie mit den Git Daten abgeglichen wurden in der Datei \path{pypi_maintainers.csv} gespeichert.
 Inhalt ist dabei der Benutzername und der Name des Autors, sowohl als auch die Daten aus dem Abgleich mit Git.
