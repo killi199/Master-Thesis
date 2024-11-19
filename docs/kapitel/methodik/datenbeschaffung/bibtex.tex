@@ -1,3 +1,29 @@
 \subsection{\hologo{BibTeX}}
 \label{subsec:datenbeschaffung_bibtex}
-% bibtexparser @ git+https://github.com/sciunto-org/python-bibtexparser@main
+In diesem Unterabschnitt wird wie bereits zuvor eine Datei untersucht, welche in Git verwaltet wird.
+Hierbei wird die \path{CITATION.bib} Datei zu jedem Änderungszeitpunkt untersucht, falls sie in dem zu untersuchenden Paket vorhanden ist.
+Es wird die Software \emph{bibtexparser} verwendet, um die \hologo{BibTeX} Datei zu analysieren.
+Die Software bietet Möglichkeiten, um in Python \hologo{BibTeX} Dateien zu lesen und zu schreiben.
+Die Software wird nicht in einer speziellen Version verwendet, da Features, welche benötigt werden noch nicht im offiziellen Release vorhanden sind.
+Aus diesem Grund wird das Programm direkt aus dem Git Repository geladen und mit dem letzten Commit zum Zeitpunkt des Schreibens ausgeführt.
+Die verwendete Commit-ID ist: 214ef38eabd60538cc96349bc31d219897029f70.
+
+Die Autoren werden aus der \hologo{BibTeX} Datei extrahiert und mit den neusten Git Daten abgeglichen.
+Die erstellte Liste wird in der Datei \path{TIMESTAMP_bib_authors_new.csv} gespeichert, wobei \emph{TIMESTAMP} durch den Zeitpunkt der Änderung ersetzt wird.
+Dabei wird in der Datei ausschließlich der Name des Autors zuzüglich der Daten aus dem Abgleich mit Git gespeichert.
+
+Ebenfalls wird erneut der Git Prozess aus \autoref{subsec:datenbeschaffung_git} bis zu diesem Zeitpunkt durchlaufen.
+Die Liste der Autoren wird in der Datei \path{TIMESTAMP_git_contributors.csv} gespeichert.
+Der Inhalt ist identisch, wie bereits in den anderen Quellen beschrieben.
+Außerdem wird die Liste der Autoren, welche aus der \hologo{BibTeX} extrahiert wurden, mit den Git Autoren bis zu diesem Zeitpunkt abgeglichen.
+Die Daten werden in der Datei \path{TIMESTAMP_bib_authors.csv} gespeichert.
+Hierbei wird ebenfalls ausschließlich der Name des Autors und die Daten aus dem Git Abgleich gespeichert.
+
+Außerdem können erneut allgemeine Daten für die \hologo{BibTeX} Datei extrahiert werden.
+Hierbei wird eine weitere CSV-Datei erstellt, welche die allgemeinen Daten enthält.
+Die Datei wird \path{bib.csv} genannt und enthält wie bereits in den anderen Quellen die Zeitpunkte \emph{commit date} und \emph{author date}.
+Außerdem wird der Literaturtyp aus der Datei extrahiert und in der Datei gespeichert.
+Die Literaturtypen können dabei unterschiedlich sein, verschiedene Typen sind in den Grundlagen erläutert.
+Zusätzlich wird das Jahr und der Monat der Veröffentlichung extrahiert und gespeichert.
+Diese Werte müssen nicht für jeden Literaturtypen vorhanden sein und können aus diesem Grund leer sein.
+Ebenfalls müssen die DOI und die ISBN nicht für jeden Literaturtypen vorhanden sein, falls sie jedoch vorhanden sind, werden sie extrahiert und gespeichert.
