@@ -1,17 +1,56 @@
 \subsection{Citation File Format}
 \label{subsec:datenbeschaffung_cff}
-% pyyaml==6.0.2, cffconvert==2.0.0, jsonschema==4.23.0, pykwalify==1.8.0
+In diesem Abschnitt wird ähnlich wie im vorherigen Abschnitt die \gls{cff} Datei untersucht.
+Der Abschnitt ist dabei aufgeteilt in die allgemeinen Daten, welche für \gls{cff} und \grqq preferred-citation\glqq{} gelten und die spezifischen Daten, welche ausschließlich für die \grqq preferred-citation\glqq{} gelten.
+Die beiden Daten werden jeweils in einer \path{CITATION.cff} Datei gespeichert, wie es in den Grundlagen erläutert wurde.
+Es wird ebenfalls ein zeitlicher Verlauf der Daten betrachtet, um die Änderungen in der Zeit zu analysieren.
+Dabei wird der Verlauf nicht auf 50 Zeitpunkte beschränkt, sondern in der gesamten Historie betrachtet.
+Da die \gls{cff} Datei in YAML geschrieben wird, wird die Bibliothek \emph{pyyaml} in der Version 6.0.2 verwendet, um die Datei zu lesen \autocite{noauthor_yamlpyyaml_2024}.
 
-% Allgemein für CFF und Preferred Citation
-% TODO Untersucht wird die CITATION.cff Datei
-% TODO sagen, dass nur die erste identifier-doi beschafft wird, da nur geguckt wird in den Ergebnissen ob überhaupt eine vorhanden ist
-% TODO Wie in Beschreibung wird für jeden Änderungszeitpunkt die Daten beschafft diesmal aber nicht nur für 50 sondern für alle Änderungen
-% TODO für jede Änderung wieder die git contributors in TIMESTAMP_git_contributors.csv
+In der \gls{cff} können für die eigentliche Zitation und für die \grqq preferred-citation\glqq{} Autoren angegeben werden.
+Diese werden jeweils getrennt extrahiert anschließend mit den neusten Git Daten abgeglichen und in separaten Dateien gespeichert.
+Dabei werden nur die Autoren betrachtet, welche Personen sind und keine Entitäten wie beispielsweise Organisationen.
+Die Autoren werden in der Datei \path{TIMESTAMP_cff_authors_new.csv} gespeichert, wobei \emph{TIMESTAMP} durch den Zeitpunkt der Änderung ersetzt wird.
+Die Autoren aus der \grqq preferred-citation\glqq{} werden in der Datei \path{TIMESTAMP_cff_preferred_citation_authors_new.csv} gespeichert.
+In beiden Dateien sind der Name, die E-Mail, die ORCID-ID und die Git Daten, welche durch den Abgleich ermittelt wurden, enthalten.
 
-% CFF
-% TODO gespeichert in TIMESTAMP_cff_authors.csv und TIMESTAMP_cff_authors_new.csv (Inhalt: name, email, orcid, git Daten durch abgleich)
-% TODO allgemeine Infos in cff.csv (Inhalt: cff_valid, cff_init, type, daterelease, doi, identifier-doi, committed_datetime, authored_datetime)
+Zusätzlich zu den neusten Daten wird zu jedem Änderungszeitpunkt der Git Prozess aus \autoref{subsec:datenbeschaffung_git} bis zu diesem Zeitpunkt durchlaufen.
+Die Liste der Autoren wird in der Datei \path{TIMESTAMP_git_contributors.csv} gespeichert.
+Die Liste enthält die Autoren, welche bis zu diesem Zeitpunkt Änderungen vorgenommen haben.
+Außerdem wird die Liste der Autoren, welche aus der \gls{cff} extrahiert wurden, mit den Git Autoren bis zu diesem Zeitpunkt abgeglichen.
+Dadurch entstehen die beiden Dateien \path{TIMESTAMP_cff_authors.csv} und \path{TIMESTAMP_cff_preferred_citation_authors.csv}.
+Enthalten sind die gleichen Informationen wie in den \glqq new\grqq{} Dateien.
 
-% Preferred Citation
-% TODO gespeichert in TIMESTAMP_cff_preferred_citation_authors.csv und TIMESTAMP_cff_preferred_citation_authors_new.csv (Inhalt: name, email, orcid, git Daten durch abgleich) 
-% TODO allgemeine Infos in cff_preferred_citation.csv (Inhalt: cff_valid, cff_init, type, date-released, date-published, year, month, doi, collection-doi, identifier-doi, committed_datetime, authored_datetime)
+Außerdem können in beiden Fällen ähnlich wie bei der Beschreibung allgemeine Daten extrahiert werden.
+Hierbei wird wie in der Beschreibung eine weitere CSV-Datei erstellt, welche die allgemeinen Daten enthält.
+In dem Fall der \gls{cff} werden zwei allgemeine Dateien erstellt einmal für die \gls{cff} und einmal für die \glqq preferred-citation\grqq{}.
+Die Dateien heißen \path{cff.csv} und \path{cff_preferred_citation.csv}.
+In den beiden Dateien werden ebenfalls die Zeitpunkte \emph{commit date} und \emph{author date} gespeichert.
+
+In den Dateien wird ebenfalls gespeichert, ob die \gls{cff} Datei valide ist.
+Hierbei wird das Programm \emph{cffconvert} in der Version 2.0.0 verwendet, um die Validität zu überprüfen \autocite{spaaks_cffconvert_2021}.
+Außerdem benötigt \emph{cffconvert} die Programme \emph{jsonschema} und \emph{pykwalify}, welche in der Masterarbeit in der Version 4.23.0 und 1.8.0 verwendet werden \autocites{noauthor_python-jsonschemajsonschema_2024}{grokzen_grokzenpykwalify_2024}.
+Diese werden von \emph{cffconvert} benötigt, um die \gls{cff} Datei zu validieren.
+Zusätzlich wird gespeichert, ob die \gls{cff} Datei mit dem Tool \emph{cffinit} erstellt wurde \autocite{spaaks_cffinit_2023}.
+Dies ist möglich, da \emph{cffinit} in der \gls{cff} Datei mehrere Kommentare einfügt, welche auf das Tool hinweisen.
+Es wird davon ausgegangen, dass \emph{cffinit} benutzt wurde, falls der Kommentar \glqq This CITATION.cff file was generated with cffinit.\grqq{} in der \gls{cff} Datei vorhanden ist.
+Dies ist jedoch kein sicherer Indikator, da der Kommentar auch manuell hinzugefügt und vor allem entfernt werden kann.
+Diese Werte werden jeweils in den allgemeinen Dateien gespeichert.
+Dies führt zu einer doppelten Speicherung, allerdings ist dadurch in beiden Dateien separat zu erkennen, ob die \gls{cff} Datei aus denen die Daten extrahiert wurden, valide ist und ob \emph{cffinit} benutzt wurde.
+
+Alle weiteren Informationen werden direkt aus der \gls{cff} Datei extrahiert und in die eigene CSV Datenstruktur übertragen.
+Falls ein Wert dabei nicht in der \gls{cff} Datei vorhanden ist, wird der Eintrag in der CSV Datei leer gelassen.
+Im Folgenden werden die Daten, welche direkt extrahiert werden, beschrieben.
+Eine extrahierte Information, welche in beiden Dateien, also der \path{cff.csv} und \path{cff_preferred_citation.csv} gespeichert wird, ist die DOI aus dem \gls{cff} Feld \glqq identifiers\grqq{}.
+In der Masterarbeit wird ausschließlich die erste DOI in der Liste der \glqq identifiers\grqq{} betrachtet.
+Diese wird in der allgemeinen Datei gespeichert, um später zu überprüfen, ob eine DOI in diesem Feld vorhanden ist.
+
+Zusätzlich wird in beiden fällen das Feld \glqq date-released\grqq{} und die \glqq doi\grqq{} extrahiert und gespeichert.
+Die \glqq doi\grqq{} wird in den allgemeinen Dateien gespeichert, um im weiteren Verlauf zu überprüfen, ob eine DOI in der \gls{cff} Datei vorhanden ist.
+Als letzte gemeinsame Information wird die \glqq type\grqq{} extrahiert und in den allgemeinen Dateien gespeichert.
+Dabei können wir in den Grundlagen erwähnt für die allgemeinen Informationen in der \gls{cff} nur \glqq software\grqq{} und \glqq dataset\grqq{} vorkommen.
+Für die allgemeinen Daten der \glqq preferred-citation\grqq{} können weitere Typen vorkommen, welche in den Grundlagen erläutert wurden.
+
+Alle weiteren Daten sind spezifisch für die \glqq preferred-citation\grqq{}.
+Hierbei wird das Feld \glqq date-published\grqq{} extrahiert und in der allgemeinen Datei \path{cff_preferred_citation.csv} gespeichert.
+Die Felder \glqq year\grqq{}, \glqq month\grqq{} und \glqq collection-doi\grqq{} werden ebenfalls extrahiert und in der allgemeinen Datei für die \glqq preferred-citation\grqq{} gespeichert.
