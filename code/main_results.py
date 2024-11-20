@@ -30,6 +30,11 @@ def get_common_authors(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
     merged_df = pd.merge(df1, df2, on=common_fields, how='inner')
     return merged_df
 
+'''
+Im ersten wird gezeigt, welcher Anteil von Top Committer über alle
+Projekte auch in der CFF genannt werden. Da es immer wieder Committer
+gibt, die nicht in der CFF auftauchen, kann diese Kurve 1 nicht erreichen.
+'''
 def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str) -> dict:
     if file not in common_authors:
         common_authors[file] = {}
@@ -41,6 +46,24 @@ def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame
         common_authors_entry = get_common_authors(most_commits_entry, df)
         common_authors[file][i] = common_authors[file][i][0] + len(common_authors_entry), common_authors[file][i][1] + len(most_commits_entry)
 
+    return common_authors
+
+'''
+Im zweiten Plot wird pro Projekt gezeigt, welchen Anteil der in der CFF
+genannten Autoren unter den n Top Committern ist. Dieser Graph kann 1
+erreichen, wenn alle Autoren tatsächlich was zum Projekt beigetragen
+haben (aber nicht notwendigerweise die n Top Committer sind.)
+'''
+def get_common_authors_count_2(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str, package: str) -> dict[str, dict[str, tuple[list, int]]]:
+    if file not in common_authors:
+        common_authors[file] = {}
+    if package not in common_authors[file]:
+        common_authors[file][package] = ([], len(df))
+
+    for i in range(1, 101):
+        most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
+        common_authors_entry = get_common_authors(most_commits_entry, df)
+        common_authors[file][package][0].append(len(common_authors_entry))
     return common_authors
 
 def get_total_authors_no_commits(git_contributors_df: pd.DataFrame, df: pd.DataFrame, total_authors_no_commits: dict, file: str) -> dict:
@@ -150,6 +173,7 @@ def process_directory(directory, full=True):
     file_type_percentages = {}
     total_authors_no_commits = {}
     common_authors = {}
+    common_authors_2: dict[str, dict[str, tuple[list, int]]] = {}
     dfs = {}
     authors_added = {}
     authors_removed = {}
@@ -270,6 +294,7 @@ def process_directory(directory, full=True):
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file)
 
                     common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file)
+                    common_authors_2 = get_common_authors_count_2(git_contributors_df, df, common_authors_2, file, folder_name)
 
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
@@ -367,6 +392,7 @@ def process_directory(directory, full=True):
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type)
 
                     common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type)
+                    common_authors_2 = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2, file_type, folder)
 
         similarity_with_non_matches = []
         similarity_without_non_matches = []
@@ -435,11 +461,15 @@ def process_directory(directory, full=True):
 
         for total_authors_no_commits_key, total_authors_no_commits_value in total_authors_no_commits.items():
             Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(total_authors_no_commits_value).to_csv(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits_{total_authors_no_commits_key}.csv", index=False)
+            pd.DataFrame(total_authors_no_commits_value).to_csv(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits_{total_authors_no_commits_key}", index=False)
 
         for file, common_authors_data in common_authors.items():
             Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_{file}.csv", index=False)
+            pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_{file}", index=False)
+
+        for file, common_authors_data in common_authors_2.items():
+            Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2_{file}", index=False)
 
         if similarity_with_non_matches:
             print(f"Similarity between the latest files with non-matches: {pd.Series(similarity_with_non_matches).mean() * 100:.2f}%")
