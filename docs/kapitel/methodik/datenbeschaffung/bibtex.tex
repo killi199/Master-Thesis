@@ -2,11 +2,9 @@
 \label{subsec:datenbeschaffung_bibtex}
 In diesem Unterabschnitt wird wie bereits zuvor eine Datei untersucht, welche in Git verwaltet wird.
 Hierbei wird die \path{CITATION.bib} Datei zu jedem Änderungszeitpunkt untersucht, falls sie in dem zu untersuchenden Paket vorhanden ist.
-Es wird die Software \emph{bibtexparser} verwendet, um die \hologo{BibTeX} Datei zu analysieren.
+Es wird die Software \emph{bibtexparser} in der Version 2.0.0b7 verwendet, um die \hologo{BibTeX} Datei zu analysieren.
 Die Software bietet Möglichkeiten, um in Python \hologo{BibTeX} Dateien zu lesen und zu schreiben.
-Die Software wird nicht in einer speziellen Version verwendet, da Features, welche benötigt werden noch nicht im offiziellen Release vorhanden sind.
-Aus diesem Grund wird das Programm direkt aus dem Git Repository geladen und mit dem letzten Commit zum Zeitpunkt des Schreibens ausgeführt.
-Die verwendete Commit-ID ist: 214ef38eabd60538cc96349bc31d219897029f70.
+Sie muss in einer Beta-Version verwendet werden, da Features, welche benötigt werden noch nicht im offiziellen Release vorhanden sind.
 
 Die Autoren werden aus der \hologo{BibTeX} Datei extrahiert und mit den neusten Git Daten abgeglichen.
 Die erstellte Liste wird in der Datei \path{TIMESTAMP_bib_authors_new.csv} gespeichert, wobei \emph{TIMESTAMP} durch den Zeitpunkt der Änderung ersetzt wird.
