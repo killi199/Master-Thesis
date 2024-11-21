@@ -57,9 +57,6 @@ erreichen, wenn alle Autoren tatsächlich was zum Projekt beigetragen
 haben (aber nicht notwendigerweise die n Top Committer sind.)
 '''
 def get_common_authors_count_2(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str, package: str) -> dict[str, dict[str, tuple[list, int]]]:
-    if df.empty:
-        return common_authors
-
     if file not in common_authors:
         common_authors[file] = {}
     if package not in common_authors[file]:
@@ -71,16 +68,14 @@ def get_common_authors_count_2(git_contributors_df: pd.DataFrame, df: pd.DataFra
         common_authors[file][package][0].append(len(common_authors_entry))
     return common_authors
 
-def get_total_authors_no_commits(git_contributors_df: pd.DataFrame, df: pd.DataFrame, total_authors_no_commits: dict, file: str) -> dict:
+def get_total_authors_no_commits(git_contributors_df: pd.DataFrame, df: pd.DataFrame, total_authors_no_commits: dict, file: str, package: str) -> dict:
     if file not in total_authors_no_commits:
-        total_authors_no_commits[file] = {0: {}, 1: 0}
-        for i in range(1, 3651):
-            total_authors_no_commits[file][0][i] = 0
-
-    total_authors_no_commits[file][1] += len(df[df['score'] > 0])
+        total_authors_no_commits[file] = {}
+    if package not in total_authors_no_commits[file]:
+        total_authors_no_commits[file][package] = ([], len(df[df['score'] > 0]))
 
     for i in range(1, 3651):
-        total_authors_no_commits[file][0][i] += len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=i)])
+        total_authors_no_commits[file][package][0].append(len(df[df['last_commit'] < git_contributors_df['last_commit'].max() - pd.Timedelta(days=i)]))
 
     return total_authors_no_commits
 
@@ -296,7 +291,7 @@ def process_directory(directory, position: int, full=True):
 
                     git_contributors_df = get_git_contributors_df(root)
 
-                    total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file)
+                    total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file, folder_name)
 
                     common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, df, common_authors_2, file, folder_name)
@@ -394,7 +389,7 @@ def process_directory(directory, position: int, full=True):
                     file_type_percentages[file_type]['entries'] += entries
 
                     git_contributors_df = get_git_contributors_df(os.path.dirname(latest_file_path))
-                    total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type)
+                    total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type, folder)
 
                     common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2, file_type, folder)
@@ -464,9 +459,9 @@ def process_directory(directory, position: int, full=True):
         average_time_last_update_readme = pd.Series(difference_last_update_readme_list).mean()
         print(f"Average time between last update and last commit for {directory.split('/')[-1]} Readme: {average_time_last_update_readme}")
 
-        for total_authors_no_commits_key, total_authors_no_commits_value in total_authors_no_commits.items():
+        for file, total_authors_no_commits_data in total_authors_no_commits.items():
             Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(total_authors_no_commits_value).to_csv(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits_{total_authors_no_commits_key}", index=False)
+            pd.DataFrame(total_authors_no_commits_data).to_csv(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits_{file}", index=False)
 
         for file, common_authors_data in common_authors.items():
             Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
