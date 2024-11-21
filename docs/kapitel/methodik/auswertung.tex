@@ -1,4 +1,27 @@
 \section{Auswertung}
 \label{sec:auswertung}
-% TODO Das Auswertungsskript erklären, welches die Daten aggregiert aus der Datenbeschaffung
-% TODO Beschreiben wie die Ergebnisse dargestellt wurden mittels Matplotlib in der Version x.x.x -> vllt. eher in Ergebnisse?
+In diesem Abschnitt wird beschrieben, wie die Daten aus dem \autoref{sec:datenbeschaffung} ausgewertet werden.
+Dabei wird der Abschnitt aufgeteilt in die Aggregierung der Daten, welche zuvor beschrieben wurden und anschließend wird kurz auf die Darstellung der aggregierten Daten eingegangen.
+
+Die Auswertung der Daten erfolgt erneut mittels Python.
+Für die Auswertung werden alle Daten verarbeitet, welche durch die Datenbeschaffung gesammelt wurden.
+Einzige Ausnahme ist, dass immer die Dateien mit der \emph{new} Endung betrachtet werden.
+Dies liegt daran, dass die Auswertung aktuell nur auf den neusten Git Daten durchgeführt wird und die Git Daten zu den jeweiligen Zeitpunkten der Änderung nicht betrachtet werden.
+Außerdem ist darüber ein Abgleich zwischen den Git Autoren und den Autoren aus den anderen Quellen möglich.
+Aber auch ein Abgleich zwischen den einzelnen Quellen ist möglich, da die Autoren in der neusten Version immer die gleichen Git Daten wie beispielsweise die gleiche Anzahl an Commits in allen Quellen haben.
+Der Abgleich der Autoren ist hierbei nur möglich, falls in der Datenbeschaffung die Autoren abgeglichen werden konnten.
+Aus diesem Grund werden für viele Ergebnisse der Auswertung die Ergebnisse einmal inklusive der Autoren betrachtet, welche nicht abgeglichen werden konnten und einmal exklusive dieser Autoren.
+Falls ein Abgleich zwingend erforderlich ist, beispielsweise bei der Untersuchung, wie lange ein Autor durchschnittlich in einer Quelle genannt ist, wird ein einfacher Vergleich des Namens über die Quelle durchgeführt.
+Dieser Vergleich ist jedoch nicht immer korrekt, da beispielsweise Namensänderungen in den Quellen so nicht berücksichtigt werden können, falls kein Abgleich in der Datenbeschaffung möglich war.
+
+Das Skript ist so aufgebaut, dass nicht alle Daten auf einmal geladen werden, sondern jede Datei einzeln geladen und verarbeitet wird.
+Dies bietet den Vorteil, dass auch mit weniger Arbeitsspeicher gearbeitet werden kann und die Daten nicht alle auf einmal im Arbeitsspeicher gehalten werden müssen.
+Jedoch birgt dies auch Nachteile, beispielsweise das zu keinem Zeitpunkt bekannt ist wie viele Autoren maximal in einer Quelle vorkommen.
+Diese Information ist erst vorhanden, wenn alle Daten vollständig verarbeitet worden sind.
+
+Zusätzlich ist die Aggregierung der Daten unterteilt in die Aggregierung der vollständigen Daten und die Aggregierung der neusten Daten.
+In der vollständigen Datenverarbeitung werden Ergebnisse extrahiert, welche die gesamte Historie der Daten betrachten.
+Hier werden alle Daten mit ihren Zeitstempeln verarbeitet.
+In der neusten Datenverarbeitung werden nur die Daten betrachtet, welche auf dem neusten Stand der untersuchten Software sind.
+Dabei wird jeweils die neuste Datei in den Quellen mithilfe des Zeitstempels ausgewählt und anschließend verarbeitet.
+In diese beiden Kategorien ist das \autoref{chap:ergebnisse} ebenfalls unterteilt.
