@@ -24,7 +24,7 @@ for source_name, source in sources.items():
         df = pd.read_csv(file_path)
         common_authors = []
         total_authors = 0
-        relative = []
+        relative = [0]
 
         for name in df.columns:
             common_authors_package = ast.literal_eval(df[name][0])
@@ -32,7 +32,7 @@ for source_name, source in sources.items():
                 common_authors = [0] * len(common_authors_package)
             total_authors_package = int(df[name][1])
             total_authors += total_authors_package
-            relative_package = []
+            relative_package = [0]
 
             for index, common_author in enumerate(common_authors_package):
                 relative_package.append(common_author/total_authors_package)
