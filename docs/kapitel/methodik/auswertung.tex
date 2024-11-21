@@ -10,7 +10,9 @@ Dies liegt daran, dass die Auswertung aktuell nur auf den neusten Git Daten durc
 Außerdem ist darüber ein Abgleich zwischen den Git Autoren und den Autoren aus den anderen Quellen möglich.
 Aber auch ein Abgleich zwischen den einzelnen Quellen ist möglich, da die Autoren in der neusten Version immer die gleichen Git Daten wie beispielsweise die gleiche Anzahl an Commits in allen Quellen haben.
 Der Abgleich der Autoren ist hierbei nur möglich, falls in der Datenbeschaffung die Autoren abgeglichen werden konnten.
-Aus diesem Grund werden für viele Ergebnisse der Auswertung die Ergebnisse einmal inklusive der Autoren betrachtet, welche nicht abgeglichen werden konnten und einmal exklusive dieser Autoren.
+Aus diesem Grund werden für einige Ergebnisse der Auswertung die Ergebnisse einmal inklusive der Autoren betrachtet, welche nicht abgeglichen werden konnten und einmal exklusive dieser Autoren.
+Für andere Ergebnisse ist dies nicht möglich, da genannte Autoren in den Quellen, welche nicht in den Git Daten vorhanden sind, ebenfalls zu keinem Abgleich führen.
+
 Falls ein Abgleich zwingend erforderlich ist, beispielsweise bei der Untersuchung, wie lange ein Autor durchschnittlich in einer Quelle genannt ist, wird ein einfacher Vergleich des Namens über die Quelle durchgeführt.
 Dieser Vergleich ist jedoch nicht immer korrekt, da beispielsweise Namensänderungen in den Quellen so nicht berücksichtigt werden können, falls kein Abgleich in der Datenbeschaffung möglich war.
 
