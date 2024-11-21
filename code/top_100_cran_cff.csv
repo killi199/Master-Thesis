@@ -47,6 +47,7 @@ https://github.com/ropenspain/mapspain,42,cran,mapSpain
 https://github.com/rOpenSpain/climaemet,41,cran,climaemet
 https://github.com/PredictiveEcology/reproducible,41,cran,reproducible
 https://github.com/nickch-k/vtable,40,cran,vtable
+https://github.com/epiverse-trace/sivirep,40,cran,sivirep
 https://github.com/ropensci/traits,40,cran,traits
 https://github.com/rivaquiroga/guaguas,39,cran,guaguas
 https://github.com/ropensci/waywiser,38,cran,waywiser
@@ -95,7 +96,6 @@ https://github.com/e-kotov/rJavaEnv,12,cran,rJavaEnv
 https://github.com/ropensci/mctq,12,cran,mctq
 https://github.com/ailich/GLCMTextures,12,cran,GLCMTextures
 https://github.com/dieghernan/rasterpic,12,cran,rasterpic
-https://github.com/ropenspain/tidybde,12,cran,tidyBdE
 https://github.com/murphymv/semEff,11,cran,semEff
 https://github.com/epiverse-trace/finalsize,11,cran,finalsize
 https://github.com/januarharianto/respr,11,cran,respR
