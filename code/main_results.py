@@ -38,10 +38,10 @@ gibt, die nicht in der CFF auftauchen, kann diese Kurve 1 nicht erreichen.
 def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str) -> dict:
     if file not in common_authors:
         common_authors[file] = {}
-        for i in range(1, 101):
+        for i in range(1, 201):
             common_authors[file][i] = (0, 0)
 
-    for i in range(1, 101):
+    for i in range(1, 201):
         most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
         common_authors_entry = get_common_authors(most_commits_entry, df)
         common_authors[file][i] = common_authors[file][i][0] + len(common_authors_entry), common_authors[file][i][1] + len(most_commits_entry)
@@ -60,7 +60,7 @@ def get_common_authors_count_2(git_contributors_df: pd.DataFrame, df: pd.DataFra
     if package not in common_authors[file]:
         common_authors[file][package] = ([], len(df))
 
-    for i in range(1, 101):
+    for i in range(1, 201):
         most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
         common_authors_entry = get_common_authors(most_commits_entry, df)
         common_authors[file][package][0].append(len(common_authors_entry))
