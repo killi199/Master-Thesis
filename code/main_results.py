@@ -55,6 +55,9 @@ erreichen, wenn alle Autoren tatsächlich was zum Projekt beigetragen
 haben (aber nicht notwendigerweise die n Top Committer sind.)
 '''
 def get_common_authors_count_2(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str, package: str) -> dict[str, dict[str, tuple[list, int]]]:
+    if df.empty:
+        return common_authors
+
     if file not in common_authors:
         common_authors[file] = {}
     if package not in common_authors[file]:
