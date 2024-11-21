@@ -52,3 +52,57 @@ for source_name, source in sources.items():
     plt.xlabel("Anzahl der betrachteten Git Autoren")
     plt.ylabel("Anteil der gemeinsamen Autoren")
     plt.show()
+
+file_list = {"CFF": {"file": "total_authors_no_commits_cff_authors_new.csv", "color": "blue"},
+             "CFF preferred citation": {"file": "total_authors_no_commits_cff_preferred_citation_authors_new.csv", "color": "green"},
+             "CRAN Authors": {"file": "total_authors_no_commits_cran_authors.csv", "color": "red"},
+             "CRAN Maintainers": {"file": "total_authors_no_commits_cran_maintainers.csv", "color": "orange"},
+             "Beschreibung": {"file": "total_authors_no_commits_description_authors.csv", "color": "purple"},
+             "Readme": {"file": "total_authors_no_commits_readme_authors_new.csv", "color": "brown"},
+             "BibTeX": {"file": "total_authors_no_commits_bib_authors_new.csv", "color": "cyan"},
+             "PyPI Maintainers": {"file": "total_authors_no_commits_pypi_maintainers.csv", "color": "olive"},
+             "Python Authors": {"file": "total_authors_no_commits_python_authors.csv", "color": "red"},
+             "Python Maintainers": {"file": "total_authors_no_commits_python_maintainers.csv", "color": "orange"}}
+
+for source_name, source in sources.items():
+    for file_name, info in file_list.items():
+        file_path = f"overall_results/{source}/{info['file']}"
+        if not os.path.exists(file_path):
+            continue
+        df = pd.read_csv(file_path)
+        total_authors_no_commits = []
+        total_authors = 0
+        relative = [1]
+
+        for name in df.columns:
+            total_authors_no_commits_package = ast.literal_eval(df[name][0])
+            if len(total_authors_no_commits) == 0:
+                total_authors_no_commits = [0] * len(total_authors_no_commits_package)
+            total_authors_package = int(df[name][1])
+
+            if total_authors_package == 0:
+                continue
+
+            total_authors += total_authors_package
+            relative_package = [1]
+
+            for index, authors in enumerate(total_authors_no_commits_package):
+                relative_package.append(authors/total_authors_package)
+                total_authors_no_commits[index] += authors
+
+            plt.plot(relative_package, alpha=0.1)
+
+        if total_authors == 0:
+            continue
+
+        for authors in total_authors_no_commits:
+            relative.append(authors/total_authors)
+
+        plt.plot(relative, label=file_name, color=info["color"])
+
+    plt.gca().invert_xaxis()
+    plt.legend(loc="upper left")
+    plt.title(f"{source_name} Autoren ohne Commits")
+    plt.xlabel("Tage")
+    plt.ylabel("Anteil der Autoren ohne Commits")
+    plt.show()
