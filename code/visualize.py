@@ -47,7 +47,7 @@ for source_name, source in sources.items():
 
         plt.plot(relative, label=file_name, color=info["color"])
 
-    plt.legend()
+    plt.legend(loc="lower right")
     plt.title(f"Anteil der {source_name} Autoren an den Git Autoren")
     plt.xlabel("Anzahl der betrachteten Git Autoren")
     plt.ylabel("Anteil der gemeinsamen Autoren")
