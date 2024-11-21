@@ -1,5 +1,7 @@
+import asyncio
 import os
 import re
+from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 import pandas as pd
@@ -124,7 +126,7 @@ def calculate_similarity_without_non_matches(df_list: list[pd.DataFrame]) -> NAT
 
     return sum(similarities) / len(similarities)
 
-def process_directory(directory, full=True):
+def process_directory(directory, position: int, full=True):
     # CFF
     total_cff = 0
     total_cff_full = 0
@@ -196,7 +198,7 @@ def process_directory(directory, full=True):
     for root, _, files in os.walk(directory):
         folder_count += 1
 
-    for root, dirs, files in tqdm(os.walk(directory), total=folder_count):
+    for root, dirs, files in tqdm(os.walk(directory), total=folder_count, position=position, desc=directory.split('/')[-1]):
         folder_name = os.path.basename(root)
         last_timed_df = {}
 
@@ -500,19 +502,30 @@ def process_results(file_types, source_name):
         f"{source_name} total matches {matches_result}/{entries_result} ({matches_result / entries_result * 100:.2f}%) non matches {non_matches_result}")
     return matches_result, non_matches_result, entries_result
 
+async def run_in_executor(executor, func, *args):
+    loop = asyncio.get_running_loop()
+    return await loop.run_in_executor(executor, func, *args)
 
-def print_results(directory, full):
-    cran_dir = os.path.join(directory, 'cran')
-    pypi_dir = os.path.join(directory, 'pypi')
-    cff_dir = os.path.join(directory, 'cff')
-    pypi_cff_dir = os.path.join(directory, 'pypi_cff')
-    cran_cff_dir = os.path.join(directory, 'cran_cff')
+async def print_results(directory, full):
+    # Define directories and their parameters
+    subdirectories = [
+        (os.path.join(directory, 'cran'), 0),
+        (os.path.join(directory, 'pypi'), 1),
+        (os.path.join(directory, 'cff'), 2),
+        (os.path.join(directory, 'pypi_cff'), 3),
+        (os.path.join(directory, 'cran_cff'), 4),
+    ]
 
-    cran_file_types = process_directory(cran_dir, full=full)
-    pypi_file_types = process_directory(pypi_dir, full=full)
-    cff_file_types = process_directory(cff_dir, full=full)
-    pypi_cff_file_types = process_directory(pypi_cff_dir, full=full)
-    cran_cff_file_types = process_directory(cran_cff_dir, full=full)
+    # Create a ProcessPoolExecutor for multiprocessing
+    results = []
+    with ProcessPoolExecutor() as executor:
+        # Run all tasks concurrently
+        tasks = [run_in_executor(executor, process_directory, dir_path, index, full) for dir_path, index in
+                 subdirectories]
+        results = await asyncio.gather(*tasks)
+
+    # Handle results
+    cran_file_types, pypi_file_types, cff_file_types, pypi_cff_file_types, cran_cff_file_types = results
 
     print()
 
@@ -545,19 +558,19 @@ def print_results(directory, full):
         f"Total matches {total_matches_result}/{total_entries_result} ({total_matches_result / total_entries_result * 100:.2f}%) non matches {total_non_matches_result}")
 
 
-def print_latest():
-    print_results('results', full=False)
+async def print_latest():
+    await print_results('results', full=False)
 
 
-def print_full():
-    print_results('results', full=True)
+async def print_full():
+    await print_results('results', full=True)
 
 
-def main():
+async def main():
     print("Latest results")
-    print_latest()
+    await print_latest()
     print("\n\nResults over time")
-    print_full()
+    await print_full()
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

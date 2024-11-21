@@ -14,7 +14,7 @@ file_list = {"CFF": {"file": "common_authors_2_cff_authors_new.csv", "color": "b
              "Readme": {"file": "common_authors_2_readme_authors_new.csv", "color": "brown"},
              "BibTeX": {"file": "common_authors_2_bib_authors_new.csv", "color": "cyan"},
              "PyPI Maintainers": {"file": "common_authors_2_pypi_maintainers.csv", "color": "orange"},
-             "PyPI Authors": {"file": "common_authors_2_pypi_authors.csv", "color": "red"},}
+             "PyPI Authors": {"file": "common_authors_2_pypi_authors.csv", "color": "red"}}
 
 for source_name, source in sources.items():
     for file_name, info in file_list.items():
