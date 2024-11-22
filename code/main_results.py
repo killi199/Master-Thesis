@@ -175,8 +175,7 @@ def process_directory(directory, position: int, full=True):
     common_authors = {}
     common_authors_2: dict[str, dict[str, tuple[list, int]]] = {}
     dfs = {}
-    authors_added = {}
-    authors_removed = {}
+    authors = {}
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -203,19 +202,45 @@ def process_directory(directory, position: int, full=True):
         for file in sorted(files):
             if full:
                 for file_type, pattern in file_patterns.items():
-                    if file.endswith(file_type):
+                    match = pattern.search(file)
+                    if match:
+                        timestamp_str = match.group(1)
+                        timestamp = datetime.strptime(timestamp_str, '%Y%m%d_%H%M%S%z')
+
                         file_path = str(os.path.join(root, file))
                         df = get_authors_df(file_path)
-                        if file_type not in authors_added:
-                            authors_added[file_type] = 0
-                            authors_removed[file_type] = 0
-                        if file_type not in last_timed_df:
+
+                        if file_type not in authors:
+                            authors[file_type] = {}
+
+                        if folder_name not in authors[file_type]:
+                            authors[file_type][folder_name] = {}
+                            for name in df['name'].tolist():
+                                authors[file_type][folder_name][name] = {"timestamps_added": [timestamp], "timestamps_removed": []}
                             last_timed_df[file_type] = df
                         else:
-                            # Matche über den Namen was natürlich dazu führt, dass namensänderungen neue Autoren sind
-                            common_authors_in_time = pd.merge(last_timed_df[file_type], df, on=['name'], how='inner')
-                            authors_added[file_type] += len(df) - len(common_authors_in_time)
-                            authors_removed[file_type] += len(last_timed_df[file_type]) - len(common_authors_in_time)
+                            # Matche über den Namen was natürlich dazu führt, dass namensänderungen neue Autoren sind falls kein Abgleich stattgefunden haben sollte in der Datenbeschaffung
+                            df_matched = df[df['score'] > 0]
+                            last_timed_df_matched = last_timed_df[file_type][last_timed_df[file_type]['score'] > 0]
+                            common_authors_in_time_with_git = get_common_authors(last_timed_df_matched, df_matched)
+                            common_authors_in_time_with_name = pd.merge(last_timed_df[file_type], df, on=['name'], how='inner')
+                            common_authors_in_time_with_git.rename(columns={'name_x': 'name'}, inplace=True)
+                            common_authors_in_time = pd.merge(common_authors_in_time_with_git, common_authors_in_time_with_name, on=['name'], how='outer')
+                            removed_authors = last_timed_df[file_type][~last_timed_df[file_type].name.isin(common_authors_in_time['name'])]
+                            common_authors_in_time.rename(columns={'name': 'name_x'}, inplace=True)
+                            common_authors_in_time.rename(columns={'name_y': 'name'}, inplace=True)
+                            common_authors_in_time['name'] = common_authors_in_time['name'].fillna(common_authors_in_time['name_x'])
+                            added_authors = df[~df.name.isin(common_authors_in_time['name'])]
+                            for author in removed_authors['name'].tolist():
+                                if author in authors[file_type][folder_name]:
+                                    authors[file_type][folder_name][author]["timestamps_removed"].append(timestamp)
+                            for author in added_authors['name'].tolist():
+                                if author not in authors[file_type][folder_name]:
+                                    authors[file_type][folder_name][author] = {"timestamps_added": [timestamp], "timestamps_removed": []}
+                                else:
+                                    authors[file_type][folder_name][author]["timestamps_added"].append(timestamp)
+
+
                             last_timed_df[file_type] = df
                         matches, non_matches, entries = check_matches(df)
 
@@ -429,10 +454,25 @@ def process_directory(directory, position: int, full=True):
         print(f"Average time between updates for {directory.split('/')[-1]} Bib: {average_time_between_updates_bib}")
         average_time_between_updates_readme = pd.Series(average_time_between_updates_readme).mean()
         print(f"Average time between updates for {directory.split('/')[-1]} Readme: {average_time_between_updates_readme}")
-        for authors_added_key, authors_added_value in authors_added.items():
-            print(f"Authors added for {authors_added_key}: {authors_added_value}")
-        for authors_removed_key, authors_remove_value in authors_removed.items():
-            print(f"Authors removed for {authors_removed_key}: {authors_remove_value}")
+        for file_type, value in authors.items():
+
+            authors_added = 0
+            authors_removed = 0
+            lifespans = []
+            for package in value:
+                authors_added += len([author for author in value[package] if value[package][author]["timestamps_added"]])
+                authors_removed += len([author for author in value[package] if value[package][author]["timestamps_removed"]])
+                for name, timestamps in value[package].items():
+                    for index, added in enumerate(timestamps['timestamps_added']):
+                        if len(timestamps['timestamps_removed']) < len(timestamps['timestamps_added']):
+                            continue
+                        if len(timestamps['timestamps_removed']) > index and timestamps['timestamps_removed'][index]:
+                            lifespans.append((timestamps['timestamps_removed'][index] - added).days)
+
+
+            print(f"Authors added for {file_type} {authors_added}")
+            print(f"Authors removed for {file_type} {authors_removed}")
+            print(f"Average lifespan for {file_type} {pd.Series(lifespans).mean()} days")
         print()
     else:
         print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff}/{total_cff}")
