@@ -7,6 +7,8 @@ steps:
 - name: make project
   image: aergus/latex:2024-05-12
   commands:
+    - apt-get update
+    - apt-get -y install inkscape
     - make clean -C ./docs
     - make all -C ./docs
 
