@@ -37,16 +37,22 @@ Im ersten wird gezeigt, welcher Anteil von Top Committer über alle
 Projekte auch in der CFF genannt werden. Da es immer wieder Committer
 gibt, die nicht in der CFF auftauchen, kann diese Kurve 1 nicht erreichen.
 '''
-def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str) -> dict:
+def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame, common_authors: dict, file: str, package: str) -> dict:
     if file not in common_authors:
         common_authors[file] = {}
-        for i in range(1, 201):
-            common_authors[file][i] = (0, 0)
+    if package not in common_authors[file]:
+        common_authors[file][package] = ([], [])
+
+    df = df.drop_duplicates(subset=['commits'])
 
     for i in range(1, 201):
+
         most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
         common_authors_entry = get_common_authors(most_commits_entry, df)
-        common_authors[file][i] = common_authors[file][i][0] + len(common_authors_entry), common_authors[file][i][1] + len(most_commits_entry)
+        if i == 1 and len(common_authors_entry) > 1:
+            print("test")
+        common_authors[file][package][0].append(len(common_authors_entry))
+        common_authors[file][package][1].append(len(most_commits_entry))
 
     return common_authors
 
@@ -318,7 +324,7 @@ def process_directory(directory, position: int, full=True):
 
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file, folder_name)
 
-                    common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file)
+                    common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file, folder_name)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, df, common_authors_2, file, folder_name)
 
                 # Process only the latest timestamped files
@@ -416,7 +422,7 @@ def process_directory(directory, position: int, full=True):
                     git_contributors_df = get_git_contributors_df(os.path.dirname(latest_file_path))
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type, folder)
 
-                    common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type)
+                    common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type, folder)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2, file_type, folder)
 
         similarity_with_non_matches = []
