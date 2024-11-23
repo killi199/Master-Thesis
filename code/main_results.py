@@ -45,7 +45,7 @@ def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame
 
     df = df.drop_duplicates(subset=['commits'])
 
-    for i in range(1, 201):
+    for i in range(1, 101):
 
         most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
         common_authors_entry = get_common_authors(most_commits_entry, df)
@@ -506,16 +506,16 @@ def process_directory(directory, position: int, full=True):
         print(f"Average time between last update and last commit for {directory.split('/')[-1]} Readme: {average_time_last_update_readme}")
 
         for file, total_authors_no_commits_data in total_authors_no_commits.items():
-            Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(total_authors_no_commits_data).to_csv(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits_{file}", index=False)
+            Path(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(total_authors_no_commits_data).to_csv(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits/{file}", index=False)
 
         for file, common_authors_data in common_authors.items():
-            Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_{file}", index=False)
+            Path(f"overall_results/{directory.split('/')[-1]}/common_authors").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors/{file}", index=False)
 
-        for file, common_authors_data in common_authors_2.items():
-            Path(f"overall_results/{directory.split('/')[-1]}").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2_{file}", index=False)
+        for file, common_authors_2_data in common_authors_2.items():
+            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_2_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2/{file}", index=False)
 
         if similarity_with_non_matches:
             print(f"Similarity between the latest files with non-matches: {pd.Series(similarity_with_non_matches).mean() * 100:.2f}%")
