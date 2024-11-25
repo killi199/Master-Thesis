@@ -158,3 +158,54 @@ for source_name, source in sources.items():
     plt.tight_layout()
     plt.savefig(f"../docs/bilder/total_authors_no_commits/3_{source}.svg")
     plt.show()
+
+overall_results = pd.read_csv("overall_results/overall_results.csv", index_col=0)
+overall_full_results = pd.read_csv("overall_results/overall_full_results.csv", index_col=0)
+
+# Create a stacked bar chart for each source in the overall_results DataFrame
+categories = ['total_valid_cff_cff_init_used', 'total_valid_cff_cff_init_not_used', 'total_invalid_cff_cff_init_used', 'total_invalid_cff_cff_init_not_used']
+colors = ['green', 'lightgreen', 'red', 'lightcoral']
+names= ['Valide CFF mit CFF init', 'Valide CFF ohne CFF init', 'Invalide CFF mit CFF init', 'Invalide CFF ohne CFF init']
+
+# Plot the stacked bar chart
+def get_valid_cff_plot(data, text):
+    fig, ax = plt.subplots()
+
+    # Create a bar for each source
+    bottom = [0] * len(overall_results)
+
+
+    for idx, category in enumerate(categories):
+        bars = ax.bar(overall_results.index, data[category], bottom=bottom, label=names[idx], color=colors[idx])
+        for bar in bars:
+            height = bar.get_height()
+            if height > 0 and text:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_y() + height / 2,
+                    f'{height:.0f}',
+                    ha='center',
+                    va='center',
+                    color='black',
+                    fontsize=8
+                )
+        bottom = [i + j for i, j in zip(bottom, data[category])]
+
+    ax.set_xlabel('Quelle')
+    ax.set_ylabel('Anzahl')
+    ax.legend(loc='upper left')
+
+    plt.tight_layout()
+    return plt
+
+overall_data = overall_results[categories]
+
+valid_cff_plot = get_valid_cff_plot(overall_data, True)
+valid_cff_plot.savefig(f"../docs/bilder/overall_valid_cff.svg")
+valid_cff_plot.show()
+
+overall_full_data = overall_full_results[categories]
+
+valid_cff_full_plot = get_valid_cff_plot(overall_full_data, False)
+valid_cff_full_plot.savefig(f"../docs/bilder/overall_full_valid_cff.svg")
+valid_cff_full_plot.show()
