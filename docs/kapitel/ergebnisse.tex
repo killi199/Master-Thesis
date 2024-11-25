@@ -39,9 +39,48 @@
         \caption{\gls{cran} \gls{cff}}
         \label{fig:common_authors_cran_cff}
     \end{subfigure}
-    \caption{Verhältnis der Top Git Autoren in der Zitation}
+    \caption{Verhältnis der Top Git Autoren nach Commits in der Zitation}
+    \label{fig:common_authors}
     \small
     Die Abbildungen zeigen für die verschiedenen analysierten Listen das Verhältnis der genannten Autoren an den Git Autoren. Sie zeigen also für die ersten eins bis 100 Top Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent diese in der jeweiligen Quelle z.B. \gls{cff} genannt werden. Falls der Autor mit den meisten Commits beispielsweise in der \gls{cff} genannt wird, und nur ein Git Autor betrachtet wird, ist an dieser Stelle der Wert 1.0 und somit 100 \%.
+\end{figure}
+
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_pypi_by_files.svg}
+        \caption{\gls{pypi}}
+        \label{fig:common_authors_by_files_pypi}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cran_by_files.svg}
+        \caption{\gls{cran}}
+        \label{fig:common_authors_by_files_cran}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cff_by_files.svg}
+        \caption{\gls{cff}}
+        \label{fig:common_authors_by_files_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_pypi_cff_by_files.svg}
+        \caption{\gls{pypi} \gls{cff}}
+        \label{fig:common_authors_by_files_pypi_cff}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cran_cff_by_files.svg}
+        \caption{\gls{cran} \gls{cff}}
+        \label{fig:common_authors_by_files_cran_cff}
+    \end{subfigure}
+    \caption{Verhältnis der Top Git Autoren nach geänderten Zeilen in der Zitation}
+    \label{fig:common_authors_by_files}
+    \small
+    Die Abbildungen zeigen die gleichen Graphen wie \autoref{fig:common_authors}, jedoch werden hier die Git Autoren über die Anzahl der geänderten Zeilen gemessen.
 \end{figure}
 
 \begin{figure}
@@ -76,9 +115,48 @@
         \caption{\gls{cran} \gls{cff}}
         \label{fig:common_authors_2_cran_cff}
     \end{subfigure}
-    \caption{Verhältnis der angegebenen Autoren am Quellcode}
+    \caption{Verhältnis der angegebenen Autoren nach Commits am Quellcode}
+    \label{fig:common_authors_2}
     \small
     Die Abbildungen zeigen für die verschiedenen analysierten Listen das Verhältnis der angegebenen Autoren am Quellcode. Sie zeigen also für die ersten null bis 200 Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent die genannten Autoren unter Berücksichtigung der n Git Autoren tatsächlich Quellcode entwickelt haben. Für null Git Autoren ist dieser Wert immer null, da kein genannter Autor unter den Top 0 Git Autoren sein kann. Falls 10 Autoren genannt werden und diese alle Quellcode entwickelt haben und zusätzlich unter den Top n Git Autoren sind, ist der Wert, ab dem Zeitpunkt zu dem alle Autoren in der Liste der Git Autoren vorhanden sind, 1.0. Dieser Graph kann also 1.0 erreichen, falls alle genannten Autoren tatsächlich Quellcode entwickelt haben und in der Datenbeschaffung abgeglichen werden konnten.
+\end{figure}
+
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_pypi_by_files.svg}
+        \caption{\gls{pypi}}
+        \label{fig:common_authors_2_by_files_pypi}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cran_by_files.svg}
+        \caption{\gls{cran}}
+        \label{fig:common_authors_2_by_files_cran}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cff_by_files.svg}
+        \caption{\gls{cff}}
+        \label{fig:common_authors_2_by_files_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_pypi_cff_by_files.svg}
+        \caption{\gls{pypi} \gls{cff}}
+        \label{fig:common_authors_2_by_files_pypi_cff}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cran_cff_by_files.svg}
+        \caption{\gls{cran} \gls{cff}}
+        \label{fig:common_authors_2_by_files_cran_cff}
+    \end{subfigure}
+    \caption{Verhältnis der angegebenen Autoren nach geänderten Zeilen am Quellcode}
+    \label{fig:common_authors_2_by_files}
+    \small
+    Die Abbildungen zeigen die gleichen Graphen wie \autoref{fig:common_authors_2}, jedoch werden hier die Git Autoren über die Anzahl der geänderten Zeilen gemessen.
 \end{figure}
 
 \begin{figure}
