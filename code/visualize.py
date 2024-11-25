@@ -209,3 +209,63 @@ overall_full_data = overall_full_results[categories]
 valid_cff_full_plot = get_valid_cff_plot(overall_full_data, False)
 valid_cff_full_plot.savefig(f"../docs/bilder/overall_full_valid_cff.svg")
 valid_cff_full_plot.show()
+
+def get_citation_counts_plot(citation_counts, text):
+    citation_data = pd.DataFrame(citation_counts.tolist(), index=overall_results.index).fillna(0)
+
+    fig, ax = plt.subplots()
+
+    bottom = [0] * len(citation_data)
+
+    for column in citation_data.columns:
+        bars = ax.bar(citation_data.index, citation_data[column], bottom=bottom, label=column)
+        for bar in bars:
+            height= bar.get_height()
+            if height > 0 and text:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_y() + height / 2,
+                    f'{height:.0f}',
+                    ha='center',
+                    va='center',
+                    color='black',
+                    fontsize=6
+                )
+        bottom = [i + j for i, j in zip(bottom, citation_data[column])]
+
+    ax.set_xlabel('Source')
+    ax.set_ylabel('Number of Citations')
+    ax.legend(loc='upper left')
+
+    plt.tight_layout()
+
+    return plt
+
+def show_and_safe_citation_counts(results, text):
+    citation_counts_cff = results['citation_counts_cff'].apply(eval)
+    citation_counts_preferred_citation_cff = results['citation_counts_preferred_citation_cff'].apply(eval)
+    citation_counts_bib = results['citation_counts_bib'].apply(eval)
+
+    if text:
+        citation_counts_cff_plot = get_citation_counts_plot(citation_counts_cff, text)
+        citation_counts_cff_plot.savefig(f"../docs/bilder/citation_counts_cff.svg")
+        citation_counts_preferred_citation_cff_plot = get_citation_counts_plot(citation_counts_preferred_citation_cff, text)
+        citation_counts_preferred_citation_cff_plot.savefig(f"../docs/bilder/citation_counts_preferred_citation_cff.svg")
+        citation_counts_bib_plot = get_citation_counts_plot(citation_counts_bib, text)
+        citation_counts_bib_plot.savefig(f"../docs/bilder/citation_counts_bib.svg")
+    else:
+        citation_counts_cff_plot = get_citation_counts_plot(citation_counts_cff, text)
+        citation_counts_cff_plot.savefig(f"../docs/bilder/citation_counts_full_cff.svg")
+        citation_counts_preferred_citation_cff_plot = get_citation_counts_plot(citation_counts_preferred_citation_cff, text)
+        citation_counts_preferred_citation_cff_plot.savefig(f"../docs/bilder/citation_counts_full_preferred_citation_cff.svg")
+        citation_counts_bib_plot = get_citation_counts_plot(citation_counts_bib, text)
+        citation_counts_bib_plot.savefig(f"../docs/bilder/citation_counts_full_bib.svg")
+
+    citation_counts_cff_plot.show()
+    citation_counts_preferred_citation_cff_plot.show()
+    citation_counts_bib_plot.show()
+
+overall_results = pd.read_csv("overall_results/overall_results.csv", index_col=0)
+overall_full_results = pd.read_csv("overall_results/overall_full_results.csv", index_col=0)
+show_and_safe_citation_counts(overall_results, True)
+show_and_safe_citation_counts(overall_full_results, False)
