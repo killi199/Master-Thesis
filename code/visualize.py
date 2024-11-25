@@ -327,3 +327,112 @@ removed_authors_data = removed_authors_data.drop(columns=['README'])
 added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data)
 added_removed_authors_plt.savefig(f"../docs/bilder/added_removed_authors_without_readme.svg")
 added_removed_authors_plt.show()
+
+def get_cff_doi_plt(results):
+    total_cff = results['total_cff']
+    doi_cff = results['doi_cff']
+    identifier_doi_cff = results['identifier_doi_cff']
+
+    without_doi_cff = total_cff - doi_cff
+    without_identifier_doi_cff = total_cff - identifier_doi_cff
+
+    bar_width = 0.35
+    index = range(len(total_cff))
+
+    fig, ax = plt.subplots()
+
+    bars_doi = ax.bar(index, doi_cff, bar_width, label='DOI', color='blue')
+
+    bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_cff, bar_width, label='Identifier DOI', color='green')
+
+    bars_without_doi = ax.bar(index, without_doi_cff, bar_width, bottom=doi_cff, label='Ohne DOI', color='lightblue')
+    bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_cff, bar_width, bottom=identifier_doi_cff, label='Ohne Identifier DOI', color='lightgreen')
+
+    ax.set_xlabel('Liste')
+    ax.set_ylabel('CFF Anzahl')
+    ax.set_xticks([i + bar_width / 2 for i in index])
+    ax.set_xticklabels(results.index)
+    ax.legend()
+
+    plt.tight_layout()
+    return plt
+
+def get_preferred_citation_doi_plt(results):
+    total_preferred_citation_cff = results['total_preferred_citation_cff']
+    doi_preferred_citation_cff = results['doi_preferred_citation_cff']
+    identifier_doi_preferred_citation_cff = results['identifier_doi_preferred_citation_cff']
+    collection_doi_preferred_citation_cff = results['collection_doi_preferred_citation_cff']
+
+    without_doi_preferred_citation_cff = total_preferred_citation_cff - doi_preferred_citation_cff
+    without_identifier_doi_preferred_citation_cff = total_preferred_citation_cff - identifier_doi_preferred_citation_cff
+    without_collection_doi_preferred_citation_cff = total_preferred_citation_cff - collection_doi_preferred_citation_cff
+
+    bar_width = 0.25
+    index = range(len(total_preferred_citation_cff))
+
+    fig, ax = plt.subplots()
+
+    bars_doi = ax.bar(index, doi_preferred_citation_cff, bar_width, label='DOI', color='blue')
+
+    bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_preferred_citation_cff, bar_width, label='Identifier DOI', color='green')
+
+    bars_collection = ax.bar([i + 2 * bar_width for i in index], collection_doi_preferred_citation_cff, bar_width, label='Collection DOI', color='red')
+
+    bars_without_doi = ax.bar(index, without_doi_preferred_citation_cff, bar_width, bottom=doi_preferred_citation_cff, label='Ohne DOI', color='lightblue')
+    bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_preferred_citation_cff, bar_width, bottom=identifier_doi_preferred_citation_cff, label='Ohne Identifier DOI', color='lightgreen')
+    bars_without_collection_doi = ax.bar([i + 2 * bar_width for i in index], without_collection_doi_preferred_citation_cff, bar_width, bottom=collection_doi_preferred_citation_cff, label='Ohne Collection DOI', color='lightcoral')
+
+    ax.set_xlabel('Liste')
+    ax.set_ylabel('Preferred Citation CFF Anzahl')
+    ax.set_xticks([i + bar_width for i in index])
+    ax.set_xticklabels(overall_results.index)
+    ax.legend()
+
+    plt.tight_layout()
+    return plt
+
+def get_bib_doi_plt(results):
+    total_bib = results['total_bib']
+    doi_bib = results['doi_bib']
+
+    without_doi_bib = total_bib - doi_bib
+
+    index = range(len(total_bib))
+
+    fig, ax = plt.subplots()
+
+    bars_doi = ax.bar(index, doi_bib, label='DOI', color='blue')
+
+    bars_without_doi = ax.bar(index, without_doi_bib, bottom=doi_bib, label='Ohne DOI', color='lightblue')
+
+    ax.set_xlabel('Liste')
+    ax.set_ylabel('BibTeX Anzahl')
+    ax.set_xticklabels(results.index)
+    ax.legend()
+
+    plt.tight_layout()
+    return plt
+
+cff_doi_plt = get_cff_doi_plt(overall_results)
+cff_doi_plt.savefig(f"../docs/bilder/cff_doi.svg")
+cff_doi_plt.show()
+
+preferred_citation_doi_plt = get_preferred_citation_doi_plt(overall_results)
+preferred_citation_doi_plt.savefig(f"../docs/bilder/preferred_citation_doi.svg")
+preferred_citation_doi_plt.show()
+
+bib_doi_plt = get_bib_doi_plt(overall_results)
+bib_doi_plt.savefig(f"../docs/bilder/bib_doi.svg")
+bib_doi_plt.show()
+
+cff_doi_plt_full = get_cff_doi_plt(overall_full_results)
+cff_doi_plt_full.savefig(f"../docs/bilder/cff_doi_full.svg")
+cff_doi_plt_full.show()
+
+preferred_citation_doi_plt_full = get_preferred_citation_doi_plt(overall_full_results)
+preferred_citation_doi_plt_full.savefig(f"../docs/bilder/preferred_citation_doi_full.svg")
+preferred_citation_doi_plt_full.show()
+
+bib_doi_plt_full = get_bib_doi_plt(overall_full_results)
+bib_doi_plt_full.savefig(f"../docs/bilder/bib_doi_full.svg")
+bib_doi_plt_full.show()

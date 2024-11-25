@@ -151,6 +151,31 @@
     Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es werden nur die neusten Versionen betrachtet.
 \end{figure}
 
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/cff_doi.svg}
+        \caption{\gls{cff}}
+        \label{fig:cff_doi}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/preferred_citation_doi.svg}
+        \caption{\glqq preferred-citation\grqq{} \gls{cff}}
+        \label{fig:preferred_citation_doi}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/bib_doi.svg}
+        \caption{\hologo{BibTeX}}
+        \label{fig:bib_doi}
+    \end{subfigure}
+    \caption{}
+    \small
+    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten LIsten, wie oft eine DOI in verschiedenen Versionen in den Zitationen angegeben wurde. Es werden nur die neusten Versionen betrachtet.
+\end{figure}
+
 \section{Ergebnisse mit Zeitverlauf}
 \label{sec:gesamtheit_ergebnisse}
 % TODO Pakete, welche händisch geprüft wurden hier erwähnen git #20
@@ -211,4 +236,29 @@
     \caption{Hinzugefügte und gelöschte Autoren}
     \small
     Die beiden Abbildungen zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese.
+\end{figure}
+
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/cff_doi_full.svg}
+        \caption{\gls{cff}}
+        \label{fig:cff_doi_full}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/preferred_citation_doi_full.svg}
+        \caption{\glqq preferred-citation\grqq{} \gls{cff}}
+        \label{fig:preferred_citation_doi_full}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/bib_doi_full.svg}
+        \caption{\hologo{BibTeX}}
+        \label{fig:bib_doi_full}
+    \end{subfigure}
+    \caption{}
+    \small
+    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten LIsten, wie oft eine DOI in verschiedenen Versionen in den Zitationen angegeben wurde. Es werden alle Versionen der Dateien betrachtet.
 \end{figure}

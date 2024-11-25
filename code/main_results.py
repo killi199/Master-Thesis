@@ -161,6 +161,8 @@ def process_directory(directory, position: int, full=True):
     # Bib
     total_bib = 0
     total_bib_full = 0
+    doi_bib = 0
+    doi_bib_full = 0
     average_time_between_updates_bib = []
     difference_last_update_bib_list = []
     citation_counts_bib = {}
@@ -271,6 +273,7 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_bib_full += len(df)
+                    doi_bib_full += df['doi'].notna().sum()
                     for key, value in df['type'].value_counts().to_dict().items():
                         citation_counts_bib_full[key] = citation_counts_bib_full.get(key, 0) + value
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
@@ -376,6 +379,8 @@ def process_directory(directory, position: int, full=True):
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime', ascending=False)
                     total_bib += 1
+                    if not pd.isna(df_sorted.iloc[0]['doi']):
+                        doi_bib += 1
                     difference_last_update_bib_list.append(git_contributors_df['last_commit'].max() - df_sorted.iloc[0]['committed_datetime'])
                     key = df_sorted.iloc[0]['type']
                     citation_counts_bib[key] = citation_counts_bib.get(key, 0) + 1
@@ -458,6 +463,7 @@ def process_directory(directory, position: int, full=True):
                             "doi_preferred_citation_cff": doi_preferred_citation_cff_full,
                             "identifier_doi_preferred_citation_cff": identifier_doi_preferred_citation_cff_full,
                             "collection_doi_preferred_citation_cff": collection_doi_preferred_citation_cff_full,
+                            "doi_bib": doi_bib_full,
                             "average_time_between_updates_cff": pd.Series(average_time_between_updates_cff).mean(),
                             "average_time_between_updates_bib": pd.Series(average_time_between_updates_bib).mean(),
                             "average_time_between_updates_readme": pd.Series(average_time_between_updates_readme).mean(),
@@ -490,6 +496,7 @@ def process_directory(directory, position: int, full=True):
                             "doi_preferred_citation_cff": doi_preferred_citation_cff,
                             "identifier_doi_preferred_citation_cff": identifier_doi_preferred_citation_cff,
                             "collection_doi_preferred_citation_cff": collection_doi_preferred_citation_cff,
+                            "doi_bib": doi_bib,
                             "average_time_last_update_cff": pd.Series(difference_last_update_cff_list).mean(),
                             "average_time_last_update_bib": pd.Series(difference_last_update_bib_list).mean(),
                             "average_time_last_update_readme": pd.Series(difference_last_update_readme_list).mean(),
