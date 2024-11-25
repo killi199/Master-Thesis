@@ -191,7 +191,7 @@ def get_valid_cff_plot(data, text):
                 )
         bottom = [i + j for i, j in zip(bottom, data[category])]
 
-    ax.set_xlabel('Quelle')
+    ax.set_xlabel('Liste')
     ax.set_ylabel('Anzahl')
     ax.legend(loc='upper left')
 
@@ -265,7 +265,5 @@ def show_and_safe_citation_counts(results, text):
     citation_counts_preferred_citation_cff_plot.show()
     citation_counts_bib_plot.show()
 
-overall_results = pd.read_csv("overall_results/overall_results.csv", index_col=0)
-overall_full_results = pd.read_csv("overall_results/overall_full_results.csv", index_col=0)
 show_and_safe_citation_counts(overall_results, True)
 show_and_safe_citation_counts(overall_full_results, False)
