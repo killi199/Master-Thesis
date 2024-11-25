@@ -492,6 +492,7 @@ def get_bib_doi_plt(results):
 
     ax.set_xlabel('Liste')
     ax.set_ylabel('BibTeX Anzahl')
+    ax.set_xticks(range(len(results.index)))
     ax.set_xticklabels(results.index)
     ax.legend()
 
