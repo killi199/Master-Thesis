@@ -268,8 +268,7 @@ def show_and_safe_citation_counts(results, text):
 show_and_safe_citation_counts(overall_results, True)
 show_and_safe_citation_counts(overall_full_results, False)
 
-
-def get_removed_added_authors_plt(added_data, removed_data, names_to_show):
+def get_removed_added_authors_plt(added_data, removed_data):
     bar_width = 0.35
     index = range(len(added_data))
 
@@ -278,14 +277,17 @@ def get_removed_added_authors_plt(added_data, removed_data, names_to_show):
     bottom_added = [0] * len(added_data)
     bottom_removed = [0] * len(removed_data)
 
+    colors_added = ['blue', 'orange', 'green', 'olive']
+    colors_removed = ['pink', 'gray', 'brown', 'cyan']
+
     for idx, column in enumerate(added_data.columns):
         bars_added = ax.bar(index, added_data[column], bar_width, bottom=bottom_added,
-                            label=f'Hinzugefügte {names_to_show[idx]} Autoren')
+                            label=f'Hinzugefügte {column} Autoren', color=colors_added[idx])
         bottom_added = [i + j for i, j in zip(bottom_added, added_data[column])]
 
     for idx, column in enumerate(removed_data.columns):
         bars_removed = ax.bar([i + bar_width for i in index], removed_data[column], bar_width,
-                              bottom=bottom_removed, label=f'Gelöschte {names_to_show[idx]} Autoren')
+                              bottom=bottom_removed, label=f'Gelöschte {column} Autoren', color=colors_removed[idx])
         bottom_removed = [i + j for i, j in zip(bottom_removed, removed_data[column])]
 
     ax.set_xlabel('Liste')
@@ -304,17 +306,24 @@ removed_authors = overall_full_results['authors_removed'].apply(eval)
 added_authors_data = pd.DataFrame(added_authors.tolist(), index=overall_full_results.index).fillna(0)
 removed_authors_data = pd.DataFrame(removed_authors.tolist(), index=overall_full_results.index).fillna(0)
 
-names = ['Readme', 'CFF', 'CFF preferred citation', 'BibTeX']
+columns = {'readme_authors_new.csv': 'README',
+           'cff_authors_new.csv': 'CFF',
+           'cff_preferred_citation_authors_new.csv': 'CFF preferred citation',
+           'bib_authors_new.csv': 'BibTeX'}
 
-added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data, names)
+added_authors_data.rename(columns=columns, inplace=True)
+removed_authors_data.rename(columns=columns, inplace=True)
+
+added_authors_data = added_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
+removed_authors_data = removed_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
+
+added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data)
 added_removed_authors_plt.savefig(f"../docs/bilder/added_removed_authors.svg")
 added_removed_authors_plt.show()
 
-added_authors_data = added_authors_data.drop(columns=['readme_authors_new.csv'])
-removed_authors_data = removed_authors_data.drop(columns=['readme_authors_new.csv'])
+added_authors_data = added_authors_data.drop(columns=['README'])
+removed_authors_data = removed_authors_data.drop(columns=['README'])
 
-names = ['CFF', 'CFF preferred citation', 'BibTeX']
-
-added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data, names)
+added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data)
 added_removed_authors_plt.savefig(f"../docs/bilder/added_removed_authors_without_readme.svg")
 added_removed_authors_plt.show()
