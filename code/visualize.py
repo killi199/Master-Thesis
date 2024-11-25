@@ -52,6 +52,7 @@ for source_name, source in sources.items():
     plt.legend(loc="upper right")
     plt.xlabel("Anzahl der betrachteten Git Autoren")
     plt.ylabel("Verhältnis der genannten Autoren an den Git Autoren")
+    plt.tight_layout()
     plt.savefig(f"../docs/bilder/common_authors/1_{source}.svg")
     plt.show()
 
@@ -99,6 +100,7 @@ for source_name, source in sources.items():
     plt.legend(loc="lower right")
     plt.xlabel("Anzahl der betrachteten Git Autoren")
     plt.ylabel("Verhältnis der genannten Autoren an den Git Autoren")
+    plt.tight_layout()
     plt.savefig(f"../docs/bilder/common_authors_2/2_{source}.svg")
     plt.show()
 
@@ -153,5 +155,6 @@ for source_name, source in sources.items():
     plt.legend(loc="upper left")
     plt.xlabel("Tage")
     plt.ylabel("Verhältnis der Autoren ohne Commits")
+    plt.tight_layout()
     plt.savefig(f"../docs/bilder/total_authors_no_commits/3_{source}.svg")
     plt.show()
