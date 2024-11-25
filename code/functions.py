@@ -246,7 +246,7 @@ def get_cff_list(authors) -> list[dict[str, str]]:
 def load_cff_data(content: str) -> dict:
     try:
         return yaml.safe_load(content)
-    except yaml.YAMLError:
+    except (yaml.YAMLError, ValueError):
         return {}
 
 def load_cff_authors_from_data(cff: dict, key: str) -> pd.DataFrame:
@@ -285,6 +285,15 @@ def cff_init_used(cff_data: str) -> bool:
     
 def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
     cff_path = get_file_path(owner, repo, '*CITATION.cff')
+
+    if not cff_path:
+        cff_path = get_file_path(owner, repo, '*citation.cff')
+
+    if not cff_path:
+        cff_path = get_file_path(owner, repo, '*CITATION.CFF')
+
+    if not cff_path:
+        cff_path = get_file_path(owner, repo, '*citation.CFF')
 
     if cff_path:
         file_data = []
@@ -327,6 +336,15 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
 
 def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
     cff_path = get_file_path(owner, repo, '*CITATION.cff')
+
+    if not cff_path:
+        cff_path = get_file_path(owner, repo, '*citation.cff')
+
+    if not cff_path:
+        cff_path = get_file_path(owner, repo, '*CITATION.CFF')
+
+    if not cff_path:
+        cff_path = get_file_path(owner, repo, '*citation.CFF')
 
     if cff_path:
         file_data = []
@@ -372,6 +390,15 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
     
 def get_bib_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
     bib_path = get_file_path(owner, repo, '*CITATION.bib')
+
+    if not bib_path:
+        bib_path = get_file_path(owner, repo, '*citation.bib')
+
+    if not bib_path:
+        bib_path = get_file_path(owner, repo, '*CITATION.BIB')
+
+    if not bib_path:
+        bib_path = get_file_path(owner, repo, '*citation.BIB')
     
     if bib_path:
         file_data = []
