@@ -49,8 +49,6 @@ def get_common_authors_count(git_contributors_df: pd.DataFrame, df: pd.DataFrame
 
         most_commits_entry = git_contributors_df.loc[git_contributors_df['commits'].nlargest(i).index]
         common_authors_entry = get_common_authors(most_commits_entry, df)
-        if i == 1 and len(common_authors_entry) > 1:
-            print("test")
         common_authors[file][package][0].append(len(common_authors_entry))
         common_authors[file][package][1].append(len(most_commits_entry))
 
@@ -131,10 +129,6 @@ def process_directory(directory, position: int, full=True):
     # CFF
     total_cff = 0
     total_cff_full = 0
-    total_valid_cff = 0
-    total_valid_cff_full = 0
-    total_cff_init_used = 0
-    total_cff_init_used_full = 0
     total_valid_cff_cff_init_used = 0
     total_valid_cff_cff_init_used_full = 0
     total_valid_cff_cff_init_not_used = 0
@@ -261,8 +255,6 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_cff_full += len(df)
-                    total_valid_cff_full += df['cff_valid'].sum()
-                    total_cff_init_used_full += df['cff_init'].sum()
                     total_valid_cff_cff_init_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == True)].shape[0]
                     total_valid_cff_cff_init_not_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == False)].shape[0]
                     total_invalid_cff_cff_init_used_full += df[(df['cff_valid'] == False) & (df['cff_init'] == True)].shape[0]
@@ -346,10 +338,6 @@ def process_directory(directory, position: int, full=True):
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime', ascending=False)
                     total_cff += 1
-                    if df_sorted.iloc[0]['cff_valid']:
-                        total_valid_cff += 1
-                    if df_sorted.iloc[0]['cff_init']:
-                        total_cff_init_used += 1
                     if df_sorted.iloc[0]['cff_valid'] and df_sorted.iloc[0]['cff_init']:
                         total_valid_cff_cff_init_used += 1
                     if df_sorted.iloc[0]['cff_valid'] and not df_sorted.iloc[0]['cff_init']:
@@ -437,31 +425,11 @@ def process_directory(directory, position: int, full=True):
                              file_type_percentages.items()}
 
     if full:
-        print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff_full}/{total_cff_full}")
-        print(f"Total cff_init used {directory.split('/')[-1]} CFF: {total_cff_init_used_full}/{total_cff_full}")
-        print(f"Total valid CFF cff_init used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_used_full}/{total_cff_full}")
-        print(f"Total valid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_not_used_full}/{total_cff_full}")
-        print(f"Total invalid CFF cff_init used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_used_full}/{total_cff_full}")
-        print(f"Total invalid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_not_used_full}/{total_cff_full}")
-        print(f"DOI {directory.split('/')[-1]} CFF: {doi_cff_full}/{total_cff_full}")
-        print(f"Identifier DOI {directory.split('/')[-1]} CFF: {identifier_doi_cff_full}/{total_cff_full}")
-        print(f"DOI preferred citation {directory.split('/')[-1]} CFF: {doi_preferred_citation_cff_full}/{total_preferred_citation_cff_full}")
-        print(f"Identifier DOI preferred citation {directory.split('/')[-1]} CFF: {identifier_doi_preferred_citation_cff_full}/{total_preferred_citation_cff_full}")
-        print(f"Collection DOI preferred citation {directory.split('/')[-1]} CFF: {collection_doi_preferred_citation_cff_full}/{total_preferred_citation_cff_full}")
-        for key, value in citation_counts_cff_full.items():
-            print(f"Citation counts for {key} CFF: {value}/{total_cff_full}")
-        for key, value in citation_counts_preferred_citation_cff_full.items():
-            print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff_full}")
-        for key, value in citation_counts_bib_full.items():
-            print(f"Citation counts for {key} Bib: {value}/{total_bib_full}")
-        average_time_between_updates_cff = pd.Series(average_time_between_updates_cff).mean()
-        print(f"Average time between updates for {directory.split('/')[-1]} CFF: {average_time_between_updates_cff}")
-        average_time_between_updates_bib = pd.Series(average_time_between_updates_bib).mean()
-        print(f"Average time between updates for {directory.split('/')[-1]} Bib: {average_time_between_updates_bib}")
-        average_time_between_updates_readme = pd.Series(average_time_between_updates_readme).mean()
-        print(f"Average time between updates for {directory.split('/')[-1]} Readme: {average_time_between_updates_readme}")
-        for file_type, value in authors.items():
+        authors_added_results = {}
+        authors_removed_results = {}
+        lifespans_results = {}
 
+        for file_type, value in authors.items():
             authors_added = 0
             authors_removed = 0
             lifespans = []
@@ -475,35 +443,62 @@ def process_directory(directory, position: int, full=True):
                         if len(timestamps['timestamps_removed']) > index and timestamps['timestamps_removed'][index]:
                             lifespans.append((timestamps['timestamps_removed'][index] - added).days)
 
+            authors_added_results[file_type] = authors_added
+            authors_removed_results[file_type] = authors_removed
+            lifespans_results[file_type] = pd.Series(lifespans).mean()
 
-            print(f"Authors added for {file_type} {authors_added}")
-            print(f"Authors removed for {file_type} {authors_removed}")
-            print(f"Average lifespan for {file_type} {pd.Series(lifespans).mean()} days")
-        print()
+        overall_results = {"total_cff": total_cff_full,
+                            "total_valid_cff_cff_init_used": total_valid_cff_cff_init_used_full,
+                            "total_valid_cff_cff_init_not_used": total_valid_cff_cff_init_not_used_full,
+                            "total_invalid_cff_cff_init_used": total_invalid_cff_cff_init_used_full,
+                            "total_invalid_cff_cff_init_not_used": total_invalid_cff_cff_init_not_used_full,
+                            "doi_cff": doi_cff_full,
+                            "identifier_doi_cff": identifier_doi_cff_full,
+                            "total_preferred_citation_cff": total_preferred_citation_cff_full,
+                            "doi_preferred_citation_cff": doi_preferred_citation_cff_full,
+                            "identifier_doi_preferred_citation_cff": identifier_doi_preferred_citation_cff_full,
+                            "collection_doi_preferred_citation_cff": collection_doi_preferred_citation_cff_full,
+                            "average_time_between_updates_cff": pd.Series(average_time_between_updates_cff).mean(),
+                            "average_time_between_updates_bib": pd.Series(average_time_between_updates_bib).mean(),
+                            "average_time_between_updates_readme": pd.Series(average_time_between_updates_readme).mean(),
+                            "total_bib": total_bib_full,
+                            "citation_counts_cff": citation_counts_cff_full,
+                            "citation_counts_preferred_citation_cff": citation_counts_preferred_citation_cff_full,
+                            "citation_counts_bib": citation_counts_bib_full,
+                            "authors_added": authors_added_results,
+                            "authors_removed": authors_removed_results,
+                            "average_lifespans": lifespans_results}
     else:
-        print(f"Total valid {directory.split('/')[-1]} CFF: {total_valid_cff}/{total_cff}")
-        print(f"Total cff_init used {directory.split('/')[-1]} CFF: {total_cff_init_used}/{total_cff}")
-        print(f"Total valid CFF cff_init used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_used}/{total_cff}")
-        print(f"Total valid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_valid_cff_cff_init_not_used}/{total_cff}")
-        print(f"Total invalid CFF cff_init used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_used}/{total_cff}")
-        print(f"Total invalid CFF cff_init not used {directory.split('/')[-1]} CFF: {total_invalid_cff_cff_init_not_used}/{total_cff}")
-        print(f"DOI {directory.split('/')[-1]} CFF: {doi_cff}/{total_cff}")
-        print(f"Identifier DOI {directory.split('/')[-1]} CFF: {identifier_doi_cff}/{total_cff}")
-        print(f"DOI preferred citation {directory.split('/')[-1]} CFF: {doi_preferred_citation_cff}/{total_preferred_citation_cff}")
-        print(f"Identifier DOI preferred citation {directory.split('/')[-1]} CFF: {identifier_doi_preferred_citation_cff}/{total_preferred_citation_cff}")
-        print(f"Collection DOI preferred citation {directory.split('/')[-1]} CFF: {collection_doi_preferred_citation_cff}/{total_preferred_citation_cff}")
-        for key, value in citation_counts_cff.items():
-            print(f"Citation counts for {key} CFF: {value}/{total_cff}")
-        for key, value in citation_counts_preferred_citation_cff.items():
-            print(f"Citation counts for preferred citation {key} CFF: {value}/{total_preferred_citation_cff}")
-        for key, value in citation_counts_bib.items():
-            print(f"Citation counts for {key} Bib: {value}/{total_bib}")
-        average_time_last_update_cff = pd.Series(difference_last_update_cff_list).mean()
-        print(f"Average time between last update and last commit for {directory.split('/')[-1]} CFF: {average_time_last_update_cff}")
-        average_time_last_update_bib = pd.Series(difference_last_update_bib_list).mean()
-        print(f"Average time between last update and last commit for {directory.split('/')[-1]} Bib: {average_time_last_update_bib}")
-        average_time_last_update_readme = pd.Series(difference_last_update_readme_list).mean()
-        print(f"Average time between last update and last commit for {directory.split('/')[-1]} Readme: {average_time_last_update_readme}")
+        if similarity_with_non_matches:
+            similarity_with_non_matches = pd.Series(similarity_with_non_matches).mean() * 100
+        else:
+            similarity_with_non_matches = pd.NA
+
+        if similarity_without_non_matches:
+            similarity_without_non_matches = pd.Series(similarity_without_non_matches).mean() * 100
+        else:
+            similarity_without_non_matches = pd.NA
+
+        overall_results = {"total_cff": total_cff,
+                            "total_valid_cff_cff_init_used": total_valid_cff_cff_init_used,
+                            "total_valid_cff_cff_init_not_used": total_valid_cff_cff_init_not_used,
+                            "total_invalid_cff_cff_init_used": total_invalid_cff_cff_init_used,
+                            "total_invalid_cff_cff_init_not_used": total_invalid_cff_cff_init_not_used,
+                            "doi_cff": doi_cff,
+                            "identifier_doi_cff": identifier_doi_cff,
+                            "total_preferred_citation_cff": total_preferred_citation_cff,
+                            "doi_preferred_citation_cff": doi_preferred_citation_cff,
+                            "identifier_doi_preferred_citation_cff": identifier_doi_preferred_citation_cff,
+                            "collection_doi_preferred_citation_cff": collection_doi_preferred_citation_cff,
+                            "average_time_last_update_cff": pd.Series(difference_last_update_cff_list).mean(),
+                            "average_time_last_update_bib": pd.Series(difference_last_update_bib_list).mean(),
+                            "average_time_last_update_readme": pd.Series(difference_last_update_readme_list).mean(),
+                            "total_bib": total_bib,
+                            "citation_counts_cff": citation_counts_cff,
+                            "citation_counts_preferred_citation_cff": citation_counts_preferred_citation_cff,
+                            "citation_counts_bib": citation_counts_bib,
+                            "similarity_with_non_matches": similarity_with_non_matches,
+                            "similarity_without_non_matches": similarity_without_non_matches}
 
         for file, total_authors_no_commits_data in total_authors_no_commits.items():
             Path(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits").mkdir(parents=True, exist_ok=True)
@@ -517,14 +512,7 @@ def process_directory(directory, position: int, full=True):
             Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2").mkdir(parents=True, exist_ok=True)
             pd.DataFrame(common_authors_2_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2/{file}", index=False)
 
-        if similarity_with_non_matches:
-            print(f"Similarity between the latest files with non-matches: {pd.Series(similarity_with_non_matches).mean() * 100:.2f}%")
-
-        if similarity_without_non_matches:
-            print(f"Similarity between the latest files without non-matches: {pd.Series(similarity_without_non_matches).mean() * 100:.2f}%")
-        print()
-
-    return file_type_percentages
+    return file_type_percentages, overall_results
 
 
 def process_results(file_types, source_name):
@@ -558,15 +546,26 @@ async def print_results(directory, full):
     ]
 
     # Create a ProcessPoolExecutor for multiprocessing
-    results = []
     with ProcessPoolExecutor() as executor:
         # Run all tasks concurrently
         tasks = [run_in_executor(executor, process_directory, dir_path, index, full) for dir_path, index in
                  subdirectories]
         results = await asyncio.gather(*tasks)
+        results, overall_results = zip(*results)
 
     # Handle results
     cran_file_types, pypi_file_types, cff_file_types, pypi_cff_file_types, cran_cff_file_types = results
+    cran_overall_results, pypi_overall_results, cff_overall_results, pypi_cff_overall_results, cran_cff_overall_results = overall_results
+
+    combined_overall_results = pd.DataFrame([cran_overall_results, pypi_overall_results, cff_overall_results, pypi_cff_overall_results, cran_cff_overall_results])
+    combined_overall_results.index = ['CRAN', 'PyPi', 'CFF', 'PyPi CFF', 'CRAN CFF']
+
+    Path(f"overall_results").mkdir(parents=True, exist_ok=True)
+
+    if full:
+        combined_overall_results.to_csv(f"overall_results/overall_full_results.csv", index_label="source")
+    else:
+        combined_overall_results.to_csv(f"overall_results/overall_results.csv", index_label="source")
 
     print()
 
