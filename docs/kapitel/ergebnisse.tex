@@ -5,6 +5,7 @@
 % TODO sagen von wann die REPO Daten sind
 % TODO auf meine Ergebnisse vom Matching eingehen (False Positives, False Negatives, True Positives, True Negatives)
 % TODO Kapitel unterteilen in Meine Statisktiken vom Matchen, Allgemeine Statistiken und Statistiken von CFF
+% TODO auf die Sachen eingehen, für die es keinen Graphen gibt #64
 \section{Ergebnisse der Gegenwart}
 \label{sec:neuste_ergebnisse}
 \begin{figure}
@@ -302,18 +303,30 @@
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_removed_authors.svg}
-        \caption{Inklusive README Autoren}
+        \caption{Inklusive README Autoren und ersten Autoren}
         \label{fig:added_removed_authors}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_removed_authors_without_readme.svg}
-        \caption{Exklusive README Autoren}
+        \caption{Exklusive README Autoren und inklusive ersten Autoren}
         \label{fig:added_removed_authors_without_readme}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_authors_without_first_timestamp.svg}
+        \caption{Inklusive README Autoren und exklusive ersten Autoren}
+        \label{fig:added_authors_without_first_timestamp}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_authors_without_readme_without_first_timestamp.svg}
+        \caption{Exklusive README Autoren und ersten Autoren}
+        \label{fig:added_authors_without_readme_without_first_timestamp}
     \end{subfigure}
     \caption{Hinzugefügte und gelöschte Autoren}
     \small
-    Die beiden Abbildungen zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese.
+    Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen auschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
 \end{figure}
 
 \begin{figure}

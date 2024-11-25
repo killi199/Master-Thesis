@@ -443,15 +443,18 @@ def process_directory(directory, position: int, full=True):
 
     if full:
         authors_added_results = {}
+        authors_added_without_first_timestamp_results = {}
         authors_removed_results = {}
         lifespans_results = {}
 
         for file_type, value in authors.items():
             authors_added = 0
+            authors_added_without_first_timestamp = 0
             authors_removed = 0
             lifespans = []
             for package in value:
                 authors_added += len([author for author in value[package] if value[package][author]["timestamps_added"]])
+                authors_added_without_first_timestamp += len([author for author in value[package] if len(value[package][author]["timestamps_added"]) > 1])
                 authors_removed += len([author for author in value[package] if value[package][author]["timestamps_removed"]])
                 for name, timestamps in value[package].items():
                     for index, added in enumerate(timestamps['timestamps_added']):
@@ -461,6 +464,7 @@ def process_directory(directory, position: int, full=True):
                             lifespans.append((timestamps['timestamps_removed'][index] - added).days)
 
             authors_added_results[file_type] = authors_added
+            authors_added_without_first_timestamp_results[file_type] = authors_added_without_first_timestamp
             authors_removed_results[file_type] = authors_removed
             lifespans_results[file_type] = pd.Series(lifespans).mean()
 
@@ -484,6 +488,7 @@ def process_directory(directory, position: int, full=True):
                             "citation_counts_preferred_citation_cff": citation_counts_preferred_citation_cff_full,
                             "citation_counts_bib": citation_counts_bib_full,
                             "authors_added": authors_added_results,
+                            "authors_added_without_first_timestamp": authors_added_without_first_timestamp_results,
                             "authors_removed": authors_removed_results,
                             "average_lifespans": lifespans_results}
     else:
