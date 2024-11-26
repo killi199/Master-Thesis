@@ -20,7 +20,7 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
     cff_authors_df, cff_df = functions.get_cff_data(owner, repo)
     for cff_author_df in cff_authors_df:
         if not cff_author_df[0].empty:
-            git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, cff_author_df[1])
+            git_contributors_df = await functions.get_git_contributors(owner, repo, cff_author_df[1])
             await process_and_save(git_contributors_df, package_name,
                                    cff_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(cff_author_df[0], git_contributors_df)
@@ -32,7 +32,7 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
     cff_preferred_authors_df, cff_preferred_df = functions.get_cff_preferred_citation_data(owner, repo)
     for cff_preferred_author_df in cff_preferred_authors_df:
         if not cff_preferred_author_df[0].empty:
-            git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, cff_preferred_author_df[1])
+            git_contributors_df = await functions.get_git_contributors(owner, repo, cff_preferred_author_df[1])
             await process_and_save(git_contributors_df, package_name,
                                    cff_preferred_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(cff_preferred_author_df[0], git_contributors_df)
@@ -44,7 +44,7 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
     bib_authors_df, bib_df = functions.get_bib_data(owner, repo)
     for bib_author_df in bib_authors_df:
         if not bib_author_df[0].empty:
-            git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, bib_author_df[1])
+            git_contributors_df = await functions.get_git_contributors(owner, repo, bib_author_df[1])
             await process_and_save(git_contributors_df, package_name,
                                    bib_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(bib_author_df[0], git_contributors_df)
@@ -56,7 +56,7 @@ async def process_general_package(owner: str, repo: str, package_name: str, inde
     readme_authors_df, readme_df = await asyncio.to_thread(functions.get_readme_authors, owner, repo, position)
     for readme_author_df in tqdm(readme_authors_df, desc=f'{repo} README Git', position=position, dynamic_ncols=True):
         if not readme_author_df[0].empty:
-            git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, readme_author_df[1])
+            git_contributors_df = await functions.get_git_contributors(owner, repo, readme_author_df[1])
             await process_and_save(git_contributors_df, package_name,
                                    readme_author_df[1].strftime("%Y%m%d_%H%M%S%z") + '_git_contributors', index)
             result = functions.matching(readme_author_df[0], git_contributors_df)
@@ -84,7 +84,7 @@ async def process_pypi_package(package, semaphore: asyncio.Semaphore, url: str, 
         Path(f'results/{index}/{package_name}').mkdir(parents=True, exist_ok=True)
 
         functions.clone_git_repo(owner, repo, repo_link)
-        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
+        git_contributors_df = await functions.get_git_contributors(owner, repo, datetime.now())
         await process_and_save(git_contributors_df, package_name, 'git_contributors', index)
 
         async with semaphore:
@@ -130,7 +130,7 @@ async def process_cran_package(package, _: asyncio.Semaphore, url: str, index: s
         Path(f'results/{index}/{package_name}').mkdir(parents=True, exist_ok=True)
 
         functions.clone_git_repo(owner, repo, repo_link)
-        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
+        git_contributors_df = await functions.get_git_contributors(owner, repo, datetime.now())
         await process_and_save(git_contributors_df, package_name, 'git_contributors', index)
 
         cran_authors_df = functions.get_cran_authors(cran_data)

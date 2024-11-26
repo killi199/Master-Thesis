@@ -138,7 +138,7 @@ def matching(df: pd.DataFrame, git_contributors_df: pd.DataFrame) -> pd.DataFram
     df["score"] = scores
     return df.sort_values(by=['rank'], ascending=True)
 
-def parse_contribution_stats(data: str, package_name: str) -> list:
+def parse_contribution_stats(data: str) -> list:
     author_pattern = re.compile(
         r"\s*(.+) <(.+)>:\s*"
         r"insertions:\s*(\d+)\s*\((\d+)%\)\s*"
@@ -204,12 +204,12 @@ def clone_git_repo(owner: str, repo: str, repo_link: str):
             print(f"Error cloning {repo_link}: {ex}")
         pass
 
-async def get_git_contributors(owner: str, repo: str, package_name: str, timestamp: datetime) -> pd.DataFrame:
+async def get_git_contributors(owner: str, repo: str, timestamp: datetime) -> pd.DataFrame:
     # Stark unterschiedliche Anzahl der commits abhängig vom Programm
     data = await run_git_quick_stat(Path(f'./repos/{owner}/{repo}'), timestamp)
 
     # Parse the data
-    authors_data = parse_contribution_stats(data, package_name)
+    authors_data = parse_contribution_stats(data)
 
     # Convert authors data to DataFrame
     git_contributors_df = pd.DataFrame(authors_data)
