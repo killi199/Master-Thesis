@@ -18,7 +18,20 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
 
 \section{Ergebnisse der Gegenwart}
 \label{sec:neuste_ergebnisse}
+% TODO auf meine Ergebnisse vom Matching eingehen (False Positives, False Negatives, True Positives, True Negatives) -> Auf meine Ergebnisse nur für eine Liste eingehen? Und FP,FN,TP,TN auch nur für eine Quelle?
+% TODO Auf average_time_last_update_cff eingehen
+% TODO auf average_time_last_update_bib eingehen
+% TODO auf average_time_last_update_readme eingehen
+% TODO auf similarity_with_non_matches eingehen
+% TODO auf similarity_without_non_matches eingehen
+% TODO Die komplizierten Grafiken gut erklären! Auch mit eins zwei beispielen z.B. bei 20 betrachteten autoren...  sind 40% blablabla (Aufpassen achsen sind nicht prozent das erklären)
+
+
+
+% TODO anekdotisch untermauern mit eins zwei bsp. warum einige linien unten erst bei x=1 oder 2 beginnen. Eins zwei pakete nennen bei denen die ersten commiter nicht genannt werden.
+% TODO in x Achsen beschreibung einfügen "Anzahl der betrachteten Git Autoren sortiert nach Commits"
 \begin{figure}
+    % TODO Daneben direkt bilder/common_authors_by_files/1_pypi_by_files.svg anzeigen und das für eins zwei ausgewählte listen machen und nicht für alle. sondern nur für listen um meine Aussage zu zeigen. Die anderen Graphen in den Anhang
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_pypi.svg}
@@ -50,12 +63,15 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
         \caption{\gls{cran} \gls{cff}}
         \label{fig:common_authors_cran_cff}
     \end{subfigure}
-    \caption{Verhältnis der Top Git Autoren nach Commits in der Zitation}
+    \caption{Anteil der Top Git Autoren nach Commits in der Zitation}
     \label{fig:common_authors}
     \small
-    Die Abbildungen zeigen für die verschiedenen analysierten Listen das Verhältnis der genannten Autoren an den Git Autoren. Sie zeigen also für die ersten eins bis 100 Top Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent diese in der jeweiligen Quelle z.B. \gls{cff} genannt werden. Falls der Autor mit den meisten Commits beispielsweise in der \gls{cff} genannt wird, und nur ein Git Autor betrachtet wird, ist an dieser Stelle der Wert 1.0 und somit 100 \%.
+    % TODO Nicht zentrieren sondern linksbündig und das für alle Bildunterschriften
+    Die Abbildungen zeigen für die verschiedenen analysierten Listen den Anteil der genannten Autoren an den Git Autoren. Sie zeigen also für die ersten eins bis 100 Top Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent diese in der jeweiligen Quelle z.B. \gls{cff} genannt werden. Falls der Autor mit den meisten Commits beispielsweise in der \gls{cff} genannt wird, und nur ein Git Autor betrachtet wird, ist an dieser Stelle der Wert 1.0 und somit 100 \%.
 \end{figure}
 
+% TODO die Bilder neben den sortiert nach commits packen
+% x Achsen beschreibung: "Anzahl der betrachteten Git Autoren sortiert nach changed_lines"
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -88,13 +104,16 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
         \caption{\gls{cran} \gls{cff}}
         \label{fig:common_authors_by_files_cran_cff}
     \end{subfigure}
-    \caption{Verhältnis der Top Git Autoren nach geänderten Zeilen in der Zitation}
+    \caption{Anteil der Top Git Autoren nach geänderten Zeilen in der Zitation}
     \label{fig:common_authors_by_files}
     \small
     Die Abbildungen zeigen die gleichen Graphen wie \autoref{fig:common_authors}, jedoch werden hier die Git Autoren über die Anzahl der geänderten Zeilen gemessen.
 \end{figure}
 
+% TODO anekdotisch untermauern mit eins zwei bsp. warum einige linien unten erst bei x=1 oder 2 beginnen. Eins zwei pakete nennen bei denen die ersten commiter nicht genannt werden.
+% x Achsen beschreibung: "Anzahl der betrachteten Git Autoren sortiert nach Commits"
 \begin{figure}
+        % TODO Daneben direkt bilder/common_authors_2_by_files/2_pypi_by_files.svg anzeigen und das für eins zwei ausgewählte listen machen und nicht für alle. sondern nur für listen um meine Aussage zu zeigen. Die anderen Graphen in den Anhang
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2/2_pypi.svg}
@@ -126,12 +145,15 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
         \caption{\gls{cran} \gls{cff}}
         \label{fig:common_authors_2_cran_cff}
     \end{subfigure}
-    \caption{Verhältnis der angegebenen Autoren nach Commits am Quellcode}
+    \caption{Anteil der angegebenen Autoren nach Commits am Quellcode}
     \label{fig:common_authors_2}
     \small
-    Die Abbildungen zeigen für die verschiedenen analysierten Listen das Verhältnis der angegebenen Autoren am Quellcode. Sie zeigen also für die ersten null bis 200 Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent die genannten Autoren unter Berücksichtigung der n Git Autoren tatsächlich Quellcode entwickelt haben. Für null Git Autoren ist dieser Wert immer null, da kein genannter Autor unter den Top 0 Git Autoren sein kann. Falls 10 Autoren genannt werden und diese alle Quellcode entwickelt haben und zusätzlich unter den Top n Git Autoren sind, ist der Wert, ab dem Zeitpunkt zu dem alle Autoren in der Liste der Git Autoren vorhanden sind, 1.0. Dieser Graph kann also 1.0 erreichen, falls alle genannten Autoren tatsächlich Quellcode entwickelt haben und in der Datenbeschaffung abgeglichen werden konnten.
+    % TODO die Beschreibungen alle gleich aufbauen. Achsen beschreiben, Linien beschreiben, auf a, b, c, d, e eingehen und einen prägnanten satz wie: " In der CFF sind y% unter den Top x commitern.
+    % TODO die Große beschreibung im Text mit beispielen erklären
+    Die Abbildungen zeigen für die verschiedenen analysierten Listen den Anteil der angegebenen Autoren am Quellcode. Sie zeigen also für die ersten null bis 200 Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent die genannten Autoren unter Berücksichtigung der n Git Autoren tatsächlich Quellcode entwickelt haben. Für null Git Autoren ist dieser Wert immer null, da kein genannter Autor unter den Top 0 Git Autoren sein kann. Falls 10 Autoren genannt werden und diese alle Quellcode entwickelt haben und zusätzlich unter den Top n Git Autoren sind, ist der Wert, ab dem Zeitpunkt zu dem alle Autoren in der Liste der Git Autoren vorhanden sind, 1.0. Dieser Graph kann also 1.0 erreichen, falls alle genannten Autoren tatsächlich Quellcode entwickelt haben und in der Datenbeschaffung abgeglichen werden konnten.
 \end{figure}
 
+% x Achsen beschreibung: "Anzahl der betrachteten Git Autoren sortiert nach changed_lines"
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -164,7 +186,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
         \caption{\gls{cran} \gls{cff}}
         \label{fig:common_authors_2_by_files_cran_cff}
     \end{subfigure}
-    \caption{Verhältnis der angegebenen Autoren nach geänderten Zeilen am Quellcode}
+    \caption{Anteil der angegebenen Autoren nach geänderten Zeilen am Quellcode}
     \label{fig:common_authors_2_by_files}
     \small
     Die Abbildungen zeigen die gleichen Graphen wie \autoref{fig:common_authors_2}, jedoch werden hier die Git Autoren über die Anzahl der geänderten Zeilen gemessen.
@@ -204,6 +226,8 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \end{subfigure}
     \caption{Autoren ohne Commits}
     \small
+    % TODO y% der Autoren haben in den letzten x Tagen ...
+    % y Achse in Jahren darstellen nicht in Tagen
     Die Abbildungen zeigen für die verschiedenen analysierten Listen wie viel Prozent der genannten Autoren in der jeweiligen Quelle aktiv sind. 0 Tage stellt dabei den Tag dar, an dem die Datenbeschaffung ausgeführt wurde. An diesem Tag sind nahezu 100 \% der Autoren nicht aktiv, da sie an diesem Tag bereits ein Commit getätigt haben müssten. Mit steigender Anzahl an Tagen werden immer mehr Autoren aktiv.
 \end{figure}
 
@@ -238,6 +262,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \caption{Typ der angegebenen Zitationen der einzelnen Quellen}
     \small
     Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es werden nur die neusten Versionen betrachtet.
+    % TODO Achtung verschiedene y Achsen erwähnen!
 \end{figure}
 
 \begin{figure}
@@ -275,6 +300,11 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
 % TODO sagen wann jeweils die Daten beschafft wurden also wann die Repos heruntergeladen wurden
 % TODO auf die manuell beschafften Daten eingehen
 % TODO in der Grafik mit den validen/ nicht validen CFF darauf eingehen, warum bei CRAN CFF keine 100 Pakete insgesamt sind -> weil gtsummary, ggpp, gginnards in der Liste von Druskat ist aber in GitHub ist gar keine CITATION.cff vorhanden.
+% TODO Auf meine Ergebnisse vom Matching mit zeitverlauf eingehen. Nur die Daten zeigen, welche automatisch beschafft werden konnten.
+% TODO auf average_time_between_updates_cff eingehen
+% TODO auf average_time_between_updates_bib eingehen
+% TODO auf average_time_between_updates_readme eingehen
+% TODO auf average_lifespans eingehen
 
 \begin{figure}
     \includesvg[inkscapelatex=false]{bilder/overall_full_valid_cff.svg}
@@ -289,20 +319,20 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/citation_counts_full_cff.svg}
         \caption{\gls{cff}}
-        \label{fig:citation_counts_cff}
+        \label{fig:citation_counts_full_cff}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/citation_counts_full_preferred_citation_cff.svg}
         \caption{\glqq preferred-citation\grqq{} \gls{cff}}
-        \label{fig:citation_counts_preferred_citation_cff}
+        \label{fig:citation_counts_full_preferred_citation_cff}
     \end{subfigure}
     \centering
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/citation_counts_full_bib.svg}
         \caption{\hologo{BibTeX}}
-        \label{fig:citation_counts_bib}
+        \label{fig:citation_counts_full_bib}
     \end{subfigure}
     \caption{Typ der angegebenen Zitationen der einzelnen Quellen mit Zeitverlauf}
     \small
@@ -336,7 +366,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \end{subfigure}
     \caption{Hinzugefügte und gelöschte Autoren}
     \small
-    Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen auschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
+    Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
 \end{figure}
 
 \begin{figure}
