@@ -40,7 +40,7 @@ async def process_cff_package(url: str, index):
         Path(f'./results/{index}/{package_name}').mkdir(parents=True, exist_ok=True)
 
         functions.clone_git_repo(owner, repo, repo_link)
-        git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
+        git_contributors_df = await functions.get_git_contributors(owner, repo, datetime.now())
         await process_and_save(git_contributors_df, package_name, 'git_contributors', index)
         await process_general_package(owner, repo, package_name, index, git_contributors_df)
         shutil.rmtree(f'./repos/{owner}/{repo}')
