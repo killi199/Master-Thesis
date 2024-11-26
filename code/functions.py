@@ -325,6 +325,9 @@ def get_cff_data(owner: str, repo: str) -> tuple[list[tuple[pd.DataFrame, dateti
                 pass
             except AttributeError:
                 pass
+            except UnicodeDecodeError:
+                file_data.append({'cff_valid': False})
+                pass
 
         return authors_data, pd.DataFrame(file_data)
     else:
@@ -378,6 +381,9 @@ def get_cff_preferred_citation_data(owner: str, repo: str) -> tuple[list[tuple[p
             except KeyError:
                 pass
             except AttributeError:
+                pass
+            except UnicodeDecodeError:
+                file_data.append({'cff_valid': False})
                 pass
 
         return authors_data, pd.DataFrame(file_data)
