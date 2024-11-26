@@ -55,7 +55,7 @@ async def process_package_semaphore(semaphore: asyncio.Semaphore, function, url:
 
 async def main():
     cff_df = pd.read_csv('github_repo_stars.csv')
-    semaphore_count = 1
+    semaphore_count = 10
     semaphore = asyncio.Semaphore(semaphore_count)
 
     cff_tasks = [process_package_semaphore(semaphore, process_cff_package,  package['Repository'], 'cff_full') for _, package in cff_df.iterrows()]
