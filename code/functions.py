@@ -17,22 +17,17 @@ from pathlib import Path
 from xmlrpc.client import ServerProxy
 import aiohttp
 from bs4 import BeautifulSoup
-import rpy2
 import asyncio
 import concurrent.futures
 from pytz import utc
-import rpy2.robjects as ro
-from rpy2.rinterface_lib._rinterface_capi import RParsingError
 from ruamel.yaml.constructor import DuplicateKeyError
 from ruamel.yaml.parser import ParserError
 from ruamel.yaml.scanner import ScannerError
 from thefuzz import fuzz
-import spacy
 import warnings
 from cffconvert import Citation
 from jsonschema.exceptions import ValidationError as JsonschemaSchemaError
 from pykwalify.errors import SchemaError as PykwalifySchemaError
-from tqdm import tqdm
 import sys
 
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -501,45 +496,6 @@ def get_python_maintainers(pypi_data) -> pd.DataFrame:
     """Extract maintainers from PyPI data."""
     return extract_names_and_emails(pypi_data["info"], "maintainer", "maintainer_email")
 
-def get_cran_authors(cran_data) -> pd.DataFrame:
-    cran_author = cran_data.get("Authors@R")
-
-    if cran_author is None:
-        return get_cran_author(cran_data)
-    
-    try:
-        authors = ro.r(f'''eval(parse(text = '{cran_author}'))''')
-    except RParsingError:
-        return get_cran_author(cran_data)
-
-    cran_authors_df = pd.DataFrame(columns=["name", "email", "ORCID"])
-
-    for author in authors:
-        if "aut" in author[2]:
-            if type(author[0]) == rpy2.rinterface_lib.sexp.NULLType and type(author[1]) == rpy2.rinterface_lib.sexp.NULLType:
-                name = None
-            elif type(author[0]) == rpy2.rinterface_lib.sexp.NULLType:
-                name = author[1][0]
-            elif type(author[1]) == rpy2.rinterface_lib.sexp.NULLType:
-                name = author[0][0]
-            else:
-                name = f"{author[0][0]} {author[1][0]}"
-            
-            
-            if type(author[3]) == rpy2.rinterface_lib.sexp.NULLType:
-                email = None
-            else:
-                email = author[3][0]
-
-            if type(author[4]) == rpy2.rinterface_lib.sexp.NULLType:
-                orcid = None
-            else:
-                orcid = author[4][0]
-
-            cran_authors_df = pd.concat([cran_authors_df, pd.DataFrame({"name": name, "email": email, "ORCID": orcid}, index=[0])], ignore_index=True)
-
-    return cran_authors_df
-
 def get_cran_author(cran_data) -> pd.DataFrame:
     cran_author = cran_data["Author"]
 
@@ -670,38 +626,3 @@ def combine_name_email(names: list[str], emails: list[str]) -> pd.DataFrame:
             i += 1
 
     return pd.DataFrame(dic)
-
-def get_description_authors(description: str) -> pd.DataFrame:
-    nlp = spacy.load("en_core_web_trf")
-    doc = nlp(description)
-    authors: list = list()
-    for ent in doc.ents:
-        if ent.label_ == "PERSON":
-            if ent.text not in authors:
-                authors.append(ent.text)
-
-    return pd.DataFrame(authors, columns=['name'])
-
-def get_readme_authors(owner: str, repo: str, position: int) -> tuple[list[tuple[pd.DataFrame, datetime | None]], pd.DataFrame]:
-    file = Path(f'./repos/{owner}/{repo}/README.md')
-    if file.is_file():
-        file_data = []
-        authors_data: list[tuple[pd.DataFrame, datetime | None]] = list()
-        print_file = 'README.md'
-        git_repo = Repo(f'./repos/{owner}/{repo}')
-        commits_for_file = list(git_repo.iter_commits(paths=print_file, max_count=50))
-        for commit_for_file in tqdm(commits_for_file, desc=f'{repo} README', position=position, dynamic_ncols=True):
-            try:
-                tree = commit_for_file.tree
-                blob = tree[print_file]
-                readme_string = blob.data_stream.read().decode()
-
-                file_data.append({'committed_datetime': str(commit_for_file.committed_datetime),
-                                  'authored_datetime': str(commit_for_file.authored_datetime)})
-
-                authors_data.append((get_description_authors(readme_string), commit_for_file.committed_datetime))
-            except KeyError:
-                pass
-        return authors_data, pd.DataFrame(file_data)
-    else:
-        return [(pd.DataFrame(), None)], pd.DataFrame()
