@@ -23,6 +23,7 @@ import concurrent.futures
 from pytz import utc
 import rpy2.robjects as ro
 from rpy2.rinterface_lib._rinterface_capi import RParsingError
+from ruamel.yaml.composer import ComposerError
 from ruamel.yaml.constructor import DuplicateKeyError
 from ruamel.yaml.parser import ParserError
 from ruamel.yaml.scanner import ScannerError
@@ -277,7 +278,7 @@ def validate_cff(cff_path: str, cff_data: str) -> bool:
             citation = Citation(cff_data, src=cff_path)
             citation.validate()
             return True
-        except (PykwalifySchemaError, JsonschemaSchemaError, ValueError, DuplicateKeyError, ParserError, ScannerError):
+        except (PykwalifySchemaError, JsonschemaSchemaError, ValueError, DuplicateKeyError, ParserError, ScannerError, ComposerError):
             return False
 
 def cff_init_used(cff_data: str) -> bool:
