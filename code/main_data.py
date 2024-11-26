@@ -37,7 +37,7 @@ async def process_cff_package(url: str, index):
         repo = repo_link.split('/')[-1]
         package_name = f'{owner}_{repo}'
 
-        Path(f'results/{index}/{package_name}').mkdir(parents=True, exist_ok=True)
+        Path(f'./results/{index}/{package_name}').mkdir(parents=True, exist_ok=True)
 
         functions.clone_git_repo(owner, repo, repo_link)
         git_contributors_df = await functions.get_git_contributors(owner, repo, package_name, datetime.now())
