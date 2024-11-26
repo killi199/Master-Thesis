@@ -156,23 +156,17 @@ def process_directory(directory, position: int, full=True):
     total_preferred_citation_cff = 0
     total_preferred_citation_cff_full = 0
     doi_preferred_citation_cff = 0
-    doi_preferred_citation_cff_full = 0
     identifier_doi_preferred_citation_cff = 0
-    identifier_doi_preferred_citation_cff_full = 0
     collection_doi_preferred_citation_cff = 0
-    collection_doi_preferred_citation_cff_full = 0
     citation_counts_preferred_citation_cff = {}
-    citation_counts_preferred_citation_cff_full = {}
 
     # Bib
     total_bib = 0
     total_bib_full = 0
     doi_bib = 0
-    doi_bib_full = 0
     average_time_between_updates_bib = []
     difference_last_update_bib_list = []
     citation_counts_bib = {}
-    citation_counts_bib_full = {}
 
     # Readme
     average_time_between_updates_readme = []
@@ -281,9 +275,6 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_bib_full += len(df)
-                    doi_bib_full += df['doi'].notna().sum()
-                    for key, value in df['type'].value_counts().to_dict().items():
-                        citation_counts_bib_full[key] = citation_counts_bib_full.get(key, 0) + value
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime')
                     average_time_between_updates_bib.append(df_sorted['committed_datetime'].diff().dropna().mean())
@@ -299,11 +290,6 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_preferred_citation_cff_full += len(df)
-                    doi_preferred_citation_cff_full += df['doi'].notna().sum()
-                    identifier_doi_preferred_citation_cff_full += df['identifier-doi'].notna().sum()
-                    collection_doi_preferred_citation_cff_full += df['collection-doi'].notna().sum()
-                    for key, value in df['type'].value_counts().to_dict().items():
-                        citation_counts_preferred_citation_cff_full[key] = citation_counts_preferred_citation_cff_full.get(key, 0) + value
             else:
                 if file in ['pypi_maintainers.csv', 'python_authors.csv', 'python_maintainers.csv',
                             'description_authors.csv', 'cran_authors.csv', 'cran_maintainers.csv']:
@@ -476,17 +462,11 @@ def process_directory(directory, position: int, full=True):
                             "doi_cff": doi_cff_full,
                             "identifier_doi_cff": identifier_doi_cff_full,
                             "total_preferred_citation_cff": total_preferred_citation_cff_full,
-                            "doi_preferred_citation_cff": doi_preferred_citation_cff_full,
-                            "identifier_doi_preferred_citation_cff": identifier_doi_preferred_citation_cff_full,
-                            "collection_doi_preferred_citation_cff": collection_doi_preferred_citation_cff_full,
-                            "doi_bib": doi_bib_full,
                             "average_time_between_updates_cff": pd.Series(average_time_between_updates_cff).mean(),
                             "average_time_between_updates_bib": pd.Series(average_time_between_updates_bib).mean(),
                             "average_time_between_updates_readme": pd.Series(average_time_between_updates_readme).mean(),
                             "total_bib": total_bib_full,
                             "citation_counts_cff": citation_counts_cff_full,
-                            "citation_counts_preferred_citation_cff": citation_counts_preferred_citation_cff_full,
-                            "citation_counts_bib": citation_counts_bib_full,
                             "authors_added": authors_added_results,
                             "authors_added_without_first_timestamp": authors_added_without_first_timestamp_results,
                             "authors_removed": authors_removed_results,

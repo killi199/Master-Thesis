@@ -242,13 +242,7 @@ valid_cff_plot = get_valid_cff_plot(overall_data, True)
 valid_cff_plot.savefig(f"../docs/bilder/overall_valid_cff.svg")
 valid_cff_plot.show()
 
-overall_full_data = overall_full_results[categories]
-
-valid_cff_full_plot = get_valid_cff_plot(overall_full_data, False)
-valid_cff_full_plot.savefig(f"../docs/bilder/overall_full_valid_cff.svg")
-valid_cff_full_plot.show()
-
-def get_citation_counts_plot(citation_counts, text):
+def get_citation_counts_plot(citation_counts):
     citation_data = pd.DataFrame(citation_counts.tolist(), index=overall_results.index).fillna(0)
 
     fig, ax = plt.subplots()
@@ -259,7 +253,7 @@ def get_citation_counts_plot(citation_counts, text):
         bars = ax.bar(citation_data.index, citation_data[column], bottom=bottom, label=column)
         for bar in bars:
             height= bar.get_height()
-            if height > 0 and text:
+            if height > 0:
                 ax.text(
                     bar.get_x() + bar.get_width() / 2,
                     bar.get_y() + height / 2,
@@ -279,139 +273,24 @@ def get_citation_counts_plot(citation_counts, text):
 
     return plt
 
-def show_and_safe_citation_counts(results, text):
+def show_and_safe_citation_counts(results):
     citation_counts_cff = results['citation_counts_cff'].apply(eval)
     citation_counts_preferred_citation_cff = results['citation_counts_preferred_citation_cff'].apply(eval)
     citation_counts_bib = results['citation_counts_bib'].apply(eval)
 
-    if text:
-        citation_counts_cff_plot = get_citation_counts_plot(citation_counts_cff, text)
-        citation_counts_cff_plot.savefig(f"../docs/bilder/citation_counts_cff.svg")
-        citation_counts_preferred_citation_cff_plot = get_citation_counts_plot(citation_counts_preferred_citation_cff, text)
-        citation_counts_preferred_citation_cff_plot.savefig(f"../docs/bilder/citation_counts_preferred_citation_cff.svg")
-        citation_counts_bib_plot = get_citation_counts_plot(citation_counts_bib, text)
-        citation_counts_bib_plot.savefig(f"../docs/bilder/citation_counts_bib.svg")
-    else:
-        citation_counts_cff_plot = get_citation_counts_plot(citation_counts_cff, text)
-        citation_counts_cff_plot.savefig(f"../docs/bilder/citation_counts_full_cff.svg")
-        citation_counts_preferred_citation_cff_plot = get_citation_counts_plot(citation_counts_preferred_citation_cff, text)
-        citation_counts_preferred_citation_cff_plot.savefig(f"../docs/bilder/citation_counts_full_preferred_citation_cff.svg")
-        citation_counts_bib_plot = get_citation_counts_plot(citation_counts_bib, text)
-        citation_counts_bib_plot.savefig(f"../docs/bilder/citation_counts_full_bib.svg")
+    citation_counts_cff_plot = get_citation_counts_plot(citation_counts_cff)
+    citation_counts_cff_plot.savefig(f"../docs/bilder/citation_counts_cff.svg")
+    citation_counts_preferred_citation_cff_plot = get_citation_counts_plot(citation_counts_preferred_citation_cff)
+    citation_counts_preferred_citation_cff_plot.savefig(f"../docs/bilder/citation_counts_preferred_citation_cff.svg")
+    citation_counts_bib_plot = get_citation_counts_plot(citation_counts_bib)
+    citation_counts_bib_plot.savefig(f"../docs/bilder/citation_counts_bib.svg")
 
     citation_counts_cff_plot.show()
     citation_counts_preferred_citation_cff_plot.show()
     citation_counts_bib_plot.show()
 
-show_and_safe_citation_counts(overall_results, True)
-show_and_safe_citation_counts(overall_full_results, False)
+show_and_safe_citation_counts(overall_results)
 
-def get_removed_added_authors_plt(added_data, removed_data):
-    bar_width = 0.35
-    index = range(len(added_data))
-
-    fig, ax = plt.subplots()
-
-    bottom_added = [0] * len(added_data)
-    bottom_removed = [0] * len(removed_data)
-
-    colors_added = ['blue', 'orange', 'green', 'olive']
-    colors_removed = ['pink', 'gray', 'brown', 'cyan']
-
-    for idx, column in enumerate(added_data.columns):
-        bars_added = ax.bar(index, added_data[column], bar_width, bottom=bottom_added,
-                            label=f'Hinzugefügte {column} Autoren', color=colors_added[idx])
-        bottom_added = [i + j for i, j in zip(bottom_added, added_data[column])]
-
-    for idx, column in enumerate(removed_data.columns):
-        bars_removed = ax.bar([i + bar_width for i in index], removed_data[column], bar_width,
-                              bottom=bottom_removed, label=f'Gelöschte {column} Autoren', color=colors_removed[idx])
-        bottom_removed = [i + j for i, j in zip(bottom_removed, removed_data[column])]
-
-    ax.set_xlabel('Liste')
-    ax.set_ylabel('Anzahl der Autoren')
-    ax.set_xticks([i + bar_width / 2 for i in index])
-    ax.set_xticklabels(added_data.index)
-    ax.legend(loc='upper left')
-
-    plt.tight_layout()
-
-    return plt
-
-def get_added_authors_plt(added_data):
-    index = range(len(added_data))
-
-    fig, ax = plt.subplots()
-
-    bottom_added = [0] * len(added_data)
-
-    colors_added = ['blue', 'orange', 'green', 'olive']
-
-    for idx, column in enumerate(added_data.columns):
-        bars_added = ax.bar(index, added_data[column], bottom=bottom_added,
-                            label=f'Hinzugefügte {column} Autoren', color=colors_added[idx])
-        bottom_added = [i + j for i, j in zip(bottom_added, added_data[column])]
-
-    ax.set_xlabel('Liste')
-    ax.set_ylabel('Anzahl der Autoren')
-    ax.set_xticks(range(len(added_data.index)))
-    ax.set_xticklabels(added_data.index)
-    ax.legend(loc='upper left')
-
-    plt.tight_layout()
-
-    return plt
-
-added_authors = overall_full_results['authors_added'].apply(eval)
-removed_authors = overall_full_results['authors_removed'].apply(eval)
-
-added_authors_data = pd.DataFrame(added_authors.tolist(), index=overall_full_results.index).fillna(0)
-removed_authors_data = pd.DataFrame(removed_authors.tolist(), index=overall_full_results.index).fillna(0)
-
-columns = {'readme_authors_new.csv': 'README',
-           'cff_authors_new.csv': 'CFF',
-           'cff_preferred_citation_authors_new.csv': 'CFF preferred citation',
-           'bib_authors_new.csv': 'BibTeX'}
-
-added_authors_data.rename(columns=columns, inplace=True)
-removed_authors_data.rename(columns=columns, inplace=True)
-
-added_authors_data = added_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
-removed_authors_data = removed_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
-
-added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data)
-added_removed_authors_plt.savefig(f"../docs/bilder/added_removed_authors.svg")
-added_removed_authors_plt.show()
-
-added_authors_data = added_authors_data.drop(columns=['README'])
-removed_authors_data = removed_authors_data.drop(columns=['README'])
-
-added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data)
-added_removed_authors_plt.savefig(f"../docs/bilder/added_removed_authors_without_readme.svg")
-added_removed_authors_plt.show()
-
-added_authors = overall_full_results['authors_added_without_first_timestamp'].apply(eval)
-
-added_authors_data = pd.DataFrame(added_authors.tolist(), index=overall_full_results.index).fillna(0)
-
-columns = {'readme_authors_new.csv': 'README',
-           'cff_authors_new.csv': 'CFF',
-           'cff_preferred_citation_authors_new.csv': 'CFF preferred citation',
-           'bib_authors_new.csv': 'BibTeX'}
-
-added_authors_data.rename(columns=columns, inplace=True)
-
-added_authors_data = added_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
-
-added_authors_plt = get_added_authors_plt(added_authors_data)
-added_authors_plt.savefig(f"../docs/bilder/added_authors_without_first_timestamp.svg")
-added_authors_plt.show()
-
-added_authors_data = added_authors_data.drop(columns=['README'])
-
-added_authors_plt = get_added_authors_plt(added_authors_data)
-added_authors_plt.savefig(f"../docs/bilder/added_authors_without_readme_without_first_timestamp.svg")
-added_authors_plt.show()
 
 def get_cff_doi_plt(results):
     total_cff = results['total_cff']
@@ -510,15 +389,3 @@ preferred_citation_doi_plt.show()
 bib_doi_plt = get_bib_doi_plt(overall_results)
 bib_doi_plt.savefig(f"../docs/bilder/bib_doi.svg")
 bib_doi_plt.show()
-
-cff_doi_plt_full = get_cff_doi_plt(overall_full_results)
-cff_doi_plt_full.savefig(f"../docs/bilder/cff_doi_full.svg")
-cff_doi_plt_full.show()
-
-preferred_citation_doi_plt_full = get_preferred_citation_doi_plt(overall_full_results)
-preferred_citation_doi_plt_full.savefig(f"../docs/bilder/preferred_citation_doi_full.svg")
-preferred_citation_doi_plt_full.show()
-
-bib_doi_plt_full = get_bib_doi_plt(overall_full_results)
-bib_doi_plt_full.savefig(f"../docs/bilder/bib_doi_full.svg")
-bib_doi_plt_full.show()
