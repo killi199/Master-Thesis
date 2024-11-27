@@ -67,85 +67,38 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
 % TODO anekdotisch untermauern mit eins zwei bsp. warum einige linien unten erst bei x=1 oder 2 beginnen. Eins zwei pakete nennen bei denen die ersten commiter nicht genannt werden.
 % x Achsen beschreibung: "Anzahl der betrachteten Git Autoren sortiert nach Commits"
 \begin{figure}
-        % TODO Daneben direkt bilder/common_authors_2_by_files/2_pypi_by_files.svg anzeigen und das für eins zwei ausgewählte listen machen und nicht für alle. sondern nur für listen um meine Aussage zu zeigen. Die anderen Graphen in den Anhang
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2/2_pypi.svg}
-        \caption{\gls{pypi}}
-        \label{fig:common_authors_2_pypi}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2/2_cran.svg}
-        \caption{\gls{cran}}
-        \label{fig:common_authors_2_cran}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2/2_cff.svg}
-        \caption{\gls{cff}}
-        \label{fig:common_authors_2_cff}
-    \end{subfigure}%
+    % TODO Daneben direkt bilder/common_authors_2_by_files/2_pypi_by_files.svg anzeigen und das für eins zwei ausgewählte listen machen und nicht für alle. sondern nur für listen um meine Aussage zu zeigen. Die anderen Graphen in den Anhang
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2/2_pypi_cff.svg}
-        \caption{\gls{pypi} \gls{cff}}
+        \caption{\gls{pypi} \gls{cff} nach Commits}
         \label{fig:common_authors_2_pypi_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_pypi_cff_by_files.svg}
+        \caption{\gls{pypi} \gls{cff} nach geänderten Zeilen}
+        \label{fig:common_authors_2_by_files_pypi_cff}
     \end{subfigure}
-    \centering
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2/2_cran_cff.svg}
-        \caption{\gls{cran} \gls{cff}}
+        \caption{\gls{cran} \gls{cff} nach Commits}
         \label{fig:common_authors_2_cran_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cran_cff_by_files.svg}
+        \caption{\gls{cran} \gls{cff} nach geänderten Zeilen}
+        \label{fig:common_authors_2_by_files_cran_cff}
     \end{subfigure}
-    \caption{Anteil der angegebenen Autoren nach Commits am Quellcode}
+    \caption{Anteil der angegebenen Autoren am Quellcode}
     \label{fig:common_authors_2}
     \small
     \raggedright
     % TODO die Beschreibungen alle gleich aufbauen. Achsen beschreiben, Linien beschreiben, auf a, b, c, d, e eingehen und einen prägnanten satz wie: " In der CFF sind y% unter den Top x commitern.
     % TODO die Große beschreibung im Text mit beispielen erklären
     Die Abbildungen zeigen für die verschiedenen analysierten Listen den Anteil der angegebenen Autoren am Quellcode. Sie zeigen also für die ersten null bis 200 Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent die genannten Autoren unter Berücksichtigung der n Git Autoren tatsächlich Quellcode entwickelt haben. Für null Git Autoren ist dieser Wert immer null, da kein genannter Autor unter den Top 0 Git Autoren sein kann. Falls 10 Autoren genannt werden und diese alle Quellcode entwickelt haben und zusätzlich unter den Top n Git Autoren sind, ist der Wert, ab dem Zeitpunkt zu dem alle Autoren in der Liste der Git Autoren vorhanden sind, 1.0. Dieser Graph kann also 1.0 erreichen, falls alle genannten Autoren tatsächlich Quellcode entwickelt haben und in der Datenbeschaffung abgeglichen werden konnten.
-\end{figure}
-
-% x Achsen beschreibung: "Anzahl der betrachteten Git Autoren sortiert nach changed_lines"
-\begin{figure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_pypi_by_files.svg}
-        \caption{\gls{pypi}}
-        \label{fig:common_authors_2_by_files_pypi}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cran_by_files.svg}
-        \caption{\gls{cran}}
-        \label{fig:common_authors_2_by_files_cran}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cff_by_files.svg}
-        \caption{\gls{cff}}
-        \label{fig:common_authors_2_by_files_cff}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_pypi_cff_by_files.svg}
-        \caption{\gls{pypi} \gls{cff}}
-        \label{fig:common_authors_2_by_files_pypi_cff}
-    \end{subfigure}
-    \centering
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cran_cff_by_files.svg}
-        \caption{\gls{cran} \gls{cff}}
-        \label{fig:common_authors_2_by_files_cran_cff}
-    \end{subfigure}
-    \caption{Anteil der angegebenen Autoren nach geänderten Zeilen am Quellcode}
-    \label{fig:common_authors_2_by_files}
-    \small
-    \raggedright
-    Die Abbildungen zeigen die gleichen Graphen wie \autoref{fig:common_authors_2}, jedoch werden hier die Git Autoren über die Anzahl der geänderten Zeilen gemessen.
 \end{figure}
 
 \begin{figure}
