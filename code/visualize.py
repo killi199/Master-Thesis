@@ -39,7 +39,7 @@ def common_authors_plot(file_list, sources, commits):
 
         plt.xlim(1, 100)
         plt.legend(loc="upper right")
-        plt.ylabel("Anteil der genannten Autoren an den Git Autoren")
+        plt.ylabel("Anteil der Git Autoren an den genannten Autoren")
         plt.tight_layout()
         if commits:
             plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach Commits")
