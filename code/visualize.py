@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import ast
 import pandas as pd
 from datetime import datetime
+import matplotlib.ticker as mtick
 
 def common_authors_plot(file_list, sources, commits):
     for source_name, source in sources.items():
@@ -40,6 +41,7 @@ def common_authors_plot(file_list, sources, commits):
         plt.xlim(1, 100)
         plt.legend(loc="upper right")
         plt.ylabel("Anteil der Git Autoren an den genannten Autoren")
+        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
         plt.tight_layout()
         if commits:
             plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach Commits")
@@ -110,6 +112,7 @@ def common_authors_2_plot(file_list, sources, commits):
 
         plt.legend(loc="lower right")
         plt.ylabel("Anteil der genannten Autoren an den Git Autoren")
+        plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
         plt.tight_layout()
         if commits:
             plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach Commits")
@@ -201,6 +204,7 @@ for source_name, source in sources.items():
     plt.legend(loc="upper left")
     plt.xlabel("Jahr")
     plt.ylabel("Anteil der Autoren ohne Commits")
+    plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(1.0))
     plt.tight_layout()
     plt.savefig(f"../docs/bilder/total_authors_no_commits/3_{source}.svg")
     plt.show()
