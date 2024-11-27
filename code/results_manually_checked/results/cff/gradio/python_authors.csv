@@ -1,6 +1,6 @@
 name,email,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-,Ahsen Khaliq <gradio-team@huggingface.co>,32,298,204,502,44,9,2021-12-16 23:16:41+00:00,2022-07-27 06:39:48+00:00,0.5,0
-,Ali Abid <gradio-team@huggingface.co>,4,238793,206863,445656,4618,548,2019-07-22 04:14:38+00:00,2024-02-20 22:21:47+00:00,0.5,0
+,Ahsen Khaliq <gradio-team@huggingface.co>,32,298,204,502,44,9,2021-12-16 23:16:41+00:00,2022-07-27 06:39:48+00:00,0.5,1
+,Ali Abid <gradio-team@huggingface.co>,4,238793,206863,445656,4618,548,2019-07-22 04:14:38+00:00,2024-02-20 22:21:47+00:00,0.5,1
 ,Hannah Blair <gradio-team@huggingface.co>,10,28456,11827,40283,1039,159,2023-06-06 10:02:01+00:00,2024-10-22 20:55:48+00:00,0.5,0
 ,Dawood Khan <gradio-team@huggingface.co>,163,9,3,12,3,1,2024-01-03 16:05:40+00:00,2024-01-03 16:05:40+00:00,0.5,0
 ,Ali Abdalla <gradio-team@huggingface.co>,16,16480,3184,19664,252,42,2019-02-17 04:11:28+00:00,2019-04-27 08:14:15+00:00,0.5,0
