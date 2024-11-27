@@ -59,9 +59,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \label{fig:common_authors}
     \small
     \raggedright
-    % TODO die Beschreibungen alle gleich aufbauen. Achsen beschreiben, Linien beschreiben, auf a, b, c, d, e eingehen und einen prägnanten satz wie: " In der CFF sind y% unter den Top x commitern.
-    % TODO die Große beschreibung im Text mit beispielen erklären
-    Die Abbildungen zeigen für die verschiedenen analysierten Listen den Anteil der genannten Autoren an den Git Autoren. Sie zeigen also für die ersten eins bis 100 Top Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent diese in der jeweiligen Quelle z.B. \gls{cff} genannt werden. Falls der Autor mit den meisten Commits beispielsweise in der \gls{cff} genannt wird, und nur ein Git Autor betrachtet wird, ist an dieser Stelle der Wert 1.0 und somit 100 \%.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top Git Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_files_pypi_cff} und \autoref{fig:common_authors_by_files_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
 \end{figure}
 
 % TODO anekdotisch untermauern mit eins zwei bsp. warum einige linien unten erst bei x=1 oder 2 beginnen. Eins zwei pakete nennen bei denen die ersten commiter nicht genannt werden.
@@ -94,9 +92,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \label{fig:common_authors_2}
     \small
     \raggedright
-    % TODO die Beschreibungen alle gleich aufbauen. Achsen beschreiben, Linien beschreiben, auf a, b, c, d, e eingehen und einen prägnanten satz wie: " In der CFF sind y% unter den Top x commitern.
-    % TODO die Große beschreibung im Text mit beispielen erklären
-    Die Abbildungen zeigen für die verschiedenen analysierten Listen den Anteil der angegebenen Autoren am Quellcode. Sie zeigen also für die ersten null bis 200 Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent die genannten Autoren unter Berücksichtigung der n Git Autoren tatsächlich Quellcode entwickelt haben. Für null Git Autoren ist dieser Wert immer null, da kein genannter Autor unter den Top 0 Git Autoren sein kann. Falls 10 Autoren genannt werden und diese alle Quellcode entwickelt haben und zusätzlich unter den Top n Git Autoren sind, ist der Wert, ab dem Zeitpunkt zu dem alle Autoren in der Liste der Git Autoren vorhanden sind, 1.0. Dieser Graph kann also 1.0 erreichen, falls alle genannten Autoren tatsächlich Quellcode entwickelt haben und in der Datenbeschaffung abgeglichen werden konnten.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_files_pypi_cff} und \autoref{fig:common_authors_by_files_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: In der \gls{cff} sind y \% unter den Top x Commitern.
 \end{figure}
 
 \begin{figure}
@@ -116,8 +112,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \label{fig:total_authors_no_commits}
     \small
     \raggedright
-    % TODO y% der Autoren haben in den letzten x Tagen ...
-    Die Abbildungen zeigen für die verschiedenen analysierten Listen wie viel Prozent der genannten Autoren in der jeweiligen Quelle aktiv sind. 0 Tage stellt dabei den Tag dar, an dem die Datenbeschaffung ausgeführt wurde. An diesem Tag sind nahezu 100 \% der Autoren nicht aktiv, da sie an diesem Tag bereits ein Commit getätigt haben müssten. Mit steigender Anzahl an Tagen werden immer mehr Autoren aktiv.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse werden die Jahre dargestellt. Die y Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt. Das Ende der x Achse stellt den Tag der Datenbeschaffung dar.
 \end{figure}
 
 \begin{figure}
@@ -153,8 +148,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \caption{Typ der angegebenen Zitationen der einzelnen Quellen}
     \small
     \raggedright
-    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es werden nur die neusten Versionen betrachtet.
-    % TODO Achtung verschiedene y Achsen erwähnen!
+    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es ist darauf zu achten, dass die y Achsen unterschiedlich skaliert sind.
 \end{figure}
 
 \begin{figure}
@@ -180,7 +174,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \caption{Verwendung von DOIs in den Zitationen der einzelnen Quellen}
     \small
     \raggedright
-    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten LIsten, wie oft eine DOI in verschiedenen Versionen in den Zitationen angegeben wurde. Es werden nur die neusten Versionen betrachtet.
+    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten LIsten, wie oft eine DOI in verschiedenen Versionen in den Zitationen angegeben wurde.
 \end{figure}
 
 \section{Ergebnisse mit Zeitverlauf}
