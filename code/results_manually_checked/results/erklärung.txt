@@ -1,6 +1,6 @@
 TP,FN,FP,TN einleuchtend für Autoren
 Organisationen immer hoch zählen, falls es eine Organisation ist
-Falls die Organisation gematcht wurde -> FP
+Falls die Organisation gematcht wurde -> FP Es sei denn die ist wirklich drin mit ihrem namen dann TP (Lieber FP aber angeben es sei denn es ist wirklich eindeutig)
 Falls die Organisation nicht gemacht wurde -> TN
 Jeweils nur die ersten 2 in jeder Datei begutachten git_contributors dient als Referenz
 Nach Bearbeitung die Zeile immer auf checked setzen, sodass man selber einen überblick darüber behält wo man war
