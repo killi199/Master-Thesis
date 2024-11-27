@@ -1,0 +1,4 @@
+login,name,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+hfmuehleisen,Hannes Mühleisen,5,994950,1024031,2018981,13472,1852,2018-07-23 16:04:31+00:00,2024-10-08 07:18:05+00:00,0.5,0
+duckdb_admin,DuckDB Foundation,134,602,26,628,15,7,2023-05-02 05:52:00+00:00,2023-05-05 06:55:20+00:00,0.5,0
+Mytherin,Mark Raasveldt,1,5377778,3225054,8602832,72996,10373,2018-07-13 12:29:24+00:00,2024-10-21 13:00:47+00:00,0.5,0

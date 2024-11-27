@@ -1,0 +1,6 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Daniel Cook,danielecook@gmail.com,,,,,,,,,,0.0,0
+Jim Hester,,,1.0,1945.0,1211.0,3156.0,177.0,74.0,2016-01-19 17:01:00+00:00,2021-11-29 13:58:57+00:00,0.5,0
+Hadley Wickham,hadley@rstudio.com,,3.0,805.0,230.0,1035.0,51.0,19.0,2010-09-03 18:40:55+00:00,2020-09-02 12:47:52+00:00,0.5,0
+Kirill Müller,krlmlr+r@mailbox.org,,2.0,834.0,261.0,1095.0,80.0,65.0,2015-09-12 14:21:06+00:00,2016-01-13 15:47:45+00:00,0.5,0
+Winston Chang,winston@rstudio.com,,4.0,727.0,532.0,1259.0,38.0,14.0,2013-01-25 15:53:52+00:00,2021-02-14 05:41:51+00:00,0.5,0

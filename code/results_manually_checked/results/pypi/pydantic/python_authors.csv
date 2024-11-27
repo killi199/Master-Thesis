@@ -1,0 +1,12 @@
+name,email,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+,Samuel Colvin <s@muelcolvin.com>,1,55550,44129,99679,3577,552,2017-05-03 21:23:41+00:00,2024-05-01 14:12:54+00:00,0.5,0
+,Alex Hall <alex.mojaki@gmail.com>,18,863,499,1362,65,18,2023-10-11 17:48:12+00:00,2024-08-19 12:05:31+00:00,0.5,0
+,Serge Matveenko <lig@countzero.co>,14,3493,1840,5333,145,38,2023-05-17 14:31:34+00:00,2023-11-07 16:00:02+00:00,0.5,0
+,David Hewitt <mail@davidhewitt.io>,15,2823,2157,4980,92,30,2023-06-23 10:04:45+00:00,2023-10-18 21:48:48+00:00,0.5,0
+,Eric Jolibois <em.jolibois@gmail.com>,7,7913,1613,9526,521,120,2020-03-04 16:37:23+00:00,2023-10-20 14:23:24+00:00,0.5,0
+,Terrence Dorsey <terry@pydantic.dev>,12,7524,5110,12634,286,71,2023-03-25 13:39:54+00:00,2023-07-21 07:45:50+00:00,0.5,0
+,Adrian Garcia Badaracco <1755071+adriangb@users.noreply.github.com>,4,28415,14500,42915,1091,198,2022-05-13 14:16:32+00:00,2024-06-27 16:07:05+00:00,0.5,0
+,Sydney Runkle <sydneymarierunkle@gmail.com>,346,108,7,115,1,1,2024-06-06 18:53:15+00:00,2024-06-06 18:53:15+00:00,0.5,0
+,David Montague <david@pydantic.dev>,32,64,27,91,14,6,2019-07-19 07:26:15+00:00,2019-07-30 19:37:11+00:00,0.5,0
+,Hasan Ramezani <hasan.r67@gmail.com>,5,23827,3508,27335,531,171,2022-07-04 17:53:47+00:00,2024-05-09 09:29:09+00:00,0.5,0
+,Marcelo Trylesinski <marcelotryle@gmail.com>,8,10687,6444,17131,464,102,2021-06-04 21:30:25+00:00,2024-09-02 15:47:52+00:00,0.5,0

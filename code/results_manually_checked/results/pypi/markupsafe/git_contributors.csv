@@ -1,0 +1,45 @@
+name,email,insertions,deletions,lines_changed,files,commits,first_commit,last_commit
+David Lord,davidism@gmail.com,5640,5475,11115,638,205,2016-04-11 15:22:11+00:00,2024-09-01 16:04:13+00:00
+dependabot[bot],49699333+dependabot[bot]@users.noreply.github.com,223,222,445,107,77,2021-04-06 18:09:16+00:00,2024-08-01 12:56:17+00:00
+Armin Ronacher,armin.ronacher@active-4.com,1699,244,1943,110,60,2010-06-22 17:21:32+00:00,2017-03-07 15:31:53+00:00
+dependabot-preview[bot],27856297+dependabot-preview[bot]@users.noreply.github.com,148,99,247,58,47,2020-05-27 13:47:08+00:00,2021-04-28 16:46:44+00:00
+pre-commit-ci[bot],66853113+pre-commit-ci[bot]@users.noreply.github.com,66,77,143,36,36,2020-11-16 18:04:28+00:00,2024-08-05 23:09:24+00:00
+INADA Naoki,songofacandy@gmail.com,464,7,471,4,3,2017-02-12 11:07:02+00:00,2018-04-27 12:26:16+00:00
+Christoph Zwerschke,cito@online.de,8,3,11,2,2,2011-06-04 17:28:56+00:00,2011-06-05 11:02:02+00:00
+Maarten ter Huurne,maarten@boxingbeetle.com,48,0,48,4,2,2019-02-18 21:51:51+00:00,2019-02-18 21:51:51+00:00
+Janakarajan Natarajan,janakan@amazon.com,12,0,12,2,2,2021-01-14 17:13:53+00:00,2021-01-14 17:13:53+00:00
+Greg Back,gback@mitre.org,13,13,26,2,2,2015-07-14 18:58:01+00:00,2015-07-14 18:58:39+00:00
+Daw-Ran Liou,dawran6@gmail.com,16,5,21,4,2,2017-05-24 21:47:53+00:00,2017-05-24 22:08:53+00:00
+Hugo,hugovk@users.noreply.github.com,22,23,45,5,2,2017-10-08 15:23:02+00:00,2017-10-08 15:23:28+00:00
+Grey Li,withlihui@gmail.com,9,3,12,2,2,2021-05-24 09:56:28+00:00,2021-06-13 00:50:40+00:00
+Adrian Moennich,adrian@planetcoding.net,10,14,24,4,2,2021-05-11 22:11:13+00:00,2021-05-11 22:12:29+00:00
+Alice Bevan–McGregor,alice@gothcandy.com,3,2,5,2,2,2014-11-22 02:35:47+00:00,2014-11-22 03:14:34+00:00
+Buck Golemon,buck@yelp.com,78,19,97,4,2,2012-05-15 21:23:57+00:00,2012-07-06 15:33:23+00:00
+Mehdi ABAAKOUK,sileht@sileht.net,2,0,2,1,1,2022-12-29 17:26:08+00:00,2022-12-29 17:26:08+00:00
+Ryan Siemens,ryanjsiemens@gmail.com,5,5,10,1,1,2018-10-04 05:33:46+00:00,2018-10-04 05:33:46+00:00
+Rust Saiargaliev,rustem.saiargaliev@thermondo.de,82,90,172,4,1,2021-01-29 21:15:20+00:00,2021-01-29 21:15:20+00:00
+Richard O'Dwyer,richard@richard.do,3,3,6,1,1,2015-07-18 11:32:58+00:00,2015-07-18 11:32:58+00:00
+José Carlos García,quobit@users.noreply.github.com,1,1,2,1,1,2016-04-03 23:21:57+00:00,2016-04-03 23:21:57+00:00
+Hsiaoming Yang,me@lepture.com,20,36,56,5,1,2018-04-19 15:15:15+00:00,2018-04-19 15:15:15+00:00
+Peter Landoll,pwlandoll@gmail.com,1,0,1,1,1,2019-05-06 14:13:39+00:00,2019-05-06 14:13:39+00:00
+Philippe Ombredanne,pombredanne@gmail.com,3,0,3,1,1,2016-11-01 20:19:10+00:00,2016-11-01 20:19:10+00:00
+Adal Chiriliuc,adal.chiriliuc@gmail.com,1,0,1,1,1,2014-10-10 18:44:16+00:00,2014-10-10 18:44:16+00:00
+Peter Hill,peter.hill@york.ac.uk,7,2,9,3,1,2022-06-13 14:04:23+00:00,2022-06-13 14:04:23+00:00
+Ronny Pfannschmidt,opensource@ronnypfannschmidt.de,2,3,5,1,1,2018-05-05 19:44:49+00:00,2018-05-05 19:44:49+00:00
+Michael Simacek,michael.simacek@oracle.com,6,1,7,2,1,2022-02-15 10:30:16+00:00,2022-02-15 10:30:16+00:00
+Martin Trigaux,me@mart-e.be,15,1,16,3,1,2021-06-11 16:49:30+00:00,2021-06-11 16:49:30+00:00
+Christian Clauss,cclauss@me.com,3,4,7,1,1,2019-10-28 10:57:23+00:00,2019-10-28 10:57:23+00:00
+Adam Chainz,me@adamj.eu,40,28,68,1,1,2016-06-04 04:09:44+00:00,2016-06-04 04:09:44+00:00
+Matt Cooper,mattc@xbox.com,128,0,128,1,1,2019-05-04 14:16:16+00:00,2019-05-04 14:16:16+00:00
+Daniel Roberts,ademan555@gmail.com,7,7,14,1,1,2011-02-17 21:56:32+00:00,2011-02-17 21:56:32+00:00
+Jon Dufresne,jon.dufresne@gmail.com,1,1,2,1,1,2019-05-04 15:40:39+00:00,2019-05-04 15:40:39+00:00
+Jason R. Coombs,jaraco@jaraco.com,4,13,17,1,1,2014-02-16 23:44:37+00:00,2014-02-16 23:44:37+00:00
+G. Fioravante,40348770+northernsage@users.noreply.github.com,214,0,214,1,1,2020-09-01 02:07:39+00:00,2020-09-01 02:07:39+00:00
+Florian Bruhin,git@the-compiler.org,3,3,6,2,1,2018-06-27 13:16:57+00:00,2018-06-27 13:16:57+00:00
+Emil Sadek,esadek@hotmail.com,1,1,2,1,1,2021-08-09 08:00:23+00:00,2021-08-09 08:00:23+00:00
+Douglas Thor,dougthor42@users.noreply.github.com,69,0,69,1,1,2017-10-08 17:27:18+00:00,2017-10-08 17:27:18+00:00
+Andreas Pelme,andreas@pelme.se,1,1,2,1,1,2024-03-12 19:29:56+00:00,2024-03-12 19:29:56+00:00
+Anthony Shaw,anthony.p.shaw@gmail.com,15,7,22,2,1,2024-04-19 04:02:06+00:00,2024-04-19 04:02:06+00:00
+David Salvisberg,david.salvisberg@seantis.ch,26,29,55,2,1,2023-04-12 10:07:46+00:00,2023-04-12 10:07:46+00:00
+Jeff Dairiki,dairiki@dairiki.org,6,3,9,3,1,2024-01-25 00:53:37+00:00,2024-01-25 00:53:37+00:00
+Matthew Brett,matthew.brett@gmail.com,6,1,7,1,1,2014-08-03 02:00:36+00:00,2014-08-03 02:00:36+00:00

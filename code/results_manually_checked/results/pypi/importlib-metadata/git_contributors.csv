@@ -1,0 +1,72 @@
+name,email,insertions,deletions,lines_changed,files,commits,first_commit,last_commit
+Jason R. Coombs,jaraco@jaraco.com,12012,7320,19332,1652,1112,2015-12-20 03:29:56+00:00,2024-08-29 20:53:52+00:00
+Barry Warsaw,barry@python.org,1831,549,2380,132,46,2018-05-17 16:48:51+00:00,2023-05-03 11:55:22+00:00
+Johan Herland,johan@herland.net,383,88,471,30,18,2023-03-10 13:26:46+00:00,2023-04-19 00:41:44+00:00
+Anderson Bravalheri,andersonbravalheri@gmail.com,253,120,373,19,15,2022-06-05 01:50:24+00:00,2024-08-25 08:29:10+00:00
+Steven,sjma3@illinois.edu,228,100,328,28,15,2019-02-24 03:56:39+00:00,2019-02-24 22:20:52+00:00
+Antony Lee,anntzer.lee@gmail.com,153,121,274,12,10,2019-12-08 18:46:41+00:00,2021-02-23 09:48:20+00:00
+Filipe Laíns,lains@riseup.net,114,32,146,16,10,2020-12-01 13:37:59+00:00,2023-03-10 00:57:43+00:00
+Anthony Sottile,asottile@umich.edu,92,58,150,22,9,2019-02-14 21:10:13+00:00,2019-12-04 17:10:35+00:00
+C.A.M. Gerlach,cam.gerlach@gerlach.cam,89,43,132,6,6,2022-07-30 01:57:19+00:00,2022-07-30 04:34:09+00:00
+Dimitri PapadopoulosDimitri Papadopoulos Orfanos,3234522+dimitripapadopoulos@users.noreply.github.com,32,28,60,11,6,2023-09-28 08:16:20+00:00,2024-08-08 21:14:35+00:00
+HugoHugo van Kemenade,hugovk@users.noreply.github.com,37,41,78,10,6,2020-01-18 18:50:32+00:00,2022-06-05 01:47:15+00:00
+Oleg Höfling,oleg.hoefling@gmail.com,25,33,58,6,5,2019-12-29 15:22:52+00:00,2019-12-29 15:49:00+00:00
+Sviatoslav Sydorenko,wk.cvs.github@sydorenko.org.ua,9,9,18,5,4,2021-01-09 04:21:12+00:00,2021-04-26 02:10:20+00:00
+Dan Blanchard,dan.blanchard@gmail.com,62,7,69,7,4,2024-01-05 19:54:36+00:00,2024-03-07 15:22:30+00:00
+Christian Clauss,cclauss@me.com,18,33,51,3,3,2021-10-05 21:48:44+00:00,2023-11-15 14:08:10+00:00
+Avasam,samuel.06@hotmail.com,17,8,25,3,3,2024-03-21 19:34:23+00:00,2024-08-12 16:13:19+00:00
+Geir Arne Hjelle,geirarne@gmail.com,9,6,15,4,3,2019-05-06 18:24:23+00:00,2019-05-06 19:58:14+00:00
+David Hotham,david.hotham@blueyonder.co.uk,108,63,171,7,3,2023-04-07 13:07:38+00:00,2023-04-18 17:29:03+00:00
+Louis Sautier,sautier.louis@gmail.com,1,2,3,2,2,2019-07-13 00:42:27+00:00,2019-07-13 00:54:32+00:00
+John T. Wodder II,git@varonathe.org,30,1,31,4,2,2020-03-26 17:20:05+00:00,2020-03-27 02:39:14+00:00
+Daniel Hollas,daniel.hollas@bristol.ac.uk,15,14,29,2,2,2024-08-05 18:40:35+00:00,2024-08-20 11:23:17+00:00
+Danyal-Faheem,danyal.faheem@arbisoft.com,3,3,6,2,2,2024-01-17 15:02:21+00:00,2024-01-30 10:30:36+00:00
+Thomas Grainger,tagrain@gmail.com,4,4,8,2,2,2022-03-10 13:21:11+00:00,2022-03-13 15:04:18+00:00
+Sviatoslav Sydorenko,wk@sydorenko.org.ua,22,2,24,2,2,2022-04-22 15:43:46+00:00,2023-12-05 14:48:52+00:00
+Arie Bovenberg,a.c.bovenberg@gmail.com,6,0,6,2,2,2022-01-07 14:35:38+00:00,2022-01-07 12:22:18+00:00
+Saaket Prakash,saaketp@gmail.com,13,0,13,2,2,2022-03-20 05:56:09+00:00,2022-03-20 06:12:39+00:00
+Pedro Algarvio,pedro@algarvio.me,18,6,24,2,1,2020-11-17 07:47:17+00:00,2020-11-17 07:47:17+00:00
+Paul Watson,paul.hermeneutic@gmail.com,1,1,2,1,1,2023-03-14 18:40:12+00:00,2023-03-14 18:40:12+00:00
+Paul Moore,p.f.moore@gmail.com,7,1,8,1,1,2021-04-28 23:27:37+00:00,2021-04-28 23:27:37+00:00
+Philippe Ombredanne,pombredanne@nexb.com,4,3,7,1,1,2021-05-23 14:49:45+00:00,2021-05-23 14:49:45+00:00
+Oleg Iarygin,oleg@arhadthedev.net,1,1,2,1,1,2022-06-21 18:55:18+00:00,2022-06-21 18:55:18+00:00
+Ned Batchelder,ned@nedbatchelder.com,0,3,3,1,1,2022-03-08 03:55:41+00:00,2022-03-08 03:55:41+00:00
+Nikita Sobolev,mail@sobolevn.me,1,0,1,1,1,2022-01-27 14:48:01+00:00,2022-01-27 14:48:01+00:00
+wim glenn,wim.glenn@gmail.com,1,0,1,1,1,2022-06-05 20:01:02+00:00,2022-06-05 20:01:02+00:00
+Zach Burnett,zachary.r.burnett@gmail.com,0,0,0,1,1,2022-10-13 19:00:05+00:00,2022-10-13 19:00:05+00:00
+Ville Skyttä,ville.skytta@iki.fi,2,2,4,1,1,2022-04-09 18:37:01+00:00,2022-04-09 18:37:01+00:00
+layday,layday@protonmail.com,5,4,9,1,1,2022-11-16 20:09:56+00:00,2022-11-16 20:09:56+00:00
+Stanislav Levin,slev@altlinux.org,5,2,7,2,1,2019-04-22 07:29:36+00:00,2019-04-22 07:29:36+00:00
+Inada Naoki,songofacandy@gmail.com,3,3,6,2,1,2021-04-05 04:11:23+00:00,2021-04-05 04:11:23+00:00
+Karthikeyan Singaravelan,tir.karthi@gmail.com,1,1,2,1,1,2021-04-24 06:44:29+00:00,2021-04-24 06:44:29+00:00
+Thomas Liu,tliu61@illinois.edu,4,1,5,1,1,2019-02-23 21:42:30+00:00,2019-02-23 21:42:30+00:00
+Tzu-ping Chung,uranusjr@gmail.com,20,1,21,3,1,2020-10-25 20:11:37+00:00,2020-10-25 20:11:37+00:00
+Vincent Fazio,vfazio@xes-inc.com,3,0,3,1,1,2020-02-04 20:51:03+00:00,2020-02-04 20:51:03+00:00
+Sebastian Kriems,skriems@users.noreply.github.com,21,27,48,2,1,2018-12-14 15:19:36+00:00,2018-12-14 15:19:36+00:00
+Shantanu,12621235+hauntsaninja@users.noreply.github.com,5,1,6,2,1,2024-01-29 09:30:22+00:00,2024-01-29 09:30:22+00:00
+Filipe Laíns,lains@archlinux.org,2,0,2,1,1,2020-10-24 21:36:26+00:00,2020-10-24 21:36:26+00:00
+KOLANICH,kolan_n@mail.ru,17,2,19,2,1,2021-02-06 20:03:13+00:00,2021-02-06 20:03:13+00:00
+Stanley,46876382+slateny@users.noreply.github.com,1,2,3,1,1,2022-10-26 03:26:28+00:00,2022-10-26 03:26:28+00:00
+Adam Turner,9087854+aa-turner@users.noreply.github.com,5,1,6,2,1,2024-03-21 03:49:10+00:00,2024-03-21 03:49:10+00:00
+Alan Fregtman,941331+darkvertex@users.noreply.github.com,1,0,1,1,1,2021-07-26 14:55:08+00:00,2021-07-26 14:55:08+00:00
+Alex Waygood,alex.waygood@gmail.com,3,3,6,1,1,2022-05-19 15:48:44+00:00,2022-05-19 15:48:44+00:00
+Amund Hov,amund.hov@gmail.com,8,0,8,1,1,2023-10-11 12:45:35+00:00,2023-10-11 12:45:35+00:00
+Anderson Bravalheri,andersonbravalheri+github@gmail.com,2,0,2,1,1,2022-02-12 09:50:31+00:00,2022-02-12 09:50:31+00:00
+Andy Bailey,bailey@akamai.com,1,1,2,1,1,2019-07-19 16:57:37+00:00,2019-07-19 16:57:37+00:00
+Bartosz Sławecki,bartoszpiotrslawecki@gmail.com,1,0,1,1,1,2024-04-01 15:47:04+00:00,2024-04-01 15:47:04+00:00
+Benoit Pierre,benoit.pierre@gmail.com,4,1,5,1,1,2022-05-12 19:15:45+00:00,2022-05-12 19:15:45+00:00
+Brett Cannon,brett@python.org,1,1,2,1,1,2020-04-28 23:29:04+00:00,2020-04-28 23:29:04+00:00
+Brian Rutledge,brian@bhrutledge.com,1,2,3,1,1,2021-06-12 14:10:07+00:00,2021-06-12 14:10:07+00:00
+Bartosz Sławecki,bswck.dev@gmail.com,48,43,91,2,1,2024-04-16 20:37:50+00:00,2024-04-16 20:37:50+00:00
+Chris Billington,chrisjbillington@gmail.om,9,5,14,2,1,2019-02-11 04:15:56+00:00,2019-02-11 04:15:56+00:00
+Petr Viktorin,encukou@gmail.com,3,0,3,1,1,2024-01-16 15:10:03+00:00,2024-01-16 15:10:03+00:00
+Bartosz Sławecki,github.armored767@passinbox.com,4,0,4,1,1,2024-02-06 22:01:32+00:00,2024-02-06 22:01:32+00:00
+Gryfenfer97,hajjarjamil4@gmail.com,5,5,10,1,1,2023-06-21 09:19:19+00:00,2023-06-21 09:19:19+00:00
+Henry Schreiner,henryschreineriii@gmail.com,1,1,2,1,1,2021-08-05 15:43:57+00:00,2021-08-05 15:43:57+00:00
+layday,31134424+layday@users.noreply.github.com,2,2,4,2,1,2020-01-23 01:48:38+00:00,2020-01-23 01:48:38+00:00
+johnthagen,johnthagen@users.noreply.github.com,15,3,18,1,1,2020-01-14 12:53:19+00:00,2020-01-14 12:53:19+00:00
+Jon Dufresne,jon.dufresne@gmail.com,8,23,31,14,1,2020-08-15 01:34:14+00:00,2020-08-15 01:34:14+00:00
+Joyce,joycebrumu.u@gmail.com,5,0,5,1,1,2023-03-18 16:25:16+00:00,2023-03-18 16:25:16+00:00
+Julian Berman,julian@grayvines.com,7,2,9,1,1,2020-10-24 16:54:01+00:00,2020-10-24 16:54:01+00:00
+Julien Palard,julien@palard.fr,1,1,2,1,1,2022-10-18 13:28:19+00:00,2022-10-18 13:28:19+00:00
+Stefan Zimmermann,zimmermann.code@gmail.com,4,1,5,1,1,2018-09-17 19:58:06+00:00,2018-09-17 19:58:06+00:00

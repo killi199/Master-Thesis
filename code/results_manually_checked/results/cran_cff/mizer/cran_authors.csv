@@ -1,0 +1,5 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Finlay Scott,drfinlayscott@gmail.com,,2,28398,12281,40679,791,176,2012-09-21 08:51:19+00:00,2014-04-17 14:30:42+00:00,1.0,0
+Ken Andersen,kha@aqua.dtu.dk,0000-0002-8478-3430,7,476,27,503,35,14,2019-04-13 07:55:27+00:00,2020-04-09 06:35:27+00:00,1.0,0
+Julia Blanchard,julia.blanchard@utas.edu.au,0000-0003-0532-4824,16,11,11,22,1,1,2020-04-03 00:31:31+00:00,2020-04-03 00:31:31+00:00,1.0,0
+Gustav Delius,gustav.delius@york.ac.uk,0000-0003-4092-8228,5,51021,14596,65617,820,43,2017-12-11 11:43:42+00:00,2021-09-27 10:36:04+00:00,1.0,0

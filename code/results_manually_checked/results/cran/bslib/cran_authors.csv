@@ -1,0 +1,4 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Garrick Aden-Buie,garrick@posit.co,0000-0002-7111-0077,2,18109,5472,23581,964,191,2023-03-31 14:28:25+00:00,2024-07-15 18:32:10+00:00,0.5,0
+Carson Sievert,carson@posit.co,0000-0002-4958-2844,1,233228,121543,354771,5682,554,2019-11-01 22:18:04+00:00,2024-07-29 20:31:57+00:00,0.5,0
+Joe Cheng,joe@posit.co,,5,1259,439,1698,84,20,2023-12-14 07:42:00+00:00,2024-01-11 18:58:46+00:00,1.0,0

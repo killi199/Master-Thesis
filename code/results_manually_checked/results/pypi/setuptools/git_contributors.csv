@@ -1,0 +1,620 @@
+name,email,insertions,deletions,lines_changed,files,commits,first_commit,last_commit
+Jason R. Coombs,jaraco@jaraco.com,179429,134157,313586,10846,5243,2013-06-18 18:54:35+00:00,2024-09-03 12:49:09+00:00
+Anderson Bravalheri,andersonbravalheri@gmail.com,59755,55703,115458,2599,1334,2021-10-26 11:40:56+00:00,2024-08-14 15:47:41+00:00
+PJ EbyJim Fulton,distutils-sig@python.org,31129,11718,42847,1310,576,2005-05-21 21:42:57+00:00,2008-10-02 19:51:29+00:00
+Tarek Ziadé,ziade.tarek@gmail.com,23141,13913,37054,1182,500,2008-12-24 19:10:05+00:00,2010-10-03 14:30:11+00:00
+agronholmagroszerrlackoArfrever Frehtes Taifersar ArahesisguyroznibrahimtareklsingeriElectricmatejsunpoetg2ppjeericholscher,none@none,5141,2358,7499,449,268,2009-07-20 05:56:27+00:00,2015-11-19 21:54:41+00:00
+Georg Brandl,georg@python.org,9570,906,10476,309,187,2006-04-01 07:46:54+00:00,2016-02-26 18:37:12+00:00
+Éric Araujo,merwok@netwok.org,5261,3415,8676,436,184,2010-08-14 02:07:26+00:00,2018-02-18 23:14:54+00:00
+Benoit Pierre,benoit.pierre@gmail.com,6087,3867,9954,291,127,2016-06-25 12:38:28+00:00,2022-07-03 22:05:57+00:00
+Avasam,samuel.06@hotmail.com,3662,8094,11756,575,125,2023-10-01 19:12:51+00:00,2024-08-30 14:39:05+00:00
+Sviatoslav Sydorenko,wk@sydorenko.org.ua,2384,998,3382,184,121,2017-06-03 21:59:33+00:00,2024-06-26 18:23:36+00:00
+Paul Ganssle,paul@ganssle.io,2091,1322,3413,194,109,2018-03-16 22:23:24+00:00,2020-08-10 15:45:22+00:00
+Benjamin Peterson,benjamin@python.org,1020,700,1720,167,103,2008-05-08 22:09:54+00:00,2018-07-15 02:56:33+00:00
+Dimitri Papadopoulos OrfanosDimitri Papadopoulos,3234522+dimitripapadopoulos@users.noreply.github.com,756,785,1541,323,99,2022-11-20 11:12:07+00:00,2024-08-08 21:14:35+00:00
+Martin v. Löwis,martin@v.loewis.de,1485,322,1807,99,83,2005-04-25 07:14:03+00:00,2012-07-10 05:07:06+00:00
+Tarek ZiadeTarek Ziadétarek,tarek@ziade.org,3537,2914,6451,163,79,2009-07-16 08:57:39+00:00,2011-11-17 19:08:19+00:00
+alvyjudyalvy,alvyjudy@gmail.com,5570,4755,10325,87,74,2020-03-30 01:40:38+00:00,2020-10-15 21:08:57+00:00
+Philip Thiem,ptthiem@gmail.com,4023,1732,5755,137,72,2013-06-29 02:55:47+00:00,2014-05-31 14:48:00+00:00
+Saniya Maheshwari,saniya.mah@gmail.com,1168,427,1595,59,58,2022-05-19 19:33:22+00:00,2022-06-23 06:05:40+00:00
+Ronald Oussoren,ronaldoussoren@mac.com,827,170,997,72,56,2006-04-17 14:43:30+00:00,2021-02-01 03:29:44+00:00
+Anderson Bravalheri,andersonbravalheri+github@gmail.com,177,99,276,66,51,2022-01-22 17:30:36+00:00,2024-08-02 10:59:06+00:00
+Arfrever Frehtes Taifersar Arahesis,arfrever.fta@gmail.com,480,327,807,111,47,2013-06-11 06:50:52+00:00,2015-05-28 13:28:22+00:00
+J. GoutinJGoutin,jgoutin@users.noreply.github.com,699,332,1031,46,46,2016-04-17 16:07:20+00:00,2018-06-12 18:49:08+00:00
+Barry Warsaw,barry@python.org,148,71,219,48,45,2008-04-02 23:33:27+00:00,2013-11-22 20:31:35+00:00
+Christian Heimes,christian@cheimes.de,2659,868,3527,94,44,2007-11-17 11:46:54+00:00,2013-11-15 22:08:21+00:00
+Steve Dower,steve.dower@microsoft.com,1536,509,2045,62,44,2014-09-25 15:46:53+00:00,2023-12-18 17:46:10+00:00
+stepshalinsiv,nessento@openmailbox.org,3519,1554,5073,206,43,2016-06-25 18:33:23+00:00,2016-11-21 16:02:21+00:00
+Stefan H. Holek,stefan@epy.co.at,808,441,1249,53,42,2012-10-08 11:02:10+00:00,2012-11-13 13:01:41+00:00
+HugoHugo van Kemenade,hugovk@users.noreply.github.com,363,177,540,87,41,2017-01-16 15:17:51+00:00,2023-01-16 12:04:32+00:00
+Serhiy Storchaka,storchaka@gmail.com,512,412,924,105,35,2013-01-27 17:45:49+00:00,2020-06-20 08:10:31+00:00
+Donald Stufft,donald@stufft.io,3469,742,4211,83,34,2013-07-10 02:05:50+00:00,2016-09-09 15:50:41+00:00
+Hanno Schlichting,hanno@hannosch.eu,368,386,754,56,34,2009-07-16 10:46:01+00:00,2009-10-24 00:13:56+00:00
+Lennart Regebro,regebro@gmail.com,665,288,953,69,33,2009-09-18 15:22:17+00:00,2012-09-17 13:48:03+00:00
+Antoine Pitrou,solipsis@pitrou.net,426,204,630,55,32,2008-08-19 17:56:33+00:00,2014-10-30 18:37:07+00:00
+Alex Grönholm,alex.gronholm@nextday.fi,9473,7011,16484,208,30,2014-06-18 17:31:05+00:00,2024-05-21 18:17:41+00:00
+xoviat,xoviat@users.noreply.github.com,460,114,574,132,30,2017-05-21 20:12:22+00:00,2017-11-08 22:41:32+00:00
+Guido van Rossum,guido@python.org,455,347,802,133,30,2006-03-15 04:33:54+00:00,2008-02-21 18:18:37+00:00
+Christoph Reiter,reiter.christoph@gmail.com,281,350,631,76,27,2019-06-13 16:31:57+00:00,2024-08-17 10:09:57+00:00
+Ezio Melotti,ezio.melotti@gmail.com,769,711,1480,131,27,2009-09-12 14:43:43+00:00,2019-09-11 10:57:59+00:00
+Igor Starikovidle sign,idlesign@yandex.ru,1504,193,1697,44,26,2016-11-26 14:36:35+00:00,2017-04-12 05:06:37+00:00
+Marc Mueller,30130371+cdce8p@users.noreply.github.com,512,245,757,60,26,2021-03-28 13:40:24+00:00,2022-01-28 15:29:54+00:00
+Miro Hrončok,miro@hroncok.cz,137,140,277,70,26,2017-09-20 12:03:27+00:00,2024-08-29 09:45:17+00:00
+Melissa Li,li.melissa.kun@gmail.com,221,54,275,32,25,2021-02-19 04:02:29+00:00,2021-03-08 08:41:04+00:00
+Vinay Sajip,vinay_sajip@yahoo.co.uk,1067,696,1763,130,25,2011-06-20 21:55:16+00:00,2016-08-31 07:22:29+00:00
+Larry Hastings,larry@hastings.org,42,53,95,29,25,2013-08-03 19:58:12+00:00,2015-09-09 13:54:57+00:00
+Matthias Koeppe,mkoeppe@math.ucdavis.edu,343,101,444,26,25,2021-11-07 18:00:58+00:00,2024-02-04 04:22:57+00:00
+Isuru Fernando,isuruf@gmail.com,208,149,357,31,24,2021-09-05 03:14:18+00:00,2022-06-09 16:56:54+00:00
+Daniel Holth,dholth@fastmail.fm,669,302,971,40,24,2013-07-20 15:15:20+00:00,2016-08-19 19:58:00+00:00
+Steve Kowalik,steven@wedontsleep.org,4691,885,5576,75,23,2015-12-09 22:35:41+00:00,2023-05-03 02:02:19+00:00
+Andrew M. KuchlingAndrew Kuchling,amk@amk.ca,877,220,1097,42,22,2006-10-06 13:18:26+00:00,2014-03-01 12:53:28+00:00
+Ned Deily,nad@acm.org,662,969,1631,42,21,2011-06-28 07:39:19+00:00,2014-07-06 23:14:33+00:00
+Dustin Ingram,di@users.noreply.github.com,314,141,455,28,19,2017-08-28 17:31:48+00:00,2024-04-11 15:43:12+00:00
+Mark Hammond,mhammond@skippinet.com.au,455,122,577,25,19,2007-08-21 01:04:47+00:00,2011-10-17 00:35:31+00:00
+Hirokazu Yamamoto,ocean-city@m2.ccsnet.ne.jp,82,62,144,21,18,2008-08-14 05:50:43+00:00,2010-09-13 08:14:41+00:00
+Erik Bray,embray@stsci.edu,640,153,793,29,18,2013-07-19 23:02:37+00:00,2016-01-06 22:08:56+00:00
+Vladimir Fokow,57260995+vladimirfokow@users.noreply.github.com,122,95,217,17,17,2024-02-01 16:51:08+00:00,2024-02-05 13:40:16+00:00
+谭九鼎,109224573@qq.com,54,41,95,28,17,2020-10-02 11:04:57+00:00,2022-01-26 10:32:43+00:00
+Victor Stinner,vstinner@redhat.com,320,101,421,25,17,2016-06-29 08:22:12+00:00,2019-07-05 08:44:12+00:00
+Jon Dufresne,jon.dufresne@gmail.com,168,83,251,40,15,2017-05-18 14:35:54+00:00,2020-01-18 16:13:23+00:00
+Victor Stinner,victor.stinner@haypocalc.com,211,59,270,18,15,2010-05-19 17:00:07+00:00,2011-09-05 21:44:56+00:00
+Marc Abramowitz,marc@marc-abramowitz.com,192,36,228,21,14,2012-06-26 22:15:27+00:00,2016-07-31 22:17:12+00:00
+tanvimoharirTanvi Moharir,74228962+tanvimoharir@users.noreply.github.com,42,19,61,14,14,2021-06-01 11:58:31+00:00,2021-10-20 07:56:19+00:00
+Jurko Gospodnetić,jurko.gospodnetic@pke.hr,381,184,565,15,14,2014-04-15 15:31:55+00:00,2014-06-15 14:30:27+00:00
+Bastian Venthur,bastian.venthur@flixbus.com,424,279,703,22,14,2019-05-15 10:20:25+00:00,2019-08-20 07:06:24+00:00
+Thomas Grainger,tagrain@gmail.com,526,1106,1632,39,14,2020-10-04 15:11:27+00:00,2021-07-18 08:28:59+00:00
+ruro,ruro.ruro@ya.ru,274,105,379,14,14,2023-08-03 23:45:52+00:00,2023-08-14 15:50:04+00:00
+Neal Norwitz,nnorwitz@gmail.com,357,176,533,47,13,2006-03-17 06:49:51+00:00,2008-04-05 04:47:45+00:00
+Berker Peksag,berker.peksag@gmail.com,228,87,315,23,13,2014-08-29 04:07:35+00:00,2017-11-23 18:34:20+00:00
+Tim Heap,tim@timheap.me,1055,131,1186,21,13,2016-08-14 06:06:59+00:00,2016-12-14 23:24:12+00:00
+Matt IversenMatthew Iversen,teh.ivo@gmail.com,84,172,256,14,12,2014-06-02 12:23:58+00:00,2016-01-28 18:19:57+00:00
+Naveen M K,naveen521kk@gmail.com,187,344,531,20,12,2021-12-15 14:18:03+00:00,2023-11-09 13:18:50+00:00
+Jannis Leidel,jannis@leidel.info,688,151,839,23,12,2009-10-07 16:50:17+00:00,2010-07-22 09:24:57+00:00
+"""Brett Cannon ext:(%22)Brett Cannon",brett@python.org,139,115,254,32,12,2010-01-17 20:29:18+00:00,2015-04-13 18:21:02+00:00
+Thomas WoutersT. Wouters,thomas@python.org,412,80,492,34,12,2006-04-21 10:40:58+00:00,2021-03-29 13:10:26+00:00
+Matthias Klosedoko@ubuntu.com,doko@ubuntu.com,36,108,144,15,12,2006-12-03 17:13:54+00:00,2016-06-14 07:22:16+00:00
+Alexandre Vassalotti,alexandre@peadrop.com,458,103,561,27,12,2008-05-14 22:44:22+00:00,2008-05-16 04:39:54+00:00
+Alexander Duryagin,aduryagin@gmail.com,92,35,127,14,11,2017-02-10 16:16:37+00:00,2019-01-11 12:57:54+00:00
+Chris Jerdonek,chris.jerdonek@gmail.com,455,199,654,21,11,2012-10-28 18:08:26+00:00,2019-07-13 10:19:50+00:00
+Ashley Anderson,aganders3@gmail.com,168,72,240,14,11,2023-07-29 01:22:52+00:00,2023-07-31 13:17:47+00:00
+Daniel Naylor,daniel@ggim.me,291,125,416,13,11,2023-08-17 17:57:51+00:00,2023-10-14 21:54:19+00:00
+Ronny Pfannschmidt,ronny.pfannschmidt@gmx.de,264,159,423,19,11,2010-02-11 13:47:04+00:00,2010-05-27 22:15:21+00:00
+R David MurrayR. David Murray,rdmurray@bitdance.com,188,105,293,24,11,2010-02-23 00:24:49+00:00,2016-09-08 17:59:53+00:00
+Martin Panter,vadmium+py@gmail.com,71,61,132,21,11,2015-10-10 10:36:22+00:00,2016-12-18 01:23:09+00:00
+Toshio Kuratomi,toshio@fedoraproject.org,107,44,151,11,10,2013-04-12 01:04:06+00:00,2012-03-23 17:50:04+00:00
+Senthil Kumaran,orsenthil@gmail.com,65,19,84,14,10,2010-09-17 16:35:37+00:00,2010-10-15 13:29:33+00:00
+Gabi Davargrizzlynyo,grizzly.nyo@gmail.com,46,20,66,12,10,2015-08-29 14:29:49+00:00,2016-09-28 06:37:15+00:00
+Victor Stinner,victor.stinner@gmail.com,45,38,83,10,10,2013-11-15 22:13:17+00:00,2017-12-14 10:39:34+00:00
+ncoghlanNick Coghlan,ncoghlan@gmail.com,103,32,135,22,10,2013-08-25 10:56:46+00:00,2019-05-23 14:06:39+00:00
+Reinout van Rees,reinout@vanrees.org,106,27,133,16,10,2009-10-13 11:28:17+00:00,2009-10-16 11:45:19+00:00
+wim glenn,hey@wimglenn.com,147,168,315,24,9,2018-03-16 06:14:19+00:00,2022-04-30 17:55:30+00:00
+MinRKMin RK,benjaminrk@gmail.com,58,23,81,9,9,2015-01-20 19:24:18+00:00,2016-08-05 10:58:47+00:00
+Michał Górny,mgorny@gentoo.org,38,36,74,14,9,2013-08-04 22:21:36+00:00,2024-07-18 19:07:53+00:00
+Zachary Ware,zachary.ware@gmail.com,19,41,60,15,9,2013-12-30 20:39:46+00:00,2017-09-06 22:45:25+00:00
+Jeremy Bowman,jbowman@edx.org,387,44,431,28,9,2018-05-14 13:42:59+00:00,2018-05-17 18:18:03+00:00
+Bastian Venthur,venthur@debian.org,82,27,109,15,9,2019-05-18 10:37:06+00:00,2022-06-14 19:13:46+00:00
+Kagami Sascha Rosylight,saschanaz@outlook.com,75,61,136,9,8,2024-08-25 18:18:22+00:00,2024-08-26 20:31:15+00:00
+Amaury Forgeot d'Arc,amauryfa@gmail.com,67,41,108,13,8,2008-06-11 17:46:10+00:00,2008-12-11 00:03:42+00:00
+Jesus Cea,jcea@jcea.es,28,432,460,19,8,2009-07-02 15:37:21+00:00,2012-10-10 23:20:12+00:00
+Sviatoslav Sydorenko,wk.cvs.github@sydorenko.org.ua,19,18,37,9,8,2019-09-02 14:14:01+00:00,2022-10-19 22:03:42+00:00
+Grigory Petrov,grigory.v.p@gmail.com,60,15,75,8,8,2013-04-02 22:02:44+00:00,2013-05-07 21:44:35+00:00
+Éric Araujo,aeric@mtlpy.org,85,45,130,12,8,2012-12-08 19:18:26+00:00,2012-12-09 03:41:11+00:00
+Marc-André Lemburg,mal@egenix.com,82,26,108,9,8,2006-08-16 08:13:26+00:00,2011-02-25 15:42:01+00:00
+Nikolaus Waxweiler,madigens@gmail.com,43,18,61,13,8,2018-10-27 10:25:51+00:00,2018-10-28 11:02:13+00:00
+Victor Stinner,vstinner@python.org,66,154,220,25,8,2020-02-03 14:05:14+00:00,2020-08-31 16:16:41+00:00
+Christian Heimes,christian@python.org,112,65,177,9,8,2020-05-20 14:37:25+00:00,2022-01-07 09:18:05+00:00
+Deniz Taneli,7292227+dtaneli@users.noreply.github.com,164,89,253,10,7,2018-10-27 12:19:22+00:00,2018-11-10 20:00:45+00:00
+Gregory Starck,gregory.starck@algolux.com,138,76,214,9,7,2022-02-21 13:20:46+00:00,2022-02-28 16:58:41+00:00
+Phillip J. Eby,pje@telecommunity.com,97,6,103,8,7,2005-07-07 15:36:20+00:00,2010-12-03 17:00:40+00:00
+mattipMatti Picus,matti.picus@gmail.com,108,60,168,10,7,2020-06-28 21:25:26+00:00,2023-02-06 17:40:28+00:00
+isidenticalBatuhan Taskaya,batuhanosmantaskaya@gmail.com,91,28,119,8,7,2019-10-04 16:18:54+00:00,2019-10-29 07:53:40+00:00
+Alan Fregtman,941331+darkvertex@users.noreply.github.com,104,37,141,13,7,2021-06-30 05:15:18+00:00,2021-07-26 14:55:08+00:00
+Neil Schemenauer,nascheme@enme.ucalgary.ca,73,62,135,8,7,2009-02-05 16:14:39+00:00,2009-02-06 21:42:05+00:00
+DWesl,22566757+dwesl@users.noreply.github.com,30,4,34,7,7,2022-05-04 16:16:58+00:00,2023-08-06 23:11:02+00:00
+Yevhenii Sevostianov,eugene.sevostianov@snapchat.com,256,130,386,16,7,2023-01-09 22:50:35+00:00,2023-01-17 18:06:46+00:00
+Niyas Sait,niyas.sait@linaro.org,50,18,68,10,7,2021-08-26 08:07:57+00:00,2021-09-30 05:54:56+00:00
+Collin Winter,collinw@gmail.com,987,1662,2649,55,6,2007-07-17 00:38:21+00:00,2010-02-03 22:06:03+00:00
+Tim Peters,tim.peters@gmail.com,17,17,34,7,6,2005-05-18 02:18:09+00:00,2006-10-18 05:09:12+00:00
+OfekmeisterOfek Lev,ofekmeister@gmail.com,76,39,115,13,6,2016-08-16 06:12:38+00:00,2020-06-15 15:54:04+00:00
+Xavier Fernandez,xavier.fernandez@polyconseil.fr,111,9,120,10,6,2016-07-08 18:39:10+00:00,2016-12-02 10:20:18+00:00
+Wyatt Lee Baldwin,self@wyattbaldwin.com,351,78,429,13,6,2014-02-12 08:52:26+00:00,2014-02-12 08:52:26+00:00
+Jason R. Coombs,jaraco@karui-tatchi.lan,59,22,81,27,6,2020-03-21 18:41:31+00:00,2020-05-29 01:00:39+00:00
+Jens Timmerman,jens.timmerman@ugent.be,27,20,47,6,6,2016-06-08 14:56:06+00:00,2016-07-25 11:43:01+00:00
+Andrey Bienkowski,hexagon-recursion@posteo.net,92,54,146,7,6,2022-03-05 21:43:07+00:00,2022-03-06 06:10:48+00:00
+Shashank Singh,shashanksingh28@gmail.com,102,18,120,10,6,2018-10-28 20:18:18+00:00,2019-04-21 03:25:59+00:00
+Thomas Kluyver,thomas@kluyver.me.uk,57,9,66,6,6,2020-08-06 07:51:10+00:00,2023-07-07 21:26:26+00:00
+wim glenn,wim.glenn@gmail.com,10,7,17,6,6,2018-03-16 19:27:42+00:00,2024-04-30 21:09:19+00:00
+Matthew Suozzo,msuozzo@google.com,42,8,50,6,6,2021-10-30 16:06:15+00:00,2022-01-06 23:45:32+00:00
+philip_thiem,ptthiem+bitbuket@gmail.com,35,13,48,6,6,2013-11-05 14:11:53+00:00,2014-04-25 04:53:11+00:00
+James Gerity,snoopjedi@gmail.com,42,4,46,7,6,2023-12-08 02:08:18+00:00,2024-04-09 22:50:17+00:00
+Mark Dickinson,dickinsm@gmail.com,48,37,85,5,5,2009-01-27 18:17:45+00:00,2010-08-03 21:33:04+00:00
+Géry Ogam,gery.ogam@gmail.com,76,79,155,5,5,2019-12-12 12:55:07+00:00,2022-07-25 06:11:03+00:00
+Jean Abou Samra,jean@abou-samra.fr,116,51,167,8,5,2023-11-11 19:23:20+00:00,2023-11-17 20:25:15+00:00
+Luke Plant,l.plant.98@cantab.net,88,28,116,6,5,2015-07-20 15:35:49+00:00,2015-10-19 11:04:26+00:00
+JGoutin,ginnungagap@free.fr,1254,433,1687,5,5,2016-02-14 20:15:36+00:00,2016-03-04 15:54:44+00:00
+Daniel Stutzbach,daniel@stutzbachenterprises.com,22,16,38,5,5,2009-10-18 03:01:07+00:00,2009-10-18 14:31:33+00:00
+Pradyun Gedam,pradyunsg@users.noreply.github.com,49,386,435,17,5,2020-12-28 17:49:01+00:00,2022-07-08 10:11:04+00:00
+John T. Wodder II,git@varonathe.org,238,179,417,9,5,2017-09-14 16:29:55+00:00,2020-05-15 21:17:49+00:00
+Andrew Svetlov,andrew.svetlov@gmail.com,24,24,48,14,5,2012-12-18 19:14:22+00:00,2012-12-25 14:47:37+00:00
+Patrick Lannigan,p.lannigan@gmail.com,46,9,55,5,5,2017-01-02 13:15:40+00:00,2022-06-20 12:35:14+00:00
+Brett Cannon,bcannon@gmail.com,95,160,255,12,5,2005-04-24 22:26:38+00:00,2010-10-29 22:36:08+00:00
+Anthony Sottile,asottile@umich.edu,30,18,48,17,5,2019-03-12 15:39:57+00:00,2021-12-31 17:32:20+00:00
+Felix Krull,f_krull@gmx.de,114,17,131,6,5,2016-06-25 16:41:51+00:00,2016-06-25 23:48:30+00:00
+Paul Moore,p.f.moore@gmail.com,28,5,33,5,5,2018-08-20 14:25:14+00:00,2018-11-14 18:30:18+00:00
+Carsten Klein,trancesilken@gmail.com,160,46,206,12,5,2018-07-04 14:03:37+00:00,2018-08-17 12:58:35+00:00
+Florent Xicluna,florent.xicluna@gmail.com,7,6,13,7,5,2010-03-07 12:14:25+00:00,2011-10-28 12:45:05+00:00
+Christophe Combelles,ccomb@free.fr,103,13,116,14,5,2010-05-19 19:54:20+00:00,2010-05-19 22:06:10+00:00
+Doug Greiman,dgreiman@google.com,47,4,51,6,5,2017-11-05 13:43:18+00:00,2017-12-22 23:04:22+00:00
+Diego Ramirez,dr01191115@gmail.com,14,6,20,4,4,2021-09-14 13:22:34+00:00,2023-05-19 19:17:50+00:00
+Nadeem Vawda,nadeem.vawda@gmail.com,14,13,27,4,4,2011-08-21 20:35:41+00:00,2012-02-13 19:33:51+00:00
+Steven Bethard,steven.bethard@gmail.com,327,156,483,4,4,2009-05-05 01:31:22+00:00,2009-06-21 21:07:41+00:00
+jeffrey k eliasen,jeff@jke.net,43,0,43,5,4,2018-05-15 18:10:16+00:00,2018-05-15 19:06:47+00:00
+Eli Bendersky,eliben@gmail.com,18,5,23,4,4,2012-07-24 16:51:06+00:00,2012-08-02 00:00:33+00:00
+Doug Hellmann,doug.hellmann@dreamhost.com,114,9,123,4,4,2014-06-02 13:32:59+00:00,2014-06-02 15:20:27+00:00
+Leonardo Rochael Almeida,leorochael@gmail.com,89,6,95,7,4,2016-09-08 14:54:38+00:00,2017-07-31 19:29:32+00:00
+graingert-coef,151018808+graingert-coef@users.noreply.github.com,4,5,9,4,4,2024-02-07 16:20:02+00:00,2024-02-07 20:17:09+00:00
+ericholscher,eric@ericholscher.com,9,10,19,4,4,2014-08-02 15:35:20+00:00,2014-08-17 05:52:57+00:00
+Stephen Finucane,stephen@that.guru,32,0,32,6,4,2018-03-26 11:03:08+00:00,2018-07-13 14:59:55+00:00
+Chih-Hsuan Yen,yan12125@gmail.com,29,35,64,12,4,2020-12-10 20:34:59+00:00,2020-12-25 06:45:43+00:00
+Maciej Pasternacki,maciejp@ro.co,28,9301,9329,13,4,2022-02-08 19:07:31+00:00,2022-02-08 20:10:30+00:00
+layday,layday@protonmail.com,31,12,43,7,4,2021-03-16 16:58:11+00:00,2021-03-21 20:00:29+00:00
+Josip Delic,delijati@googlemail.com,101,1,102,4,4,2022-03-11 11:07:15+00:00,2022-03-15 20:42:59+00:00
+Alex Hirzel,alex@hirzel.us,26,17,43,4,4,2018-10-29 01:44:14+00:00,2018-11-10 02:04:00+00:00
+Jeremy Paige,ucodery@gmail.com,118,178,296,5,4,2022-05-05 16:44:03+00:00,2022-05-06 16:58:49+00:00
+hauntsaninja,hauntsaninja@gmail.com,37,17,54,4,4,2023-01-25 05:24:59+00:00,2023-01-25 17:28:44+00:00
+Ville Skyttä,ville.skytta@iki.fi,27,19,46,16,4,2016-12-07 12:59:34+00:00,2018-12-29 19:00:08+00:00
+Paulo Koch,paulo.koch@gmail.com,93,13,106,4,4,2011-10-11 17:25:09+00:00,2012-09-12 23:20:05+00:00
+Thea,tkjeldsmark@gmail.com,4,4,8,4,4,2021-02-20 20:23:48+00:00,2021-02-24 22:12:59+00:00
+Christian Clauss,cclauss@me.com,24,37,61,6,4,2023-04-06 09:38:58+00:00,2023-11-15 14:08:10+00:00
+Pi Delport,pjdelport@gmail.com,22,0,22,4,4,2017-04-18 15:10:47+00:00,2017-04-19 11:43:54+00:00
+Mick Koch,mick@kochm.co,266,53,319,10,4,2019-05-20 22:25:19+00:00,2019-10-28 23:16:13+00:00
+Moriyoshi Koizumi,mozo@mozo.jp,48,2,50,4,4,2017-02-11 03:14:09+00:00,2017-02-12 19:42:08+00:00
+anatoly techtonik,techtonik@gmail.com,40,35,75,4,4,2012-10-22 17:32:42+00:00,2019-09-03 18:36:49+00:00
+Marius Gedminas,marius@gedmin.as,5,5,10,4,4,2020-10-05 06:52:31+00:00,2020-10-19 07:06:57+00:00
+Bernat Gabor,gaborjbernat@gmail.com,50,11,61,6,4,2018-09-13 09:03:06+00:00,2018-09-16 21:15:37+00:00
+Daniel Nunes,gandaganza@gmail.com,239,2,241,6,4,2017-01-14 22:05:18+00:00,2017-01-15 01:36:02+00:00
+Michael Felt,aixtools@users.noreply.github.com,27,4,31,5,4,2018-12-28 14:03:17+00:00,2020-04-03 14:38:28+00:00
+Florian Weimer,fweimer@redhat.com,67,11,78,7,3,2022-12-14 15:42:36+00:00,2023-02-15 18:50:31+00:00
+robinjhuang,robin.j.huang@gmail.com,36,4,40,5,3,2018-10-27 20:39:27+00:00,2018-10-27 22:46:55+00:00
+Joyce,joycebrumu.u@gmail.com,13,0,13,3,3,2023-02-16 17:10:38+00:00,2023-03-18 16:25:16+00:00
+Jürgen Gmach,juergen.gmach@googlemail.com,10,7,17,3,3,2019-12-23 14:53:18+00:00,2021-03-24 15:42:20+00:00
+Skip Montanaro,skip@pobox.com,3,23,26,3,3,2007-08-16 14:35:24+00:00,2007-09-08 00:34:17+00:00
+Ian Wienand,iwienand@redhat.com,78,16,94,6,3,2018-05-01 06:22:44+00:00,2021-08-09 00:51:52+00:00
+Stéphane Wirtel,stephane@wirtel.be,7,7,14,5,3,2018-05-15 18:58:35+00:00,2018-10-26 22:58:26+00:00
+Stefan Krah,skrah@bytereef.org,4,2,6,3,3,2013-12-03 12:55:20+00:00,2016-08-03 09:18:26+00:00
+Fred Drake,fdrake@acm.org,90,9,99,5,3,2008-04-04 05:41:30+00:00,2008-04-04 11:38:51+00:00
+Samuel Cormier-Iijima,samuel@cormier-iijima.com,53,14,67,7,3,2023-12-14 14:24:14+00:00,2024-03-02 03:16:58+00:00
+Joshua Root,jmr@macports.org,11,7,18,3,3,2016-12-27 02:11:42+00:00,2021-03-21 19:10:20+00:00
+Tim Savannah,kata198@gmail.com,9,1,10,3,3,2016-07-05 20:35:17+00:00,2016-07-05 22:47:53+00:00
+Jam Hernandez Quiceno,jam.hernandez.q@hiddenlevel.com,2,0,2,3,3,2023-04-20 18:24:15+00:00,2023-04-20 21:50:43+00:00
+stefan@epy,stefan@epy,49,23,72,4,3,2012-11-04 23:20:39+00:00,2012-11-05 01:21:15+00:00
+Karolina Surma,ksurma@redhat.com,27,2,29,4,3,2022-02-24 10:20:50+00:00,2024-01-22 14:24:33+00:00
+Satoru SATOH,satoru.satoh@gmail.com,31,0,31,4,3,2018-10-23 18:42:01+00:00,2018-10-24 02:34:22+00:00
+Stefano Rivera,stefano@rivera.za.net,3,0,3,3,3,2023-08-05 12:13:35+00:00,2023-08-05 12:35:58+00:00
+Last G,last_g@hackerdom.ru,50,9,59,4,3,2016-05-19 09:35:18+00:00,2016-05-19 15:31:24+00:00
+Manuel Kaufmann,humitos@gmail.com,23,1,24,7,3,2022-07-11 16:26:19+00:00,2022-07-13 13:46:38+00:00
+Long Nguyen,nguyen.long.908132@gmail.com,55,44,99,3,3,2021-02-04 11:59:30+00:00,2021-09-05 16:17:11+00:00
+Terry Jan Reedy,tjreedy@udel.edu,6,9,15,5,3,2013-03-11 21:56:17+00:00,2014-06-13 18:57:51+00:00
+YuanPei Li,conbas2019@gmail.com,3,2,5,3,3,2021-01-08 09:35:33+00:00,2021-01-08 09:46:42+00:00
+Cal Jacobson,cj81499@users.noreply.github.com,11,6,17,3,3,2024-08-11 18:16:13+00:00,2024-08-26 05:03:31+00:00
+Varun Kamath,varunkamath18@gmail.com,242,169,411,7,3,2018-10-28 18:12:34+00:00,2018-10-28 20:06:55+00:00
+xdegaye,xdegaye@gmail.com,27,3,30,4,3,2017-11-18 17:17:16+00:00,2019-04-29 07:27:40+00:00
+Saniya Maheshwari,55744224+codeandfire@users.noreply.github.com,11,8,19,3,3,2022-06-09 16:08:48+00:00,2022-06-12 09:53:51+00:00
+"""W. Trevor King""W. Trevor King",wking@tremily.us,83,3,86,3,3,2014-10-17 00:31:16+00:00,2014-10-17 04:49:22+00:00
+cdfarrow,cdfarrow@users.noreply.github.com,47,45,92,3,3,2022-06-17 06:32:44+00:00,2022-06-18 00:55:48+00:00
+Carlton Gibson,carlton.gibson@noumenal.es,7,6,13,3,3,2021-04-10 08:23:44+00:00,2021-05-10 07:31:57+00:00
+Paul Ganssle,pganssle@users.noreply.github.com,4,10,14,3,3,2018-10-25 15:29:48+00:00,2018-12-17 07:59:02+00:00
+Alice Bevan-McGregor,alice@gothcandy.com,69,2,71,5,3,2009-11-15 09:34:29+00:00,2009-11-15 13:46:35+00:00
+Ananth Pattabiraman,ananthp@users.noreply.github.com,5,3,8,3,3,2022-01-07 13:44:45+00:00,2022-01-07 14:29:03+00:00
+Amy,leiamy12@gmail.com,227,161,388,7,3,2021-03-01 03:29:48+00:00,2021-03-01 04:33:22+00:00
+Emiel Wiedijk,me@aimileus.nl,36,0,36,3,3,2019-02-23 19:51:09+00:00,2019-02-23 21:19:43+00:00
+Andrzej Kaczmarczyk,andrzej.kaczmarczyk@agh.edu.pl,17,1,18,3,3,2022-11-26 12:57:38+00:00,2022-11-29 00:21:23+00:00
+Alex Hedges,aphedges1@gmail.com,6,2,8,3,3,2021-11-03 23:40:48+00:00,2023-11-22 17:51:12+00:00
+Thiebaud Weksteen,tweek@google.com,101,11,112,6,3,2016-10-26 05:36:54+00:00,2016-11-01 04:54:23+00:00
+Aren Cambre,aren@arencambre.com,8,6,14,3,3,2020-08-16 17:29:14+00:00,2020-08-16 19:11:10+00:00
+Tzu-ping Chung,uranusjr@gmail.com,80,5,85,5,3,2018-10-24 01:52:56+00:00,2019-12-27 08:12:40+00:00
+Pablo Woolvettpwoolvett,pablowoolvett@gmail.com,15,1,16,3,3,2021-02-04 16:59:15+00:00,2021-02-04 19:44:53+00:00
+Reece Dunham,me@rdil.rocks,73,72,145,17,3,2020-04-11 18:11:31+00:00,2020-04-11 18:16:22+00:00
+Martin Geisler,martin@geisler.net,19,19,38,8,3,2014-06-29 12:58:41+00:00,2014-06-29 13:24:33+00:00
+Valentin Valls,valentin.valls@esrf.fr,12,13,25,4,3,2016-08-03 11:55:56+00:00,2016-09-06 09:10:34+00:00
+Philip Jenvey,pjenvey@underboss.org,16,2,18,4,3,2009-08-09 23:40:17+00:00,2009-10-12 21:47:40+00:00
+Jason Veatch,334448+veatch@users.noreply.github.com,32,24,56,3,3,2022-10-06 01:24:38+00:00,2022-10-10 18:25:50+00:00
+Steve Dower,steve.dower@python.org,10,107,117,4,3,2019-09-10 13:52:23+00:00,2020-03-03 00:04:11+00:00
+Steven Silvester,steven.silvester@ieee.org,10,2,12,3,3,2022-02-11 21:28:28+00:00,2022-02-12 18:56:18+00:00
+Yukihiko Shinoda,yuk.hik.future@gmail.com,4,1,5,3,3,2023-02-23 07:22:08+00:00,2023-02-23 03:57:02+00:00
+dofuuz,dofu@nate.com,5,2,7,3,3,2021-04-29 01:38:35+00:00,2021-05-03 00:23:23+00:00
+Andrew Zhou,30874884+0az@users.noreply.github.com,18,14,32,3,3,2018-10-29 05:33:35+00:00,2018-10-30 16:26:10+00:00
+Andrew Murray,radarhere@users.noreply.github.com,13,10,23,4,3,2020-08-10 11:10:46+00:00,2022-03-19 04:27:52+00:00
+Dirley Rodrigues,dirleyrls@gmail.com,24,9,33,4,3,2013-02-04 13:30:58+00:00,2013-02-04 13:54:53+00:00
+Yannick Gingras,ygingras@ygingras.net,8,6,14,3,3,2010-03-16 02:13:19+00:00,2010-03-16 02:41:40+00:00
+2xB,31772910+2xb@users.noreply.github.com,4,3,7,3,3,2019-04-11 22:32:12+00:00,2019-04-11 23:10:33+00:00
+Xavier de Gaye,xdegaye@users.sourceforge.net,29,31,60,7,3,2016-07-22 10:15:29+00:00,2016-11-17 08:00:19+00:00
+Daniele Esposti,daniele.esposti@gmail.com,57,4,61,3,3,2018-06-16 14:05:49+00:00,2018-06-16 00:07:27+00:00
+Daniele Nicolodi,daniele@grinta.net,7,7,14,3,3,2022-07-30 10:12:05+00:00,2022-07-30 10:33:28+00:00
+Raymond Hettinger,python@rcn.com,1,1,2,1,3,2009-01-20 07:24:44+00:00,2016-08-30 17:47:49+00:00
+Neil Schemenauer,nas-github@arctrix.com,61,39,100,3,2,2017-12-05 02:58:12+00:00,2017-12-05 02:58:12+00:00
+Matthew Butner,mfbutner@ucdavis.edu,2,1,3,2,2,2022-08-21 21:19:22+00:00,2022-08-21 22:03:08+00:00
+Jeremy Bowman,jmbowman@alum.mit.edu,36,24,60,21,2,2018-05-19 19:06:49+00:00,2018-05-19 19:37:39+00:00
+Robert Myers,myer0052@gmail.com,4,1,5,3,2,2010-12-04 20:47:25+00:00,2010-12-10 04:45:11+00:00
+Joyce,joycebrum@google.com,2,1,3,2,2,2023-02-17 13:58:14+00:00,2023-02-17 14:05:18+00:00
+Jonathan Lange,jml@mumak.net,4,1,5,2,2,2012-08-10 11:49:20+00:00,2012-09-19 10:17:36+00:00
+Matt Davis,mrd@redhat.com,15,2,17,2,2,2021-12-07 00:35:37+00:00,2021-12-23 19:45:22+00:00
+Ned Deily,nad@python.org,29,3,32,3,2,2016-02-24 13:56:38+00:00,2016-06-06 00:38:48+00:00
+Sachi King,nakato@nakato.io,8,0,8,1,2,2015-12-07 06:51:09+00:00,2015-12-07 06:52:21+00:00
+Dmitry Kuznetsovjorikdima,jorikdima@gmail.com,3,1,4,3,2,2018-12-12 04:35:24+00:00,2020-03-25 03:21:35+00:00
+Rodrigo Mologni,rodrigomologni@gmail.com,2,2,4,2,2,2021-12-04 03:11:59+00:00,2021-12-04 03:13:41+00:00
+Mike Taves,mwtoews@gmail.com,9,3,12,3,2,2022-11-26 00:54:56+00:00,2023-01-18 10:42:58+00:00
+Niklas Rigemo,niklas.rigemo@gmail.com,5,3,8,2,2,2013-09-19 10:48:10+00:00,2013-09-19 10:55:55+00:00
+Mike Salvatore,mike.s.salvatore@gmail.com,14,4,18,3,2,2022-09-18 23:30:03+00:00,2022-09-23 00:16:31+00:00
+Miriam Sexton,miriam@industrydive.com,7,3,10,2,2,2018-05-14 15:36:37+00:00,2018-05-14 15:43:03+00:00
+Robert Collins,rbtcollins@hp.com,33,4,37,3,2,2015-07-28 03:55:07+00:00,2015-11-04 22:37:38+00:00
+Paul Monson,paulmon@users.noreply.github.com,37,6,43,7,2,2019-04-25 18:36:45+00:00,2019-06-12 17:16:49+00:00
+Melvyn Sopacua,melvyn@magemana.nl,16,5,21,2,2,2014-07-05 15:43:39+00:00,2014-07-05 16:41:12+00:00
+Paul Kehrer,paul.l.kehrer@gmail.com,2,2,4,2,2,2016-11-03 01:10:25+00:00,2016-11-03 01:12:07+00:00
+Randy Syring,randy.syring@lev12.com,47,6,53,4,2,2014-09-20 20:29:41+00:00,2014-09-20 20:37:25+00:00
+Ram Rachum,ram@rachum.com,57,47,104,11,2,2020-06-11 19:09:29+00:00,2020-06-16 10:31:12+00:00
+Louis Maddox,lmmx@users.noreply.github.com,2,2,4,2,2,2021-07-19 21:15:01+00:00,2022-08-12 08:51:31+00:00
+rajdeep,rajdeeprrao94@gmail.com,45,4,49,4,2,2018-10-28 19:38:18+00:00,2018-10-28 19:53:47+00:00
+Eric Larson,larson.eric.d@gmail.com,119,12,131,2,2,2015-09-01 18:59:18+00:00,2015-11-16 03:30:46+00:00
+Łukasz Daniluk,lukasz.dan@gmail.com,37,4,41,3,2,2022-03-06 22:11:06+00:00,2022-03-06 22:11:12+00:00
+Jesus Laime,laimejesu@gmail.com,2,1,3,2,2,2018-10-25 23:35:16+00:00,2018-10-25 23:49:20+00:00
+Marcus Smith,qwcode@gmail.com,54,176,230,2,2,2014-01-05 02:58:03+00:00,2012-01-09 03:22:42+00:00
+Johannes Reiff,mail@jreiff.de,14,14,28,2,2,2019-12-19 13:06:22+00:00,2019-12-19 13:42:00+00:00
+Bastian Venthur,mail@venthur.de,2,2,4,2,2,2019-05-18 11:06:53+00:00,2019-08-25 10:35:22+00:00
+Marcel Bargull,marcel.bargull@udo.edu,17,1,18,5,2,2017-04-07 11:42:51+00:00,2017-04-07 14:33:40+00:00
+matejcik,jmatejek@suse.com,3,1,4,2,2,2016-08-24 16:12:02+00:00,2016-08-24 16:12:32+00:00
+Mason Egger,mason@masonegger.com,15,2,17,3,2,2018-05-15 14:20:32+00:00,2018-05-15 14:38:56+00:00
+Riccardo Magliocchetti,riccardo.magliocchetti@gmail.com,28,17,45,4,2,2018-10-27 13:09:08+00:00,2018-10-30 21:54:15+00:00
+John Kirkham,kirkhamj@janelia.hhmi.org,3,2,5,2,2,2016-08-04 22:46:15+00:00,2016-08-15 00:40:18+00:00
+Ryan Gonzalez,kirbyfan64@users.noreply.github.com,7,3,10,2,2,2017-04-14 09:00:25+00:00,2017-04-14 09:00:25+00:00
+"Kian-Meng, Ang",kianmeng@cpan.org,7,7,14,2,2,2021-10-14 15:25:59+00:00,2021-10-23 19:22:45+00:00
+Ye-hyoung Kang,keepyourhonor@gmail.com,2,1,3,2,2,2020-03-02 14:54:57+00:00,2020-03-02 15:05:19+00:00
+Maurits van Rees,maurits@vanrees.org,33,15,48,5,2,2023-01-31 16:03:48+00:00,2023-03-07 21:36:16+00:00
+Petri Lehtinen,petri@digip.org,12,4,16,4,2,2013-02-23 20:05:27+00:00,2013-02-23 20:05:27+00:00
+Karl Otness,karl@karlotness.com,26,16,42,3,2,2022-06-16 01:05:57+00:00,2022-06-19 02:45:47+00:00
+mborch@valga.local,mborch@valga.local,34,16,50,2,2,2009-11-04 14:19:47+00:00,2009-11-04 16:26:28+00:00
+Kai Hoppert,kai.hoppert@online.de,61,0,61,2,2,2013-08-10 16:24:23+00:00,2013-09-01 12:41:44+00:00
+Pedro Romano,pedro.romano@digitaluna.net,20,10,30,2,2,2012-08-30 10:58:22+00:00,2012-08-30 11:18:15+00:00
+Richard Ipsum,richard.ipsum@codethink.co.uk,8,0,8,3,2,2014-11-03 14:06:44+00:00,2015-01-22 14:01:28+00:00
+GalaxySnail,me@glxys.nl,3,3,6,3,2,2022-12-24 08:28:15+00:00,2023-02-06 18:47:07+00:00
+Julien Palard,julien@palard.fr,38,24,62,8,2,2022-01-24 22:47:19+00:00,2022-09-27 13:56:47+00:00
+Andrew Plummer,plummer574@gmail.com,7,3,10,3,2,2021-09-07 21:11:08+00:00,2021-09-07 21:14:50+00:00
+gpotter2Gabriel,gabriel@potter.fr,7,7,14,2,2,2019-04-14 14:00:24+00:00,2020-01-02 00:02:21+00:00
+Thomas Grainger,thomas.grainger@coefficientai.onmicrosoft.com,9,2,11,2,2,2024-02-07 17:07:28+00:00,2024-02-07 19:48:31+00:00
+Thomas Heller,theller@ctypes.org,8,0,8,2,2,2008-05-26 11:42:40+00:00,2008-05-26 11:51:44+00:00
+Vito,vitoace@gmail.com,6,5,11,2,2,2018-10-27 15:39:34+00:00,2018-10-27 15:47:54+00:00
+Demian Brecht,demianbrecht@gmail.com,2,0,2,2,2,2022-11-28 20:46:18+00:00,2022-11-28 21:15:33+00:00
+Alex Gaynor,alex.gaynor@gmail.com,19,19,38,2,2,2016-04-10 22:39:35+00:00,2017-06-01 01:29:05+00:00
+David Malcolm,dmalcolm@redhat.com,32,2,34,2,2,2012-06-25 19:52:24+00:00,2012-06-26 18:06:23+00:00
+Sviatoslav SydorenkoSviatoslav Sydorenko (Святослав Сидоренко),sviat@redhat.com,2,2,4,2,2,2020-10-12 14:15:01+00:00,2024-04-16 15:44:37+00:00
+doko@python.org,doko@python.org,18,6,24,3,2,2013-01-25 13:33:33+00:00,2013-01-31 22:52:03+00:00
+Alexander Artemenko,svetlyak.40wt@gmail.com,2,231,233,2,2,2016-01-18 08:48:21+00:00,2016-01-19 04:58:32+00:00
+Suresh VSuresh V.,suresh@grafware.com,19,4,23,2,2,2013-09-17 07:02:02+00:00,2013-09-17 17:44:42+00:00
+Dweep Shah,dweepcan1@msn.com,7,7,14,2,2,2015-10-26 20:45:04+00:00,2015-10-27 20:35:06+00:00
+Aarni Koskela,akx@iki.fi,247,40,287,9,2,2022-04-07 10:15:43+00:00,2022-04-06 13:06:08+00:00
+stepshal,stepshal@users.noreply.github.com,2,2,4,2,2,2016-08-20 01:15:52+00:00,2016-08-22 12:25:13+00:00
+E. M. Bray,erik.bray@lri.fr,25,13,38,2,2,2019-05-24 15:33:47+00:00,2019-05-24 15:33:47+00:00
+Andrés DelfinoAndre Delfino,adelfino@gmail.com,3,3,6,3,2,2018-06-18 04:34:30+00:00,2018-12-06 21:06:55+00:00
+Henk-Jaap Wagenaar,wagenaarhenkjaap@gmail.com,16,18,34,5,2,2017-11-21 22:16:53+00:00,2017-11-25 18:55:58+00:00
+Alex Clark,aclark@aclark.net,2,2,4,2,2,2011-08-14 23:18:17+00:00,2012-04-23 01:41:29+00:00
+Stéphane Blondonsblondon,stephane.blondon@gmail.com,2,4,6,3,2,2022-08-25 18:47:43+00:00,2022-08-25 19:37:28+00:00
+Jeremy Stanley,fungi@yuggoth.org,76,5,81,10,2,2017-11-21 00:48:44+00:00,2017-12-05 17:56:10+00:00
+Tim Hatch,thatch@fb.com,13,1,14,3,2,2020-12-14 17:37:47+00:00,2020-12-14 17:14:45+00:00
+Dave Brondsema,dave@brondsema.net,4,3,7,2,2,2023-05-08 15:37:45+00:00,2023-05-09 16:26:52+00:00
+Gabriel,g2p.code@gmail.com,7,2,9,2,2,2012-10-14 21:28:28+00:00,2012-11-23 21:38:55+00:00
+Alex Henrie,alexhenrie24@gmail.com,10,6,16,5,2,2020-06-21 22:39:53+00:00,2020-07-11 18:51:48+00:00
+Benedikt Morbach,bmorbach@redhat.com,2,2,4,2,2,2014-08-07 15:57:00+00:00,2014-08-07 15:57:00+00:00
+Tres Seaver,tseaver@palladion.com,20,11,31,3,2,2012-12-29 17:54:21+00:00,2012-12-31 04:45:44+00:00
+Benno Rice,benno.rice@oracle.com,1,1,2,2,2,2022-08-19 02:22:12+00:00,2022-08-19 02:43:21+00:00
+Matthias Bussonnier,bussonniermatthias@gmail.com,2,2,4,2,2,2020-05-27 16:06:45+00:00,2020-05-27 16:06:45+00:00
+Bernhard M. Wiedemann,bwiedemann@suse.de,14,5,19,2,2,2017-06-21 12:08:35+00:00,2019-08-01 13:18:03+00:00
+Hang,bebound@gmail.com,3,3,6,2,2,2023-08-14 05:08:20+00:00,2023-08-14 13:38:57+00:00
+Cédric Krier,ced@b2ck.com,8,3,11,2,2,2016-12-16 14:32:16+00:00,2016-12-16 15:15:04+00:00
+Karthikeyan SingaravelanXtreak,tir.karthi@gmail.com,3,2,5,3,2,2019-06-02 23:12:33+00:00,2021-04-17 06:21:33+00:00
+Bo Bayles,bbayles@gmail.com,27,3,30,3,2,2018-01-26 00:02:03+00:00,2023-04-25 21:22:59+00:00
+con-f-use,con-f-use@gmx.net,4,3,7,2,2,2020-02-14 10:23:43+00:00,2020-02-15 10:12:32+00:00
+Bas Nijholt,basnijholt@gmail.com,3,3,6,2,2,2022-11-21 18:20:24+00:00,2022-11-21 18:21:35+00:00
+Aurelien Bompard,aurelien@bompard.org,69,15,84,4,2,2011-05-17 06:12:10+00:00,2011-06-01 07:18:22+00:00
+Cosimo Lupo,cosimo.lupo@daltonmaag.com,26,22,48,2,2,2016-05-03 13:38:52+00:00,2016-05-18 12:03:33+00:00
+Jeroen Ruigrok van der Werven,asmodai@in-nomine.org,17,25,42,5,2,2009-04-27 08:07:12+00:00,2022-01-20 08:26:38+00:00
+danigmDaniel Garcia Moreno,daniel.garcia@suse.com,31,2,33,4,2,2022-11-14 11:56:32+00:00,2022-11-15 16:17:11+00:00
+Daniel Himmelstein,daniel.himmelstein@gmail.com,69,16,85,4,2,2019-05-23 18:15:19+00:00,2019-05-22 21:45:44+00:00
+Anthony Baxter,anthonybaxter@gmail.com,3,3,6,2,2,2005-04-15 06:17:20+00:00,2006-03-30 12:59:11+00:00
+Stefan Grönke,stefan@gronke.org,2,2,4,2,2,2017-09-25 16:58:10+00:00,2017-09-25 16:58:10+00:00
+Eva Maxfield Brown,evamaxfieldbrown@gmail.com,7,6,13,2,2,2022-08-12 22:50:43+00:00,2022-08-12 22:57:45+00:00
+Sviatoslav Sydorenko,webknjaz@redhat.com,4,3,7,2,2,2021-11-12 22:45:58+00:00,2021-11-12 22:56:44+00:00
+Will Thompson,will@willthompson.co.uk,6,6,12,3,2,2016-12-05 08:11:32+00:00,2016-12-05 08:13:43+00:00
+Henry Schreiner,henryschreineriii@gmail.com,6,9,15,2,2,2020-12-22 19:24:22+00:00,2021-01-02 01:16:51+00:00
+alvyjudy,53921639+alvyjudy@users.noreply.github.com,4,5,9,2,2,2020-03-30 17:27:31+00:00,2020-03-30 17:30:30+00:00
+Alexey Kotlyarov,a@koterpillar.com,56,68,124,2,2,2016-03-17 05:06:41+00:00,2016-03-20 09:27:59+00:00
+Mehdi Abaakouk,sileht@sileht.net,2,2,4,2,2,2016-08-02 11:31:38+00:00,2016-08-02 10:13:41+00:00
+shenxianpeng,xianpeng.shen@gmail.com,15,12,27,2,2,2024-04-19 04:58:32+00:00,2024-04-19 05:04:39+00:00
+Hai Shi,shihai1992@gmail.com,50,35,85,16,2,2020-06-25 17:17:57+00:00,2020-07-06 12:29:49+00:00
+Andrew Murray,3112309+radarhere@users.noreply.github.com,3,3,6,2,2,2020-08-01 02:20:35+00:00,2022-03-23 09:31:17+00:00
+insiv,insiv@openmailbox.org,36,36,72,4,2,2016-08-17 15:07:48+00:00,2016-08-17 15:24:43+00:00
+kngwyu,yuji.kngw.80s.revive@gmail.com,11,4,15,2,2,2022-06-24 10:06:33+00:00,2022-07-04 11:25:00+00:00
+nullableVoidPtr,30564701+nullablevoidptr@users.noreply.github.com,27,2,29,4,2,2022-05-07 13:25:55+00:00,2022-05-10 14:07:56+00:00
+Jac Fitzgerald,jac.fitzgerald@salesforce.com,3,0,3,2,2,2022-06-24 05:54:38+00:00,2022-06-24 06:00:25+00:00
+Jac,jacalata@users.noreply.github.com,3,2,5,2,2,2022-06-25 02:00:50+00:00,2022-06-25 02:01:01+00:00
+Senthil Kumaran,senthil@uthcode.com,3,93,96,47,2,2011-07-28 14:32:49+00:00,2015-06-15 00:35:37+00:00
+John Vandenberg,jayvdb@gmail.com,59,28,87,2,2,2015-01-19 10:11:33+00:00,2015-11-12 20:02:56+00:00
+Segev Finer,segev208@gmail.com,10,10,20,3,2,2017-08-02 18:44:53+00:00,2017-08-03 18:39:59+00:00
+Jens C. Jensen,1847332+jensecj@users.noreply.github.com,2,2,4,2,2,2021-10-03 15:17:48+00:00,2021-10-03 16:27:12+00:00
+Jim Fulton,jim@aledade.com,4,4,8,2,2,2016-04-25 19:18:27+00:00,2016-04-25 20:59:19+00:00
+Ronnie Dutta,61982285+metronnie@users.noreply.github.com,1512,108,1620,58,2,2023-05-17 11:54:55+00:00,2023-05-17 13:06:45+00:00
+Maciej Pasternacki,52241383+maciejp-ro@users.noreply.github.com,9302,10,9312,11,2,2022-02-08 20:11:45+00:00,2022-02-08 22:24:15+00:00
+Xing Han Lu,github@xinghanlu.com,26,4,30,2,2,2022-03-02 17:29:51+00:00,2022-03-06 22:47:42+00:00
+Guy Rozendorn (guyr@infinidat.com),guy rozendorn (guyr@infinidat.com),8,140,148,6,2,2011-10-07 16:55:31+00:00,2011-10-07 17:08:55+00:00
+Sreejith Menon,sreejith_1729@yahoo.co.in,38,1,39,3,2,2018-10-27 17:29:08+00:00,2018-10-27 17:29:08+00:00
+Inada Naoki,songofacandy@gmail.com,7,2,9,3,2,2019-04-09 05:54:30+00:00,2019-06-18 07:15:25+00:00
+Alex Chan,a.chan@wellcome.ac.uk,24,1,25,3,2,2017-06-01 13:48:46+00:00,2017-06-01 17:06:14+00:00
+smheidrich,smheidrich@weltenfunktion.de,64,18,82,4,2,2017-02-02 11:32:27+00:00,2022-08-06 21:42:57+00:00
+Gökçen Nurlu,gnurlu1@bloomberg.net,5,2,7,3,2,2018-10-27 12:09:34+00:00,2018-10-27 15:30:19+00:00
+Ian Cordasco,graffatcolmingov@gmail.com,34,1,35,4,2,2015-01-02 21:31:47+00:00,2016-08-12 12:44:46+00:00
+William Grzybowski,wg@freebsd.org,2,14,16,2,2,2013-12-25 10:34:02+00:00,2013-12-17 00:44:35+00:00
+Eshant Gupta,guptaeshant@gmail.com,35,8,43,2,2,2020-09-03 18:02:00+00:00,2020-09-04 06:47:12+00:00
+Brian Curtin,brian.curtin@gmail.com,2,2,4,2,2,2010-04-02 22:38:52+00:00,2010-09-25 02:36:46+00:00
+Guy Rozendorn,guy.rzn.co.il,9,8,17,6,2,2013-05-14 08:12:46+00:00,2013-05-14 08:15:38+00:00
+guy@guyr-air.infinidat.com,guy@guyr-air.infinidat.com,1,1,2,1,2,2013-05-13 12:21:51+00:00,2013-05-05 08:16:24+00:00
+Vincent Philippon,sindaewoh@gmail.com,2,2,4,2,2,2018-02-19 23:28:00+00:00,2018-02-19 23:37:19+00:00
+yyfeng88625@gmail.com,yyfeng88625@gmail.com,1,2,3,1,1,2014-03-21 05:43:54+00:00,2014-03-21 05:43:54+00:00
+liuzhe,zhe.liu@microsoft.com,3,2,5,2,1,2021-12-22 05:48:04+00:00,2021-12-22 05:48:04+00:00
+Trent Mick,trentm@activestate.com,1,1,2,1,1,2006-04-25 00:34:50+00:00,2006-04-25 00:34:50+00:00
+Zach Burnett,zachary.r.burnett@gmail.com,0,0,0,1,1,2022-10-13 19:00:05+00:00,2022-10-13 19:00:05+00:00
+Oleg Sharov,o.sharov@gmail.com,6,7,13,4,1,2018-11-13 08:52:43+00:00,2018-11-13 08:52:43+00:00
+Walter Dörwald,walter@livinglogic.de,2,7,9,1,1,2007-06-11 21:38:39+00:00,2007-06-11 21:38:39+00:00
+Omer Ozarslan,omerfaruko@gmail.com,660,186,846,11,1,2020-06-04 16:49:32+00:00,2020-06-04 16:49:32+00:00
+Vadim Markovtsev,v.markovtsev@samsung.com,1,1,2,1,1,2015-11-01 09:35:38+00:00,2015-11-01 09:35:38+00:00
+Trent Nelson,trent.nelson@snakebite.org,6,1,7,1,1,2008-03-19 06:28:24+00:00,2008-03-19 06:28:24+00:00
+Pablo Galindo,pablogsal@gmail.com,5,1,6,1,1,2019-08-08 22:25:46+00:00,2019-08-08 22:25:46+00:00
+Harald Korneliussen,vintermann@gmail.com,3,3,6,1,1,2020-11-18 18:32:18+00:00,2020-11-18 18:32:18+00:00
+Olivier Le Moign,olivier.lemoign@gmail.com,1,1,2,1,1,2022-08-03 17:53:13+00:00,2022-08-03 17:53:13+00:00
+Pablo Cárdenas,pablo.cardenas@imca.edu.pe,1,1,2,1,1,2022-03-26 19:33:27+00:00,2022-03-26 19:33:27+00:00
+wyj1046@gmail.com,wyj1046@gmail.com,4,1,5,1,1,2013-05-05 09:07:31+00:00,2013-05-05 09:07:31+00:00
+Ronny Pfannschmidt,opensource@ronnypfannschmidt.de,3,3,6,1,1,2015-03-09 07:38:48+00:00,2015-03-09 07:38:48+00:00
+Daniel Moore,xdhmoore@users.noreply.github.com,3,3,6,1,1,2020-12-23 22:39:27+00:00,2020-12-23 22:39:27+00:00
+Volker Braun,vbraun.name@gmail.com,1,1,2,1,1,2015-03-05 00:42:38+00:00,2015-03-05 00:42:38+00:00
+Oliver Tonnhofer,olt@bogosoft.com,6,0,6,1,1,2011-05-26 08:01:41+00:00,2011-05-26 08:01:41+00:00
+Ryan Kelly,ryan@truveris.com,1,1,2,1,1,2015-11-24 18:46:26+00:00,2015-11-24 18:46:26+00:00
+Torsten Landschoff,torsten.landschoff@scale.eu,5,3,8,1,1,2016-08-20 07:23:24+00:00,2016-08-20 07:23:24+00:00
+Rick Liu,rickliu@fortinet.com,5,1,6,1,1,2016-04-15 19:19:52+00:00,2016-04-15 19:19:52+00:00
+Stefano Miccoli,stefano.miccoli@polimi.it,0,2,2,1,1,2017-04-13 20:57:56+00:00,2017-04-13 20:57:56+00:00
+Stefan Behnel,stefan_ml@behnel.de,22,1,23,2,1,2020-02-04 15:24:30+00:00,2020-02-04 15:24:30+00:00
+Nicolas CANIART,nicolas.caniart@jobteaser.com,95,57,152,2,1,2021-03-09 08:37:13+00:00,2021-03-09 08:37:13+00:00
+Stanislaw Pitucha,stanislaw.pitucha@hpe.com,2,2,4,1,1,2015-12-07 05:13:26+00:00,2015-12-07 05:13:26+00:00
+Roy Hyunjin Han,rhh@crosscompute.com,1,1,2,1,1,2012-10-21 09:34:36+00:00,2012-10-21 09:34:36+00:00
+Slavek Kabrda,slavek.kabrda@gmail.com,1,1,2,1,1,2015-01-09 09:40:48+00:00,2015-01-09 09:40:48+00:00
+Richard Purdie,richard.purdie@linuxfoundation.org,2,2,4,1,1,2021-05-31 15:34:03+00:00,2021-05-31 15:34:03+00:00
+Sinclert Pérez,sinclert@hotmail.com,3,3,6,1,1,2023-01-12 18:25:50+00:00,2023-01-12 18:25:50+00:00
+stanton119,richard@richard-stanton.com,1,1,2,1,1,2021-09-17 13:31:12+00:00,2021-09-17 13:31:12+00:00
+riot,riot@hackerfleet.org,4,1,5,1,1,2016-04-07 12:39:32+00:00,2016-04-07 12:39:32+00:00
+Ratin_Kumar,ratin.kumar.2k@gmail.com,1,36,37,2,1,2019-02-26 15:25:00+00:00,2019-02-26 15:25:00+00:00
+Michael Carlstrom,rmc@carlstrom.com,28,9,37,2,1,2024-07-19 02:58:46+00:00,2024-07-19 02:58:46+00:00
+rnhmjoj,rnhmjoj@inventati.org,2,3,5,1,1,2022-08-21 14:18:20+00:00,2022-08-21 14:18:20+00:00
+Richard Oudkerk,shibturn@gmail.com,45,0,45,2,1,2012-07-27 11:06:55+00:00,2012-07-27 11:06:55+00:00
+Sumana Harihareswara,sh@changeset.nyc,6,5,11,2,1,2020-05-28 21:47:07+00:00,2020-05-28 21:47:07+00:00
+Junhan Huang,robinhuang@172-2-0-43.lightspeed.dybhfl.sbcglobal.net,48,9,57,6,1,2018-10-27 20:26:51+00:00,2018-10-27 20:26:51+00:00
+Ryan Routsong,routsongrm@nih.giv,1,1,2,1,1,2023-09-12 15:21:21+00:00,2023-09-12 15:21:21+00:00
+Sandro Tosi,sandro.tosi@gmail.com,1,1,2,1,1,2012-01-14 15:42:02+00:00,2012-01-14 15:42:02+00:00
+Samuel Gaist,samuel.gaist@edeltech.ch,7,1,8,2,1,2017-08-21 22:22:54+00:00,2017-08-21 22:22:54+00:00
+Simone Pierazzini,s.pierazzini@nextworks.it,42,0,42,3,1,2021-02-18 05:40:17+00:00,2021-02-18 05:40:17+00:00
+Stephen Brennan,stephen.s.brennan@oracle.com,8,0,8,2,1,2024-06-25 17:27:30+00:00,2024-06-25 17:27:30+00:00
+Raphael Kubo da Costa,raphael.kubo.da.costa@intel.com,8,1,9,1,1,2014-07-03 14:03:39+00:00,2014-07-03 14:03:39+00:00
+Tomas Orsava,torsava@redhat.com,2,2,4,1,1,2018-04-12 12:55:06+00:00,2018-04-12 12:55:06+00:00
+Thomas Khyn,thomas@ksytek.com,3,2,5,1,1,2018-04-18 03:26:11+00:00,2018-04-18 03:26:11+00:00
+Per Jensen,perstofferjensen@gmail.com,1,1,2,1,1,2022-08-28 10:41:03+00:00,2022-08-28 10:41:03+00:00
+Tommy,tom@blackforestbotanics.com,1,1,2,1,1,2024-02-25 08:20:26+00:00,2024-02-25 08:20:26+00:00
+tmoharir,tmoharir@deloitte.com,1,2,3,2,1,2021-06-12 14:35:22+00:00,2021-06-12 14:35:22+00:00
+Steven Pitman,pitman@ca.ibm.com,239,2,241,3,1,2023-10-02 15:10:34+00:00,2023-10-02 15:10:34+00:00
+Antoine Pitrou,pitrou@free.fr,1,3,4,1,1,2018-07-16 17:03:03+00:00,2018-07-16 17:03:03+00:00
+Cyril Roelandt,tipecaml@gmail.com,7,3,10,2,1,2019-06-01 18:33:32+00:00,2019-06-01 18:33:32+00:00
+TilmanK,tilman.krummeck@googlemail.com,2,3,5,1,1,2018-10-24 22:50:25+00:00,2018-10-24 22:50:25+00:00
+Tom Bechtold,thomasbechtold@jpberlin.de,0,0,0,0,1,2015-04-05 06:35:14+00:00,2015-04-05 06:35:14+00:00
+Preston Landers,planders@utexas.edu,6,37,43,1,1,2016-12-28 19:14:53+00:00,2016-12-28 19:14:53+00:00
+Pradyun Gedam,pradyunsg@gmail.com,7,7,14,1,1,2019-02-12 07:22:08+00:00,2019-02-12 07:22:08+00:00
+Stephen Drake,steve+bitbucket@synergyconsultingnz.com,0,9,9,1,1,2015-06-11 03:22:51+00:00,2015-06-11 03:22:51+00:00
+Thomas Hisch,thomas.hisch@ims.co.at,5,13,18,2,1,2020-08-30 10:34:59+00:00,2020-08-30 10:34:59+00:00
+vrutsky,rutsky.vladimir@gmail.com,1,1,2,1,1,2015-07-02 11:00:57+00:00,2015-07-02 11:00:57+00:00
+Michael Wild,themiwi@users.sourceforge.net,9,1,10,1,1,2018-04-22 11:07:52+00:00,2018-04-22 11:07:52+00:00
+Petr Viktorin,pviktori@redhat.com,4,1,5,2,1,2021-01-06 16:40:30+00:00,2021-01-06 16:40:30+00:00
+Mikhail Terekhov,termim@gmail.com,7,0,7,1,1,2021-03-07 22:00:59+00:00,2021-03-07 22:00:59+00:00
+Thomas Bechtold,tbechtold@suse.com,1,1,2,1,1,2015-04-05 06:39:18+00:00,2015-04-05 06:39:18+00:00
+Rupert Nash,r.nash@epcc.ed.ac.uk,1,1,2,1,1,2021-09-09 12:18:32+00:00,2021-09-09 12:18:32+00:00
+tarek@MacZiade-2.local,tarek@macziade-2.local,40,5,45,2,1,2009-08-03 23:51:24+00:00,2009-08-03 23:51:24+00:00
+raimon,raimon49@hotmail.com,6,6,12,1,1,2020-08-08 11:33:27+00:00,2020-08-08 11:33:27+00:00
+Helio Machado,0x2b3bfa0+git@googlemail.com,1,1,2,1,1,2022-08-21 13:30:49+00:00,2022-08-21 13:30:49+00:00
+Kanika Sabharwal,kanika03.sabharwal@gmail.com,36,0,36,1,1,2018-10-27 19:58:50+00:00,2018-10-27 19:58:50+00:00
+Bruno Oliveira,nicoddemus@gmail.com,3,3,6,3,1,2016-09-02 00:42:30+00:00,2016-09-02 00:42:30+00:00
+Brian Curtin,brian@python.org,1,1,2,1,1,2012-05-13 16:19:23+00:00,2012-05-13 16:19:23+00:00
+Yaroslav Halchenko,debian@onerussian.com,2,2,4,2,1,2013-12-17 14:27:37+00:00,2013-12-17 14:27:37+00:00
+David Szotten,davidszotten@gmail.com,1,1,2,1,1,2017-01-05 11:47:09+00:00,2017-01-05 11:47:09+00:00
+David Cournapeau,david@silveregg.co.jp,13,5,18,2,1,2010-05-20 10:31:44+00:00,2010-05-20 10:31:44+00:00
+David Pugh,david.pugh@mclaren.com,9,1,10,1,1,2018-03-08 13:36:11+00:00,2018-03-08 13:36:11+00:00
+david,david.genest@ubisoft.com,3,0,3,1,1,2014-06-25 14:47:59+00:00,2014-06-25 14:47:59+00:00
+Davanum Srinivas,davanum@gmail.com,67,2,69,2,1,2016-04-18 19:08:49+00:00,2016-04-18 19:08:49+00:00
+Darjus Loktevic,darjus@gmail.com,7,89,96,3,1,2016-01-11 12:23:36+00:00,2016-01-11 12:23:36+00:00
+Daniel Laügt,daniel.laugt@gmail.com,2,10,12,1,1,2022-11-17 15:29:05+00:00,2022-11-17 15:29:05+00:00
+DanGolding,dan@golding.za.net,5,4,9,1,1,2018-10-27 13:31:31+00:00,2018-10-27 13:31:31+00:00
+Dan Rose,dan@digilabs.io,23,7,30,3,1,2019-10-27 07:31:59+00:00,2019-10-27 07:31:59+00:00
+Lisandro Dalcin,dalcinl@gmail.com,4,4,8,1,1,2023-02-28 05:55:11+00:00,2023-02-28 05:55:11+00:00
+Mickaël Schoentgen,contact@tiger-222.fr,43,39,82,3,1,2019-04-08 13:08:48+00:00,2019-04-08 13:08:48+00:00
+Chris Pryer,cnpryer@gmail.com,2,3,5,1,1,2023-05-23 22:47:40+00:00,2023-05-23 22:47:40+00:00
+clint-lawrence,clint.lawrence@gmail.com,1,1,2,1,1,2021-05-25 06:43:08+00:00,2021-05-25 06:43:08+00:00
+Christian González,christian.gonzalez@nerdocs.at,1,1,2,1,1,2018-09-15 14:24:03+00:00,2018-09-15 14:24:03+00:00
+Chris Barker,chris.barker@noaa.gov,2,2,4,1,1,2024-08-27 09:42:25+00:00,2024-08-27 09:42:25+00:00
+Christopher Head,chead@chead.ca,5,1,6,1,1,2019-08-13 04:37:34+00:00,2019-08-13 04:37:34+00:00
+Charles-François Natali,cf.natali@gmail.com,0,3,3,1,1,2015-02-07 13:27:50+00:00,2015-02-07 13:27:50+00:00
+Charles Bouchard-Légaré,cblegare.atl@ntis.ca,19,3,22,2,1,2016-11-08 03:07:29+00:00,2016-11-08 03:07:29+00:00
+cajhne,cajhne@gmail.com,1258,0,1258,10,1,2020-07-03 20:30:43+00:00,2020-07-03 20:30:43+00:00
+Bartosz Sławecki,bswck.dev@gmail.com,48,43,91,2,1,2024-04-16 20:37:50+00:00,2024-04-16 20:37:50+00:00
+Gyeongjae Choi,def6488@gmail.com,1,1,2,1,1,2022-05-17 01:25:25+00:00,2022-05-17 01:25:25+00:00
+Daniel Holth,dholth@anaconda.com,179,0,179,3,1,2022-02-04 20:19:11+00:00,2022-02-04 20:19:11+00:00
+Peter Bittner,django@bittner.it,44,45,89,1,1,2016-10-14 06:09:25+00:00,2016-10-14 06:09:25+00:00
+Emil Styrke,emil.styrke@gmail.com,1,1,2,1,1,2017-02-27 13:15:39+00:00,2017-02-27 13:15:39+00:00
+Giampaolo Rodola,g.rodola@gmail.com,8,0,8,1,1,2014-03-27 13:14:16+00:00,2014-03-27 13:14:16+00:00
+FX Coudert,fxcoudert@gmail.com,7,3,10,1,1,2020-12-03 03:20:18+00:00,2020-12-03 03:20:18+00:00
+Philipp A,flying-sheep@web.de,18,2,20,3,1,2019-03-27 21:34:19+00:00,2019-03-27 21:34:19+00:00
+Floris Lambrechts,florisla@gmail.com,38,0,38,1,1,2019-03-26 08:08:33+00:00,2019-03-26 08:08:33+00:00
+Florian Schulze,florian.schulze@gmx.net,3,1,4,2,1,2017-03-11 13:45:15+00:00,2017-03-11 13:45:15+00:00
+Felix Yan,felixonmars@archlinux.org,1,1,2,1,1,2017-06-05 17:47:35+00:00,2017-06-05 17:47:35+00:00
+Frédéric Chapoton,fchapoton2@gmail.com,0,1,1,1,1,2019-03-06 14:22:28+00:00,2019-03-06 14:22:28+00:00
+Eli Schwartz,eschwartz93@gmail.com,6,2,8,1,1,2023-11-30 22:01:47+00:00,2023-11-30 22:01:47+00:00
+Eric Larson,eric@ionrock.org,2,2,4,1,1,2013-05-28 19:33:43+00:00,2013-05-28 19:33:43+00:00
+Elvis Stansvik,elvis.stansvik@orexplore.com,5,5,10,1,1,2017-01-08 17:24:24+00:00,2017-01-08 17:24:24+00:00
+Dirkjan Ochtman,djc.ochtman@kentyde.com,1,5,6,1,1,2012-12-17 12:03:16+00:00,2012-12-17 12:03:16+00:00
+Elias Dorneles,eliasdorneles@gmail.com,1,1,2,1,1,2016-07-25 13:38:51+00:00,2016-07-25 13:38:51+00:00
+Edgar Riba,edgar.riba@gmail.com,1,1,2,1,1,2022-07-29 09:41:21+00:00,2022-07-29 09:41:21+00:00
+eacheson,eacheson@users.noreply.github.com,13,13,26,1,1,2021-12-24 11:03:44+00:00,2021-12-24 11:03:44+00:00
+Dylan Wilson,dylanjw@protonmail.com,3,3,6,1,1,2018-01-23 23:11:14+00:00,2018-01-23 23:11:14+00:00
+da-woods,dw-git@d-woods.co.uk,6,4,10,2,1,2021-04-18 06:53:22+00:00,2021-04-18 06:53:22+00:00
+Drew,drewrisinger@users.noreply.github.com,1,1,2,1,1,2020-12-25 20:52:54+00:00,2020-12-25 20:52:54+00:00
+Doug Hellmann,doug@doughellmann.com,4,2,6,1,1,2015-01-12 22:31:44+00:00,2015-01-12 22:31:44+00:00
+Dominic Davis-Foster,dominic@davis-foster.co.uk,3,1,4,1,1,2022-02-01 17:30:53+00:00,2022-02-01 17:30:53+00:00
+Daniel Néri,dne@mayonnaise.net,1,1,2,1,1,2013-08-18 19:03:04+00:00,2013-08-18 19:03:04+00:00
+Brooks Kindle,brooks.kindle@wsu.edu,26,6,32,1,1,2016-04-23 18:01:39+00:00,2016-04-23 18:01:39+00:00
+Brian Rutledge,brian@bhrutledge.com,1,2,3,1,1,2021-06-12 14:10:07+00:00,2021-06-12 14:10:07+00:00
+Nick Douma,n.douma@nekoconeko.nl,14,1,15,1,1,2017-04-27 09:44:56+00:00,2017-04-27 09:44:56+00:00
+Victor Lin,bornstub@gmail.com,1,1,2,1,1,2014-10-23 22:06:51+00:00,2014-10-23 22:06:51+00:00
+connortann,71127464+connortann@users.noreply.github.com,1,1,2,1,1,2024-07-30 09:24:08+00:00,2024-07-30 09:24:08+00:00
+biredel,67849440+biredel@users.noreply.github.com,3,0,3,1,1,2024-08-09 09:12:42+00:00,2024-08-09 09:12:42+00:00
+Zack Didcott,66186954+zedeldi@users.noreply.github.com,4,4,8,1,1,2021-03-29 00:26:32+00:00,2021-03-29 00:26:32+00:00
+Brody Rampono,64628500+brampono@users.noreply.github.com,2,2,4,1,1,2022-07-25 06:07:35+00:00,2022-07-25 06:07:35+00:00
+Danie-1,63882624+danie-1@users.noreply.github.com,4,6,10,1,1,2023-08-18 10:37:42+00:00,2023-08-18 10:37:42+00:00
+Giulio Procopio,61784957+giuppox@users.noreply.github.com,1,1,2,1,1,2022-01-05 14:17:48+00:00,2022-01-05 14:17:48+00:00
+Atiab Bin Zakaria,61742543+atiabbz@users.noreply.github.com,1,1,2,1,1,2022-08-17 09:51:01+00:00,2022-08-17 09:51:01+00:00
+Sanchit Khurana,54467174+geniuslearner@users.noreply.github.com,5,5,10,1,1,2019-11-25 22:17:59+00:00,2019-11-25 22:17:59+00:00
+Ed Morley,501702+edmorley@users.noreply.github.com,3,2,5,3,1,2022-08-17 16:37:40+00:00,2022-08-17 16:37:40+00:00
+dependabot[bot],49699333+dependabot[bot]@users.noreply.github.com,1,1,2,1,1,2024-05-22 03:44:03+00:00,2024-05-22 03:44:03+00:00
+nxnjz,43261757+nxnjz@users.noreply.github.com,1,1,2,1,1,2022-08-09 11:45:04+00:00,2022-08-09 11:45:04+00:00
+Samuel Watkins,35979561+slwatkins@users.noreply.github.com,1,1,2,1,1,2020-06-16 19:33:08+00:00,2020-06-16 19:33:08+00:00
+Andrés Delfino,34587441+andresdelfino@users.noreply.github.com,2,2,4,1,1,2018-04-21 12:17:26+00:00,2018-04-21 12:17:26+00:00
+Pradyun Gedam,3275593+pradyunsg@users.noreply.github.com,6,0,6,1,1,2020-10-26 10:09:18+00:00,2020-10-26 10:09:18+00:00
+Tim Paine,3105306+timkpaine@users.noreply.github.com,1,1,2,1,1,2024-01-14 14:19:32+00:00,2024-01-14 14:19:32+00:00
+Markus Bong,2fake1987@gmail.com,1,1,2,1,1,2022-04-21 13:08:02+00:00,2022-04-21 13:08:02+00:00
+Mozi,29089388+pzhlkj6612@users.noreply.github.com,1,1,2,1,1,2021-09-12 07:03:16+00:00,2021-09-12 07:03:16+00:00
+Vladimir Berlev,1783633+tegoo@users.noreply.github.com,1,1,2,1,1,2022-04-14 14:54:55+00:00,2022-04-14 14:54:55+00:00
+Hugo van Kemenade,1324225+hugovk@users.noreply.github.com,13,13,26,1,1,2024-04-14 09:06:34+00:00,2024-04-14 09:06:34+00:00
+Shantanu,12621235+hauntsaninja@users.noreply.github.com,1,0,1,1,1,2022-08-19 00:55:07+00:00,2022-08-19 00:55:07+00:00
+Oliver Mannion,125105+tekumara@users.noreply.github.com,0,8,8,1,1,2023-07-09 07:21:47+00:00,2023-07-09 07:21:47+00:00
+Sanyam Khurana,8039608+curiouslearner@users.noreply.github.com,2,2,4,2,1,2018-01-20 00:25:37+00:00,2018-01-20 00:25:37+00:00
+Ankur Dedania,absolutemstr@gmail.com,3,1,4,1,1,2015-08-31 20:10:01+00:00,2015-08-31 20:10:01+00:00
+Alexei Colin,ac@alexeicolin.com,142,32,174,4,1,2019-03-18 17:35:20+00:00,2019-03-18 17:35:20+00:00
+Athos Ribeiro,athoscr@fedoraproject.org,7,6,13,2,1,2020-08-04 08:31:11+00:00,2020-08-04 08:31:11+00:00
+Bob Ippolito,bob@redivi.com,2,4,6,1,1,2006-05-26 14:07:23+00:00,2006-05-26 14:07:23+00:00
+Steven Maude,bitbucket@stevenmaude.co.uk,1,1,2,1,1,2014-03-17 11:29:02+00:00,2014-03-17 11:29:02+00:00
+Pete Hollobon,bitbucket@hollobon.com,4,1,5,1,1,2012-11-22 08:41:56+00:00,2012-11-22 08:41:56+00:00
+Binjian,binjian.xin@hotmail.com,1,1,2,1,1,2022-04-22 09:21:15+00:00,2022-04-22 09:21:15+00:00
+Ben Wolsieffer,benwolsieffer@gmail.com,14,1,15,1,1,2020-09-25 20:49:16+00:00,2020-09-25 20:49:16+00:00
+Benjamin Bach,benjaoming@gmail.com,4,0,4,1,1,2016-06-02 09:58:43+00:00,2016-06-02 09:58:43+00:00
+Ben Nuttall,ben@bennuttall.com,0,3,3,1,1,2020-01-19 12:13:12+00:00,2020-01-19 12:13:12+00:00
+Bartosz Sławecki,bartoszpiotrslawecki@gmail.com,1,0,1,1,1,2024-04-01 15:47:04+00:00,2024-04-01 15:47:04+00:00
+The Gitter Badger,badger@gitter.im,4,0,4,1,1,2016-06-23 14:37:14+00:00,2016-06-23 14:37:14+00:00
+Andrew Taylor,ataylor@redtoad.ca,2,0,2,1,1,2019-10-29 23:03:11+00:00,2019-10-29 23:03:11+00:00
+A_Rog,adam.thomas.rogerson@gmail.com,5,1,6,3,1,2019-08-13 23:40:12+00:00,2019-08-13 23:40:12+00:00
+Arnon Yaari,arnony@infinidat.com,47,2,49,2,1,2018-05-14 14:10:29+00:00,2018-05-14 14:10:29+00:00
+Arkadiy Shapkin,arkadiy_s@inbox.ru,1,1,2,1,1,2014-04-24 08:38:40+00:00,2014-04-24 08:38:40+00:00
+Armin Rigo,arigo@tunes.org,2,2,4,1,1,2006-04-17 09:22:35+00:00,2006-04-17 09:22:35+00:00
+Arcadiy Ivanov,arcadiy@ivanov.biz,65,1,66,2,1,2023-07-07 19:59:49+00:00,2023-07-07 19:59:49+00:00
+Andy Freeland,andy.freeland@redjack.com,4,0,4,2,1,2015-09-10 05:03:42+00:00,2015-09-10 05:03:42+00:00
+Andreas Maier,andreas.r.maier@gmx.de,3,1,4,1,1,2017-11-22 19:40:01+00:00,2017-11-22 19:40:01+00:00
+alexzorin,alex@zorin.id.au,1,1,2,1,1,2022-10-11 18:47:28+00:00,2022-10-11 18:47:28+00:00
+Alex Martelli,aleaxit@gmail.com,1,1,2,1,1,2006-08-24 02:58:11+00:00,2006-08-24 02:58:11+00:00
+Antonio Russo,aerusso@aerusso.net,13,0,13,3,1,2021-09-07 01:03:28+00:00,2021-09-07 01:03:28+00:00
+Gerhard Weis,g.weis@griffith.edu.au,8,3,11,1,1,2017-11-08 21:14:51+00:00,2017-11-08 21:14:51+00:00
+gentlegiantJGC,gentlegiantjgc@users.noreply.github.com,2,0,2,1,1,2021-11-13 11:01:14+00:00,2021-11-13 11:01:14+00:00
+Paul Ganssle,git@m.ganssle.io,23,0,23,1,1,2021-10-15 18:04:45+00:00,2021-10-15 18:04:45+00:00
+Mridul Seth,git@mriduls.com,12,4,16,2,1,2024-02-29 07:37:44+00:00,2024-02-29 07:37:44+00:00
+Matthew Feickert,matthew.feickert@cern.ch,2,2,4,1,1,2023-01-11 23:11:47+00:00,2023-01-11 23:11:47+00:00
+Matt Hall,matt@agilescientific.com,14,13,27,1,1,2022-04-26 12:05:53+00:00,2022-04-26 12:05:53+00:00
+Mathieu Kniewallner,mathieu.kniewallner@gmail.com,7,7,14,5,1,2022-03-24 21:15:29+00:00,2022-03-24 21:15:29+00:00
+Marvin Gravert,marvin.gravert@gmail.com,1,1,2,1,1,2023-06-14 10:40:58+00:00,2023-06-14 10:40:58+00:00
+Martin Froehlich,martin.froehlich@goodscloud.net,1,1,2,1,1,2014-04-13 19:46:54+00:00,2014-04-13 19:46:54+00:00
+Martin Braquet,martin.braquet@gmail.com,1,1,2,1,1,2022-10-21 18:48:49+00:00,2022-10-21 18:48:49+00:00
+Mariatta,mariatta@users.noreply.github.com,1,1,2,1,1,2017-03-05 00:41:06+00:00,2017-03-05 00:41:06+00:00
+Marco Weber,marco.weber@hotmail.de,6,0,6,2,1,2022-06-08 22:51:44+00:00,2022-06-08 22:51:44+00:00
+Marcin Kuzminski,marcin@python-works.com,28,10,38,1,1,2012-06-15 08:12:17+00:00,2012-06-15 08:12:17+00:00
+Marcin Niemira,marcin.niemira@gmail.com,1,4,5,1,1,2019-06-08 21:05:06+00:00,2019-06-08 21:05:06+00:00
+Marcel Telka,marcel@telka.sk,1,0,1,1,1,2024-03-20 21:54:58+00:00,2024-03-20 21:54:58+00:00
+Marc Schlaich,marc.schlaich@googlemail.com,1,0,1,1,1,2019-01-20 18:47:42+00:00,2019-01-20 18:47:42+00:00
+animalize,malincns@163.com,5,5,10,3,1,2021-03-08 03:22:31+00:00,2021-03-08 03:22:31+00:00
+Bart Broere,mail@bartbroere.eu,1,1,2,1,1,2023-07-04 12:45:35+00:00,2023-07-04 12:45:35+00:00
+Anonymous Maarten,madebr@users.noreply.github.com,2,1,3,1,1,2019-08-28 17:11:03+00:00,2019-08-28 17:11:03+00:00
+Matthias Jansen,m.jansen@accure.net,1,1,2,1,1,2022-07-01 06:56:29+00:00,2022-07-01 06:56:29+00:00
+luz paz,luzpaz@users.noreply.github.com,21,21,42,14,1,2021-05-14 12:34:17+00:00,2021-05-14 12:34:17+00:00
+SeungMin Lee,lsm.somniator@gmail.com,3,3,6,1,1,2021-07-20 07:02:46+00:00,2021-07-20 07:02:46+00:00
+Liao Penghui,liaoishere@gmail.com,6,0,6,1,1,2016-11-25 04:41:53+00:00,2016-11-25 04:41:53+00:00
+leonixyz,leonixyz@gmail.com,1,1,2,1,1,2022-08-11 14:58:56+00:00,2022-08-11 14:58:56+00:00
+Jasper Harrison,legorooj@protonmail.com,1,1,2,1,1,2023-03-07 23:50:15+00:00,2023-03-07 23:50:15+00:00
+Matt Layman,matthewlayman@gmail.com,3,0,3,1,1,2018-05-14 14:17:59+00:00,2018-05-14 14:17:59+00:00
+mayeut,mayeut@users.noreply.github.com,246,9,255,5,1,2019-11-11 11:00:16+00:00,2019-11-11 11:00:16+00:00
+Zhaorong Ma,mazhaorong@gmail.com,1,1,2,1,1,2019-05-08 13:44:01+00:00,2019-05-08 13:44:01+00:00
+Michael A. Smith,michaels@syapse.com,1,1,2,1,1,2018-06-21 18:54:38+00:00,2018-06-21 18:54:38+00:00
+Marco Treglia,mtreglia@gopro.com,2,2,4,1,1,2024-07-11 15:19:30+00:00,2024-07-11 15:19:30+00:00
+mrbean-bremen,mrbean-bremen@users.noreply.github.com,15,1,16,2,1,2023-01-18 15:14:23+00:00,2023-01-18 15:14:23+00:00
+Moshe Kaplan,mosheekaplan@gmail.com,2,2,4,1,1,2023-03-16 02:03:37+00:00,2023-03-16 02:03:37+00:00
+Brett M. Morris,morrisbrettm@gmail.com,2,2,4,1,1,2022-10-31 13:39:00+00:00,2022-10-31 13:39:00+00:00
+Monty Taylor,mordred@inaugust.com,2,1,3,1,1,2014-06-15 01:19:04+00:00,2014-06-15 01:19:04+00:00
+Michael Loyd,mloyd@users.noreply.github.com,1,1,2,1,1,2022-05-24 06:48:09+00:00,2022-05-24 06:48:09+00:00
+Ondřej Súkup,mimi1vx@users.noreply.github.com,12,3,15,1,1,2019-11-15 07:52:35+00:00,2019-11-15 07:52:35+00:00
+MilchRatchet,milchratchet@googlemail.com,6,3,9,1,1,2022-05-18 11:46:52+00:00,2022-05-18 11:46:52+00:00
+Michael Klich,michal@michalklich.com,1,1,2,1,1,2016-06-02 21:02:30+00:00,2016-06-02 21:02:30+00:00
+Mike Hucka,mhucka@caltech.edu,2,2,4,1,1,2022-08-12 17:10:46+00:00,2022-08-12 17:10:46+00:00
+Chuck McCallum,mccalluc@users.noreply.github.com,4,4,8,1,1,2022-04-05 17:58:19+00:00,2022-04-05 17:58:19+00:00
+Michael Howitz,mh@gocept.com,1,1,2,1,1,2021-11-16 08:58:00+00:00,2021-11-16 08:58:00+00:00
+messense,messense@icloud.com,2,2,4,2,1,2021-06-20 10:39:57+00:00,2021-06-20 10:39:57+00:00
+Menghan Zheng,menghan412@gmail.com,3,2,5,1,1,2013-12-24 06:16:43+00:00,2013-12-24 06:16:43+00:00
+Thirumal Venkat,me@thirumal.in,2,1,3,2,1,2018-10-23 19:35:52+00:00,2018-10-23 19:35:52+00:00
+Harmen Stoppels,me@harmenstoppels.nl,11,7,18,2,1,2023-09-26 09:23:08+00:00,2023-09-26 09:23:08+00:00
+Geoffrey Sneddon,me@gsnedders.com,12,3,15,3,1,2016-04-23 22:44:24+00:00,2016-04-23 22:44:24+00:00
+Adam Johnson,me@adamj.eu,0,2,2,1,1,2019-11-19 19:45:20+00:00,2019-11-19 19:45:20+00:00
+Matt Deitke,mdeitke23@gmail.com,1,1,2,1,1,2020-12-14 04:42:20+00:00,2020-12-14 04:42:20+00:00
+Nguyễn Gia Phong,mcsinyx@disroot.org,23,16,39,3,1,2020-04-24 15:34:10+00:00,2020-04-24 15:34:10+00:00
+Lee Trout,lee@leetrout.com,2,1,3,1,1,2012-10-18 17:17:44+00:00,2012-10-18 17:17:44+00:00
+Lumir Balhar,lbalhar@redhat.com,93,0,93,2,1,2022-08-03 10:23:37+00:00,2022-08-03 10:23:37+00:00
+lsenta,laurent.senta@gmail.com,1,1,2,1,1,2015-12-16 11:15:53+00:00,2015-12-16 11:15:53+00:00
+shripadbadithe,icsaccount1,1,2,3,1,1,2022-11-06 23:18:11+00:00,2022-11-06 23:18:11+00:00
+jgoutin,jgoutin@pm.me,700,322,1022,2,1,2019-08-03 08:41:34+00:00,2019-08-03 08:41:34+00:00
+Jesse Weinstein,jesse.weinstein@zonarsystems.com,1,1,2,1,1,2014-08-28 20:55:27+00:00,2014-08-28 20:55:27+00:00
+Jeremy Hylton,jeremy@alum.mit.edu,15,12,27,2,1,2008-06-18 20:49:58+00:00,2008-06-18 20:49:58+00:00
+Jeremy Kloth,jeremy.kloth@gmail.com,2,5,7,1,1,2017-05-09 15:24:13+00:00,2017-05-09 15:24:13+00:00
+Jonathan E,jelsnerbusiness@outlook.com,1,1,2,1,1,2020-12-30 01:19:49+00:00,2020-12-30 01:19:49+00:00
+James Polley,jamezpolley@gmail.com,4,0,4,1,1,2015-05-22 21:54:34+00:00,2015-05-22 21:54:34+00:00
+James Hilliard,james.hilliard1@gmail.com,21,2,23,3,1,2024-02-13 01:15:50+00:00,2024-02-13 01:15:50+00:00
+jdemeyer,j.demeyer@ugent.be,14,11,25,1,1,2019-01-30 15:49:39+00:00,2019-01-30 15:49:39+00:00
+Thijs Triemstra,info@collab.nl,3,0,3,1,1,2018-02-20 02:46:39+00:00,2018-02-20 02:46:39+00:00
+Hatem Nassrat,hnassrat@gmail.com,12,1,13,2,1,2017-01-23 18:07:21+00:00,2017-01-23 18:07:21+00:00
+Jim Fulton,jim@jimfulton.info,2,1,3,1,1,2017-03-24 16:55:03+00:00,2017-03-24 16:55:03+00:00
+Andrey Bienkowski,hexagonrecursion@gmail.com,7,4,11,2,1,2021-02-09 06:20:47+00:00,2021-02-09 06:20:47+00:00
+hbielenia,hbielenia@users.noreply.github.com,1,1,2,1,1,2023-02-18 08:41:11+00:00,2023-02-18 08:41:11+00:00
+Bibo Hao,haobibo@users.noreply.github.com,14,0,14,1,1,2017-09-13 03:47:12+00:00,2017-09-13 03:47:12+00:00
+Hugues Lerebours,h.lerebours@criteo.com,1,1,2,1,1,2014-08-18 12:11:34+00:00,2014-08-18 12:11:34+00:00
+guy@guyr-air.rzn.co.il,guy@guyr-air.rzn.co.il,6,0,6,1,1,2013-05-13 21:13:46+00:00,2013-05-13 21:13:46+00:00
+Greg Solon,greg.solon@gmail.com,2,2,4,1,1,2020-10-20 13:55:56+00:00,2020-10-20 13:55:56+00:00
+Stefano Rivera,github@rivera.za.net,1,1,2,1,1,2023-08-07 08:29:57+00:00,2023-08-07 08:29:57+00:00
+robnagler,github@q33.us,6,5,11,1,1,2019-02-26 17:10:49+00:00,2019-02-26 17:10:49+00:00
+Bartosz Sławecki,github.armored767@passinbox.com,4,0,4,1,1,2024-02-06 22:01:32+00:00,2024-02-06 22:01:32+00:00
+Jim Garrison,jim@garrison.cc,5,5,10,4,1,2022-04-29 08:24:50+00:00,2022-04-29 08:24:50+00:00
+Jim Fulton,jim@zope.com,77,0,77,3,1,2012-07-14 18:25:06+00:00,2012-07-14 18:25:06+00:00
+Ilya Kulakov,kulakov.ilya@gmail.com,14,7,21,1,1,2017-01-14 02:20:28+00:00,2017-01-14 02:20:28+00:00
+Julien Cigar,julien.cigar@gmail.com,1,0,1,1,1,2016-02-03 09:25:07+00:00,2016-02-03 09:25:07+00:00
+Konstantin Tretyakov,kt@ut.ee,12,0,12,1,1,2014-11-13 15:11:31+00:00,2014-11-13 15:11:31+00:00
+Max Bachmann,kontakt@maxbachmann.de,2,2,4,1,1,2022-12-20 03:47:31+00:00,2022-12-20 03:47:31+00:00
+KOLANICH,kolan_n@mail.ru,17,2,19,2,1,2021-02-06 20:03:13+00:00,2021-02-06 20:03:13+00:00
+Kojo Idrissa,kojoidrissa@users.noreply.github.com,6,243,249,2,1,2019-05-10 08:45:09+00:00,2019-05-10 08:45:09+00:00
+Kevin Adler,kadler@us.ibm.com,9,1,10,1,1,2019-03-04 14:48:40+00:00,2019-03-04 14:48:40+00:00
+Justin Azoff,justin@bouncybouncy.net,11,4,15,2,1,2012-05-12 23:01:44+00:00,2012-05-12 23:01:44+00:00
+Reece D,jumbocakefdx@gmail.com,1,1,2,1,1,2018-12-27 17:16:38+00:00,2018-12-27 17:16:38+00:00
+Julien Danjou,julien@danjou.info,56,39,95,1,1,2017-08-25 09:32:36+00:00,2017-08-25 09:32:36+00:00
+Julien Malard,julien.malard@mail.mcgill.ca,4,1,5,1,1,2018-09-08 20:31:26+00:00,2018-09-08 20:31:26+00:00
+Juan Luis Cano Rodríguez,juanlu001@gmail.com,1,1,2,1,1,2016-05-26 12:13:46+00:00,2016-05-26 12:13:46+00:00
+Jonathan Helmus,jjhelmus@gmail.com,12,2,14,1,1,2017-02-02 14:54:37+00:00,2017-02-02 14:54:37+00:00
+Jim Porter,jporter@mozilla.com,17,5,22,1,1,2016-12-12 00:59:34+00:00,2016-12-12 00:59:34+00:00
+Jonathan Dye,jonathan@lulz.bz,1,1,2,1,1,2013-10-31 09:35:56+00:00,2013-10-31 09:35:56+00:00
+Jon Kohler,jon@nutanix.com,1,0,1,1,1,2018-07-09 17:14:33+00:00,2018-07-09 17:14:33+00:00
+Jonathan Ballet,jon@multani.info,1,1,2,1,1,2010-11-06 14:01:33+00:00,2010-11-06 14:01:33+00:00
+joeflack4,joeflack4@gmail.com,1,0,1,1,1,2018-09-19 16:42:05+00:00,2018-09-19 16:42:05+00:00
+Noorhteen Raja NJ,jnoortheen@gmail.com,1,1,2,1,1,2022-07-31 09:07:53+00:00,2022-07-31 09:07:53+00:00
+Jesse Noller,jnoller@gmail.com,1,2,3,1,1,2008-07-16 13:24:06+00:00,2008-07-16 13:24:06+00:00
+John Marshall,jmarshall@hey.com,7,0,7,2,1,2021-09-22 20:51:21+00:00,2021-09-22 20:51:21+00:00
+Julien Muchembled,jm@nexedi.com,1,1,2,1,1,2016-11-13 23:25:57+00:00,2016-11-13 23:25:57+00:00
+Zoran Simic,zsimic@netflix.com,5,1,6,2,1,2017-12-10 00:12:28+00:00,2017-12-10 00:12:28+00:00

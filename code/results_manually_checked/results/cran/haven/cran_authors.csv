@@ -1,0 +1,4 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Hadley Wickham,hadley@posit.co,,1,92463,55769,148232,2535,629,2015-02-04 14:01:58+00:00,2023-11-30 18:06:57+00:00,0.5,0
+Evan Miller,,Author of included ReadStat code,4,1976,1406,3382,32,7,2015-10-09 13:04:31+00:00,2015-11-01 19:21:00+00:00,0.5,0
+Danny Smith,,,2,7756,5126,12882,240,44,2015-03-11 07:11:24+00:00,2023-02-27 23:26:37+00:00,0.5,0

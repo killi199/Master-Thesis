@@ -1,0 +1,5 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Alexander Ilich,ailich@usf.edu,0000-0003-1758-8499,1.0,12776.0,7216.0,19992.0,961.0,196.0,2021-03-30 22:36:07+00:00,2023-12-30 22:01:53+00:00,0.5,0
+Steven Murawski,,,,,,,,,,,0.0,0
+Benjamin Misiuk,,,2.0,196.0,153.0,349.0,31.0,31.0,2021-10-07 19:31:29+00:00,2023-02-14 17:06:20+00:00,0.5,0
+Vincent Lecours,,,,,,,,,,,0.0,0

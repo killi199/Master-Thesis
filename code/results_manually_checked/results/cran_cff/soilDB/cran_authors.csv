@@ -1,0 +1,5 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Andrew Brown,andrew.g.brown@usda.gov,,2,46343,49342,95685,2172,698,2020-07-11 14:12:15+00:00,2024-11-14 23:55:04+00:00,1.0,0
+Stephen Roecker,,,6,7596,3314,10910,345,195,2014-01-31 19:38:56+00:00,2023-10-12 23:21:54+00:00,0.5,0
+Jay Skovlin,,,10,1903,990,2893,62,40,2017-03-07 00:51:26+00:00,2018-05-26 00:21:49+00:00,0.5,0
+Dylan Beaudette,dylan.beaudette@usda.gov,,8,2705,665,3370,111,53,2023-01-17 18:12:33+00:00,2024-09-18 18:14:32+00:00,1.0,0

@@ -1,0 +1,4 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Jim Hester,,,1,88048,97272,185320,2563,646,2016-06-07 14:51:49+00:00,2021-11-30 20:21:35+00:00,0.5,0
+Jennifer Bryan,jenny@posit.co,0000-0002-6983-2759,4,2309,3407,5716,270,101,2018-12-05 23:35:45+00:00,2024-07-30 18:57:02+00:00,0.5,0
+Hadley Wickham,hadley@posit.co,,2,80246,30096,110342,2923,633,2014-06-17 06:02:03+00:00,2022-11-11 06:59:00+00:00,0.5,0

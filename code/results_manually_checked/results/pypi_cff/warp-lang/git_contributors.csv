@@ -1,0 +1,56 @@
+name,email,insertions,deletions,lines_changed,files,commits,first_commit,last_commit
+Miles Macklin,mmacklin@nvidia.com,266404,156883,423287,3977,727,2021-04-15 04:51:35+00:00,2024-10-24 04:39:21+00:00
+unknownChristopher Crouzet,christopher@crouzet.pm,41320,17554,58874,1490,342,2022-10-14 02:10:22+00:00,2024-11-13 18:35:49+00:00
+Eric Shi,ershi@nvidia.com,56206,902668,958874,6390,315,2023-03-30 02:03:28+00:00,2024-11-14 16:35:00+00:00
+Nicolas capensNicolas Capens,ncapens@nvidia.com,22591,16615,39206,703,285,2023-01-18 19:01:40+00:00,2024-07-28 04:06:40+00:00
+Lukasz Wawrzyniak,lwawrzyniak@nvidia.com,63790,10783,74573,814,208,2022-02-01 20:45:42+00:00,2024-11-13 23:50:47+00:00
+Eric Heiden,eric-heiden@outlook.com,25294,12716,38010,389,167,2022-04-21 09:17:27+00:00,2024-01-06 10:03:43+00:00
+Zach Corse,zcorse@nvidia.com,19511,8442,27953,650,148,2022-03-17 14:52:32+00:00,2024-09-05 05:10:21+00:00
+David Minordminor,dminor@nvidia.com,45081,47533,92614,263,83,2022-09-28 16:37:25+00:00,2023-02-24 22:29:42+00:00
+Miles Macklin,miles.macklin@gmail.com,31985,14393,46378,482,73,2021-03-23 04:26:47+00:00,2023-04-18 21:07:22+00:00
+Eric Heiden,eheiden@nvidia.com,22353,8092,30445,362,67,2022-06-28 03:54:57+00:00,2024-10-28 19:22:01+00:00
+Gilles Daviet,gdaviet@nvidia.com,66705,20461,87166,695,62,2022-06-27 12:03:19+00:00,2024-11-14 07:16:19+00:00
+Greg Klar,gklar@nvidia.com,17791,8548,26339,210,55,2021-12-02 02:34:00+00:00,2023-04-20 22:09:03+00:00
+Jonathan Leaf,jleaf@nvidia.com,1862,333,2195,62,41,2021-12-08 21:18:52+00:00,2022-11-08 21:33:38+00:00
+daedalus5,zach.corse@gmail.com,2108,747,2855,61,26,2021-12-03 12:45:22+00:00,2022-02-22 22:34:33+00:00
+Leopold Cambier,lcambier@nvidia.com,1065,396,1461,44,12,2024-09-25 00:40:18+00:00,2024-11-11 01:34:37+00:00
+Daniela Hasenbring,dhasenbring@nvidia.com,454,48,502,20,9,2022-05-18 23:05:57+00:00,2023-10-26 23:52:14+00:00
+Anka Chen,ankac@nvidia.com,3209,131,3340,29,8,2024-08-21 03:14:47+00:00,2024-10-18 18:04:23+00:00
+Nicolas Capens,ncapens@ncapens-mlt.client.nvidia.com,145,86,231,8,7,2023-05-30 22:02:56+00:00,2023-10-02 16:44:00+00:00
+HydrogenSulfate,490868991@qq.com,1923,157,2080,25,6,2024-09-28 05:15:07+00:00,2024-10-31 02:51:47+00:00
+Jack Kosaian,jkosaian@nvidia.com,1058126,74,1058200,5082,6,2022-12-05 14:19:37+00:00,2022-12-15 01:05:18+00:00
+Christopher Crouzet,ccrouzet@nvidia.com,92,259,351,29,6,2023-03-20 16:51:28+00:00,2024-11-14 09:28:11+00:00
+Nuttapong Chentanez,nuttapong26@gmail.com,358,57,415,29,5,2022-12-12 04:02:15+00:00,2023-10-12 16:37:51+00:00
+Fanbo Xiang,fxiang@nvidia.com,396,12,408,10,4,2022-06-30 20:52:23+00:00,2022-07-06 18:02:58+00:00
+cadop,cadop@users.noreply.github.com,19,12,31,6,4,2024-05-22 13:43:47+00:00,2024-05-28 21:39:34+00:00
+Mehdi Ataei,mehdi.ataei@autodesk.com,473,30,503,7,4,2024-09-09 20:31:12+00:00,2024-10-10 16:42:33+00:00
+Fanbo Xiang,xiangfanbo@gmail.com,585,28,613,11,3,2021-08-06 23:37:17+00:00,2021-09-07 18:34:13+00:00
+steinraf,steinraf@student.ethz.ch,393,362,755,5,3,2024-09-03 21:18:35+00:00,2024-09-03 22:29:04+00:00
+Nicolas Capens,nicolas@sarahs-macbook-pro.local,29,4,33,4,3,2023-04-26 04:49:15+00:00,2023-05-04 17:36:38+00:00
+Anka Chen,ankachan92@gmail.com,3,2,5,3,3,2024-08-30 00:15:52+00:00,2024-09-30 19:46:21+00:00
+Matthias Müller,matthi@mail.com,651,17,668,12,3,2022-09-20 13:57:38+00:00,2022-09-22 16:04:54+00:00
+Matthew Cong,mcong@nvidia.com,41,3,44,5,3,2023-07-31 18:50:04+00:00,2024-09-18 22:06:22+00:00
+teamcity_GITLAB_AUTH_TOKEN_2023-09,group_2393_bot_5d0966bc2a56f789460bc43793b2fb7e@noreply.gitlab-master.nvidia.com,20,6,26,5,2,2024-06-06 17:59:24+00:00,2024-06-06 18:00:03+00:00
+david,dhoeller@nvidia.com,894,92,986,7,2,2022-04-01 15:18:50+00:00,2022-04-01 15:32:35+00:00
+Arthur Allshire,aallshire@nvidia.com,76,67,143,6,2,2022-06-23 15:00:42+00:00,2022-06-23 19:58:46+00:00
+Nicolas Capens,nicolas@sarahs-mbp.lan,36,19,55,6,2,2023-03-29 05:27:01+00:00,2023-03-29 05:27:01+00:00
+Nicolas Capens,nicolas.capens@gmail.com,76,94,170,8,2,2023-02-16 05:05:51+00:00,2023-02-16 07:35:18+00:00
+Michal Marcinkiewiczmichalm,michalm@nvidia.com,12,12,24,2,2,2022-04-28 18:55:02+00:00,2022-05-12 22:46:00+00:00
+Edward QuigleyEd Quigley,equigley@nvidia.com,254,32,286,4,2,2023-08-30 01:28:27+00:00,2024-07-02 01:31:53+00:00
+Matthias Mueller-FischerMatthias Mueller,matthiasm@nvidia.com,586,527,1113,14,2,2022-09-21 14:54:25+00:00,2023-06-12 00:16:19+00:00
+teamcity_GITLAB_AUTH_TOKEN,group2393_bot2@noreply.gitlab-master.nvidia.com,35,12,47,5,2,2024-05-03 03:49:49+00:00,2024-05-03 03:50:08+00:00
+Karl Van Wyk,kvanwyk@nvidia.com,82,43,125,3,2,2022-05-31 21:59:08+00:00,2022-11-02 21:28:11+00:00
+Mehdi Ataei,ataei8@gmail.com,1,1,2,1,1,2024-09-10 14:16:18+00:00,2024-09-10 14:16:18+00:00
+Anders Museth,amuseth@nvidia.com,1,1,2,1,1,2023-07-11 23:48:27+00:00,2023-07-11 23:48:27+00:00
+Alexandre Begnoche,abegnoche@nvidia.com,1,1,2,1,1,2024-05-27 18:34:27+00:00,2024-05-27 18:34:27+00:00
+Nuttapong Chentanez,nchentanez@nvidia.com,580,9,589,12,1,2023-08-21 02:34:29+00:00,2023-08-21 02:34:29+00:00
+Graham Markall,gmarkall@nvidia.com,4,1,5,1,1,2022-03-17 11:42:14+00:00,2022-03-17 11:42:14+00:00
+Arthur Allshire,arthur@allshire.org,103,13,116,3,1,2022-06-23 13:16:06+00:00,2022-06-23 13:16:06+00:00
+Kristijan Bartol,kristijan.bartol@gmail.com,2,6,8,1,1,2024-10-09 11:57:30+00:00,2024-10-09 11:57:30+00:00
+Erwin Coumans,ecoumans@nvidia.com,6,1,7,1,1,2022-04-13 03:04:37+00:00,2022-04-13 03:04:37+00:00
+Oliver Hennigh,ohennigh@nvidia.com,377,0,377,1,1,2022-10-19 17:08:38+00:00,2022-10-19 17:08:38+00:00
+Pal Mezei,pmezei@nvidia.com,1,1000,1001,2,1,2024-05-02 03:11:58+00:00,2024-05-02 03:11:58+00:00
+Josh Romero,joshr@nvidia.com,1,1,2,1,1,2024-05-01 18:06:45+00:00,2024-05-01 18:06:45+00:00
+Jason Gorski,jgorski@nvidia.com,11,1,12,1,1,2024-10-17 13:31:36+00:00,2024-10-17 13:31:36+00:00
+Rafael Steiner,79702017+steinraf@users.noreply.github.com,1,1,2,1,1,2024-08-16 13:02:27+00:00,2024-08-16 13:02:27+00:00
+Minjae Lee,minjael@nvidia.com,2,2,4,1,1,2024-01-31 20:43:02+00:00,2024-01-31 20:43:02+00:00

@@ -1,0 +1,5 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Jennifer Bryan,jenny@posit.co,0000-0002-6983-2759,1,71512,27161,98673,4054,1132,2017-08-11 20:22:31+00:00,2024-08-23 23:20:29+00:00,0.5,0
+Andy Teucher,andy.teucher@posit.co,0000-0002-7840-692X,15,957,290,1247,60,11,2023-04-22 05:52:19+00:00,2024-07-23 19:01:27+00:00,1.0,0
+Malcolm Barrett,malcolmbarrett@gmail.com,0000-0003-0299-5825,6,1184,300,1484,150,38,2018-02-23 22:11:03+00:00,2022-06-09 21:40:56+00:00,0.5,0
+Hadley Wickham,hadley@posit.co,0000-0003-4757-117X,2,26645,48305,74950,2844,823,2010-05-03 02:48:05+00:00,2024-06-28 22:34:50+00:00,0.5,0

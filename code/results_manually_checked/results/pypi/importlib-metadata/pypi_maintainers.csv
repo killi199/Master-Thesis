@@ -1,0 +1,4 @@
+login,name,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+jaraco,Jason R. Coombs,1,12012,7320,19332,1652,1112,2015-12-20 03:29:56+00:00,2024-08-29 20:53:52+00:00,1.0,0
+barry,Barry Warsaw,2,1831,549,2380,132,46,2018-05-17 16:48:51+00:00,2023-05-03 11:55:22+00:00,1.0,0
+brettcannon,Brett Cannon,57,1,1,2,1,1,2020-04-28 23:29:04+00:00,2020-04-28 23:29:04+00:00,1.0,0

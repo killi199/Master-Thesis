@@ -1,0 +1,5 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Hadley Wickham,hadley@posit.co,,6,622,330,952,61,19,2014-01-10 11:40:59+00:00,2017-05-31 18:42:44+00:00,0.5,0
+JJ Allaire,jj@posit.co,,3,701,234,935,83,29,2014-12-26 16:46:17+00:00,2017-01-27 15:38:20+00:00,0.5,0
+Kevin Ushey,kevin@rstudio.com,,20,1,1,2,1,1,2022-02-03 19:04:20+00:00,2022-02-03 19:04:20+00:00,1.0,0
+Gary Ritchie,gary@posit.co,,2,1795,650,2445,221,30,2017-04-27 21:07:57+00:00,2020-09-17 00:31:08+00:00,0.5,0

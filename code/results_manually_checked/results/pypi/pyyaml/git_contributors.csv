@@ -1,0 +1,44 @@
+name,email,insertions,deletions,lines_changed,files,commits,first_commit,last_commit
+Kirill Simonov,xi@resolvent.net,34244,11683,45927,2351,174,2006-03-04 22:43:48+00:00,2016-08-28 23:55:34+00:00
+Ingy döt Net,ingy@ingy.net,886,652,1538,76,28,2018-04-10 23:47:47+00:00,2021-09-23 21:44:20+00:00
+Tina MüllerTina Müller (tinita),cpan2@tinita.de,1161,226,1387,96,28,2018-04-15 11:39:34+00:00,2021-02-05 23:39:43+00:00
+Matt Davis,mrd@redhat.com,1328,716,2044,57,18,2019-03-12 18:35:50+00:00,2023-08-29 22:06:59+00:00
+Thom SmithThomas Smith,thom@thomthesmith.com,162,8377,8539,111,10,2021-09-02 18:34:48+00:00,2021-09-22 20:32:47+00:00
+Jon Dufresne,jon.dufresne@gmail.com,14,53,67,12,6,2017-04-16 22:02:35+00:00,2019-12-08 17:46:19+00:00
+Matt Davis,6775756+nitzmahone@users.noreply.github.com,616,693,1309,18,5,2023-07-17 22:53:03+00:00,2024-08-06 22:43:04+00:00
+Peter Murphy,peterkmurphy@gmail.com,42,50,92,10,5,2017-05-06 22:53:49+00:00,2017-05-09 23:38:57+00:00
+Christian Clauss,cclauss@me.com,4,7,11,4,4,2019-11-09 07:36:44+00:00,2019-11-09 07:41:02+00:00
+Alex Gaynor,alex.gaynor@gmail.com,135,98,233,20,4,2017-08-26 13:26:59+00:00,2018-06-25 03:56:07+00:00
+Donald Stufft,donald@stufft.io,70,55,125,5,4,2016-09-12 12:20:01+00:00,2017-09-08 15:05:24+00:00
+Pantelis Antoniou,pantelis.antoniou@konsulko.com,187,321,508,8,4,2021-09-22 16:11:10+00:00,2021-09-22 19:47:11+00:00
+HugohugovkHugo van Kemenade,hugovk@users.noreply.github.com,9,8,17,9,3,2017-10-08 14:29:50+00:00,2019-12-09 15:32:56+00:00
+Anish Athalye,me@anishathalye.com,8,3,11,2,2,2019-12-08 16:18:04+00:00,2020-01-22 21:07:06+00:00
+Pablo Santiago Blum de Aguiar,scorphus@gmail.com,22550,0,22550,644,1,2015-04-04 16:25:24+00:00,2015-04-04 16:25:24+00:00
+Matt Davis,nitzmahone@users.noreply.github.com,4,13,17,4,1,2019-02-24 06:43:32+00:00,2019-02-24 06:43:32+00:00
+Tim Gates,tim.gates@iress.com,8,8,16,2,1,2019-06-24 11:06:20+00:00,2019-06-24 11:06:20+00:00
+Matt Davis,nitzmahone@redhat.com,184,117,301,597,1,2021-11-25 00:37:09+00:00,2021-11-25 00:37:09+00:00
+Phil Sphicas,pgs2111@columbia.edu,4,4,8,2,1,2020-09-18 07:29:02+00:00,2020-09-18 07:29:02+00:00
+scauligi,scauligi@eng.ucsd.edu,1,1,2,1,1,2018-02-04 05:44:49+00:00,2018-02-04 05:44:49+00:00
+psanchez,psanchez@alertmd.com,1,1,2,1,1,2017-03-28 14:41:10+00:00,2017-03-28 14:41:10+00:00
+Matthieu Darbois,mayeut@users.noreply.github.com,70,31,101,4,1,2022-09-13 22:12:45+00:00,2022-09-13 22:12:45+00:00
+Riccardo Schirone,ret2libc@users.noreply.github.com,100,4,104,6,1,2020-03-17 18:09:55+00:00,2020-03-17 18:09:55+00:00
+sblondon,sblondon@users.noreply.github.com,4,0,4,1,1,2019-12-07 21:44:29+00:00,2019-12-07 21:44:29+00:00
+Andrey Somov,public.somov@gmail.com,2,4,6,2,1,2018-03-28 08:07:27+00:00,2018-03-28 08:07:27+00:00
+Mattijs Ugen,144798+akaidiot@users.noreply.github.com,36,11,47,2,1,2019-12-15 16:59:22+00:00,2019-12-15 16:59:22+00:00
+Jakub Wilk,jwilk@jwilk.net,31,31,62,12,1,2017-01-22 11:42:27+00:00,2017-01-22 11:42:27+00:00
+Daniel Beer,dbeer1@bloomberg.net,10,23,33,3,1,2017-02-08 19:50:53+00:00,2017-02-08 19:50:53+00:00
+ossdev07,39188636+ossdev07@users.noreply.github.com,9,0,9,1,1,2020-03-19 18:49:38+00:00,2020-03-19 18:49:38+00:00
+Anthony Sottile,asottile@umich.edu,1,1,2,1,1,2018-06-28 19:43:21+00:00,2018-06-28 19:43:21+00:00
+Timofei Bondarev,bondarevts@gmail.com,4,4,8,2,1,2017-03-01 05:45:09+00:00,2017-03-01 05:45:09+00:00
+Brad Solomon,brad.solomon.1124@gmail.com,522,121,643,24,1,2020-12-12 02:12:08+00:00,2020-12-12 02:12:08+00:00
+Ovv,contact@ovv.dev,18,0,18,2,1,2020-04-06 09:14:45+00:00,2020-04-06 09:14:45+00:00
+convert-repo,convert-repo@localhost,0,0,0,0,1,2012-12-24 03:51:27+00:00,2012-12-24 03:51:27+00:00
+David Kao,dthkao@gmail.com,6,6,12,4,1,2019-03-15 18:21:40+00:00,2019-03-15 18:21:40+00:00
+Tim Hoffmann,2836374+timhoffm@users.noreply.github.com,49,43,92,2,1,2019-08-05 10:20:59+00:00,2019-08-05 10:20:59+00:00
+Dwight Guth,dwight.guth@runtimeverification.com,44,6,50,5,1,2019-12-13 23:30:52+00:00,2019-12-13 23:30:52+00:00
+Frédéric Chapoton,fchapoton2@gmail.com,3,3,6,3,1,2019-12-13 23:40:56+00:00,2019-12-13 23:40:56+00:00
+Filip Salomonsson,filip.salomonsson@gmail.com,30,4,34,6,1,2019-12-07 21:34:23+00:00,2019-12-07 21:34:23+00:00
+Sergey Fursov,geyser85@gmail.com,4,4,8,2,1,2019-04-11 11:20:14+00:00,2019-04-11 11:20:14+00:00
+Florian Bruhin,git@the-compiler.org,2,2,4,1,1,2018-06-27 12:50:15+00:00,2018-06-27 12:50:15+00:00
+Ian Cordasco,graffatcolmingov@gmail.com,4,3,7,2,1,2016-11-23 23:26:13+00:00,2016-11-23 23:26:13+00:00
+hsmtkk,hsmtkk@gmail.com,8,0,8,1,1,2017-08-27 10:44:04+00:00,2017-08-27 10:44:04+00:00

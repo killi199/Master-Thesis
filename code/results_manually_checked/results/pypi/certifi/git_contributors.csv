@@ -1,0 +1,41 @@
+name,email,insertions,deletions,lines_changed,files,commits,first_commit,last_commit
+Cory Benfield,lukasaoz@gmail.com,11263,6560,17823,117,66,2014-04-14 13:46:08+00:00,2023-07-22 08:39:07+00:00
+dependabot[bot],49699333+dependabot[bot]@users.noreply.github.com,87,87,174,72,50,2023-07-07 17:50:12+00:00,2024-09-02 23:35:18+00:00
+Kenneth Reitz,me@kennethreitz.com,8767,3487,12254,41,34,2011-12-28 05:18:09+00:00,2014-05-18 22:55:36+00:00
+Alex Gaynor,alex.gaynor@gmail.com,358,49,407,25,20,2014-02-28 19:18:03+00:00,2024-09-02 23:36:02+00:00
+Jon Dufresne,jon.dufresne@gmail.com,62,5465,5527,22,11,2017-06-02 04:37:17+00:00,2022-05-21 01:05:29+00:00
+Hugo van Kemenade,hugovk@users.noreply.github.com,74,36,110,12,5,2020-03-23 15:54:13+00:00,2022-07-15 13:32:24+00:00
+github-actions[bot],41898282+github-actions[bot]@users.noreply.github.com,223,72,295,8,4,2024-02-02 01:20:04+00:00,2024-08-30 01:53:20+00:00
+John Kirkham,kirkhamj@janelia.hhmi.org,12,2,14,3,3,2016-06-09 19:41:40+00:00,2016-06-09 19:51:41+00:00
+James E. Flemer,james.flemer@ndpgroup.com,9,1,10,2,2,2020-04-14 18:16:42+00:00,2020-04-14 18:21:07+00:00
+Charlie Denton,charleswdenton@gmail.com,2,4,6,2,2,2014-10-20 20:01:11+00:00,2014-10-20 20:57:38+00:00
+Peter Schmidt,peter@peterjs.com,3,2,5,2,2,2016-01-04 06:26:16+00:00,2016-01-04 06:28:46+00:00
+Ian Cordasco,sigmavirus24@users.noreply.github.com,2,4,6,2,2,2016-05-15 00:42:44+00:00,2016-05-26 18:13:19+00:00
+Joyce,joycebrum@google.com,19,5,24,4,2,2023-03-20 21:35:59+00:00,2023-07-07 17:49:07+00:00
+Nirjas Jakilim,nirjas01@student.sust.edu,1,2,3,1,1,2021-10-27 12:32:56+00:00,2021-10-27 12:32:56+00:00
+Pete Fritchman,petef@databits.net,1,1,2,1,1,2012-04-09 15:39:10+00:00,2012-04-09 15:39:10+00:00
+Andy Gelnar,neoshrew@users.noreply.github.com,1,0,1,1,1,2017-06-06 12:44:09+00:00,2017-06-06 12:44:09+00:00
+Miloššš Korenčiak,milos-korenciak@users.noreply.github.com,3,0,3,1,1,2021-07-30 09:28:59+00:00,2021-07-30 09:28:59+00:00
+Kenneth Reitz,me@kennethreitz.org,1,1,2,1,1,2014-06-20 17:06:55+00:00,2014-06-20 17:06:55+00:00
+Adam Johnson,me@adamj.eu,2,2,4,2,1,2018-10-29 11:00:16+00:00,2018-10-29 11:00:16+00:00
+Matt Hickford,matt.hickford@gmail.com,1,1,2,1,1,2015-01-01 21:26:40+00:00,2015-01-01 21:26:40+00:00
+Ayrx,terrycwk1994@gmail.com,12,5,17,1,1,2014-06-20 14:43:49+00:00,2014-06-20 14:43:49+00:00
+Lukasa,lukasa@users.noreply.github.com,187,44,231,2,1,2023-11-17 21:04:10+00:00,2023-11-17 21:04:10+00:00
+Thomas Sibley,tom@zulutango.org,1,1,2,1,1,2022-09-13 20:15:21+00:00,2022-09-13 20:15:21+00:00
+PythonCoderAS,13932583+pythoncoderas@users.noreply.github.com,1,0,1,1,1,2020-01-01 18:59:39+00:00,2020-01-01 18:59:39+00:00
+Joyce,joycebrumu.u@gmail.com,6,2,8,2,1,2023-02-24 22:16:50+00:00,2023-02-24 22:16:50+00:00
+luccabb,32229669+luccabb@users.noreply.github.com,6,0,6,1,1,2024-01-30 20:14:04+00:00,2024-01-30 20:14:04+00:00
+zed,isidore.john.r@gmail.com,1,1,2,1,1,2012-09-23 07:21:55+00:00,2012-09-23 07:21:55+00:00
+Pierre Grimaud,grimaud.pierre@gmail.com,1,1,2,1,1,2021-04-19 18:43:46+00:00,2021-04-19 18:43:46+00:00
+Ian Cordasco,graffatcolmingov@gmail.com,1,2,3,1,1,2016-08-09 13:33:23+00:00,2016-08-09 13:33:23+00:00
+Glyph,glyph@twistedmatrix.com,2,0,2,1,1,2014-05-01 08:22:02+00:00,2014-05-01 08:22:02+00:00
+Donald Stufft,donald@stufft.io,35,5,40,1,1,2020-04-06 05:35:45+00:00,2020-04-06 05:35:45+00:00
+Diogo Teles Sant'Anna,diogoteles@google.com,9,0,9,2,1,2023-09-07 22:55:06+00:00,2023-09-07 22:55:06+00:00
+chris,chris@divbzero.com,7,3,10,2,1,2020-03-18 21:46:17+00:00,2020-03-18 21:46:17+00:00
+Christian Clauss,cclauss@me.com,2,1,3,1,1,2023-04-26 10:18:20+00:00,2023-04-26 10:18:20+00:00
+gopackgo90,cbodendein@live.com,0,3,3,1,1,2022-03-11 16:06:20+00:00,2022-03-11 16:06:20+00:00
+Benno Rice,benno@jeamland.net,30,5,35,3,1,2020-02-24 20:13:57+00:00,2020-02-24 20:13:57+00:00
+Alexander Lisianoi,all3fox@gmail.com,1,1,2,1,1,2017-06-05 14:24:24+00:00,2017-06-05 14:24:24+00:00
+Adrien Ferrand,adferrand@users.noreply.github.com,27,12,39,1,1,2020-03-18 21:53:31+00:00,2020-03-18 21:53:31+00:00
+Adal Chiriliuc,adal.chiriliuc@gmail.com,3,1,4,1,1,2014-10-10 18:51:29+00:00,2014-10-10 18:51:29+00:00
+William Woodruff,william@yossarian.net,79,32,111,3,1,2023-07-26 03:03:28+00:00,2023-07-26 03:03:28+00:00

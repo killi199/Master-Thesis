@@ -1,0 +1,5 @@
+name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+Daniel Adler,dadler@uni-goettingen.de,,,,,,,,,,0.0,0
+Tom M. Elliott,tom.elliott@auckland.ac.nz,,4.0,14.0,8.0,22.0,2.0,2.0,2016-07-25 06:50:58+00:00,2016-07-25 07:03:12+00:00,0.5,0
+S. Thomas Kelly,tomkellygenetics@gmail.com,,1.0,5839.0,4011.0,9850.0,509.0,247.0,2016-03-17 04:54:19+00:00,2024-07-04 23:19:44+00:00,0.5,0
+Jordan Adamson,adamson@wifa.uni-leipzig.de,,5.0,545.0,0.0,545.0,1.0,1.0,2022-11-09 16:18:22+00:00,2022-11-09 16:18:22+00:00,0.5,0

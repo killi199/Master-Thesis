@@ -1,0 +1,4 @@
+name,email,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
+,Moritz Raabe <moritz.raabe@mandiant.com>,9,5258,4423,9681,359,127,2020-06-25 08:10:58+00:00,2021-09-27 19:46:49+00:00,0.5,0
+,Mike Hunhoff <michael.hunhoff@mandiant.com>,40,18,7,25,4,3,2022-03-21 19:23:38+00:00,2022-03-21 21:37:21+00:00,0.5,0
+,Willi Ballenthin <william.ballenthin@mandiant.com>,2,20007,15578,35585,1380,636,2020-07-01 04:27:40+00:00,2024-06-06 08:41:59+00:00,0.5,0
