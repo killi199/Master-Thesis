@@ -1,3 +1,43 @@
-\chapter{Beispielanlage}\label{app:bsp}
+\chapter{Zusätzliche Abbildungen}
+\label{chap:zusaetzliche_abbildungen}
 
-Beispieltext.
+\begin{figure}[H]
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_pypi.svg}
+        \caption{\gls{pypi} nach Commits}
+        \label{fig:common_authors_pypi}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_pypi_by_files.svg}
+        \caption{\gls{pypi} nach geänderten Zeilen}
+        \label{fig:common_authors_by_files_pypi}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_cran.svg}
+        \caption{\gls{cran} nach Commits}
+        \label{fig:common_authors_cran}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cran_by_files.svg}
+        \caption{\gls{cran} nach geänderten Zeilen}
+        \label{fig:common_authors_by_files_cran}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_cff.svg}
+        \caption{\gls{cff} nach Commits}
+        \label{fig:common_authors_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cff_by_files.svg}
+        \caption{\gls{cff} nach geänderten Zeilen}
+        \label{fig:common_authors_by_files_cff}
+    \end{subfigure}
+    \caption{Anteil der Top Git Autoren in der Zitation}
+    \label{fig:common_authors_anhang}
+\end{figure}

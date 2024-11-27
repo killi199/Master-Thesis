@@ -30,86 +30,38 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
 
 
 % TODO anekdotisch untermauern mit eins zwei bsp. warum einige linien unten erst bei x=1 oder 2 beginnen. Eins zwei pakete nennen bei denen die ersten commiter nicht genannt werden.
-% TODO in x Achsen beschreibung einfügen "Anzahl der betrachteten Git Autoren sortiert nach Commits"
 \begin{figure}
-    % TODO Daneben direkt bilder/common_authors_by_files/1_pypi_by_files.svg anzeigen und das für eins zwei ausgewählte listen machen und nicht für alle. sondern nur für listen um meine Aussage zu zeigen. Die anderen Graphen in den Anhang
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_pypi.svg}
-        \caption{\gls{pypi}}
-        \label{fig:common_authors_pypi}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_cran.svg}
-        \caption{\gls{cran}}
-        \label{fig:common_authors_cran}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_cff.svg}
-        \caption{\gls{cff}}
-        \label{fig:common_authors_cff}
-    \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_pypi_cff.svg}
-        \caption{\gls{pypi} \gls{cff}}
+        \caption{\gls{pypi} \gls{cff} nach Commits}
         \label{fig:common_authors_pypi_cff}
-    \end{subfigure}
-    \centering
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_cran_cff.svg}
-        \caption{\gls{cran} \gls{cff}}
-        \label{fig:common_authors_cran_cff}
-    \end{subfigure}
-    \caption{Anteil der Top Git Autoren nach Commits in der Zitation}
-    \label{fig:common_authors}
-    \small
-    \raggedright
-    Die Abbildungen zeigen für die verschiedenen analysierten Listen den Anteil der genannten Autoren an den Git Autoren. Sie zeigen also für die ersten eins bis 100 Top Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent diese in der jeweiligen Quelle z.B. \gls{cff} genannt werden. Falls der Autor mit den meisten Commits beispielsweise in der \gls{cff} genannt wird, und nur ein Git Autor betrachtet wird, ist an dieser Stelle der Wert 1.0 und somit 100 \%.
-\end{figure}
-
-% TODO die Bilder neben den sortiert nach commits packen
-% x Achsen beschreibung: "Anzahl der betrachteten Git Autoren sortiert nach changed_lines"
-\begin{figure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_pypi_by_files.svg}
-        \caption{\gls{pypi}}
-        \label{fig:common_authors_by_files_pypi}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cran_by_files.svg}
-        \caption{\gls{cran}}
-        \label{fig:common_authors_by_files_cran}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cff_by_files.svg}
-        \caption{\gls{cff}}
-        \label{fig:common_authors_by_files_cff}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_pypi_cff_by_files.svg}
-        \caption{\gls{pypi} \gls{cff}}
+        \caption{\gls{pypi} \gls{cff} nach geänderten Zeilen}
         \label{fig:common_authors_by_files_pypi_cff}
     \end{subfigure}
-    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors/1_cran_cff.svg}
+        \caption{\gls{cran} \gls{cff} nach Commits}
+        \label{fig:common_authors_cran_cff}
+    \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cran_cff_by_files.svg}
-        \caption{\gls{cran} \gls{cff}}
+        \caption{\gls{cran} \gls{cff} nach geänderten Zeilen}
         \label{fig:common_authors_by_files_cran_cff}
     \end{subfigure}
-    \caption{Anteil der Top Git Autoren nach geänderten Zeilen in der Zitation}
-    \label{fig:common_authors_by_files}
+    \caption{Anteil der Top Git Autoren in der Zitation}
+    \label{fig:common_authors}
     \small
     \raggedright
-    Die Abbildungen zeigen die gleichen Graphen wie \autoref{fig:common_authors}, jedoch werden hier die Git Autoren über die Anzahl der geänderten Zeilen gemessen.
+    % TODO die Beschreibungen alle gleich aufbauen. Achsen beschreiben, Linien beschreiben, auf a, b, c, d, e eingehen und einen prägnanten satz wie: " In der CFF sind y% unter den Top x commitern.
+    % TODO die Große beschreibung im Text mit beispielen erklären
+    Die Abbildungen zeigen für die verschiedenen analysierten Listen den Anteil der genannten Autoren an den Git Autoren. Sie zeigen also für die ersten eins bis 100 Top Git Autoren gemessen an der Anzahl der Commits, zu wie viel Prozent diese in der jeweiligen Quelle z.B. \gls{cff} genannt werden. Falls der Autor mit den meisten Commits beispielsweise in der \gls{cff} genannt wird, und nur ein Git Autor betrachtet wird, ist an dieser Stelle der Wert 1.0 und somit 100 \%.
 \end{figure}
 
 % TODO anekdotisch untermauern mit eins zwei bsp. warum einige linien unten erst bei x=1 oder 2 beginnen. Eins zwei pakete nennen bei denen die ersten commiter nicht genannt werden.

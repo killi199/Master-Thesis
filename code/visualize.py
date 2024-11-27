@@ -38,12 +38,13 @@ def common_authors_plot(file_list, sources, commits):
 
         plt.xlim(1, 100)
         plt.legend(loc="upper right")
-        plt.xlabel("Anzahl der betrachteten Git Autoren")
         plt.ylabel("Anteil der genannten Autoren an den Git Autoren")
         plt.tight_layout()
         if commits:
+            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach Commits")
             plt.savefig(f"../docs/bilder/common_authors/1_{source}.svg")
         else:
+            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach geänderten Zeilen")
             plt.savefig(f"../docs/bilder/common_authors_by_files/1_{source}_by_files.svg")
         plt.show()
 
@@ -107,12 +108,13 @@ def common_authors_2_plot(file_list, sources, commits):
             plt.plot(relative, label=file_name, color=info["color"])
 
         plt.legend(loc="lower right")
-        plt.xlabel("Anzahl der betrachteten Git Autoren")
         plt.ylabel("Anteil der genannten Autoren an den Git Autoren")
         plt.tight_layout()
         if commits:
+            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach Commits")
             plt.savefig(f"../docs/bilder/common_authors_2/2_{source}.svg")
         else:
+            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach geänderten Zeilen")
             plt.savefig(f"../docs/bilder/common_authors_2_by_files/2_{source}_by_files.svg")
         plt.show()
 
