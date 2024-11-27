@@ -3,6 +3,7 @@ import os
 import matplotlib.pyplot as plt
 import ast
 import pandas as pd
+from datetime import datetime
 
 def common_authors_plot(file_list, sources, commits):
     for source_name, source in sources.items():
@@ -155,6 +156,10 @@ file_list = {"CFF": {"file": "total_authors_no_commits/cff_authors_new.csv", "co
              "Python Authors": {"file": "total_authors_no_commits/python_authors.csv", "color": "red"},
              "Python Maintainers": {"file": "total_authors_no_commits/python_maintainers.csv", "color": "orange"}}
 
+current_year = datetime.now().year
+years = list(range(current_year, current_year - 10, -1))
+x_ticks = [i * 365 + 150 for i in range(len(years))]
+
 for source_name, source in sources.items():
     for file_name, info in file_list.items():
         file_path = f"overall_results/{source}/{info['file']}"
@@ -191,9 +196,10 @@ for source_name, source in sources.items():
 
         plt.plot(relative, label=file_name, color=info["color"])
 
+    plt.xticks(ticks=x_ticks, labels=years)
     plt.gca().invert_xaxis()
     plt.legend(loc="upper left")
-    plt.xlabel("Tage")
+    plt.xlabel("Jahr")
     plt.ylabel("Anteil der Autoren ohne Commits")
     plt.tight_layout()
     plt.savefig(f"../docs/bilder/total_authors_no_commits/3_{source}.svg")
