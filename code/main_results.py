@@ -296,10 +296,10 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = get_authors_df(file_path)
 
-                    shuffled_authors_df = df.sample(frac=1).reset_index(drop=True)
-                    shuffled_authors_df['checked'] = 0
-                    Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}").mkdir(parents=True, exist_ok=True)
-                    shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/{file}", index=False)
+                    #shuffled_authors_df = df.sample(frac=1).reset_index(drop=True)
+                    #shuffled_authors_df['checked'] = 0
+                    #Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}").mkdir(parents=True, exist_ok=True)
+                    #shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/{file}", index=False)
 
                     if folder_name not in dfs:
                         dfs[folder_name] = list()
@@ -315,7 +315,7 @@ def process_directory(directory, position: int, full=True):
                     file_type_percentages[file_base]['entries'] += entries
 
                     git_contributors_df = get_git_contributors_df(root)
-                    git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/git_contributors.csv", index=False)
+                    #git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/git_contributors.csv", index=False)
 
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file, folder_name)
 
@@ -402,10 +402,10 @@ def process_directory(directory, position: int, full=True):
                 if latest_file_path:
                     authors_df = get_authors_df(latest_file_path)
 
-                    shuffled_authors_df = authors_df.sample().reset_index(drop=True)
-                    shuffled_authors_df['checked'] = 0
-                    Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder}").mkdir(parents=True, exist_ok=True)
-                    shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/{os.path.basename(latest_file_path)}", index=False)
+                    #shuffled_authors_df = authors_df.sample().reset_index(drop=True)
+                    #shuffled_authors_df['checked'] = 0
+                    #Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder}").mkdir(parents=True, exist_ok=True)
+                    #shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/{os.path.basename(latest_file_path)}", index=False)
 
                     if folder not in dfs:
                         dfs[folder] = list()
@@ -420,7 +420,7 @@ def process_directory(directory, position: int, full=True):
                     file_type_percentages[file_type]['entries'] += entries
 
                     git_contributors_df = get_git_contributors_df(os.path.dirname(latest_file_path))
-                    git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/git_contributors.csv", index=False)
+                    #git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/git_contributors.csv", index=False)
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type, folder)
 
                     common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type, folder, True)
