@@ -175,9 +175,9 @@ def process_directory(directory, position: int, full=True):
     file_type_percentages = {}
     total_authors_no_commits = {}
     common_authors = {}
-    common_authors_by_files = {}
+    common_authors_by_lines = {}
     common_authors_2: dict[str, dict[str, tuple[list, int]]] = {}
-    common_authors_2_by_files = {}
+    common_authors_2_by_lines = {}
     dfs = {}
     authors = {}
 
@@ -320,9 +320,9 @@ def process_directory(directory, position: int, full=True):
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file, folder_name)
 
                     common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file, folder_name, True)
-                    common_authors_by_files = get_common_authors_count(git_contributors_df, df, common_authors_by_files, file, folder_name, False)
+                    common_authors_by_lines = get_common_authors_count(git_contributors_df, df, common_authors_by_lines, file, folder_name, False)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, df, common_authors_2, file, folder_name, True)
-                    common_authors_2_by_files = get_common_authors_count_2(git_contributors_df, df, common_authors_2_by_files, file, folder_name, False)
+                    common_authors_2_by_lines = get_common_authors_count_2(git_contributors_df, df, common_authors_2_by_lines, file, folder_name, False)
 
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
@@ -424,9 +424,9 @@ def process_directory(directory, position: int, full=True):
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type, folder)
 
                     common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type, folder, True)
-                    common_authors_by_files = get_common_authors_count(git_contributors_df, authors_df, common_authors_by_files, file_type, folder, False)
+                    common_authors_by_lines = get_common_authors_count(git_contributors_df, authors_df, common_authors_by_lines, file_type, folder, False)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2, file_type, folder, True)
-                    common_authors_2_by_files = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2_by_files, file_type, folder, False)
+                    common_authors_2_by_lines = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2_by_lines, file_type, folder, False)
 
         similarity_with_non_matches = []
         similarity_without_non_matches = []
@@ -524,17 +524,17 @@ def process_directory(directory, position: int, full=True):
             Path(f"overall_results/{directory.split('/')[-1]}/common_authors").mkdir(parents=True, exist_ok=True)
             pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors/{file}", index=False)
 
-        for file, common_authors_by_files_data in common_authors_by_files.items():
-            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_by_files").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(common_authors_by_files_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_by_files/{file}", index=False)
+        for file, common_authors_by_lines_data in common_authors_by_lines.items():
+            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_by_lines").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_by_lines_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_by_lines/{file}", index=False)
 
         for file, common_authors_2_data in common_authors_2.items():
             Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2").mkdir(parents=True, exist_ok=True)
             pd.DataFrame(common_authors_2_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2/{file}", index=False)
 
-        for file, common_authors_2_by_files_data in common_authors_2_by_files.items():
-            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_files").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(common_authors_2_by_files_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_files/{file}", index=False)
+        for file, common_authors_2_by_lines_data in common_authors_2_by_lines.items():
+            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_lines").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_2_by_lines_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_lines/{file}", index=False)
 
     return file_type_percentages, overall_results
 
