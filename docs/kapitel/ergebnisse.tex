@@ -1,6 +1,7 @@
 \chapter{Ergebnisse}
 \label{chap:ergebnisse}
-% TODO darauf achten, dass jede Grafik mindestens einmal im Text referenziert wird
+% Darauf achten, dass jede Grafik mindestens einmal im Text referenziert wird
+% Wichtig ist, dass du deine Forschungsergebnisse im Ergebnisteil noch nicht interpretierst, sondern nur beschreibst.!!!
 In diesem Kapitel werden die Ergebnisse der Masterarbeit präsentiert.
 Das Kapitel ist in zwei Abschnitte unterteilt.
 Zum einen werden die Ergebnisse der Gegenwart in \autoref{sec:neuste_ergebnisse} präsentiert.
@@ -8,7 +9,7 @@ Hierbei werden die jeweils neusten Dateien aus der Datenbeschaffung untersucht u
 Zum anderen werden die Ergebnisse mit Zeitverlauf in \autoref{sec:gesamtheit_ergebnisse} präsentiert.
 Hierbei werden die Dateien aus der Datenbeschaffung in allen Versionen analysiert.
 Durch die Betrachtung aller Versionen können Veränderungen über die Zeit aufgezeigt werden und somit eine Aussage über die Entwicklung der Zitationen getroffen werden.
-In beiden Abschnitten wird zu Beginn auf die Statistiken des Abgleichs eingegangen und präsentiert, wie genau der Abgleich durchgeführt wurde.
+In dem \autoref{sec:neuste_ergebnisse} wird zu Beginn auf die Statistiken des Abgleichs eingegangen und präsentiert, wie genau der Abgleich durchgeführt wurde.
 Der Abgleich hat einen direkten Einfluss auf viele weitere Statistiken.
 
 Die benötigten Daten für die Untersuchungen wurden in der Zeitspanne September 2024 bis November 2024 beschafft.
@@ -18,19 +19,158 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
 
 \section{Ergebnisse der Gegenwart}
 \label{sec:neuste_ergebnisse}
-% TODO auf meine Ergebnisse vom Matching eingehen (False Positives, False Negatives, True Positives, True Negatives) -> Immer die autoren in den jeweiligen quellen geshuffelt und dann die ersten 2 untersucht. das Für alle quellen und alle listen
 % TODO Auf average_time_last_update_cff eingehen
 % TODO auf average_time_last_update_bib eingehen
 % TODO auf average_time_last_update_readme eingehen
 % TODO auf similarity_with_non_matches eingehen
 % TODO auf similarity_without_non_matches eingehen
-% TODO Die komplizierten Grafiken gut erklären! Auch mit eins zwei beispielen z.B. bei 20 betrachteten autoren...  sind 40% blablabla
+Da die Ergebnisse der Masterarbeit direkt abhängig von der Qualität des Abgleichs sind, wurde diese untersucht.
+Dies wurde auf zwei Arten durchgeführt.
+Zum einen wurde automatisch die Anzahl der abgeglichenen Autoren und der nicht abgeglichenen Autoren untersucht.
+Zum anderen wurden manuell für eine ausgewählte Menge an Personen die Ergebnisse händisch überprüft.
+Es wurde in beiden Fällen die Überprüfung ausschließlich auf den neusten Versionen der Daten durchgeführt.
 
+Die automatische Überprüfung erfolgt bei der Auswertung der Daten aus der Datenbeschaffung.
+Dabei wird für jede Liste und für jede Quelle z. B. \gls{cff} die Anzahl der abgeglichenen Autoren und der gesamt vorhandenen Autoren ermittelt.
+Hierbei wurde die gesamte Menge an Autoren betrachtet.
+Die Ergebnisse für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} sind in \autoref{tab:matching_results_auto} dargestellt.
+Für die weiteren Listen sind die Ergebnisse in \autoref{tab:matching_results_auto_anhang} zu finden.
 
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
+        \emph{\gls{cran} Autoren} & & 204/238 (85.71 \%) \\
+        \emph{\gls{cran} Maintainer} & & 99/100 (99.00 \%) \\
+        \emph{Beschreibung} & 580/1070 (54.21 \%) & 21/80 (26.25 \%) \\
+        \emph{README} & 868/1396 (62.18 \%) & 143/1008 (14.19 \%) \\
+        \emph{\gls{cff}} & 477/598 (79.77 \%) & 184/233 (78.97 \%) \\
+        \emph{\gls{cff} preferred citation} & 294/380 (77.37 \%) & 109/136 (80.15 \%) \\
+        \emph{\gls{pypi} Maintainer} & 206/228 (90.35 \%) & \\
+        \emph{Python Autoren} & 105/131 (80.15 \%) & \\
+        \emph{Python Maintainer} & 15/25 (60.00 \%) & \\
+        \emph{\hologo{BibTeX}} & 0/1 (0.00 \%) & \\ \midrule
+        \emph{Summe} & 2545/3829 (66.47 \%) & 760/1795 (42.34 \%) \\
+        \bottomrule
+    \end{tabular}
+    \caption{Automatische Ergebnisse des Abgleichs}
+    \label{tab:matching_results_auto}
+    \small
+    \raggedright
+    In der Tabelle sind die Ergebnisse des automatischen Abgleichs für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dargestellt. Die Werte geben an wie viele der genannten Autoren in den Git Repositorys gefunden wurden.
+\end{table}
 
-% TODO anekdotisch untermauern mit eins zwei bsp. warum einige linien unten erst bei x=1 oder 2 beginnen. Eins zwei pakete nennen bei denen die ersten committer nicht genannt werden.
-% TODO Beispiele geben mit konkreten Zahlen
-% TODO sagen, was es mit den Linien im Hintergrund auf sich hat.
+In den Ergebnissen ist auffällig, dass die Autoren in der README Datei und in der Beschreibung der Pakete am schlechtesten abgeglichen werden konnten.
+Dies liegt daran, dass hierbei die \gls{ner} verwendet wurde und diese nicht immer korrekt arbeitet.
+Hierbei kommt es häufig vor, dass Entitäten erkannt werden, welche keine Person darstellen.
+Außerdem werden Personen mit weiteren Zusätzen wie z. B. dem Anfang einer Internetadresse zurückgegeben, was den Abgleich erschwert.
+Zusätzlich werden in der README und der Beschreibung häufig Personen genannt, welche z. B. vorarbeit für die Software geleistet haben, aber in der Software selbst keinen Code beigetragen haben.
+Diese Personen können nicht abgeglichen werden.
+Die Python Maintainer konnten ebenfalls schlecht abgeglichen werden, da viele Pakete in diesem Feld keine Personen sondern Organisationen nennen.
+
+Allgemein bietet dieses Vorgehen keine Aussage darüber, ob die Personen nicht abgeglichen worden sind, weil sie keinen Code beigetragen haben oder weil sie nicht gefunden wurden.
+Außerdem werden Personen, welche fälschlicherweise mit einer anderen Person abgeglichen wurden in diesem Verfahren als gut bewertet.
+Um diese Fälle ebenfalls betrachten zu können, wurde manuell eine Auswahl an Autoren überprüft.
+Es wurden nicht alle Autoren überprüft, da dies den zeitlichen Rahmen der Arbeit gesprengt hätte.
+Aus diesem Grund wurden die Autoren für jedes Paket und jeder Quelle zufällig neu angeordnet und gespeichert.
+Anschließend wurden jeweils die ersten beiden Autoren anhand von vier Kriterien überprüft.
+Falls nur ein Autor in einer Quelle genannt wurde, wurde nur dieser überprüft.
+Jeder Autor wurde einer der vier Kategorien \glqq Richtig Positiv (TP)\grqq{}, \glqq Falsch Negativ (FN)\grqq{}, \glqq Falsch Positiv (FP)\grqq{} oder \glqq Richtig Negativ (TN)\grqq{} zugeordnet.
+Aus diesen Daten wurde der F1-Score berechnet.
+
+Außerdem wurde angegeben, ob es sie um keine Person handelt, sondern z. B. um eine Organisation.
+In diesen Fällen wurde der Eintrag dennoch in eine der vier Kategorien eingeteilt, wobei primär die Kategorie FP verwendet wurde, falls es eine Zuordnung gab.
+Falls die Zuordnung allerdings mit einem Git Autoren erfolgt ist, welcher beispielsweise ein Bot der Organisation ist wurde der Eintrag als TP eingeteilt, da es keinen Mechanismus in der Datenbeschaffung gibt, welcher Personen von nicht Personen unterscheiden kann.
+Es wurde lediglich in der Datenbeschaffung darauf geachtet möglichst keine Quellen zu berücksichtigen, welche keine Personen enthalten.
+Die Ergebnisse für die \gls{cff} Liste sind in \autoref{tab:cff_matching_results_manual} dargestellt.
+% TODO weitere Tabellen im Anhang referenzieren
+% Die weiteren Ergebnisse für die anderen Listen sind in den Tabellen zu finden.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c|c|c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
+        Beschreibung                 & 12 & 1  & 6  & 26 & 2  & 0.7742 \\
+        README                       & 13 & 1  & 4  & 17 & 5  & 0.8387 \\
+        \gls{cff}                    & 26 & 2  & 0  & 4  & 0  & 0.9630 \\
+        \gls{cff} preferred citation & 7  & 1  & 1  & 4  & 0  & 0.8750 \\
+        \gls{pypi} Maintainer        & 61 & 0  & 9  & 5  & 7  & 0.9313 \\
+        Python Autoren               & 29 & 0  & 13 & 6  & 17 & 0.8169 \\
+        Python Maintainer            & 3  & 0  & 2  & 2  & 3  & 0.7500 \\
+        \hologo{BibTeX}              & 0  & 1  & 0  & 0  & 0  & 0.0000 \\ \midrule
+        Summe                        & 151 & 6 & 35 & 64 & 34 & 0.8805 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cff} Liste}
+    \label{tab:cff_matching_results_manual}
+    \small
+    \raggedright
+    In der Tabelle sind die Ergebnisse des manuellen Abgleichs für die \gls{cff} Liste dargestellt. Dabei wurde für jede Quelle die Anzahl der Richtig Positiven (TP), Falsch Negativen (FN), Falsch Positiven (FP) und Richtig Negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
+\end{table}
+
+Aus den gesammelten Daten wurden weitere Statistiken berechnet.
+Dabei muss berücksichtigt werden, dass einige Statistiken auf dem Abgleich basieren und somit nur so gut sind, wie der Abgleich durchgeführt wurde.
+Außerdem basieren einige Statistiken auf den Metriken der Commits und geänderten Zeilen.
+Die Abbildung \autoref{fig:commits_vs_changed_lines} stellt das Verhältnis der Commits und der geänderten Zeilen für die Autoren in den Paketen der Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dar.
+Für die anderen Listen sind die Ergebnisse in \autoref{fig:commits_vs_changed_lines_anhang} dargestellt.
+Ein Punkt stellt dabei einen Autor dar.
+Es ist zu erkennen, dass einige Autoren nur einen Commit getätigt haben und dabei viele Zeilen geändert haben.
+Beispielsweise hat der Autor François Lagunas in dem Paket \emph{huggingface/datasets} lediglich einen Commit getätigt, aber dabei ungefähr 29.000 Zeilen hinzugefügt.
+Inhalt sind in diesem konkreten Fall automatisch generierte README Dateien für Datensätze, welche zuvor gefehlt haben.
+
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/commits_vs_changed_lines/commits_vs_changed_lines_pypi_cff.svg}
+        \caption{\gls{pypi} \gls{cff}}
+        \label{fig:commits_vs_changed_lines_pypi_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/commits_vs_changed_lines/commits_vs_changed_lines_cran_cff.svg}
+        \caption{\gls{cran} \gls{cff}}
+        \label{fig:commits_vs_changed_lines_cran_cff}
+    \end{subfigure}
+    \caption{Commits und geänderte Zeilen gegenübergestellt}
+    \label{fig:commits_vs_changed_lines}
+    \small
+    \raggedright
+    Die Abbildungen zeigen für die Autoren in den Paketen in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} die Anzahl der Commits gegenüber der Anzahl der geänderten Zeilen. Die x Achse stellt die Anzahl der Commits dar und die y Achse die Anzahl der geänderten Zeilen. Es wird eine logarithmische Skalierung verwendet.
+\end{figure}
+
+Die \autoref{fig:common_authors} zeigt den Anteil der Top Git Autoren in den einzelnen Quellen wie beispielsweise der \gls{cff}.
+Dabei werden mehrere Abbildungen dargestellt für die unterschiedlichen untersuchten Listen.
+In der konkreten Abbildung sind die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dargestellt.
+Die Abbildungen für die weiteren Listen sind in \autoref{fig:common_authors_anhang} dargestellt.
+Außerdem werden für jede Liste zwei unterschiedliche Abbildungen dargestellt.
+Die eine Abbildung bemisst die Top Git Autoren an der Anzahl der Commits und die jeweils andere an der Anzahl der geänderten Zeilen.
+Falls beispielsweise der Autor mit den meisten Commits in einer Quelle z. B. \gls{cff} genannt wird und die Autoren an den Commits bemessen werden und zusätzlich nur der Top Autor betrachtet wird, so wird in der Abbildung bei $x=1$ dargestellt, dass 100 \% der Git Autoren in der \gls{cff} genannt werden.
+Bei der Betrachtung von immer mehr Git Autoren sinkt der Anteil der genannten Autoren in den Quellen.
+Beispielsweise werden in \autoref{fig:common_authors_pypi_cff} von 100 betrachteten Top Git Autoren gemessen nach Commits nahezu 0 \% als Python Maintainer genannt, jedoch werden knapp 10 \% in der \gls{cff} preferred citation angegeben.
+Dabei muss berücksichtigt werden, dass unterschiedliche Quellen unterschiedlich häufig vorkommen.
+Beispielsweise haben weniger Pakete \gls{cff} preferred citation Autoren angegeben als \gls{cff} Autoren, da diese zwingend angegeben werden müssen.
+Dadurch kann es dazu kommen, dass nur ein Paket eine bestimmte Quelle angegeben hat und wenn dieses Paket in der Quelle viele Autoren nennt, ist der Anteil der genannten Autoren in der gesamten Quelle hoch.
+
+Im hintergrund der Abbildungen werden weitere Linien präsentiert, welche nicht in der Legende aufgeführt sind.
+Bei jeder Linie handelt es sich um eine einzige Quelle eines einzigen Pakets.
+Ein Paket wird somit mit mehreren Linien dargestellt.
+Auffällig ist dabei, dass einige Linien erst bei einem Wert von $x>1$ beginnen.
+Dies ist der Fall, falls ein Paket in einer Quelle den Top Autor nicht nennt.
+Beispielsweise gibt das Paket \emph{faker} in der \gls{cff} als einzigen Autor \glqq Daniele Faraglia\grqq{} an.
+Dieser Autor ist jedoch auf Rang 37 der Top Git Autoren gemessen nach Commits.
+
+Eine weitere Auffälligkeit, welche beispielsweise in der \autoref{fig:common_authors_pypi_cff} vorkommt ist, dass in der Legende \hologo{BibTeX} aufgeführt ist, jedoch keine Linie in der Abbildung dargestellt wird.
+Dies liegt daran, dass keiner der Top 100 Git Autoren aller Pakete mit \hologo{BibTeX} in einer \hologo{BibTeX} als Autor genannt wird.
+Im konkreten Fall liegt das daran, dass nur eines der Pakete eine \hologo{BibTeX} Datei enthält und in dieser Datei nur ein Autor genannt wird, welcher nicht automatisch abgeglichen wurde.
+Dies ist \autoref{tab:pypi_matching_results_manual} ebenfalls zu entnehmen.
+Dadurch liegt die Linie über alle x Werte bei 0 \% und ist nicht sichtbar.
+
+% TODO in fig:common_authors_pypi_cff darauf eingehen, warum eine Linie die ganze Zeit bei 100% ist
+
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -40,9 +180,9 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_pypi_cff_by_files.svg}
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_lines/1_pypi_cff_by_lines.svg}
         \caption{\gls{pypi} \gls{cff} nach geänderten Zeilen}
-        \label{fig:common_authors_by_files_pypi_cff}
+        \label{fig:common_authors_by_lines_pypi_cff}
     \end{subfigure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -52,19 +192,20 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_files/1_cran_cff_by_files.svg}
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_by_lines/1_cran_cff_by_lines.svg}
         \caption{\gls{cran} \gls{cff} nach geänderten Zeilen}
-        \label{fig:common_authors_by_files_cran_cff}
+        \label{fig:common_authors_by_lines_cran_cff}
     \end{subfigure}
     \caption{Anteil der Top Git Autoren an den genannten Autoren}
     \label{fig:common_authors}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top Git Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_files_pypi_cff} und \autoref{fig:common_authors_by_files_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top Git Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
 \end{figure}
 
 % TODO Beispiele geben mit konkreten Zahlen
 % TODO sagen, was es mit den Linien im Hintergrund auf sich hat.
+% TODO Die komplizierten Grafiken gut erklären! Auch mit eins zwei beispielen z. B. bei 20 betrachteten autoren...  sind 40% blablabla
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -74,9 +215,9 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_pypi_cff_by_files.svg}
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_lines/2_pypi_cff_by_lines.svg}
         \caption{\gls{pypi} \gls{cff} nach geänderten Zeilen}
-        \label{fig:common_authors_2_by_files_pypi_cff}
+        \label{fig:common_authors_2_by_lines_pypi_cff}
     \end{subfigure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -86,15 +227,15 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_files/2_cran_cff_by_files.svg}
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/common_authors_2_by_lines/2_cran_cff_by_lines.svg}
         \caption{\gls{cran} \gls{cff} nach geänderten Zeilen}
-        \label{fig:common_authors_2_by_files_cran_cff}
+        \label{fig:common_authors_2_by_lines_cran_cff}
     \end{subfigure}
     \caption{Anteil der genannten Autoren unter den Top Git Autoren}
     \label{fig:common_authors_2}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_files_pypi_cff} und \autoref{fig:common_authors_by_files_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: In der \gls{cff} sind y \% unter den Top x Commitern.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: In der \gls{cff} sind y \% unter den Top x Commitern.
 \end{figure}
 
 % TODO Beispiele geben mit konkreten Zahlen
@@ -187,7 +328,7 @@ In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, u
 % TODO Das Ergebnis explizit zeigen/ Die Situation in den Tabellen explizit erklären!/ Haben wir überhaupt einen Grund das zu machen was wir machen?/ Tabellen erklären! -> zeigen und erklären, dass einige nicht genannt werden
 % TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka
 % TODO bei cff sagen, dass von 100 top repos x pypi x cran und x andere sind
-% TODO Es werden alle Namen ausgegeben in den Beschreibungen aber auch eben solche, die gar nichts mit dem Paket zu tun haben wie im fall von highr für CRAN: "Provides syntax highlighting for R source Code. Currently it supports LaTeX and HTML output. Source Code of other languages is supported via Andre Simon's highlight package (https://gitlab.com/saalen/highlight)." Es gibt noch weitere Beispiele z.B. in CRAN magrittr -> vllt eher ergebnis?
+% TODO Es werden alle Namen ausgegeben in den Beschreibungen aber auch eben solche, die gar nichts mit dem Paket zu tun haben wie im fall von highr für CRAN: "Provides syntax highlighting for R source Code. Currently it supports LaTeX and HTML output. Source Code of other languages is supported via Andre Simon's highlight package (https://gitlab.com/saalen/highlight)." Es gibt noch weitere Beispiele z. B. in CRAN magrittr -> vllt eher ergebnis?
 % TODO sagen wann jeweils die Daten beschafft wurden also wann die Repos heruntergeladen wurden
 % TODO auf die manuell beschafften Daten eingehen
 % TODO in der Grafik mit den validen/ nicht validen CFF darauf eingehen, warum bei CRAN CFF keine 100 Pakete insgesamt sind -> weil gtsummary, ggpp, gginnards in der Liste von Druskat ist aber in GitHub ist gar keine CITATION.cff vorhanden.
