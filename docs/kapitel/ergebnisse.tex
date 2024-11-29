@@ -268,11 +268,16 @@ Dieser ist jedoch erst auf Rang 37 der Top Git Autoren gemessen nach Commits gel
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Autoren in der \gls{cff} sind zu y \% unter den Top x Commitern.
 \end{figure}
 
-% TODO Beispiele geben mit konkreten Zahlen
-% TODO sagen, was es mit den Linien im Hintergrund auf sich hat.
-% TODO Die komplizierten Grafiken gut erklären! Auch mit eins zwei beispielen z. B. bei 20 betrachteten autoren...  sind 40% blablabla
-% TODO auf Abbildungen im Anhang referenzieren
-% Auf Auffäölligkeiten eingehen und die anekdotisch untermauern
+In \autoref{fig:total_authors_no_commits} wird der Anteil der genannten Autoren in unterschiedlichen Quellen ohne Commits in den Paketen der Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dargestellt.
+Die Ergebnisse für die weiteren Listen sind in \autoref{fig:total_authors_no_commits_anhang} dargestellt.
+In den Abbildungen werden die vergangenen zehn Jahre dargestellt.
+Dabei steigt mit steigender Jahreszahl der Anteil der Autoren, welche keinen Commit getätigt haben.
+Das Ende der x Achse stellt den Tag der Datenbeschaffung dar.
+Aus diesem Grund ist der Anteil der Autoren ohne Commits am Ende der x Achse bei 100 \%, da es nicht möglich ist in der Zukunft Commits zu tätigen.
+
+In der \autoref{fig:total_authors_no_commits_pypi_cff} lässt sich erkennen, dass nahezu alle genannten Python Maintainer bis zum Jahr 2020 mindestens einen Commit getätigt haben und das ab diesem Jahr die in der README genannten Autoren im Vergleich zu den anderen Quellen anteilig die meisten Autoren ohne Commits genannt haben.
+Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Quelle dar, sodass ein Paket mit mehreren Linien für alle Quellen dargestellt wird.
+
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -290,7 +295,7 @@ Dieser ist jedoch erst auf Rang 37 der Top Git Autoren gemessen nach Commits gel
     \label{fig:total_authors_no_commits}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse werden die Jahre dargestellt. Die y Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt. Das Ende der x Achse stellt den Tag der Datenbeschaffung dar.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse werden die Jahre dargestellt. Die y Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
 \end{figure}
 
 \begin{figure}
