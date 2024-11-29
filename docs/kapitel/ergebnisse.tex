@@ -206,9 +206,36 @@ Dadurch sind alle Git Autoren zu 100 \% als \gls{pypi} Maintainer genannt und es
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top Git Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
 \end{figure}
 
-% TODO Beispiele geben mit konkreten Zahlen
-% TODO sagen, was es mit den Linien im Hintergrund auf sich hat.
-% TODO Die komplizierten Grafiken gut erklären! Auch mit eins zwei beispielen z. B. bei 20 betrachteten autoren...  sind 40% blablabla
+Weitere Abbildungen, welche den Anteil zwischen genannten Autoren und den Top Git Autoren darstellen sind in \autoref{fig:common_authors_2} abgebildet.
+Die Abbildung stellt die Graphen für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dar.
+Die Ergebnisse für die weiteren Listen sind in \autoref{fig:common_authors_2_anhang} dargestellt.
+In den Abbildungen wurden jeweils wieder zwei Graphen für jede Liste erstellt.
+Zum einen wurden die Autoren nach der Anzahl der Commits und zum anderen nach der Anzahl der geänderten Zeilen sortiert.
+In allen Abbildungen wird der Anteil der genannten Autoren unter den Top Git Autoren dargestellt.
+Durch dieses Verhältnis steigen die Linien, da mehr genannte Autoren unter den Top Git Autoren bei steigender Anzahl derer sind.
+
+Die Abbildungen zeigen beispielsweise für $x=0$ immer, dass 0 \% der genannten Autoren unter den Top 0 Git Autoren sind.
+Der Anteil kann dabei 100 \% erreichen, falls alle genannten Autoren in einer Quelle auch tatsächlich unter den Top 200 Git Autoren sind und somit Quellcode entwickelt haben.
+Dabei muss berücksichtigt werden, dass nicht abgeglichene Autoren ebenfalls berücksichtigt werden.
+Falls ein Autor nicht abgeglichen wurde, wird dieser als nicht unter den Top Git Autoren betrachtet und der Graph kann keine 100 \% für die Quelle erreichen.
+
+Um konkrete Werte zu nennen ist in \autoref{fig:common_authors_2_pypi_cff} beispielsweise dargestellt, dass ungefähr 80 \% der als \gls{pypi} Maintainer genannten Autoren unter den Top 100 Git Autoren nach der Anzahl der Commits sind und nur ungefähr 40 \% der in der README genannten Autoren unter den Top 100 Git Autoren nach Commits sind.
+Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Quelle dar, sodass ein Paket mit mehreren Linien für alle Quellen dargestellt wird.
+
+In den Graphen sind erneut Auffälligkeiten zu erkennen.
+Beispielsweise existieren erneut Linien, welche für jeden x Wert 0 \% oder 100 \% darstellen.
+In \autoref{fig:common_authors_2_pypi_cff} ist beispielsweise erneut die Linie für \hologo{BibTeX} nicht zu erkennen, da diese erneut auf der x Achse verläuft.
+Dies liegt daran, dass nur ein Autor in einer \hologo{BibTeX} Datei über alle Pakete genannt wird, welcher nicht abgeglichen werden konnte und somit nicht unter den Top Git Autoren ist.
+Für die Linien, welche bei 100 \% verlaufen, handelt es sich um Pakete, bei denen beispielsweise nur ein Autor in der Quelle genannt wird und dieser Autor auf Rang eins der Top Git Autoren ist.
+Es kann aber auch komplexer sein beispielsweise, dass drei Autoren in der Quelle genannt werden und alle drei unter den Top drei Git Autoren sind.
+Die Reihenfolge in der sie in der Quelle genannt werden ist dabei irrelevant.
+Es muss dabei jedoch berücksichtigt werden, dass auch diese Linien nicht direkt bei 100 \% starten, da bei der Betrachtung von null Git Autoren keine genannten Autoren unter den Top Git Autoren sein können.
+
+Ebenfalls ist auffällig, dass einige Linien erst bei einem Wert von $x>2$ beginnen.
+Dies ist der Fall, falls kein Autor in einer Quelle unter den Top x Committern ist.
+Beispielsweise wird in dem \gls{pypi} Paket \emph{faker} in der \gls{cff} nur der Autor \glqq Daniele Faraglia\grqq{} genannt.
+Dieser ist jedoch erst auf Rang 37 der Top Git Autoren gemessen nach Commits gelistet.
+
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -238,7 +265,7 @@ Dadurch sind alle Git Autoren zu 100 \% als \gls{pypi} Maintainer genannt und es
     \label{fig:common_authors_2}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: In der \gls{cff} sind y \% unter den Top x Commitern.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Autoren in der \gls{cff} sind zu y \% unter den Top x Commitern.
 \end{figure}
 
 % TODO Beispiele geben mit konkreten Zahlen
