@@ -298,6 +298,21 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse werden die Jahre dargestellt. Die y Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
 \end{figure}
 
+Die \autoref{fig:overall_valid_cff} zeigt den Anteil der validen und invaliden \gls{cff} Dateien in allen fünf Listen.
+Dabei wird außerdem unterschieden in Dateien, welche Anzeichen auf die Benutzung von \emph{cffinit} aufweisen und Dateien ohne die Verwendung von dem Programm.
+Außerdem lässt sich in der Abbildung erkennen wie viele Pakete in welcher Liste das \gls{cff} verwendet haben.
+Dabei ist auffällig, dass in der \gls{cran} \gls{cff} Liste keine 100 Pakete gelistet werden, obwohl die Liste 100 Pakete enthalten sollte, welche ein \gls{cff} verwenden.
+Dies liegt daran, dass in der Liste, welche von Herrn Druskat bereitgestellt wurde, einige Pakete enthalten sind, welche keine \gls{cff} Datei (mehr) enthalten.
+Konkret betrifft das in diesem Fall die drei Pakete \emph{gtsummary}, \emph{ggpp} und \emph{gginnards}.
+Aus diesem Grund sind in den weiteren Abbildungen ebenfalls keine 100 Pakete für die \gls{cran} \gls{cff} Liste dargestellt.
+
+Außerdem ist auffällig, dass in der \gls{cff} Liste und der \gls{pypi} \gls{cff} Liste jeweils ein Paket vorhanden ist, welches eine invalide \gls{cff} Datei enthält, obwohl für die Erstellung \emph{cffinit} verwendet wurde.
+Konkret handelt es sich in beiden Fällen um das \gls{pypi} Paket \emph{modelyst-sqlmodel}.
+Das Paket ist in beiden Listen enthalten, da in der \gls{cff} Liste ausschließlich \gls{pypi} Pakete enthalten sind, da diese die meisten Sterne auf GitHub haben.
+In diesem Fall ist das Paket unter den Top 100 \gls{cff} Paketen auf GitHub und somit ebenfalls in der \gls{pypi} \gls{cff} Liste enthalten.
+Im Allgemeinen sind alle \gls{pypi} Pakete, welche in der \gls{cff} Liste enthalten sind, ebenfalls in der \gls{pypi} \gls{cff} Liste enthalten.
+In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls{cran} Pakete zu wenig Sterne auf GitHub haben, um unter den Top 100 \gls{cff} Paketen zu sein.
+
 \begin{figure}
     \centering
     \includesvg[width=.5\textwidth,inkscapelatex=false]{bilder/overall_valid_cff.svg}
