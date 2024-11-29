@@ -326,9 +326,19 @@ In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls
     Die Abbildung zeigt für die verschiedenen analysierten Listen, wie viele der vorhandenen \gls{cff} Dateien valide sind, und ob \emph{cffinit} verwendet wurde oder nicht.
 \end{figure}
 
-% TODO Beispiele geben mit konkreten Zahlen
-% Auf Auffälligkeiten eingehen und die anekdotisch untermauern
-% TODO darauf eingehen, dass ein CRAN cff paket article verwendet hat in cff was ungültig ist -> sagen welches
+\autoref{fig:citation_counts} zeigt für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und \hologo{BibTeX} den angegebenen Typ der Zitation.
+Anhand der Abbildungen ist außerdem zu erkennen, wie oft welche Quelle in den Listen vorkommt.
+Beispielsweise haben zwei von den Top 100 \gls{cran} Paketen eine \gls{cff} angegeben und fünf sind es bei den Top 100 \gls{pypi} Paketen.
+Von diesen fünf Paketen hat kein Paket eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
+In den \gls{cran} Listen haben beide Pakete hingegen ebenfalls eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
+Außerdem ist auffällig, dass in allen Listen die Anzahl der Pakete, welche eine \hologo{BibTeX} Datei verwenden gering ist.
+Bei dieser Betrachtung ist darauf zu achten, dass in dem \gls{cff} nicht zwingend eine \glqq preferred-citation\grqq{} angegeben werden muss.
+Aus diesem Grund sind in \autoref{fig:citation_counts_preferred_citation_cff} weniger Pakete dargestellt aus in \autoref{fig:citation_counts_cff}.
+
+In \autoref{fig:citation_counts_preferred_citation_cff} ist auffällig, dass ein \gls{cran} Paket aus der \gls{cran} \gls{cff} Liste als Typ der Zitation \emph{article} angegeben hat.
+Dies ist in einer \gls{cff} Datei nicht zulässig und führt zu einer ungültigen \gls{cff} Datei.
+Dies betrifft das Paket \emph{worcs}.
+
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
