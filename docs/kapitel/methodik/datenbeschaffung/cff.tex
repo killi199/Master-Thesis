@@ -43,14 +43,14 @@ Dies führt zu einer doppelten Speicherung, allerdings ist dadurch in beiden Dat
 Alle weiteren Informationen werden direkt aus der \gls{cff} Datei extrahiert und in die eigene CSV Datenstruktur übertragen.
 Falls ein Wert dabei nicht in der \gls{cff} Datei vorhanden ist, wird der Eintrag in der CSV Datei leer gelassen.
 Im Folgenden werden die Daten, welche direkt extrahiert werden, beschrieben.
-Eine extrahierte Information, welche in beiden Dateien, also der \path{cff.csv} und \path{cff_preferred_citation.csv} gespeichert wird, ist die DOI aus dem \gls{cff} Feld \glqq identifiers\grqq{}.
-In der Masterarbeit wird ausschließlich die erste DOI in der Liste der \glqq identifiers\grqq{} betrachtet.
-Diese wird in der allgemeinen Datei gespeichert, um später zu überprüfen, ob eine DOI in diesem Feld vorhanden ist.
+Eine extrahierte Information, welche in beiden Dateien, also der \path{cff.csv} und \path{cff_preferred_citation.csv} gespeichert wird, ist die \gls{doi} aus dem \gls{cff} Feld \glqq identifiers\grqq{}.
+In der Masterarbeit wird ausschließlich die erste \gls{doi} in der Liste der \glqq identifiers\grqq{} betrachtet.
+Diese wird in der allgemeinen Datei gespeichert, um später zu überprüfen, ob eine \gls{doi} in diesem Feld vorhanden ist.
 
 Zusätzlich wird in beiden fällen das Feld \glqq date-released\grqq{} und die \glqq doi\grqq{} extrahiert und gespeichert.
-Die \glqq doi\grqq{} wird in den allgemeinen Dateien gespeichert, um im weiteren Verlauf zu überprüfen, ob eine DOI in der \gls{cff} Datei vorhanden ist.
+Die \glqq doi\grqq{} wird in den allgemeinen Dateien gespeichert, um im weiteren Verlauf zu überprüfen, ob eine \gls{doi} in der \gls{cff} Datei vorhanden ist.
 Als letzte gemeinsame Information wird die \glqq type\grqq{} extrahiert und in den allgemeinen Dateien gespeichert.
-Dabei können wir in den Grundlagen erwähnt für die allgemeinen Informationen in der \gls{cff} nur \glqq software\grqq{} und \glqq dataset\grqq{} vorkommen.
+Dabei können wie in den Grundlagen erwähnt für die allgemeinen Informationen in der \gls{cff} nur \glqq software\grqq{} und \glqq dataset\grqq{} vorkommen.
 Für die allgemeinen Daten der \glqq preferred-citation\grqq{} können weitere Typen vorkommen, welche in den Grundlagen erläutert wurden.
 
 Alle weiteren Daten sind spezifisch für die \glqq preferred-citation\grqq{}.
@@ -68,8 +68,8 @@ Die Felder der Datei sind in \autoref{tab:cff_preferred_citation} aufgelistet.
         \emph{cff\_init} & Gibt an, ob \emph{cff\_init} benutzt wurde \\
         \emph{type} & Typ der \gls{cff} Datei \\
         \emph{date-released} & Datum an dem das Werk zugänglich gemacht wurde \\
-        \emph{doi} & Zu zitierende DOI \\
-        \emph{identifier-doi} & Die erste DOI in den \glqq identifiers\grqq{} \\
+        \emph{doi} & Zu zitierende \gls{doi} \\
+        \emph{identifier-doi} & Die erste \gls{doi} in den \glqq identifiers\grqq{} \\
         \emph{committed\_datetime} & Zeitpunkt des \emph{commit date} \\
         \emph{authored\_datetime} & Zeitpunkt des \emph{author date} \\
         \bottomrule
@@ -94,9 +94,9 @@ Die Felder der Datei sind in \autoref{tab:cff_preferred_citation} aufgelistet.
         \emph{date-published} & Veröffentlichungsdatum \\
         \emph{year} & Veröffentlichungsjahr \\
         \emph{month} & Veröffentlichungsmonat \\
-        \emph{doi} & Zu zitierende DOI \\
-        \emph{collection-doi} & DOI der Sammlung \\
-        \emph{identifier-doi} & Die erste DOI in den \glqq identifiers\grqq{} \\
+        \emph{doi} & Zu zitierende \gls{doi} \\
+        \emph{collection-doi} & \gls{doi} der Sammlung \\
+        \emph{identifier-doi} & Die erste \gls{doi} in den \glqq identifiers\grqq{} \\
         \emph{committed\_datetime} & Zeitpunkt des \emph{commit date} \\
         \emph{authored\_datetime} & Zeitpunkt des \emph{author date} \\
         \bottomrule
