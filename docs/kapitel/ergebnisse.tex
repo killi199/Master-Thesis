@@ -398,11 +398,34 @@ Auffällig ist außerdem, dass in der \glqq preferred-citation\grqq{} in \autore
     Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten LIsten, wie oft eine \gls{doi} in verschiedenen Versionen in den Zitationen angegeben wurde.
 \end{figure}
 
-% TODO Auf average_time_last_update_cff eingehen
-% TODO auf average_time_last_update_bib eingehen
-% TODO auf average_time_last_update_readme eingehen
-% TODO auf similarity_with_non_matches eingehen
-% TODO auf similarity_without_non_matches eingehen
+Zusätzlich zu den Graphen wurden weitere Ergebnisse aus den Daten berechnet.
+Einerseits wurde berechnet, wie viel Zeit im Durchschnitt seit der letzten Aktualisierung vom Tag der Datenbeschaffung einer Quelle vergangen ist.
+In \autoref{sec:gesamtheit_ergebnisse} wird zusätzlich darauf eingegangen, mit welcher Frequenz die Quellen aktualisiert werden.
+Die Berechnung ist dabei jeweils nur für das \gls{cff}, das \hologo{BibTeX} Format und die README Dateien möglich, da in den anderen Quellen kein Zeitstempel ermittelt werden kann.
+Die Ergebnisse sind in \autoref{tab:average_time_last_update} dargestellt.
+Für \gls{cran} ist jeweils keine Zeit für \hologo{BibTeX} angegeben, da keines der Pakete in den Listen die Quelle verwendet.
+
+In der Tabelle lässt sich beispielsweise ablesen, dass die README über alle Pakete in der \gls{pypi} \gls{cff} Liste im Durchschnitt 83 Tage nicht aktualisiert wurde.
+Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die \hologo{BibTeX} Dateien am längsten nicht aktualisiert wurden.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c|c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
+        README          & 257 & 184 & 73   & 83   & 133 \\
+        \gls{cff}       & 484 & 326 & 555  & 488  & 240 \\
+        \hologo{BibTeX} &     & 768 & 1159 & 1159 &     \\
+        \bottomrule
+    \end{tabular}
+    \caption{Durchschnittliche Zeit seit der letzten Aktualisierung}
+    \label{tab:average_time_last_update}
+    \small
+    \raggedright
+    Die Tabelle gibt für die Quellen für die es möglich ist an, wie viel Zeit im Durchschnitt über alle Pakete seit der letzten Aktualisierung der Quelle vergangen ist. Die Zeit ist in Tagen angegeben.
+\end{table}
+
 
 \section{Ergebnisse mit Zeitverlauf}
 \label{sec:gesamtheit_ergebnisse}
