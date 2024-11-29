@@ -7,7 +7,7 @@ Nach Bearbeitung die Zeile immer auf checked setzen, sodass man selber einen üb
 
 
 CFF Liste ist fertig
-CRAN Liste hat Papa
-PyPi
+CRAN Papa
+PyPi Stephi
 CRAN CFF HIWI Krüger
 PyPi CFF Liste muss ich machen, da ich die Ergebnisse der CFF liste wieder verwenden kann
