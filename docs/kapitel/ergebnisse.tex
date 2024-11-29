@@ -1,8 +1,10 @@
 \chapter{Ergebnisse}
 \label{chap:ergebnisse}
-% TODO gff. noch auf die Daten in #20 eingehen?
 % Darauf achten, dass jede Grafik mindestens einmal im Text referenziert wird
 % Wichtig ist, dass du deine Forschungsergebnisse im Ergebnisteil noch nicht interpretierst, sondern nur beschreibst.!!!
+% TODO gff. noch auf die Daten in #20 eingehen? Das dann mit und ohne Zeitverlauf?
+% TODO bei cff sagen, dass von 100 top repos x pypi x cran und x andere sind
+% TODO Es werden alle Namen ausgegeben in den Beschreibungen aber auch eben solche, die gar nichts mit dem Paket zu tun haben wie im fall von highr für CRAN: "Provides syntax highlighting for R source Code. Currently it supports LaTeX and HTML output. Source Code of other languages is supported via Andre Simon's highlight package (https://gitlab.com/saalen/highlight)." Es gibt noch weitere Beispiele z. B. in CRAN magrittr -> vllt eher ergebnis?
 In diesem Kapitel werden die Ergebnisse der Masterarbeit präsentiert.
 Das Kapitel ist in zwei Abschnitte unterteilt.
 Zum einen werden die Ergebnisse der Gegenwart in \autoref{sec:neuste_ergebnisse} präsentiert.
@@ -83,6 +85,7 @@ Es wurde lediglich in der Datenbeschaffung darauf geachtet möglichst keine Quel
 Die Ergebnisse für die \gls{cff} Liste sind in \autoref{tab:cff_matching_results_manual} dargestellt.
 % TODO weitere Tabellen im Anhang referenzieren
 % Die weiteren Ergebnisse für die anderen Listen sind in den Tabellen zu finden.
+% TODO confusion matrix und f1 score für alle listen zusammen (addiert) angeben
 
 \begin{table}
     \centering
@@ -323,6 +326,9 @@ In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls
     Die Abbildung zeigt für die verschiedenen analysierten Listen, wie viele der vorhandenen \gls{cff} Dateien valide sind, und ob \emph{cffinit} verwendet wurde oder nicht.
 \end{figure}
 
+% TODO Beispiele geben mit konkreten Zahlen
+% Auf Auffälligkeiten eingehen und die anekdotisch untermauern
+% TODO darauf eingehen, dass ein CRAN cff paket article verwendet hat in cff was ungültig ist -> sagen welches
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -350,6 +356,8 @@ In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls
     Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es ist darauf zu achten, dass die y Achsen unterschiedlich skaliert sind.
 \end{figure}
 
+% TODO Beispiele geben mit konkreten Zahlen
+% Auf Auffälligkeiten eingehen und die anekdotisch untermauern
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -385,14 +393,6 @@ In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls
 
 \section{Ergebnisse mit Zeitverlauf}
 \label{sec:gesamtheit_ergebnisse}
-% TODO Das Ergebnis explizit zeigen/ Die Situation in den Tabellen explizit erklären!/ Haben wir überhaupt einen Grund das zu machen was wir machen?/ Tabellen erklären! -> zeigen und erklären, dass einige nicht genannt werden
-% TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka
-% TODO bei cff sagen, dass von 100 top repos x pypi x cran und x andere sind
-% TODO Es werden alle Namen ausgegeben in den Beschreibungen aber auch eben solche, die gar nichts mit dem Paket zu tun haben wie im fall von highr für CRAN: "Provides syntax highlighting for R source Code. Currently it supports LaTeX and HTML output. Source Code of other languages is supported via Andre Simon's highlight package (https://gitlab.com/saalen/highlight)." Es gibt noch weitere Beispiele z. B. in CRAN magrittr -> vllt eher ergebnis?
-% TODO sagen wann jeweils die Daten beschafft wurden also wann die Repos heruntergeladen wurden
-% TODO auf die manuell beschafften Daten eingehen
-% TODO in der Grafik mit den validen/ nicht validen CFF darauf eingehen, warum bei CRAN CFF keine 100 Pakete insgesamt sind -> weil gtsummary, ggpp, gginnards in der Liste von Druskat ist aber in GitHub ist gar keine CITATION.cff vorhanden.
-% TODO Auf meine Ergebnisse vom Matching mit zeitverlauf eingehen. Nur die Daten zeigen, welche automatisch beschafft werden konnten.
 % TODO auf average_time_between_updates_cff eingehen
 % TODO auf average_time_between_updates_bib eingehen
 % TODO auf average_time_between_updates_readme eingehen

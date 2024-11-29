@@ -1,13 +1,14 @@
 \chapter{Diskussion}
 \label{chap:diskussion}
+% TODO ggf. Sagen, warum nicht auf die .all-contributorsrc-Datei eingegangen wurde -> README wird analysiert dadurch Aufwand gespart könnte jedoch noch verbessert werden in dem Auch die Datei zusätzlich noch analysiert wird, da dort noch mehr informationen wie der Beitrag gelistet werden.
+% TODO ggf. erklären warum die API verwendet wird und nicht nur die TOML beispielsweise ausgelesen wird -> habe ein pypi paket und brauche die GitHub URL (vllt eher diskussion oder so? Beschreibe hier ja nur was ich mache und nicht warum)
+% TODO Diskuttieren warum ich bei der Kompletten CFF Liste auf so viele Daten verzichte
+% TODO checken ob ich nahezu jedes Bild und Tabelle hier nochmal referenziert habe
+% TODO ergebnisse interpretieren! und diskutieren und drauf eingehen hier muss noch ein bisschen was passieren
+% TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka -> kann hier auch auf fig:citation_counts eingehen, da hier steht wie viele cff preferred ictation angegeben haben
+
 \section{Limitierungen}
 \label{sec:limitierungen}
-\section{Wie gut hat der Abgleich funktioniert?}
-\label{sec:abgleich_diskussion}
-\section{Wie gut werden Autoren gepflegt?}
-\label{sec:autoren_pflege_diskussion}
-\section{Was muss ich machen, dass ich ein Zitationsfähiger Autor bin?}
-\label{sec:zitationsfaehiger_autor_diskussion}
 % TODO Doppelte Leute, da unterschiedliche Namen beim commiten angegeben -> Das Problem besteht beim benutzen der GitHub API nicht. -> Teilweise Gelöst mittels group auf E-Mail
 % TODO Einen Abschnitt mit Limitierungen schreiben und da das Git Statistik Problem unter anderem erwähnen. Im Code kann ich das nicht lösen. Beschreiben wozu es dadurch kommt.
 % TODO Unterschiedliche Programme unterschiedliche Commit Anzahl 
@@ -21,12 +22,21 @@
 % TODO Personen, welche als Autor genannt werden aber keinen Code geschrieben haben werden natürlich als nicht gematcht erkannt und sind somit ein fehler. Aber wie in Grundlagen beschrieben sind diese Personen ebenfalls wichtig und sollten zitiert werden.
 % TODO Einige personen geben als Git namen nur einen buchstaben an, diese werden dann natürlich über in mit dem besten gematcht der diesen buchstaben im Namen hat, was natürlich nicht korrekt ist.
 % TODO Nur auf Commits prüfen ist nicht ausreichend As we have already mentioned, contributorship, defined as the changing of code, does not cover the complete spectrum of contributions [6, 12]. aus (Which contributions count? Analysis of attribution in open source)
-% TODO Sagen, warum nicht auf die .all-contributorsrc-Datei eingegangen wurde -> README wird analysiert dadurch Aufwand gespart könnte jedoch noch verbessert werden in dem Auch die Datei zusätzlich noch analysiert wird, da dort noch mehr informationen wie der Beitrag gelistet werden.
-% TODO diskutieren, warum es nicht so notwendig ist Namensvetter zu unterscheiden
+% TODO Namensvetter werden nicht unterschieden -> diskutieren, warum es nicht so notwendig ist Namensvetter zu unterscheiden
 % TODO irgendwo auf pandas eingehen hier ist es so, dass die CFF auf eine Internet seite verlinkt, auf der alle contributor gelistet werden. Das parse ich natürlich nicht.
-% TODO erklären warum die API verwendet wird und nicht nur die TOML beispielsweise ausgelesen wird -> habe ein pypi paket und brauche die GitHub URL (vllt eher diskussion oder so? Beschreibe hier ja nur was ich mache und nicht warum)
-% TODO Diskuttieren warum ich bei der Kompletten CFF Liste auf so viele Daten verzichte
 % TODO Es wird immer passieren, dass manche Leute falsch zugeordnet werden. Aktuelles bsp. in scipy heißt jemand pv auf PyPI und jemand hat eine E-Mail mit: pvanmulbregt@users.noreply.github.com die werden gematcht... Also nur weil ich einen Match habe bedeutet es nicht, dass es ein richtiger ist! Dies unbedingt in der Arbeit berücksichtigen. Ebenfalls, dass falls kein match gefunden wurde heißt es nicht zwangsweise, dass mein Script schlecht arbeitet es kann auch sein, das jemand als Autor genannt wird aber keinen Code geschrieben hat oder das eine Organisation als Autor angegeben wurde.
+% TODO auf schlechte NER eingehen und das dadurch die werte für readme und beschreibung nicht so gut sind
 % TODO beschreiben, dass all contributors ein Problem im  matching darstellen, da autoren ohne commits natürlich nicht mit den contributorn von github gematch werden können -> daher händisch durchgegangen für 200 pakete und geguckt welche nicht gemachts werden können um gefühlt für die dimension zu erhalten -> auf Ergebnis nochmal referenzieren wo die daten angegeben sind
-% TODO WICHTIG!: so ein paar Fragen beantworten: Wie gut werden Autoren gepflegt? Was muss ich machen, dass ich ein Zitationsfähriger Autor bin? Wie gut hat der Abgleich funktioniert?
-% TODO ergebnisse interpretieren! und diskutieren und drauf eingehen hier muss noch ein bisschen was passieren
+
+\section{Wie gut hat der Abgleich funktioniert?}
+\label{sec:abgleich_diskussion}
+% TODO auf die Tabellen eingehen (tab:matching_results_auto, tab:cff_matching_results_manual)
+
+\section{Was muss ich machen, dass ich ein Zitationsfähiger Autor bin?}
+\label{sec:zitationsfaehiger_autor_diskussion}
+% TODO auf common_authors, common_authors_2, total_authors_no_commits, authors_added eingehen
+% TODO zeigen und erklären, dass einige der TOP autoren nicht genannt werden
+
+\section{Wie gut werden Autoren gepflegt?}
+\label{sec:autoren_pflege_diskussion}
+% TODO auf overall_valid_cff (einige invalide pakete deutet darauf hin, dass es nicht so wichtig ist), average_time_last_update_cff, average_time_last_update_bib, average_time_last_update_readme, authors_added, authors_removed, average_author_livetime eingehen
