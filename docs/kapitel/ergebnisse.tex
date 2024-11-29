@@ -145,6 +145,7 @@ Die Abbildungen für die weiteren Listen sind in \autoref{fig:common_authors_anh
 Außerdem werden für jede Liste zwei unterschiedliche Abbildungen dargestellt.
 Die eine Abbildung bemisst die Top Git Autoren an der Anzahl der Commits und die jeweils andere an der Anzahl der geänderten Zeilen.
 Falls beispielsweise der Autor mit den meisten Commits in einer Quelle z. B. \gls{cff} genannt wird und die Autoren an den Commits bemessen werden und zusätzlich nur der Top Autor betrachtet wird, so wird in der Abbildung bei $x=1$ dargestellt, dass 100 \% der Git Autoren in der \gls{cff} genannt werden.
+
 Bei der Betrachtung von immer mehr Git Autoren sinkt der Anteil der genannten Autoren in den Quellen.
 Beispielsweise werden in \autoref{fig:common_authors_pypi_cff} von 100 betrachteten Top Git Autoren gemessen nach Commits nahezu 0 \% als Python Maintainer genannt, jedoch werden knapp 10 \% in der \gls{cff} preferred citation angegeben.
 Dabei muss berücksichtigt werden, dass unterschiedliche Quellen unterschiedlich häufig vorkommen.
@@ -165,7 +166,13 @@ Im konkreten Fall liegt das daran, dass nur eines der Pakete eine \hologo{BibTeX
 Dies ist \autoref{tab:pypi_matching_results_manual} ebenfalls zu entnehmen.
 Dadurch liegt die Linie über alle x Werte bei 0 \% und ist nicht sichtbar.
 
-% TODO in fig:common_authors_pypi_cff darauf eingehen, warum eine Linie die ganze Zeit bei 100% ist
+Die letzte Auffälligkeit in den Graphen ist, dass einige Linien erst fallen und anschließend parallel zur x Achse verlaufen.
+Andere wiederum fallen gar nicht und verlaufen direkt parallel zur x Achse.
+Dies ist der Fall, falls ab einer bestimmten Anzahl an Git Autoren alle weiteren Git Autoren genannt werden.
+Dies tritt besonders dann auf, falls es wenig Git Autoren gibt.
+Beispielsweise hat das Paket \emph{netron}, welches in der \gls{pypi} \gls{cff} Liste vorkommt, nur einen Git Autoren.
+Dieser wird ebenfalls beispielsweise als \gls{pypi} Maintainer genannt.
+Dadurch sind alle Git Autoren zu 100 \% als \gls{pypi} Maintainer genannt und es kommt zu der Linie bei 100 \% in \autoref{fig:common_authors_pypi_cff}.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
