@@ -321,11 +321,23 @@ def get_cff_doi_plt(results):
     fig, ax = plt.subplots()
 
     bars_doi = ax.bar(index, doi_cff, bar_width, label='DOI', color='blue')
-
     bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_cff, bar_width, label='Identifier DOI', color='green')
-
     bars_without_doi = ax.bar(index, without_doi_cff, bar_width, bottom=doi_cff, label='Ohne DOI', color='lightblue')
     bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_cff, bar_width, bottom=identifier_doi_cff, label='Ohne Identifier DOI', color='lightgreen')
+
+    for bars in [bars_doi, bars_identifier, bars_without_doi, bars_without_identifier_doi]:
+        for bar in bars:
+            height = bar.get_height()
+            if height > 0:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_y() + height / 2,
+                    f'{height:.0f}',
+                    ha='center',
+                    va='center',
+                    color='black',
+                    fontsize=6
+                )
 
     ax.set_xlabel('Liste')
     ax.set_ylabel('CFF Anzahl')
@@ -352,14 +364,25 @@ def get_preferred_citation_doi_plt(results):
     fig, ax = plt.subplots()
 
     bars_doi = ax.bar(index, doi_preferred_citation_cff, bar_width, label='DOI', color='blue')
-
     bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_preferred_citation_cff, bar_width, label='Identifier DOI', color='green')
-
     bars_collection = ax.bar([i + 2 * bar_width for i in index], collection_doi_preferred_citation_cff, bar_width, label='Collection DOI', color='red')
-
     bars_without_doi = ax.bar(index, without_doi_preferred_citation_cff, bar_width, bottom=doi_preferred_citation_cff, label='Ohne DOI', color='lightblue')
     bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_preferred_citation_cff, bar_width, bottom=identifier_doi_preferred_citation_cff, label='Ohne Identifier DOI', color='lightgreen')
     bars_without_collection_doi = ax.bar([i + 2 * bar_width for i in index], without_collection_doi_preferred_citation_cff, bar_width, bottom=collection_doi_preferred_citation_cff, label='Ohne Collection DOI', color='lightcoral')
+
+    for bars in [bars_doi, bars_identifier, bars_collection, bars_without_doi, bars_without_identifier_doi, bars_without_collection_doi]:
+        for bar in bars:
+            height = bar.get_height()
+            if height > 0:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_y() + height / 2,
+                    f'{height:.0f}',
+                    ha='center',
+                    va='center',
+                    color='black',
+                    fontsize=6
+                )
 
     ax.set_xlabel('Liste')
     ax.set_ylabel('Preferred Citation CFF Anzahl')
@@ -381,8 +404,21 @@ def get_bib_doi_plt(results):
     fig, ax = plt.subplots()
 
     bars_doi = ax.bar(index, doi_bib, label='DOI', color='blue')
-
     bars_without_doi = ax.bar(index, without_doi_bib, bottom=doi_bib, label='Ohne DOI', color='lightblue')
+
+    for bars in [bars_doi, bars_without_doi]:
+        for bar in bars:
+            height = bar.get_height()
+            if height > 0:
+                ax.text(
+                    bar.get_x() + bar.get_width() / 2,
+                    bar.get_y() + height / 2,
+                    f'{height:.0f}',
+                    ha='center',
+                    va='center',
+                    color='black',
+                    fontsize=6
+                )
 
     ax.set_xlabel('Liste')
     ax.set_ylabel('BibTeX Anzahl')
