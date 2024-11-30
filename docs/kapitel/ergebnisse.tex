@@ -474,6 +474,7 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
     \label{fig:similarities}
     \small
     \raggedright
+    % TODO Beschreibung
 \end{figure}
 
 \section{Ergebnisse mit Zeitverlauf}
@@ -484,3 +485,24 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
 % TODO auf average_time_between_updates_readme eingehen
 % TODO auf average_lifespans eingehen
 % TODO dabei darauf eingehen, dass erneut ein Namensabgleich zwischen den autoren gemacht wird in einer Quelle
+% TODO auf Anhang referenzieren
+% TODO bei den Grafiken wieder so wie bei den anderen auch auf die sachen gehen -> siehe TODOs in git history
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/valid_cff_by_time/overall_valid_cff_pypi_cff.svg}
+        \caption{\gls{pypi} \gls{cff}}
+        \label{fig:valid_cff_by_time_pypi_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/valid_cff_by_time/overall_valid_cff_cran_cff.svg}
+        \caption{\gls{cran} \gls{cff}}
+        \label{fig:valid_cff_by_time_cran_cff}
+    \end{subfigure}
+    \caption{Validität der \gls{cff} Dateien über die Zeit}
+    \label{fig:valid_cff_by_time}
+    \small
+    \raggedright
+    % TODO Beschreibung
+\end{figure}

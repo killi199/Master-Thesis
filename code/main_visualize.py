@@ -6,6 +6,7 @@ import ast
 import pandas as pd
 from datetime import datetime
 import matplotlib.ticker as ticker
+import matplotlib.dates as mdates
 
 def common_authors_plot(file_list, sources, commits):
     for source_name, source in sources.items():
@@ -472,3 +473,47 @@ def create_similarity_plot():
         plt.show()
 
 create_similarity_plot()
+
+total_valid_cff = overall_full_results['total_valid_cff']
+for index, value in total_valid_cff.items():
+    to_timestamp_data = []
+    total_valid_cff = pd.DataFrame(ast.literal_eval(value))
+    total_valid_cff['timestamp'] = pd.to_datetime(total_valid_cff['timestamp'], utc=True)
+    total_valid_cff = total_valid_cff.sort_values(by='timestamp')
+    for list_index, row in total_valid_cff.iterrows():
+        total_valid_cff_until_timestamp = total_valid_cff[total_valid_cff['timestamp'] <= row['timestamp']]
+        total_valid_cff_without_duplicates = total_valid_cff_until_timestamp.drop_duplicates(subset=['package'], keep='last')
+        total_valid_cff_cff_init_used = total_valid_cff_without_duplicates[(total_valid_cff_without_duplicates['cff_init'] == True) & (total_valid_cff_without_duplicates['cff_valid'] == True)].shape[0]
+        total_valid_cff_cff_init_not_used = total_valid_cff_without_duplicates[(total_valid_cff_without_duplicates['cff_init'] == False) & (total_valid_cff_without_duplicates['cff_valid'] == True)].shape[0]
+        total_invalid_cff_cff_init_used = total_valid_cff_without_duplicates[(total_valid_cff_without_duplicates['cff_init'] == True) & (total_valid_cff_without_duplicates['cff_valid'] == False)].shape[0]
+        total_invalid_cff_cff_init_not_used = total_valid_cff_without_duplicates[(total_valid_cff_without_duplicates['cff_init'] == False) & (total_valid_cff_without_duplicates['cff_valid'] == False)].shape[0]
+
+        to_timestamp_data.append({'timestamp': row['timestamp'],
+                                  'total_valid_cff_cff_init_used': total_valid_cff_cff_init_used,
+                                  'total_valid_cff_cff_init_not_used': total_valid_cff_cff_init_not_used,
+                                  'total_invalid_cff_cff_init_used': total_invalid_cff_cff_init_used,
+                                  'total_invalid_cff_cff_init_not_used': total_invalid_cff_cff_init_not_used})
+
+    to_timestamp_data = pd.DataFrame(to_timestamp_data)
+    fig, ax = plt.subplots()
+    ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_valid_cff_cff_init_used'],
+            label='Valid CFF with CFF init', color='green')
+    ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_valid_cff_cff_init_not_used'],
+            label='Valid CFF without CFF init', color='lightgreen')
+    ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_invalid_cff_cff_init_used'],
+            label='Invalid CFF with CFF init', color='red')
+    ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_invalid_cff_cff_init_not_used'],
+            label='Invalid CFF without CFF init', color='lightcoral')
+
+    ax.xaxis.set_major_locator(mdates.AutoDateLocator())
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
+    ax.yaxis.set_major_locator(ticker.MaxNLocator(integer=True))
+    plt.xticks(rotation=45)
+
+    ax.set_xlabel('Zeit')
+    ax.set_ylabel('Anzahl')
+    ax.legend()
+    plt.tight_layout()
+    index = index.lower().replace(' ', '_')
+    plt.savefig(f"../docs/bilder/valid_cff_by_time/overall_valid_cff_{index}.svg")
+    plt.show()

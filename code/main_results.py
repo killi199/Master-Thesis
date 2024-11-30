@@ -118,13 +118,10 @@ def process_directory(directory, position: int, full=True):
     total_cff = 0
     total_cff_full = 0
     total_valid_cff_cff_init_used = 0
-    total_valid_cff_cff_init_used_full = 0
     total_valid_cff_cff_init_not_used = 0
-    total_valid_cff_cff_init_not_used_full = 0
     total_invalid_cff_cff_init_used = 0
-    total_invalid_cff_cff_init_used_full = 0
     total_invalid_cff_cff_init_not_used = 0
-    total_invalid_cff_cff_init_not_used_full = 0
+    total_valid_cff = []
     doi_cff = 0
     doi_cff_full = 0
     identifier_doi_cff = 0
@@ -242,10 +239,9 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_cff_full += len(df)
-                    total_valid_cff_cff_init_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == True)].shape[0]
-                    total_valid_cff_cff_init_not_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == False)].shape[0]
-                    total_invalid_cff_cff_init_used_full += df[(df['cff_valid'] == False) & (df['cff_init'] == True)].shape[0]
-                    total_invalid_cff_cff_init_not_used_full += df[(df['cff_valid'] == False) & (df['cff_init'] == False)].shape[0]
+
+                    for index, row in df.iterrows():
+                        total_valid_cff.append({'timestamp': row['committed_datetime'], 'package': folder_name, 'cff_valid': row['cff_valid'], 'cff_init': row['cff_init']})
                     doi_cff_full += df['doi'].notna().sum()
                     identifier_doi_cff_full += df['identifier-doi'].notna().sum()
                     for key, value in df['type'].value_counts().to_dict().items():
@@ -450,10 +446,7 @@ def process_directory(directory, position: int, full=True):
             lifespans_results[file_type] = pd.Series(lifespans).mean()
 
         overall_results = {"total_cff": total_cff_full,
-                            "total_valid_cff_cff_init_used": total_valid_cff_cff_init_used_full,
-                            "total_valid_cff_cff_init_not_used": total_valid_cff_cff_init_not_used_full,
-                            "total_invalid_cff_cff_init_used": total_invalid_cff_cff_init_used_full,
-                            "total_invalid_cff_cff_init_not_used": total_invalid_cff_cff_init_not_used_full,
+                            "total_valid_cff": total_valid_cff,
                             "doi_cff": doi_cff_full,
                             "identifier_doi_cff": identifier_doi_cff_full,
                             "total_preferred_citation_cff": total_preferred_citation_cff_full,
