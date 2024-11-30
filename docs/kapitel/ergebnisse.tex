@@ -430,7 +430,7 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
 % TODO Auf Auffälligkeiten eingehen und die anekdotisch untermauern
 % TODO auf Anhang eingehen
 % TODO auf Besonderheiten eingehen
-% TODO ordentlich beschreiben was es mit den nicht abgeglichenen Autoren auf sich hat also einmal inklusive einmal exklusive
+% TODO Sagen, dass nur abgeglichene Autoren betrachtet werden. Es wird nicht nochmal über Namen abgeglichen!
 %In der \autoref{tab:similarity_between_authors} wird für jede Liste angegeben, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind.
 %Dabei werden nur jene Autoren berücksichtigt, welche abgeglichen werden konnten.
 %Es wird somit kein erneuter Abgleich zwischen den einzelnen Quellen anhand der Namen vorgenommen.
@@ -460,27 +460,15 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_with_non_matches_pypi_cff.svg}
-        \caption{\gls{pypi} \gls{cff} inklusive nicht abgeglichener Autoren}
-        \label{fig:similarity_with_non_matches_pypi_cff}
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_pypi_cff.svg}
+        \caption{\gls{pypi} \gls{cff}}
+        \label{fig:similarity_pypi_cff}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_without_non_matches_pypi_cff.svg}
-        \caption{\gls{pypi} \gls{cff} exklusive nicht abgeglichener Autoren}
-        \label{fig:similarity_without_non_matches_pypi_cff}
-    \end{subfigure}
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_with_non_matches_cran_cff.svg}
-        \caption{\gls{cran} \gls{cff} inklusive nicht abgeglichener Autoren}
-        \label{fig:similarity_with_non_matches_cran_cff}
-    \end{subfigure}%
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_without_non_matches_cran_cff.svg}
-        \caption{\gls{cran} \gls{cff} exklusive nicht abgeglichener Autoren}
-        \label{fig:similarity_without_non_matches_cran_cff}
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_cran_cff.svg}
+        \caption{\gls{cran} \gls{cff}}
+        \label{fig:similarity_cran_cff}
     \end{subfigure}
     \caption{Übereinstimmung der Autoren in den Paketen}
     \label{fig:similarities}

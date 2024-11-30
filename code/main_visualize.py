@@ -458,28 +458,17 @@ for _, folder in sources.items():
     plt.savefig(f"../docs/bilder/commits_vs_changed_lines/commits_vs_changed_lines_{folder}.svg")
     plt.show()
 
-def create_similarity_plot(similarity, name, non_matches: bool):
-    similarity = [x * 100 for x in ast.literal_eval(similarity)]
-    fig, ax = plt.subplots()
-    ax.hist(similarity, bins=20, edgecolor='black')
-    ax.set_xlabel('Ähnlichkeit (%)')
-    ax.set_ylabel('Häufigkeit')
-    plt.tight_layout()
-    name = name.lower().replace(' ', '_')
-    if non_matches:
-        plt.savefig(f"../docs/bilder/similarity/similarity_with_non_matches_{name}.svg")
-    else:
-        plt.savefig(f"../docs/bilder/similarity/similarity_without_non_matches_{name}.svg")
-    plt.show()
+def create_similarity_plot():
+    similarities = overall_results['similarities']
+    for name, similarity in similarities.items():
+        similarity = [x * 100 for x in ast.literal_eval(similarity)]
+        fig, ax = plt.subplots()
+        ax.hist(similarity, bins=20, edgecolor='black')
+        ax.set_xlabel('Ähnlichkeit (%)')
+        ax.set_ylabel('Häufigkeit')
+        plt.tight_layout()
+        name = name.lower().replace(' ', '_')
+        plt.savefig(f"../docs/bilder/similarity/similarity_{name}.svg")
+        plt.show()
 
-def create_similarity_plots():
-    similarity_with_non_matches = overall_results['similarity_with_non_matches']
-    similarity_without_non_matches = overall_results['similarity_without_non_matches']
-
-    for name, similarity in similarity_with_non_matches.items():
-        create_similarity_plot(similarity, name,True)
-
-    for name, similarity in similarity_without_non_matches.items():
-        create_similarity_plot(similarity, name, False)
-
-create_similarity_plots()
+create_similarity_plot()

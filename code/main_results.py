@@ -89,7 +89,7 @@ def get_total_authors_no_commits(git_contributors_df: pd.DataFrame, df: pd.DataF
 
     return total_authors_no_commits
 
-def calculate_similarity_with_non_matches(df_list: list[pd.DataFrame]) -> NAType | float:
+def calculate_similarity(df_list: list[pd.DataFrame]) -> NAType | float:
     similarities = []
     for i in range(len(df_list)):
         for j in range(i + 1, len(df_list)):
@@ -97,27 +97,9 @@ def calculate_similarity_with_non_matches(df_list: list[pd.DataFrame]) -> NAType
             second_df = df_list[j]
             first_df = first_df[first_df['commits'].notna()]
             second_df = second_df[second_df['commits'].notna()]
-            common_authors = get_common_authors(first_df, second_df)
-            if len(df_list[i]) >= len(df_list[j]):
-                similarity = len(common_authors) / len(df_list[i])
-                similarities.append(similarity)
-            else:
-                similarity = len(common_authors) / len(df_list[j])
-                similarities.append(similarity)
-
-    if len(similarities) == 0:
-        return pd.NA
-
-    return sum(similarities) / len(similarities)
-
-def calculate_similarity_without_non_matches(df_list: list[pd.DataFrame]) -> NAType | float:
-    similarities = []
-    for i in range(len(df_list)):
-        for j in range(i + 1, len(df_list)):
-            first_df = df_list[i]
-            second_df = df_list[j]
-            first_df = first_df[first_df['commits'].notna()]
-            second_df = second_df[second_df['commits'].notna()]
+            common_fields = ['insertions', 'deletions', 'lines_changed', 'files', 'commits', 'first_commit', 'last_commit']
+            first_df = first_df.drop_duplicates(subset=common_fields)
+            second_df = second_df.drop_duplicates(subset=common_fields)
             common_authors = get_common_authors(first_df, second_df)
             if len(first_df) >= len(second_df) and len(first_df) > 0:
                 similarity = len(common_authors) / len(first_df)
@@ -180,8 +162,7 @@ def process_directory(directory, position: int, full=True):
     common_authors_2_by_lines = {}
     dfs = {}
     authors = {}
-    similarity_with_non_matches = []
-    similarity_without_non_matches = []
+    similarities = []
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -432,13 +413,10 @@ def process_directory(directory, position: int, full=True):
 
         for folder, df_list in dfs.items():
             if len(df_list) > 1:
-                similarity_with_non_matches_results = calculate_similarity_with_non_matches(df_list)
-                similarity_without_non_matches_result = calculate_similarity_without_non_matches(df_list)
+                similarity = calculate_similarity(df_list)
 
-                if not pd.isna(similarity_with_non_matches_results):
-                    similarity_with_non_matches.append(similarity_with_non_matches_results)
-                if not pd.isna(similarity_without_non_matches_result):
-                    similarity_without_non_matches.append(similarity_without_non_matches_result)
+                if not pd.isna(similarity):
+                    similarities.append(similarity)
 
     # Convert percentages to tuple format before returning
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in
@@ -508,8 +486,7 @@ def process_directory(directory, position: int, full=True):
                             "citation_counts_cff": citation_counts_cff,
                             "citation_counts_preferred_citation_cff": citation_counts_preferred_citation_cff,
                             "citation_counts_bib": citation_counts_bib,
-                            "similarity_with_non_matches": similarity_with_non_matches,
-                            "similarity_without_non_matches": similarity_without_non_matches}
+                            "similarities": similarities}
 
         for file, total_authors_no_commits_data in total_authors_no_commits.items():
             Path(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits").mkdir(parents=True, exist_ok=True)
