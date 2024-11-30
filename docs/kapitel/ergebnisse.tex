@@ -426,6 +426,36 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
     Die Tabelle gibt für die Quellen für die es möglich ist an, wie viel Zeit im Durchschnitt über alle Pakete seit der letzten Aktualisierung der Quelle vergangen ist. Die Zeit ist in Tagen angegeben.
 \end{table}
 
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_with_non_matches_pypi_cff.svg}
+        \caption{\gls{pypi} \gls{cff} inklusive nicht abgeglichener Autoren}
+        \label{fig:similarity_with_non_matches_pypi_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_without_non_matches_pypi_cff.svg}
+        \caption{\gls{pypi} \gls{cff} exklusive nicht abgeglichener Autoren}
+        \label{fig:similarity_without_non_matches_pypi_cff}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_with_non_matches_cran_cff.svg}
+        \caption{\gls{cran} \gls{cff} inklusive nicht abgeglichener Autoren}
+        \label{fig:similarity_with_non_matches_cran_cff}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/similarity/similarity_without_non_matches_cran_cff.svg}
+        \caption{\gls{cran} \gls{cff} exklusive nicht abgeglichener Autoren}
+        \label{fig:similarity_without_non_matches_cran_cff}
+    \end{subfigure}
+    \caption{Übereinstimmung der Autoren in den Paketen}
+    \label{fig:similarities}
+    \small
+    \raggedright
+\end{figure}
 
 \section{Ergebnisse mit Zeitverlauf}
 \label{sec:gesamtheit_ergebnisse}

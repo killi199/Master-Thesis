@@ -180,6 +180,8 @@ def process_directory(directory, position: int, full=True):
     common_authors_2_by_lines = {}
     dfs = {}
     authors = {}
+    similarity_with_non_matches = []
+    similarity_without_non_matches = []
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -428,12 +430,15 @@ def process_directory(directory, position: int, full=True):
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2, file_type, folder, True)
                     common_authors_2_by_lines = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2_by_lines, file_type, folder, False)
 
-        similarity_with_non_matches = []
-        similarity_without_non_matches = []
         for folder, df_list in dfs.items():
             if len(df_list) > 1:
-                similarity_with_non_matches.append(calculate_similarity_with_non_matches(df_list))
-                similarity_without_non_matches.append(calculate_similarity_without_non_matches(df_list))
+                similarity_with_non_matches_results = calculate_similarity_with_non_matches(df_list)
+                similarity_without_non_matches_result = calculate_similarity_without_non_matches(df_list)
+
+                if not pd.isna(similarity_with_non_matches_results):
+                    similarity_with_non_matches.append(similarity_with_non_matches_results)
+                if not pd.isna(similarity_without_non_matches_result):
+                    similarity_without_non_matches.append(similarity_without_non_matches_result)
 
     # Convert percentages to tuple format before returning
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in
@@ -484,16 +489,6 @@ def process_directory(directory, position: int, full=True):
                             "authors_removed": authors_removed_results,
                             "average_lifespans": lifespans_results}
     else:
-        if similarity_with_non_matches:
-            similarity_with_non_matches = pd.Series(similarity_with_non_matches).mean() * 100
-        else:
-            similarity_with_non_matches = pd.NA
-
-        if similarity_without_non_matches:
-            similarity_without_non_matches = pd.Series(similarity_without_non_matches).mean() * 100
-        else:
-            similarity_without_non_matches = pd.NA
-
         overall_results = {"total_cff": total_cff,
                             "total_valid_cff_cff_init_used": total_valid_cff_cff_init_used,
                             "total_valid_cff_cff_init_not_used": total_valid_cff_cff_init_not_used,
