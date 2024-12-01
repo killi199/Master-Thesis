@@ -275,11 +275,6 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = get_authors_df(file_path)
 
-                    #shuffled_authors_df = df.sample(frac=1).reset_index(drop=True)
-                    #shuffled_authors_df['checked'] = 0
-                    #Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}").mkdir(parents=True, exist_ok=True)
-                    #shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/{file}", index=False)
-
                     if folder_name not in dfs:
                         dfs[folder_name] = list()
 
@@ -294,7 +289,6 @@ def process_directory(directory, position: int, full=True):
                     file_type_percentages[file_base]['entries'] += entries
 
                     git_contributors_df = get_git_contributors_df(root)
-                    #git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/git_contributors.csv", index=False)
 
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file, folder_name)
 
@@ -351,7 +345,10 @@ def process_directory(directory, position: int, full=True):
                     if not pd.isna(df_sorted.iloc[0]['collection-doi']):
                         collection_doi_preferred_citation_cff += 1
                     key = df_sorted.iloc[0]['type']
-                    citation_counts_preferred_citation_cff[key] = citation_counts_preferred_citation_cff.get(key, 0) + 1
+                    if not pd.isna(key):
+                        citation_counts_preferred_citation_cff[key] = citation_counts_preferred_citation_cff.get(key, 0) + 1
+                    else:
+                        citation_counts_preferred_citation_cff["None"] = citation_counts_preferred_citation_cff.get("None", 0) + 1
 
                 if file == 'bib.csv':
                     git_contributors_df = get_git_contributors_df(root)
@@ -376,15 +373,10 @@ def process_directory(directory, position: int, full=True):
 
     # After the loop, process the latest files if 'full' is False
     if not full:
-        for folder, file_data in latest_files_by_folder.items():
+        for folder, file_data in tqdm(latest_files_by_folder.items(), position=position):
             for file_type, (latest_file_path, _) in file_data.items():
                 if latest_file_path:
                     authors_df = get_authors_df(latest_file_path)
-
-                    #shuffled_authors_df = authors_df.sample().reset_index(drop=True)
-                    #shuffled_authors_df['checked'] = 0
-                    #Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder}").mkdir(parents=True, exist_ok=True)
-                    #shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/{os.path.basename(latest_file_path)}", index=False)
 
                     if folder not in dfs:
                         dfs[folder] = list()
@@ -398,16 +390,7 @@ def process_directory(directory, position: int, full=True):
                     file_type_percentages[file_type]['non_matches'] += non_matches
                     file_type_percentages[file_type]['entries'] += entries
 
-                    git_contributors_df = get_git_contributors_df(os.path.dirname(latest_file_path))
-                    #git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/git_contributors.csv", index=False)
-                    total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type, folder)
-
-                    common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type, folder, True)
-                    common_authors_by_lines = get_common_authors_count(git_contributors_df, authors_df, common_authors_by_lines, file_type, folder, False)
-                    common_authors_2 = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2, file_type, folder, True)
-                    common_authors_2_by_lines = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2_by_lines, file_type, folder, False)
-
-        for folder, df_list in dfs.items():
+        for folder, df_list in tqdm(dfs.items(), position=position):
             if len(df_list) > 1:
                 similarity = calculate_similarity(df_list)
 
@@ -424,7 +407,7 @@ def process_directory(directory, position: int, full=True):
         authors_removed_results = {}
         lifespans_results = {}
 
-        for file_type, value in authors.items():
+        for file_type, value in tqdm(authors.items(), position=position):
             authors_added = 0
             authors_added_without_first_timestamp = 0
             authors_removed = 0
@@ -504,21 +487,6 @@ def process_directory(directory, position: int, full=True):
     return file_type_percentages, overall_results
 
 
-def process_results(file_types, source_name):
-    entries_result = 0
-    matches_result = 0
-    non_matches_result = 0
-
-    for file_type, matches in file_types.items():
-        print(
-            f"{source_name} {file_type} {matches[0]}/{matches[2]} ({matches[0] / matches[2] * 100:.2f}%) non matches {matches[1]}")
-        entries_result += matches[2]
-        non_matches_result += matches[1]
-        matches_result += matches[0]
-
-    print(
-        f"{source_name} total matches {matches_result}/{entries_result} ({matches_result / entries_result * 100:.2f}%) non matches {non_matches_result}")
-    return matches_result, non_matches_result, entries_result
 
 async def run_in_executor(executor, func, *args):
     loop = asyncio.get_running_loop()
@@ -527,11 +495,7 @@ async def run_in_executor(executor, func, *args):
 async def print_results(directory, full):
     # Define directories and their parameters
     subdirectories = [
-        (os.path.join(directory, 'cran'), 0),
-        (os.path.join(directory, 'pypi'), 1),
-        (os.path.join(directory, 'cff'), 2),
-        (os.path.join(directory, 'pypi_cff'), 3),
-        (os.path.join(directory, 'cran_cff'), 4),
+        (os.path.join(directory, 'cff_full'), 1),
     ]
 
     # Create a ProcessPoolExecutor for multiprocessing
@@ -543,11 +507,10 @@ async def print_results(directory, full):
         results, overall_results = zip(*results)
 
     # Handle results
-    cran_file_types, pypi_file_types, cff_file_types, pypi_cff_file_types, cran_cff_file_types = results
-    cran_overall_results, pypi_overall_results, cff_overall_results, pypi_cff_overall_results, cran_cff_overall_results = overall_results
+    cff_full_overall_results = overall_results[0]
 
-    combined_overall_results = pd.DataFrame([cran_overall_results, pypi_overall_results, cff_overall_results, pypi_cff_overall_results, cran_cff_overall_results])
-    combined_overall_results.index = ['CRAN', 'PyPi', 'CFF', 'PyPi CFF', 'CRAN CFF']
+    combined_overall_results = pd.DataFrame([cff_full_overall_results])
+    combined_overall_results.index = ['CFF Full']
 
     Path(f"overall_results").mkdir(parents=True, exist_ok=True)
 
@@ -555,37 +518,6 @@ async def print_results(directory, full):
         combined_overall_results.to_csv(f"overall_results/overall_full_results.csv", index_label="source")
     else:
         combined_overall_results.to_csv(f"overall_results/overall_results.csv", index_label="source")
-
-    print()
-
-    # Process and print CRAN results
-    cran_matches_result, cran_non_matches_result, cran_entries_result = process_results(cran_file_types, "CRAN")
-    print()
-
-    # Process and print PyPi results
-    pypi_matches_result, pypi_non_matches_result, pypi_entries_result = process_results(pypi_file_types, "PyPi")
-    print()
-
-    # Process and print CFF results
-    cff_matches_result, cff_non_matches_result, cff_entries_result = process_results(cff_file_types, "CFF")
-    print()
-
-    # Process and print PyPi CFF results
-    pypi_cff_matches_result, pypi_cff_non_matches_result, pypi_cff_entries_result = process_results(pypi_cff_file_types, "PyPi CFF")
-    print()
-
-    # Process and print CRAN CFF results
-    cran_cff_matches_result, cran_cff_non_matches_result, cran_cff_entries_result = process_results(cran_cff_file_types, "CRAN CFF")
-    print()
-
-    # Calculate total results
-    total_matches_result = cran_matches_result + pypi_matches_result + cff_matches_result + pypi_cff_matches_result + cran_cff_matches_result
-    total_non_matches_result = cran_non_matches_result + pypi_non_matches_result + cff_non_matches_result + pypi_cff_non_matches_result + cran_cff_non_matches_result
-    total_entries_result = cran_entries_result + pypi_entries_result + cff_entries_result + pypi_cff_entries_result + cran_cff_entries_result
-
-    print(
-        f"Total matches {total_matches_result}/{total_entries_result} ({total_matches_result / total_entries_result * 100:.2f}%) non matches {total_non_matches_result}")
-
 
 async def print_latest():
     await print_results('results', full=False)
