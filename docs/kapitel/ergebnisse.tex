@@ -465,36 +465,19 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
     Die Tabelle gibt für die Quellen für die es möglich ist an, wie viel Zeit im Durchschnitt über alle Pakete seit der letzten Aktualisierung der Quelle vergangen ist. Die Zeit ist in Tagen angegeben.
 \end{table}
 
-% TODO Beispiele geben mit konkreten Zahlen
-% TODO Auf Auffälligkeiten eingehen und die anekdotisch untermauern
-% TODO auf Anhang eingehen
-% TODO auf Besonderheiten eingehen
-% TODO Sagen, dass nur abgeglichene Autoren betrachtet werden. Es wird nicht nochmal über Namen abgeglichen!
-%In der \autoref{tab:similarity_between_authors} wird für jede Liste angegeben, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind.
-%Dabei werden nur jene Autoren berücksichtigt, welche abgeglichen werden konnten.
-%Es wird somit kein erneuter Abgleich zwischen den einzelnen Quellen anhand der Namen vorgenommen.
-%Falls ein Autor nicht abgeglichen werden konnte, wird in der Tabelle unterschieden, ob dieser mit in die Berechnung einfließt oder nicht.
-%Falls er einfließt wird, führt das zu schlechteren Ergebnissen, da der Autor in keiner anderen Quelle vorhanden sein kann, da er nicht abgeglichen wurde.
+In der \autoref{fig:similarities} wird für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} angegeben, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind.
+Für die weiteren Listen sind die Grafiken in \autoref{fig:similarities_anhang} dargestellt.
+Dabei werden nur jene Autoren berücksichtigt, welche abgeglichen werden konnten.
+Es wird somit kein erneuter Abgleich zwischen den einzelnen Quellen anhand der Namen vorgenommen.
 
-%In der Tabelle lässt sich beispielsweise ablesen, dass die Autoren der Pakete in der \gls{cran} Liste zu 42.17 \% in den Quellen übereinstimmen.
-%Dabei wird der Durchschnitt über alle Pakete gebildet. 
+Die Histogramme sind jeweils in 20 Bins unterteilt, sodass die Ähnlichkeit in 5 \% Schritten angegeben wird.
+Für jedes einzelne Paket wurde die Ähnlichkeit der Autoren untereinander berechnet und in die entsprechenden Bins einsortiert.
+Die Häufigkeit ist dabei in absoluten Werten angegeben.
 
-%\begin{table}
-%    \centering
-%    \setlength{\tabcolsep}{8pt}
-%    \begin{tabular}{c|c|c|c|c|c}
-%        \toprule
-%         & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
-%        Inkl. & 42.17 \% & 25.20 \% & 20.76 \% & 25.15 \% & 45.66 \% \\
-%        Exkl. & 45.63 \% & 30.38 \% & 24.95 \% & 33.95 \% & 57.70 \% \\
-%        \bottomrule
-%    \end{tabular}
-%    \caption{}
-%    \label{tab:similarity_between_authors}
-%    \small
-%    \raggedright
-%    Die Tabelle zeigt in Prozent für die unterschiedlichen Listen, wie ähnlich die Autoren innerhalb der Quellen in den Paketen angegeben sind. Dabei wird unterschieden, ob Autoren, welche nicht abgeglichen werden konnten, berücksichtigt werden oder nicht.
-%\end{table}
+In der \autoref{fig:similarity_pypi_cff} ist beispielsweise zu erkennen, dass vier Pakete in der \gls{pypi} \gls{cff} Liste eine Ähnlichkeit von 100 \% aufweisen.
+Das bedeutet, dass vier mal folgender Fall aufgetreten ist: Alle Quellen eines Pakets haben die gleichen Autoren gelistet, wobei kein Autor in einer Quelle fehlt und auch kein Autor in einer Quelle zu viel gelistet ist.
+Dabei muss beachtet werden, dass dies davon abhängig ist, ob der Abgleich erfolgreich war oder nicht.
+Außerdem ist auffällig, dass 14 der Pakete in der \gls{pypi} \gls{cff} Liste eine Ähnlichkeit aller Autoren in den Quellen von weniger als 5 \% aufweisen.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
@@ -513,7 +496,7 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
     \label{fig:similarities}
     \small
     \raggedright
-    % TODO Beschreibung
+    Das Histogramm zeigt für die \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Listen, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind. Auf der x Achse wird die Ähnlichkeit in Prozent angegeben. Die y Achse stellt die absolute Anzahl der Pakete dar, welche die entsprechende Ähnlichkeit aufweisen.
 \end{figure}
 
 \section{Ergebnisse mit Zeitverlauf}
