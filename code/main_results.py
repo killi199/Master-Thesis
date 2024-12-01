@@ -89,7 +89,7 @@ def get_total_authors_no_commits(git_contributors_df: pd.DataFrame, df: pd.DataF
 
     return total_authors_no_commits
 
-def calculate_similarity_with_non_matches(df_list: list[pd.DataFrame]) -> NAType | float:
+def calculate_similarity(df_list: list[pd.DataFrame]) -> NAType | float:
     similarities = []
     for i in range(len(df_list)):
         for j in range(i + 1, len(df_list)):
@@ -97,27 +97,9 @@ def calculate_similarity_with_non_matches(df_list: list[pd.DataFrame]) -> NAType
             second_df = df_list[j]
             first_df = first_df[first_df['commits'].notna()]
             second_df = second_df[second_df['commits'].notna()]
-            common_authors = get_common_authors(first_df, second_df)
-            if len(df_list[i]) >= len(df_list[j]):
-                similarity = len(common_authors) / len(df_list[i])
-                similarities.append(similarity)
-            else:
-                similarity = len(common_authors) / len(df_list[j])
-                similarities.append(similarity)
-
-    if len(similarities) == 0:
-        return pd.NA
-
-    return sum(similarities) / len(similarities)
-
-def calculate_similarity_without_non_matches(df_list: list[pd.DataFrame]) -> NAType | float:
-    similarities = []
-    for i in range(len(df_list)):
-        for j in range(i + 1, len(df_list)):
-            first_df = df_list[i]
-            second_df = df_list[j]
-            first_df = first_df[first_df['commits'].notna()]
-            second_df = second_df[second_df['commits'].notna()]
+            common_fields = ['insertions', 'deletions', 'lines_changed', 'files', 'commits', 'first_commit', 'last_commit']
+            first_df = first_df.drop_duplicates(subset=common_fields)
+            second_df = second_df.drop_duplicates(subset=common_fields)
             common_authors = get_common_authors(first_df, second_df)
             if len(first_df) >= len(second_df) and len(first_df) > 0:
                 similarity = len(common_authors) / len(first_df)
@@ -136,13 +118,10 @@ def process_directory(directory, position: int, full=True):
     total_cff = 0
     total_cff_full = 0
     total_valid_cff_cff_init_used = 0
-    total_valid_cff_cff_init_used_full = 0
     total_valid_cff_cff_init_not_used = 0
-    total_valid_cff_cff_init_not_used_full = 0
     total_invalid_cff_cff_init_used = 0
-    total_invalid_cff_cff_init_used_full = 0
     total_invalid_cff_cff_init_not_used = 0
-    total_invalid_cff_cff_init_not_used_full = 0
+    total_valid_cff = []
     doi_cff = 0
     doi_cff_full = 0
     identifier_doi_cff = 0
@@ -156,23 +135,17 @@ def process_directory(directory, position: int, full=True):
     total_preferred_citation_cff = 0
     total_preferred_citation_cff_full = 0
     doi_preferred_citation_cff = 0
-    doi_preferred_citation_cff_full = 0
     identifier_doi_preferred_citation_cff = 0
-    identifier_doi_preferred_citation_cff_full = 0
     collection_doi_preferred_citation_cff = 0
-    collection_doi_preferred_citation_cff_full = 0
     citation_counts_preferred_citation_cff = {}
-    citation_counts_preferred_citation_cff_full = {}
 
     # Bib
     total_bib = 0
     total_bib_full = 0
     doi_bib = 0
-    doi_bib_full = 0
     average_time_between_updates_bib = []
     difference_last_update_bib_list = []
     citation_counts_bib = {}
-    citation_counts_bib_full = {}
 
     # Readme
     average_time_between_updates_readme = []
@@ -181,11 +154,12 @@ def process_directory(directory, position: int, full=True):
     file_type_percentages = {}
     total_authors_no_commits = {}
     common_authors = {}
-    common_authors_by_files = {}
+    common_authors_by_lines = {}
     common_authors_2: dict[str, dict[str, tuple[list, int]]] = {}
-    common_authors_2_by_files = {}
+    common_authors_2_by_lines = {}
     dfs = {}
     authors = {}
+    similarities = []
 
     # Regular expressions to extract timestamp and file type
     file_patterns = {
@@ -265,10 +239,9 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_cff_full += len(df)
-                    total_valid_cff_cff_init_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == True)].shape[0]
-                    total_valid_cff_cff_init_not_used_full += df[(df['cff_valid'] == True) & (df['cff_init'] == False)].shape[0]
-                    total_invalid_cff_cff_init_used_full += df[(df['cff_valid'] == False) & (df['cff_init'] == True)].shape[0]
-                    total_invalid_cff_cff_init_not_used_full += df[(df['cff_valid'] == False) & (df['cff_init'] == False)].shape[0]
+
+                    for index, row in df.iterrows():
+                        total_valid_cff.append({'timestamp': row['committed_datetime'], 'package': folder_name, 'cff_valid': row['cff_valid'], 'cff_init': row['cff_init']})
                     doi_cff_full += df['doi'].notna().sum()
                     identifier_doi_cff_full += df['identifier-doi'].notna().sum()
                     for key, value in df['type'].value_counts().to_dict().items():
@@ -281,9 +254,6 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_bib_full += len(df)
-                    doi_bib_full += df['doi'].notna().sum()
-                    for key, value in df['type'].value_counts().to_dict().items():
-                        citation_counts_bib_full[key] = citation_counts_bib_full.get(key, 0) + value
                     df['committed_datetime'] = pd.to_datetime(df['committed_datetime'], utc=True)
                     df_sorted = df.sort_values(by='committed_datetime')
                     average_time_between_updates_bib.append(df_sorted['committed_datetime'].diff().dropna().mean())
@@ -299,16 +269,16 @@ def process_directory(directory, position: int, full=True):
                     file_path = str(os.path.join(root, file))
                     df = pd.read_csv(file_path)
                     total_preferred_citation_cff_full += len(df)
-                    doi_preferred_citation_cff_full += df['doi'].notna().sum()
-                    identifier_doi_preferred_citation_cff_full += df['identifier-doi'].notna().sum()
-                    collection_doi_preferred_citation_cff_full += df['collection-doi'].notna().sum()
-                    for key, value in df['type'].value_counts().to_dict().items():
-                        citation_counts_preferred_citation_cff_full[key] = citation_counts_preferred_citation_cff_full.get(key, 0) + value
             else:
                 if file in ['pypi_maintainers.csv', 'python_authors.csv', 'python_maintainers.csv',
                             'description_authors.csv', 'cran_authors.csv', 'cran_maintainers.csv']:
                     file_path = str(os.path.join(root, file))
                     df = get_authors_df(file_path)
+
+                    #shuffled_authors_df = df.sample(frac=1).reset_index(drop=True)
+                    #shuffled_authors_df['checked'] = 0
+                    #Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}").mkdir(parents=True, exist_ok=True)
+                    #shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/{file}", index=False)
 
                     if folder_name not in dfs:
                         dfs[folder_name] = list()
@@ -324,13 +294,14 @@ def process_directory(directory, position: int, full=True):
                     file_type_percentages[file_base]['entries'] += entries
 
                     git_contributors_df = get_git_contributors_df(root)
+                    #git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder_name}/git_contributors.csv", index=False)
 
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, df, total_authors_no_commits, file, folder_name)
 
                     common_authors = get_common_authors_count(git_contributors_df, df, common_authors, file, folder_name, True)
-                    common_authors_by_files = get_common_authors_count(git_contributors_df, df, common_authors_by_files, file, folder_name, False)
+                    common_authors_by_lines = get_common_authors_count(git_contributors_df, df, common_authors_by_lines, file, folder_name, False)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, df, common_authors_2, file, folder_name, True)
-                    common_authors_2_by_files = get_common_authors_count_2(git_contributors_df, df, common_authors_2_by_files, file, folder_name, False)
+                    common_authors_2_by_lines = get_common_authors_count_2(git_contributors_df, df, common_authors_2_by_lines, file, folder_name, False)
 
                 # Process only the latest timestamped files
                 for file_type, pattern in file_patterns.items():
@@ -410,6 +381,11 @@ def process_directory(directory, position: int, full=True):
                 if latest_file_path:
                     authors_df = get_authors_df(latest_file_path)
 
+                    #shuffled_authors_df = authors_df.sample().reset_index(drop=True)
+                    #shuffled_authors_df['checked'] = 0
+                    #Path(f"results_manually_checked/{directory.split('/')[-1]}/{folder}").mkdir(parents=True, exist_ok=True)
+                    #shuffled_authors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/{os.path.basename(latest_file_path)}", index=False)
+
                     if folder not in dfs:
                         dfs[folder] = list()
 
@@ -423,19 +399,20 @@ def process_directory(directory, position: int, full=True):
                     file_type_percentages[file_type]['entries'] += entries
 
                     git_contributors_df = get_git_contributors_df(os.path.dirname(latest_file_path))
+                    #git_contributors_df.to_csv(f"results_manually_checked/{directory.split('/')[-1]}/{folder}/git_contributors.csv", index=False)
                     total_authors_no_commits = get_total_authors_no_commits(git_contributors_df, authors_df, total_authors_no_commits, file_type, folder)
 
                     common_authors = get_common_authors_count(git_contributors_df, authors_df, common_authors, file_type, folder, True)
-                    common_authors_by_files = get_common_authors_count(git_contributors_df, authors_df, common_authors_by_files, file_type, folder, False)
+                    common_authors_by_lines = get_common_authors_count(git_contributors_df, authors_df, common_authors_by_lines, file_type, folder, False)
                     common_authors_2 = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2, file_type, folder, True)
-                    common_authors_2_by_files = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2_by_files, file_type, folder, False)
+                    common_authors_2_by_lines = get_common_authors_count_2(git_contributors_df, authors_df, common_authors_2_by_lines, file_type, folder, False)
 
-        similarity_with_non_matches = []
-        similarity_without_non_matches = []
         for folder, df_list in dfs.items():
             if len(df_list) > 1:
-                similarity_with_non_matches.append(calculate_similarity_with_non_matches(df_list))
-                similarity_without_non_matches.append(calculate_similarity_without_non_matches(df_list))
+                similarity = calculate_similarity(df_list)
+
+                if not pd.isna(similarity):
+                    similarities.append(similarity)
 
     # Convert percentages to tuple format before returning
     file_type_percentages = {ft: (data['matches'], data['non_matches'], data['entries']) for ft, data in
@@ -469,39 +446,20 @@ def process_directory(directory, position: int, full=True):
             lifespans_results[file_type] = pd.Series(lifespans).mean()
 
         overall_results = {"total_cff": total_cff_full,
-                            "total_valid_cff_cff_init_used": total_valid_cff_cff_init_used_full,
-                            "total_valid_cff_cff_init_not_used": total_valid_cff_cff_init_not_used_full,
-                            "total_invalid_cff_cff_init_used": total_invalid_cff_cff_init_used_full,
-                            "total_invalid_cff_cff_init_not_used": total_invalid_cff_cff_init_not_used_full,
+                            "total_valid_cff": total_valid_cff,
                             "doi_cff": doi_cff_full,
                             "identifier_doi_cff": identifier_doi_cff_full,
                             "total_preferred_citation_cff": total_preferred_citation_cff_full,
-                            "doi_preferred_citation_cff": doi_preferred_citation_cff_full,
-                            "identifier_doi_preferred_citation_cff": identifier_doi_preferred_citation_cff_full,
-                            "collection_doi_preferred_citation_cff": collection_doi_preferred_citation_cff_full,
-                            "doi_bib": doi_bib_full,
                             "average_time_between_updates_cff": pd.Series(average_time_between_updates_cff).mean(),
                             "average_time_between_updates_bib": pd.Series(average_time_between_updates_bib).mean(),
                             "average_time_between_updates_readme": pd.Series(average_time_between_updates_readme).mean(),
                             "total_bib": total_bib_full,
                             "citation_counts_cff": citation_counts_cff_full,
-                            "citation_counts_preferred_citation_cff": citation_counts_preferred_citation_cff_full,
-                            "citation_counts_bib": citation_counts_bib_full,
                             "authors_added": authors_added_results,
                             "authors_added_without_first_timestamp": authors_added_without_first_timestamp_results,
                             "authors_removed": authors_removed_results,
                             "average_lifespans": lifespans_results}
     else:
-        if similarity_with_non_matches:
-            similarity_with_non_matches = pd.Series(similarity_with_non_matches).mean() * 100
-        else:
-            similarity_with_non_matches = pd.NA
-
-        if similarity_without_non_matches:
-            similarity_without_non_matches = pd.Series(similarity_without_non_matches).mean() * 100
-        else:
-            similarity_without_non_matches = pd.NA
-
         overall_results = {"total_cff": total_cff,
                             "total_valid_cff_cff_init_used": total_valid_cff_cff_init_used,
                             "total_valid_cff_cff_init_not_used": total_valid_cff_cff_init_not_used,
@@ -521,8 +479,7 @@ def process_directory(directory, position: int, full=True):
                             "citation_counts_cff": citation_counts_cff,
                             "citation_counts_preferred_citation_cff": citation_counts_preferred_citation_cff,
                             "citation_counts_bib": citation_counts_bib,
-                            "similarity_with_non_matches": similarity_with_non_matches,
-                            "similarity_without_non_matches": similarity_without_non_matches}
+                            "similarities": similarities}
 
         for file, total_authors_no_commits_data in total_authors_no_commits.items():
             Path(f"overall_results/{directory.split('/')[-1]}/total_authors_no_commits").mkdir(parents=True, exist_ok=True)
@@ -532,17 +489,17 @@ def process_directory(directory, position: int, full=True):
             Path(f"overall_results/{directory.split('/')[-1]}/common_authors").mkdir(parents=True, exist_ok=True)
             pd.DataFrame(common_authors_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors/{file}", index=False)
 
-        for file, common_authors_by_files_data in common_authors_by_files.items():
-            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_by_files").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(common_authors_by_files_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_by_files/{file}", index=False)
+        for file, common_authors_by_lines_data in common_authors_by_lines.items():
+            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_by_lines").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_by_lines_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_by_lines/{file}", index=False)
 
         for file, common_authors_2_data in common_authors_2.items():
             Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2").mkdir(parents=True, exist_ok=True)
             pd.DataFrame(common_authors_2_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2/{file}", index=False)
 
-        for file, common_authors_2_by_files_data in common_authors_2_by_files.items():
-            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_files").mkdir(parents=True, exist_ok=True)
-            pd.DataFrame(common_authors_2_by_files_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_files/{file}", index=False)
+        for file, common_authors_2_by_lines_data in common_authors_2_by_lines.items():
+            Path(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_lines").mkdir(parents=True, exist_ok=True)
+            pd.DataFrame(common_authors_2_by_lines_data).to_csv(f"overall_results/{directory.split('/')[-1]}/common_authors_2_by_lines/{file}", index=False)
 
     return file_type_percentages, overall_results
 
