@@ -517,3 +517,110 @@ for index, value in total_valid_cff.items():
     index = index.lower().replace(' ', '_')
     plt.savefig(f"../docs/bilder/valid_cff_by_time/overall_valid_cff_{index}.svg")
     plt.show()
+
+def get_removed_added_authors_plt(added_data, removed_data):
+    bar_width = 0.35
+    index = range(len(added_data))
+
+    fig, ax = plt.subplots()
+
+    bottom_added = [0] * len(added_data)
+    bottom_removed = [0] * len(removed_data)
+
+    colors_added = ['blue', 'orange', 'green', 'olive']
+    colors_removed = ['pink', 'gray', 'brown', 'cyan']
+
+    for idx, column in enumerate(added_data.columns):
+        bars_added = ax.bar(index, added_data[column], bar_width, bottom=bottom_added,
+                            label=f'Hinzugefügte {column} Autoren', color=colors_added[idx])
+        bottom_added = [i + j for i, j in zip(bottom_added, added_data[column])]
+
+    for idx, column in enumerate(removed_data.columns):
+        bars_removed = ax.bar([i + bar_width for i in index], removed_data[column], bar_width,
+                              bottom=bottom_removed, label=f'Gelöschte {column} Autoren', color=colors_removed[idx])
+        bottom_removed = [i + j for i, j in zip(bottom_removed, removed_data[column])]
+
+    ax.set_xlabel('Liste')
+    ax.set_ylabel('Anzahl der Autoren')
+    ax.set_xticks([i + bar_width / 2 for i in index])
+    ax.set_xticklabels(added_data.index)
+    ax.legend(loc='upper left')
+
+    plt.tight_layout()
+
+    return plt
+
+def get_added_authors_plt(added_data):
+    index = range(len(added_data))
+
+    fig, ax = plt.subplots()
+
+    bottom_added = [0] * len(added_data)
+
+    colors_added = ['blue', 'orange', 'green', 'olive']
+
+    for idx, column in enumerate(added_data.columns):
+        bars_added = ax.bar(index, added_data[column], bottom=bottom_added,
+                            label=f'Hinzugefügte {column} Autoren', color=colors_added[idx])
+        bottom_added = [i + j for i, j in zip(bottom_added, added_data[column])]
+
+    ax.set_xlabel('Liste')
+    ax.set_ylabel('Anzahl der Autoren')
+    ax.set_xticks(range(len(added_data.index)))
+    ax.set_xticklabels(added_data.index)
+    ax.legend(loc='upper left')
+
+    plt.tight_layout()
+
+    return plt
+
+added_authors = overall_full_results['authors_added'].apply(eval)
+removed_authors = overall_full_results['authors_removed'].apply(eval)
+
+added_authors_data = pd.DataFrame(added_authors.tolist(), index=overall_full_results.index).fillna(0)
+removed_authors_data = pd.DataFrame(removed_authors.tolist(), index=overall_full_results.index).fillna(0)
+
+columns = {'readme_authors_new.csv': 'README',
+           'cff_authors_new.csv': 'CFF',
+           'cff_preferred_citation_authors_new.csv': 'CFF preferred citation',
+           'bib_authors_new.csv': 'BibTeX'}
+
+added_authors_data.rename(columns=columns, inplace=True)
+removed_authors_data.rename(columns=columns, inplace=True)
+
+added_authors_data = added_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
+removed_authors_data = removed_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
+
+added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data)
+added_removed_authors_plt.savefig(f"../docs/bilder/added_removed_authors.svg")
+added_removed_authors_plt.show()
+
+added_authors_data = added_authors_data.drop(columns=['README'])
+removed_authors_data = removed_authors_data.drop(columns=['README'])
+
+added_removed_authors_plt = get_removed_added_authors_plt(added_authors_data, removed_authors_data)
+added_removed_authors_plt.savefig(f"../docs/bilder/added_removed_authors_without_readme.svg")
+added_removed_authors_plt.show()
+
+added_authors = overall_full_results['authors_added_without_first_timestamp'].apply(eval)
+
+added_authors_data = pd.DataFrame(added_authors.tolist(), index=overall_full_results.index).fillna(0)
+
+columns = {'readme_authors_new.csv': 'README',
+           'cff_authors_new.csv': 'CFF',
+           'cff_preferred_citation_authors_new.csv': 'CFF preferred citation',
+           'bib_authors_new.csv': 'BibTeX'}
+
+added_authors_data.rename(columns=columns, inplace=True)
+
+added_authors_data = added_authors_data[['CFF', 'CFF preferred citation', 'BibTeX', 'README']]
+
+added_authors_plt = get_added_authors_plt(added_authors_data)
+added_authors_plt.savefig(f"../docs/bilder/added_authors_without_first_timestamp.svg")
+added_authors_plt.show()
+
+added_authors_data = added_authors_data.drop(columns=['README'])
+
+added_authors_plt = get_added_authors_plt(added_authors_data)
+added_authors_plt.savefig(f"../docs/bilder/added_authors_without_readme_without_first_timestamp.svg")
+added_authors_plt.show()

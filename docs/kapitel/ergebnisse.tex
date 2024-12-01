@@ -507,3 +507,33 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
     \raggedright
     % TODO Beschreibung
 \end{figure}
+
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_removed_authors.svg}
+        \caption{Inklusive README Autoren und ersten Autoren}
+        \label{fig:added_removed_authors}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_removed_authors_without_readme.svg}
+        \caption{Exklusive README Autoren und inklusive ersten Autoren}
+        \label{fig:added_removed_authors_without_readme}
+    \end{subfigure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_authors_without_first_timestamp.svg}
+        \caption{Inklusive README Autoren und exklusive ersten Autoren}
+        \label{fig:added_authors_without_first_timestamp}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_authors_without_readme_without_first_timestamp.svg}
+        \caption{Exklusive README Autoren und ersten Autoren}
+        \label{fig:added_authors_without_readme_without_first_timestamp}
+    \end{subfigure}
+    \caption{Hinzugefügte und gelöschte Autoren}
+    \small
+    Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
+\end{figure}
