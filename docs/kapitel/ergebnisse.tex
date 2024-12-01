@@ -566,3 +566,22 @@ Außerdem ist auffällig, dass 14 der Pakete in der \gls{pypi} \gls{cff} Liste e
     \small
     Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
 \end{figure}
+
+% TODO die Tabelle ähnlich beschreiben wie tab:average_time_last_update
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c|c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
+        README          & 125 & 149 & 30 & 28 & 45 \\
+        \gls{cff}       & 24  & 132 & 95 & 98 & 91 \\
+        \hologo{BibTeX} &     & 676 &    &    &    \\
+        \bottomrule
+    \end{tabular}
+    \caption{Durchschnittliche Zeit seit der letzten Aktualisierung}
+    \label{tab:average_time_between_updates}
+    \small
+    \raggedright
+    Die Tabelle gibt für die Quellen für die es möglich ist an, wie oft im Durchschnitt über alle Pakete die Quellen aktualisiert werden. Die Zeit ist in Tagen angegeben.
+\end{table}
