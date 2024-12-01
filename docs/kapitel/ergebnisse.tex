@@ -1,5 +1,6 @@
 \chapter{Ergebnisse}
 \label{chap:ergebnisse}
+% TODO ggf. noch weitere full cff graphen hinzufügen
 % TODO Darauf achten, dass jede Grafik mindestens einmal im Text referenziert wird
 % TODO Wichtig ist, dass du deine Forschungsergebnisse im Ergebnisteil noch nicht interpretierst, sondern nur beschreibst.!!!
 % TODO gff. noch auf die Daten in #20 eingehen? Das dann mit und ohne Zeitverlauf?
@@ -301,7 +302,7 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse werden die Jahre dargestellt. Die y Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
 \end{figure}
 
-Die \autoref{fig:overall_valid_cff} zeigt den Anteil der validen und invaliden \gls{cff} Dateien in allen fünf Listen.
+Die \autoref{fig:overall_valid_cff_not_full} zeigt den Anteil der validen und invaliden \gls{cff} Dateien in allen fünf Listen.
 Dabei wird außerdem unterschieden in Dateien, welche Anzeichen auf die Benutzung von \emph{cffinit} aufweisen und Dateien ohne die Verwendung von dem Programm.
 Außerdem lässt sich in der Abbildung erkennen wie viele Pakete in welcher Liste das \gls{cff} verwendet haben.
 Dabei ist auffällig, dass in der \gls{cran} \gls{cff} Liste keine 100 Pakete gelistet werden, obwohl die Liste 100 Pakete enthalten sollte, welche ein \gls{cff} verwenden.
@@ -316,14 +317,28 @@ In diesem Fall ist das Paket unter den Top 100 \gls{cff} Paketen auf GitHub und 
 Im Allgemeinen sind alle \gls{pypi} Pakete, welche in der \gls{cff} Liste enthalten sind, ebenfalls in der \gls{pypi} \gls{cff} Liste enthalten.
 In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls{cran} Pakete zu wenig Sterne auf GitHub haben, um unter den Top 100 \gls{cff} Paketen zu sein.
 
+Die \autoref{fig:overall_valid_cff_full} zeigt die gleichen Informationen wie die zuvor beschriebene Abbildung.
+Diesmal wurde die Analyse allerdings nicht auf einer Liste sondern für alle auf GitHub verfügbaren \gls{cff} Dateien, welche analysiert werden konnten durchgeführt.
+Dabei ist auffällig, dass der Anteil der validen \gls{cff} Dateien zwar größer ist, jedoch der Anteil der invaliden \gls{cff} ebenfalls weiter gestiegen ist.
+
 \begin{figure}
-    \centering
-    \includesvg[width=.5\textwidth,inkscapelatex=false]{bilder/overall_valid_cff.svg}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/overall_valid_cff.svg}
+        \caption{Validität der \gls{cff} Dateien in den Listen}
+        \label{fig:overall_valid_cff_not_full}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/overall_valid_cff_full.svg}
+        \caption{Validität aller \gls{cff} Dateien auf GitHub}
+        \label{fig:overall_valid_cff_full}
+    \end{subfigure}
     \caption{Validität der \gls{cff} Dateien}
     \label{fig:overall_valid_cff}
     \small
     \raggedright
-    Die Abbildung zeigt für die verschiedenen analysierten Listen, wie viele der vorhandenen \gls{cff} Dateien valide sind, und ob \emph{cffinit} verwendet wurde oder nicht.
+    Die \autoref{fig:overall_valid_cff_not_full} zeigt für die verschiedenen analysierten Listen, wie viele der vorhandenen \gls{cff} Dateien valide sind, und ob \emph{cffinit} verwendet wurde oder nicht. Die \autoref{fig:overall_valid_cff_full} zeigt die gleichen Informationen für alle \gls{cff} Dateien auf GitHub.
 \end{figure}
 
 \autoref{fig:citation_counts} zeigt für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und \hologo{BibTeX} den angegebenen Typ der Zitation.
@@ -338,6 +353,8 @@ Aus diesem Grund sind in \autoref{fig:citation_counts_preferred_citation_cff} we
 In \autoref{fig:citation_counts_cff} ist auffällig, dass ein \gls{cran} Paket aus der \gls{cran} \gls{cff} Liste als Typ der Zitation \emph{article} angegeben hat.
 Dies ist in einer \gls{cff} Datei nicht zulässig und führt zu einer ungültigen \gls{cff} Datei.
 Dies betrifft das Paket \emph{worcs}.
+Bei der Betrachtung aller \gls{cff} Dateien auf GitHub ist zu erkennen, dass von 18.520 17470 Pakete \emph{software} angegeben haben und 412 \emph{dataset}.
+Alle anderen 638 Pakete haben einen anderen Typ der Zitation angegeben und sind dadurch ungültig.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
@@ -370,6 +387,8 @@ In \autoref{fig:doi} ist dargestellt wie viele der Quellen, welche potenziell ei
 Dabei wird in Quellen in denen es möglich ist zwischen den unterschiedlichen Angaben einer \gls{doi} unterschieden.
 In \autoref{fig:cff_doi} ist beispielsweise zu erkennen, dass in der \gls{cran} \gls{cff} Liste 57 Pakete eine \gls{doi} in dem \gls{cff} angegeben haben und 40 Pakete keine \gls{doi} angegeben haben.
 Auffällig ist außerdem, dass in der \glqq preferred-citation\grqq{} in \autoref{fig:preferred_citation_doi} kein einziges Paket eine Collection \gls{doi} angegeben hat und ebenfalls nur ein Paket in den \glqq identifiers\grqq{} eine \gls{doi} angegeben hat.
+Zusätzlich wird in \autoref{fig:full_doi} dargestellt wie viele aller \gls{cff} Dateien auf GitHub eine \gls{doi} angegeben haben.
+Der Aufbau ist dabei wie zuvor.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
@@ -395,7 +414,27 @@ Auffällig ist außerdem, dass in der \glqq preferred-citation\grqq{} in \autore
     \label{fig:doi}
     \small
     \raggedright
-    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten LIsten, wie oft eine \gls{doi} in verschiedenen Versionen in den Zitationen angegeben wurde.
+    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, wie oft eine \gls{doi} auf verschiedenen Arten in den Zitationen angegeben wurde.
+\end{figure}
+
+\begin{figure}
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/full_cff_doi.svg}
+        \caption{\gls{cff}}
+        \label{fig:full_cff_doi}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/full_preferred_citation_doi.svg}
+        \caption{\glqq preferred-citation\grqq{} \gls{cff}}
+        \label{fig:full_preferred_citation_doi}
+    \end{subfigure}
+    \caption{Verwendung von \gls{doi}s in allen \gls{cff} auf GitHub}
+    \label{fig:full_doi}
+    \small
+    \raggedright
+    Die Abbildungen zeigen für die \gls{cff} und \glqq preferred-citation\grqq{} Quellen, jeweils für alle alle \gls{cff} Dateien auf GitHub, wie oft eine \gls{doi} auf verschiedenen Arten in den Zitationen angegeben wurde.
 \end{figure}
 
 Zusätzlich zu den Graphen wurden weitere Ergebnisse aus den Daten berechnet.
@@ -500,6 +539,13 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/valid_cff_by_time/overall_valid_cff_cran_cff.svg}
         \caption{\gls{cran} \gls{cff}}
         \label{fig:valid_cff_by_time_cran_cff}
+    \end{subfigure}
+    \centering
+    \begin{subfigure}{.5\textwidth}
+        \centering
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/valid_cff_by_time/overall_valid_cff_cff_full.svg}
+        \caption{Alle \gls{cff} Dateien}
+        \label{fig:valid_cff_by_time_full}
     \end{subfigure}
     \caption{Validität der \gls{cff} Dateien über die Zeit}
     \label{fig:valid_cff_by_time}
