@@ -6,7 +6,7 @@ from pathlib import Path
 
 import pandas as pd
 from tqdm import tqdm
-from datetime import datetime
+from datetime import datetime, timezone
 from pandas._libs.missing import NAType
 
 def check_matches(df: pd.DataFrame):
@@ -423,12 +423,14 @@ def process_directory(directory, position: int, full=True):
         authors_added_without_first_timestamp_results = {}
         authors_removed_results = {}
         lifespans_results = {}
+        lifespans_until_today_results = {}
 
         for file_type, value in authors.items():
             authors_added = 0
             authors_added_without_first_timestamp = 0
             authors_removed = 0
             lifespans = []
+            lifespans_until_today = []
             for package in value:
                 authors_added += len([author for author in value[package] if value[package][author]["timestamps_added"]])
                 authors_added_without_first_timestamp += len([author for author in value[package] if len(value[package][author]["timestamps_added"]) > 1])
@@ -436,14 +438,16 @@ def process_directory(directory, position: int, full=True):
                 for name, timestamps in value[package].items():
                     for index, added in enumerate(timestamps['timestamps_added']):
                         if len(timestamps['timestamps_removed']) < len(timestamps['timestamps_added']):
-                            continue
+                            lifespans_until_today.append((datetime.now(timezone.utc) - added).days)
                         if len(timestamps['timestamps_removed']) > index and timestamps['timestamps_removed'][index]:
                             lifespans.append((timestamps['timestamps_removed'][index] - added).days)
+                            lifespans_until_today.append((timestamps['timestamps_removed'][index] - added).days)
 
             authors_added_results[file_type] = authors_added
             authors_added_without_first_timestamp_results[file_type] = authors_added_without_first_timestamp
             authors_removed_results[file_type] = authors_removed
             lifespans_results[file_type] = pd.Series(lifespans).mean()
+            lifespans_until_today_results[file_type] = pd.Series(lifespans_until_today).mean()
 
         overall_results = {"total_cff": total_cff_full,
                             "total_valid_cff": total_valid_cff,
@@ -458,7 +462,8 @@ def process_directory(directory, position: int, full=True):
                             "authors_added": authors_added_results,
                             "authors_added_without_first_timestamp": authors_added_without_first_timestamp_results,
                             "authors_removed": authors_removed_results,
-                            "average_lifespans": lifespans_results}
+                            "average_lifespans": lifespans_results,
+                            "average_lifespans_until_today": lifespans_until_today_results,}
     else:
         overall_results = {"total_cff": total_cff,
                             "total_valid_cff_cff_init_used": total_valid_cff_cff_init_used,
