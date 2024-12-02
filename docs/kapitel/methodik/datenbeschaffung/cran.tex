@@ -63,15 +63,14 @@ Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{p{3.5cm}|p{10cm}}
+    \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
         \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
-        \emph{name} & Name des Autors \\
-        \emph{email} & E-Mail des Autors \\
-        \emph{orcid} & ORCID-ID des Autors \\
+        \emph{name}   & Name des Autors       \\
+        \emph{email}  & E-Mail des Autors     \\
+        \emph{orcid}  & ORCID-ID des Autors   \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Felder der \texttt{cran\_authors.csv}, \texttt{TIMESTAMP\_cff\_authors(\_new).csv} und \texttt{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei}
     \label{tab:cran_authors}
     \small

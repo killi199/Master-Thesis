@@ -33,21 +33,20 @@ Für die Verarbeitung der Zeiten in unterschiedlichen Zeitzonen wird das Modul \
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{p{3.5cm}|p{10cm}}
+    \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
-        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
-        \emph{name} & Name des Autors \\
-        \emph{email} & E-Mail des Autors \\
-        \emph{insertions} & Hinzugefügte Zeilen des Autors \\
-        \emph{deletions} & Gelöschte Zeilen des Autors \\
-        \emph{lines\_changed} & Geänderte Zeilen des Autors \\
-        \emph{files} & Geänderte Dateien des Autors \\
-        \emph{commits} & Anzahl der Commits des Autors \\
-        \emph{first\_commit} & Zeitpunkt des ersten Commits des Autors \\
-        \emph{last\_commit} & Zeitpunkt des letzten Commits des Autors \\
+        \textbf{Feld}         & \textbf{Beschreibung}                   \\ \midrule
+        \emph{name}           & Name des Autors                         \\
+        \emph{email}          & E-Mail des Autors                       \\
+        \emph{insertions}     & Hinzugefügte Zeilen des Autors          \\
+        \emph{deletions}      & Gelöschte Zeilen des Autors             \\
+        \emph{lines\_changed} & Geänderte Zeilen des Autors             \\
+        \emph{files}          & Geänderte Dateien des Autors            \\
+        \emph{commits}        & Anzahl der Commits des Autors           \\
+        \emph{first\_commit}  & Zeitpunkt des ersten Commits des Autors \\
+        \emph{last\_commit}  & Zeitpunkt des letzten Commits des Autors \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Felder der \texttt{git\_contributors.csv} Datei}
     \label{tab:git_contributors}
     \small

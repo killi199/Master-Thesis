@@ -30,19 +30,18 @@ Die Felder der Datei sind in \autoref{tab:bib} aufgelistet.
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{p{4cm}|p{9.5cm}}
+    \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
-        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
-        \emph{type} & Literaturtyp der \hologo{BibTeX} Datei \\
-        \emph{year} & Veröffentlichungsjahr \\
-        \emph{month} & Veröffentlichungsmonat \\
-        \emph{doi} & Zu zitierende \gls{doi} \\
-        \emph{isbn} & Zu zitierende ISBN \\
-        \emph{committed\_datetime} & Zeitpunkt des \emph{commit date} \\
-        \emph{authored\_datetime} & Zeitpunkt des \emph{author date} \\
+        \textbf{Feld}              & \textbf{Beschreibung}                  \\ \midrule
+        \emph{type}                & Literaturtyp der \hologo{BibTeX} Datei \\
+        \emph{year}                & Veröffentlichungsjahr                  \\
+        \emph{month}               & Veröffentlichungsmonat                 \\
+        \emph{doi}                 & Zu zitierende \gls{doi}                \\
+        \emph{isbn}                & Zu zitierende ISBN                     \\
+        \emph{committed\_datetime} & Zeitpunkt des \emph{commit date}       \\
+        \emph{authored\_datetime}  & Zeitpunkt des \emph{author date}       \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Felder der \texttt{bib.csv} Datei}
     \label{tab:bib}
     \small

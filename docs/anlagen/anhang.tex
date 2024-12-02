@@ -1,7 +1,5 @@
 \chapter{Zusätzliche Abbildungen}
 \label{chap:zusaetzliche_abbildungen}
-% TODO nochmal checken ob jede Abbildung mindestens einmal referenziert wird
-% TODO nochmal checken, ob die Reihenfolge der in dem Ergebnissteil entspricht
 
 \begin{figure}[H]
     \begin{subfigure}{.5\textwidth}
@@ -187,32 +185,30 @@
 \begin{table}[H]
     \footnotesize
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{3.2cm}R{3.2cm}R{3.2cm}}
         \toprule
-        \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} \\ \midrule
-        \emph{\gls{cran} Autoren} & 221/239 (92.47 \%) & & \\
-        \emph{\gls{cran} Maintainer} & 93/94 (98.94 \%) & & \\
-        \emph{Beschreibung} & 5/6 (83.33 \%) & 70/102 (68.63 \%) & 285/542 (52.58 \%) \\
-        \emph{README} & 58/173 (33.53 \%) & 25/39 (64.10 \%) & 311/568 (54.75 \%) \\
-        \emph{\gls{cff}} & 12/12 (100.00 \%) & 13/14 (92.86 \%) & 192/226 (84.96 \%) \\
-        \emph{\gls{cff} preferred citation} & 12/12 (100.00 \%) & & 131/152 (86.18 \%) \\
-        \emph{\gls{pypi} Maintainer} & & 193/237 (81.43 \%) & 112/116 (96.55 \%) \\
-        \emph{Python Autoren} & & 82/102 (80.39 \%) & 60/66 (90.91 \%) \\
-        \emph{Python Maintainer} & & 20/34 (58.82 \%) & 5/7 (71.43 \%) \\
-        \emph{\hologo{BibTeX}} & & 55/61 (90.16 \%) & 0/1 (0.00 \%) \\ \midrule
-        \emph{Summe} & 401/536 (74.81 \%) & 458/589 (77.76 \%) & 1096/1678 (65.32 \%) \\
+        \textbf{Quelle}              & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}}   \\ \midrule
+        \gls{cran} Autoren           & 221/239 (92.47 \%)  &                     &                      \\
+        \gls{cran} Maintainer        & 93/94 (98.94 \%)    &                     &                      \\
+        Beschreibung                 & 5/6 (83.33 \%)      & 70/102 (68.63 \%)   & 285/542 (52.58 \%)   \\
+        README                       & 58/173 (33.53 \%)   & 25/39 (64.10 \%)    & 311/568 (54.75 \%)   \\
+        \gls{cff}                    & 12/12 (100.00 \%)   & 13/14 (92.86 \%)    & 192/226 (84.96 \%)   \\
+        \gls{cff} preferred citation & 12/12 (100.00 \%)   &                     & 131/152 (86.18 \%)   \\
+        \gls{pypi} Maintainer        &                     & 193/237 (81.43 \%)  & 112/116 (96.55 \%)   \\
+        Python Autoren               &                     & 82/102 (80.39 \%)   & 60/66 (90.91 \%)     \\
+        Python Maintainer            &                     & 20/34 (58.82 \%)    & 5/7 (71.43 \%)       \\
+        \hologo{BibTeX}              &                     & 55/61 (90.16 \%)    & 0/1 (0.00 \%)        \\ \midrule
+        Summe                        & 401/536 (74.81 \%)  & 458/589 (77.76 \%)  & 1096/1678 (65.32 \%) \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Automatische Ergebnisse des Abgleichs}
     \label{tab:matching_results_auto_anhang}
 \end{table}
 
-% TODO reihenfolge der Tabellen so wie immer in den Grafiken CRAN->PyPI->CFF->PyPI CFF->CRAN CFF
-\begin{table}
+% reihenfolge der Tabellen so wie immer in den Grafiken CRAN->PyPI->CFF->PyPI CFF->CRAN CFF
+\begin{table}[H]
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{.5cm}R{.5cm}R{.5cm}R{.5cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 3   & 0 & 1 & 0  & 0 & 0.8571 \\
@@ -223,15 +219,14 @@
         \gls{cran} Maintainer        & 94  & 1 & 0 & 0  & 0 & 0.9947 \\ \midrule
         Summe                        & 253 & 6 & 2 & 42 & 3 & 0.9844 \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cran} Liste}
     \label{tab:cran_matching_results_manual_anhang}
 \end{table}
 
-\begin{table}
+\begin{table}[H]
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{.5cm}R{.5cm}R{.5cm}R{.5cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 12 & 1  & 6  & 26 & 2  & 0.7742 \\
@@ -244,7 +239,7 @@
         \hologo{BibTeX}              & 0  & 1  & 0  & 0  & 0  & 0.0000 \\ \midrule
         Summe                        & 151 & 6 & 35 & 64 & 34 & 0.8805 \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cff} Liste}
     \label{tab:cff_matching_results_manual_anhang}
 \end{table}

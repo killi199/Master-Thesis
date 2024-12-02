@@ -30,6 +30,7 @@ Die Beschreibung wird als unstrukturierter Text zurückgegeben.
 Dieser Text wird mittels der \gls{ner} Bibliothek \emph{spaCy} in der Version 3.7.6 verarbeitet, um die Autoren zu extrahieren \autocite{honnibal_spacy_2020}.
 Dabei wird das Programm so verwendet, dass nur die Entitäten \emph{PERSON} extrahiert werden.
 Als Modell wurde das \texttt{en\_core\_web\_trf} verwendet, welches auf Englisch trainiert ist und eine höhere Genauigkeit aufweist als das \texttt{en\_core\_web\_sm} Modell.
+Das \texttt{en\_core\_web\_sm} Modell hat einen F Score von 0.846, wohingegen das \texttt{en\_core\_web\_trf} Modell einen F Score von 0.902 aufweist.
 Durch die Verwendung des genaueren Modells ist die Laufzeit erhöht. 
 In Experimenten hat sich jedoch gezeigt, dass das kleinere Modell keine guten Ergebnisse für die Beschreibungen liefert, da sehr viele Entitäten fälschlicherweise als Autoren erkannt werden.
 Die extrahierten Autoren werden ebenfalls mit den Git Daten abgeglichen und in der Datei \path{description_authors.csv} gespeichert.
@@ -56,21 +57,20 @@ Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{p{3.5cm}|p{10cm}}
+    \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
-        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
-        \emph{rank} & Rang des Autors sortiert nach der Anzahl der Commits \\
-        \emph{insertions} & Hinzugefügte Zeilen des Autors \\
-        \emph{deletions} & Gelöschte Zeilen des Autors \\
-        \emph{lines\_changed} & Geänderte Zeilen des Autors \\
-        \emph{files} & Geänderte Dateien des Autors \\
-        \emph{commits} & Anzahl der Commits des Autors \\
-        \emph{first\_commit} & Zeitpunkt des ersten Commits des Autors \\
-        \emph{last\_commit} & Zeitpunkt des letzten Commits des Autors \\
-        \emph{score} & Zu wie viel Prozent der Abgleich mit Git übereinstimmt \\
+        \textbf{Feld}         & \textbf{Beschreibung} \\ \midrule
+        \emph{rank}           & Rang des Autors sortiert nach der Anzahl der Commits   \\
+        \emph{insertions}     & Hinzugefügte Zeilen des Autors                         \\
+        \emph{deletions}      & Gelöschte Zeilen des Autors                            \\
+        \emph{lines\_changed} & Geänderte Zeilen des Autors                            \\
+        \emph{files}          & Geänderte Dateien des Autors                           \\
+        \emph{commits}        & Anzahl der Commits des Autors                          \\
+        \emph{first\_commit}  & Zeitpunkt des ersten Commits des Autors                \\
+        \emph{last\_commit}   & Zeitpunkt des letzten Commits des Autors               \\
+        \emph{score}          & Zu wie viel Prozent der Abgleich mit Git übereinstimmt \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Felder, welche durch den Abgleich mit Git entstehen}
     \label{tab:abgleich_felder}
     \small
@@ -80,14 +80,13 @@ Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{p{3.5cm}|p{10cm}}
+    \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
         \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
-        \emph{name} & Name des Autors \\
-        \emph{email} & E-Mail des Autors \\
+        \emph{name}   & Name des Autors       \\
+        \emph{email}  & E-Mail des Autors     \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Felder der \texttt{python\_authors.csv}, \texttt{python\_maintainers.csv} und \texttt{cran\_maintainers.csv} Datei}
     \label{tab:python_authors}
     \small
@@ -97,14 +96,13 @@ Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{p{3.5cm}|p{10cm}}
+    \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
-        \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
-        \emph{login} & Benutzername des Autors \\
-        \emph{name} & Name des Autors \\
+        \textbf{Feld} & \textbf{Beschreibung}   \\ \midrule
+        \emph{login}  & Benutzername des Autors \\
+        \emph{name}   & Name des Autors         \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Felder der \texttt{pypi\_maintainers.csv} Datei}
     \label{tab:pypi_maintainers}
     \small
@@ -114,13 +112,12 @@ Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{p{3.5cm}|p{10cm}}
+    \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
         \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
-        \emph{name} & Name des Autors \\
+        \emph{name}   & Name des Autors       \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Felder der \texttt{description\_authors.csv}, \texttt{TIMESTAMP\_readme\_authors(\_new).csv} und \texttt{TIMESTAMP\_bib\_authors(\_new).csv} Datei}
     \label{tab:description_authors}
     \small

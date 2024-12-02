@@ -34,23 +34,22 @@ Für die weiteren Listen sind die Ergebnisse in \autoref{tab:matching_results_au
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c}
+    \begin{tabularx}{\textwidth}{XR{3.8cm}R{3.8cm}}
         \toprule
-        \textbf{Quelle} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
-        \emph{\gls{cran} Autoren} & & 204/238 (85.71 \%) \\
-        \emph{\gls{cran} Maintainer} & & 99/100 (99.00 \%) \\
-        \emph{Beschreibung} & 580/1070 (54.21 \%) & 21/80 (26.25 \%) \\
-        \emph{README} & 868/1396 (62.18 \%) & 143/1008 (14.19 \%) \\
-        \emph{\gls{cff}} & 477/598 (79.77 \%) & 184/233 (78.97 \%) \\
-        \emph{\gls{cff} preferred citation} & 294/380 (77.37 \%) & 109/136 (80.15 \%) \\
-        \emph{\gls{pypi} Maintainer} & 206/228 (90.35 \%) & \\
-        \emph{Python Autoren} & 105/131 (80.15 \%) & \\
-        \emph{Python Maintainer} & 15/25 (60.00 \%) & \\
-        \emph{\hologo{BibTeX}} & 0/1 (0.00 \%) & \\ \midrule
-        \emph{Summe} & 2545/3829 (66.47 \%) & 760/1795 (42.34 \%) \\
+        \textbf{Quelle}              & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
+        \gls{cran} Autoren           &                               & 204/238 (85.71 \%)            \\
+        \gls{cran} Maintainer        &                               & 99/100 (99.00 \%)             \\
+        Beschreibung                 & 580/1070 (54.21 \%)           & 21/80 (26.25 \%)              \\
+        README                       & 868/1396 (62.18 \%)           & 143/1008 (14.19 \%)           \\
+        \gls{cff}                    & 477/598 (79.77 \%)            & 184/233 (78.97 \%)            \\
+        \gls{cff} preferred citation & 294/380 (77.37 \%)            & 109/136 (80.15 \%)            \\
+        \gls{pypi} Maintainer        & 206/228 (90.35 \%)            &                               \\
+        Python Autoren               & 105/131 (80.15 \%)            &                               \\
+        Python Maintainer            & 15/25 (60.00 \%)              &                               \\
+        \hologo{BibTeX}              & 0/1 (0.00 \%)                 &                               \\ \midrule
+        Summe                        & 2545/3829 (66.47 \%)          & 760/1795 (42.34 \%)           \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Automatische Ergebnisse des Abgleichs}
     \label{tab:matching_results_auto}
     \small
@@ -87,8 +86,7 @@ Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matc
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{.5cm}R{.5cm}R{.5cm}R{.5cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & & & & & & \\
@@ -103,7 +101,7 @@ Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matc
         \hologo{BibTeX}              & & & & & & \\ \midrule
         Summe                        & & & & & & \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Manuelle Ergebnisse des Abgleichs für alle Listen zusammen}
     \label{tab:matching_results_manual}
     \small
@@ -448,15 +446,15 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
-        \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
+        \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ 
+        \midrule
         README          & 257 & 184 & 73   & 83   & 133 \\
         \gls{cff}       & 484 & 326 & 555  & 488  & 240 \\
         \hologo{BibTeX} &     & 768 & 1159 & 1159 &     \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Durchschnittliche Zeit seit der letzten Aktualisierung}
     \label{tab:average_time_last_update}
     \small
@@ -622,8 +620,7 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
         README                                    & 730    & 398    & 174    & 159    & 187 \\
@@ -631,7 +628,7 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
         \glqq preferred-citation\grqq{} \gls{cff} & \infty &        & 512    & 512    & 140 \\
         \hologo{BibTeX}                           &        & \infty & \infty & \infty &     \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Durchschnittliche Verweildauer der Autoren in den Quellen}
     \label{tab:average_lifespans}
     \small
@@ -641,8 +638,7 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
         README                                    & 1082 & 1088 & 364  & 394  & 398 \\
@@ -650,7 +646,7 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
         \glqq preferred-citation\grqq{} \gls{cff} & 1021 &      & 676  & 559  & 723 \\
         \hologo{BibTeX}                           &      & 1197 & 1200 & 1200 &     \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Durchschnittliche Verweildauer der Autoren in den Quellen inkl. Autoren, welche nie entfernt wurden}
     \label{tab:average_lifespans_until_today}
     \small
@@ -667,15 +663,14 @@ Hingegen wird die \hologo{BibTeX} Datei in der \gls{pypi} Liste im Durchschnitt 
 
 \begin{table}
     \centering
-    \setlength{\tabcolsep}{8pt}
-    \begin{tabular}{c|c|c|c|c|c}
+    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
         README          & 125 & 149 & 30 & 28 & 45 \\
         \gls{cff}       & 24  & 132 & 95 & 98 & 91 \\
         \hologo{BibTeX} &     & 676 &    &    &    \\
         \bottomrule
-    \end{tabular}
+    \end{tabularx}
     \caption{Durchschnittliche Zeit seit der letzten Aktualisierung}
     \label{tab:average_time_between_updates}
     \small
