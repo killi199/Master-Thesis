@@ -83,10 +83,11 @@ Außerdem wurde angegeben, ob es sie um keine Person handelt, sondern z. B. um e
 In diesen Fällen wurde der Eintrag dennoch in eine der vier Kategorien eingeteilt, wobei primär die Kategorie FP verwendet wurde, falls es eine Zuordnung gab.
 Falls die Zuordnung allerdings mit einem Git Autoren erfolgt ist, welcher beispielsweise ein Bot der Organisation ist wurde der Eintrag als TP eingeteilt, da es keinen Mechanismus in der Datenbeschaffung gibt, welcher Personen von nicht Personen unterscheiden kann.
 Es wurde lediglich in der Datenbeschaffung darauf geachtet möglichst keine Quellen zu berücksichtigen, welche keine Personen enthalten.
-Die Ergebnisse für die \gls{cff} Liste sind in \autoref{tab:cff_matching_results_manual} dargestellt.
+Die Ergebnisse für alle Listen zusammen sind in \autoref{tab:matching_results_manual} dargestellt.
+Die Ergebnisse für die einzelnen Listen sind in \autoref{tab:cran_matching_results_manual_anhang}, \autoref{tab:pypi_matching_results_manual_anhang}, \autoref{tab:cff_matching_results_manual_anhang}, \autoref{tab:pypi_cff_matching_results_manual_anhang} und \autoref{tab:cran_cff_matching_results_manual_anhang} dargestellt.
 % TODO weitere Tabellen im Anhang referenzieren
 % Die weiteren Ergebnisse für die anderen Listen sind in den Tabellen zu finden.
-% TODO confusion matrix und f1 score für alle listen zusammen (addiert) angeben
+% TODO confusion matrix und f1 score für alle listen zusammen (addiert) angeben diese hier zeigen und alle anderen im Anhang referenzieren.
 
 \begin{table}
     \centering
@@ -94,22 +95,24 @@ Die Ergebnisse für die \gls{cff} Liste sind in \autoref{tab:cff_matching_result
     \begin{tabular}{c|c|c|c|c|c|c}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
-        Beschreibung                 & 12 & 1  & 6  & 26 & 2  & 0.7742 \\
-        README                       & 13 & 1  & 4  & 17 & 5  & 0.8387 \\
-        \gls{cff}                    & 26 & 2  & 0  & 4  & 0  & 0.9630 \\
-        \gls{cff} preferred citation & 7  & 1  & 1  & 4  & 0  & 0.8750 \\
-        \gls{pypi} Maintainer        & 61 & 0  & 9  & 5  & 7  & 0.9313 \\
-        Python Autoren               & 29 & 0  & 13 & 6  & 17 & 0.8169 \\
-        Python Maintainer            & 3  & 0  & 2  & 2  & 3  & 0.7500 \\
-        \hologo{BibTeX}              & 0  & 1  & 0  & 0  & 0  & 0.0000 \\ \midrule
-        Summe                        & 151 & 6 & 35 & 64 & 34 & 0.8805 \\
+        Beschreibung                 & & & & & & \\
+        README                       & & & & & & \\
+        \gls{cff}                    & & & & & & \\
+        \gls{cff} preferred citation & & & & & & \\
+        \gls{pypi} Maintainer        & & & & & & \\
+        Python Autoren               & & & & & & \\
+        Python Maintainer            & & & & & & \\
+        \gls{cran} Autoren           & & & & & & \\
+        \gls{cran} Maintainer        & & & & & & \\
+        \hologo{BibTeX}              & & & & & & \\ \midrule
+        Summe                        & & & & & & \\
         \bottomrule
     \end{tabular}
-    \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cff} Liste}
-    \label{tab:cff_matching_results_manual}
+    \caption{Manuelle Ergebnisse des Abgleichs für alle Listen zusammen}
+    \label{tab:matching_results_manual}
     \small
     \raggedright
-    In der Tabelle sind die Ergebnisse des manuellen Abgleichs für die \gls{cff} Liste dargestellt. Dabei wurde für jede Quelle die Anzahl der Richtig Positiven (TP), Falsch Negativen (FN), Falsch Positiven (FP) und Richtig Negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
+    In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen. Dabei wurde für jede Quelle die Anzahl der Richtig Positiven (TP), Falsch Negativen (FN), Falsch Positiven (FP) und Richtig Negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
 \end{table}
 
 Aus den gesammelten Daten wurden weitere Statistiken berechnet.

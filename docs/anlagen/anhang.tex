@@ -207,3 +207,44 @@
     \caption{Automatische Ergebnisse des Abgleichs}
     \label{tab:matching_results_auto_anhang}
 \end{table}
+
+% TODO reihenfolge der Tabellen so wie immer in den Grafiken CRAN->PyPI->CFF->PyPI CFF->CRAN CFF
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c|c|c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
+        Beschreibung                 & 3   & 0 & 1 & 0  & 0 & 0.8571 \\
+        README                       & 15  & 4 & 0 & 33 & 2 & 0.8824 \\
+        \gls{cff}                    & 2   & 0 & 0 & 0  & 0 & 1.0000 \\
+        \gls{cff} preferred citation & 2   & 0 & 0 & 0  & 0 & 1.0000 \\
+        \gls{cran} Autoren           & 137 & 1 & 1 & 9  & 1 & 0.9928 \\
+        \gls{cran} Maintainer        & 94  & 1 & 0 & 0  & 0 & 0.9947 \\ \midrule
+        Summe                        & 253 & 6 & 2 & 42 & 3 & 0.9844 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cran} Liste}
+    \label{tab:cran_matching_results_manual_anhang}
+\end{table}
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c|c|c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
+        Beschreibung                 & 12 & 1  & 6  & 26 & 2  & 0.7742 \\
+        README                       & 13 & 1  & 4  & 17 & 5  & 0.8387 \\
+        \gls{cff}                    & 26 & 2  & 0  & 4  & 0  & 0.9630 \\
+        \gls{cff} preferred citation & 7  & 1  & 1  & 4  & 0  & 0.8750 \\
+        \gls{pypi} Maintainer        & 61 & 0  & 9  & 5  & 7  & 0.9313 \\
+        Python Autoren               & 29 & 0  & 13 & 6  & 17 & 0.8169 \\
+        Python Maintainer            & 3  & 0  & 2  & 2  & 3  & 0.7500 \\
+        \hologo{BibTeX}              & 0  & 1  & 0  & 0  & 0  & 0.0000 \\ \midrule
+        Summe                        & 151 & 6 & 35 & 64 & 34 & 0.8805 \\
+        \bottomrule
+    \end{tabular}
+    \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cff} Liste}
+    \label{tab:cff_matching_results_manual_anhang}
+\end{table}
