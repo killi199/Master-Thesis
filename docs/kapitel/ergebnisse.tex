@@ -505,15 +505,23 @@ Außerdem ist auffällig, dass 14 der Pakete in der \gls{pypi} \gls{cff} Liste e
 \section{Ergebnisse mit Zeitverlauf}
 \label{sec:gesamtheit_ergebnisse}
 In diesem Abschnitt werden anders als zuvor die Daten mit Zeitbetrachtung analysiert und nicht lediglich die jeweils neuste Version untersucht.
-Dadurch ist es möglich Verläufe in der Zeit zu betrachten und zu analysieren.
+Dadurch ist es möglich Veränderungen in der Zeit zu betrachten und zu analysieren.
+Jedoch ist dies nur für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und die README Dateien möglich, da in den anderen Quellen keine Zeitinformation vorhanden sind.
 
-% TODO bei den Grafiken wieder so wie bei den anderen auch auf die sachen gehen -> siehe TODOs in git history
-% TODO Zeit Graph mit cff valide beschreiben wie die Berechnung grundlegend funktioniert also das wenn eins von valide zu invalide wird z.b. die beiden Linien sich gleichzeitig verändern. Jedes Paket wird nur einmal betrachtet
-% TODO auf Anhang referenzieren
-% TODO Beispiele geben mit konkreten Zahlen
-% TODO anekdotisch ausreißer beschreiben
-% TODO Auf Auffälligkeiten eingehen und die anekdotisch untermauern
-% TODO auf Besonderheiten eingehen
+Die \autoref{fig:valid_cff_by_time} zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind.
+In \autoref{fig:valid_cff_by_time_anhang} sind die Ergebnisse für die weiteren Listen dargestellt.
+In den Graphen ist jedes Repository nur einmal betrachtet worden.
+Falls ein Repository zu Beginn eine invalide \gls{cff} Datei in dem Repository hatte und anschließend diese zu einer validen Datei geändert wurde, sinkt die Anzahl bei den invaliden und bei den validen steigt sie zu diesem Zeitpunkt.
+Dadurch ist gewährleistet, dass Änderungen korrekt dargestellt werden und keine Repositorys doppelt betrachtet werden.
+
+In \autoref{fig:valid_cff_by_time_pypi_cff} ist beispielsweise zu erkennen, dass Anfang 2022 viele Repositorys von invaliden zu validen \gls{cff} Dateien gewechselt sind.
+Außerdem lässt sich ablesen, dass die validen \gls{cff} Dateien zu jedem Zeitpunkt mehr sind als die invaliden.
+In \autoref{fig:valid_cff_by_time_cran_cff} ist hingegen zu erkennen, dass zu Beginn des Graphen die Anzahl der invaliden höher ist als die der validen.
+Außerdem lässt sich anhand der Graphen ablesen zu welchem Zeitpunkt wie viele Repositorys eine \gls{cff} Datei enthalten haben.
+Besonders auffällig ist dabei in \autoref{fig:valid_cff_by_time_full}, dass die Anzahl der Repositorys mit einer \gls{cff} Datei auf GitHub ab 2021 steil angestiegen ist.
+Dies stimmt überein mit der Beobachtung, dass ab 2021 die ersten Pakete in der \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Liste eine \gls{cff} Datei hinzugefügt haben.
+Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub Repositorys eine \gls{cff} Datei enthalten haben.
+
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -538,7 +546,7 @@ Dadurch ist es möglich Verläufe in der Zeit zu betrachten und zu analysieren.
     \label{fig:valid_cff_by_time}
     \small
     \raggedright
-    % TODO Beschreibung
+    Die Abbildung zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind. Die x-Achse stellt die Zeit dar und die y-Achse die Anzahl der validen und invaliden \gls{cff} Dateien. Dabei wird außerdem in Repositorys, welche \emph{cffinit} verwenden und Repositorys, welche dies nicht verwenden unterschieden.
 \end{figure}
 
 % TODO dabei darauf eingehen, dass erneut ein Namensabgleich zwischen den autoren gemacht wird (aber nur über den Namen) in einer Quelle aber nur falls der Abgleich in der Datenbeschaffung nicht erfolgreich war -> Das führt jedoch wieder dazu, dass autoren die nicht abgeglichen werden konnten und dann eine andere Schreibweise in dem Namen verwenden hier als "Neue" Autoren gelistet werden und die vorherige Schreibweise dann als entfernter Autor betrachtet wird
