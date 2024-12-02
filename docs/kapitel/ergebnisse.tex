@@ -142,7 +142,7 @@ Inhalt sind in diesem konkreten Fall automatisch generierte README Dateien für 
     \label{fig:commits_vs_changed_lines}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Autoren in den Paketen in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} die Anzahl der Commits gegenüber der Anzahl der geänderten Zeilen. Die x Achse stellt die Anzahl der Commits dar und die y Achse die Anzahl der geänderten Zeilen. Es wird eine logarithmische Skalierung verwendet.
+    Die Abbildungen zeigen für die Autoren in den Paketen in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} die Anzahl der Commits gegenüber der Anzahl der geänderten Zeilen. Die x-Achse stellt die Anzahl der Commits dar und die y-Achse die Anzahl der geänderten Zeilen. Es wird eine logarithmische Skalierung verwendet.
 \end{figure}
 
 Die \autoref{fig:common_authors} zeigt den Anteil der Top Git Autoren in den einzelnen Quellen wie beispielsweise der \gls{cff}.
@@ -173,8 +173,8 @@ Im konkreten Fall liegt das daran, dass nur eines der Pakete eine \hologo{BibTeX
 Dies ist \autoref{tab:pypi_matching_results_manual} ebenfalls zu entnehmen.
 Dadurch liegt die Linie über alle x Werte bei 0 \% und ist nicht sichtbar.
 
-Die letzte Auffälligkeit in den Graphen ist, dass einige Linien erst fallen und anschließend parallel zur x Achse verlaufen.
-Andere wiederum fallen gar nicht und verlaufen direkt parallel zur x Achse.
+Die letzte Auffälligkeit in den Graphen ist, dass einige Linien erst fallen und anschließend parallel zur x-Achse verlaufen.
+Andere wiederum fallen gar nicht und verlaufen direkt parallel zur x-Achse.
 Dies ist der Fall, falls ab einer bestimmten Anzahl an Git Autoren alle weiteren Git Autoren genannt werden.
 Dies tritt besonders dann auf, falls es wenig Git Autoren gibt.
 Beispielsweise hat das Paket \emph{netron}, welches in der \gls{pypi} \gls{cff} Liste vorkommt, nur einen Git Autoren.
@@ -210,7 +210,7 @@ Dadurch sind alle Git Autoren zu 100 \% als \gls{pypi} Maintainer genannt und es
     \label{fig:common_authors}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top Git Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top Git Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
 \end{figure}
 
 Weitere Abbildungen, welche den Anteil zwischen genannten Autoren und den Top Git Autoren darstellen sind in \autoref{fig:common_authors_2} abgebildet.
@@ -231,7 +231,7 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
 
 In den Graphen sind erneut Auffälligkeiten zu erkennen.
 Beispielsweise existieren erneut Linien, welche für jeden x Wert 0 \% oder 100 \% darstellen.
-In \autoref{fig:common_authors_2_pypi_cff} ist beispielsweise erneut die Linie für \hologo{BibTeX} nicht zu erkennen, da diese erneut auf der x Achse verläuft.
+In \autoref{fig:common_authors_2_pypi_cff} ist beispielsweise erneut die Linie für \hologo{BibTeX} nicht zu erkennen, da diese erneut auf der x-Achse verläuft.
 Dies liegt daran, dass nur ein Autor in einer \hologo{BibTeX} Datei über alle Pakete genannt wird, welcher nicht abgeglichen werden konnte und somit nicht unter den Top Git Autoren ist.
 Für die Linien, welche bei 100 \% verlaufen, handelt es sich um Pakete, bei denen beispielsweise nur ein Autor in der Quelle genannt wird und dieser Autor auf Rang eins der Top Git Autoren ist.
 Es kann aber auch komplexer sein beispielsweise, dass drei Autoren in der Quelle genannt werden und alle drei unter den Top drei Git Autoren sind.
@@ -272,15 +272,15 @@ Dieser ist jedoch erst auf Rang 37 der Top Git Autoren gemessen nach Commits gel
     \label{fig:common_authors_2}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Autoren in der \gls{cff} sind zu y \% unter den Top x Commitern.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top Git Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Autoren in der \gls{cff} sind zu y \% unter den Top x Commitern.
 \end{figure}
 
 In \autoref{fig:total_authors_no_commits} wird der Anteil der genannten Autoren in unterschiedlichen Quellen ohne Commits in den Paketen der Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dargestellt.
 Die Ergebnisse für die weiteren Listen sind in \autoref{fig:total_authors_no_commits_anhang} dargestellt.
 In den Abbildungen werden die vergangenen zehn Jahre dargestellt.
 Dabei steigt mit steigender Jahreszahl der Anteil der Autoren, welche keinen Commit getätigt haben.
-Das Ende der x Achse stellt den Tag der Datenbeschaffung dar.
-Aus diesem Grund ist der Anteil der Autoren ohne Commits am Ende der x Achse bei 100 \%, da es nicht möglich ist in der Zukunft Commits zu tätigen.
+Das Ende der x-Achse stellt den Tag der Datenbeschaffung dar.
+Aus diesem Grund ist der Anteil der Autoren ohne Commits am Ende der x-Achse bei 100 \%, da es nicht möglich ist in der Zukunft Commits zu tätigen.
 
 In der \autoref{fig:total_authors_no_commits_pypi_cff} lässt sich erkennen, dass nahezu alle genannten Python Maintainer bis zum Jahr 2020 mindestens einen Commit getätigt haben und das ab diesem Jahr die in der README genannten Autoren im Vergleich zu den anderen Quellen anteilig die meisten Autoren ohne Commits genannt haben.
 Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Quelle dar, sodass ein Paket mit mehreren Linien für alle Quellen dargestellt wird.
@@ -302,7 +302,7 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
     \label{fig:total_authors_no_commits}
     \small
     \raggedright
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x Achse werden die Jahre dargestellt. Die y Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse werden die Jahre dargestellt. Die y-Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
 \end{figure}
 
 Die \autoref{fig:overall_valid_cff_not_full} zeigt den Anteil der validen und invaliden \gls{cff} Dateien in allen fünf Listen.
@@ -383,7 +383,7 @@ Alle anderen 638 Pakete haben einen anderen Typ der Zitation angegeben und sind 
     \label{fig:citation_counts}
     \small
     \raggedright
-    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es ist darauf zu achten, dass die y Achsen unterschiedlich skaliert sind.
+    Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es ist darauf zu achten, dass die y-Achsen unterschiedlich skaliert sind.
 \end{figure}
 
 In \autoref{fig:doi} ist dargestellt wie viele der Quellen, welche potenziell eine \gls{doi} enthalten könnten, eine \gls{doi} in den Zitationen angegeben haben.
@@ -499,7 +499,7 @@ Außerdem ist auffällig, dass 14 der Pakete in der \gls{pypi} \gls{cff} Liste e
     \label{fig:similarities}
     \small
     \raggedright
-    Das Histogramm zeigt für die \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Listen, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind. Auf der x Achse wird die Ähnlichkeit in Prozent angegeben. Die y Achse stellt die absolute Anzahl der Pakete dar, welche die entsprechende Ähnlichkeit aufweisen.
+    Das Histogramm zeigt für die \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Listen, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind. Auf der x-Achse wird die Ähnlichkeit in Prozent angegeben. Die y-Achse stellt die absolute Anzahl der Pakete dar, welche die entsprechende Ähnlichkeit aufweisen.
 \end{figure}
 
 \section{Ergebnisse mit Zeitverlauf}
