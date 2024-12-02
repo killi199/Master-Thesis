@@ -1,11 +1,8 @@
 \chapter{Ergebnisse}
 \label{chap:ergebnisse}
 % TODO ggf. noch weitere full cff graphen hinzufügen
-% TODO Darauf achten, dass jede Grafik mindestens einmal im Text referenziert wird
-% TODO Wichtig ist, dass du deine Forschungsergebnisse im Ergebnisteil noch nicht interpretierst, sondern nur beschreibst.!!!
-% TODO gff. noch auf die Daten in #20 eingehen? Das dann mit und ohne Zeitverlauf?
-% TODO bei cff sagen, dass von 100 top repos x pypi x cran und x andere sind
-% TODO Es werden alle Namen ausgegeben in den Beschreibungen aber auch eben solche, die gar nichts mit dem Paket zu tun haben wie im fall von highr für CRAN: "Provides syntax highlighting for R source Code. Currently it supports LaTeX and HTML output. Source Code of other languages is supported via Andre Simon's highlight package (https://gitlab.com/saalen/highlight)." Es gibt noch weitere Beispiele z. B. in CRAN magrittr -> vllt eher ergebnis?
+% TODO ggf. noch auf die Daten in #20 eingehen? Das dann mit und ohne Zeitverlauf?
+% Wichtig ist, dass du deine Forschungsergebnisse im Ergebnisteil noch nicht interpretierst, sondern nur beschreibst.!!!
 In diesem Kapitel werden die Ergebnisse der Masterarbeit präsentiert.
 Das Kapitel ist in zwei Abschnitte unterteilt.
 Zum einen werden die Ergebnisse der Gegenwart in \autoref{sec:neuste_ergebnisse} präsentiert.
@@ -83,10 +80,9 @@ Außerdem wurde angegeben, ob es sie um keine Person handelt, sondern z. B. um e
 In diesen Fällen wurde der Eintrag dennoch in eine der vier Kategorien eingeteilt, wobei primär die Kategorie FP verwendet wurde, falls es eine Zuordnung gab.
 Falls die Zuordnung allerdings mit einem Git Autoren erfolgt ist, welcher beispielsweise ein Bot der Organisation ist wurde der Eintrag als TP eingeteilt, da es keinen Mechanismus in der Datenbeschaffung gibt, welcher Personen von nicht Personen unterscheiden kann.
 Es wurde lediglich in der Datenbeschaffung darauf geachtet möglichst keine Quellen zu berücksichtigen, welche keine Personen enthalten.
-Die Ergebnisse für alle Listen zusammen sind in \autoref{tab:matching_results_manual} dargestellt.
-Die Ergebnisse für die einzelnen Listen sind in \autoref{tab:cran_matching_results_manual_anhang}, \autoref{tab:pypi_matching_results_manual_anhang}, \autoref{tab:cff_matching_results_manual_anhang}, \autoref{tab:pypi_cff_matching_results_manual_anhang} und \autoref{tab:cran_cff_matching_results_manual_anhang} dargestellt.
+Die Ergebnisse für alle Listen zusammen sind in \autoref{tab:matching_results_manual} eingetragen.
+Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matching_results_manual_anhang}, \ref{tab:pypi_matching_results_manual_anhang}, \ref{tab:cff_matching_results_manual_anhang}, \ref{tab:pypi_cff_matching_results_manual_anhang} und \ref{tab:cran_cff_matching_results_manual_anhang} dargestellt.
 % TODO weitere Tabellen im Anhang referenzieren
-% Die weiteren Ergebnisse für die anderen Listen sind in den Tabellen zu finden.
 % TODO confusion matrix und f1 score für alle listen zusammen (addiert) angeben diese hier zeigen und alle anderen im Anhang referenzieren.
 
 \begin{table}
@@ -465,7 +461,7 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
     \label{tab:average_time_last_update}
     \small
     \raggedright
-    Die Tabelle gibt für die Quellen für die es möglich ist an, wie viel Zeit im Durchschnitt über alle Pakete seit der letzten Aktualisierung der Quelle vergangen ist. Die Zeit ist in Tagen angegeben.
+    Die Tabelle gibt an, wie viel Zeit im Durchschnitt über alle Pakete seit der letzten Aktualisierung der Quelle vergangen ist. Die Zeit ist in Tagen angegeben.
 \end{table}
 
 In der \autoref{fig:similarities} wird für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} angegeben, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind.
