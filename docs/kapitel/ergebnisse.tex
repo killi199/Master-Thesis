@@ -549,11 +549,26 @@ Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub Repositorys eine 
     Die Abbildung zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind. Die x-Achse stellt die Zeit dar und die y-Achse die Anzahl der validen und invaliden \gls{cff} Dateien. Dabei wird außerdem in Repositorys, welche \emph{cffinit} verwenden und Repositorys, welche dies nicht verwenden unterschieden.
 \end{figure}
 
-% TODO dabei darauf eingehen, dass erneut ein Namensabgleich zwischen den autoren gemacht wird (aber nur über den Namen) in einer Quelle aber nur falls der Abgleich in der Datenbeschaffung nicht erfolgreich war -> Das führt jedoch wieder dazu, dass autoren die nicht abgeglichen werden konnten und dann eine andere Schreibweise in dem Namen verwenden hier als "Neue" Autoren gelistet werden und die vorherige Schreibweise dann als entfernter Autor betrachtet wird
-% TODO auf average_lifespans eingehen
-% TODO Beispiele geben mit konkreten Zahlen
-% TODO Auf Auffälligkeiten eingehen und die anekdotisch untermauern
-% TODO auf Besonderheiten eingehen
+Die \autoref{fig:added_removed_authors} zeigt für alle fünf Listen, wie viele Autoren in den einzelnen Quellen hinzugefügt und gelöscht wurden.
+Dabei werden ausschließlich genannten Autoren in dem \gls{cff}, \hologo{BibTeX} und der README Datei betrachtet, da nur bei diesen Quellen eine Zeitliche Betrachtung möglich ist.
+Außerdem wird in der Abbildung gezeigt, wie viele Autoren nachträglich den Dateien hinzugefügt wurden, nachdem die Datei das erste Mal erstellt wurde.
+Die Informationen der Abbildungen werden ebenfalls erneut ohne die README Autoren dargestellt, da diese sehr vielen Änderungen aufgrund der verwendeten \gls{ner} unterliegen.
+
+Um zu betrachten wie viele Autoren hinzugefügt und anschließend wieder entfernt worden sind und dabei möglichst Namensänderungen nicht als neue Autoren zu betrachten wurde neben dem Abgleich aus der Datenbeschaffung in diesem speziellen Fall ein weiterer Abgleich durchgeführt.
+Dieser Abgleich wird ausschließlich dann durchgeführt, falls die Datenbeschaffung keine Übereinstimmung für den jeweiligen Autor ergeben hat.
+In diesem Fall wird ein erneuter Abgleich des Autors anhand des Namens durchgeführt.
+Dies führt dazu, dass falls ein Abgleich in der Datenbeschaffung für einen Autor nicht erfolgreich war, dieser bei einer Namensänderung in der Grafik als gelöschter und hinzugefügter Autor betrachtet wird.
+Der erneute Abgleich über den Namen kann dies nicht verhindern, allerdings sorgt er dafür, dass auch nicht abgeglichene Autoren in der Grafik als gelöschte und hinzugefügte Autoren betrachtet werden können.
+Zusätzlich ermöglicht dies im späteren Verlauf eine Analyse darüber, wie lange ein Autor durchschnittlich in einer Quelle genannt wird.
+
+In \autoref{fig:added_removed_authors_without_readme} ist zu erkennen, dass in der \gls{pypi} \gls{cff} die meisten Autoren in den betrachteten Quellen genannt werden.
+Außerdem ist auffällig, dass in der \gls{cran} und der \gls{pypi} Liste in den Quellen nur Autoren hinzugefügt und keine gelöscht wurden.
+Im Allgemeinen ist deutlich, dass kaum Autoren, nachdem sie hinzugefügt wurden wieder entfernt werden.
+In kombination mit \autoref{fig:added_authors_without_readme_without_first_timestamp} ist zu erkennen, dass die meisten Autoren direkt hinzugefügt werden, sobald die Datei erstellt wird.
+Beispielsweise wurde in der \gls{cran} und \gls{pypi} Liste in den der \gls{cff} und der \hologo{BibTeX} Datei kein Autor hinzugefügt, nachdem die Datei erstellt wurde.
+In der \gls{pypi} \gls{cff} Liste wurden fünf Autoren nachträglich hinzugefügt, wobei hier berücksichtigt werden muss, dass dies auch aufgrund von Namensänderungen geschehen sein kann.
+Außerdem muss berücksichtigt werden, dass die \gls{cff} Datei beispielsweise erst seit 2021 in den meisten Fällen genutzt wird und beim hinzufügen der Datei alle Autoren die zu dem Zeitpunkt eingetragen werden und in dem Fall ausschließlich in der \autoref{fig:added_removed_authors_without_readme} dargestellt werden.
+
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -580,6 +595,7 @@ Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub Repositorys eine 
         \label{fig:added_authors_without_readme_without_first_timestamp}
     \end{subfigure}
     \caption{Hinzugefügte und gelöschte Autoren}
+    \label{fig:added_removed_authors}
     \small
     Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
 \end{figure}
