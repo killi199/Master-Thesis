@@ -662,6 +662,13 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
     Die Tabelle gibt an, wie lange im Durchschnitt über alle Pakete ein Autor in den Quellen genannt wird. Falls ein Autor nicht entfernt wurde, wurde der 02.12.2024 als Enddatum festgelegt. Die Zeit ist in Tagen angegeben.
 \end{table}
 
+In \autoref{tab:average_time_between_updates} wird dargestellt mit welcher Frequenz die einzelnen Quellen in den unterschiedlichen Paketen der Listen aktualisiert werden.
+Dabei ist nur für die \gls{pypi} Liste ein Wert für \hologo{BibTeX} angegeben, da in den anderen Listen entweder kein Paket eine \hologo{BibTeX} Datei verwendet hat oder diese nie aktualisiert wurde.
+
+In der Tabelle lässt sich beispielsweise ablesen, dass die README Datei am häufigsten aktualisiert wird.
+Beispielsweise wurde diese in der \gls{pypi} \gls{cff} Liste im Durchschnitt alle 28 Tage aktualisiert.
+Hingegen wird die \hologo{BibTeX} Datei in der \gls{pypi} Liste im Durchschnitt nur alle 676 Tage aktualisiert.
+
 \begin{table}
     \centering
     \setlength{\tabcolsep}{8pt}
@@ -677,5 +684,5 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
     \label{tab:average_time_between_updates}
     \small
     \raggedright
-    Die Tabelle gibt für die Quellen für die es möglich ist an, wie oft im Durchschnitt über alle Pakete die Quellen aktualisiert werden. Die Zeit ist in Tagen angegeben.
+    Die Tabelle gibt an, wie oft im Durchschnitt über alle Pakete die Quellen aktualisiert werden. Die Zeit ist in Tagen angegeben.
 \end{table}
