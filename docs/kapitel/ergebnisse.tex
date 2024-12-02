@@ -600,7 +600,68 @@ Außerdem muss berücksichtigt werden, dass die \gls{cff} Datei beispielsweise e
     Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
 \end{figure}
 
-% TODO die Tabelle ähnlich beschreiben wie tab:average_time_last_update
+Die \autoref{tab:average_lifespans} zeigt die durchschnittliche Zeit in Tagen wie lange ein Autor in einer bestimmten Quelle genannt wird.
+Dabei wird die gleiche Berechnung wie für die hinzugefügten und gelöschten Autoren durchgeführt.
+Aus diesem Grund gelten die gleichen Einschränkungen wie zuvor.
+Es lässt sich beispielsweise in der Tabelle erkennen, dass in der \gls{pypi} \gls{cff} Liste die Autoren im Durchschnitt 333 Tage in der \gls{cff} Datei genannt werden, falls sie entfernt wurden.
+Es werden keine Autoren berücksichtigt, welche nie entfernt wurden.
+Im gegensatz dazu werden in \autoref{tab:average_lifespans_until_today} ebenfalls Autoren berücksichtigt, welche nie entfernt wurden. Dabei wird der 02.12.2024 als Enddatum genommen.
+
+In der \autoref{tab:average_lifespans} ist zu erkennen, dass einige Zellen nicht ausgefüllt sind und andere wiederum mit \infty gekennzeichnet sind.
+Leere Zellen sind darin begründet, dass in der Liste kein Paket die Quelle verwendet und dadurch keine Zeit berechnet werden kann.
+Zellen, welche \infty enthalten sind dadurch begründet, dass in der Liste kein einziges Paket in der jeweiligen Quelle einen Autor nachdem er hinzugefügt wurde wieder entfernt hat.
+Beispielsweise hat kein Paket in der \gls{cran} Liste einen Autor nachdem er zur \gls{cff} hinzugefügt wurde wieder entfernt.
+Außerdem wurden in der Liste keine Autoren in eine \hologo{BibTeX} Datei hinzugefügt, wodurch die Zelle leer ist.
+
+Eine weitere Auffälligkeit ist in der \gls{cff} Liste zu erkennen.
+Hierbei ist eine durchschnittliche Verweildauer für die in der \gls{cff} eingetragenen Autoren von eins angegeben.
+Dies ist auf zwei unterschiedliche Pakete zurückzuführen.
+In dem Paket \emph{pytorch-lightning} wurde ein Autor hinzugefügt, welcher zwei Tage später in der Schreibweise verändert wurde.
+Dabei konnte die erste Schreibweise des Autors nicht abgeglichen werden, wodurch es zu einer Löschung des Autors und einer Hinzufügung des Autors in der neuen Schreibweise kam.
+In dem zweiten Paket \emph{torch-geometric} wurden wahrscheinlich fälschlicherweise in einer Version die beiden genannten Autoren in der \gls{cff} durch \glqq Mona Lisa\grqq{} und \glqq Hew Bot\grqq{} ersetzt.
+Noch am selben Tag wurden wieder die Originalautoren hinzugefügt.
+Dadurch ergibt sich allerdings für die zwei Autoren eine Verweildauer in der \gls{cff} von null Tagen.
+Insgesamt ergibt das $\frac{2+0+0}{3}\approx1$, wodurch der Wert in der Zelle begründet ist.
+Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da die eigentlichen Autoren bis zum Tag des Schreibens nicht entfernt worden sind.
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c|c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
+        README                                    & 730    & 398    & 174    & 159    & 187 \\
+        \gls{cff}                                 & \infty & \infty & 1      & 333    & 198 \\
+        \glqq preferred-citation\grqq{} \gls{cff} & \infty &        & 512    & 512    & 140 \\
+        \hologo{BibTeX}                           &        & \infty & \infty & \infty &     \\
+        \bottomrule
+    \end{tabular}
+    \caption{Durchschnittliche Verweildauer der Autoren in den Quellen}
+    \label{tab:average_lifespans}
+    \small
+    \raggedright
+    Die Tabelle gibt an, wie lange im Durchschnitt über alle Pakete ein Autor in den Quellen genannt wird. Die Zeit ist in Tagen angegeben.
+\end{table}
+
+\begin{table}
+    \centering
+    \setlength{\tabcolsep}{8pt}
+    \begin{tabular}{c|c|c|c|c|c}
+        \toprule
+        \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
+        README                                    & 1082 & 1088 & 364  & 394  & 398 \\
+        \gls{cff}                                 & 1021 & 257  & 850  & 651  & 745 \\
+        \glqq preferred-citation\grqq{} \gls{cff} & 1021 &      & 676  & 559  & 723 \\
+        \hologo{BibTeX}                           &      & 1197 & 1200 & 1200 &     \\
+        \bottomrule
+    \end{tabular}
+    \caption{Durchschnittliche Verweildauer der Autoren in den Quellen inkl. Autoren, welche nie entfernt wurden}
+    \label{tab:average_lifespans_until_today}
+    \small
+    \raggedright
+    Die Tabelle gibt an, wie lange im Durchschnitt über alle Pakete ein Autor in den Quellen genannt wird. Falls ein Autor nicht entfernt wurde, wurde der 02.12.2024 als Enddatum festgelegt. Die Zeit ist in Tagen angegeben.
+\end{table}
+
 \begin{table}
     \centering
     \setlength{\tabcolsep}{8pt}
