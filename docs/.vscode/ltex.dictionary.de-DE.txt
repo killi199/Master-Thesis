@@ -9,3 +9,6 @@ CouchDB
 Standardbranch
 APA-Zitierweise
 Zotero
+git-quick-stats
+torch
+pandas

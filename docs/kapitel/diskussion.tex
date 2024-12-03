@@ -1,18 +1,6 @@
-\chapter{Diskussion}
-\label{chap:diskussion}
-% TODO bevor ich die Kapitel schreibe nochmal gedanken machen was ich sagen will und das strukturieren. Ebenfalls überlegen welche Grafiken und tabellen ich einbeziehen will
 % TODO ggf. Sagen, warum nicht auf die .all-contributorsrc-Datei eingegangen wurde -> README wird analysiert dadurch Aufwand gespart könnte jedoch noch verbessert werden in dem Auch die Datei zusätzlich noch analysiert wird, da dort noch mehr informationen wie der Beitrag gelistet werden.
 % TODO ggf. erklären warum die API verwendet wird und nicht nur die TOML beispielsweise ausgelesen wird -> habe ein pypi paket und brauche die GitHub URL (vllt eher diskussion oder so? Beschreibe hier ja nur was ich mache und nicht warum)
-% TODO Diskuttieren warum ich bei der Kompletten CFF Liste auf so viele Daten verzichte
-% TODO checken ob ich nahezu jedes Bild und Tabelle hier nochmal referenziert habe
-% TODO ergebnisse interpretieren! und diskutieren und drauf eingehen hier muss noch ein bisschen was passieren
-% TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka -> kann hier auch auf fig:citation_counts eingehen, da hier steht wie viele cff preferred ictation angegeben haben
-
-\section{Limitierungen}
-\label{sec:limitierungen}
-% TODO Doppelte Leute, da unterschiedliche Namen beim commiten angegeben -> Das Problem besteht beim benutzen der GitHub API nicht. -> Teilweise Gelöst mittels group auf E-Mail
-% TODO Einen Abschnitt mit Limitierungen schreiben und da das Git Statistik Problem unter anderem erwähnen. Im Code kann ich das nicht lösen. Beschreiben wozu es dadurch kommt.
-% TODO Unterschiedliche Programme unterschiedliche Commit Anzahl 
+% TODO ggf. Unterschiedliche Programme unterschiedliche Commit Anzahl 
 % Nochmal checken warum unterschiedliche Programme unterschiedliche Anzahlen an Commits ausgeben dafür eine Begründung suchen und das beste System auswählen -> wahrscheinlich ist es GitHub was aber blöd ist.
 % GitHub hat andere Anzahl, da sie automatisch über die E-Mails machten, welche in GitHub registriert sind. Ich gruppiere nur die gleichen E-Mails.
 % matplotlib Antony Lee:
@@ -20,22 +8,97 @@
 %   GitHub: 4476 (merges nicht inbegriffen https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors#about-contributors gefühlt aber doch inbegriffen....) (E-Mails werden gemerged die GitHub bekannt sind)
 %   git shortlog -s -n --no-merges: 3844 (merges nicht inbegriffen) 4370 (merges inbegriffen)
 %   git fame: 4370 (merges inbegriffen)
-% TODO Personen, welche als Autor genannt werden aber keinen Code geschrieben haben werden natürlich als nicht gematcht erkannt und sind somit ein fehler. Aber wie in Grundlagen beschrieben sind diese Personen ebenfalls wichtig und sollten zitiert werden.
-% TODO Einige personen geben als Git namen nur einen buchstaben an, diese werden dann natürlich über in mit dem besten gematcht der diesen buchstaben im Namen hat, was natürlich nicht korrekt ist.
-% TODO Nur auf Commits prüfen ist nicht ausreichend As we have already mentioned, contributorship, defined as the changing of code, does not cover the complete spectrum of contributions [6, 12]. aus (Which contributions count? Analysis of attribution in open source)
-% TODO Namensvetter werden nicht unterschieden -> diskutieren, warum es nicht so notwendig ist Namensvetter zu unterscheiden
-% TODO irgendwo auf pandas eingehen hier ist es so, dass die CFF auf eine Internet seite verlinkt, auf der alle contributor gelistet werden. Das parse ich natürlich nicht.
-% TODO Es wird immer passieren, dass manche Leute falsch zugeordnet werden. Aktuelles bsp. in scipy heißt jemand pv auf PyPI und jemand hat eine E-Mail mit: pvanmulbregt@users.noreply.github.com die werden gematcht... Also nur weil ich einen Match habe bedeutet es nicht, dass es ein richtiger ist! Dies unbedingt in der Arbeit berücksichtigen. Ebenfalls, dass falls kein match gefunden wurde heißt es nicht zwangsweise, dass mein Script schlecht arbeitet es kann auch sein, das jemand als Autor genannt wird aber keinen Code geschrieben hat oder das eine Organisation als Autor angegeben wurde.
-% TODO auf schlechte NER eingehen und das dadurch die werte für readme und beschreibung nicht so gut sind
-% TODO beschreiben, dass all contributors ein Problem im  matching darstellen, da autoren ohne commits natürlich nicht mit den contributorn von github gematch werden können -> daher händisch durchgegangen für 200 pakete und geguckt welche nicht gemachts werden können um gefühlt für die dimension zu erhalten -> auf Ergebnis nochmal referenzieren wo die daten angegeben sind
+
+
+
+% TODO checken ob ich nahezu jedes Bild und Tabelle hier nochmal referenziert habe
+\chapter{Diskussion}
+\label{chap:diskussion}
+In diesem Kapitel wird die Arbeit diskutiert und die Ergebnisse werden interpretiert.
+Zuerst wird auf die grundlegenden Limitierungen der Arbeit eingegangen und wie diese die Ergebnisse beeinflussen.
+Diese Limitierungen können nicht vollständig behoben werden.
+Anschließend wird diskutiert, wie gut der Abgleich der Autoren funktioniert hat.
+Daraufhin wird diskutiert, was Softwareentwickler leisten müssen, um zitiert zu werden.
+Dabei kann natürlich nicht für alle Pakete eine Aussage getroffen werden, da dies individuell unterschiedlich ist.
+Zuletzt wird diskutiert, wie gut die Autoren in den untersuchten Listen gepflegt werden.
+
+\section{Limitierungen}
+\label{sec:limitierungen}
+In diesem Kapitel wird strukturiert auf folgende Limitierungen eingegangen, welche bei der Erstellung der Arbeit aufgetreten sind:
+\begin{itemize}
+    \item \textbf{Git Statistik:} Doppelte Autoren innerhalb der Git Autoren.
+    \item \textbf{Autoren ohne Commits:} Autoren, welche als Autor genannt werden, aber keinen Quellcode geschrieben haben.
+    \item \textbf{Verlinkung auf andere Quellen:} In manchen Fällen wird in Quellen auf eine andere Quelle verwiesen.
+    \item \textbf{Ausführungszeit der Datenbeschaffung:} Die Ausführungszeit ist sehr lang.
+\end{itemize}
+
+\subsection*{Git Statistik}
+\label{sec:git_statistik}
+In \autoref{sec:versionsverwaltung} wurde beschrieben, dass Autoren in Git ihren Namen und ihre E-Mail-Adresse ohne Einschränkungen eigenständig eintragen.
+Dies bedeutet ebenfalls, dass ein Autor im Verlauf der Zeit seinen Namen und/ oder die E-Mail-Adresse ändern kann.
+Dadurch kann ein und dieselbe Person mit unterschiedlichen Git Namen unterschiedlich viele Commits erstellt haben.
+Dies ist für die Masterarbeit nicht erwünscht, da möglichst ein Autor nur einmal in den Daten vorkommen soll und sämtliche Commits diesem Autor angerechnet werden sollen.
+In der Datenbeschaffung wurde versucht, dieses Problem zu lösen, indem die E-Mail-Adresse als eindeutiger Identifikator genutzt wird und gleiche E-Mail-Adressen zusammengefasst werden zu einem Autor.
+Allerdings behebt dies nicht das Problem vollständig, da ein Autor seine E-Mail-Adresse ebenfalls ändern kann und diese nicht erneut abgeglichen wird.
+
+Ein Abgleich wie in \autoref{sec:abgleich} beschrieben, ist ebenfalls nicht möglich, da dies die Ergebnisse verfälschen könnte, da beispielsweise Autoren mit dem gleichen Namen zusammengefasst werden würden, obwohl es sich um unterschiedliche Autoren handelt.
+Die anderen Probleme, welche in \autoref{sec:abgleich} beschrieben wurden, sind ebenfalls nicht zu vernachlässigen.
+Eine Möglichkeit dieses Problem zu lösen wäre die Verwendung der GitHub API, welche automatisch die Git Autoren anhand der in GitHub eingetragenen E-Mail-Adressen zusammenfasst.
+Dies ist jedoch nur mit viel Zeit möglich, da die API für jedes Paket einzeln abgefragt werden müsste und dadurch schnell das raten Limit von GitHub erreicht werden würde.
+Eine weitere Möglichkeit welche bereits durch \emph{git-quick-stats} verwendet wird, ist das Zusammenfassen der Autoren mittels einer \texttt{.mailmap}-Datei \autocite{chacon_git_2024-1}.
+In dieser Datei kann eingetragen werden, dass zwei E-Mail-Adressen zusammengefasst werden sollen.
+
+Durch die beschriebene Limitierung kommt es beispielsweise vor, dass in \emph{torch} sechsmal der Autor \glqq Edward Yang\grqq{} mit unterschiedlichen E-Mail-Adressen vorkommt, obwohl es sich um die gleiche Person handelt.
+Der erste Eintrag des Autors hat 1.925 Commits, alle weiteren Einträge zusammen haben nochmal 1.282 Commits getätigt.
+Diese Limitierung in der Datenbeschaffung verfälscht die Gesamtergebnisse.
+Aber auch bei einem erneuten Abgleich würde dies die Ergebnisse durch die Ungenauigkeit des Abgleichs verfälschen.
+
+\subsection*{Autoren ohne Commits}
+\label{sec:autoren_ohne_commits}
+Eine weitere Limitierung, welche bereits im Verlauf der Masterarbeit häufiger thematisiert wurde, ist, dass Autoren als Autor genannt werden können und auch sollten, obwohl sie keinen Quellcode geschrieben haben.
+Eine reine Betrachtung der geleisteten Arbeit anhand der Änderungen am Quellcode, wie sie in der Masterarbeit durchgeführt wurde, ist daher nicht ausreichend, um das gesamte Spektrum der Arbeit von Autoren zu erfassen.
+Aus diesem Grund kommt es in der Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht unter den Git Autoren auftauchen.
+Dadurch können Ergebnisse wie beispielsweise in \autoref{fig:common_authors_2} schlechter ausfallen, da nur auf Git Autoren geprüft wird.
+Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentation gearbeitet haben oder an der Organisation des Projektes beteiligt waren.
+
+\subsection*{Verlinkung auf andere Quellen}
+\label{sec:verlinkung_auf_andere_quellen}
+In einigen Quellen werden Autoren durch die Entwickler nicht direkt genannt, sondern es wird auf eine andere Quelle verwiesen, in welcher die Autoren genannt werden.
+Beispielsweise wird in \emph{pandas} in der \gls{cff} Datei als Name \glqq The pandas development team\grqq{} und anschließend die Webseite \url{https://pandas.pydata.org/about/team.html} angegeben.
+Auf dieser Seite sind anschließend alle aktiven Autoren gelistet.
+In der Masterarbeit werden jedoch nur die Autoren in der \gls{cff} Datei mit Vor- und Nachnamen betrachtet.
+Es wird keine weitere Analyse anderer Quellen durchgeführt, welche möglicherweise in den Quellen verlinkt sind.
+Dadurch kann es wie in dem Fall von \emph{pandas} dazu kommen, dass Autoren, welche nicht direkt genannt werden, jedoch auf einer anderen Seite gelistet sind, nicht betrachtet werden.
+Dies schränkt die Ergebnisse der Masterarbeit ein, da nicht alle Autoren betrachtet werden.
+Eine Betrachtung der verlinkten Seiten würde jedoch einen erheblichen Mehraufwand bedeuten, da für jedes Paket die verlinkten Seiten analysiert werden müssten.
+Außerdem sind die verlinkten Seiten unterschiedlich aufgebaut, sodass die Komplexität dadurch ebenfalls gesteigert würde.
+Aus diesem Grund wurde in der Masterarbeit darauf verzichtet, die verlinkten Seiten zu analysieren und mit weniger genannten Autoren gearbeitet.
+
+\subsection*{Ausführungszeit der Datenbeschaffung}
+\label{sec:ausfuehrungszeit_der_datenbeschaffung}
+Eine weitere Limitierung ist die Laufzeit der Datenbeschaffung.
+Diese wird besonders durch den Aufruf von \emph{git-quick-stats} beeinflusst, da das Programm für große Repositorys eine lange Laufzeit benötigt.
+Außerdem hat die \gls{ner} für die README und die Beschreibung eine hohe Laufzeit, weswegen für die README auch nur die letzten 50 Commits betrachtet werden.
+Um die Laufzeit weiter zu reduzieren, beispielsweise um sämtliche \gls{cff} Pakete auf GitHub analysieren zu können, wurde auf Faktoren, welche die Laufzeit erheblich erhöhen, verzichtet.
+Aus diesem Grund wurden bei der Analyse ausschließlich die \gls{cff} Dateien betrachtet.
+Außerdem wurden für den Abgleich die Git Autoren benötigt, welche ausschließlich in der neusten Version beschafft wurden, sodass \emph{git-quick-stats} nur einmal aufgerufen werden musste.
+Dadurch konnte die Laufzeit der Datenbeschaffung für die gesamte \gls{cff} Liste mit 20.870 Einträgen auf dem internen HPC Server der Hochschule Wismar auf 55 Stunden reduziert werden.
+Bei Betrachtung aller Quellen hätte dieser Prozess erheblich längere Zeit in Anspruch genommen.
 
 \section{Wie gut hat der Abgleich funktioniert?}
 \label{sec:abgleich_diskussion}
+% TODO das Kapitel kann ich erst wirklich gut schreiben wenn alle Daten da sind
+% TODO bevor ich die Kapitel schreibe nochmal gedanken machen was ich sagen will und das strukturieren. Ebenfalls überlegen welche Grafiken und tabellen ich einbeziehen will
+% TODO auf Organisation eingehen
 % TODO auf die Tabellen eingehen (tab:matching_results_auto, tab:cff_matching_results_manual)
-% TODO sagen, dass der Vergleich von einen Buchstaben zu vielen FP führt -> kacke
+% TODO sagen, dass der Vergleich von einen oder zwei Buchstaben zu vielen FP führt -> kacke/ Einige personen geben als Git namen nur einen buchstaben an, diese werden dann natürlich über in mit dem besten gematcht der diesen buchstaben im Namen hat, was natürlich nicht korrekt ist./ Es wird immer passieren, dass manche Leute falsch zugeordnet werden. Aktuelles bsp. in scipy heißt jemand pv auf PyPI und jemand hat eine E-Mail mit: pvanmulbregt@users.noreply.github.com die werden gematcht... Also nur weil ich einen Match habe bedeutet es nicht, dass es ein richtiger ist! Dies unbedingt in der Arbeit berücksichtigen. Ebenfalls, dass falls kein match gefunden wurde heißt es nicht zwangsweise, dass mein Script schlecht arbeitet es kann auch sein, das jemand als Autor genannt wird aber keinen Code geschrieben hat oder das eine Organisation als Autor angegeben wurde.
+% TODO Namensvetter werden nicht unterschieden -> diskutieren, warum es nicht so notwendig ist Namensvetter zu unterscheiden
+% TODO auf schlechte NER eingehen und das dadurch die werte für readme und beschreibung nicht so gut sind
 
-\section{Was muss ich machen, dass ich ein Zitationsfähiger Autor bin?}
+\section{Was muss ein Softwareentwickler machen, um als Autor genannt zu werden?}
 \label{sec:zitationsfaehiger_autor_diskussion}
+% TODO bevor ich die Kapitel schreibe nochmal gedanken machen was ich sagen will und das strukturieren. Ebenfalls überlegen welche Grafiken und tabellen ich einbeziehen will
+% TODO sagen, dass das natürlich immer unterschiedlich für alle Pakete ist ich probiere hier nur allgemein eine aussage über alle listen und pakete zu treffen
 % TODO auf common_authors, common_authors_2, total_authors_no_commits, authors_added eingehen
 % TODO zeigen und erklären, dass einige der TOP autoren nicht genannt werden
 % TODO von anfang an dabei sein (added_authors_without_readme_without_first_timestamp, added_authors_without_first_timestamp) bzw. so kann man es nicht ganz sehen, da die ersten autoren bedeutet als die Datei erstellt wurde aber es lässt sich zeigen, dass kaum autoren anschließend hinzugefügt wurden. und in valid_cff_by_time ist zu erkennen, dass viele Dateien von schon 2022 und 2023 erstellt wurden zumindest bei cff
@@ -43,5 +106,7 @@
 
 \section{Wie gut werden Autoren gepflegt?}
 \label{sec:autoren_pflege_diskussion}
+% TODO bevor ich die Kapitel schreibe nochmal gedanken machen was ich sagen will und das strukturieren. Ebenfalls überlegen welche Grafiken und tabellen ich einbeziehen will
 % TODO auf overall_valid_cff (einige invalide pakete deutet darauf hin, dass es nicht so wichtig ist), average_time_last_update_cff, average_time_last_update_bib, average_time_last_update_readme, authors_added, authors_removed, average_author_livetime, similarity eingehen
 % TODO beschreiben, dass zwar die readme super häufig aktualisiert wird dies aber primär daran liegt, dass in ihr ebenfalls die dokumentation und weiteres zu finden ist und nicht nur die Autoren daher kann diese datei kaum betrachtet werden.
+% TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka -> kann hier auch auf fig:citation_counts eingehen, da hier steht wie viele cff preferred ictation angegeben haben
