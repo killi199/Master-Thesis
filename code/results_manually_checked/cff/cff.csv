@@ -1,5 +1,5 @@
 source,TP,FN,FP,TN,no_person,f1_score
-cff_authors_new,26,2,0,4,0,0.962962
+cff_authors_new,27,2,0,4,0,0.96428
 cff_preferred_citation_authors_new,7,1,1,4,0,0.875
 description_authors,12,1,6,26,2,0.77419
 readme_authors_new,13,1,4,17,5,0.83871
@@ -7,4 +7,4 @@ bib_authors_new,0,1,0,0,0,0
 pypi_maintainers,61,0,9,5,7,0.9313
 python_authors,29,0,13,6,17,0.8169
 python_maintainers,3,0,2,2,3,0.75
-summe,151,6,35,64,34,0.88047
+summe,152,6,35,64,34,0.88116

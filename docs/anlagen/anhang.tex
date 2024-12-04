@@ -231,15 +231,35 @@
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 12 & 1  & 6  & 26 & 2  & 0.7742 \\
         README                       & 13 & 1  & 4  & 17 & 5  & 0.8387 \\
-        \gls{cff}                    & 26 & 2  & 0  & 4  & 0  & 0.9630 \\
+        \gls{cff}                    & 27 & 2  & 0  & 4  & 0  & 0.9643\\
         \gls{cff} preferred citation & 7  & 1  & 1  & 4  & 0  & 0.8750 \\
         \gls{pypi} Maintainer        & 61 & 0  & 9  & 5  & 7  & 0.9313 \\
         Python Autoren               & 29 & 0  & 13 & 6  & 17 & 0.8169 \\
         Python Maintainer            & 3  & 0  & 2  & 2  & 3  & 0.7500 \\
         \hologo{BibTeX}              & 0  & 1  & 0  & 0  & 0  & 0.0000 \\ \midrule
-        Summe                        & 151 & 6 & 35 & 64 & 34 & 0.8805 \\
+        Summe                        & 152 & 6 & 35 & 64 & 34 & 0.8812 \\
         \bottomrule
     \end{tabularx}
     \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cff} Liste}
     \label{tab:cff_matching_results_manual_anhang}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{XR{.5cm}R{.5cm}R{.5cm}R{.5cm}R{2.8cm}R{2cm}}
+        \toprule
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
+        Beschreibung                 & 26  & 2  & 8  & 52  & 7  & 0.8387 \\
+        README                       & 23  & 4  & 5  & 35  & 11 & 0.8364 \\
+        \gls{cff}                    & 56  & 3  & 3  & 13  & 3  & 0.9492 \\
+        \gls{cff} preferred citation & 15  & 1  & 1  & 5   & 0  & 0.9375 \\
+        \gls{pypi} Maintainer        & 120 & 1  & 14 & 18  & 23 & 0.9412 \\
+        Python Autoren               & 63  & 2  & 18 & 22  & 37 & 0.8630 \\
+        Python Maintainer            & 8   & 0  & 3  & 8   & 10 & 0.8421 \\
+        \hologo{BibTeX}              & 0   & 1  & 0  & 0   & 0  & 0.0000 \\ \midrule
+        Summe                        & 311 & 14 & 52 & 118 & 91 & 0.9041 \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Manuelle Ergebnisse des Abgleichs für die \gls{pypi} \gls{cff} Liste}
+    \label{tab:pypi_cff_matching_results_manual_anhang}
 \end{table}
