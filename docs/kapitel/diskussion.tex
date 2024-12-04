@@ -96,16 +96,62 @@ Bei Betrachtung aller Quellen hätte dieser Prozess erheblich längere Zeit in A
 
 \section{Was muss ein Softwareentwickler machen, um als Autor genannt zu werden?}
 \label{sec:zitationsfaehiger_autor_diskussion}
-% TODO bevor ich die Kapitel schreibe nochmal gedanken machen was ich sagen will und das strukturieren. Ebenfalls überlegen welche Grafiken und tabellen ich einbeziehen will
-% TODO sagen, dass das natürlich immer unterschiedlich für alle Pakete ist ich probiere hier nur allgemein eine aussage über alle listen und pakete zu treffen
-% TODO auf common_authors, common_authors_2, total_authors_no_commits, authors_added eingehen
-% TODO zeigen und erklären, dass einige der TOP autoren nicht genannt werden
-% TODO von anfang an dabei sein (added_authors_without_readme_without_first_timestamp, added_authors_without_first_timestamp) bzw. so kann man es nicht ganz sehen, da die ersten autoren bedeutet als die Datei erstellt wurde aber es lässt sich zeigen, dass kaum autoren anschließend hinzugefügt wurden. und in valid_cff_by_time ist zu erkennen, dass viele Dateien von schon 2022 und 2023 erstellt wurden zumindest bei cff
-% TODO von anfang an dabei sein ist ein guter weg laut added_removed_authors dies aber relativieren damit, dass die Datei erst seit 2021 richtig genutzt wird und das sich seit dem ggf. nicht so viele Autoren hinzugefügt haben zu der entwicklergemeinde
+Bei der Beantwortung der Frage muss beachtet werden, dass die Aussagen nur allgemein getroffen werden können und nicht für alle Pakete gelten.
+Einzelne Pakete können natürlich unterschiedlich sein und andere Anforderungen an die Autoren stellen.
+Nur weil ein Paket alle Autoren nennt, welche mindestens einen Commit getätigt hat, bedeutet das nicht, dass ein anderes Paket ebenfalls diesen Ansatz verfolgt.
+Die Ergebnisse in \autoref{chap:ergebnisse} zeigen im Allgemeinen aggregierte Werte für alle Pakete einer Liste und aus diesem Grund wird die Frage ebenfalls allgemeingültig diskutiert.
+
+Die \autoref{fig:common_authors} hat gezeigt, dass Autoren mit vielen Commits über alle Pakete betrachtet häufiger als Autoren genannt werden.
+Sie zeigt, dass eine erhöhte Chance besteht, falls eine Person unter den Top 10 Autoren ist, dass diese Person auch als Autor genannt wird.
+Dies ist jedoch nicht garantiert, da die Abbildung gleichzeitig zeigt, dass nur ungefähr 50 \% der Autoren mit den meisten Commits auch tatsächlich als Autor genannt werden.
+Außerdem zeigt sie, dass in einigen Paketen die Autoren mit den meisten Commits oder geänderten Zeilen auch gar nicht als Autor genannt werden können.
+Durch diese Gründe ist davon auszugehen, dass es ein guter Ansatz ist viel Arbeit in dem Projekt zu leisten, um als Autor genannt zu werden.
+Dies jedoch keine Garantie dafür genannt zu werden und in den meisten Fällen werden weitere Schritte benötigt, um tatsächlich aufgeführt zu werden.
+
+Ein möglicher Schritt, welcher jedoch nicht umsetzbar ist, ist bei der Gründung des Paketes beteiligt zu sein.
+Dies geht aus der \autoref{fig:added_removed_authors} hervor.
+Sie zeigt, dass die meisten Autoren direkt zu Beginn genannt werden und anschließend kaum weitere Autoren hinzugefügt werden.
+Insgesamt wurden in allen Paketen der untersuchten Listen nur neun Autoren, der \gls{cff} oder \hologo{BibTeX} Datei nachträglich hinzugefügt.
+\autoref{fig:added_removed_authors_without_readme} zeigt jedoch, dass in den Dateien viel mehr Autoren insgesamt enhalten sind.
+Hierbei muss allerdings beachtet werden, dass die \gls{cff} Datei erst seit 2021 vermehrt verwendet wird, wie aus \autoref{fig:valid_cff_by_time} hervorgeht.
+Dadurch sind erst drei Jahre vergangen, in welchen Autoren hinzugefügt werden konnten.
+Und diese Autoren müssten in den drei Jahren auch aktiv am Projekt beteiligt gewesen sein, um als Autor genannt zu werden.
+Ebenfalls spiegelt die \autoref{fig:total_authors_no_commits} dieses Verhalten wider.
+Hier wird deutlich, dass viele genannte Autoren keinen Commit in den letzten Jahren getätigt haben.
+Jedoch muss berücksichtigt werden, dass inaktive Repositorys mit in diese Statistik einfließen, welche ebenfalls Autoren enthalten, welche nicht mehr aktiv am Projekt beteiligt sind, da das Projekt eingestellt wurde.
+Auf die Inaktivität von Autoren und deren pflege wird im nächsten Abschnitt genauer eingegangen.
 
 \section{Wie gut werden Autoren gepflegt?}
 \label{sec:autoren_pflege_diskussion}
-% TODO bevor ich die Kapitel schreibe nochmal gedanken machen was ich sagen will und das strukturieren. Ebenfalls überlegen welche Grafiken und tabellen ich einbeziehen will
-% TODO auf overall_valid_cff (einige invalide pakete deutet darauf hin, dass es nicht so wichtig ist), average_time_last_update_cff, average_time_last_update_bib, average_time_last_update_readme, authors_added, authors_removed, average_author_livetime, similarity eingehen
-% TODO beschreiben, dass zwar die readme super häufig aktualisiert wird dies aber primär daran liegt, dass in ihr ebenfalls die dokumentation und weiteres zu finden ist und nicht nur die Autoren daher kann diese datei kaum betrachtet werden.
-% TODO Auf das Prinzip 1 eingehen, dass wichtigkeit besonders vernachlässigt wird bei prefrerred Zitation -> zeige ich in den Ergebnissen wobei nur weil preferred citation angegeben ist heißt es nicht, dass paper nur das zitieren sie sollten beides zitieren. Aber wenn die Standard zitation article angibt und keine preferred citation auf die software verweist dann ist kacka -> kann hier auch auf fig:citation_counts eingehen, da hier steht wie viele cff preferred ictation angegeben haben
+In \autoref{fig:common_authors_2} wurde gezeigt, dass viele Autoren gar nicht unter den Top 100 Git Autoren sind.
+Dies bedeutet, dass viele der genannten Autoren gar nicht mehr aktiv am Projekt beteiligt sind.
+Dies kann verschiedene Gründe haben, wie beispielsweise, dass die Autoren das Projekt verlassen haben.
+Außerdem muss beachtet werden, dass Autoren, welche nicht in der Datenbeschaffung abgeglichen werden konnten, hier ebenfalls enthalten sind.
+Die Abbildung deutet allerdings bereits darauf hin, dass Autoren, sobald sie einmal eingetragen wurden nicht mehr entfernt werden, obwohl sie nicht mehr aktiv am Projekt beteiligt sind.
+Außerdem zeigt es, in Verbindung mit \autoref{fig:common_authors}, dass Autoren mit vielen Commits ebenfalls kaum genannt werden, was die Vermutung bestätigt, dass die Autorenlisten in den meisten Fällen nicht aktiv gepflegt werden.
+
+Ein weiterer Indikator dafür ist die \autoref{fig:total_authors_no_commits}.
+Hier wird deutlich, dass viele genannte Autoren in den letzten Jahren keinen Commit getätigt haben.
+Dies lässt sich allerdings dadurch relativieren, dass die Statistik ebenfalls Pakete enthält, welche nicht mehr aktiv entwickelt werden, was allerdings bei den Top 100 Listen unwahrscheinlich ist.
+Des Weiteren ist die hohe Anzahl der invaliden \gls{cff} Dateien, welche in \autoref{fig:overall_valid_cff} und \autoref{fig:valid_cff_by_time} deutlich werden ein Indikator dafür, dass die Pflege der Autoren den Entwicklern der Pakete nicht besonders wichtig zu scheinen sei.
+
+Auch zeigt die Häufigkeit mit derer die Quellen aktualisiert werden, dass scheinbar kein großes Interesse darin besteht die Autorenlisten zu pflegen.
+Aus \autoref{tab:average_time_last_update} wird deutlich, dass die zwei der drei untersuchten Quellen in fast jeder Liste durchschnittlich das letzte Jahr nicht aktualisiert wurden.
+Die README wird dabei öfter aktualisiert, wobei berücksichtigt werden muss, dass in der README nicht nur Autoren, sondern auch in vielen Fällen beispielsweise die Dokumentation vorhanden ist.
+Außerdem muss berücksichtigt werden, dass ein Jahr in der Softwareentwicklung keine lange Zeit ist und neue Autoren innerhalb dieser Zeit kaum hinzugefügt werden können, da ein Einarbeiten und etablieren in ein großes Softwareprojekt innerhalb eines Jahres schwer möglich ist.
+Dahingegen ist dies bei der \hologo{BibTeX} Quelle anders, da hier zwei bis drei Jahre die letzte Aktualisierung zurückliegt, in der die Autorenliste ggf. um weitere Autoren ergänzt werden könnte.
+
+\autoref{fig:similarities} zeigt, dass die Übereinstimmung der Autoren über die Quellen hinweg gering ist.
+Besonders in der \gls{pypi} \gls{cff} Liste wird dies deutlich.
+Dabei werden allerdings auch Quellen wie die README betrachtet, in welcher bei vielen Paketen keine oder kaum Autoren genannt werden.
+Auch ist die Abbildung erneut stark abhängig von dem Abgleich in der Datenbeschaffung.
+Allerdings lässt sich hier erneut erkennen, dass die Autoren in den Quellen nicht automatisch gepflegt werden.
+Des Weiteren zeigen \autoref{tab:average_lifespans}, \autoref{tab:average_lifespans_until_today} und \autoref{fig:added_removed_authors}, dass einmal hinzugefügte Autoren in den meisten Fällen nicht mehr entfernt werden.
+Diese Tatsache ist dabei nichts Negatives, da die Autoren Arbeit in den Paketen geleistet haben, allerdings sollten Autoren, welche aktuell das Paket aktiv pflegen ebenfalls genannt werden, was in vielen Fällen nicht der Fall ist, wie bereits diskutiert wurde.
+
+Im Allgemeinen lässt sich sagen, dass die Autoren in den betrachteten Listen nicht aktiv gepflegt werden und besonders in den meisten Fällen keine automatischen Prozesse vorhanden sind, welche die Autorenlisten aktualisieren.
+
+Eine zusätzliche Auffälligkeit, welche die Pflege und Nennung der Autoren indirekt betrifft, zeigt \autoref{fig:citation_counts}.
+Hier wird deutlich, dass in vielen Fällen, in denen eine \glqq preferred citation\grqq{} angegeben ist, diese auf ein Paper verweist und nicht auf die Software.
+Falls Autoren von wissenschaftlichen Arbeiten ausschließlich diese Referenz zitieren, stellt dies ist Verstoß gegen das Prinzip der Wichtigkeit dar, welches in \autoref{sec:software-zitation} beschrieben wurde.
+Dies könnte durch die Autoren von Software verhindert werden, indem sie keine \glqq preferred citation\grqq{} angeben, sondern ausschließlich die Software und weitere Referenzen in der \gls{cff} als \glqq references\grqq{} angeben, welche in der Masterarbeit allerdings nicht untersucht worden sind.
