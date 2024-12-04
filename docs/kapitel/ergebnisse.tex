@@ -83,6 +83,7 @@ Die Ergebnisse für alle Listen zusammen sind in \autoref{tab:matching_results_m
 Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matching_results_manual_anhang}, \ref{tab:pypi_matching_results_manual_anhang}, \ref{tab:cff_matching_results_manual_anhang}, \ref{tab:pypi_cff_matching_results_manual_anhang} und \ref{tab:cran_cff_matching_results_manual_anhang} dargestellt.
 % TODO weitere Tabellen im Anhang referenzieren
 % TODO eins zwei beispiele aus der Tabelle geben
+% TODO auf eins zwei besonderheiten in der Tabelle eingehen z.B. schlechte werde in readme und beschreibung
 % TODO confusion matrix und f1 score für alle listen zusammen (addiert) angeben diese hier zeigen und alle anderen im Anhang referenzieren.
 
 \begin{table}
@@ -569,7 +570,7 @@ Außerdem muss berücksichtigt werden, dass die \gls{cff} Datei beispielsweise e
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/added_removed_authors.svg}
         \caption{Inklusive README Autoren und ersten Autoren}
-        \label{fig:added_removed_authors}
+        \label{fig:added_removed_authors_with_readme}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
@@ -592,7 +593,7 @@ Außerdem muss berücksichtigt werden, dass die \gls{cff} Datei beispielsweise e
     \caption{Hinzugefügte und gelöschte Autoren}
     \label{fig:added_removed_authors}
     \small
-    Die beiden Abbildungen \autoref{fig:added_removed_authors} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
+    Die beiden Abbildungen \autoref{fig:added_removed_authors_with_readme} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors_with_readme} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
 \end{figure}
 
 Die \autoref{tab:average_lifespans} zeigt die durchschnittliche Zeit in Tagen wie lange ein Autor in einer bestimmten Quelle genannt wird.
@@ -672,7 +673,7 @@ Hingegen wird die \hologo{BibTeX} Datei in der \gls{pypi} Liste im Durchschnitt 
         \hologo{BibTeX} &     & 676 &    &    &    \\
         \bottomrule
     \end{tabularx}
-    \caption{Durchschnittliche Zeit seit der letzten Aktualisierung}
+    \caption{Durchschnittliche Zeit zwischen der Aktualisierung der Quellen}
     \label{tab:average_time_between_updates}
     \small
     \raggedright
