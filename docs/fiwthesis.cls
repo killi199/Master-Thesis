@@ -738,21 +738,6 @@
   \normalspacing
 }
 
-% attached data carrier (CD, SD card)
-\newcommand{\makecd}[1]{%
-  \pdfbookmark{\@mediatitle}{cd}
-
-  \markright{\@mediatitle}
-
-  \chapter*{\@mediatitle}
-
-  \setlength{\DTbaselineskip}{20pt}
-
-  #1
-
-  \newpage{}
-}
-
 % combination of glossary entry and acronym
 % see: https://en.wikibooks.org/wiki/LaTeX/Glossary#Dual_entries_with_reference_to_a_glossary_entry_from_an_acronym
 \DeclareDocumentCommand{\newdualentry}{ O{} O{} m m m m } {
