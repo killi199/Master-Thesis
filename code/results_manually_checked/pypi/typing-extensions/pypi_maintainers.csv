@@ -1,6 +1,6 @@
 login,name,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-srittau,Sebastian Rittau,3.0,432.0,1078.0,1510.0,51.0,27.0,2020-05-13 16:10:08+00:00,2024-08-29 15:51:20+00:00,1.0,0
-hauntsaninja,hauntsaninja,6.0,42.0,20.0,62.0,5.0,5.0,2022-03-22 21:45:53+00:00,2024-07-19 18:03:16+00:00,0.5,0
+srittau,Sebastian Rittau,3.0,432.0,1078.0,1510.0,51.0,27.0,2020-05-13 16:10:08+00:00,2024-08-29 15:51:20+00:00,1.0,1
+hauntsaninja,hauntsaninja,6.0,42.0,20.0,62.0,5.0,5.0,2022-03-22 21:45:53+00:00,2024-07-19 18:03:16+00:00,0.5,1
 ilevkivskyi,Ivan Levkivskyi,4.0,3643.0,1985.0,5628.0,49.0,22.0,2017-09-14 23:42:26+00:00,2019-11-24 10:45:38+00:00,1.0,0
 jukkal,Jukka Lehtosalo,,,,,,,,,0.0,0
 JelleZijlstra,Jelle Zijlstra,1.0,7498.0,2479.0,9977.0,295.0,119.0,2021-04-13 15:26:08+00:00,2024-06-22 07:03:32+00:00,1.0,0

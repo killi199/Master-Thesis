@@ -208,7 +208,7 @@
 % reihenfolge der Tabellen so wie immer in den Grafiken CRAN->PyPI->CFF->PyPI CFF->CRAN CFF
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{XR{.5cm}R{.5cm}R{.5cm}R{.5cm}R{2.8cm}R{2cm}}
+    \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 3   & 0 & 1 & 0  & 0 & 0.8571 \\
@@ -226,7 +226,26 @@
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{XR{.5cm}R{.5cm}R{.5cm}R{.5cm}R{2.8cm}R{2cm}}
+    \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
+        \toprule
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
+        Beschreibung                 & 28  & 1 & 3  & 16 & 5  & 0.9333 \\
+        README                       & 8   & 0 & 2  & 9  & 5  & 0.8888 \\
+        \gls{cff}                    & 3   & 0 & 0  & 1  & 0  & 1.0000 \\
+        \gls{pypi} Maintainer        & 113 & 1 & 9  & 25 & 20 & 0.9576 \\
+        Python Autoren               & 63  & 2 & 4  & 15 & 21 & 0.9545 \\
+        Python Maintainer            & 19  & 0 & 0  & 11 & 12 & 1.0000 \\
+        \hologo{BibTeX}              & 2   & 0 & 0  & 0  & 0  & 1.0000 \\ \midrule
+        Summe                        & 236 & 4 & 18 & 77 & 63 & 0.9555 \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Manuelle Ergebnisse des Abgleichs für die \gls{pypi} Liste}
+    \label{tab:pypi_matching_results_manual_anhang}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 12 & 1  & 6  & 26 & 2  & 0.7742 \\
@@ -246,7 +265,7 @@
 
 \begin{table}[H]
     \centering
-    \begin{tabularx}{\textwidth}{XR{.5cm}R{.5cm}R{.5cm}R{.5cm}R{2.8cm}R{2cm}}
+    \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 26  & 2  & 8  & 52  & 7  & 0.8387 \\

@@ -1,3 +1,3 @@
 name,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Andrew Svetlov,1.0,28456.0,20892.0,49348.0,976.0,443.0,2016-08-02 12:56:43+00:00,2022-12-12 20:23:54+00:00,1.0,0
-yarl,,,,,,,,,0.0,0
+Andrew Svetlov,1.0,28456.0,20892.0,49348.0,976.0,443.0,2016-08-02 12:56:43+00:00,2022-12-12 20:23:54+00:00,1.0,1
+yarl,,,,,,,,,0.0,1
