@@ -6,8 +6,8 @@ Jeweils nur die ersten 2 in jeder Datei begutachten git_contributors dient als R
 Nach Bearbeitung die Zeile immer auf checked setzen, sodass man selber einen überblick darüber behält wo man war
 
 
-CRAN Papa
+CRAN ist fertig
 PyPi Stephi
 CFF ist fertig
-PyPi CFF muss ich machen, da ich die Ergebnisse der CFF liste wieder verwenden kann
+PyPi CFF ist fertig
 CRAN CFF HIWI Krüger
