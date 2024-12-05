@@ -41,7 +41,10 @@ Allerdings behebt dies nicht das Problem vollständig, da ein Autor seine E-Mail
 Ein Abgleich wie in \autoref{sec:abgleich} beschrieben, ist ebenfalls nicht möglich, da dies die Ergebnisse verfälschen könnte, da beispielsweise Autoren mit dem gleichen Namen zusammengefasst werden würden, obwohl es sich um unterschiedliche Autoren handelt.
 Die anderen Probleme, welche in \autoref{sec:abgleich} beschrieben wurden, sind ebenfalls nicht zu vernachlässigen.
 Eine Möglichkeit dieses Problem zu lösen wäre die Verwendung der GitHub API, welche automatisch die Git Autoren anhand der in GitHub eingetragenen E-Mail-Adressen zusammenfasst.
-Dies ist jedoch nur mit viel Zeit möglich, da die API für jedes Paket einzeln abgefragt werden müsste und dadurch schnell das raten Limit von GitHub erreicht werden würde.
+Ein weiterer Vorteil der durch die Nutzung der GitHub API bestehen würde ist, dass dabei die Benutzernamen der GitHub Benutzer abgefragt werden könnten.
+Diese werden häufig in der README und der Beschreibung mit einem @-Zeichen angegeben, um auf diese zu verweisen.
+Die verwendete \gls{ner} erkennt die Benutzernamen, allerdings können sie häufig nicht mit den Git Daten abgeglichen werden, da die Benutzernamen meistens nicht dem richtigen Namen oder der E-Mail-Adresse entsprechen.
+Die Verwendung der API ist jedoch nur mit viel Zeit möglich, da sie für jedes Paket einzeln abgefragt werden müsste und dadurch schnell das raten Limit von GitHub erreicht werden würde.
 Eine weitere Möglichkeit welche bereits durch \emph{git-quick-stats} verwendet wird, ist das Zusammenfassen der Autoren mittels einer \texttt{.mailmap}-Datei \autocite{chacon_git_2024-1}.
 In dieser Datei kann eingetragen werden, dass zwei E-Mail-Adressen zusammengefasst werden sollen.
 
