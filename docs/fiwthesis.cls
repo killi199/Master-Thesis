@@ -713,13 +713,16 @@
   }
 }
 
-% abstract
-\newcommand{\makeabstract}[1]{%
-  \pdfbookmark{Abstract}{abstract}
-  \markright{Abstract}
+%% abstract
+\newcommand{\makeabstract}[2]{%
+  \pdfbookmark{Kurzfassung}{abstract}
+  \markright{Kurzfassung}
+
+  \section*{Kurzfassung}
+  #1
 
   \section*{Abstract}
-  #1
+  #2
 
   \newpage{}
 }
