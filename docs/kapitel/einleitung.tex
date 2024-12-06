@@ -1,14 +1,47 @@
 \chapter{Einleitung}
 \label{chap:einleitung}
-% TODO Gender disclaimer
-% TODO beschreiben was wir machen wollen aber auch was wir nicht machen wollen (Personen ohne code)
-% TODO in smith_software_2016 sind ein paar gute Quellen auch zur zitation wie häufig software zitiert wird vllt noch was neueres?
-% TODO sagen, dass nur Git Autoren betrachtet werden und nicht Autoren die z. B. keinen Code beigetragen haben. Dafür gibt es unterschiedliche Taskforces, die sich mit dem Problem beschäftigen.
-% TODO Prüfe nur auf git autoren in der Arbeit aber: Nur auf Commits prüfen ist nicht ausreichend As we have already mentioned, contributorship, defined as the changing of code, does not cover the complete spectrum of contributions [6, 12]. aus (Which contributions count? Analysis of attribution in open source)
 \section{Motivation}
 \label{sec:motivation}
+Die Wissenschaft ist in den letzten Jahren immer stärker digitalisiert worden und ist viel stärker auf \gls{oss} angewiesen als noch vor einigen Jahren.
+In der Wissenschaft werden längst nicht mehr nur Paper und Bücher veröffentlicht, sondern auch Software, Daten und andere digitale Artefakte.
+Dies steigert die Ausführbarkeit und Nachvollziehbarkeit der Arbeiten.
+Der Wandel der Wissenschaft bringt allerdings die Herausforderung mit sich, digitale Artefakte angemessen zu würdigen.
+Neue Zitierformate und -weisen werden unerlässlich, um diesen Ansprüchen gerecht zu werden.
+Außerdem benötigt es einer gerechten Würdigung der einzelnen Autoren\footnote{Aus Gründen der besseren Lesbarkeit wird auf die gleichzeitige Verwendung der Sprachformen männlich, weiblich und divers (m/w/d) verzichtet. Sämtliche Personenbezeichnungen gelten gleichermaßen für alle Geschlechter.}, die an der Entwicklung von \gls{oss} beteiligt sind.
+
+Bei der Entwicklung von \gls{oss} arbeiten Softwareentwickler zum Teil in ihrer Freizeit, um Software zu verbessern.
+Dabei kommt es immer wieder vor, dass ihre Arbeit nicht gewürdigt wird, da sie nicht als Autor der Software oder sogar ihres Beitrags genannt werden.
+Dies ist beispielsweise dem Entwickler Ariel Miculas widerfahren, welcher einen Beitrag zum Linux-Kernel geleistet hat und nicht als Autor genannt wurde \autocite{miculas_how_2023}.
+Im Gegensatz zu wissenschaftlichen Arbeiten ist die Autorschaft von Software nicht semantisch geklärt \autocite{schmidt_software_nodate}.
+
+Um zu prüfen welchen Einfluss dies auf \gls{oss} hat, stellen sich folgende Forschungsfragen:
+
+\begin{itemize}
+    \item[\textbf{F1}] Wie gut können Autoren abgeglichen werden?
+    \item[\textbf{F2}] Was muss ein Softwareentwickler leisten, um als Autor genannt zu werden?
+    \item[\textbf{F3}] Wie gut werden Autoren gepflegt?
+\end{itemize}
+
 \section{Vorgehen}
 \label{sec:vorgehen}
-% TODO erklären was wird vorhaben (Autoren aus unterschiedlichen quellen extrahieren zuordnen und checken wie gut das funktioniert und wie gut Autoren von Software gepflegt werden)
+In der Arbeit werden Autoren aus unterschiedlichen Quellen extrahiert.
+Eine wichtige Quelle ist Git, welche als Referenz genutzt wird.
+Andere Quellen, wie beispielsweise das \gls{cff}, werden mit den Git Autoren abgeglichen.
+Dadurch ist es möglich Daten zu erheben, die zeigen wie einzelne Git Autoren in den Quellen repräsentiert werden.
+Die Daten werden anschließend Graphisch aufbereitet und präsentiert.
+
+Es muss berücksichtigt werden, dass in der Masterarbeit ausschließlich Git Autoren betrachtet werden.
+Dadurch werden nur Personen betrachtet, die Code beigetragen haben.
+Allerdings wird dadurch nicht das gesamte Spektrum von Beiträgen zu Software in der Masterarbeit abgedeckt, da beispielsweise Personen, die für die Distribution der Software zuständig sind, nicht genannt werden.
+Für die Nennung jener Autoren ohne Code-Beiträge gibt es andere Arbeitsgruppen, die sich mit dem Problem beschäftigen, da diese ebenfalls wichtig für die Entwicklung von Software sind und berücksichtigt werden sollten.
+
 \section{Gliederung}
 \label{sec:gliederung}
+In der Masterarbeit wird Software erzeugt, die es erlaubt für eine beliebige Liste an \gls{cran} oder \gls{pypi} Repositorys Autorenangaben aus verschiedenen Datenquellen zu extrahieren, diese im Anschluss zu aggregieren und graphisch aufzuarbeiten.
+Dabei werden in \autoref{chap:grundlagen} die benötigten Grundlagen geschaffen, um beispielsweise die Themen Versionsverwaltung, Paketverwaltung, Software-Verzeichnisse und im Allgemeinen verschiedene Zitierformate für Software verstehen zu können.
+Sie werden benötigt, um anschließend in \autoref{chap:methodik} Software zu entwickeln, über die Autorenangaben aus verschiedenen Datenquellen extrahiert und abgeglichen werden können.
+Anschließend werden die Ergebnisse in \autoref{chap:ergebnisse} präsentiert.
+Dabei wird auf Ergebnisse der Gegenwart und jene mit Zeitverlauf eingegangen.
+Im anschließenden \autoref{chap:diskussion} werden die Probleme und Herausforderungen der Arbeit diskutiert.
+Außerdem werden die Forschungsfragen beantwortet.
+Im \autoref{cap:fazit_ausblick} wird die Arbeit zusammengefasst und ein Ausblick auf weitere Forschungsansätze gegeben, welche mit dieser Arbeit möglich geworden sind.
