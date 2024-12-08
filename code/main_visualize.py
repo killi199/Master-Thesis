@@ -42,14 +42,14 @@ def common_authors_plot(file_list, sources, commits):
 
         plt.xlim(1, 100)
         plt.legend(loc="upper right")
-        plt.ylabel("Anteil der Git Autoren an den genannten Autoren")
+        plt.ylabel("Anteil der Git-Autoren an den genannten Autoren")
         plt.gca().yaxis.set_major_formatter(ticker.PercentFormatter(1.0))
         plt.tight_layout()
         if commits:
-            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach Commits")
+            plt.xlabel("Anzahl der betrachteten Git-Autoren sortiert nach Commits")
             plt.savefig(f"../docs/bilder/common_authors/1_{source}.svg")
         else:
-            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach geänderten Zeilen")
+            plt.xlabel("Anzahl der betrachteten Git-Autoren sortiert nach geänderten Zeilen")
             plt.savefig(f"../docs/bilder/common_authors_by_lines/1_{source}_by_lines.svg")
         plt.show()
 
@@ -113,14 +113,14 @@ def common_authors_2_plot(file_list, sources, commits):
             plt.plot(relative, label=file_name, color=info["color"])
 
         plt.legend(loc="lower right")
-        plt.ylabel("Anteil der genannten Autoren an den Git Autoren")
+        plt.ylabel("Anteil der genannten Autoren an den Git-Autoren")
         plt.gca().yaxis.set_major_formatter(ticker.PercentFormatter(1.0))
         plt.tight_layout()
         if commits:
-            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach Commits")
+            plt.xlabel("Anzahl der betrachteten Git-Autoren sortiert nach Commits")
             plt.savefig(f"../docs/bilder/common_authors_2/2_{source}.svg")
         else:
-            plt.xlabel("Anzahl der betrachteten Git Autoren sortiert nach geänderten Zeilen")
+            plt.xlabel("Anzahl der betrachteten Git-Autoren sortiert nach geänderten Zeilen")
             plt.savefig(f"../docs/bilder/common_authors_2_by_lines/2_{source}_by_lines.svg")
         plt.show()
 
