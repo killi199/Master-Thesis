@@ -3,16 +3,16 @@
 Ähnlich wie bei \gls{pypi} werden zu Beginn die Daten der Top 100 Pakete aus der zuvor beschafften Datei eingelesen.
 In dieser Datei sind ebenfalls ausschließlich der Name des Pakets und die Anzahl der Downloads auf \gls{cran} enthalten.
 Aus diesem Grund wird zu Beginn eine Anfrage mittels \emph{aiohttp} an die von METACRAN bereitgestellte API gestellt, um die Metadaten des Pakets zu erhalten.
-In den Metadaten kann der Link eines GitHub Repositorys enthalten sein.
-Falls kein Link zu einem GitHub Repository vorhanden ist, wird das Paket ebenfalls nicht weiter betrachtet.
+In den Metadaten kann der Link eines GitHub-Repositorys enthalten sein.
+Falls kein Link zu einem GitHub-Repository vorhanden ist, wird das Paket ebenfalls nicht weiter betrachtet.
 
 Anschließend werden die weiteren Daten verarbeitet, welche von der API bereitgestellt werden.
 Von der API wird das Feld \glqq Authors@R\grqq{} bereitgestellt.
-Dieses Feld beinhaltet die Autoren mit dem Namen, der E-Mail und einer ORCID-ID des Pakets in einer in R formatierten Zeichenfolge.
+Dieses Feld beinhaltet die Autoren mit dem Namen, der E-Mail und einer ORCID iD des Pakets in einer in R formatierten Zeichenfolge.
 Dabei müssen nicht zwingend alle Informationen vorhanden sein.
 Des Weiteren haben Autoren eine Rolle zugeordnet.
 Die Rolle ist nicht fest definiert und kann von den Autoren frei gewählt werden.
-Es existieren allerdings Standards welche eingehalten werden sollten.
+Es existieren allerdings Standards, welche eingehalten werden sollten.
 Einem Autor können mehrere Rollen zugewiesen sein.
 Im R Journal wurden folgende Rollen definiert \autocite{hornik_who_2011}:
 
@@ -28,22 +28,22 @@ Im R Journal wurden folgende Rollen definiert \autocite{hornik_who_2011}:
 
 Die Daten aus der Zeichenfolge werden mit der Software \emph{rpy2} in der Version 3.5.16 verarbeitet \autocite{noauthor_rpy2rpy2_2024}.
 \emph{Rpy2} ist eine Software, welche es ermöglicht R-Code in Python auszuführen.
-Die Software wird mit dem R Befehl \code{eval(parse(text = '\{cran\_author\}'))} ausgeführt, wobei \code{cran\_author} die R Zeichenfolge der Autoren ist.
-Anschließend werden die Autoren, welche die Rolle \emph{aut} zugeordnet haben nach dem Abgleich mit den Git Daten in der Datei \path{cran_authors.csv} gespeichert.
-In der Datei wird, falls vorhanden, der Name, die E-Mail-Adresse und die ORCID-ID der Autoren gespeichert.
+Die Software wird mit dem R-Befehl \code{eval(parse(text = '\{cran\_author\}'))} ausgeführt, wobei \code{cran\_author} die R-Zeichenfolge der Autoren ist.
+Anschließend werden die Autoren, welche die Rolle \emph{aut} zugeordnet haben, nach dem Abgleich mit den Git-Daten in der Datei \path{cran_authors.csv} gespeichert.
+In der Datei wird, falls vorhanden, der Name, die E-Mail-Adresse und die ORCID iD der Autoren gespeichert.
 Die Felder der Datei sind in \autoref{tab:cran_authors} aufgelistet.
 
 Falls das Feld \glqq Authors@R\grqq{} keine Zeichenfolge enthält oder beim Verarbeiten der Zeichenfolge ein Fehler auftritt, wird das durch die API zurückgegebene Feld \glqq Author\grqq{} verarbeitet.
 In dem Feld stehen ebenfalls die Autoren des Pakets, jedoch ohne die zusätzliche Information der E-Mail.
 Außerdem ist das Feld nicht in R formatiert, sodass die Zeichenfolge mittels eines regulären Ausdrucks verarbeitet wird.
 Die Folge ist dabei unterschiedlich in verschiedenen Paketen, sodass keine allgemeine Regel definiert werden kann.
-Einige Paketautoren geben keine ORCID-ID an, sodass die gesamte Zeichenfolge anders aufgebaut ist.
+Einige Paketautoren geben keine ORCID iD an, sodass die gesamte Zeichenfolge anders aufgebaut ist.
 Andere Autoren wiederum geben keine Rollenbezeichnungen an, sodass die Zeichenfolge beispielsweise nur den Namen enthält.
-Falls eine Rolle angegeben ist werden nur jene Autoren verarbeitet, welche als Rolle \emph{aut} zugeordnet haben.
+Falls eine Rolle angegeben ist, werden nur jene Autoren verarbeitet, welche als Rolle \emph{aut} zugeordnet haben.
 Andernfalls werden alle Autoren verarbeitet.
 Die Autoren werden in der Datei \path{cran_authors.csv} nachdem sie mit den Daten aus Git abgeglichen wurden gespeichert.
-Dabei wird nur der Name gespeichert ohne zusätzlichen Informationen wie der ORCID-ID, da dieses Vorgehen die Verarbeitung bei den unterschiedlichen aufgebauten Zeichenfolgen vereinfacht hat.
-Außerdem wird diese Methode nur verwendet, falls die Verarbeitung der Zeichenfolge \glqq Authors@R\grqq{} fehlschlägt.
+Dabei wird nur der Name gespeichert ohne zusätzliche Informationen wie der ORCID iD, da dieses Vorgehen die Verarbeitung bei den unterschiedlichen aufgebauten Zeichenfolgen vereinfacht hat.
+Zudem wird diese Methode nur verwendet, falls die Verarbeitung der Zeichenfolge \glqq Authors@R\grqq{} fehlschlägt.
 
 Ein weiteres Feld, welches von der API zurückgegeben wird und verarbeitet wird, ist das Feld \glqq Maintainer\grqq{}.
 Dieses Feld ist nicht in R formatiert, sondern eine einfache Zeichenfolge.
@@ -51,14 +51,14 @@ Die Zeichenfolge enthält weniger Informationen als die \glqq Author\grqq{} Zeic
 In ihr ist lediglich der Name und die E-Mail-Adresse des Maintainers enthalten.
 Außerdem ist immer nur ein Maintainer angegeben, welcher verarbeitet wird.
 Die Daten werden nach dem Abgleich mit den Daten aus Git in der Datei \path{cran_maintainers.csv} gespeichert.
-Ausgegeben wird in der Datei der Name und die E-Mail Adresse des Maintainers.
+Ausgegeben wird in der Datei der Name und die E-Mail-Adresse des Maintainers.
 Die Felder der Dateien sind in \autoref{tab:python_authors} aufgelistet.
 
-Das letzte Feld, welches von der API verarbeitet wird ist das Feld \glqq Description\grqq{}.
+Das letzte Feld, welches von der API verarbeitet wird, ist das Feld \glqq Description\grqq{}.
 In diesem Feld ist die Beschreibung des Pakets enthalten.
 Dabei wird die Verarbeitung wie in \autoref{subsec:datenbeschaffung_pypi} für die Beschreibung von \gls{pypi} durchgeführt.
 Es wird ebenfalls die \gls{ner} Bibliothek \emph{spaCy} verwendet, um die Autoren zu extrahieren.
-Anschließend werden Namen der extrahierten Autoren in der Datei \path{description_authors.csv} nach einem Abgleich mit den Git Daten gespeichert.
+Anschließend werden Namen der extrahierten Autoren in der Datei \path{description_authors.csv} nach einem Abgleich mit den Git-Daten gespeichert.
 Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 
 \begin{table}
@@ -68,12 +68,12 @@ Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
         \textbf{Feld} & \textbf{Beschreibung} \\ \midrule
         \emph{name}   & Name des Autors       \\
         \emph{email}  & E-Mail des Autors     \\
-        \emph{orcid}  & ORCID-ID des Autors   \\
+        \emph{orcid}  & ORCID iD des Autors   \\
         \bottomrule
     \end{tabularx}
     \caption{Felder der \texttt{cran\_authors.csv}, \texttt{TIMESTAMP\_cff\_authors(\_new).csv} und \texttt{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei}
     \label{tab:cran_authors}
     \small
     \raggedright
-    Die Tabelle zeigt die Felder der \texttt{cran\_authors.csv}, \texttt{TIMESTAMP\_cff\_authors(\_new).csv} und \texttt{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei. Für jeden Autor der betrachteten Software wird der Name, die E-Mail und die ORCID-ID angegeben, falls diese vorhanden sind. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+    Die Tabelle zeigt die Felder der \texttt{cran\_authors.csv}, \texttt{TIMESTAMP\_cff\_authors(\_new).csv} und \texttt{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei. Für jeden Autor der betrachteten Software wird der Name, die E-Mail und die ORCID iD angegeben, falls diese vorhanden sind. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
 \end{table}

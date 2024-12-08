@@ -9,17 +9,17 @@ Dies ermöglicht es in der Masterarbeit empirisch die Menge an Arbeit der einzel
 
 Zusätzlich zum Code können in einem Repository andere Dateien, wie beispielsweise eine README, eine Lizenz, und Zitationsinformationen, beispielsweise in Form einer \gls{cff}-Datei, gespeichert werden.
 Eine README-Datei ist eine Datei, welche Informationen über das Projekt enthält, beispielsweise wie es installiert und verwendet wird.
-Sie wird Standardmäßig im Stammverzeichnis des Repositorys gespeichert und wird an dieser Stelle auch von Diensten wie GitHub dargestellt.
+Sie wird standardmäßig im Stammverzeichnis des Repositorys gespeichert und wird an dieser Stelle auch von Diensten wie GitHub dargestellt.
 
 Es gibt zwei verschiedene Arten von Versionsverwaltungssystemen.
 Zum einen gibt es die zentralen Systeme, bei denen alle Änderungen zentral verwaltet werden, beispielsweise SVN.
-Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopie des gesamten Repository und dessen Vergangenheit hat \autocite{ponuthorai_version_2022}.
+Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopie des gesamten Repositorys und dessen Vergangenheit hat \autocite{ponuthorai_version_2022}.
 Ein solches System ist Git, welches sich mit einem Marktanteil von ungefähr 75 \% gegenüber anderen Systemen durchgesetzt hat \autocite{lindner_version_2024}.
 Aus diesem Grund und weil Git-Repositorys in der Arbeit untersucht werden, wird auf Git eingegangen.
 Dabei werden Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen.
 Außerdem wird auf grundlegende Funktionen von Git eingegangen, da diese für die Arbeit relevant sind.
-Der Aufbau der einzelnen Git Komponenten ist in \autoref{fig:git} dargestellt.
-Dabei ist zu erkennen, dass Git in einem Git-Server und Git-Anwendungen aufgeteilt wurde.
+Der Aufbau der einzelnen Git-Komponenten ist in \autoref{fig:git} dargestellt.
+Dabei ist zu erkennen, dass Git in einen Git-Server und Git-Anwendungen aufgeteilt wurde.
 
 \begin{figure}
     {
@@ -53,29 +53,29 @@ Dabei ist zu erkennen, dass Git in einem Git-Server und Git-Anwendungen aufgetei
 
 Bei der Benutzung von Git ist ein Server nicht zwingend erforderlich, jedoch steigert dies die Komplexität der Verwaltung und ist komplizierter in der Handhabung.
 Der Git-Server ermöglicht die einfache kollaborative Entwicklung von Code, da dieser ständig erreichbar ist und zentral verwaltet wird \autocite{ponuthorai_version_2022}.
-Standardmäßig wird auf dem Git-Server die neuste Version des Repositorys gespeichert.
+Standardmäßig wird auf dem Git-Server die neueste Version des Repositorys gespeichert.
 Ein möglicher Git-Server ist GitHub, auf welchen im späteren Verlauf weiter eingegangen wird.
 Git-Anwendungen sind Programme, welche mit dem lokalen Repository interagieren \autocite{ponuthorai_version_2022}.
-Diese können auf entfernte Git-Repositorys zugreifen wie beispielsweise Repositorys, welche auf GitHub gehostet werden.
+Diese können auf entfernte Git-Repositorys zugreifen, wie beispielsweise Repositorys, welche auf GitHub gehostet werden.
 Anschließend arbeiten die Programme auf der lokalen Kopie und können die Änderungen, wenn nötig, auf das entfernte Repository übertragen.
 
 In Repositorys werden verschiedene Arten von Statistiken gespeichert.
 Git verwaltet Revisionen als \emph{Snapshot}.
 Anders als in anderen Systemen wird keine Serie von Änderungen gespeichert, sondern ein \emph{Snapshot} der Änderungen zu einem bestimmten Zeitpunkt erstellt \autocite{ponuthorai_version_2022}.
 Dies wird ein Commit genannt.
-An einem Commit werden verschiedene Metainformationen gespeichert beispielsweise eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen gespeichert.
+An einem Commit werden verschiedene Metainformationen gespeichert, beispielsweise eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen.
 
 Die Änderung wird dabei als zwei Zeitpunkte angegeben.
-Zum einen wird der Zeitpunkt der Änderung des Autors angegeben, also jener Zeitpunkt, zu dem der Autor die Änderung vorgenommen und committed hat, dies wird in Git \emph{author date} genannt.
+Zum einen wird der Zeitpunkt der Änderung des Autors angegeben, also jener Zeitpunkt, zu dem der Autor die Änderung vorgenommen und committet hat, dies wird in Git \emph{author date} genannt.
 Zum anderen wird der Zeitpunkt des Einfügens des Commits in das Repository gespeichert, dies wird in Git \emph{commit date} genannt.
-Der Commit kann von einer anderen Person z. B. durch einen Projektverantwortlichen mittels eines Pull Requests in das Repository übernommen worden sein.
+Der Commit kann von einer anderen Person, z. B. durch einen Projektverantwortlichen, mittels eines Pull Requests in das Repository übernommen worden sein.
 Durch dieses Verhältnis ist der \emph{commit date} Zeitpunkt immer später oder gleich dem \emph{author date} Zeitpunkt.
 Außerdem ist gewährleistet, dass beide verantwortlichen Anerkennung für die geleistete Arbeit erhalten \autocite{chacon_pro_2024}.
 
-Die Commit-Nachricht, sowie der Autor mit E-Mail-Adresse und Name können in den Einstellungen von Git frei gewählt werden, müssen jedoch vorhanden sein, um einen Commit erstellen zu können.
+Die Commit-Nachricht, sowie der Autor mit E-Mail-Adresse und Namen können in den Einstellungen von Git frei gewählt werden, müssen jedoch vorhanden sein, um einen Commit erstellen zu können.
 Mehrere Commits bilden die Commit-Historie bzw. die Vergangenheit eines Repositorys.
 Weitere Eigenschaften, welche sich aus dem Repository exportieren lassen, sind die Anzahl der eingefügten und gelöschten Zeilen.
-Außerdem lässt sich die Anzahl der geänderten Dateien ermitteln.
+Zudem lässt sich die Anzahl der geänderten Dateien ermitteln.
 Diese Werte können für das gesamte Repository oder für einzelne Autoren ermittelt werden.
 
 Ein Repository kann verschiedene Branches enthalten, muss jedoch mindestens einen enthalten.
@@ -92,17 +92,17 @@ Zum einen können einige direkt mittels Git-Befehlen ausgelesen werden \autocite
 Andere wiederum benötigen komplexere Abfragen, welche beispielsweise mittels Skripten oder speziellen Programmen ausgelesen werden können.
 Ein Beispiel für ein Programm, welches Git-Statistiken aufarbeitet, ist \emph{git-quick-stats} \autocite{mestan_git-quick-stats_2024}.
 Außerdem bieten Onlinedienste zur Versionsverwaltung, wie GitHub, Statistiken über APIs an, welche jedoch im Umfang der Anfragen limitiert sind \autocite{github_rate_2022}.
-Bei der Benutzung der API von GitHub zum Abfragen der Autoren eines Repositorys werden automatisch alle E-Mail-Adressen der Autoren in Git mit den E-Mail-Adressen, welche die Autoren in GitHub angegeben haben abgeglichen \autocite{github_rest-api-endpunkte_2022}.
+Bei der Benutzung der API von GitHub zum Abfragen der Autoren eines Repositorys werden automatisch alle E-Mail-Adressen der Autoren in Git mit den E-Mail-Adressen, welche die Autoren in GitHub angegeben haben, abgeglichen \autocite{github_rest-api-endpunkte_2022}.
 Dadurch werden die Autoren eindeutig zugeordnet und deren Commits addiert.
 Diese Werte werden ebenfalls in der Weboberfläche von GitHub angezeigt.
 
 GitHub ist eine Plattform, auf welcher Git-Repositorys gehostet werden können und dient somit als ein Git-Server.
 GitHub bietet zusätzliche Funktionen an, welche über die Standardfunktionen von Git hinausgehen.
-Diese umfassen unter anderem die kollaborative Entwicklung von Code, Automatisation mittels CI/CD, Sicherheitsaspekte, Projekt Management, Team Administration und Client-Anwendungen zur Verwaltung von Repositorys \autocite{ponuthorai_version_2022}.
+Diese umfassen unter anderem die kollaborative Entwicklung von Code, Automatisation mittels CI/CD, Sicherheitsaspekte, Projektmanagement, Team Administration und Client-Anwendungen zur Verwaltung von Repositorys \autocite{ponuthorai_version_2022}.
 Aktuell benutzen GitHub über 100 Millionen Entwickler und mehr als 4 Millionen Organisationen.
 Insgesamt verwaltet die Plattform über 420 Millionen Repositorys.
 Außerdem ist GitHub in 90 \% der Fortune 100 Unternehmen im Einsatz \autocite{github_about_2024}.
-Um die zusätzlichen Funktionen von GitHub bereitzustellen werden sogenannte Issues, Pull Requests, geschützte Branches, Actions, Diskussionen und Wikis eingesetzt.
-GitHub Issues sind eine Möglichkeit, um Probleme und Aufgaben zu verfolgen.
-Pull Requests dienen dazu Änderungen in einem Branch eines Repositorys anzufragen und über diese zu informieren.
+Um die zusätzlichen Funktionen von GitHub bereitzustellen, werden sogenannte Issues, Pull Requests, geschützte Branches, Actions, Diskussionen und Wikis eingesetzt.
+GitHub-Issues sind eine Möglichkeit, um Probleme und Aufgaben zu verfolgen.
+Pull Requests dienen dazu, Änderungen in einem Branch eines Repositorys anzufragen und über diese zu informieren.
 In dem Pull Requests kann der Code überprüft und diskutiert werden.

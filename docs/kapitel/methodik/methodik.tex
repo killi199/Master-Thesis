@@ -1,7 +1,7 @@
 \chapter{Methodik}
 \label{chap:methodik}
 % TODO Grafik hier einfügen vom Prozess
-In diesem Kapitel wird beschrieben wie die Daten der einzelnen Quellen beschafft, abgeglichen und anschließend ausgewertet werden.
+In diesem Kapitel wird beschrieben, wie die Daten der einzelnen Quellen beschafft, abgeglichen und anschließend ausgewertet werden.
 Die Datenbeschaffung wird in \autoref{sec:datenbeschaffung}, der Abgleich in \autoref{sec:abgleich} und die Auswertung in \autoref{sec:auswertung} beschrieben.
 
 Die Datenbeschaffung in wurde in die einzelnen Quellen untergliedert.
@@ -17,7 +17,7 @@ Allgemeine Daten, beispielsweise ob die Quelle valide ist, werden ebenfalls in e
 Falls in einer Quelle keine Daten vorhanden sind, wird keine CSV-Datei für diese erstellt.
 
 Sämtliche Ergebnisse werden, falls verfügbar, zu verschiedenen Zeitpunkten in denen Änderungen an der Quelle vorgenommen wurden ermittelt und gespeichert.
-Falls aus der Quelle verschiedene Zeitpunkte der Änderungen vorliegen, wird der Abgleich mit Git jeweils mit der neusten Version durchgeführt und mit der Version, welche zu dem Zeitpunkt der Änderung in der Quelle vorhanden war.
+Falls aus der Quelle verschiedene Zeitpunkte der Änderungen vorliegen, wird der Abgleich mit Git jeweils mit der neuesten Version durchgeführt und mit der Version, welche zu dem Zeitpunkt der Änderung in der Quelle vorhanden war.
 Dadurch entstehen für ein Paket mehrere Dateien, welche unterschiedliche Werte enthalten.
 Es entsteht die in \autoref{fig:datenbeschaffung_ergebnisse} dargestellte Ordnerstruktur, welche die Ergebnisse der Datenbeschaffung darstellt.
 
@@ -25,15 +25,15 @@ Es entsteht die in \autoref{fig:datenbeschaffung_ergebnisse} dargestellte Ordner
     \centering
     \dirtree{%
         .1 /\DTcomment{Wurzelverzeichnis}.
-        .2 \path{20210819_161452-0400_bib_authors.csv}\DTcomment{\hologo{BibTeX} Autoren abgeglichen mit den Git Werten zu diesem Zeitpunkt}.
-        .2 \path{20210819_161452-0400_bib_authors_new.csv}\DTcomment{\hologo{BibTeX} Autoren abgeglichen mit den Git Werten zum neusten Zeitpunkt}.
-        .2 \path{20210819_161452-0400_git_contributors.csv}\DTcomment{Git Autoren bis zu diesem Zeitpunkt}.
-        .2 \path{20221010_124020-0400_readme_authors.csv}\DTcomment{Autoren in der Beschreibung abgeglichen mit den Git Werten zu diesem Zeitpunkt}.
-        .2 \path{20221010_124020-0400_readme_authors_new.csv}\DTcomment{Autoren in der Beschreibung abgeglichen mit den Git Werten zum neusten Zeitpunkt}.
-        .2 \path{20221010_124020-0400_git_contributors.csv}\DTcomment{Git Autoren bis zu diesem Zeitpunkt}.
+        .2 \path{20210819_161452-0400_bib_authors.csv}\DTcomment{\hologo{BibTeX} Autoren abgeglichen mit den Git-Werten zu diesem Zeitpunkt}.
+        .2 \path{20210819_161452-0400_bib_authors_new.csv}\DTcomment{\hologo{BibTeX} Autoren abgeglichen mit den Git-Werten zum neuesten Zeitpunkt}.
+        .2 \path{20210819_161452-0400_git_contributors.csv}\DTcomment{Git-Autoren bis zu diesem Zeitpunkt}.
+        .2 \path{20221010_124020-0400_readme_authors.csv}\DTcomment{Autoren in der Beschreibung abgeglichen mit den Git-Werten zu diesem Zeitpunkt}.
+        .2 \path{20221010_124020-0400_readme_authors_new.csv}\DTcomment{Autoren in der Beschreibung abgeglichen mit den Git-Werten zum neuesten Zeitpunkt}.
+        .2 \path{20221010_124020-0400_git_contributors.csv}\DTcomment{Git-Autoren bis zu diesem Zeitpunkt}.
         .2 \path{bib.csv}\DTcomment{Allgemeine informationen zur \hologo{BibTeX}-Datei zu allen Zeitpunkten z. B. eingetragene \gls{doi}}.
         .2 \path{readme.csv}\DTcomment{Allgemeine Informationen zur Beschreibung}.
-        .2 \path{git_contributors.csv}\DTcomment{Git Autoren zum neusten Zeitpunkt}.
+        .2 \path{git_contributors.csv}\DTcomment{Git-Autoren zum neuesten Zeitpunkt}.
         .2 \path{pypi_maintainers.csv}\DTcomment{\gls{pypi} Maintainer}.
         .2 \path{python_authors.csv}\DTcomment{In Python angegebene Autoren}.
     }

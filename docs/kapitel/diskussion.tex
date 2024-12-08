@@ -1,5 +1,5 @@
 % TODO ggf. Sagen, warum nicht auf die .all-contributorsrc-Datei eingegangen wurde -> README wird analysiert dadurch Aufwand gespart könnte jedoch noch verbessert werden in dem Auch die Datei zusätzlich noch analysiert wird, da dort noch mehr informationen wie der Beitrag gelistet werden.
-% TODO ggf. erklären warum die API verwendet wird und nicht nur die TOML beispielsweise ausgelesen wird -> habe ein pypi paket und brauche die GitHub URL (vllt eher diskussion oder so? Beschreibe hier ja nur was ich mache und nicht warum)
+% TODO ggf. erklären warum die API verwendet wird und nicht nur die TOML beispielsweise ausgelesen wird -> habe ein pypi paket und brauche die GitHub-URL (vllt eher diskussion oder so? Beschreibe hier ja nur was ich mache und nicht warum)
 % TODO ggf. Unterschiedliche Programme unterschiedliche Commit Anzahl 
 % Nochmal checken warum unterschiedliche Programme unterschiedliche Anzahlen an Commits ausgeben dafür eine Begründung suchen und das beste System auswählen -> wahrscheinlich ist es GitHub was aber blöd ist.
 % GitHub hat andere Anzahl, da sie automatisch über die E-Mails machten, welche in GitHub registriert sind. Ich gruppiere nur die gleichen E-Mails.
@@ -11,7 +11,7 @@
 
 \chapter{Diskussion}
 \label{chap:diskussion}
-In diesem Kapitel wird die Arbeit diskutiert und die Ergebnisse werden interpretiert.
+In diesem Kapitel wird die Arbeit diskutiert und die Ergebnisse interpretiert.
 Zuerst wird auf die grundlegenden Limitierungen der Arbeit eingegangen und wie diese die Ergebnisse beeinflussen.
 Diese Limitierungen können nicht vollständig behoben werden.
 Anschließend wird diskutiert, wie gut der Abgleich der Autoren funktioniert hat.
@@ -23,7 +23,7 @@ Zuletzt wird diskutiert, wie gut die Autoren in den untersuchten Listen gepflegt
 \label{sec:limitierungen}
 In diesem Kapitel wird strukturiert auf folgende Limitierungen eingegangen, welche bei der Erstellung der Arbeit aufgetreten sind:
 \begin{itemize}
-    \item \textbf{Git Statistik:} Doppelte Autoren innerhalb der Git Autoren.
+    \item \textbf{Git Statistik:} Doppelte Autoren innerhalb der Git-Autoren.
     \item \textbf{Autoren ohne Commits:} Autoren, welche als Autor genannt werden, aber keinen Quellcode geschrieben haben.
     \item \textbf{Verlinkung auf andere Quellen:} In manchen Fällen wird in Quellen auf eine andere Quelle verwiesen.
     \item \textbf{Ausführungszeit der Datenbeschaffung:} Die Ausführungszeit ist sehr lang.
@@ -35,17 +35,17 @@ In \autoref{sec:versionsverwaltung} wurde beschrieben, dass Autoren in Git ihren
 Dies bedeutet ebenfalls, dass ein Autor im Verlauf der Zeit seinen Namen und/ oder die E-Mail-Adresse ändern kann.
 Dadurch kann ein und dieselbe Person mit unterschiedlichen Git Namen unterschiedlich viele Commits erstellt haben.
 Dies ist für die Masterarbeit nicht erwünscht, da möglichst ein Autor nur einmal in den Daten vorkommen soll und sämtliche Commits diesem Autor angerechnet werden sollen.
-In der Datenbeschaffung wurde versucht, dieses Problem zu lösen, indem die E-Mail-Adresse als eindeutiger Identifikator genutzt wird und gleiche E-Mail-Adressen zusammengefasst werden zu einem Autor.
+In der Datenbeschaffung wurde versucht, dieses Problem zu lösen, indem die E-Mail-Adresse als eindeutiger Identifikator genutzt wird und gleiche E-Mail-Adressen zu einem Autor zusammengefasst werden.
 Allerdings behebt dies nicht das Problem vollständig, da ein Autor seine E-Mail-Adresse ebenfalls ändern kann und diese nicht erneut abgeglichen wird.
 
-Ein Abgleich wie in \autoref{sec:abgleich} beschrieben, ist ebenfalls nicht möglich, da dies die Ergebnisse verfälschen könnte, da beispielsweise Autoren mit dem gleichen Namen zusammengefasst werden würden, obwohl es sich um unterschiedliche Autoren handelt.
+Ein Abgleich, wie in \autoref{sec:abgleich} beschrieben, ist ebenfalls nicht möglich, da dies die Ergebnisse verfälschen könnte, da beispielsweise Autoren mit dem gleichen Namen zusammengefasst werden würden, obwohl es sich um unterschiedliche Autoren handelt.
 Die anderen Probleme, welche in \autoref{sec:abgleich} beschrieben wurden, sind ebenfalls nicht zu vernachlässigen.
-Eine Möglichkeit dieses Problem zu lösen wäre die Verwendung der GitHub API, welche automatisch die Git Autoren anhand der in GitHub eingetragenen E-Mail-Adressen zusammenfasst.
-Ein weiterer Vorteil der durch die Nutzung der GitHub API bestehen würde ist, dass dabei die Benutzernamen der GitHub Benutzer abgefragt werden könnten.
+Eine Möglichkeit, dieses Problem zu lösen, wäre die Verwendung der GitHub-API, welche automatisch die Git-Autoren anhand der in GitHub eingetragenen E-Mail-Adressen zusammenfasst.
+Ein weiterer Vorteil, der durch die Nutzung der GitHub-API bestehen würde, ist, dass dabei die Benutzernamen der GitHub-Benutzer abgefragt werden könnten.
 Diese werden häufig in der README und der Beschreibung mit einem @-Zeichen angegeben, um auf diese zu verweisen.
-Die verwendete \gls{ner} erkennt die Benutzernamen, allerdings können sie häufig nicht mit den Git Daten abgeglichen werden, da die Benutzernamen meistens nicht dem richtigen Namen oder der E-Mail-Adresse entsprechen.
-Die Verwendung der API ist jedoch nur mit viel Zeit möglich, da sie für jedes Paket einzeln abgefragt werden müsste und dadurch schnell das raten Limit von GitHub erreicht werden würde.
-Eine weitere Möglichkeit welche bereits durch \emph{git-quick-stats} verwendet wird, ist das Zusammenfassen der Autoren mittels einer \texttt{.mailmap}-Datei \autocite{chacon_git_2024-1}.
+Die verwendete \gls{ner} erkennt die Benutzernamen, allerdings können sie häufig nicht mit den Git-Daten abgeglichen werden, da die Benutzernamen meistens nicht dem richtigen Namen oder der E-Mail-Adresse entsprechen.
+Die Verwendung der API ist jedoch nur mit viel Zeit möglich, da sie für jedes Paket einzeln abgefragt werden müsste und dadurch schnell das Ratenlimit von GitHub erreicht werden würde.
+Eine weitere Möglichkeit, welche bereits durch \emph{git-quick-stats} verwendet wird, ist das Zusammenfassen der Autoren mittels einer \texttt{.mailmap}-Datei \autocite{chacon_git_2024-1}.
 In dieser Datei kann eingetragen werden, dass zwei E-Mail-Adressen zusammengefasst werden sollen.
 
 Durch die beschriebene Limitierung kommt es beispielsweise vor, dass in \emph{torch} sechsmal der Autor \glqq Edward Yang\grqq{} mit unterschiedlichen E-Mail-Adressen vorkommt, obwohl es sich um die gleiche Person handelt.
@@ -57,9 +57,9 @@ Aber auch bei einem erneuten Abgleich würde dies die Ergebnisse durch die Ungen
 \label{sec:autoren_ohne_commits}
 Eine weitere Limitierung, welche bereits im Verlauf der Masterarbeit häufiger thematisiert wurde, ist, dass Autoren als Autor genannt werden können und auch sollten, obwohl sie keinen Quellcode geschrieben haben.
 Eine reine Betrachtung der geleisteten Arbeit anhand der Änderungen am Quellcode, wie sie in der Masterarbeit durchgeführt wurde, ist daher nicht ausreichend, um das gesamte Spektrum der Arbeit von Autoren zu erfassen.
-Aus diesem Grund kommt es in der Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht unter den Git Autoren auftauchen.
-Dadurch können Ergebnisse wie beispielsweise in \autoref{fig:common_authors_2} schlechter ausfallen, da nur auf Git Autoren geprüft wird.
-Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentation gearbeitet haben oder an der Organisation des Projektes beteiligt waren.
+Aus diesem Grund kommt es in der Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht unter den Git-Autoren auftauchen.
+Dadurch können Ergebnisse wie beispielsweise in \autoref{fig:common_authors_2} schlechter ausfallen, da nur auf Git-Autoren geprüft wird.
+Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentation gearbeitet haben oder an der Organisation des Projekts beteiligt waren.
 
 \subsection*{Verlinkung auf andere Quellen}
 \label{sec:verlinkung_auf_andere_quellen}
@@ -81,7 +81,7 @@ Diese wird besonders durch den Aufruf von \emph{git-quick-stats} beeinflusst, da
 Außerdem hat die \gls{ner} für die README und die Beschreibung eine hohe Laufzeit, weswegen für die README auch nur die letzten 50 Commits betrachtet werden.
 Um die Laufzeit weiter zu reduzieren, beispielsweise um sämtliche \gls{cff} Pakete auf GitHub analysieren zu können, wurde auf Faktoren, welche die Laufzeit erheblich erhöhen, verzichtet.
 Aus diesem Grund wurden bei der Analyse ausschließlich die \gls{cff} Dateien betrachtet.
-Außerdem wurden für den Abgleich die Git Autoren benötigt, welche ausschließlich in der neusten Version beschafft wurden, sodass \emph{git-quick-stats} nur einmal aufgerufen werden musste.
+Zudem wurden für den Abgleich die Git-Autoren benötigt, welche ausschließlich in der neuesten Version beschafft wurden, sodass \emph{git-quick-stats} nur einmal aufgerufen werden musste.
 Dadurch konnte die Laufzeit der Datenbeschaffung für die gesamte \gls{cff} Liste mit 20.870 Einträgen auf dem internen HPC Server der Hochschule Wismar auf 55 Stunden reduziert werden.
 Der Server hat zwei Intel Xeon Gold 6346 Prozessoren mit jeweils 3,1 GHz je 16 Kerne verbaut.
 Bei Betrachtung aller Quellen hätte dieser Prozess erheblich längere Zeit in Anspruch genommen.
@@ -116,7 +116,7 @@ Ein möglicher Schritt, welcher jedoch nicht umsetzbar ist, ist bei der Gründun
 Dies geht aus der \autoref{fig:added_removed_authors} hervor.
 Sie zeigt, dass die meisten Autoren direkt zu Beginn genannt werden und anschließend kaum weitere Autoren hinzugefügt werden.
 Insgesamt wurden in allen Paketen der untersuchten Listen nur neun Autoren, der \gls{cff} oder \hologo{BibTeX} Datei nachträglich hinzugefügt.
-\autoref{fig:added_removed_authors_without_readme} zeigt jedoch, dass in den Dateien viel mehr Autoren insgesamt enhalten sind.
+\autoref{fig:added_removed_authors_without_readme} zeigt jedoch, dass in den Dateien viel mehr Autoren insgesamt enthalten sind.
 Hierbei muss allerdings beachtet werden, dass die \gls{cff} Datei erst seit 2021 vermehrt verwendet wird, wie aus \autoref{fig:valid_cff_by_time} hervorgeht.
 Dadurch sind erst drei Jahre vergangen, in welchen Autoren hinzugefügt werden konnten.
 Und diese Autoren müssten in den drei Jahren auch aktiv am Projekt beteiligt gewesen sein, um als Autor genannt zu werden.
@@ -127,19 +127,19 @@ Auf die Inaktivität von Autoren und deren pflege wird im nächsten Abschnitt ge
 
 \section{Wie gut werden Autoren gepflegt?}
 \label{sec:autoren_pflege_diskussion}
-In \autoref{fig:common_authors_2} wurde gezeigt, dass viele Autoren gar nicht unter den Top 100 Git Autoren sind.
+In \autoref{fig:common_authors_2} wurde gezeigt, dass viele Autoren gar nicht unter den Top 100 Git-Autoren sind.
 Dies bedeutet, dass viele der genannten Autoren gar nicht mehr aktiv am Projekt beteiligt sind.
 Dies kann verschiedene Gründe haben, wie beispielsweise, dass die Autoren das Projekt verlassen haben.
 Außerdem muss beachtet werden, dass Autoren, welche nicht in der Datenbeschaffung abgeglichen werden konnten, hier ebenfalls enthalten sind.
-Die Abbildung deutet allerdings bereits darauf hin, dass Autoren, sobald sie einmal eingetragen wurden nicht mehr entfernt werden, obwohl sie nicht mehr aktiv am Projekt beteiligt sind.
-Außerdem zeigt es, in Verbindung mit \autoref{fig:common_authors}, dass Autoren mit vielen Commits ebenfalls kaum genannt werden, was die Vermutung bestätigt, dass die Autorenlisten in den meisten Fällen nicht aktiv gepflegt werden.
+Die Abbildung deutet allerdings bereits darauf hin, dass Autoren, sobald sie einmal eingetragen wurden, nicht mehr entfernt werden, obwohl sie nicht mehr aktiv am Projekt beteiligt sind.
+Zudem zeigt es, in Verbindung mit \autoref{fig:common_authors}, dass Autoren mit vielen Commits ebenfalls kaum genannt werden, was die Vermutung bestätigt, dass die Autorenlisten in den meisten Fällen nicht aktiv gepflegt werden.
 
 Ein weiterer Indikator dafür ist die \autoref{fig:total_authors_no_commits}.
 Hier wird deutlich, dass viele genannte Autoren in den letzten Jahren keinen Commit getätigt haben.
 Dies lässt sich allerdings dadurch relativieren, dass die Statistik ebenfalls Pakete enthält, welche nicht mehr aktiv entwickelt werden, was allerdings bei den Top 100 Listen unwahrscheinlich ist.
-Des Weiteren ist die hohe Anzahl der invaliden \gls{cff} Dateien, welche in \autoref{fig:overall_valid_cff} und \autoref{fig:valid_cff_by_time} deutlich werden ein Indikator dafür, dass die Pflege der Autoren den Entwicklern der Pakete nicht besonders wichtig zu scheinen sei.
+Des Weiteren ist die hohe Anzahl der invaliden \gls{cff} Dateien, welche in \autoref{fig:overall_valid_cff} und \autoref{fig:valid_cff_by_time} deutlich werden, ein Indikator dafür, dass die Pflege der Autoren den Entwicklern der Pakete nicht besonders wichtig zu scheinen sei.
 
-Auch zeigt die Häufigkeit mit derer die Quellen aktualisiert werden, dass scheinbar kein großes Interesse darin besteht die Autorenlisten zu pflegen.
+Auch zeigt die Häufigkeit, mit der die Quellen aktualisiert werden, dass scheinbar kein großes Interesse darin besteht, die Autorenlisten zu pflegen.
 Aus \autoref{tab:average_time_last_update} wird deutlich, dass die zwei der drei untersuchten Quellen in fast jeder Liste durchschnittlich das letzte Jahr nicht aktualisiert wurden.
 Die README wird dabei öfter aktualisiert, wobei berücksichtigt werden muss, dass in der README nicht nur Autoren, sondern auch in vielen Fällen beispielsweise die Dokumentation vorhanden ist.
 Außerdem muss berücksichtigt werden, dass ein Jahr in der Softwareentwicklung keine lange Zeit ist und neue Autoren innerhalb dieser Zeit kaum hinzugefügt werden können, da ein Einarbeiten und etablieren in ein großes Softwareprojekt innerhalb eines Jahres schwer möglich ist.
@@ -158,4 +158,5 @@ Im Allgemeinen lässt sich sagen, dass die Autoren in den betrachteten Listen ni
 Eine zusätzliche Auffälligkeit, welche die Pflege und Nennung der Autoren indirekt betrifft, zeigt \autoref{fig:citation_counts}.
 Hier wird deutlich, dass in vielen Fällen, in denen eine \glqq preferred citation\grqq{} angegeben ist, diese auf ein Paper verweist und nicht auf die Software.
 Falls Autoren von wissenschaftlichen Arbeiten ausschließlich diese Referenz zitieren, stellt dies ist Verstoß gegen das Prinzip der Wichtigkeit dar, welches in \autoref{sec:software-zitation} beschrieben wurde.
-Dies könnte durch die Autoren von Software verhindert werden, indem sie keine \glqq preferred citation\grqq{} angeben, sondern ausschließlich die Software und weitere Referenzen in der \gls{cff} als \glqq references\grqq{} angeben, welche in der Masterarbeit allerdings nicht untersucht worden sind.
+Dies könnte durch die Autoren von Software verhindert werden, indem sie keine \glqq preferred citation\grqq{} angeben, sondern ausschließlich die Software und weitere Referenzen in der \gls{cff} als \glqq references\grqq{} angeben.
+Diese Referenzen wurden in der Masterarbeit allerdings nicht untersucht.

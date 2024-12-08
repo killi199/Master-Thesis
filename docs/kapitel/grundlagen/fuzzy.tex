@@ -8,13 +8,13 @@ Ein Beispiel ist das Finden eines Personennamens in einem Index.
 Falls der Name exakt in dem Index vorhanden ist, ist die Suche trivial.
 Falls der Name unterschiedlich geschrieben ist, beispielsweise durch Abkürzungen oder Tippfehler, wird die triviale Suche fehlschlagen.
 Die unscharfe Suche kann in diesem Fall helfen, den Namen trotzdem zu finden.
-Ein weiteres Anwendungsgebiet ist eine allgemeine Suche Beispielsweise von Produkten in einem Online-Shop.
-Hierbei müssen auch Tippfehler, welche häufig auftreten berücksichtigt werden.
-Dadurch ist die Suche einer Zeichenfolge, welcher nahezu korrekt ist ein häufiges Problem in der Informatik.
+Ein weiteres Anwendungsgebiet ist eine allgemeine Suche, beispielsweise von Produkten in einem Online-Shop.
+Hierbei müssen auch Tippfehler, welche häufig auftreten, berücksichtigt werden.
+Dadurch ist die Suche nach einer Zeichenfolge, welche nahezu korrekt ist, ein häufiges Problem in der Informatik.
 
 Die unscharfe Suche basiert auf der Levenshtein-Distanz \autocite{levenshtein_binary_1965}.
 Als Ergebnis der unscharfen Suche wird in vielen Implementierungen die Distanz zwischen zwei Zeichenfolgen in Prozent angegeben.
-Die Levenshtein-Distanz verwendet drei Arten von einzelzeichen-basierten Editieroperationen, um die Distanz zwischen zwei Zeichenfolgen zu berechnen.
+Die Levenshtein-Distanz verwendet drei Arten von einzelzeichenbasierten Editieroperationen, um die Distanz zwischen zwei Zeichenfolgen zu berechnen.
 
 \begin{enumerate}
     \item Einfügen eines Zeichens zur Zeichenfolge (Suhe \rightarrow{} Su\textbf{c}he)
@@ -32,7 +32,7 @@ Mittels dieser vier Operationen werden ungefähr 80 \% der menschlichen Tippfehl
 \end{enumerate}
 
 Eine Herausforderung bei der unscharfen Suche ist die Laufzeit.
-Sie ist ungefähr proportional zum Produkt der beiden Zeichenfolgenlängen, wodurch eine unscharfe Suche von langen Zeichenfolgen unpraktisch wird.
+Sie ist ungefähr proportional zum Produkt der beiden Zeichenfolgenlängen, wodurch eine unscharfe Suche nach langen Zeichenfolgen unpraktisch wird.
 Eine weitere Herausforderung ist das Finden des richtigen Prozentsatzes, um die unscharfe Suche zu verwenden.
 Ein zu hoher Prozentsatz führt dazu, dass die Suche zu viele Ergebnisse zurückgibt, während ein zu niedriger Prozentsatz dazu führt, dass die Suche zu wenige Ergebnisse zurückgibt.
 

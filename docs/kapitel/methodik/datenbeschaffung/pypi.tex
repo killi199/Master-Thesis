@@ -3,24 +3,24 @@
 Zu Beginn des Prozesses wird die Datei eingelesen, in denen die Top 100 Pakete von \gls{pypi} aufgelistet sind.
 In dieser Datei ist ausschließlich der Name des Pakets und die Anzahl der Downloads auf \gls{pypi} enthalten.
 Für die Beschaffung der Repository Daten von GitHub wird jedoch der Link zu der Versionsverwaltung benötigt.
-Dieser wird mithilfe von \emph{aiohttp} in der Version 3.10.3 von der JSON API von \gls{pypi} abgefragt \autocite{noauthor_aio-libsaiohttp_2024}.
-Dabei muss ein Paket nicht zwangsweise ein GitHub Repository haben, weshalb die Daten nicht immer vorhanden sind.
+Dieser wird mithilfe von \emph{aiohttp} in der Version 3.10.3 von der JSON-API von \gls{pypi} abgefragt \autocite{noauthor_aio-libsaiohttp_2024}.
+Dabei muss ein Paket nicht zwangsweise ein GitHub-Repository haben, weshalb die Daten nicht immer vorhanden sind.
 In diesem Fall wird das Paket übersprungen und nicht weiter betrachtet.
 
-Anschließend werden die weiteren Daten verarbeitet, welche von der JSON API abgefragt wurden.
+Anschließend werden die weiteren Daten verarbeitet, welche von der JSON-API abgefragt wurden.
 Dabei werden die nicht verifizierten Autoren und Maintainer jeweils mit Name und E-Mail des Pakets extrahiert.
 Welche Werte dort enthalten sind, können die Paketentwickler selbst entscheiden.
 Beispielsweise geben einige Paketentwickler mehrere Autoren mit Komma separiert an.
 Diese werden aufgeteilt und als einzelne Autoren gespeichert.
-Ebenfalls werden die E-Mail Adressen anhand des Kommas separiert und jeweils mit dem Namen des Autors verbunden.
+Ebenfalls werden die E-Mail-Adressen anhand des Kommas separiert und jeweils mit dem Namen des Autors verbunden.
 Dies geschieht so, dass der 1. Name mit der 1. E-Mail verbunden wird, der 2. Name mit der 2. E-Mail und so weiter.
 Falls ein Autor keine E-Mail angegeben hat, wird der Name ohne E-Mail gespeichert und falls nur eine E-Mail angegeben ist, wird diese ohne einen Namen gespeichert.
 
-Ebenfalls geben einige Paketentwickler keine E-Mail im E-Mail Feld an, sondern nur den Namen und schreiben in das Namensfeld zusätzlich eine E-Mail Adresse auch der andere Weg ist möglich.
+Ebenfalls geben einige Paketentwickler keine E-Mail im E-Mail-Feld an, sondern nur den Namen und schreiben in das Namensfeld, zusätzlich eine E-Mail-Adresse, auch der andere Weg ist möglich.
 Es gibt noch verschiedene weitere Sonderfälle, welche jedoch nicht alle aufgezählt werden, da sie gleich behandelt werden.
 In diesen Sonderfällen wird keine weitere Betrachtung vorgenommen und die Daten so gespeichert, wie sie von der API zurückgegeben wurden.
-Anschließend werden die Daten mit dem in \autoref{sec:abgleich} beschriebenen Prozess mit den zuvor beschafften Git Daten abgeglichen, dabei werden die verschiedenen Sonderfälle, welche auftreten können berücksichtigt.
-Anschließend werden die Daten in den Dateien \path{python_authors.csv} und \path{python_maintainers.csv} gespeichert.
+Anschließend werden die Daten mit dem in \autoref{sec:abgleich} beschriebenen Prozess mit den zuvor beschafften Git-Daten abgeglichen, dabei werden die verschiedenen Sonderfälle, welche auftreten können berücksichtigt.
+Zudem werden die Daten in den Dateien \path{python_authors.csv} und \path{python_maintainers.csv} gespeichert.
 Inhalt ist dabei der Name und die E-Mail des Autors oder Maintainers, sowohl als auch die Daten aus dem Abgleich mit Git.
 Die Felder der Dateien sind in \autoref{tab:python_authors} aufgelistet.
 
@@ -33,25 +33,25 @@ Als Modell wurde das \texttt{en\_core\_web\_trf} verwendet, welches auf Englisch
 Das \texttt{en\_core\_web\_sm} Modell hat einen F Score von 0.846, wohingegen das \texttt{en\_core\_web\_trf} Modell einen F Score von 0.902 aufweist.
 Durch die Verwendung des genaueren Modells ist die Laufzeit erhöht. 
 In Experimenten hat sich jedoch gezeigt, dass das kleinere Modell keine guten Ergebnisse für die Beschreibungen liefert, da sehr viele Entitäten fälschlicherweise als Autoren erkannt werden.
-Die extrahierten Autoren werden ebenfalls mit den Git Daten abgeglichen und in der Datei \path{description_authors.csv} gespeichert.
+Die extrahierten Autoren werden ebenfalls mit den Git-Daten abgeglichen und in der Datei \path{description_authors.csv} gespeichert.
 Inhalt ist dabei der Name des Autors, sowohl als auch die Daten aus dem Abgleich mit Git.
 Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 
 Außerdem werden die verifizierten Maintainer, welche auf \gls{pypi} angegeben sind verarbeitet, da diese unter Umständen nicht den Autoren entsprechen, welche durch die API ausgegeben werden.
-Diese werden durch \gls{pypi} nicht mittels der JSON API ausgegeben, weshalb die Daten mittels der XML-RPC API abgefragt werden.
+Diese werden durch \gls{pypi} nicht mittels der JSON-API ausgegeben, weshalb die Daten mittels der XML-RPC-API abgefragt werden.
 Die API liefert den Benutzernamen sowie die Rolle des Autors.
 Die Rolle kann dabei \emph{Maintainer} oder \emph{Owner} sein.
 \emph{Owner} ist hierbei nicht der \emph{Owner}, welcher in \autoref{fig:pypi_verified_unverified_details} unter \emph{Owner} aufgeführt ist, sondern in diesem konkreten Fall sind alle drei Betreuer des Pakets als \emph{Owner} angegeben.
 Der Benutzer \grqq Matplotlib\glqq{}, welcher unter \emph{Owner} aufgeführt ist, wird nicht über die API zurückgegeben.
 Dieser wird jedoch auch nicht benötigt, da unter \emph{Owner} immer eine Organisation angeführt wird und in der Masterarbeit nur Personen betrachtet werden.
-Im Allgemeinen ist die Dokumentation der XML-RPC API nicht gut beschrieben und es wird nicht deutlich, welche Daten zurückgegeben werden.
+Im Allgemeinen ist die Dokumentation der XML-RPC-API nicht gut beschrieben und es wird nicht deutlich, welche Daten zurückgegeben werden.
 
-Anschließend werden alle verifizierten Autoren, welche durch die API zurückgegeben wurden analysiert, unabhängig von der angegebenen Rolle.
-Da die Autoren ausschließlich mit dem Benutzernamen zurückgegeben werden, wird ein Webscraper benötigt, um den vollständigen Namen des Autor zu erhalten.
+Anschließend werden alle verifizierten Autoren, welche durch die API zurückgegeben wurden, analysiert, unabhängig von der angegebenen Rolle.
+Da die Autoren ausschließlich mit dem Benutzernamen zurückgegeben werden, wird ein Web-Scraper benötigt, um den vollständigen Namen des Autors zu erhalten.
 Falls ein Autor einen Namen angegeben hat, wird dieser auf der Profilseite des Benutzers dargestellt.
-Um diesen zu erhalten wird eine Anfrage mittels \emph{aiohttp} an die Profilseite des Benutzers gestellt.
+Um diesen zu erhalten, wird eine Anfrage mittels \emph{aiohttp} an die Profilseite des Benutzers gestellt.
 Anschließend wird mittels \emph{BeautifulSoup} in der Version 4.12.3 der Name aus dem HTML extrahiert \autocite{richardson_beautifulsoup4_2024}.
-Die Daten werden, nachdem sie mit den Git Daten abgeglichen wurden, in der Datei \path{pypi_maintainers.csv} gespeichert.
+Die Daten werden, nachdem sie mit den Git-Daten abgeglichen wurden, in der Datei \path{pypi_maintainers.csv} gespeichert.
 Inhalt ist dabei der Benutzername und der Name des Autors, sowohl als auch die Daten aus dem Abgleich mit Git.
 Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
 
@@ -75,7 +75,7 @@ Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
     \label{tab:abgleich_felder}
     \small
     \raggedright
-    Die Tabelle zeigt die Felder, welche durch den Abgleich mit Git entstehen. Für jeden Autor oder Maintainer der betrachteten Software werden die dargestellten Werte gespeichert, falls der Autor abgeglichen werden konnte. Falls der Autor nicht abgeglichen werden konnte sind die Felder leer und der Score ist 0.
+    Die Tabelle zeigt die Felder, welche durch den Abgleich mit Git entstehen. Für jeden Autor oder Maintainer der betrachteten Software werden die dargestellten Werte gespeichert, falls der Autor abgeglichen werden konnte. Falls der Autor nicht abgeglichen werden konnte, sind die Felder leer und der Score ist 0.
 \end{table}
 
 \begin{table}

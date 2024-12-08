@@ -1,45 +1,44 @@
 \chapter{Fazit und Ausblick}
 \label{cap:fazit_ausblick}
-% TODO MA sage ich in Fazit, dass der Abgleich und alles andere funktioniert hat?
 In diesem Kapitel wird ein Rückblick auf die Masterarbeit gegeben. Es werden wichtige Themen aufgegriffen und ein Ausblick auf Arbeiten gegeben, die folgen könnten.
 
 \section{Fazit}
 \label{sec:fazit}
-In der Masterarbeit wurde Software entwickelt, die es erlaubt für eine beliebige Liste an \gls{cran} oder \gls{pypi} Repositorys Autorenangaben aus verschiedenen Datenquellen zu extrahieren, diese im Anschluss zu aggregieren und graphisch aufzuarbeiten.
-Um ein Verständnis für die Thematik zu erlangen wurde zu Beginn eine Literaturrecherche zur Autorenrolle in \gls{oss} durchgeführt.
+In der Masterarbeit wurde Software entwickelt, die es erlaubt, für eine beliebige Liste an \gls{cran} oder \gls{pypi} Repositorys Autorenangaben aus verschiedenen Datenquellen zu extrahieren, diese im Anschluss zu aggregieren und graphisch aufzuarbeiten.
+Um ein Verständnis für die Thematik zu erlangen, wurde zu Beginn eine Literaturrecherche zur Autorenrolle in \gls{oss} durchgeführt.
 Außerdem wurden Prinzipien aufgezeigt, die die Bedeutung der Angabe von Autoren in \gls{oss} verdeutlichen.
 Anschließend wurden Grundlagen für die spätere Datenbeschaffung erarbeitet.
 Hierbei wurde unter anderem auf Software-Verzeichnisse und die Paketverwaltung eingegangen, welche als Datenquellen für die Autorenangaben dienen.
-Außerdem wurden unterschiedliche Zitierformate für Software und wie diese Ausgewertet werden können betrachtet.
+Zudem wurden unterschiedliche Zitierformate für Software und wie diese ausgewertet werden können, betrachtet.
 Anschließend wurde auf die Disambiguierung von Autoren eingegangen.
 
-Im Anschluss wurde Software entwickelt, die es erlaubt die Autorenangaben aus den Datenquellen zu extrahieren und diese untereinander abzugleichen.
+Im Anschluss wurde eine Software entwickelt, die es erlaubt, die Autorenangaben aus den Datenquellen zu extrahieren und diese untereinander abzugleichen.
 Die entstandenen Daten wurden anschließend analysiert und graphisch aufbereitet.
-Dabei sind Diskrepanzen beispielsweise bei der Nennung der Top Git Autoren in den Datenquellen aufgefallen.
+Dabei sind Diskrepanzen beispielsweise bei der Nennung der Top-Git-Autoren in den Datenquellen aufgefallen.
 Diese Diskrepanzen wurden anschließend diskutiert und die Fragen beantwortet, wie gut der entwickelte Abgleich der Autoren funktioniert (\textbf{F1}) und was ein Autor machen muss, damit er in den Autorenangaben gelistet wird (\textbf{F2}).
-Außerdem wurde die Frage beantwortet wie gut Autoren gepflegt werden (\textbf{F3}).
+Außerdem wurde die Frage beantwortet, wie gut Autoren gepflegt werden (\textbf{F3}).
 
-Im Allgemeinen hat die Arbeit gezeigt, dass es möglich ist Autorenangaben aus verschiedenen Datenquellen zu extrahieren und diese untereinander abzugleichen.
+Im Allgemeinen hat die Arbeit gezeigt, dass es möglich ist, Autorenangaben aus verschiedenen Datenquellen zu extrahieren und diese untereinander abzugleichen.
 Dadurch ist aufgefallen, dass die Qualität der Autorenangaben in den Datenquellen unterschiedlich ist.
-Es wurde außerdem gezeigt, dass in vielen Paketen die Autoren nicht gut gepflegt werden.
+Es wurde zudem gezeigt, dass in vielen Paketen die Autoren nicht gut gepflegt werden.
 Hier besteht Verbesserungsbedarf, um die Qualität der Autorenangaben zu verbessern und die Arbeit eines jeden einzelnen Entwicklers zu honorieren.
 
 \section{Ausblick}
 \label{sec:ausblick}
 Bei der Entwicklung der Datenbeschaffung wurde bewusst auf die Analyse einiger Quellen verzichtet.
-So wurde beispielsweise nur für die Quellen, welche in Git verwaltet werden ein zeitlicher Verlauf der Autorenangaben betrachtet.
-In weiteren Arbeiten könnte dies um Quellen ergänzt werden, welche ebenfalls eine zeitliche Betrachtung ermöglichen wie beispielsweise \gls{pypi} mithilfe der Google BigQuery Daten.
-Außerdem wurden in der Masterarbeit ausschließlich GitHub Repositorys betrachtet, obwohl es weitere viel verwendete Plattformen wie GitLab gibt, welche auf die gleiche Weise analysiert werden könnten.
+So wurde beispielsweise nur für die Quellen, welche in Git verwaltet werden, ein zeitlicher Verlauf der Autorenangaben betrachtet.
+In weiteren Arbeiten könnte dies um Quellen ergänzt werden, welche ebenfalls eine zeitliche Betrachtung ermöglichen, wie beispielsweise \gls{pypi} mithilfe der Google BigQuery Daten.
+Außerdem wurden in der Masterarbeit ausschließlich GitHub-Repositorys betrachtet, obwohl es weitere viel verwendete Plattformen wie GitLab gibt, welche auf die gleiche Weise analysiert werden könnten.
 
 Ebenfalls könnten die betrachteten Quellen um weitere Datenpunkte ergänzt werden.
 Beispielsweise sind im \gls{cff} weitere Referenzen zu anderen Arbeiten unter dem Feld \glqq references\grqq{} aufgelistet.
 In \hologo{BibTeX} Dateien werden ebenfalls weitere Daten gespeichert, welche aktuell noch nicht betrachtet worden sind, allerdings für eine noch detailliertere Analyse genutzt werden könnten.
 
 Ein weiteres Problem, welches in der Masterarbeit auftrat, war die Disambiguierung von Autoren.
-Es wurde gezeigt, dass der Abgleich der Autoren nicht immer korrekt funktioniert und es wurden Gründe wie beispielsweise der Vergleich von nur einem Buchstabens als eines der Probleme erkannt.
+Es wurde gezeigt, dass der Abgleich der Autoren nicht immer korrekt funktioniert und es wurden Gründe wie beispielsweise der Vergleich von nur einem Buchstaben als eines der Probleme erkannt.
 In weiteren Arbeiten könnte die Disambiguierung von Autoren weiter verbessert werden und so eine direkte Verbesserung der Ergebnisse erzielt werden.
 
 Zusätzlich wurden in der Datenbeschaffung Daten erzeugt, welche in dieser Masterarbeit noch nicht ausgewertet wurden.
-Dies betrifft die Git Daten zu den Zeitpunkten einer Änderung an den Autorenangaben.
-Aus diesen Daten könnte bei einer Analyse beispielsweise geschlussfolgert werden wie sich die Git Autoren über die Zeit verändern und bei wie vielen Commits ein Autor einer Quelle hinzugefügt wurde.
-Dies ist allerdings nur Umsetzbar, falls die Entwickler häufiger ihre Autorenangaben aktualisieren, besonders jene mit zeitlichem Verlauf wie das \gls{cff}.
+Dies betrifft die Git-Daten zu den Zeitpunkten einer Änderung an den Autorenangaben.
+Aus diesen Daten könnte bei einer Analyse beispielsweise geschlussfolgert werden, wie sich die Git-Autoren über die Zeit verändern und bei wie vielen Commits ein Autor einer Quelle hinzugefügt wurde.
+Dies ist allerdings nur umsetzbar, falls die Entwickler häufiger ihre Autorenangaben aktualisieren, besonders jene mit zeitlichem Verlauf wie das \gls{cff}.

@@ -19,12 +19,12 @@ Da die Datei von Menschen gelesen werden kann, kann diese manuell erstellt werde
 Die Spezifikationen für das \gls{cff} werden auf GitHub verwaltet und sind öffentlich einsehbar \autocite{druskat_citation_2021}.
 Ebenfalls existieren Programme, welche das \gls{cff} verarbeiten können.
 Beispielsweise kann das Programm \emph{cffinit} genutzt werden, um eine \mintinline{text}{CITATION.cff}-Datei zu erstellen, sodass der Prozess der Erstellung vereinfacht wird \autocite{spaaks_cffinit_2023}.
-Ein weiteres Beispiel ist das Programm \emph{cffconvert}, welches das \gls{cff} in verschiedene Formate umwandeln kann, wie zum Beispiel \hologo{BibTeX} oder RIS.
-Außerdem kann das Programm genutzt werden um \gls{cff}-Dateien zu validieren \autocite{spaaks_cffconvert_2021}.
+Ein weiteres Beispiel ist das Programm \emph{cffconvert}, welches das \gls{cff} in verschiedene Formate umwandeln kann, wie z. B. \hologo{BibTeX} oder RIS.
+Außerdem kann das Programm genutzt werden, um \gls{cff}-Dateien zu validieren \autocite{spaaks_cffconvert_2021}.
 
-Zusätzlich wird das \gls{cff} von unterschiedlichen Plattformen unterstützt, wie zum Beispiel von GitHub.
+Zusätzlich wird das \gls{cff} von unterschiedlichen Plattformen unterstützt, wie z. B. von GitHub.
 Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann direkt im \hologo{BibTeX}-Format kopiert werden \autocites{druskat_citation_2021}{github_about_2024-2}.
-Ebenfalls ist es möglich die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren.
+Ebenfalls ist es möglich, die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren.
 Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
 Eine weitere Plattform, welche unterstützt wird, ist Zotero, welches ein Literaturverwaltungsprogramm ist \autocites{druskat_citation_2021}{zotero_zotero_2024}.
 Falls der Benutzer das Browser-Plugin von Zotero installiert hat, liest dieses die Daten aus der \mintinline{text}{CITATION.cff}-Datei, welche in dem GitHub Repository gespeichert ist und importiert die Daten in Zotero.
@@ -47,14 +47,14 @@ In diesem Feld können die Autoren als Liste angegeben werden.
 Ein Autor ist dabei entweder eine Person oder eine Entität.
 Eine Entität kann beispielsweise eine Organisation oder ein Unternehmen sein.
 Die Entität kann mit einem Namen mittels \glqq name\grqq{} angegeben werden \autocite{druskat_citation_2021}.
-Sie kann ebenfalls eine ORCID iD und eine E-Mail-Adresse enthalten.
+Sie kann ebenfalls eine OORCID iD und eine E-Mail-Adresse enthalten.
 Besonders wichtig für diese Arbeit ist die Referenz auf eine Person, da dies die einzige Information ist, welche aus Git extrahiert werden kann.
 Eine Person enthält ebenfalls die genannten Werte einer Entität und wird jedoch über den Vor- und Nachname separiert mittels \glqq given-names\grqq{} und \glqq family-names\grqq{} angegeben.
-Dadurch ist es möglich die Personen von den Entitäten zu unterscheiden.
+Dadurch ist es möglich, die Personen von den Entitäten zu unterscheiden.
 
 Ein weiteres Feld, welches in der Masterarbeit relevant ist, ist das \glqq preferred-citation\grqq{}-Feld.
-Mit diesem Feld ist es möglich die Anerkennung für die Arbeit auf eine andere Arbeit zu übertragen \autocite{druskat_citation_2021}.
-Ein Beispiel hierfür ist ein Paper über die Software, welches bevorzugt zitiert werden soll anstelle der eigentlichen Software.
+Mit diesem Feld ist es möglich, die Anerkennung für die Arbeit auf eine andere Arbeit zu übertragen \autocite{druskat_citation_2021}.
+Ein Beispiel hierfür ist ein Paper über die Software, welches bevorzugt zitiert werden soll, anstelle der eigentlichen Software.
 Hierbei können ebenfalls Personen und Entitäten angegeben werden in dem gleichen Format wie bereits beschrieben.
 Durch die Angabe einer \glqq preferred-citation\grqq{} kann das Prinzip der Wichtigkeit vernachlässigt werden.
 Auf dieses Verhalten wird in der Diskussion konkreter eingegangen.
@@ -65,11 +65,11 @@ Es gibt an, ob es sich um eine Software oder einen Datensatz handelt.
 Dabei sind lediglich die Werte \glqq software\grqq{} und \glqq dataset\grqq{} erlaubt.
 Das Feld \glqq date-released\grqq{} gibt an, wann die Software oder der Datensatz veröffentlicht wurde.
 Das Feld \glqq doi\grqq{} kann eine \gls{doi} der Software oder des Datensatzes enthalten.
-Mittels \glqq identifiers\grqq{} können weitere Identifikatoren angegeben werden, wie zum Beispiel eine \gls{doi} oder eine URL, wobei die \glqq identifiers\grqq{} mit einer Beschreibung erweitert werden können.
+Mittels \glqq identifiers\grqq{} können weitere Identifikatoren angegeben werden, wie z. B. eine \gls{doi} oder eine URL, wobei die \glqq identifiers\grqq{} mit einer Beschreibung erweitert werden können.
 Die beschriebenen Felder können zusätzlich alle unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um eine andere Arbeit zu referenzieren.
 
 Die Felder \glqq year\grqq{}, \glqq month\grqq{} und \glqq date-published\grqq{} können zusätzlich zu dem Feld \glqq date-released\grqq{} unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um das Jahr und das Datum der Veröffentlichung anzugeben.
-Außerdem können weitere Typen mittels \glqq type\grqq{} angegeben werden, wie Beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
+Außerdem können weitere Typen mittels \glqq type\grqq{} angegeben werden, wie beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
 Zusätzlich kann das Feld \glqq collection-doi\grqq{} angegeben werden, um auf eine Sammlung von Arbeiten zu verweisen, die die Arbeit enthält.
 Ein Beispiel einer \mintinline{text}{CITATION.cff}-Datei ist in \autoref{lst:cff_example} dargestellt.
 Dabei wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
@@ -95,16 +95,16 @@ In der Datei können mehrere Einträge vorhanden sein, wobei jeder Eintrag eine 
 
 \hologo{BibTeX}-Dateien können von Menschen manuell erstellt werden und in das Repository eingebunden werden.
 Außerdem existieren viele Literaturverwaltungsprogramme wie Zotero, welche \hologo{BibTeX}-Dateien erstellen und verarbeiten können \autocite{zotero_zotero_2024}.
-Ebenfalls ist die Integration in andere Plattformen möglich, wie zum Beispiel in GitHub.
+Ebenfalls ist die Integration in andere Plattformen möglich, wie z. B. in GitHub.
 Hier wird die \mintinline{text}{CITATION.bib}-Datei auf der Repository-Startseite verlinkt, sie lässt sich jedoch im Gegensatz zu dem \gls{cff} nicht direkt kopieren oder in andere Formate umwandeln \autocite{github_about_2024-2}.
 
 In dem \hologo{BibTeX}-Format existieren verschiedene Felder, welche für die Zitation von Literatur relevant sind.
 Einige Felder sind dabei zwingend erforderlich und andere nicht.
 Welche Felder zwingend erforderlich sind, hängt vom Literaturtyp ab.
-Außerdem sind die verfügbaren Felder vom Literaturtyp abhängig \autocite{patashnik_bibtexing_1988}.
+Zudem sind die verfügbaren Felder vom Literaturtyp abhängig \autocite{patashnik_bibtexing_1988}.
 In dieser Arbeit wird auf einige dieser Felder eingegangen, welche für die spätere Auswertung relevant sind.
 Das wichtigste Feld ist das \glqq author\grqq{}-Feld, welches die Autoren der Literatur enthält und zwingend erforderlich ist.
-Die Vor- und Nachnamen der Autoren werden mit einem Komma separiert und mehrere Autoren über ein \glqq and\grqq{} getrennt.
+Die Vor- und Nachnamen der Autoren werden mit einem Komma separiert und mehrere Autoren werden über ein \glqq and\grqq{} getrennt.
 Weitere Felder, welche für die Masterarbeit verwendet werden, sind \glqq year\grqq{} und \glqq month\grqq{}, welche das Jahr und den Monat der Veröffentlichung angeben.
 Ein Beispiel einer \mintinline{text}{CITATION.bib}-Datei ist in \autoref{lst:bibtex_example} dargestellt.
 Es ist zu erkennen, dass in dem \hologo{BibTeX}-Eintrag Informationen fehlen, welche in dem \gls{cff}-Eintrag vorhanden waren.

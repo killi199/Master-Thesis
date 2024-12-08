@@ -1,32 +1,32 @@
 \subsection{Git}
 \label{subsec:datenbeschaffung_git}
-Die Git Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
-Sämtliche anderen Quellen werden mit den Git Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
-Zu Beginn muss das Repository von GitHub geclont werden, um die Daten Lokal verarbeiten zu können.
-Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz, welches eine Bibliothek für die einfache Interaktion mittels Python und Git Befehlen darstellt \autocite{thiel_gitpython-developersgitpython_2024}.
+Die Git-Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
+Sämtliche anderen Quellen werden mit den Git-Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
+Zu Beginn muss das Repository von GitHub geclont werden, um die Daten lokal verarbeiten zu können.
+Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz, welche eine Bibliothek für die einfache Interaktion mittels Python und Git-Befehlen darstellt \autocite{thiel_gitpython-developersgitpython_2024}.
 Beim Aufruf der Funktion wurde kein Branch spezifiziert, weshalb der Branch ausgewählt wird, auf welchen aktuell der \emph{HEAD} vom remote Repository zeigt.
 Dieser Branch ist in der Regel der Standardbranch, auf welchem die Analyse durchgeführt werden soll.
-Für das Clonen muss außerdem der Link zum GitHub Repository angegeben werden, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
+Für das Clonen muss außerdem der Link zum GitHub-Repository angegeben werden, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
 Auf diese Quellen wird in den nächsten Abschnitten eingegangen.
 
 Die Auswertung des Repositorys wird mit \emph{git-quick-stats} in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-statsgit-quick-stats_2021}.
-\emph{Git-Quick-stats} bietet einfache und effiziente Möglichkeiten um verschiedene Statistiken in einem Git Repository zu ermitteln.
-Das Tool wird in dem Python Skript mit dem Befehl \emph{git-quick-stats -T} aufgerufen, um detaillierte Statistiken zu erhalten.
+\emph{Git-Quick-stats} bietet einfache und effiziente Möglichkeiten, um verschiedene Statistiken in einem Git-Repository zu ermitteln.
+Das Tool wird in dem Python-Skript mit dem Befehl \emph{git-quick-stats -T} aufgerufen, um detaillierte Statistiken zu erhalten.
 Ausgegeben wird eine Liste aller Autoren, welche in dem Repository Änderungen vorgenommen haben.
 Diese Liste enthält unter anderem den Namen, die E-Mail, die Anzahl der Einfügungen, Löschungen, geänderten Zeilen, Dateien, Commits, sowie den ersten und letzten Commit, welche alle am Ende des Prozesses gespeichert werden.
 Die Anzahl der Commits beinhaltet keine Merge-Commits.
 Dieses Verhalten von \emph{git-quick-stats} ist erwünscht, da diese nicht relevant für die Analyse sind.
 
 Die E-Mail-Adresse wird anschließend in Kleinbuchstaben umgewandelt, um die Daten zu vereinheitlichen.
-Anschließend wird eine Gruppierung auf der E-Mail durchgeführt und die anderen Werte summiert mit Ausnahme des ersten und letzten Commits bei denen der älteste und neuste Commit ausgewählt werden.
+Anschließend wird eine Gruppierung auf der E-Mail durchgeführt und die anderen Werte summiert, mit Ausnahme des ersten und letzten Commits, bei denen der älteste und neueste Commit ausgewählt werden.
 Der Name des Autors wird dabei ebenfalls summiert, was in dem Kontext bedeutet, dass Namen aneinander gehängt werden.
-Das Gruppieren ist notwendig, da die Autoren den Namen und die E-Mail-Adressen in Git eigenständig festlegen können wie in \autoref{sec:versionsverwaltung} beschrieben wurde.
+Das Gruppieren ist notwendig, da die Autoren den Namen und die E-Mail-Adressen in Git eigenständig festlegen können, wie in \autoref{sec:versionsverwaltung} beschrieben wurde.
 Durch dieses Vorgehen wird gewährleistet, dass zumindest keine E-Mail-Adressen doppelt vorhanden sind, falls ein Autor unterschiedliche Schreibweisen für seinen Namen verwendet.
 Die ermittelten und gruppierten Daten werden nach der Anzahl der Commits sortiert in der Datei \path{git_contributors.csv} gespeichert.
 In \autoref{tab:git_contributors} sind die Felder der Datei aufgelistet.
 
-Außerdem bietet das Tool die Möglichkeit mit der gesetzten Umgebungsvariablen \texttt{\_GIT\_UNTIL=}, alle Änderungen nur bis zu einem bestimmten Zeitpunkt zu betrachten.
-Diese Funktion wird verwendet, um die Änderungen bis zu der Aktualisierung einer Quelle zu betrachten.
+Außerdem bietet das Tool die Möglichkeit, mit der gesetzten Umgebungsvariablen \texttt{\_GIT\_UNTIL=}, alle Änderungen nur bis zu einem bestimmten Zeitpunkt zu betrachten.
+Diese Funktion wird verwendet, um die Änderungen bis zur Aktualisierung einer Quelle zu betrachten.
 Die Daten werden beispielsweise in der Datei \path{20210819_161452-0400_git_contributors.csv} gespeichert, wobei der erste Teil des Dateinamens den konkreten Tag und Uhrzeit mit zugehöriger Zeitzone angibt.
 Dabei hat die Datei die gleichen Felder wie die \path{git_contributors.csv} Datei, welche in \autoref{tab:git_contributors} dargestellt ist, jedoch nur für die Änderungen bis zu dem angegebenen Zeitpunkt.
 Für die Verarbeitung der Zeiten in unterschiedlichen Zeitzonen wird das Modul \emph{pytz} in der Version 2024.2 verwendet \autocite{bishop_stub42pytz_2024}.
