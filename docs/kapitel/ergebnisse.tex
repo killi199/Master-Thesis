@@ -54,7 +54,7 @@ Für die weiteren Listen sind die Ergebnisse in \autoref{tab:matching_results_au
     In der Tabelle sind die Ergebnisse des automatischen Abgleichs für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dargestellt. Die Werte geben an, wie viele der genannten Autoren in den Git-Repositorys gefunden wurden.
 \end{table}
 
-In den Ergebnissen ist auffällig, dass die Autoren in der README Datei und in der Beschreibung der Pakete am schlechtesten abgeglichen werden konnten.
+In den Ergebnissen ist auffällig, dass die Autoren in der README-Datei und in der Beschreibung der Pakete am schlechtesten abgeglichen werden konnten.
 Dies liegt daran, dass hierbei die \gls{ner} verwendet wurde und diese nicht immer korrekt arbeitet.
 Hierbei kommt es häufig vor, dass Entitäten erkannt werden, welche keine Person darstellen.
 Außerdem werden Personen mit weiteren Zusätzen wie z. B. dem Anfang einer Internetadresse zurückgegeben, was den Abgleich erschwert.
@@ -118,7 +118,7 @@ Für die anderen Listen sind die Ergebnisse in \autoref{fig:commits_vs_changed_l
 Ein Punkt stellt dabei einen Autor dar.
 Es ist zu erkennen, dass einige Autoren nur einen Commit getätigt haben und dabei viele Zeilen geändert haben.
 Beispielsweise hat der Autor François Lagunas in dem Paket \emph{huggingface/datasets} lediglich einen Commit getätigt, aber dabei ungefähr 29.000 Zeilen hinzugefügt.
-Inhalt sind in diesem konkreten Fall automatisch generierte README Dateien für Datensätze, welche zuvor gefehlt haben.
+Inhalt sind in diesem konkreten Fall automatisch generierte README-Dateien für Datensätze, welche zuvor gefehlt haben.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
@@ -163,7 +163,7 @@ Dieser Autor ist jedoch auf Rang 37 der Top-Git-Autoren, gemessen nach Commits.
 
 Eine weitere Auffälligkeit, welche beispielsweise in der \autoref{fig:common_authors_pypi_cff} vorkommt ist, dass in der Legende \hologo{BibTeX} aufgeführt ist, jedoch keine Linie in der Abbildung dargestellt wird.
 Dies liegt daran, dass keiner der Top 100 Git-Autoren aller Pakete mit \hologo{BibTeX} in einer \hologo{BibTeX} als Autor genannt wird.
-Im konkreten Fall liegt das daran, dass nur eines der Pakete eine \hologo{BibTeX} Datei enthält und in dieser Datei nur ein Autor genannt wird, welcher nicht automatisch abgeglichen wurde.
+Im konkreten Fall liegt das daran, dass nur eines der Pakete eine \hologo{BibTeX}-Datei enthält und in dieser Datei nur ein Autor genannt wird, welcher nicht automatisch abgeglichen wurde.
 Dies ist \autoref{tab:pypi_matching_results_manual} ebenfalls zu entnehmen.
 Dadurch liegt die Linie für alle x-Werte bei 0 \% und ist nicht sichtbar.
 
@@ -225,7 +225,7 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
 In den Graphen sind erneut Auffälligkeiten zu erkennen.
 Beispielsweise existieren erneut Linien, welche für jeden x Wert 0 \% oder 100 \% darstellen.
 In \autoref{fig:common_authors_2_pypi_cff} ist beispielsweise erneut die Linie für \hologo{BibTeX} nicht zu erkennen, da diese erneut auf der x-Achse verläuft.
-Dies liegt daran, dass nur ein Autor in einer \hologo{BibTeX} Datei über alle Pakete genannt wird, welcher nicht abgeglichen werden konnte und somit nicht unter den Top-Git-Autoren ist.
+Dies liegt daran, dass nur ein Autor in einer \hologo{BibTeX}-Datei über alle Pakete genannt wird, welcher nicht abgeglichen werden konnte und somit nicht unter den Top-Git-Autoren ist.
 Für die Linien, welche bei 100 \% verlaufen, handelt es sich um Pakete, bei denen beispielsweise nur ein Autor in der Quelle genannt wird und dieser Autor auf Rang eins der Top-Git-Autoren ist.
 Es kann aber auch komplexer sein, beispielsweise, dass drei Autoren in der Quelle genannt werden und alle drei unter den Top drei Git-Autoren sind.
 Die Reihenfolge, in der sie in der Quelle genannt werden, ist dabei irrelevant.
@@ -297,15 +297,15 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse werden die Jahre dargestellt. Die y-Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
 \end{figure}
 
-Die \autoref{fig:overall_valid_cff_not_full} zeigt den Anteil der validen und invaliden \gls{cff} Dateien in allen fünf Listen.
+Die \autoref{fig:overall_valid_cff_not_full} zeigt den Anteil der validen und invaliden \gls{cff}-Dateien in allen fünf Listen.
 Dabei wird außerdem unterschieden in Dateien, welche Anzeichen auf die Benutzung von \emph{cffinit} aufweisen und Dateien ohne die Verwendung von dem Programm.
 Zudem lässt sich in der Abbildung erkennen, wie viele Pakete in welcher Liste das \gls{cff} verwendet haben.
 Dabei ist auffällig, dass in der \gls{cran} \gls{cff} Liste keine 100 Pakete gelistet werden, obwohl die Liste 100 Pakete enthalten sollte, welche ein \gls{cff} verwenden.
-Dies liegt daran, dass in der Liste, welche von Herrn Druskat bereitgestellt wurde, einige Pakete enthalten sind, welche keine \gls{cff} Datei (mehr) enthalten.
+Dies liegt daran, dass in der Liste, welche von Herrn Druskat bereitgestellt wurde, einige Pakete enthalten sind, welche keine \gls{cff}-Datei (mehr) enthalten.
 Konkret betrifft das in diesem Fall die drei Pakete \emph{gtsummary}, \emph{ggpp} und \emph{gginnards}.
 Aus diesem Grund sind in den weiteren Abbildungen ebenfalls keine 100 Pakete für die \gls{cran} \gls{cff} Liste dargestellt.
 
-Außerdem ist auffällig, dass in der \gls{cff} Liste und der \gls{pypi} \gls{cff} Liste jeweils ein Paket vorhanden ist, welches eine invalide \gls{cff} Datei enthält, obwohl für die Erstellung \emph{cffinit} verwendet wurde.
+Außerdem ist auffällig, dass in der \gls{cff} Liste und der \gls{pypi} \gls{cff} Liste jeweils ein Paket vorhanden ist, welches eine invalide \gls{cff}-Datei enthält, obwohl für die Erstellung \emph{cffinit} verwendet wurde.
 Konkret handelt es sich in beiden Fällen um das \gls{pypi} Paket \emph{modelyst-sqlmodel}.
 Das Paket ist in beiden Listen enthalten, da in der \gls{cff} Liste ausschließlich \gls{pypi} Pakete enthalten sind, da diese die meisten Sterne auf GitHub haben.
 In diesem Fall ist das Paket unter den Top 100 \gls{cff} Paketen auf GitHub und somit ebenfalls in der \gls{pypi} \gls{cff} Liste enthalten.
@@ -313,26 +313,26 @@ Im Allgemeinen sind alle \gls{pypi} Pakete, welche in der \gls{cff} Liste enthal
 In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls{cran} Pakete zu wenig Sterne auf GitHub haben, um unter den Top 100 \gls{cff} Paketen zu sein.
 
 Die \autoref{fig:overall_valid_cff_full} zeigt die gleichen Informationen wie die zuvor beschriebene Abbildung.
-Diesmal wurde die Analyse allerdings nicht auf einer Liste, sondern für alle auf GitHub verfügbaren \gls{cff} Dateien, welche analysiert werden konnten, durchgeführt.
-Dabei ist auffällig, dass der Anteil der validen \gls{cff} Dateien zwar größer ist, jedoch der Anteil der invaliden \gls{cff} ebenfalls weiter gestiegen ist.
+Diesmal wurde die Analyse allerdings nicht auf einer Liste, sondern für alle auf GitHub verfügbaren \gls{cff}-Dateien, welche analysiert werden konnten, durchgeführt.
+Dabei ist auffällig, dass der Anteil der validen \gls{cff}-Dateien zwar größer ist, jedoch der Anteil der invaliden \gls{cff} ebenfalls weiter gestiegen ist.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/overall_valid_cff.svg}
-        \caption{Validität der \gls{cff} Dateien in den Listen}
+        \caption{Validität der \gls{cff}-Dateien in den Listen}
         \label{fig:overall_valid_cff_not_full}
     \end{subfigure}%
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/overall_valid_cff_full.svg}
-        \caption{Validität aller \gls{cff} Dateien auf GitHub}
+        \caption{Validität aller \gls{cff}-Dateien auf GitHub}
         \label{fig:overall_valid_cff_full}
     \end{subfigure}
-    \caption{Validität der \gls{cff} Dateien}
+    \caption{Validität der \gls{cff}-Dateien}
     \label{fig:overall_valid_cff}
     \small
-    Die \autoref{fig:overall_valid_cff_not_full} zeigt für die verschiedenen analysierten Listen, wie viele der vorhandenen \gls{cff} Dateien valide sind, und ob \emph{cffinit} verwendet wurde oder nicht. Die \autoref{fig:overall_valid_cff_full} zeigt die gleichen Informationen für alle \gls{cff} Dateien auf GitHub.
+    Die \autoref{fig:overall_valid_cff_not_full} zeigt für die verschiedenen analysierten Listen, wie viele der vorhandenen \gls{cff}-Dateien valide sind, und ob \emph{cffinit} verwendet wurde oder nicht. Die \autoref{fig:overall_valid_cff_full} zeigt die gleichen Informationen für alle \gls{cff}-Dateien auf GitHub.
 \end{figure}
 
 \autoref{fig:citation_counts} zeigt für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und \hologo{BibTeX} den angegebenen Typ der Zitation.
@@ -340,12 +340,12 @@ Anhand der Abbildungen ist außerdem zu erkennen, wie oft welche Quelle in den L
 Beispielsweise haben zwei von den Top 100 \gls{cran} Paketen eine \gls{cff} angegeben und fünf sind es bei den Top 100 \gls{pypi} Paketen.
 Von diesen fünf Paketen hat kein Paket eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
 In den \gls{cran} Listen haben beide Pakete hingegen ebenfalls eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
-Zudem ist auffällig, dass in allen Listen die Anzahl der Pakete, welche eine \hologo{BibTeX} Datei verwenden, gering ist.
+Zudem ist auffällig, dass in allen Listen die Anzahl der Pakete, welche eine \hologo{BibTeX}-Datei verwenden, gering ist.
 Bei dieser Betrachtung ist darauf zu achten, dass in dem \gls{cff} nicht zwingend eine \glqq preferred-citation\grqq{} angegeben werden muss.
 Aus diesem Grund sind in \autoref{fig:citation_counts_preferred_citation_cff} weniger Pakete dargestellt als in \autoref{fig:citation_counts_cff}.
 
 In \autoref{fig:citation_counts_cff} ist auffällig, dass ein \gls{cran} Paket aus der \gls{cran} \gls{cff} Liste als Typ der Zitation \emph{article} angegeben hat.
-Dies ist in einer \gls{cff} Datei nicht zulässig und führt zu einer ungültigen \gls{cff} Datei.
+Dies ist in einer \gls{cff}-Datei nicht zulässig und führt zu einer ungültigen \gls{cff}-Datei.
 Dies betrifft das Paket \emph{worcs}.
 Bei der Betrachtung aller \gls{cff} Dateien auf GitHub ist zu erkennen, dass von 18.520 17470 Pakete \emph{software} angegeben haben und 412 \emph{dataset}.
 Alle anderen 638 Pakete haben einen anderen Typ der Zitation angegeben und sind dadurch ungültig.
@@ -381,7 +381,7 @@ In \autoref{fig:doi} ist dargestellt, wie viele der Quellen, welche potenziell e
 Dabei wird in Quellen, in denen es möglich ist, zwischen den unterschiedlichen Angaben einer \gls{doi} unterschieden.
 In \autoref{fig:cff_doi} ist beispielsweise zu erkennen, dass in der \gls{cran} \gls{cff} Liste 57 Pakete eine \gls{doi} in dem \gls{cff} angegeben haben und 40 Pakete keine \gls{doi} angegeben haben.
 Auffällig ist außerdem, dass in der \glqq preferred-citation\grqq{} in \autoref{fig:preferred_citation_doi} kein einziges Paket eine Collection \gls{doi} angegeben hat und ebenfalls nur ein Paket in den \glqq identifiers\grqq{} eine \gls{doi} angegeben hat.
-Zusätzlich wird in \autoref{fig:full_doi} dargestellt, wie viele aller \gls{cff} Dateien auf GitHub eine \gls{doi} angegeben haben.
+Zusätzlich wird in \autoref{fig:full_doi} dargestellt, wie viele aller \gls{cff}-Dateien auf GitHub eine \gls{doi} angegeben haben.
 Der Aufbau ist dabei wie zuvor.
 
 \begin{figure}
@@ -427,18 +427,18 @@ Der Aufbau ist dabei wie zuvor.
     \caption{Verwendung von \gls{doi}s in allen \gls{cff} auf GitHub}
     \label{fig:full_doi}
     \small
-    Die Abbildungen zeigen für die \gls{cff} und \glqq preferred-citation\grqq{} Quellen, jeweils für alle \gls{cff} Dateien auf GitHub, wie oft eine \gls{doi} auf verschiedenen Arten in den Zitationen angegeben wurde.
+    Die Abbildungen zeigen für die \gls{cff} und \glqq preferred-citation\grqq{} Quellen, jeweils für alle \gls{cff}-Dateien auf GitHub, wie oft eine \gls{doi} auf verschiedenen Arten in den Zitationen angegeben wurde.
 \end{figure}
 
 Zusätzlich zu den Graphen wurden weitere Ergebnisse aus den Daten berechnet.
 Einerseits wurde berechnet, wie viel Zeit im Durchschnitt seit der letzten Aktualisierung vom Tag der Datenbeschaffung einer Quelle vergangen ist.
 In \autoref{sec:gesamtheit_ergebnisse} wird zusätzlich darauf eingegangen, mit welcher Frequenz die Quellen aktualisiert werden.
-Die Berechnung ist dabei jeweils nur für das \gls{cff}, das \hologo{BibTeX} Format und die README Dateien möglich, da in den anderen Quellen kein Zeitstempel ermittelt werden kann.
+Die Berechnung ist dabei jeweils nur für das \gls{cff}, das \hologo{BibTeX} Format und die README-Dateien möglich, da in den anderen Quellen kein Zeitstempel ermittelt werden kann.
 Die Ergebnisse sind in \autoref{tab:average_time_last_update} dargestellt.
 Für \gls{cran} ist jeweils keine Zeit für \hologo{BibTeX} angegeben, da keines der Pakete in den Listen die Quelle verwendet.
 
 In der Tabelle lässt sich beispielsweise ablesen, dass die README über alle Pakete in der \gls{pypi} \gls{cff} Liste im Durchschnitt 83 Tage nicht aktualisiert wurde.
-Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die \hologo{BibTeX} Dateien am längsten nicht aktualisiert wurden.
+Es ist außerdem auffällig, dass die README-Dateien am aktuellsten sind und die \hologo{BibTeX}-Dateien am längsten nicht aktualisiert wurden.
 
 \begin{table}
     \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
@@ -493,21 +493,21 @@ Außerdem ist auffällig, dass 14 der Pakete in der \gls{pypi} \gls{cff} Liste e
 \label{sec:gesamtheit_ergebnisse}
 In diesem Abschnitt werden anders als zuvor die Daten mit Zeitbetrachtung analysiert und nicht lediglich die jeweils neueste Version untersucht.
 Dadurch ist es möglich, Veränderungen in der Zeit zu betrachten und zu analysieren.
-Jedoch ist dies nur für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und die README Dateien möglich, da in den anderen Quellen keine Zeitinformation vorhanden sind.
+Jedoch ist dies nur für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und die README-Dateien möglich, da in den anderen Quellen keine Zeitinformation vorhanden sind.
 
 Die \autoref{fig:valid_cff_by_time} zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind.
 In \autoref{fig:valid_cff_by_time_anhang} sind die Ergebnisse für die weiteren Listen dargestellt.
 In den Graphen ist jedes Repository nur einmal betrachtet worden.
-Falls ein Repository zu Beginn eine invalide \gls{cff} Datei in dem Repository hatte und anschließend diese zu einer validen Datei geändert wurde, sinkt die Anzahl bei den invaliden und bei den validen steigt sie zu diesem Zeitpunkt.
+Falls ein Repository zu Beginn eine invalide \gls{cff}-Datei in dem Repository hatte und anschließend diese zu einer validen Datei geändert wurde, sinkt die Anzahl bei den invaliden und bei den validen steigt sie zu diesem Zeitpunkt.
 Dadurch ist gewährleistet, dass Änderungen korrekt dargestellt werden und keine Repositorys doppelt betrachtet werden.
 
-In \autoref{fig:valid_cff_by_time_pypi_cff} ist beispielsweise zu erkennen, dass Anfang 2022 viele Repositorys von invaliden zu validen \gls{cff} Dateien gewechselt sind.
-Außerdem lässt sich ablesen, dass die validen \gls{cff} Dateien zu jedem Zeitpunkt mehr sind als die invaliden.
+In \autoref{fig:valid_cff_by_time_pypi_cff} ist beispielsweise zu erkennen, dass Anfang 2022 viele Repositorys von invaliden zu validen \gls{cff}-Dateien gewechselt sind.
+Außerdem lässt sich ablesen, dass die validen \gls{cff}-Dateien zu jedem Zeitpunkt mehr sind als die invaliden.
 In \autoref{fig:valid_cff_by_time_cran_cff} ist hingegen zu erkennen, dass zu Beginn des Graphen die Anzahl der invaliden höher ist als die der validen.
-Zudem lässt sich anhand der Graphen ablesen, zu welchem Zeitpunkt wie viele Repositorys eine \gls{cff} Datei enthalten haben.
-Besonders auffällig ist dabei in \autoref{fig:valid_cff_by_time_full}, dass die Anzahl der Repositorys mit einer \gls{cff} Datei auf GitHub ab 2021 steil angestiegen ist.
-Dies stimmt überein mit der Beobachtung, dass ab 2021 die ersten Pakete in der \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Liste eine \gls{cff} Datei hinzugefügt haben.
-Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub-Repositorys eine \gls{cff} Datei enthalten haben.
+Zudem lässt sich anhand der Graphen ablesen, zu welchem Zeitpunkt wie viele Repositorys eine \gls{cff}-Datei enthalten haben.
+Besonders auffällig ist dabei in \autoref{fig:valid_cff_by_time_full}, dass die Anzahl der Repositorys mit einer \gls{cff}-Datei auf GitHub ab 2021 steil angestiegen ist.
+Dies stimmt überein mit der Beobachtung, dass ab 2021 die ersten Pakete in der \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Liste eine \gls{cff}-Datei hinzugefügt haben.
+Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub-Repositorys eine \gls{cff}-Datei enthalten haben.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
@@ -526,18 +526,18 @@ Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub-Repositorys eine 
         \begin{subfigure}{.5\textwidth}
             \centering
             \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/valid_cff_by_time/overall_valid_cff_cff_full.svg}
-            \caption{Alle \gls{cff} Dateien}
+            \caption{Alle \gls{cff}-Dateien}
             \label{fig:valid_cff_by_time_full}
         \end{subfigure}
     \end{center}
-    \caption{Validität der \gls{cff} Dateien über die Zeit}
+    \caption{Validität der \gls{cff}-Dateien über die Zeit}
     \label{fig:valid_cff_by_time}
     \small
     Die Abbildung zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind. Die x-Achse stellt die Zeit dar und die y-Achse die Anzahl der validen und invaliden \gls{cff} Dateien. Dabei wird außerdem in Repositorys, welche \emph{cffinit} verwenden und Repositorys, welche dies nicht verwenden unterschieden.
 \end{figure}
 
 Die \autoref{fig:added_removed_authors} zeigt für alle fünf Listen, wie viele Autoren in den einzelnen Quellen hinzugefügt und gelöscht wurden.
-Dabei werden ausschließlich genannten Autoren in dem \gls{cff}, \hologo{BibTeX} und der README Datei betrachtet, da nur bei diesen Quellen eine zeitliche Betrachtung möglich ist.
+Dabei werden ausschließlich genannten Autoren in dem \gls{cff}, \hologo{BibTeX} und der README-Datei betrachtet, da nur bei diesen Quellen eine zeitliche Betrachtung möglich ist.
 Außerdem wird in der Abbildung gezeigt, wie viele Autoren nachträglich den Dateien hinzugefügt wurden, nachdem die Datei das erste Mal erstellt wurde.
 Die Informationen der Abbildungen werden ebenfalls erneut ohne die README Autoren dargestellt, da diese sehr vielen Änderungen aufgrund der verwendeten \gls{ner} unterliegen.
 
@@ -552,7 +552,7 @@ In \autoref{fig:added_removed_authors_without_readme} ist zu erkennen, dass in d
 Außerdem ist auffällig, dass in der \gls{cran} und der \gls{pypi} Liste in den Quellen nur Autoren hinzugefügt und keine gelöscht wurden.
 Im Allgemeinen ist deutlich, dass kaum Autoren, nachdem sie hinzugefügt wurden, wieder entfernt werden.
 In Kombination mit \autoref{fig:added_authors_without_readme_without_first_timestamp} ist zu erkennen, dass die meisten Autoren direkt hinzugefügt werden, sobald die Datei erstellt wird.
-Beispielsweise wurde in der \gls{cran} und \gls{pypi} Liste in den der \gls{cff} und der \hologo{BibTeX} Datei kein Autor hinzugefügt, nachdem die Datei erstellt wurde.
+Beispielsweise wurde in der \gls{cran} und \gls{pypi} Liste in der \gls{cff} und der \hologo{BibTeX}-Datei kein Autor hinzugefügt, nachdem die Datei erstellt wurde.
 In der \gls{pypi} \gls{cff} Liste wurden fünf Autoren nachträglich hinzugefügt, wobei hier berücksichtigt werden muss, dass dies auch aufgrund von Namensänderungen geschehen sein kann.
 Außerdem muss berücksichtigt werden, dass die \gls{cff} Datei beispielsweise erst seit 2021 in den meisten Fällen genutzt wird und beim Hinzufügen der Datei alle Autoren zu dem Zeitpunkt eingetragen werden.
 Dadurch werden die Autoren ausschließlich in der \autoref{fig:added_removed_authors_without_readme} dargestellt werden.
@@ -591,7 +591,7 @@ Dadurch werden die Autoren ausschließlich in der \autoref{fig:added_removed_aut
 Die \autoref{tab:average_lifespans} zeigt die durchschnittliche Zeit in Tagen, wie lange ein Autor in einer bestimmten Quelle genannt wird.
 Dabei wird die gleiche Berechnung wie für die hinzugefügten und gelöschten Autoren durchgeführt.
 Aus diesem Grund gelten die gleichen Einschränkungen wie zuvor.
-Es lässt sich beispielsweise in der Tabelle erkennen, dass in der \gls{pypi} \gls{cff} Liste die Autoren im Durchschnitt 333 Tage in der \gls{cff} Datei genannt werden, falls sie entfernt wurden.
+Es lässt sich beispielsweise in der Tabelle erkennen, dass in der \gls{pypi} \gls{cff} Liste die Autoren im Durchschnitt 333 Tage in der \gls{cff}-Datei genannt werden, falls sie entfernt wurden.
 Es werden keine Autoren berücksichtigt, welche nie entfernt wurden.
 Im Gegensatz dazu werden in \autoref{tab:average_lifespans_until_today} ebenfalls Autoren berücksichtigt, welche nie entfernt wurden. Dabei wird der 02.12.2024 als Enddatum genommen.
 
@@ -599,7 +599,7 @@ In der \autoref{tab:average_lifespans} ist zu erkennen, dass einige Zellen nicht
 Leere Zellen sind darin begründet, dass in der Liste kein Paket die Quelle verwendet und dadurch keine Zeit berechnet werden kann.
 Zellen, welche \infty enthalten, sind dadurch begründet, dass in der Liste kein einziges Paket in der jeweiligen Quelle einen Autor, nachdem er hinzugefügt wurde, wieder entfernt hat.
 Beispielsweise hat kein Paket in der \gls{cran} Liste einen Autor, nachdem er zur \gls{cff} hinzugefügt wurde, wieder entfernt.
-Außerdem wurden in der Liste keine Autoren in eine \hologo{BibTeX} Datei hinzugefügt, wodurch die Zelle leer ist.
+Außerdem wurden in der Liste keine Autoren in eine \hologo{BibTeX}-Datei hinzugefügt, wodurch die Zelle leer ist.
 
 Eine weitere Auffälligkeit ist in der \gls{cff} Liste zu erkennen.
 Hierbei ist eine durchschnittliche Verweildauer für die in der \gls{cff} eingetragenen Autoren von eins angegeben.
@@ -645,11 +645,11 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
 \end{table}
 
 In \autoref{tab:average_time_between_updates} wird dargestellt, mit welcher Frequenz die einzelnen Quellen in den unterschiedlichen Paketen der Listen aktualisiert werden.
-Dabei ist nur für die \gls{pypi} Liste ein Wert für \hologo{BibTeX} angegeben, da in den anderen Listen entweder kein Paket eine \hologo{BibTeX} Datei verwendet hat oder diese nie aktualisiert wurde.
+Dabei ist nur für die \gls{pypi} Liste ein Wert für \hologo{BibTeX} angegeben, da in den anderen Listen entweder kein Paket eine \hologo{BibTeX}-Datei verwendet hat oder diese nie aktualisiert wurde.
 
-In der Tabelle lässt sich beispielsweise ablesen, dass die README Datei am häufigsten aktualisiert wird.
+In der Tabelle lässt sich beispielsweise ablesen, dass die README-Datei am häufigsten aktualisiert wird.
 Beispielsweise wurde diese in der \gls{pypi} \gls{cff} Liste im Durchschnitt alle 28 Tage aktualisiert.
-Hingegen wird die \hologo{BibTeX} Datei in der \gls{pypi} Liste im Durchschnitt nur alle 676 Tage aktualisiert.
+Hingegen wird die \hologo{BibTeX}-Datei in der \gls{pypi} Liste im Durchschnitt nur alle 676 Tage aktualisiert.
 
 \begin{table}
     \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}

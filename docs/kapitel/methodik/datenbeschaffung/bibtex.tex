@@ -1,12 +1,12 @@
 \subsection{\hologo{BibTeX}}
 \label{subsec:datenbeschaffung_bibtex}
 In diesem Unterabschnitt wird wie bereits zuvor eine Datei untersucht, welche in Git verwaltet wird.
-Hierbei wird die \path{CITATION.bib} Datei zu jedem Änderungszeitpunkt untersucht, falls sie in dem zu untersuchenden Paket vorhanden ist.
-Es wird die Software \emph{bibtexparser} in der Version 2.0.0b7 verwendet, um die \hologo{BibTeX} Datei zu analysieren.
-Die Software bietet Möglichkeiten, um in Python \hologo{BibTeX} Dateien zu lesen und zu schreiben.
+Hierbei wird die \path{CITATION.bib}-Datei zu jedem Änderungszeitpunkt untersucht, falls sie in dem zu untersuchenden Paket vorhanden ist.
+Es wird die Software \emph{bibtexparser} in der Version 2.0.0b7 verwendet, um die \hologo{BibTeX}-Datei zu analysieren.
+Die Software bietet Möglichkeiten, um in Python \hologo{BibTeX}-Dateien zu lesen und zu schreiben.
 Sie muss in einer Beta-Version verwendet werden, da Features, welche benötigt werden, noch nicht im offiziellen Release vorhanden sind.
 
-Die Autoren werden aus der \hologo{BibTeX} Datei extrahiert und mit den neuesten Git-Daten abgeglichen.
+Die Autoren werden aus der \hologo{BibTeX}-Datei extrahiert und mit den neuesten Git-Daten abgeglichen.
 Die erstellte Liste wird in der Datei \path{TIMESTAMP_bib_authors_new.csv} gespeichert, wobei \emph{TIMESTAMP} durch den Zeitpunkt der Änderung ersetzt wird.
 Dabei wird in der Datei ausschließlich der Name des Autors zuzüglich der Daten aus dem Abgleich mit Git gespeichert.
 Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
@@ -18,7 +18,7 @@ Außerdem wird die Liste der Autoren, welche aus der \hologo{BibTeX} extrahiert 
 Die Daten werden in der Datei \path{TIMESTAMP_bib_authors.csv} gespeichert und die Inhalte sind identisch mit der \glqq new\grqq{} Datei.
 Hierbei wird ebenfalls ausschließlich der Name des Autors und die Daten aus dem Git-Abgleich gespeichert.
 
-Zudem können erneut allgemeine Daten für die \hologo{BibTeX} Datei extrahiert werden.
+Zudem können erneut allgemeine Daten für die \hologo{BibTeX}-Datei extrahiert werden.
 Hierbei wird eine weitere CSV-Datei erstellt, welche die allgemeinen Daten enthält.
 Die Datei wird \path{bib.csv} genannt und enthält wie bereits in den anderen Quellen die Zeitpunkte \emph{commit date} und \emph{author date}.
 Außerdem wird der Literaturtyp aus der Datei extrahiert und in der Datei gespeichert.
@@ -32,7 +32,7 @@ Die Felder der Datei sind in \autoref{tab:bib} aufgelistet.
     \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
         \textbf{Feld}              & \textbf{Beschreibung}                  \\ \midrule
-        \emph{type}                & Literaturtyp der \hologo{BibTeX} Datei \\
+        \emph{type}                & Literaturtyp der \hologo{BibTeX}-Datei \\
         \emph{year}                & Veröffentlichungsjahr                  \\
         \emph{month}               & Veröffentlichungsmonat                 \\
         \emph{doi}                 & Zu zitierende \gls{doi}                \\
@@ -41,8 +41,8 @@ Die Felder der Datei sind in \autoref{tab:bib} aufgelistet.
         \emph{authored\_datetime}  & Zeitpunkt des \emph{author date}       \\
         \bottomrule
     \end{tabularx}
-    \caption{Felder der \texttt{bib.csv} Datei}
+    \caption{Felder der \texttt{bib.csv}-Datei}
     \label{tab:bib}
     \small
-    Die Tabelle zeigt die Felder der \path{bib.csv} Datei. Für jede Änderung der \hologo{BibTeX} Datei werden die dargestellten Werte gespeichert. Die Felder \emph{year}, \emph{month}, \emph{doi} und \emph{isbn} sind abhängig vom Literaturtyp optional.
+    Die Tabelle zeigt die Felder der \path{bib.csv}-Datei. Für jede Änderung der \hologo{BibTeX}-Datei werden die dargestellten Werte gespeichert. Die Felder \emph{year}, \emph{month}, \emph{doi} und \emph{isbn} sind abhängig vom Literaturtyp optional.
 \end{table}

@@ -1,9 +1,9 @@
 \subsection{Beschreibung}
 \label{subsec:datenbeschaffung_beschreibung}
 In diesem Abschnitt wird anders als zuvor keine API angefragt, sondern auf den bereits heruntergeladenen Git-Daten die Analyse durchgeführt.
-Untersucht wird die Beschreibung, welche in der \path{README.md} Datei des Repositorys enthalten ist.
+Untersucht wird die Beschreibung, welche in der \path{README.md}-Datei des Repositorys enthalten ist.
 Dabei wird die Beschreibung wie zuvor mit \emph{spaCy} untersucht.
-Anders ist jedoch, dass die \path{README.md} Datei in Git verwaltet wird und somit die Änderungen in der Zeit betrachtet werden können.
+Anders ist jedoch, dass die \path{README.md}-Datei in Git verwaltet wird und somit die Änderungen in der Zeit betrachtet werden können.
 Aus diesem Grund wird das Programm \emph{GitPython} verwendet, um die letzten 50 Änderungen der Datei auf dem Standardbranch zu erhalten.
 Anschließend wird für jede Änderung die Beschreibung wie zuvor mit \emph{spaCy} analysiert.
 Für jeden Zeitpunkt wird eine CSV-Datei mit dem Namen \path{TIMESTAMP_readme_authors_new.csv} erstellt, wobei \emph{TIMESTAMP} durch den konkreten Zeitpunkt der Änderung der Datei ersetzt wird.
@@ -15,7 +15,7 @@ Der neueste Zeitpunkt entspricht hierbei dem Zeitpunkt, an dem die Repositorys h
 Zusätzlich wird zu jedem Änderungszeitpunkt der Git-Prozess aus \autoref{subsec:datenbeschaffung_git} bis zu diesem Zeitpunkt durchlaufen.
 Dies dient dazu, eine Liste aller Autoren zu erhalten, welche bis zu diesem Zeitpunkt Änderungen vorgenommen haben.
 Die Liste wird in der Datei \path{TIMESTAMP_git_contributors.csv} gespeichert, wobei \emph{TIMESTAMP} durch den konkreten Zeitpunkt ersetzt wird.
-Der Inhalt ist der gleiche wie in \autoref{subsec:datenbeschaffung_git}, jedoch nur bis zu dem Zeitpunkt, an dem die \path{README.md} Datei jeweils geändert wurde.
+Der Inhalt ist der gleiche wie in \autoref{subsec:datenbeschaffung_git}, jedoch nur bis zu dem Zeitpunkt, an dem die \path{README.md}-Datei jeweils geändert wurde.
 Diese Daten werden ebenfalls mit den Autoren, welche aus der Beschreibung extrahiert wurden, abgeglichen und in der Datei \path{TIMESTAMP_readme_authors.csv} gespeichert.
 Die Felder der Datei sind ebenfalls in \autoref{tab:description_authors} aufgelistet.
 Der Inhalt ist hierbei der Name des Autors und weitere Informationen, welche durch den Abgleich ermittelt wurden.
@@ -32,8 +32,8 @@ Die Felder der Datei sind in \autoref{tab:readme} dargestellt.
         \emph{authored\_datetime}  & Zeitpunkt des \emph{author date} \\
         \bottomrule
     \end{tabularx}
-    \caption{Felder der \texttt{readme.csv} Datei}
+    \caption{Felder der \texttt{readme.csv}-Datei}
     \label{tab:readme}
     \small
-    Die Tabelle zeigt die Felder der \path{readme.csv} Datei. Für jede Änderung der Beschreibung werden die dargestellten Werte gespeichert.
+    Die Tabelle zeigt die Felder der \path{readme.csv}-Datei. Für jede Änderung der Beschreibung werden die dargestellten Werte gespeichert.
 \end{table}

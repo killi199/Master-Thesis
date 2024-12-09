@@ -65,9 +65,9 @@ Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentat
 \subsection*{Verlinkung auf andere Quellen}
 \label{sec:verlinkung_auf_andere_quellen}
 In einigen Quellen werden Autoren durch die Entwickler nicht direkt genannt, sondern es wird auf eine andere Quelle verwiesen, in welcher die Autoren genannt werden.
-Beispielsweise wird in \emph{pandas} in der \gls{cff} Datei als Name \glqq The pandas development team\grqq{} und anschließend die Webseite \url{https://pandas.pydata.org/about/team.html} angegeben.
+Beispielsweise wird in \emph{pandas} in der \gls{cff}-Datei als Name \glqq The pandas development team\grqq{} und anschließend die Webseite \url{https://pandas.pydata.org/about/team.html} angegeben.
 Auf dieser Seite sind anschließend alle aktiven Autoren gelistet.
-In der Masterarbeit werden jedoch nur die Autoren in der \gls{cff} Datei mit Vor- und Nachnamen betrachtet.
+In der Masterarbeit werden jedoch nur die Autoren in der \gls{cff}-Datei mit Vor- und Nachnamen betrachtet.
 Es wird keine weitere Analyse anderer Quellen durchgeführt, welche möglicherweise in den Quellen verlinkt sind.
 Dadurch kann es wie in dem Fall von \emph{pandas} dazu kommen, dass Autoren, welche nicht direkt genannt werden, jedoch auf einer anderen Seite gelistet sind, nicht betrachtet werden.
 Dies schränkt die Ergebnisse der Masterarbeit ein, da nicht alle Autoren betrachtet werden.
@@ -81,7 +81,7 @@ Eine weitere Limitierung ist die Laufzeit der Datenbeschaffung.
 Diese wird besonders durch den Aufruf von \emph{git-quick-stats} beeinflusst, da das Programm für große Repositorys eine lange Laufzeit benötigt.
 Außerdem hat die \gls{ner} für die README und die Beschreibung eine hohe Laufzeit, weswegen für die README auch nur die letzten 50 Commits betrachtet werden.
 Um die Laufzeit weiter zu reduzieren, beispielsweise um sämtliche \gls{cff} Pakete auf GitHub analysieren zu können, wurde auf Faktoren, welche die Laufzeit erheblich erhöhen, verzichtet.
-Aus diesem Grund wurden bei der Analyse ausschließlich die \gls{cff} Dateien betrachtet.
+Aus diesem Grund wurden bei der Analyse ausschließlich die \gls{cff}-Dateien betrachtet.
 Zudem wurden für den Abgleich die Git-Autoren benötigt, welche ausschließlich in der neuesten Version beschafft wurden, sodass \emph{git-quick-stats} nur einmal aufgerufen werden musste.
 Dadurch konnte die Laufzeit der Datenbeschaffung für die gesamte \gls{cff} Liste mit 20.870 Einträgen auf dem internen HPC Server der Hochschule Wismar auf 55 Stunden reduziert werden.
 Der Server hat zwei Intel Xeon Gold 6346 Prozessoren mit jeweils 3,1 GHz je 16 Kerne verbaut.
@@ -116,9 +116,9 @@ Dies jedoch keine Garantie dafür genannt zu werden und in den meisten Fällen w
 Ein möglicher Schritt, welcher jedoch nicht umsetzbar ist, ist bei der Gründung des Paketes beteiligt zu sein.
 Dies geht aus der \autoref{fig:added_removed_authors} hervor.
 Sie zeigt, dass die meisten Autoren direkt zu Beginn genannt werden und anschließend kaum weitere Autoren hinzugefügt werden.
-Insgesamt wurden in allen Paketen der untersuchten Listen nur neun Autoren, der \gls{cff} oder \hologo{BibTeX} Datei nachträglich hinzugefügt.
+Insgesamt wurden in allen Paketen der untersuchten Listen nur neun Autoren, der \gls{cff} oder \hologo{BibTeX}-Datei nachträglich hinzugefügt.
 \autoref{fig:added_removed_authors_without_readme} zeigt jedoch, dass in den Dateien viel mehr Autoren insgesamt enthalten sind.
-Hierbei muss allerdings beachtet werden, dass die \gls{cff} Datei erst seit 2021 vermehrt verwendet wird, wie aus \autoref{fig:valid_cff_by_time} hervorgeht.
+Hierbei muss allerdings beachtet werden, dass die \gls{cff}-Datei erst seit 2021 vermehrt verwendet wird, wie aus \autoref{fig:valid_cff_by_time} hervorgeht.
 Dadurch sind erst drei Jahre vergangen, in welchen Autoren hinzugefügt werden konnten.
 Und diese Autoren müssten in den drei Jahren auch aktiv am Projekt beteiligt gewesen sein, um als Autor genannt zu werden.
 Ebenfalls spiegelt die \autoref{fig:total_authors_no_commits} dieses Verhalten wider.
@@ -138,7 +138,7 @@ Zudem zeigt es, in Verbindung mit \autoref{fig:common_authors}, dass Autoren mit
 Ein weiterer Indikator dafür ist die \autoref{fig:total_authors_no_commits}.
 Hier wird deutlich, dass viele genannte Autoren in den letzten Jahren keinen Commit getätigt haben.
 Dies lässt sich allerdings dadurch relativieren, dass die Statistik ebenfalls Pakete enthält, welche nicht mehr aktiv entwickelt werden, was allerdings bei den Top 100 Listen unwahrscheinlich ist.
-Des Weiteren ist die hohe Anzahl der invaliden \gls{cff} Dateien, welche in \autoref{fig:overall_valid_cff} und \autoref{fig:valid_cff_by_time} deutlich werden, ein Indikator dafür, dass die Pflege der Autoren den Entwicklern der Pakete nicht besonders wichtig zu scheinen sei.
+Des Weiteren ist die hohe Anzahl der invaliden \gls{cff}-Dateien, welche in \autoref{fig:overall_valid_cff} und \autoref{fig:valid_cff_by_time} deutlich werden, ein Indikator dafür, dass die Pflege der Autoren den Entwicklern der Pakete nicht besonders wichtig zu scheinen sei.
 
 Auch zeigt die Häufigkeit, mit der die Quellen aktualisiert werden, dass scheinbar kein großes Interesse darin besteht, die Autorenlisten zu pflegen.
 Aus \autoref{tab:average_time_last_update} wird deutlich, dass die zwei der drei untersuchten Quellen in fast jeder Liste durchschnittlich das letzte Jahr nicht aktualisiert wurden.

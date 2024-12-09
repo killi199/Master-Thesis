@@ -1,11 +1,11 @@
 \subsection{Citation File Format}
 \label{subsec:datenbeschaffung_cff}
-In diesem Unterabschnitt wird ähnlich wie im vorherigen Unterabschnitt die \gls{cff} Datei untersucht.
+In diesem Unterabschnitt wird ähnlich wie im vorherigen Unterabschnitt die \gls{cff}-Datei untersucht.
 Der Unterabschnitt ist dabei aufgeteilt in die allgemeinen Daten, welche für \gls{cff} und \grqq preferred-citation\glqq{} gelten und die spezifischen Daten, welche ausschließlich für die \grqq preferred-citation\glqq{} gelten.
-Die beiden Daten werden jeweils in einer \path{CITATION.cff} Datei gespeichert, wie es in den Grundlagen erläutert wurde.
+Die beiden Daten werden jeweils in einer \path{CITATION.cff}-Datei gespeichert, wie es in den Grundlagen erläutert wurde.
 Es wird ebenfalls ein zeitlicher Verlauf der Daten betrachtet, um die Änderungen in der Zeit zu analysieren.
 Dabei wird der Verlauf nicht auf 50 Zeitpunkte beschränkt, sondern in der gesamten Historie betrachtet.
-Da die \gls{cff} Datei in YAML geschrieben wird, wird die Bibliothek \emph{pyyaml} in der Version 6.0.2 verwendet, um die Datei zu lesen \autocite{noauthor_yamlpyyaml_2024}.
+Da die \gls{cff}-Datei in YAML geschrieben wird, wird die Bibliothek \emph{pyyaml} in der Version 6.0.2 verwendet, um die Datei zu lesen \autocite{noauthor_yamlpyyaml_2024}.
 
 In der \gls{cff} können für die eigentliche Zitation und für die \grqq preferred-citation\glqq{} Autoren angegeben werden.
 Diese werden jeweils getrennt extrahiert, anschließend mit den neuesten Git-Daten abgeglichen und in separaten Dateien gespeichert.
@@ -26,29 +26,29 @@ Zudem können in beiden Fällen ähnlich wie bei der Beschreibung allgemeine Dat
 Hierbei wird wie in der Beschreibung eine weitere CSV-Datei erstellt, welche die allgemeinen Daten enthält.
 In dem Fall der \gls{cff} werden zwei allgemeine Dateien erstellt, einmal für die \gls{cff} und einmal für die \glqq preferred-citation\grqq{}.
 Die Dateien heißen \path{cff.csv} und \path{cff_preferred_citation.csv}.
-Die Felder der \path{cff.csv} Datei sind in \autoref{tab:cff} aufgelistet und die der \path{cff_preferred_citation.csv} Datei in \autoref{tab:cff_preferred_citation}.
+Die Felder der \path{cff.csv}-Datei sind in \autoref{tab:cff} aufgelistet und die der \path{cff_preferred_citation.csv}-Datei in \autoref{tab:cff_preferred_citation}.
 In den beiden Dateien werden ebenfalls die Zeitpunkte \emph{commit date} und \emph{author date} gespeichert.
 
-In den Dateien wird ebenfalls gespeichert, ob die \gls{cff} Datei valide ist.
+In den Dateien wird ebenfalls gespeichert, ob die \gls{cff}-Datei valide ist.
 Hierbei wird das Programm \emph{cffconvert} in der Version 2.0.0 verwendet, um die Validität zu überprüfen \autocite{spaaks_cffconvert_2021}.
 Außerdem benötigt \emph{cffconvert} die Programme \emph{jsonschema} und \emph{pykwalify}, welche in der Masterarbeit in der Version 4.23.0 und 1.8.0 verwendet werden \autocites{noauthor_python-jsonschemajsonschema_2024}{grokzen_grokzenpykwalify_2024}.
-Diese werden von \emph{cffconvert} benötigt, um die \gls{cff} Datei zu validieren.
-Zusätzlich wird gespeichert, ob die \gls{cff} Datei mit dem Tool \emph{cffinit} erstellt wurde \autocite{spaaks_cffinit_2023}.
-Dies ist möglich, da \emph{cffinit} in der \gls{cff} Datei mehrere Kommentare einfügt, welche auf das Tool hinweisen.
-Es wird davon ausgegangen, dass \emph{cffinit} benutzt wurde, falls der Kommentar \glqq This CITATION.cff file was generated with cffinit.\grqq{} in der \gls{cff} Datei vorhanden ist.
+Diese werden von \emph{cffconvert} benötigt, um die \gls{cff}-Datei zu validieren.
+Zusätzlich wird gespeichert, ob die \gls{cff}-Datei mit dem Tool \emph{cffinit} erstellt wurde \autocite{spaaks_cffinit_2023}.
+Dies ist möglich, da \emph{cffinit} in der \gls{cff}-Datei mehrere Kommentare einfügt, welche auf das Tool hinweisen.
+Es wird davon ausgegangen, dass \emph{cffinit} benutzt wurde, falls der Kommentar \glqq This CITATION.cff file was generated with cffinit.\grqq{} in der \gls{cff}-Datei vorhanden ist.
 Dies ist jedoch kein sicherer Indikator, da der Kommentar auch manuell hinzugefügt und vor allem entfernt werden kann.
 Diese Werte werden jeweils in den allgemeinen Dateien gespeichert.
-Dies führt zu einer doppelten Speicherung, allerdings ist dadurch in beiden Dateien separat zu erkennen, ob die \gls{cff} Datei, aus denen die Daten extrahiert wurden, valide ist und ob \emph{cffinit} benutzt wurde.
+Dies führt zu einer doppelten Speicherung, allerdings ist dadurch in beiden Dateien separat zu erkennen, ob die \gls{cff}-Datei, aus denen die Daten extrahiert wurden, valide ist und ob \emph{cffinit} benutzt wurde.
 
-Alle weiteren Informationen werden direkt aus der \gls{cff} Datei extrahiert und in die eigene CSV Datenstruktur übertragen.
-Falls ein Wert dabei nicht in der \gls{cff} Datei vorhanden ist, wird der Eintrag in der CSV Datei leer gelassen.
+Alle weiteren Informationen werden direkt aus der \gls{cff}-Datei extrahiert und in die eigene CSV Datenstruktur übertragen.
+Falls ein Wert dabei nicht in der \gls{cff}-Datei vorhanden ist, wird der Eintrag in der CSV-Datei leer gelassen.
 Im Folgenden werden die Daten, welche direkt extrahiert werden, beschrieben.
 Eine extrahierte Information, welche in beiden Dateien, also der \path{cff.csv} und \path{cff_preferred_citation.csv} gespeichert wird, ist die \gls{doi} aus dem \gls{cff} Feld \glqq identifiers\grqq{}.
 In der Masterarbeit wird ausschließlich die erste \gls{doi} in der Liste der \glqq identifiers\grqq{} betrachtet.
 Diese wird in der allgemeinen Datei gespeichert, um später zu überprüfen, ob eine \gls{doi} in diesem Feld vorhanden ist.
 
 Zusätzlich wird in beiden Fällen das Feld \glqq date-released\grqq{} und die \glqq doi\grqq{} extrahiert und gespeichert.
-Die \glqq doi\grqq{} wird in den allgemeinen Dateien gespeichert, um im weiteren Verlauf zu überprüfen, ob eine \gls{doi} in der \gls{cff} Datei vorhanden ist.
+Die \glqq doi\grqq{} wird in den allgemeinen Dateien gespeichert, um im weiteren Verlauf zu überprüfen, ob eine \gls{doi} in der \gls{cff}-Datei vorhanden ist.
 Als letzte gemeinsame Information wird die \glqq type\grqq{} extrahiert und in den allgemeinen Dateien gespeichert.
 Dabei können wie in den Grundlagen erwähnt für die allgemeinen Informationen in der \gls{cff} nur \glqq software\grqq{} und \glqq dataset\grqq{} vorkommen.
 Für die allgemeinen Daten der \glqq preferred-citation\grqq{} können weitere Typen vorkommen, welche in den Grundlagen erläutert wurden.
@@ -62,9 +62,9 @@ Die Felder der Datei sind in \autoref{tab:cff_preferred_citation} aufgelistet.
     \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
         \textbf{Feld}              & \textbf{Beschreibung}                               \\ \midrule
-        \emph{cff\_valid}          & Gibt an, ob die \gls{cff} Datei valide ist          \\
+        \emph{cff\_valid}          & Gibt an, ob die \gls{cff}-Datei valide ist          \\
         \emph{cff\_init}           & Gibt an, ob \emph{cff\_init} benutzt wurde          \\
-        \emph{type}                & Typ der \gls{cff} Datei                             \\
+        \emph{type}                & Typ der \gls{cff}-Datei                             \\
         \emph{date-released}       & Datum an dem das Werk zugänglich gemacht wurde      \\
         \emph{doi}                 & Zu zitierende \gls{doi}                             \\
         \emph{identifier-doi}      & Die erste \gls{doi} in den \glqq identifiers\grqq{} \\
@@ -72,19 +72,19 @@ Die Felder der Datei sind in \autoref{tab:cff_preferred_citation} aufgelistet.
         \emph{authored\_datetime}  & Zeitpunkt des \emph{author date}                    \\
         \bottomrule
     \end{tabularx}
-    \caption{Felder der \texttt{cff.csv} Datei}
+    \caption{Felder der \texttt{cff.csv}-Datei}
     \label{tab:cff}
     \small
-    Die Tabelle zeigt die Felder der \path{cff.csv} Datei. Für jede Änderung der \gls{cff} Datei werden die dargestellten Werte gespeichert. Die Felder \emph{date-released}, \emph{doi} und \emph{identifier-doi} sind optional.
+    Die Tabelle zeigt die Felder der \path{cff.csv}-Datei. Für jede Änderung der \gls{cff}-Datei werden die dargestellten Werte gespeichert. Die Felder \emph{date-released}, \emph{doi} und \emph{identifier-doi} sind optional.
 \end{table}
 
 \begin{table}
     \begin{tabularx}{\textwidth}{XL{10.2cm}}
         \toprule
         \textbf{Feld}              & \textbf{Beschreibung}                               \\ \midrule
-        \emph{cff\_valid}          & Gibt an, ob die \gls{cff} Datei valide ist          \\
+        \emph{cff\_valid}          & Gibt an, ob die \gls{cff}-Datei valide ist          \\
         \emph{cff\_init}           & Gibt an, ob \emph{cff\_init} benutzt wurde          \\
-        \emph{type}                & Typ der \gls{cff} Datei                             \\
+        \emph{type}                & Typ der \gls{cff}-Datei                             \\
         \emph{date-released}       & Datum an dem das Werk zugänglich gemacht wurde      \\
         \emph{date-published}      & Veröffentlichungsdatum                              \\
         \emph{year}                & Veröffentlichungsjahr                               \\
@@ -96,8 +96,8 @@ Die Felder der Datei sind in \autoref{tab:cff_preferred_citation} aufgelistet.
         \emph{authored\_datetime}  & Zeitpunkt des \emph{author date}                    \\
         \bottomrule
     \end{tabularx}
-    \caption{Felder der \texttt{cff\_preferred\_citation.csv} Datei}
+    \caption{Felder der \texttt{cff\_preferred\_citation.csv}-Datei}
     \label{tab:cff_preferred_citation}
     \small
-    Die Tabelle zeigt die Felder der \path{cff_preferred_citation.csv} Datei. Für jede Änderung der \gls{cff} Datei werden die dargestellten Werte gespeichert, falls das Feld \grqq preferred-citation\glqq{} angegeben ist. Die Felder \emph{date-released}, \emph{date-published}, \emph{year}, \emph{month}, \emph{doi}, \emph{collection-doi} und \emph{identifier-doi} sind optional.
+    Die Tabelle zeigt die Felder der \path{cff_preferred_citation.csv}-Datei. Für jede Änderung der \gls{cff}-Datei werden die dargestellten Werte gespeichert, falls das Feld \grqq preferred-citation\glqq{} angegeben ist. Die Felder \emph{date-released}, \emph{date-published}, \emph{year}, \emph{month}, \emph{doi}, \emph{collection-doi} und \emph{identifier-doi} sind optional.
 \end{table}
