@@ -22,31 +22,31 @@ Der Aufbau der einzelnen Git-Komponenten ist in \autoref{fig:git} dargestellt.
 Dabei ist zu erkennen, dass Git in einen Git-Server und Git-Anwendungen aufgeteilt wurde.
 
 \begin{figure}
-    {
-        \centering
-        \begin{tikzpicture}
-            [
-                block/.style = {rectangle, draw, fill=blue!20, text width=8cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
-                client/.style = {rectangle, draw, fill=blue!20, text width=3.5cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
-                arrow/.style = {thick,<->,>=stealth}
-            ]
-    
-            \node (server) [block] {Git-Repository-Hosting-Plattform};
-            \node (cli) [client, below=of server, xshift=-2.25cm] {Git-Befehlszeile};
-            \node (gui) [client, below=of server, xshift=+2.25cm] {Git-GUI Anwendungen};
+    {   
+        \begin{center}
+            \begin{tikzpicture}
+                [
+                    block/.style = {rectangle, draw, fill=blue!20, text width=8cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
+                    client/.style = {rectangle, draw, fill=blue!20, text width=3.5cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
+                    arrow/.style = {thick,<->,>=stealth}
+                ]
         
-            \draw[arrow] (cli.north) -- (server.south -| cli.north);
-            \draw[arrow] (gui.north) -- (server.south -| gui.north);
-            \draw[arrow] (cli) -- (gui);
+                \node (server) [block] {Git-Repository-Hosting-Plattform};
+                \node (cli) [client, below=of server, xshift=-2.25cm] {Git-Befehlszeile};
+                \node (gui) [client, below=of server, xshift=+2.25cm] {Git-GUI Anwendungen};
+            
+                \draw[arrow] (cli.north) -- (server.south -| cli.north);
+                \draw[arrow] (gui.north) -- (server.south -| gui.north);
+                \draw[arrow] (cli) -- (gui);
 
-            \node[left=0.1cm of server] {Git-Server};
-            \node[left=0.1cm of cli] {Git-Anwendungen};
-        
-        \end{tikzpicture}
+                \node[left=0.1cm of server] {Git-Server};
+                \node[left=0.1cm of cli] {Git-Anwendungen};
+            
+            \end{tikzpicture}
+        \end{center}
         \caption{Übersicht über die Git-Komponenten}
         \label{fig:git}
         \small
-        \raggedright
         Die Git-Komponenten bestehen aus einem Git-Server, welcher das Repository hostet, und Git-Anwendungen, welche auf das Repository zugreifen (indirekt aus \cite{ponuthorai_version_2022}).
     }
 \end{figure}

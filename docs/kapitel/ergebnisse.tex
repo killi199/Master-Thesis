@@ -32,7 +32,6 @@ Die Ergebnisse für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} sin
 Für die weiteren Listen sind die Ergebnisse in \autoref{tab:matching_results_auto_anhang} zu finden.
 
 \begin{table}
-    \centering
     \begin{tabularx}{\textwidth}{XR{3.8cm}R{3.8cm}}
         \toprule
         \textbf{Quelle}              & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
@@ -52,7 +51,6 @@ Für die weiteren Listen sind die Ergebnisse in \autoref{tab:matching_results_au
     \caption{Automatische Ergebnisse des Abgleichs}
     \label{tab:matching_results_auto}
     \small
-    \raggedright
     In der Tabelle sind die Ergebnisse des automatischen Abgleichs für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dargestellt. Die Werte geben an, wie viele der genannten Autoren in den Git-Repositorys gefunden wurden.
 \end{table}
 
@@ -89,7 +87,6 @@ Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matc
 % TODO confusion matrix und f1 score für alle listen zusammen (addiert) angeben diese hier zeigen und alle anderen im Anhang referenzieren.
 
 \begin{table}
-    \centering
     \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
@@ -109,7 +106,7 @@ Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matc
     \caption{Manuelle Ergebnisse des Abgleichs für alle Listen zusammen}
     \label{tab:matching_results_manual}
     \small
-    \raggedright
+    In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen eingetragen. Dabei wurde für jede Quelle die Anzahl der richtig positiven (TP), falsch negativen (FN), falsch positiven (FP) und richtig negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
     In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen. Dabei wurde für jede Quelle die Anzahl der richtig positiven (TP), falsch negativen (FN), falsch positiven (FP) und richtig negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
 \end{table}
 
@@ -139,7 +136,6 @@ Inhalt sind in diesem konkreten Fall automatisch generierte README Dateien für 
     \caption{Commits und geänderte Zeilen gegenübergestellt}
     \label{fig:commits_vs_changed_lines}
     \small
-    \raggedright
     Die Abbildungen zeigen für die Autoren in den Paketen in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} die Anzahl der Commits gegenüber der Anzahl der geänderten Zeilen. Die x-Achse stellt die Anzahl der Commits dar und die y-Achse die Anzahl der geänderten Zeilen. Es wird eine logarithmische Skalierung verwendet.
 \end{figure}
 
@@ -207,7 +203,6 @@ Dadurch sind alle Git-Autoren zu 100 \% als \gls{pypi} Maintainer genannt und es
     \caption{Anteil der Top-Git-Autoren an den genannten Autoren}
     \label{fig:common_authors}
     \small
-    \raggedright
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top-Git-Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git-Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git-Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
 \end{figure}
 
@@ -269,7 +264,6 @@ Dieser ist jedoch erst auf Rang 37 der Top-Git-Autoren gemessen nach Commits gel
     \caption{Anteil der genannten Autoren unter den Top-Git-Autoren}
     \label{fig:common_authors_2}
     \small
-    \raggedright
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top-Git-Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git-Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git-Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Autoren in der \gls{cff} sind zu y \% unter den Top x Commitern.
 \end{figure}
 
@@ -300,7 +294,6 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
     \caption{Autoren ohne Commits}
     \label{fig:total_authors_no_commits}
     \small
-    \raggedright
     Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse werden die Jahre dargestellt. Die y-Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
 \end{figure}
 
@@ -339,7 +332,6 @@ Dabei ist auffällig, dass der Anteil der validen \gls{cff} Dateien zwar größe
     \caption{Validität der \gls{cff} Dateien}
     \label{fig:overall_valid_cff}
     \small
-    \raggedright
     Die \autoref{fig:overall_valid_cff_not_full} zeigt für die verschiedenen analysierten Listen, wie viele der vorhandenen \gls{cff} Dateien valide sind, und ob \emph{cffinit} verwendet wurde oder nicht. Die \autoref{fig:overall_valid_cff_full} zeigt die gleichen Informationen für alle \gls{cff} Dateien auf GitHub.
 \end{figure}
 
@@ -371,17 +363,17 @@ Alle anderen 638 Pakete haben einen anderen Typ der Zitation angegeben und sind 
         \caption{\glqq preferred-citation\grqq{} \gls{cff}}
         \label{fig:citation_counts_preferred_citation_cff}
     \end{subfigure}
-    \centering
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/citation_counts_bib.svg}
-        \caption{\hologo{BibTeX}}
-        \label{fig:citation_counts_bib}
-    \end{subfigure}
+    \begin{center}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/citation_counts_bib.svg}
+            \caption{\hologo{BibTeX}}
+            \label{fig:citation_counts_bib}
+        \end{subfigure}
+    \end{center}
     \caption{Typ der angegebenen Zitationen der einzelnen Quellen}
     \label{fig:citation_counts}
     \small
-    \raggedright
     Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, welcher Typ von Zitation angegeben wurde. Es ist darauf zu achten, dass die y-Achsen unterschiedlich skaliert sind.
 \end{figure}
 
@@ -405,17 +397,17 @@ Der Aufbau ist dabei wie zuvor.
         \caption{\glqq preferred-citation\grqq{} \gls{cff}}
         \label{fig:preferred_citation_doi}
     \end{subfigure}
-    \centering
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/bib_doi.svg}
-        \caption{\hologo{BibTeX}}
-        \label{fig:bib_doi}
-    \end{subfigure}
+    \begin{center}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/bib_doi.svg}
+            \caption{\hologo{BibTeX}}
+            \label{fig:bib_doi}
+        \end{subfigure}
+    \end{center}
     \caption{Verwendung von \gls{doi}s in den Zitationen der einzelnen Quellen}
     \label{fig:doi}
     \small
-    \raggedright
     Die Abbildungen zeigen für die drei unterschiedlichen Quellen, jeweils für alle fünf untersuchten Listen, wie oft eine \gls{doi} auf verschiedenen Arten in den Zitationen angegeben wurde.
 \end{figure}
 
@@ -435,7 +427,6 @@ Der Aufbau ist dabei wie zuvor.
     \caption{Verwendung von \gls{doi}s in allen \gls{cff} auf GitHub}
     \label{fig:full_doi}
     \small
-    \raggedright
     Die Abbildungen zeigen für die \gls{cff} und \glqq preferred-citation\grqq{} Quellen, jeweils für alle \gls{cff} Dateien auf GitHub, wie oft eine \gls{doi} auf verschiedenen Arten in den Zitationen angegeben wurde.
 \end{figure}
 
@@ -450,7 +441,6 @@ In der Tabelle lässt sich beispielsweise ablesen, dass die README über alle Pa
 Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die \hologo{BibTeX} Dateien am längsten nicht aktualisiert wurden.
 
 \begin{table}
-    \centering
     \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ 
@@ -463,7 +453,6 @@ Es ist außerdem auffällig, dass die README Dateien am aktuellsten sind und die
     \caption{Durchschnittliche Zeit seit der letzten Aktualisierung}
     \label{tab:average_time_last_update}
     \small
-    \raggedright
     Die Tabelle gibt an, wie viel Zeit im Durchschnitt über alle Pakete seit der letzten Aktualisierung der Quelle vergangen ist. Die Zeit ist in Tagen angegeben.
 \end{table}
 
@@ -497,7 +486,6 @@ Außerdem ist auffällig, dass 14 der Pakete in der \gls{pypi} \gls{cff} Liste e
     \caption{Übereinstimmung der Autoren in den Paketen}
     \label{fig:similarities}
     \small
-    \raggedright
     Das Histogramm zeigt für die \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Listen, wie ähnlich die Autoren in den Paketen innerhalb der Quellen sind. Auf der x-Achse wird die Ähnlichkeit in Prozent angegeben. Die y-Achse stellt die absolute Anzahl der Pakete dar, welche die entsprechende Ähnlichkeit aufweisen.
 \end{figure}
 
@@ -534,17 +522,17 @@ Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub-Repositorys eine 
         \caption{\gls{cran} \gls{cff}}
         \label{fig:valid_cff_by_time_cran_cff}
     \end{subfigure}
-    \centering
-    \begin{subfigure}{.5\textwidth}
-        \centering
-        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/valid_cff_by_time/overall_valid_cff_cff_full.svg}
-        \caption{Alle \gls{cff} Dateien}
-        \label{fig:valid_cff_by_time_full}
-    \end{subfigure}
+    \begin{center}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/valid_cff_by_time/overall_valid_cff_cff_full.svg}
+            \caption{Alle \gls{cff} Dateien}
+            \label{fig:valid_cff_by_time_full}
+        \end{subfigure}
+    \end{center}
     \caption{Validität der \gls{cff} Dateien über die Zeit}
     \label{fig:valid_cff_by_time}
     \small
-    \raggedright
     Die Abbildung zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind. Die x-Achse stellt die Zeit dar und die y-Achse die Anzahl der validen und invaliden \gls{cff} Dateien. Dabei wird außerdem in Repositorys, welche \emph{cffinit} verwenden und Repositorys, welche dies nicht verwenden unterschieden.
 \end{figure}
 
@@ -625,7 +613,6 @@ Insgesamt ergibt das $\frac{2+0+0}{3}\approx1$, wodurch der Wert in der Zelle be
 Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da die eigentlichen Autoren bis zum Tag des Schreibens nicht entfernt worden sind.
 
 \begin{table}
-    \centering
     \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
@@ -638,12 +625,10 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
     \caption{Durchschnittliche Verweildauer der Autoren in den Quellen}
     \label{tab:average_lifespans}
     \small
-    \raggedright
     Die Tabelle gibt an, wie lange im Durchschnitt über alle Pakete ein Autor in den Quellen genannt wird. Die Zeit ist in Tagen angegeben.
 \end{table}
 
 \begin{table}
-    \centering
     \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
@@ -656,7 +641,6 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
     \caption{Durchschnittliche Verweildauer der Autoren in den Quellen inkl. Autoren, welche nie entfernt wurden}
     \label{tab:average_lifespans_until_today}
     \small
-    \raggedright
     Die Tabelle gibt an, wie lange im Durchschnitt über alle Pakete ein Autor in den Quellen genannt wird. Falls ein Autor nicht entfernt wurde, wurde der 02.12.2024 als Enddatum festgelegt. Die Zeit ist in Tagen angegeben.
 \end{table}
 
@@ -668,7 +652,6 @@ Beispielsweise wurde diese in der \gls{pypi} \gls{cff} Liste im Durchschnitt all
 Hingegen wird die \hologo{BibTeX} Datei in der \gls{pypi} Liste im Durchschnitt nur alle 676 Tage aktualisiert.
 
 \begin{table}
-    \centering
     \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
@@ -680,6 +663,5 @@ Hingegen wird die \hologo{BibTeX} Datei in der \gls{pypi} Liste im Durchschnitt 
     \caption{Durchschnittliche Zeit zwischen der Aktualisierung der Quellen}
     \label{tab:average_time_between_updates}
     \small
-    \raggedright
     Die Tabelle gibt an, wie oft im Durchschnitt über alle Pakete die Quellen aktualisiert werden. Die Zeit ist in Tagen angegeben.
 \end{table}
