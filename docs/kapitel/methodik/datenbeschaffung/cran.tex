@@ -4,10 +4,10 @@
 In dieser Datei sind ebenfalls ausschließlich der Name des Pakets und die Anzahl der Downloads auf \gls{cran} enthalten.
 Aus diesem Grund wird zu Beginn eine Anfrage mittels \emph{aiohttp} an die von METACRAN bereitgestellte API gestellt, um die Metadaten des Pakets zu erhalten.
 In den Metadaten kann der Link eines GitHub-Repositorys enthalten sein.
-Falls kein Link zu einem GitHub-Repository vorhanden ist, wird das Paket ebenfalls nicht weiter betrachtet.
+Falls kein Link zu einem GitHub-Repository vorhanden ist, wird das Paket nicht weiter betrachtet.
 
 Anschließend werden die weiteren Daten verarbeitet, welche von der API bereitgestellt werden.
-Von der API wird das Feld \glqq Authors@R\grqq{} bereitgestellt.
+Beispielsweise wird das Feld \glqq Authors@R\grqq{} bereitgestellt.
 Dieses Feld beinhaltet die Autoren mit dem Namen, der E-Mail und einer ORCID iD des Pakets in einer in R formatierten Zeichenfolge.
 Dabei müssen nicht zwingend alle Informationen vorhanden sein.
 Des Weiteren haben Autoren eine Rolle zugeordnet.
@@ -58,7 +58,7 @@ Das letzte Feld, welches von der API verarbeitet wird, ist das Feld \glqq Descri
 In diesem Feld ist die Beschreibung des Pakets enthalten.
 Dabei wird die Verarbeitung wie in \autoref{subsec:datenbeschaffung_pypi} für die Beschreibung von \gls{pypi} durchgeführt.
 Es wird ebenfalls die \gls{ner} Bibliothek \emph{spaCy} verwendet, um die Autoren zu extrahieren.
-Anschließend werden Namen der extrahierten Autoren in der Datei \path{description_authors.csv} nach einem Abgleich mit den Git-Daten gespeichert.
+Anschließend werden die Namen der extrahierten Autoren in der Datei \path{description_authors.csv} nach einem Abgleich mit den Git-Daten gespeichert.
 Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 
 \begin{table}
@@ -75,5 +75,5 @@ Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
     \label{tab:cran_authors}
     \small
     \raggedright
-    Die Tabelle zeigt die Felder der \texttt{cran\_authors.csv}, \texttt{TIMESTAMP\_cff\_authors(\_new).csv} und \texttt{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei. Für jeden Autor der betrachteten Software wird der Name, die E-Mail und die ORCID iD angegeben, falls diese vorhanden sind. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+    Die Tabelle zeigt die Felder der \path{cran\_authors.csv}, \path{TIMESTAMP\_cff\_authors(\_new).csv} und \path{TIMESTAMP\_cff\_preferred\_citation\_authors(\_new).csv} Datei. Für jeden Autor der betrachteten Software wird der Name, die E-Mail und die ORCID iD angegeben, falls diese vorhanden sind. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
 \end{table}

@@ -17,18 +17,18 @@ Im Gegensatz dazu sind in \gls{cran} aktuell mehr als 20.000 Pakete verfügbar \
 \subsection{PyPI}
 \label{subsec:paketverwaltung_pypi}
 \gls{pypi} hat zu Beginn des Jahres 2024 ein \gls{pep} veröffentlicht, welches die Verifizierung von Daten auf \gls{pypi} beschreibt \autocite{python_software_foundation_pep_2024}.
-In dem \gls{pep} werden Änderungen an der API beschrieben, welche zum Hochladen von Paketen genutzt wird, um sogenannte \glqq Attestation objects \grqq{} zu unterstützen, in denen digitale Signaturen enthalten sind.
+In dem \gls{pep} werden Änderungen an der API beschrieben, welche zum Hochladen von Paketen genutzt wird, um sogenannte \glqq Attestation objects\grqq{} zu unterstützen, in denen digitale Signaturen enthalten sind.
 Das Ziel ist es verifizierte Daten auf \gls{pypi} zu ermöglichen, sodass Anwender direkt erkennen können, ob die Daten vertrauenswürdig sind.
 Aktuell wird dieses \gls{pep} umgesetzt, wodurch es zu vielen Änderungen in der API und auch in der Weboberfläche von \gls{pypi} kommt.
 
 Außerdem sind noch nicht alle Daten über die APIs erreichbar und es ist auch aktuell nicht über die API erkennbar, ob es sich um verifizierte oder nicht verifizierte Daten handelt.
-Ein Beispiel für verifizierte Daten sind Links, beispielsweise auf GitHub.
+Ein Beispiel für verifizierte Daten sind Links, beispielsweise zu GitHub.
 Diese Links werden von \gls{pypi} als verifiziert angesehen, wenn der Upload des Pakets auf \gls{pypi} über eine GitHub-Action erfolgt.
 Zudem werden die Personen als verifiziert dargestellt, welche in \gls{pypi} als Owner oder Betreuer des Pakets eingetragen sind, sie haben somit einen Account bei \gls{pypi}.
 Der dargestellte Owner kann nicht über eine API abgefragt werden.
 
 Die dargestellten GitHub-Statistiken werden dabei von \gls{pypi} ermittelt und nicht über APIs ausgegeben.
-Das Ziel von \gls{pypi} ist es, dass alle Daten verifiziert werden können und keine Daten mehr in der unverifizierten Form vorliegen.
+Das Ziel von \gls{pypi} ist es, dass alle Daten verifiziert werden können und keine Daten in der unverifizierten Form vorliegen.
 
 \begin{figure}
     \centering
@@ -48,8 +48,8 @@ Im Folgenden werden auf einige der Zugriffsmöglichkeiten eingegangen, welche mi
 % TODO ggf. die nicht verifizierten Daten stammen aus der Python toml (stammen die Daten wirklich alle aus der toml?) Falls ja das erwähnen und erklären, dass die Daten direkt von dem Python-Paket stammen und pypi diese nur durchreicht
 Die JSON-API ist die bevorzugt zu verwendende API von \gls{pypi} und bietet die Möglichkeit, die Metadaten eines Pakets abzufragen \autocite{python_software_foundation_warehouse_2024}.
 Diese API ist nicht in der Anzahl der Anfragen beschränkt.
-Dabei werden die Daten der neuesten Version des Pakets zurückgegeben.
-Die Werte der Metadaten stammen aus den Daten, welche beim Hochladen auf \gls{pypi} angegeben wurden.
+Daten der neuesten Version des Pakets werden von der API zurückgegeben.
+Die Werte in den Metadaten stammen aus den Daten, welche beim Hochladen auf \gls{pypi} angegeben wurden.
 Die Daten des ersten Uploads eines Releases werden dabei als Metadaten der Version gespeichert und bei weiteren Uploads dieser Version nicht überschrieben.
 
 Inhalt der Metadaten sind beispielsweise die Autoren und Maintainer zuzüglich deren E-Mail-Adresse, die Beschreibung, Lizenz und Links zu unterschiedlichen Quellen, beispielsweise einem GitHub-Repository \autocite{python_software_foundation_warehouse_2024}.
@@ -58,8 +58,6 @@ Es ist jedoch auch möglich, eine eigene Beschreibung für \gls{pypi} anzugeben,
 Die Metadaten werden von den Entwicklern des Pakets eingetragen.
 In \autoref{fig:pypi_verified_unverified_details} sind einige der Metadaten des Pakets \emph{matplotlib} unter dem Punkt \glqq Meta\grqq{} dargestellt.
 Weitere Daten sind unter dem Punkt \glqq Projekt-Links\grqq{} unter den verifizierten Details dargestellt.
-Aktuell gibt die JSON-API noch keine Auskunft darüber, ob die Daten verifiziert sind oder nicht.
-Die Weboberfläche stellt dies bereits dar.
 
 Die Autoren und Maintainer aus den Metadaten müssen nicht den verifizierten Betreuern und Owner des Pakets auf \gls{pypi} entsprechen, da dies unterschiedliche Systeme sind.
 Zum einen sind es die Benutzer, welche Rechte auf \gls{pypi} haben, um das Paket dort anzupassen und zum anderen sind es die Personen, welche durch die Entwickler des Pakets angegeben werden.
@@ -72,7 +70,7 @@ Die verifizierten Betreuer und Owner können aktuell nicht über die JSON-API ab
 \label{subsubsec:pypi_xml_rpc}
 Die \gls{pypi} XML-RPC-API ist eine veraltete API, welche jedoch noch genutzt werden kann, um einige Informationen zu den Paketen abzufragen.
 Es wird empfohlen, diese API nicht mehr zu verwenden und auf den RSS-Feed oder die JSON-API umzusteigen \autocite{python_software_foundation_warehouse_2024}.
-Dadurch ist die API stark limitiert in der Anzahl der möglichen Anfragen und auch die Abstände zwischen den Anfragen müssen relativ groß sein.
+Dadurch ist die API in der Anzahl der möglichen Anfragen stark limitiert und auch die Abstände zwischen den Anfragen müssen relativ groß sein.
 \gls{pypi} macht keine genauen Angaben darüber, wie viele Anfragen in welchem Zeitraum möglich sind.
 Diese API ist jedoch die einzige Quelle, um die Betreuer eines Pakets abzufragen, ohne einen Web-Scraper einsetzen zu müssen.
 Web-Scraping bezeichnet dabei das Extrahieren von Daten aus Webseiten, indem der HTML-Code der Webseite analysiert wird \autocite{richardson_beautifulsoup4_2024}.

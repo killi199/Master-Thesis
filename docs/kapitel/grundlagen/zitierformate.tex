@@ -2,13 +2,13 @@
 \label{sec:zitierformate}
 In der Wissenschaft gibt es viele verschiedene Zitierweisen, die sich je nach Fachgebiet unterscheiden.
 In dieser Arbeit soll jedoch nicht auf die verschiedenen Zitierweisen eingegangen werden, sondern auf Zitierformate, welche für die Zitation verwendet werden können und die Datenstruktur hinter der Zitation beschreiben.
-Hierbei gibt es ebenfalls unterschiedliche Formate, wobei sich in dieser Arbeit auf das \gls{cff} und das \hologo{BibTeX}-Format beschränkt werden.
+Hierbei gibt es ebenfalls unterschiedliche Formate, wobei sich in dieser Arbeit auf das \gls{cff} und das \hologo{BibTeX}-Format beschränkt wird.
 Das \gls{cff} ist ein Format, welches speziell für die Zitation von Software entwickelt wurde, weshalb es in dieser Arbeit besonders interessant ist.
-Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann und von vielen eingesetzt wird.
+Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann.
 
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
-Das \gls{cff} ist ein Format, welches in der Datei \mintinline{text}{CITATION.cff} gespeichert wird und in YAML 1.2 geschrieben wird. 
+Das \gls{cff} ist ein Format, welches in der \mintinline{text}{CITATION.cff} Datei gespeichert wird und in YAML 1.2 geschrieben wird. 
 Das Format beschreibt die Zitation von Software und kann von Menschen und Maschinen gelesen werden.
 Es enthält Metadaten, welche für die Zitation von Software benötigt werden.
 Außerdem wird es öffentlich auf GitHub verwaltet und ist dort weit verbreitet.
@@ -64,7 +64,7 @@ Das Feld \glqq type\grqq{} ist zwingend erforderlich, hat jedoch als Standardwer
 Es gibt an, ob es sich um eine Software oder einen Datensatz handelt.
 Dabei sind lediglich die Werte \glqq software\grqq{} und \glqq dataset\grqq{} erlaubt.
 Das Feld \glqq date-released\grqq{} gibt an, wann die Software oder der Datensatz veröffentlicht wurde.
-Das Feld \glqq doi\grqq{} kann eine \gls{doi} der Software oder des Datensatzes enthalten.
+Das Feld \glqq doi\grqq{} kann einen \glspl{doi} der Software oder des Datensatzes enthalten.
 Mittels \glqq identifiers\grqq{} können weitere Identifikatoren angegeben werden, wie z. B. eine \gls{doi} oder eine URL, wobei die \glqq identifiers\grqq{} mit einer Beschreibung erweitert werden können.
 Die beschriebenen Felder können zusätzlich alle unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um eine andere Arbeit zu referenzieren.
 
@@ -84,7 +84,7 @@ Dabei wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
 \subsection{\hologo{BibTeX}}
 \label{subsec:bibtex_format}
 \hologo{BibTeX} ist eine Software, welche zur Erstellung von Literaturangaben und -verzeichnissen in \LaTeX{}-Dokumenten verwendet wird.
-Außerdem existiert mit \hologo{BibTeX} ein gleichnamiges Format, welches in der Datei \mintinline{text}{CITATION.bib} gespeichert wird und auf keinem anderen Format basiert.
+Außerdem existiert mit \hologo{BibTeX} ein gleichnamiges Format, welches in der \mintinline{text}{CITATION.bib} Datei gespeichert wird und auf keinem anderen Format basiert.
 \hologo{BibTeX} ist ein weit verbreiteter Standard und wird von vielen verwendet, um Literatur zu zitieren.
 Insgesamt haben Stand 07.11.2024 2.144 Repositorys auf GitHub eine \mintinline{text}{CITATION.bib}-Datei.
 Das Format beschreibt die Zitation von Literatur und kann von Menschen und Maschinen gelesen werden.
