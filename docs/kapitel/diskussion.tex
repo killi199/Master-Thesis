@@ -32,7 +32,7 @@ In diesem Kapitel wird strukturiert auf folgende Limitierungen eingegangen, welc
 
 \subsection*{Git Statistik}
 \label{sec:git_statistik}
-In \autoref{sec:versionsverwaltung} wurde beschrieben, dass Autoren in Git ihren Namen und ihre E-Mail-Adresse ohne Einschränkungen eigenständig eintragen.
+In \autoref{sec:versionsverwaltung} wurde beschrieben, dass Autoren in Git ihren Namen und ihre E-Mail-Adresse ohne Einschränkungen eigenständig eintragen können.
 Dies bedeutet ebenfalls, dass ein Autor im Verlauf der Zeit seinen Namen und/ oder die E-Mail-Adresse ändern kann.
 Dadurch kann ein und dieselbe Person mit unterschiedlichen Git Namen unterschiedlich viele Commits erstellt haben.
 Dies ist für die Masterarbeit nicht erwünscht, da möglichst ein Autor nur einmal in den Daten vorkommen soll und sämtliche Commits diesem Autor angerechnet werden sollen.
@@ -58,7 +58,7 @@ Aber auch bei einem erneuten Abgleich würde dies die Ergebnisse durch die Ungen
 \label{sec:autoren_ohne_commits}
 Eine weitere Limitierung, welche bereits im Verlauf der Masterarbeit häufiger thematisiert wurde, ist, dass Autoren als Autor genannt werden können und auch sollten, obwohl sie keinen Quellcode geschrieben haben.
 Eine reine Betrachtung der geleisteten Arbeit anhand der Änderungen am Quellcode, wie sie in der Masterarbeit durchgeführt wurde, ist daher nicht ausreichend, um das gesamte Spektrum der Arbeit von Autoren zu erfassen.
-Aus diesem Grund kommt es in der Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht unter den Git-Autoren auftauchen.
+Aus diesem Grund kommt es in der Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht als Git-Autoren gelistet sind.
 Dadurch können Ergebnisse wie beispielsweise in \autoref{fig:common_authors_2} schlechter ausfallen, da nur auf Git-Autoren geprüft wird.
 Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentation gearbeitet haben oder an der Organisation des Projekts beteiligt waren.
 
@@ -72,20 +72,20 @@ Es wird keine weitere Analyse anderer Quellen durchgeführt, welche möglicherwe
 Dadurch kann es wie in dem Fall von \emph{pandas} dazu kommen, dass Autoren, welche nicht direkt genannt werden, jedoch auf einer anderen Seite gelistet sind, nicht betrachtet werden.
 Dies schränkt die Ergebnisse der Masterarbeit ein, da nicht alle Autoren betrachtet werden.
 Eine Betrachtung der verlinkten Seiten würde jedoch einen erheblichen Mehraufwand bedeuten, da für jedes Paket die verlinkten Seiten analysiert werden müssten.
-Außerdem sind die verlinkten Seiten unterschiedlich aufgebaut, sodass die Komplexität dadurch ebenfalls gesteigert würde.
+Außerdem sind die verlinkten Seiten unterschiedlich aufgebaut, sodass die Komplexität dadurch ebenfalls gesteigert wäre.
 Aus diesem Grund wurde in der Masterarbeit darauf verzichtet, die verlinkten Seiten zu analysieren und mit weniger genannten Autoren gearbeitet.
 
 \subsection*{Ausführungszeit der Datenbeschaffung}
 \label{sec:ausfuehrungszeit_der_datenbeschaffung}
 Eine weitere Limitierung ist die Laufzeit der Datenbeschaffung.
 Diese wird besonders durch den Aufruf von \emph{git-quick-stats} beeinflusst, da das Programm für große Repositorys eine lange Laufzeit benötigt.
-Außerdem hat die \gls{ner} für die README und die Beschreibung eine hohe Laufzeit, weswegen für die README auch nur die letzten 50 Commits betrachtet werden.
+Außerdem hat die \gls{ner} für die README und die Beschreibung eine hohe Laufzeit, weswegen für die README nur die letzten 50 Commits betrachtet werden.
 Um die Laufzeit weiter zu reduzieren, beispielsweise um sämtliche \gls{cff} Pakete auf GitHub analysieren zu können, wurde auf Faktoren, welche die Laufzeit erheblich erhöhen, verzichtet.
 Aus diesem Grund wurden bei der Analyse ausschließlich die \gls{cff}-Dateien betrachtet.
 Zudem wurden für den Abgleich die Git-Autoren benötigt, welche ausschließlich in der neuesten Version beschafft wurden, sodass \emph{git-quick-stats} nur einmal aufgerufen werden musste.
 Dadurch konnte die Laufzeit der Datenbeschaffung für die gesamte \gls{cff} Liste mit 20.870 Einträgen auf dem internen HPC Server der Hochschule Wismar auf 55 Stunden reduziert werden.
 Der Server hat zwei Intel Xeon Gold 6346 Prozessoren mit jeweils 3,1 GHz je 16 Kerne verbaut.
-Bei Betrachtung aller Quellen hätte dieser Prozess erheblich längere Zeit in Anspruch genommen.
+Bei Betrachtung aller Quellen hätte dieser Prozess erheblich mehr Zeit in Anspruch genommen.
 
 \section{Wie gut können Autoren abgeglichen werden?}
 \label{sec:abgleich_diskussion}
@@ -98,12 +98,13 @@ Bei Betrachtung aller Quellen hätte dieser Prozess erheblich längere Zeit in A
 % TODO auf schlechte NER eingehen und das dadurch die werte für readme und beschreibung nicht so gut sind
 % TODO auf keine Person eingehen
 % TODO Hier das noch diskutieren in dem gleichen Atemzug wo ich erwähne, dass viele genannte Autoren gar keine Personen sind: Falls ein Autor angestellt ist bei z.B. google und google wird als author genannt ob der individuelle verantwortliche denn überhaupt genannt werden sollte bzw. muss? Weil er bekommt ja geld dafür, dass er daran arbeitet. In normalen Firmen steht auch nicht in der Software wer jetzt beipielsweise Spotify programmiert hat.
+% TODO Unbedingt Vergleich von nur einem Buchstaben erwähnen referenziere das!
 
 \section{Was muss ein Softwareentwickler leisten, um als Autor genannt zu werden?}
 \label{sec:zitationsfaehiger_autor_diskussion}
 Bei der Beantwortung der Frage muss beachtet werden, dass die Aussagen nur allgemein getroffen werden können und nicht für alle Pakete gelten.
 Einzelne Pakete können natürlich unterschiedlich sein und andere Anforderungen an die Autoren stellen.
-Nur weil ein Paket alle Autoren nennt, welche mindestens einen Commit getätigt hat, bedeutet das nicht, dass ein anderes Paket ebenfalls diesen Ansatz verfolgt.
+Nur weil ein Paket alle Autoren nennt, welche mindestens einen Commit getätigt haben, bedeutet das nicht, dass ein anderes Paket ebenfalls diesen Ansatz verfolgt.
 Die Ergebnisse in \autoref{chap:ergebnisse} zeigen im Allgemeinen aggregierte Werte für alle Pakete einer Liste und aus diesem Grund wird die Frage ebenfalls allgemeingültig diskutiert.
 
 Die \autoref{fig:common_authors} hat gezeigt, dass Autoren mit vielen Commits über alle Pakete betrachtet häufiger als Autoren genannt werden.
@@ -141,17 +142,17 @@ Dies lässt sich allerdings dadurch relativieren, dass die Statistik ebenfalls P
 Des Weiteren ist die hohe Anzahl der invaliden \gls{cff}-Dateien, welche in \autoref{fig:overall_valid_cff} und \autoref{fig:valid_cff_by_time} deutlich werden, ein Indikator dafür, dass die Pflege der Autoren den Entwicklern der Pakete nicht besonders wichtig zu scheinen sei.
 
 Auch zeigt die Häufigkeit, mit der die Quellen aktualisiert werden, dass scheinbar kein großes Interesse darin besteht, die Autorenlisten zu pflegen.
-Aus \autoref{tab:average_time_last_update} wird deutlich, dass die zwei der drei untersuchten Quellen in fast jeder Liste durchschnittlich das letzte Jahr nicht aktualisiert wurden.
+Aus \autoref{tab:average_time_last_update} wird deutlich, dass zwei der drei untersuchten Quellen in fast jeder Liste durchschnittlich das letzte Jahr nicht aktualisiert wurden.
 Die README wird dabei öfter aktualisiert, wobei berücksichtigt werden muss, dass in der README nicht nur Autoren, sondern auch in vielen Fällen beispielsweise die Dokumentation vorhanden ist.
 Außerdem muss berücksichtigt werden, dass ein Jahr in der Softwareentwicklung keine lange Zeit ist und neue Autoren innerhalb dieser Zeit kaum hinzugefügt werden können, da ein Einarbeiten und etablieren in ein großes Softwareprojekt innerhalb eines Jahres schwer möglich ist.
-Dahingegen ist dies bei der \hologo{BibTeX} Quelle anders, da hier zwei bis drei Jahre die letzte Aktualisierung zurückliegt, in der die Autorenliste ggf. um weitere Autoren ergänzt werden könnte.
+Dahingegen ist dies bei der \hologo{BibTeX} Quelle anders, da hier die letzte Aktualisierung zwei bis drei Jahre zurückliegt in der die Autorenliste ggf. um weitere Autoren ergänzt hätte werden können.
 
 \autoref{fig:similarities} zeigt, dass die Übereinstimmung der Autoren über die Quellen hinweg gering ist.
 Besonders in der \gls{pypi} \gls{cff} Liste wird dies deutlich.
 Dabei werden allerdings auch Quellen wie die README betrachtet, in welcher bei vielen Paketen keine oder kaum Autoren genannt werden.
 Auch ist die Abbildung erneut stark abhängig von dem Abgleich in der Datenbeschaffung.
 Allerdings lässt sich hier erneut erkennen, dass die Autoren in den Quellen nicht automatisch gepflegt werden.
-Des Weiteren zeigen \autoref{tab:average_lifespans}, \autoref{tab:average_lifespans_until_today} und \autoref{fig:added_removed_authors}, dass einmal hinzugefügte Autoren in den meisten Fällen nicht mehr entfernt werden.
+Des Weiteren zeigen die Tabellen \ref{tab:average_lifespans} und \ref{tab:average_lifespans_until_today}, sowie die \autoref{fig:added_removed_authors}, dass einmal hinzugefügte Autoren in den meisten Fällen nicht mehr entfernt werden.
 Diese Tatsache ist dabei nichts Negatives, da die Autoren Arbeit in den Paketen geleistet haben, allerdings sollten Autoren, welche aktuell das Paket aktiv pflegen ebenfalls genannt werden, was in vielen Fällen nicht der Fall ist, wie bereits diskutiert wurde.
 
 Im Allgemeinen lässt sich sagen, dass die Autoren in den betrachteten Listen nicht aktiv gepflegt werden und besonders in den meisten Fällen keine automatischen Prozesse vorhanden sind, welche die Autorenlisten aktualisieren.

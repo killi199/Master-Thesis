@@ -65,7 +65,7 @@ Die Python Maintainer konnten ebenfalls schlecht abgeglichen werden, da viele Pa
 Allgemein bietet dieses Vorgehen keine Aussage darüber, ob die Personen nicht abgeglichen worden sind, weil sie keinen Code beigetragen haben oder weil sie nicht gefunden wurden.
 Zudem werden Personen, welche fälschlicherweise mit einer anderen Person abgeglichen wurden, in diesem Verfahren als gut bewertet.
 Um diese Fälle ebenfalls betrachten zu können, wurde manuell eine Auswahl an Autoren überprüft.
-Es wurden nicht alle Autoren überprüft, da dies den zeitlichen Rahmen der Arbeit gesprengt hätte.
+Es wurden nicht alle Autoren überprüft, da dies den zeitlichen Rahmen der Arbeit überschritten hätte.
 Aus diesem Grund wurden die Autoren für jedes Paket und jede Quelle zufällig neu angeordnet und gespeichert.
 Anschließend wurden jeweils die ersten beiden Autoren anhand von vier Kriterien überprüft.
 Falls nur ein Autor in einer Quelle genannt wurde, wurde nur dieser überprüft.
@@ -107,11 +107,10 @@ Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matc
     \label{tab:matching_results_manual}
     \small
     In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen eingetragen. Dabei wurde für jede Quelle die Anzahl der richtig positiven (TP), falsch negativen (FN), falsch positiven (FP) und richtig negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
-    In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen. Dabei wurde für jede Quelle die Anzahl der richtig positiven (TP), falsch negativen (FN), falsch positiven (FP) und richtig negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
 \end{table}
 
 Aus den gesammelten Daten wurden weitere Statistiken berechnet.
-Dabei muss berücksichtigt werden, dass einige Statistiken auf dem Abgleich basieren und somit nur so gut sind, wie der Abgleich durchgeführt wurde.
+Dabei muss berücksichtigt werden, dass einige Statistiken auf dem Abgleich basieren und somit nur so gut sind, wie der Abgleich selbst.
 Außerdem basieren einige Statistiken auf den Metriken der Commits und geänderten Zeilen.
 Die Abbildung \autoref{fig:commits_vs_changed_lines} stellt das Verhältnis der Commits und der geänderten Zeilen für die Autoren in den Paketen der Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dar.
 Für die anderen Listen sind die Ergebnisse in \autoref{fig:commits_vs_changed_lines_anhang} dargestellt.
@@ -161,10 +160,10 @@ Dies ist der Fall, falls ein Paket in einer Quelle den Top-Autor nicht nennt.
 Beispielsweise gibt das Paket \emph{faker} in der \gls{cff} als einzigen Autor \glqq Daniele Faraglia\grqq{} an.
 Dieser Autor ist jedoch auf Rang 37 der Top-Git-Autoren, gemessen nach Commits.
 
-Eine weitere Auffälligkeit, welche beispielsweise in der \autoref{fig:common_authors_pypi_cff} vorkommt ist, dass in der Legende \hologo{BibTeX} aufgeführt ist, jedoch keine Linie in der Abbildung dargestellt wird.
+Eine weitere Auffälligkeit, welche beispielsweise in der \autoref{fig:common_authors_pypi_cff} vorkommt, ist, dass in der Legende \hologo{BibTeX} aufgeführt ist, jedoch keine Linie in der Abbildung dargestellt wird.
 Dies liegt daran, dass keiner der Top 100 Git-Autoren aller Pakete mit \hologo{BibTeX} in einer \hologo{BibTeX} als Autor genannt wird.
 Im konkreten Fall liegt das daran, dass nur eines der Pakete eine \hologo{BibTeX}-Datei enthält und in dieser Datei nur ein Autor genannt wird, welcher nicht automatisch abgeglichen wurde.
-Dies ist \autoref{tab:pypi_matching_results_manual} ebenfalls zu entnehmen.
+Dies ist \autoref{tab:pypi_matching_results_manual_anhang} ebenfalls zu entnehmen.
 Dadurch liegt die Linie für alle x-Werte bei 0 \% und ist nicht sichtbar.
 
 Die letzte Auffälligkeit in den Graphen ist, dass einige Linien erst fallen und anschließend parallel zur x-Achse verlaufen.
@@ -209,7 +208,7 @@ Dadurch sind alle Git-Autoren zu 100 \% als \gls{pypi} Maintainer genannt und es
 Weitere Abbildungen, welche den Anteil zwischen genannten Autoren und den Top-Git-Autoren darstellen, sind in \autoref{fig:common_authors_2} abgebildet.
 Die Abbildung stellt die Graphen für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dar.
 Die Ergebnisse für die weiteren Listen sind in \autoref{fig:common_authors_2_anhang} dargestellt.
-In den Abbildungen wurden jeweils wieder zwei Graphen für jede Liste erstellt.
+In den Abbildungen wurden erneut zwei Graphen für jede Liste erstellt.
 Zum einen wurden die Autoren nach der Anzahl der Commits und zum anderen nach der Anzahl der geänderten Zeilen sortiert.
 In allen Abbildungen wird der Anteil der genannten Autoren unter den Top-Git-Autoren dargestellt.
 Durch dieses Verhältnis steigen die Linien, da mehr genannte Autoren unter den Top-Git-Autoren bei steigender Anzahl derer sind.
@@ -337,7 +336,7 @@ Dabei ist auffällig, dass der Anteil der validen \gls{cff}-Dateien zwar größe
 
 \autoref{fig:citation_counts} zeigt für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und \hologo{BibTeX} den angegebenen Typ der Zitation.
 Anhand der Abbildungen ist außerdem zu erkennen, wie oft welche Quelle in den Listen vorkommt.
-Beispielsweise haben zwei von den Top 100 \gls{cran} Paketen eine \gls{cff} angegeben und fünf sind es bei den Top 100 \gls{pypi} Paketen.
+Beispielsweise haben zwei der Top 100 \gls{cran} Pakete eine \gls{cff} angegeben und fünf der Top 100 \gls{pypi} Pakete.
 Von diesen fünf Paketen hat kein Paket eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
 In den \gls{cran} Listen haben beide Pakete hingegen ebenfalls eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
 Zudem ist auffällig, dass in allen Listen die Anzahl der Pakete, welche eine \hologo{BibTeX}-Datei verwenden, gering ist.
@@ -347,7 +346,7 @@ Aus diesem Grund sind in \autoref{fig:citation_counts_preferred_citation_cff} we
 In \autoref{fig:citation_counts_cff} ist auffällig, dass ein \gls{cran} Paket aus der \gls{cran} \gls{cff} Liste als Typ der Zitation \emph{article} angegeben hat.
 Dies ist in einer \gls{cff}-Datei nicht zulässig und führt zu einer ungültigen \gls{cff}-Datei.
 Dies betrifft das Paket \emph{worcs}.
-Bei der Betrachtung aller \gls{cff} Dateien auf GitHub ist zu erkennen, dass von 18.520 17470 Pakete \emph{software} angegeben haben und 412 \emph{dataset}.
+Bei der Betrachtung aller \gls{cff}-Dateien auf GitHub ist zu erkennen, dass von 18.520 17.470 Pakete \emph{software} angegeben haben und 412 \emph{dataset}.
 Alle anderen 638 Pakete haben einen anderen Typ der Zitation angegeben und sind dadurch ungültig.
 
 \begin{figure}
@@ -495,7 +494,7 @@ In diesem Abschnitt werden anders als zuvor die Daten mit Zeitbetrachtung analys
 Dadurch ist es möglich, Veränderungen in der Zeit zu betrachten und zu analysieren.
 Jedoch ist dies nur für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und die README-Dateien möglich, da in den anderen Quellen keine Zeitinformation vorhanden sind.
 
-Die \autoref{fig:valid_cff_by_time} zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind.
+Die \autoref{fig:valid_cff_by_time} zeigt für die \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Listen, sowie für alle \gls{cff}-Dateien auf GitHub, wie viele der \gls{cff}-Dateien valide sind.
 In \autoref{fig:valid_cff_by_time_anhang} sind die Ergebnisse für die weiteren Listen dargestellt.
 In den Graphen ist jedes Repository nur einmal betrachtet worden.
 Falls ein Repository zu Beginn eine invalide \gls{cff}-Datei in dem Repository hatte und anschließend diese zu einer validen Datei geändert wurde, sinkt die Anzahl bei den invaliden und bei den validen steigt sie zu diesem Zeitpunkt.
@@ -533,7 +532,7 @@ Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub-Repositorys eine 
     \caption{Validität der \gls{cff}-Dateien über die Zeit}
     \label{fig:valid_cff_by_time}
     \small
-    Die Abbildung zeigt für die \gls{pypi} \gls{cff}, \gls{cran} \gls{cff} und alle \gls{cff} Dateien auf GitHub, wie viele der \gls{cff} Dateien valide sind. Die x-Achse stellt die Zeit dar und die y-Achse die Anzahl der validen und invaliden \gls{cff} Dateien. Dabei wird außerdem in Repositorys, welche \emph{cffinit} verwenden und Repositorys, welche dies nicht verwenden unterschieden.
+    Die Abbildung zeigt für die \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Listen, sowie für alle \gls{cff}-Dateien auf GitHub, wie viele der \gls{cff}-Dateien valide sind. Die x-Achse stellt die Zeit dar und die y-Achse die Anzahl der validen und invaliden \gls{cff}-Dateien. Dabei wird außerdem in Repositorys, welche \emph{cffinit} verwenden und Repositorys, welche dies nicht verwenden unterschieden.
 \end{figure}
 
 Die \autoref{fig:added_removed_authors} zeigt für alle fünf Listen, wie viele Autoren in den einzelnen Quellen hinzugefügt und gelöscht wurden.
@@ -548,14 +547,14 @@ Dies führt dazu, dass, falls ein Abgleich in der Datenbeschaffung für einen Au
 Der erneute Abgleich über den Namen kann dies nicht verhindern, allerdings sorgt er dafür, dass auch nicht abgeglichene Autoren in der Grafik als gelöschte und hinzugefügte Autoren betrachtet werden können.
 Zusätzlich ermöglicht dies im späteren Verlauf eine Analyse darüber, wie lange ein Autor durchschnittlich in einer Quelle genannt wird.
 
-In \autoref{fig:added_removed_authors_without_readme} ist zu erkennen, dass in der \gls{pypi} \gls{cff} die meisten Autoren in den betrachteten Quellen genannt werden.
+In \autoref{fig:added_removed_authors_without_readme} ist zu erkennen, dass in der \gls{pypi} \gls{cff} Liste die meisten Autoren in den betrachteten Quellen genannt werden.
 Außerdem ist auffällig, dass in der \gls{cran} und der \gls{pypi} Liste in den Quellen nur Autoren hinzugefügt und keine gelöscht wurden.
 Im Allgemeinen ist deutlich, dass kaum Autoren, nachdem sie hinzugefügt wurden, wieder entfernt werden.
 In Kombination mit \autoref{fig:added_authors_without_readme_without_first_timestamp} ist zu erkennen, dass die meisten Autoren direkt hinzugefügt werden, sobald die Datei erstellt wird.
 Beispielsweise wurde in der \gls{cran} und \gls{pypi} Liste in der \gls{cff} und der \hologo{BibTeX}-Datei kein Autor hinzugefügt, nachdem die Datei erstellt wurde.
 In der \gls{pypi} \gls{cff} Liste wurden fünf Autoren nachträglich hinzugefügt, wobei hier berücksichtigt werden muss, dass dies auch aufgrund von Namensänderungen geschehen sein kann.
-Außerdem muss berücksichtigt werden, dass die \gls{cff} Datei beispielsweise erst seit 2021 in den meisten Fällen genutzt wird und beim Hinzufügen der Datei alle Autoren zu dem Zeitpunkt eingetragen werden.
-Dadurch werden die Autoren ausschließlich in der \autoref{fig:added_removed_authors_without_readme} dargestellt werden.
+Außerdem muss berücksichtigt werden, dass die \gls{cff}-Datei erst seit 2021 in den meisten Fällen genutzt wird und beim Hinzufügen der Datei alle Autoren zu dem Zeitpunkt eingetragen werden.
+Dadurch werden diese Autoren ausschließlich in der \autoref{fig:added_removed_authors_without_readme} dargestellt.
 
 \begin{figure}
     \begin{subfigure}{.5\textwidth}
@@ -585,7 +584,7 @@ Dadurch werden die Autoren ausschließlich in der \autoref{fig:added_removed_aut
     \caption{Hinzugefügte und gelöschte Autoren}
     \label{fig:added_removed_authors}
     \small
-    Die beiden Abbildungen \autoref{fig:added_removed_authors_with_readme} und \autoref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors_with_readme} inkludiert Autoren in der README Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \autoref{fig:added_authors_without_first_timestamp} und \autoref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
+    Die beiden Abbildungen \ref{fig:added_removed_authors_with_readme} und \ref{fig:added_removed_authors_without_readme} zeigen wie viele Autoren über die Zeit in den Quellen hinzugefügt und gelöscht wurden. \autoref{fig:added_removed_authors_with_readme} inkludiert Autoren in der README-Datei, \autoref{fig:added_removed_authors_without_readme} exkludiert diese. Die Abbildungen \ref{fig:added_authors_without_first_timestamp} und \ref{fig:added_authors_without_readme_without_first_timestamp} zeigen ausschließlich die hinzugefügten Autoren, wobei die Autoren, die zu Beginn direkt in die Quelle eingetragen wurden, nicht berücksichtigt werden.
 \end{figure}
 
 Die \autoref{tab:average_lifespans} zeigt die durchschnittliche Zeit in Tagen, wie lange ein Autor in einer bestimmten Quelle genannt wird.
@@ -595,9 +594,9 @@ Es lässt sich beispielsweise in der Tabelle erkennen, dass in der \gls{pypi} \g
 Es werden keine Autoren berücksichtigt, welche nie entfernt wurden.
 Im Gegensatz dazu werden in \autoref{tab:average_lifespans_until_today} ebenfalls Autoren berücksichtigt, welche nie entfernt wurden. Dabei wird der 02.12.2024 als Enddatum genommen.
 
-In der \autoref{tab:average_lifespans} ist zu erkennen, dass einige Zellen nicht ausgefüllt sind und andere wiederum mit \infty gekennzeichnet sind.
+In der \autoref{tab:average_lifespans} ist zu erkennen, dass einige Zellen nicht ausgefüllt sind und andere wiederum mit \infty{} gekennzeichnet sind.
 Leere Zellen sind darin begründet, dass in der Liste kein Paket die Quelle verwendet und dadurch keine Zeit berechnet werden kann.
-Zellen, welche \infty enthalten, sind dadurch begründet, dass in der Liste kein einziges Paket in der jeweiligen Quelle einen Autor, nachdem er hinzugefügt wurde, wieder entfernt hat.
+Zellen, welche \infty{} enthalten, sind dadurch begründet, dass in der Liste kein einziges Paket in der jeweiligen Quelle einen Autor, nachdem er hinzugefügt wurde, wieder entfernt hat.
 Beispielsweise hat kein Paket in der \gls{cran} Liste einen Autor, nachdem er zur \gls{cff} hinzugefügt wurde, wieder entfernt.
 Außerdem wurden in der Liste keine Autoren in eine \hologo{BibTeX}-Datei hinzugefügt, wodurch die Zelle leer ist.
 
