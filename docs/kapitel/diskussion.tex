@@ -99,9 +99,9 @@ Hier lässt sich diskutieren, ob eine Nennung von individuellen Personen dennoch
 Dies soll allerdings kein Thema für diese Arbeit sein.
 
 In \autoref{tab:matching_results_manual} ist aufgefallen, dass die README und die Beschreibung schlechte F1-Scores haben.
-Dies liegt daran, dass die \gls{ner} viele Ergebnisse liefert, unter anderem FP, welche anschließend primär falsch zugeordnet werden.
-Ebenfalls sind viele falsch negative Ergebnisse enthalten, da die \gls{ner} ebenfalls Benutzernamen erkennt, wie bereits erläutert wurde.
-Außerdem ist aufgefallen, dass viele TN in den Ergebnissen enthalten sind.
+Dies liegt daran, dass die \gls{ner} viele Ergebnisse liefert, unter anderem \gls{fp}, welche anschließend primär falsch zugeordnet werden.
+Ebenfalls sind viele \gls{fn} Ergebnisse enthalten, da die \gls{ner} ebenfalls Benutzernamen erkennt, wie bereits erläutert wurde.
+Außerdem ist aufgefallen, dass viele \gls{tn} in den Ergebnissen enthalten sind.
 Dies ist darauf zurückzuführen, dass die verwendete \gls{ner} viele Entitäten erkennt, welche nicht relevant sind, da es sich beispielsweise nicht um Personen handelt.
 Dies ist besonders verwunderlich, dass in der Methodik beschrieben wurde, dass nur Personen durch die \gls{ner} erkannt werden sollen.
 
@@ -114,7 +114,7 @@ In den anderen beiden Dateien sind mehr Autoren enthalten, wobei viele der Autor
 Bei einer Betrachtung aller Autoren wäre der F1-Score für die \hologo{BibTeX}-Quelle besser ausgefallen.
 In diesem Fall verschlechtern die beiden nicht abgeglichenen Autoren aufgrund der insgesamt geringen Anzahl an betrachteten Autoren den F1-Score erheblich.
 
-Außerdem ist Aufgefallen, dass insgesamt viele FP in den Ergebnissen enthalten sind.
+Außerdem ist Aufgefallen, dass insgesamt viele \gls{fp} in den Ergebnissen enthalten sind.
 Diese sind dadurch begründet, dass das Keyword \emph{in} in \autoref{sec:abgleich} verwendet wird.
 In der manuellen Überprüfung der Ergebnisse ist aufgefallen, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
 In diesen Fällen ist es möglich, fast jeden Autor aus der Quelle mit diesem speziellen Git Autor abzugleichen, da der Autor der Quelle nur diesen Buchstaben in seinem Namen enthalten haben muss.

@@ -69,14 +69,14 @@ Es wurden nicht alle Autoren überprüft, da dies den zeitlichen Rahmen der Arbe
 Aus diesem Grund wurden die Autoren für jedes Paket und jede Quelle zufällig neu angeordnet und gespeichert.
 Anschließend wurden jeweils die ersten beiden Autoren anhand von vier Kriterien überprüft.
 Falls nur ein Autor in einer Quelle genannt wurde, wurde nur dieser überprüft.
-Jeder Autor wurde einer der vier Kategorien \glqq richtig positiv (TP)\grqq{}, \glqq falsch negativ (FN)\grqq{}, \glqq falsch positiv (FP)\grqq{} oder \glqq richtig negativ (TN)\grqq{} zugeordnet.
+Jeder Autor wurde einer der vier Kategorien \gls{tp}, \gls{fn}, \gls{fp} oder \gls{tn} zugeordnet.
 Ein Autor ist als richtig positiv klassifiziert worden, falls er richtig zugeordnet wurde.
 Falls der Autor mehrfach in der Git-Autorenliste vorkommt, wurde der Autor als richtig positiv klassifiziert unabhängig davon, mit welchem von den doppelten Einträgen der Autor zugeordnet wurde.
 Aus diesen Daten wurde der F1-Score berechnet.
 
 Außerdem wurde angegeben, ob es sich um keine Person handelt, sondern z. B. um eine Organisation.
-In diesen Fällen wurde der Eintrag dennoch in eine der vier Kategorien eingeteilt, wobei primär die Kategorie FP verwendet wurde, falls es eine Zuordnung gab.
-Falls die Zuordnung allerdings mit einem Git-Autor erfolgt ist, welcher beispielsweise ein Bot der Organisation ist, wurde der Eintrag als TP eingeteilt, da es keinen Mechanismus in der Datenbeschaffung gibt, welcher Personen von nicht Personen unterscheiden kann.
+In diesen Fällen wurde der Eintrag dennoch in eine der vier Kategorien eingeteilt, wobei primär die Kategorie \gls{fp} verwendet wurde, falls es eine Zuordnung gab.
+Falls die Zuordnung allerdings mit einem Git-Autor erfolgt ist, welcher beispielsweise ein Bot der Organisation ist, wurde der Eintrag als \gls{tp} eingeteilt, da es keinen Mechanismus in der Datenbeschaffung gibt, welcher Personen von nicht Personen unterscheiden kann.
 Es wurde lediglich in der Datenbeschaffung darauf geachtet, möglichst keine Quellen zu berücksichtigen, welche keine Personen enthalten.
 Die Ergebnisse für alle Listen zusammen sind in \autoref{tab:matching_results_manual} eingetragen.
 Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matching_results_manual_anhang}, \ref{tab:pypi_matching_results_manual_anhang}, \ref{tab:cff_matching_results_manual_anhang}, \ref{tab:pypi_cff_matching_results_manual_anhang} und \ref{tab:cran_cff_matching_results_manual_anhang} dargestellt.
@@ -84,7 +84,7 @@ Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matc
 In der \autoref{tab:matching_results_manual} ist zu erkennen, dass über alle Listen hinweg ein F1-Score von 0,9411 erreicht wurde.
 Besonders auffällig sind die Werte für die Beschreibung und die README-Datei.
 Hier wurden F1-Scores von 0,8832 und 0,8351 erreicht.
-Außerdem sind in den beiden Quellen jeweils die meisten TN vorhanden.
+Außerdem sind in den beiden Quellen jeweils die meisten \gls{tn} vorhanden.
 Auffällig ist zudem, dass in den Quellen von Python und \gls{pypi} viele Autoren keine Personen sind.
 In diesen Quellen sind zusammen 150 Autoren keine Personen.
 Dies entspricht 76,92 \% aller nicht Personen in den manuellen Ergebnissen.
@@ -94,7 +94,7 @@ Hier werden insgesamt nur vier Autoren betrachtet, zusätzlich ist der F1-Score 
 \begin{table}
     \begin{tabularx}{\textwidth}{XR{.8cm}R{.8cm}R{.8cm}R{.8cm}R{2.8cm}R{2cm}}
         \toprule
-        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
+        \textbf{Quelle} & \textbf{\gls{tp}} & \textbf{\gls{fn}} & \textbf{\gls{fp}} & \textbf{\gls{tn}} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 87   & 5  & 18  & 125 & 15  & 0,8832 \\
         README                       & 81   & 21 & 11  & 143 & 26  & 0,8351 \\
         \gls{cff}                    & 168  & 13 & 3   & 24  & 3   & 0,9545 \\
@@ -111,7 +111,7 @@ Hier werden insgesamt nur vier Autoren betrachtet, zusätzlich ist der F1-Score 
     \caption{Manuelle Ergebnisse des Abgleichs für alle Listen zusammen}
     \label{tab:matching_results_manual}
     \small
-    In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen eingetragen. Dabei wurde für jede Quelle die Anzahl der richtig positiven (TP), falsch negativen (FN), falsch positiven (FP) und richtig negativen (TN) Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
+    In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen eingetragen. Dabei wurde für jede Quelle die Anzahl der \gls{tp}, \gls{fn}, \gls{fp} und \gls{tn} Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
 \end{table}
 
 Aus den gesammelten Daten wurden weitere Statistiken berechnet.
