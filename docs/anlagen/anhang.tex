@@ -205,7 +205,6 @@
     \label{tab:matching_results_auto_anhang}
 \end{table}
 
-% reihenfolge der Tabellen so wie immer in den Grafiken CRAN->PyPI->CFF->PyPI CFF->CRAN CFF
 \begin{table}[H]
     \centering
     \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
@@ -281,4 +280,22 @@
     \end{tabularx}
     \caption{Manuelle Ergebnisse des Abgleichs für die \gls{pypi} \gls{cff} Liste}
     \label{tab:pypi_cff_matching_results_manual_anhang}
+\end{table}
+
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
+        \toprule
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
+        Beschreibung                 & 18  & 1  & 0 & 31  & 1 & 0,9730 \\
+        README                       & 22  & 12 & 0 & 49  & 3 & 0,7857 \\
+        \gls{cff}                    & 80  & 8  & 0 & 6   & 0 & 0,9524 \\
+        \gls{cff} preferred citation & 54  & 6  & 0 & 4   & 0 & 0,9474 \\
+        \gls{cran} Autoren           & 132 & 3  & 2 & 10  & 0 & 0,9814 \\
+        \gls{cran} Maintainer        & 99  & 1  & 0 & 0   & 0 & 0,9950 \\ \midrule
+        Summe                        & 405 & 31 & 2 & 100 & 4 & 0,9609 \\
+        \bottomrule
+    \end{tabularx}
+    \caption{Manuelle Ergebnisse des Abgleichs für die \gls{cran} \gls{cff} Liste}
+    \label{tab:cran_cff_matching_results_manual_anhang}
 \end{table}
