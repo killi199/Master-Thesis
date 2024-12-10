@@ -8,6 +8,7 @@
 %   GitHub: 4476 (merges nicht inbegriffen https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors#about-contributors gefühlt aber doch inbegriffen....) (E-Mails werden gemerged die GitHub bekannt sind)
 %   git shortlog -s -n --no-merges: 3844 (merges nicht inbegriffen) 4370 (merges inbegriffen)
 %   git fame: 4370 (merges inbegriffen)
+% TODO ggf. Namensvetter werden nicht unterschieden -> diskutieren, warum es nicht so notwendig ist Namensvetter zu unterscheiden
 
 \chapter{Diskussion}
 \label{chap:diskussion}
@@ -88,19 +89,41 @@ Bei Betrachtung aller Quellen hätte dieser Prozess erheblich mehr Zeit in Anspr
 
 \section{Wie gut können Autoren abgeglichen werden?}
 \label{sec:abgleich_diskussion}
-% TODO das Kapitel kann ich erst wirklich gut schreiben wenn alle Daten da sind
-% TODO bevor ich die Kapitel schreibe nochmal gedanken machen was ich sagen will und das strukturieren. Ebenfalls überlegen welche Grafiken und tabellen ich einbeziehen will
-% TODO auf Organisation eingehen
-% TODO auf die Tabellen eingehen (tab:matching_results_auto, tab:cff_matching_results_manual)
-% TODO sagen, dass der Vergleich von einen oder zwei Buchstaben zu vielen FP führt (Dies ist super wichtig sage das im Fazit, dass das als Problem erkannt wurde!) -> kacke/ Einige personen geben als Git namen nur einen buchstaben an, diese werden dann natürlich über in mit dem besten gematcht der diesen buchstaben im Namen hat, was natürlich nicht korrekt ist./ Es wird immer passieren, dass manche Leute falsch zugeordnet werden. Aktuelles bsp. in scipy heißt jemand pv auf PyPI und jemand hat eine E-Mail mit: pvanmulbregt@users.noreply.github.com die werden gematcht... Also nur weil ich einen Match habe bedeutet es nicht, dass es ein richtiger ist! Dies unbedingt in der Arbeit berücksichtigen. Ebenfalls, dass falls kein match gefunden wurde heißt es nicht zwangsweise, dass mein Script schlecht arbeitet es kann auch sein, das jemand als Autor genannt wird aber keinen Code geschrieben hat oder das eine Organisation als Autor angegeben wurde.
-% TODO Namensvetter werden nicht unterschieden -> diskutieren, warum es nicht so notwendig ist Namensvetter zu unterscheiden
-% TODO auf schlechte NER eingehen und das dadurch die werte für readme und beschreibung nicht so gut sind
-% TODO auf keine Person eingehen
-% TODO Hier das noch diskutieren in dem gleichen Atemzug wo ich erwähne, dass viele genannte Autoren gar keine Personen sind: Falls ein Autor angestellt ist bei z.B. google und google wird als author genannt ob der individuelle verantwortliche denn überhaupt genannt werden sollte bzw. muss? Weil er bekommt ja geld dafür, dass er daran arbeitet. In normalen Firmen steht auch nicht in der Software wer jetzt beipielsweise Spotify programmiert hat.
-% TODO Unbedingt Vergleich von nur einem Buchstaben erwähnen referenziere das!
-% TODO auf schlechte F1 Scores von README und beschreibung eingehen und auch sagen warum da so viele TN sind (Die NER erkennt viel müll)
-% TODO darauf eingehen, warum in Python Quellen so viele nicht Personen als Autoren genannt werden
-% TODO begründen warum bibtex so das schlechteste ist vom F1 Score ist -> so wenig autoren betrachtet falls mehr betrachtet werden würde wäre es besser (Hier werden vier Autoren insgesamt betrachtet, was durch die geringe Anzahl an \hologo{BibTeX}-Dateien in den untersuchten Listen und der manuellen Betrachtung ausschließlich der ersten beiden Autoren in den Paketen begründet ist.)
+In den Tabellen \ref{tab:matching_results_auto}, \ref{tab:matching_results_auto_anhang}, \ref{tab:matching_results_manual},\ref{tab:cran_matching_results_manual_anhang}, \ref{tab:pypi_matching_results_manual_anhang}, \ref{tab:cff_matching_results_manual_anhang}, \ref{tab:pypi_cff_matching_results_manual_anhang} und \ref{tab:cran_cff_matching_results_manual_anhang} wurden die Ergebnisse des Abgleichs der Autoren dargestellt.
+In \autoref{tab:matching_results_manual} ist aufgefallen, dass viele Autoren in den Python Quellen keine Personen sind.
+Dies ist darauf zurückzuführen, dass in den Quellen häufig Organisationen als Autoren genannt werden und keine individuellen Personen aufgeführt werden.
+Dies ist besonders der Fall, da die Top 100 Listen betrachtet wurden, welche häufig von Organisationen verwaltet werden und nicht von einzelnen Entwicklern gepflegt werden.
+Beispielsweise sind in der \gls{pypi} Liste vier Pakete enthalten, welche bereits den Namen Google enthalten.
+In allen vier Paketen sind in den Quellen \gls{pypi} Maintainer und Python Autoren keine Personen, sondern ausschließlich \glqq gcloudpypi\grqq{}, \glqq google\_opensource\grqq{} und \glqq Google LLC\grqq{} genannt.
+Hier lässt sich diskutieren, ob eine Nennung von individuellen Personen dennoch erfolgen sollte, auch wenn sie beispielsweise bei einer Organisation wie Google angestellt sind und für diese arbeiten.
+Dies soll allerdings kein Thema für diese Arbeit sein.
+
+In \autoref{tab:matching_results_manual} ist aufgefallen, dass die README und die Beschreibung schlechte F1-Scores haben.
+Dies liegt daran, dass die \gls{ner} viele Ergebnisse liefert, unter anderem FP, welche anschließend primär falsch zugeordnet werden.
+Ebenfalls sind viele falsch negative Ergebnisse enthalten, da die \gls{ner} ebenfalls Benutzernamen erkennt, wie bereits erläutert wurde.
+Außerdem ist aufgefallen, dass viele TN in den Ergebnissen enthalten sind.
+Dies ist darauf zurückzuführen, dass die verwendete \gls{ner} viele Entitäten erkennt, welche nicht relevant sind, da es sich beispielsweise nicht um Personen handelt.
+Dies ist besonders verwunderlich, dass in der Methodik beschrieben wurde, dass nur Personen durch die \gls{ner} erkannt werden sollen.
+
+Zudem ist in \autoref{tab:matching_results_manual} aufgefallen, dass die \hologo{BibTeX}-Quelle den schlechtesten F1-Score hat.
+Dies ist darin begründet, dass nur die ersten beiden Autoren in jeder \hologo{BibTeX}-Datei betrachtet wurden.
+Da in allen Listen insgesamt nur vier \hologo{BibTeX}-Dateien enthalten sind, ist die Anzahl der betrachteten Autoren auf maximal acht Autoren begrenzt.
+Wie in den Tabellen \ref{tab:matching_results_auto} und \ref{tab:matching_results_auto_anhang} erkennbar ist, sind insgesamt 63 in den \hologo{BibTeX}-Dateien enthalten.
+In zwei der 4 Dateien konnten alle Autoren, was in diesen Fällen jeweils ein Autor entspricht, nicht abgeglichen werden.
+In den anderen beiden Dateien sind mehr Autoren enthalten, wobei viele der Autoren richtig abgeglichen werden konnten.
+Bei einer Betrachtung aller Autoren wäre der F1-Score für die \hologo{BibTeX}-Quelle besser ausgefallen.
+In diesem Fall verschlechtern die beiden nicht abgeglichenen Autoren aufgrund der insgesamt geringen Anzahl an betrachteten Autoren den F1-Score erheblich.
+
+Außerdem ist Aufgefallen, dass insgesamt viele FP in den Ergebnissen enthalten sind.
+Diese sind dadurch begründet, dass das Keyword \emph{in} in \autoref{sec:abgleich} verwendet wird.
+In der manuellen Überprüfung der Ergebnisse ist aufgefallen, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
+In diesen Fällen ist es möglich, fast jeden Autor aus der Quelle mit diesem speziellen Git Autor abzugleichen, da der Autor der Quelle nur diesen Buchstaben in seinem Namen enthalten haben muss.
+Falls über keine weiteren Attribute der Abgleich erfolgen kann, bedeutet dies immer, dass ein falscher Abgleich stattfindet.
+
+Im Allgemeinen konnte gezeigt werden, dass der Abgleich der Autoren gut funktioniert hat, da ein F1-Score von über 0,9, welcher erreicht wurde, als gut zu bewerten ist.
+Außerdem wurde in diesem Abschnitt diskutiert, warum einige Quellen schlechtere Ergebnisse haben.
+Hierbei wurde deutlich, dass die schlechteren Ergebnisse primär nicht durch den Abgleich verursacht wurden, sondern durch andere Faktoren, wie beispielsweise die \gls{ner} oder die Anzahl der manuell betrachteten Autoren in den \hologo{BibTeX}-Dateien.
+Bei einer Betrachtung des F1-Scores ohne diese Gegebenheiten würde dieser nochmals verbessert werden.
 
 \section{Was muss ein Softwareentwickler leisten, um als Autor genannt zu werden?}
 \label{sec:zitationsfaehiger_autor_diskussion}
