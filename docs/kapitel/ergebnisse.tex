@@ -80,27 +80,32 @@ Falls die Zuordnung allerdings mit einem Git-Autor erfolgt ist, welcher beispiel
 Es wurde lediglich in der Datenbeschaffung darauf geachtet, möglichst keine Quellen zu berücksichtigen, welche keine Personen enthalten.
 Die Ergebnisse für alle Listen zusammen sind in \autoref{tab:matching_results_manual} eingetragen.
 Die Ergebnisse für die einzelnen Listen sind in den Tabellen \ref{tab:cran_matching_results_manual_anhang}, \ref{tab:pypi_matching_results_manual_anhang}, \ref{tab:cff_matching_results_manual_anhang}, \ref{tab:pypi_cff_matching_results_manual_anhang} und \ref{tab:cran_cff_matching_results_manual_anhang} dargestellt.
-% TODO weitere Tabellen im Anhang referenzieren
-% TODO eins zwei beispiele aus der Tabelle geben
-% TODO auf eins zwei besonderheiten in der Tabelle eingehen z.B. schlechte werde in readme und beschreibung
-% TODO auf die besonderheit eingehen, dass bei pypi super viele nicht personen in den Autorenlisten sind
-% TODO confusion matrix und f1 score für alle listen zusammen (addiert) angeben diese hier zeigen und alle anderen im Anhang referenzieren.
+
+In der \autoref{tab:matching_results_manual} ist zu erkennen, dass über alle Listen hinweg ein F1-Score von 0,9411 erreicht wurde.
+Besonders auffällig sind die Werte für die Beschreibung und die README-Datei.
+Hier wurden F1-Scores von 0,8832 und 0,8351 erreicht.
+Außerdem sind in den beiden Quellen jeweils die meisten TN vorhanden.
+Auffällig ist zudem, dass in den Quellen von Python und \gls{pypi} viele Autoren keine Personen sind.
+In diesen Quellen sind zusammen 150 Autoren keine Personen.
+Dies entspricht 76,92 \% aller nicht Personen in den manuellen Ergebnissen.
+Eine weitere Auffälligkeit ist die geringe Anzahl an \hologo{BibTeX} Autoren.
+Hier werden insgesamt nur vier Autoren betrachtet, zusätzlich ist der F1-Score mit 0,6667 am schlechtesten für diese Quelle.
 
 \begin{table}
-    \begin{tabularx}{\textwidth}{XR{.7cm}R{.7cm}R{.7cm}R{.7cm}R{2.8cm}R{2cm}}
+    \begin{tabularx}{\textwidth}{XR{.8cm}R{.8cm}R{.8cm}R{.8cm}R{2.8cm}R{2cm}}
         \toprule
         \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
-        Beschreibung                 & & & & & & \\
-        README                       & & & & & & \\
-        \gls{cff}                    & & & & & & \\
-        \gls{cff} preferred citation & & & & & & \\
-        \gls{pypi} Maintainer        & & & & & & \\
-        Python Autoren               & & & & & & \\
-        Python Maintainer            & & & & & & \\
-        \gls{cran} Autoren           & & & & & & \\
-        \gls{cran} Maintainer        & & & & & & \\
-        \hologo{BibTeX}              & & & & & & \\ \midrule
-        Summe                        & & & & & & \\
+        Beschreibung                 & 87   & 5  & 18  & 125 & 15  & 0,8832 \\
+        README                       & 81   & 21 & 11  & 143 & 26  & 0,8351 \\
+        \gls{cff}                    & 168  & 13 & 3   & 24  & 3   & 0,9545 \\
+        \gls{cff} preferred citation & 78   & 8  & 2   & 13  & 0   & 0,9398 \\
+        \gls{pypi} Maintainer        & 294  & 2  & 32  & 48  & 50  & 0,9453 \\
+        Python Autoren               & 155  & 4  & 35  & 43  & 75  & 0,8883 \\
+        Python Maintainer            & 30   & 0  & 5   & 21  & 25  & 0,9231 \\
+        \gls{cran} Autoren           & 269  & 4  & 3   & 19  & 1   & 0,9872 \\
+        \gls{cran} Maintainer        & 193  & 2  & 0   & 0   & 0   & 0,9948 \\
+        \hologo{BibTeX}              & 2    & 2  & 0   & 0   & 0   & 0,6667 \\ \midrule
+        Summe                        & 1357 & 61 & 109 & 436 & 195 & 0,9411 \\
         \bottomrule
     \end{tabularx}
     \caption{Manuelle Ergebnisse des Abgleichs für alle Listen zusammen}
