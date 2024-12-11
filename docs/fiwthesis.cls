@@ -151,6 +151,7 @@
 % bibliography settings
 \RequirePackage[
   style=authoryear-ibid,
+  maxbibnames=6,
   backend=biber   % use modern bibliography backend
 ]{biblatex}
 
