@@ -3,13 +3,13 @@
 Die Git-Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
 Sämtliche anderen Quellen werden mit den Git-Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
 Zu Beginn muss das Repository von GitHub geclont werden, um die Daten lokal verarbeiten zu können.
-Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz, welche eine Bibliothek für die einfache Interaktion mittels Python und Git-Befehlen darstellt \autocite{thiel_gitpython-developersgitpython_2024}.
+Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz, welche eine Bibliothek für die einfache Interaktion mittels Python und Git-Befehlen darstellt \autocite{thiel_gitpython_2024}.
 Beim Aufruf der Funktion wurde kein Branch spezifiziert, weshalb der Branch ausgewählt wird, auf welchen aktuell der \emph{HEAD} vom remote Repository zeigt.
 Dieser Branch ist in der Regel der Standardbranch, auf welchem die Analyse durchgeführt werden soll.
 Für das Clonen muss außerdem der Link zum GitHub-Repository angegeben werden, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
 Auf diese Quellen wird in den nächsten Abschnitten eingegangen.
 
-Die Auswertung des Repositorys wird mit \emph{git-quick-stats} in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-statsgit-quick-stats_2021}.
+Die Auswertung des Repositorys wird mit \emph{git-quick-stats} in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-stats_2021}.
 \emph{Git-Quick-stats} bietet einfache und effiziente Möglichkeiten, um verschiedene Statistiken in einem Git-Repository zu ermitteln.
 Das Tool wird in dem Python-Skript mit dem Befehl \emph{git-quick-stats -T} aufgerufen, um detaillierte Statistiken zu erhalten.
 Ausgegeben wird eine Liste aller Autoren, welche in dem Repository Änderungen vorgenommen haben.
@@ -29,7 +29,7 @@ Außerdem bietet das Tool die Möglichkeit, mit der gesetzten Umgebungsvariablen
 Diese Funktion wird verwendet, um die Änderungen bis zur Aktualisierung einer Quelle zu betrachten.
 Die Daten werden beispielsweise in der Datei \path{20210819_161452-0400_git_contributors.csv} gespeichert, wobei der erste Teil des Dateinamens den konkreten Tag und Uhrzeit mit zugehöriger Zeitzone angibt.
 Dabei hat die Datei die gleichen Felder wie die \path{git_contributors.csv}-Datei, welche in \autoref{tab:git_contributors} dargestellt ist, jedoch nur für die Änderungen bis zu dem angegebenen Zeitpunkt.
-Für die Verarbeitung der Zeiten in unterschiedlichen Zeitzonen wird das Modul \emph{pytz} in der Version 2024.2 verwendet \autocite{bishop_stub42pytz_2024}.
+Für die Verarbeitung der Zeiten in unterschiedlichen Zeitzonen wird das Modul \emph{pytz} in der Version 2024.2 verwendet \autocite{bishop_pytz_2024}.
 
 \begin{table}
     \begin{tabularx}{\textwidth}{XL{10.2cm}}

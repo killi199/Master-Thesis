@@ -3,7 +3,7 @@
 Zu Beginn des Prozesses wird die Datei eingelesen, in denen die Top 100 Pakete von \gls{pypi} aufgelistet sind.
 In dieser Datei ist ausschließlich der Name des Pakets und die Anzahl der Downloads auf \gls{pypi} enthalten.
 Für die Beschaffung der Repository Daten von GitHub wird jedoch der Link zu der Versionsverwaltung benötigt.
-Dieser wird mithilfe von \emph{aiohttp} in der Version 3.10.3 von der JSON-API von \gls{pypi} abgefragt \autocite{noauthor_aio-libsaiohttp_2024}.
+Dieser wird mithilfe von \emph{aiohttp} in der Version 3.10.3 von der JSON-API von \gls{pypi} abgefragt \autocite{svetlov_aiohttp_2024}.
 Dabei muss ein Paket nicht zwangsweise ein GitHub-Repository haben, weshalb die Daten nicht immer vorhanden sind.
 In diesem Fall wird das Paket übersprungen und nicht weiter betrachtet.
 
@@ -27,7 +27,7 @@ Die Felder der Dateien sind in \autoref{tab:python_authors} aufgelistet.
 Zusätzlich zu den Informationen der Autoren und Maintainer wird die Beschreibung des Pakets von der API zurückgegeben.
 Einige Pakete haben in der Beschreibung ebenfalls Autoren angegeben, welche zusätzlich verarbeitet werden.
 Die Beschreibung wird als unstrukturierter Text zurückgegeben.
-Dieser Text wird mittels der \gls{ner} Bibliothek \emph{spaCy} in der Version 3.7.6 verarbeitet, um die Autoren zu extrahieren \autocite{honnibal_spacy_2020}.
+Dieser Text wird mittels der \gls{ner} Bibliothek \emph{spaCy} in der Version 3.7.6 verarbeitet, um die Autoren zu extrahieren \autocite{honnibal_spacy_2024}.
 Dabei wird das Programm so verwendet, dass nur die Entitäten \emph{PERSON} extrahiert werden.
 Als Modell wurde das \texttt{en\_core\_web\_trf} verwendet, welches auf Englisch trainiert ist und eine höhere Genauigkeit aufweist als das \texttt{en\_core\_web\_sm} Modell.
 Das \texttt{en\_core\_web\_sm} Modell hat einen F Score von 0.846, wohingegen das \texttt{en\_core\_web\_trf} Modell einen F Score von 0.902 aufweist.

@@ -23,7 +23,7 @@ Dabei wird so vorgegangen, dass die Daten, welche vorhanden sind, zum Vergleich 
 Falls der Name vorhanden ist, wird dieser mit dem Namen des Git-Autors über das Keyword \emph{in} in Python verglichen.
 Dieses sorgt dafür, dass nur ein Teil der Zeichenkette in der anderen Zeichenkette vorhanden sein muss.
 Außerdem wird die andere Richtung ebenfalls probiert.
-Zusätzlich wird das Programm \emph{thefuzz} in der Version 0.22.1 verwendet, um eine unscharfe Suche zu ermöglichen.
+Zusätzlich wird das Programm \emph{thefuzz} in der Version 0.22.1 verwendet, um eine unscharfe Suche zu ermöglichen \autocite{bachmann_thefuzz_2023}.
 Hierbei wird der Name des Autors aus der Quelle mit dem Namen des Git-Autors verglichen und auf eine Übereinstimmung von 80 \% oder mehr geprüft.
 Die Datenbeschaffung hat gezeigt, dass die Namen der Autoren manchmal Klammern enthalten, welche den beschriebenen Abgleich stören.
 Aus diesem Grund wird der zuvor beschriebene Abgleich erneut durchgeführt, wobei die Klammern in dem Namen entfernt worden sind.
