@@ -1,6 +1,5 @@
 \chapter{Methodik}
 \label{chap:methodik}
-% TODO Grafik hier einfügen vom Prozess
 In diesem Kapitel wird beschrieben, wie die Daten der einzelnen Quellen beschafft, abgeglichen und anschließend ausgewertet werden.
 Die Datenbeschaffung wird in \autoref{sec:datenbeschaffung}, der Abgleich in \autoref{sec:abgleich} und die Auswertung in \autoref{sec:auswertung} beschrieben.
 
@@ -41,7 +40,7 @@ Es entsteht die in \autoref{fig:datenbeschaffung_ergebnisse} dargestellte Ordner
     Die Abbildung stellt einen Ausschnitt der CSV-Dateien der Datenbeschaffung dar.
 \end{figure}
 
-Der Prozess findet für jedes zu untersuchende Paket statt.
+Der Prozess findet für jedes zu untersuchende Paket statt und ist in \autoref{fig:programmablauf} visualisiert.
 Die Pakete werden dabei aus dem \gls{pypi} und dem \gls{cran} Software-Verzeichnis entnommen.
 Die Ergebnisse des Prozesses werden in fünf Ordnern gespeichert jeweils für \gls{pypi}, \gls{cran}, \gls{cff}, \gls{pypi} \gls{cff} und \gls{cran} \gls{cff}.
 Die Ordner stellen die 5 Top 100 Listen dar, welche in \autoref{sec:datenbeschaffung} beschrieben werden.
@@ -51,6 +50,16 @@ Hier werden die Ergebnisse der Abgleiche ausgewertet und zusammengefasst, um üb
 Die Datenbeschaffung, der Abgleich und die Auswertung sind in Python programmiert und verwenden \gls{oss} auf welche in den jeweiligen Abschnitten eingegangen wird.
 Der entwickelte Quellcode ist in einem Git-Repository verfügbar \autocite{jahrens_t20240710-softwareauthors-kj_2025}.
 Über alle Abschnitte hinweg wird Pandas in der Version 2.2.2 verwendet, um die Tabellen zu erstellen und zu verarbeiten \autocite{the_pandas_development_team_pandas_2024}.
+
+\begin{figure}
+    \begin{center}
+        \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/Ablauf.svg}
+    \end{center}
+    \caption{Visualisierter Prozess}
+    \label{fig:programmablauf}
+    \small
+    In der Abbildung ist der Prozess visualisiert.
+\end{figure}
 
 \input{kapitel/methodik/datenbeschaffung.tex}
 \input{kapitel/methodik/abgleich.tex}
