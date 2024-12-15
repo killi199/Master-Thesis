@@ -14,10 +14,10 @@
 In diesem Kapitel wird die Arbeit diskutiert und die Ergebnisse interpretiert.
 Zuerst wird auf die grundlegenden Limitierungen der Arbeit eingegangen und wie diese die Ergebnisse beeinflussen.
 Diese Limitierungen können nicht vollständig behoben werden.
-Anschließend wird diskutiert, wie gut der Abgleich der Autoren funktioniert hat.
+Anschließend erfolgt eine Diskussion über die Qualität des Abgleichs der Autoren.
 Daraufhin wird diskutiert, was Softwareentwickler leisten müssen, um zitiert zu werden.
-Dabei kann natürlich nicht für alle Pakete eine Aussage getroffen werden, da dies individuell unterschiedlich ist.
-Zuletzt wird diskutiert, wie gut die Autoren in den untersuchten Listen gepflegt werden.
+Natürlich lassen sich keine allgemeinen Aussagen für alle Pakete treffen, da dies individuell unterschiedlich ist.
+Zuletzt wird erörtert, wie sorgfältig die Autoren in den untersuchten Listen gepflegt sind.
 
 \section{Limitierungen}
 \label{sec:limitierungen}
@@ -66,10 +66,10 @@ Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentat
 In einigen Quellen werden Autoren durch die Entwickler nicht direkt genannt, sondern es wird auf eine andere Quelle verwiesen, in welcher die Autoren genannt werden.
 Beispielsweise wird in \emph{pandas} in der \gls{cff}-Datei als Name \glqq The pandas development team\grqq{} und anschließend die Webseite \url{https://pandas.pydata.org/about/team.html} angegeben.
 Auf dieser Seite sind anschließend alle aktiven Autoren gelistet.
-In der Masterarbeit werden jedoch nur die Autoren in der \gls{cff}-Datei mit Vor- und Nachnamen betrachtet.
-Es wird keine weitere Analyse anderer Quellen durchgeführt, welche möglicherweise genannt werden.
-Dadurch kann es wie in dem Fall von \emph{pandas} dazu kommen, dass Autoren, welche nicht direkt genannt werden, jedoch auf einer anderen Seite gelistet sind, nicht betrachtet werden.
-Dies schränkt die Ergebnisse der Masterarbeit ein, da nicht alle Autoren betrachtet werden.
+In der Masterarbeit stehen lediglich die Autoren in der \gls{cff}-Datei mit Vor- und Nachnamen im Fokus.
+Es erfolgt keine zusätzliche Analyse anderer Quellen, die möglicherweise erwähnt sind.
+Daher kann es wie im Fall von \emph{pandas} passieren, dass Autoren, die nicht direkt genannt sind, jedoch auf einer anderen Seite gelistet werden, unberücksichtigt bleiben.
+Dies schränkt die Ergebnisse der Masterarbeit ein, da nicht alle Autoren einbezogen sind.
 Eine Betrachtung der verlinkten Seiten würde jedoch einen erheblichen Mehraufwand bedeuten, da für jedes Paket die verlinkten Seiten analysiert werden müssten.
 Außerdem sind die verlinkten Seiten unterschiedlich aufgebaut, sodass die Komplexität dadurch ebenfalls gesteigert wäre.
 Aus diesem Grund wurde in der Masterarbeit darauf verzichtet, die verlinkten Seiten zu analysieren und mit weniger genannten Autoren gearbeitet.
@@ -134,11 +134,11 @@ Einzelne Pakete können natürlich unterschiedlich sein und andere Anforderungen
 Nur weil ein Paket alle Autoren nennt, welche mindestens einen Commit getätigt haben, bedeutet das nicht, dass ein anderes Paket ebenfalls diesen Ansatz verfolgt.
 Die Ergebnisse in \autoref{chap:ergebnisse} zeigen im Allgemeinen aggregierte Werte für alle Pakete einer Liste und aus diesem Grund wird die Frage ebenfalls allgemeingültig diskutiert.
 
-Die \autoref{fig:common_authors} hat gezeigt, dass Autoren mit vielen Commits über alle Pakete betrachtet häufiger als Autoren genannt werden.
+Die \autoref{fig:common_authors} zeigt, dass Autoren mit vielen Commits über alle Pakete hinweg häufiger als Autoren genannt sind.
 Sie zeigt, dass eine erhöhte Chance besteht, falls eine Person unter den Top 10 Autoren ist, dass diese Person auch als Autor genannt wird.
-Dies ist jedoch nicht garantiert, da die Abbildung gleichzeitig zeigt, dass nur ungefähr 50 \% der Autoren mit den meisten Commits auch tatsächlich als Autor genannt werden.
+Dies ist jedoch nicht garantiert, da die Abbildung gleichzeitig zeigt, dass nur etwa 50 \% der Autoren mit den meisten Commits tatsächlich als Autor aufgeführt sind.
 Außerdem zeigt sie, dass in einigen Paketen die Autoren mit den meisten Commits oder geänderten Zeilen auch gar nicht als Autor genannt werden können.
-Durch diese Gründe ist davon auszugehen, dass es ein guter Ansatz ist, viel Arbeit in dem Projekt zu leisten, um als Autor genannt zu werden.
+Aus diesen Gründen lässt sich annehmen, dass viel Arbeit in einem Projekt ein guter Ansatz ist, um als Autor genannt zu sein.
 Dies jedoch keine Garantie dafür genannt zu werden und in den meisten Fällen werden weitere Schritte benötigt, um tatsächlich aufgeführt zu werden.
 
 Ein möglicher Schritt, welcher jedoch nicht umsetzbar ist, ist bei der Gründung des Paketes beteiligt zu sein.
