@@ -41,12 +41,12 @@ Es entsteht die in \autoref{fig:datenbeschaffung_ergebnisse} dargestellte Ordner
 \end{figure}
 
 Der Prozess findet für jedes zu untersuchende Paket statt und ist in \autoref{fig:programmablauf} visualisiert.
-Die Pakete werden dabei aus dem \gls{pypi} und dem \gls{cran} Software-Verzeichnis entnommen.
+Die Pakete stammen aus den Software-Verzeichnissen \gls{pypi} und \gls{cran}.
 Die Ergebnisse des Prozesses werden in fünf Ordnern gespeichert jeweils für \gls{pypi}, \gls{cran}, \gls{cff}, \gls{pypi} \gls{cff} und \gls{cran} \gls{cff}.
-Die Ordner stellen die 5 Top 100 Listen dar, welche in \autoref{sec:datenbeschaffung} beschrieben werden.
+Diese Ordner bilden die fünf Top 100 Listen, die in \autoref{sec:datenbeschaffung} näher beschrieben sind.
 In jedem Ordner sind jeweils Unterordner für die einzelnen Pakete.
 Diese Daten werden für die anschließende Auswertung in \autoref{sec:auswertung} verwendet.
-Hier werden die Ergebnisse der Abgleiche ausgewertet und zusammengefasst, um über alle Pakete hinweg Aussagen treffen zu können.
+In diesem Abschnitt werden die Ergebnisse der Abgleiche analysiert und zusammengefasst, um Aussagen über alle Pakete hinweg zu treffen.
 Die Datenbeschaffung, der Abgleich und die Auswertung sind in Python programmiert und verwenden \gls{oss} auf welche in den jeweiligen Abschnitten eingegangen wird.
 Der entwickelte Quellcode ist in einem Git-Repository verfügbar \autocite{jahrens_t20240710-softwareauthors-kj_2025}.
 Über alle Abschnitte hinweg wird Pandas in der Version 2.2.2 verwendet, um die Tabellen zu erstellen und zu verarbeiten \autocite{the_pandas_development_team_pandas_2024}.
