@@ -216,7 +216,7 @@ overall_full_results = pd.read_csv("overall_results/overall_full_results.csv", i
 
 # Create a stacked bar chart for each source in the overall_results DataFrame
 categories = ['total_valid_cff_cff_init_used', 'total_valid_cff_cff_init_not_used', 'total_invalid_cff_cff_init_used', 'total_invalid_cff_cff_init_not_used']
-colors = ['green', 'lightgreen', 'red', 'lightcoral']
+colors = ['#b2df8a', '#33a02c', '#a6cee3', '#1f78b4']
 names= ['Valide CFF mit CFF init', 'Valide CFF ohne CFF init', 'Invalide CFF mit CFF init', 'Invalide CFF ohne CFF init']
 
 # Plot the stacked bar chart
@@ -321,10 +321,10 @@ def get_cff_doi_plt(results):
 
     fig, ax = plt.subplots()
 
-    bars_doi = ax.bar(index, doi_cff, bar_width, label='DOI', color='blue')
-    bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_cff, bar_width, label='Identifier DOI', color='green')
-    bars_without_doi = ax.bar(index, without_doi_cff, bar_width, bottom=doi_cff, label='Ohne DOI', color='lightblue')
-    bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_cff, bar_width, bottom=identifier_doi_cff, label='Ohne Identifier DOI', color='lightgreen')
+    bars_doi = ax.bar(index, doi_cff, bar_width, label='DOI', color='#1f78b4')
+    bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_cff, bar_width, label='Identifier DOI', color='#33a02c')
+    bars_without_doi = ax.bar(index, without_doi_cff, bar_width, bottom=doi_cff, label='Ohne DOI', color='#a6cee3')
+    bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_cff, bar_width, bottom=identifier_doi_cff, label='Ohne Identifier DOI', color='#b2df8a')
 
     for bars in [bars_doi, bars_identifier, bars_without_doi, bars_without_identifier_doi]:
         for bar in bars:
@@ -364,12 +364,12 @@ def get_preferred_citation_doi_plt(results):
 
     fig, ax = plt.subplots()
 
-    bars_doi = ax.bar(index, doi_preferred_citation_cff, bar_width, label='DOI', color='blue')
-    bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_preferred_citation_cff, bar_width, label='Identifier DOI', color='green')
-    bars_collection = ax.bar([i + 2 * bar_width for i in index], collection_doi_preferred_citation_cff, bar_width, label='Collection DOI', color='red')
-    bars_without_doi = ax.bar(index, without_doi_preferred_citation_cff, bar_width, bottom=doi_preferred_citation_cff, label='Ohne DOI', color='lightblue')
-    bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_preferred_citation_cff, bar_width, bottom=identifier_doi_preferred_citation_cff, label='Ohne Identifier DOI', color='lightgreen')
-    bars_without_collection_doi = ax.bar([i + 2 * bar_width for i in index], without_collection_doi_preferred_citation_cff, bar_width, bottom=collection_doi_preferred_citation_cff, label='Ohne Collection DOI', color='lightcoral')
+    bars_doi = ax.bar(index, doi_preferred_citation_cff, bar_width, label='DOI', color='#1f78b4')
+    bars_identifier = ax.bar([i + bar_width for i in index], identifier_doi_preferred_citation_cff, bar_width, label='Identifier DOI', color='#33a02c')
+    bars_collection = ax.bar([i + 2 * bar_width for i in index], collection_doi_preferred_citation_cff, bar_width, label='Collection DOI', color='#e31a1c')
+    bars_without_doi = ax.bar(index, without_doi_preferred_citation_cff, bar_width, bottom=doi_preferred_citation_cff, label='Ohne DOI', color='#a6cee3')
+    bars_without_identifier_doi = ax.bar([i + bar_width for i in index], without_identifier_doi_preferred_citation_cff, bar_width, bottom=identifier_doi_preferred_citation_cff, label='Ohne Identifier DOI', color='#b2df8a')
+    bars_without_collection_doi = ax.bar([i + 2 * bar_width for i in index], without_collection_doi_preferred_citation_cff, bar_width, bottom=collection_doi_preferred_citation_cff, label='Ohne Collection DOI', color='#fb9a99')
 
     for bars in [bars_doi, bars_identifier, bars_collection, bars_without_doi, bars_without_identifier_doi, bars_without_collection_doi]:
         for bar in bars:
@@ -404,8 +404,8 @@ def get_bib_doi_plt(results):
 
     fig, ax = plt.subplots()
 
-    bars_doi = ax.bar(index, doi_bib, label='DOI', color='blue')
-    bars_without_doi = ax.bar(index, without_doi_bib, bottom=doi_bib, label='Ohne DOI', color='lightblue')
+    bars_doi = ax.bar(index, doi_bib, label='DOI', color='#1f78b4')
+    bars_without_doi = ax.bar(index, without_doi_bib, bottom=doi_bib, label='Ohne DOI', color='#a6cee3')
 
     for bars in [bars_doi, bars_without_doi]:
         for bar in bars:
@@ -448,7 +448,7 @@ for _, folder in sources.items():
     plt.figure()
     for file_path in glob.glob(f'results/{folder}/**/git_contributors.csv', recursive=True):
         df = pd.read_csv(file_path)
-        plt.scatter(df['commits'], df['lines_changed'], s=1, color='blue')
+        plt.scatter(df['commits'], df['lines_changed'], s=1, color='#1f78b4')
     plt.xlabel('Commits')
     plt.ylabel('Changed Lines')
     plt.yscale('log')
@@ -464,7 +464,7 @@ def create_similarity_plot():
     for name, similarity in similarities.items():
         similarity = [x * 100 for x in ast.literal_eval(similarity)]
         fig, ax = plt.subplots()
-        ax.hist(similarity, bins=20, edgecolor='black')
+        ax.hist(similarity, bins=20, edgecolor='black', color='#1f78b4')
         ax.set_xlabel('Ähnlichkeit (%)')
         ax.set_ylabel('Häufigkeit')
         plt.tight_layout()
@@ -497,13 +497,13 @@ for index, value in total_valid_cff.items():
     to_timestamp_data = pd.DataFrame(to_timestamp_data)
     fig, ax = plt.subplots()
     ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_valid_cff_cff_init_used'],
-            label='Valid CFF with CFF init', color='green')
+            label='Valide CFF mit CFF init', color='#b2df8a')
     ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_valid_cff_cff_init_not_used'],
-            label='Valid CFF without CFF init', color='lightgreen')
+            label='Valide CFF ohne CFF init', color='#33a02c')
     ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_invalid_cff_cff_init_used'],
-            label='Invalid CFF with CFF init', color='red')
+            label='Invalide CFF mit CFF init', color='#a6cee3')
     ax.plot(to_timestamp_data['timestamp'], to_timestamp_data['total_invalid_cff_cff_init_not_used'],
-            label='Invalid CFF without CFF init', color='lightcoral')
+            label='Invalide CFF ohne CFF init', color='#1f78b4')
 
     ax.xaxis.set_major_locator(mdates.AutoDateLocator())
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
@@ -527,8 +527,8 @@ def get_removed_added_authors_plt(added_data, removed_data):
     bottom_added = [0] * len(added_data)
     bottom_removed = [0] * len(removed_data)
 
-    colors_added = ['blue', 'orange', 'green', 'olive']
-    colors_removed = ['pink', 'gray', 'brown', 'cyan']
+    colors_added = ['#1f78b4', '#33a02c', '#e31a1c', '#ff7f00']
+    colors_removed = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f']
 
     for idx, column in enumerate(added_data.columns):
         bars_added = ax.bar(index, added_data[column], bar_width, bottom=bottom_added,
@@ -557,7 +557,7 @@ def get_added_authors_plt(added_data):
 
     bottom_added = [0] * len(added_data)
 
-    colors_added = ['blue', 'orange', 'green', 'olive']
+    colors_added = ['#1f78b4', '#33a02c', '#e31a1c', '#ff7f00']
 
     for idx, column in enumerate(added_data.columns):
         bars_added = ax.bar(index, added_data[column], bottom=bottom_added,
