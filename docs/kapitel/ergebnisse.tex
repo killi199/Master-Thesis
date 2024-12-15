@@ -166,7 +166,7 @@ Beispielsweise gibt das Paket \emph{faker} in der \gls{cff} als einzigen Autor \
 Dieser Autor ist jedoch auf Rang 37 der Top-Git-Autoren, gemessen nach Commits.
 
 Eine weitere Auffälligkeit, welche beispielsweise in der \autoref{fig:common_authors_pypi_cff} vorkommt, ist, dass in der Legende \hologo{BibTeX} aufgeführt ist, jedoch keine Linie in der Abbildung dargestellt wird.
-Dies liegt daran, dass keiner der Top 100 Git-Autoren aller Pakete mit \hologo{BibTeX} in einer \hologo{BibTeX} als Autor genannt wird.
+Dies liegt daran, dass keiner der Top-100-Git-Autoren aller Pakete mit \hologo{BibTeX} in einer \hologo{BibTeX} als Autor genannt wird.
 Im konkreten Fall liegt das daran, dass nur eines der Pakete eine \hologo{BibTeX}-Datei enthält und in dieser Datei nur ein Autor genannt wird, welcher nicht automatisch abgeglichen wurde.
 Dies ist \autoref{tab:pypi_matching_results_manual_anhang} ebenfalls zu entnehmen.
 Dadurch liegt die Linie für alle x-Werte bei 0 \% und ist nicht sichtbar.
@@ -218,12 +218,12 @@ Zum einen wurden die Autoren nach der Anzahl der Commits und zum anderen nach de
 In allen Abbildungen wird der Anteil der genannten Autoren unter den Top-Git-Autoren dargestellt.
 Durch dieses Verhältnis steigen die Linien, da mehr genannte Autoren unter den Top-Git-Autoren bei steigender Anzahl derer sind.
 
-Die Abbildungen zeigen beispielsweise für $x=0$ immer, dass 0 \% der genannten Autoren unter den Top 0 Git-Autoren sind.
-Der Anteil kann dabei 100 \% erreichen, falls alle genannten Autoren in einer Quelle auch tatsächlich unter den Top 200 Git-Autoren sind und somit Quellcode entwickelt haben.
+Die Abbildungen zeigen beispielsweise für $x=0$ immer, dass 0 \% der genannten Autoren unter den Top-0-Git-Autoren sind.
+Der Anteil kann dabei 100 \% erreichen, falls alle genannten Autoren in einer Quelle auch tatsächlich unter den Top-200-Git-Autoren sind und somit Quellcode entwickelt haben.
 Dabei muss berücksichtigt werden, dass nicht abgeglichene Autoren ebenfalls berücksichtigt werden.
 Falls ein Autor nicht abgeglichen wurde, wird dieser als nicht unter den Top-Git-Autoren betrachtet und der Graph kann keine 100 \% für die Quelle erreichen.
 
-Um konkrete Werte zu nennen ist in \autoref{fig:common_authors_2_pypi_cff} beispielsweise dargestellt, dass ungefähr 80 \% der als \gls{pypi} Maintainer genannten Autoren unter den Top 100 Git-Autoren nach der Anzahl der Commits sind und nur ungefähr 40 \% der in der README genannten Autoren unter den Top 100 Git-Autoren nach Commits sind.
+Um konkrete Werte zu nennen ist in \autoref{fig:common_authors_2_pypi_cff} beispielsweise dargestellt, dass ungefähr 80 \% der als \gls{pypi} Maintainer genannten Autoren unter den Top-100-Git-Autoren nach der Anzahl der Commits sind und nur ungefähr 40 \% der in der README genannten Autoren unter den Top-100-Git-Autoren nach Commits sind.
 Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Quelle dar, sodass ein Paket mit mehreren Linien für alle Quellen dargestellt wird.
 
 In den Graphen sind erneut Auffälligkeiten zu erkennen.
@@ -231,7 +231,7 @@ Beispielsweise existieren erneut Linien, welche für jeden x Wert 0 \% oder 100 
 In \autoref{fig:common_authors_2_pypi_cff} ist beispielsweise erneut die Linie für \hologo{BibTeX} nicht zu erkennen, da diese erneut auf der x-Achse verläuft.
 Dies liegt daran, dass nur ein Autor in einer \hologo{BibTeX}-Datei über alle Pakete genannt wird, welcher nicht abgeglichen werden konnte und somit nicht unter den Top-Git-Autoren ist.
 Für die Linien, welche bei 100 \% verlaufen, handelt es sich um Pakete, bei denen beispielsweise nur ein Autor in der Quelle genannt wird und dieser Autor auf Rang eins der Top-Git-Autoren ist.
-Es kann aber auch komplexer sein, beispielsweise, dass drei Autoren in der Quelle genannt werden und alle drei unter den Top drei Git-Autoren sind.
+Es kann aber auch komplexer sein, beispielsweise, dass drei Autoren in der Quelle genannt werden und alle drei unter den Top-drei-Git-Autoren sind.
 Die Reihenfolge, in der sie in der Quelle genannt werden, ist dabei irrelevant.
 Es muss dabei jedoch berücksichtigt werden, dass auch diese Linien nicht direkt bei 100 \% starten, da bei der Betrachtung von null Git-Autoren keine genannten Autoren unter den Top-Git-Autoren sein können.
 
@@ -312,9 +312,9 @@ Aus diesem Grund sind in den weiteren Abbildungen ebenfalls keine 100 Pakete fü
 Außerdem ist auffällig, dass in der \gls{cff} Liste und der \gls{pypi} \gls{cff} Liste jeweils ein Paket vorhanden ist, welches eine invalide \gls{cff}-Datei enthält, obwohl für die Erstellung \emph{cffinit} verwendet wurde.
 Konkret handelt es sich in beiden Fällen um das \gls{pypi} Paket \emph{modelyst-sqlmodel}.
 Das Paket ist in beiden Listen enthalten, da in der \gls{cff} Liste ausschließlich \gls{pypi} Pakete enthalten sind, da diese die meisten Sterne auf GitHub haben.
-In diesem Fall ist das Paket unter den Top 100 \gls{cff} Paketen auf GitHub und somit ebenfalls in der \gls{pypi} \gls{cff} Liste enthalten.
+In diesem Fall ist das Paket unter den Top-100 \gls{cff} Paketen auf GitHub und somit ebenfalls in der \gls{pypi} \gls{cff} Liste enthalten.
 Im Allgemeinen sind alle \gls{pypi} Pakete, welche in der \gls{cff} Liste enthalten sind, ebenfalls in der \gls{pypi} \gls{cff} Liste enthalten.
-In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls{cran} Pakete zu wenig Sterne auf GitHub haben, um unter den Top 100 \gls{cff} Paketen zu sein.
+In der \gls{cff} Liste ist kein einziges \gls{cran} Paket enthalten, da die \gls{cran} Pakete zu wenig Sterne auf GitHub haben, um unter den Top-100 \gls{cff} Paketen zu sein.
 
 Die \autoref{fig:overall_valid_cff_full} zeigt die gleichen Informationen wie die zuvor beschriebene Abbildung.
 Diesmal wurde die Analyse allerdings nicht auf einer Liste, sondern für alle auf GitHub verfügbaren \gls{cff}-Dateien, welche analysiert werden konnten, durchgeführt.
@@ -341,7 +341,7 @@ Dabei ist auffällig, dass der Anteil der validen \gls{cff}-Dateien zwar größe
 
 \autoref{fig:citation_counts} zeigt für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und \hologo{BibTeX} den angegebenen Typ der Zitation.
 Anhand der Abbildungen ist außerdem zu erkennen, wie oft welche Quelle in den Listen vorkommt.
-Beispielsweise haben zwei der Top 100 \gls{cran} Pakete eine \gls{cff} angegeben und fünf der Top 100 \gls{pypi} Pakete.
+Beispielsweise haben zwei der Top-100 \gls{cran} Pakete eine \gls{cff} angegeben und fünf der Top-100 \gls{pypi} Pakete.
 Von diesen fünf Paketen hat kein Paket eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
 In den \gls{cran} Listen haben beide Pakete hingegen ebenfalls eine \glqq preferred-citation\grqq{} \gls{cff} angegeben.
 Zudem ist auffällig, dass in allen Listen die Anzahl der Pakete, welche eine \hologo{BibTeX}-Datei verwenden, gering ist.

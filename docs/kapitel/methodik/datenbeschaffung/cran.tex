@@ -1,6 +1,6 @@
 \subsection{CRAN}
 \label{subsec:datenbeschaffung_cran}
-Ähnlich wie bei \gls{pypi} werden zu Beginn die Daten der Top 100 Pakete aus der zuvor beschafften Datei eingelesen.
+Ähnlich wie bei \gls{pypi} werden zu Beginn die Daten der Top-100-Pakete aus der zuvor beschafften Datei eingelesen.
 In dieser Datei sind ebenfalls ausschließlich der Name des Pakets und die Anzahl der Downloads auf \gls{cran} enthalten.
 Aus diesem Grund wird zu Beginn eine Anfrage mittels \emph{aiohttp} an die von METACRAN bereitgestellte API gestellt, um die Metadaten des Pakets zu erhalten.
 In den Metadaten kann der Link eines GitHub-Repositorys enthalten sein.

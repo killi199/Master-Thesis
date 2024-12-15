@@ -1,6 +1,6 @@
 \subsection{PyPI}
 \label{subsec:datenbeschaffung_pypi}
-Zu Beginn des Prozesses wird die Datei eingelesen, in denen die Top 100 Pakete von \gls{pypi} aufgelistet sind.
+Zu Beginn des Prozesses wird die Datei eingelesen, in denen die Top-100-Pakete von \gls{pypi} aufgelistet sind.
 In dieser Datei ist ausschließlich der Name des Pakets und die Anzahl der Downloads auf \gls{pypi} enthalten.
 Für die Beschaffung der Repository Daten von GitHub wird jedoch der Link zu der Versionsverwaltung benötigt.
 Dieser wird mithilfe von \emph{aiohttp} in der Version 3.10.3 von der JSON-API von \gls{pypi} abgefragt \autocite{svetlov_aiohttp_2024}.
