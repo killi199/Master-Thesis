@@ -8,7 +8,6 @@
 %   GitHub: 4476 (merges nicht inbegriffen https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors#about-contributors gefühlt aber doch inbegriffen....) (E-Mails werden gemerged die GitHub bekannt sind)
 %   git shortlog -s -n --no-merges: 3844 (merges nicht inbegriffen) 4370 (merges inbegriffen)
 %   git fame: 4370 (merges inbegriffen)
-% TODO ggf. Namensvetter werden nicht unterschieden -> diskutieren, warum es nicht so notwendig ist Namensvetter zu unterscheiden
 
 \chapter{Diskussion}
 \label{chap:diskussion}
@@ -68,7 +67,7 @@ In einigen Quellen werden Autoren durch die Entwickler nicht direkt genannt, son
 Beispielsweise wird in \emph{pandas} in der \gls{cff}-Datei als Name \glqq The pandas development team\grqq{} und anschließend die Webseite \url{https://pandas.pydata.org/about/team.html} angegeben.
 Auf dieser Seite sind anschließend alle aktiven Autoren gelistet.
 In der Masterarbeit werden jedoch nur die Autoren in der \gls{cff}-Datei mit Vor- und Nachnamen betrachtet.
-Es wird keine weitere Analyse anderer Quellen durchgeführt, welche möglicherweise in den Quellen verlinkt sind.
+Es wird keine weitere Analyse anderer Quellen durchgeführt, welche möglicherweise genannt werden.
 Dadurch kann es wie in dem Fall von \emph{pandas} dazu kommen, dass Autoren, welche nicht direkt genannt werden, jedoch auf einer anderen Seite gelistet sind, nicht betrachtet werden.
 Dies schränkt die Ergebnisse der Masterarbeit ein, da nicht alle Autoren betrachtet werden.
 Eine Betrachtung der verlinkten Seiten würde jedoch einen erheblichen Mehraufwand bedeuten, da für jedes Paket die verlinkten Seiten analysiert werden müssten.
@@ -78,8 +77,11 @@ Aus diesem Grund wurde in der Masterarbeit darauf verzichtet, die verlinkten Sei
 \subsection*{Ausführungszeit der Datenbeschaffung}
 \label{sec:ausfuehrungszeit_der_datenbeschaffung}
 Eine weitere Limitierung ist die Laufzeit der Datenbeschaffung.
-Diese wird besonders durch den Aufruf von \emph{git-quick-stats} beeinflusst, da das Programm für große Repositorys eine lange Laufzeit benötigt.
+Diese wird besonders durch den Aufruf von \emph{git-quick-stats} beeinflusst, da das Programm für große Repositorys eine lange Laufzeit hat.
+Beispielsweise benötigt die Ausführung des Programms für das Paket \emph{pytorch} 1 Minute und 22 Sekunden.
 Außerdem hat die \gls{ner} für die README und die Beschreibung eine hohe Laufzeit, weswegen für die README nur die letzten 50 Commits betrachtet werden.
+Die Laufzeit der \gls{ner} beträgt für die README von \emph{pytorch} 3,3588 Sekunden.
+Bei einer Ausführung der \gls{ner} für 50 Versionen der README entspricht dies bereits einer Laufzeit von 2 Minuten und 80 Sekunden.
 Um die Laufzeit weiter zu reduzieren, beispielsweise um sämtliche \gls{cff} Pakete auf GitHub analysieren zu können, wurde auf Faktoren, welche die Laufzeit erheblich erhöhen, verzichtet.
 Aus diesem Grund wurden bei der Analyse ausschließlich die \gls{cff}-Dateien betrachtet.
 Zudem wurden für den Abgleich die Git-Autoren benötigt, welche ausschließlich in der neuesten Version beschafft wurden, sodass \emph{git-quick-stats} nur einmal aufgerufen werden musste.
@@ -87,7 +89,7 @@ Dadurch konnte die Laufzeit der Datenbeschaffung für die gesamte \gls{cff} List
 Der Server hat zwei Intel Xeon Gold 6346 Prozessoren mit jeweils 3,1 GHz je 16 Kerne verbaut.
 Bei Betrachtung aller Quellen hätte dieser Prozess erheblich mehr Zeit in Anspruch genommen.
 
-\section{Wie gut können Autoren abgeglichen werden?}
+\section{Wie gut können Autoren untereinander abgeglichen werden?}
 \label{sec:abgleich_diskussion}
 In den Tabellen \ref{tab:matching_results_auto}, \ref{tab:matching_results_auto_anhang}, \ref{tab:matching_results_manual},\ref{tab:cran_matching_results_manual_anhang}, \ref{tab:pypi_matching_results_manual_anhang}, \ref{tab:cff_matching_results_manual_anhang}, \ref{tab:pypi_cff_matching_results_manual_anhang} und \ref{tab:cran_cff_matching_results_manual_anhang} wurden die Ergebnisse des Abgleichs der Autoren dargestellt.
 In \autoref{tab:matching_results_manual} ist aufgefallen, dass viele Autoren in den Python Quellen keine Personen sind.
@@ -114,7 +116,7 @@ In den anderen beiden Dateien sind mehr Autoren enthalten, wobei viele der Autor
 Bei einer Betrachtung aller Autoren wäre der F1-Score für die \hologo{BibTeX}-Quelle besser ausgefallen.
 In diesem Fall verschlechtern die beiden nicht abgeglichenen Autoren aufgrund der insgesamt geringen Anzahl an betrachteten Autoren den F1-Score erheblich.
 
-Außerdem ist Aufgefallen, dass insgesamt viele \gls{fp} in den Ergebnissen enthalten sind.
+Außerdem ist aufgefallen, dass insgesamt viele \gls{fp} in den Ergebnissen enthalten sind.
 Diese sind dadurch begründet, dass das Keyword \emph{in} in \autoref{sec:abgleich} verwendet wird.
 In der manuellen Überprüfung der Ergebnisse ist aufgefallen, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
 In diesen Fällen ist es möglich, fast jeden Autor aus der Quelle mit diesem speziellen Git Autor abzugleichen, da der Autor der Quelle nur diesen Buchstaben in seinem Namen enthalten haben muss.
@@ -136,7 +138,7 @@ Die \autoref{fig:common_authors} hat gezeigt, dass Autoren mit vielen Commits ü
 Sie zeigt, dass eine erhöhte Chance besteht, falls eine Person unter den Top 10 Autoren ist, dass diese Person auch als Autor genannt wird.
 Dies ist jedoch nicht garantiert, da die Abbildung gleichzeitig zeigt, dass nur ungefähr 50 \% der Autoren mit den meisten Commits auch tatsächlich als Autor genannt werden.
 Außerdem zeigt sie, dass in einigen Paketen die Autoren mit den meisten Commits oder geänderten Zeilen auch gar nicht als Autor genannt werden können.
-Durch diese Gründe ist davon auszugehen, dass es ein guter Ansatz ist viel Arbeit in dem Projekt zu leisten, um als Autor genannt zu werden.
+Durch diese Gründe ist davon auszugehen, dass es ein guter Ansatz ist, viel Arbeit in dem Projekt zu leisten, um als Autor genannt zu werden.
 Dies jedoch keine Garantie dafür genannt zu werden und in den meisten Fällen werden weitere Schritte benötigt, um tatsächlich aufgeführt zu werden.
 
 Ein möglicher Schritt, welcher jedoch nicht umsetzbar ist, ist bei der Gründung des Paketes beteiligt zu sein.
@@ -152,7 +154,7 @@ Hier wird deutlich, dass viele genannte Autoren keinen Commit in den letzten Jah
 Jedoch muss berücksichtigt werden, dass inaktive Repositorys mit in diese Statistik einfließen, welche ebenfalls Autoren enthalten, welche nicht mehr aktiv am Projekt beteiligt sind, da das Projekt eingestellt wurde.
 Auf die Inaktivität von Autoren und deren pflege wird im nächsten Abschnitt genauer eingegangen.
 
-\section{Wie gut werden Autoren gepflegt?}
+\section{Wie gut werden Autoren in den einzelnen Quellen gepflegt?}
 \label{sec:autoren_pflege_diskussion}
 In \autoref{fig:common_authors_2} wurde gezeigt, dass viele Autoren gar nicht unter den Top 100 Git-Autoren sind.
 Dies bedeutet, dass viele der genannten Autoren gar nicht mehr aktiv am Projekt beteiligt sind.
@@ -178,7 +180,7 @@ Dabei werden allerdings auch Quellen wie die README betrachtet, in welcher bei v
 Auch ist die Abbildung erneut stark abhängig von dem Abgleich in der Datenbeschaffung.
 Allerdings lässt sich hier erneut erkennen, dass die Autoren in den Quellen nicht automatisch gepflegt werden.
 Des Weiteren zeigen die Tabellen \ref{tab:average_lifespans} und \ref{tab:average_lifespans_until_today}, sowie die \autoref{fig:added_removed_authors}, dass einmal hinzugefügte Autoren in den meisten Fällen nicht mehr entfernt werden.
-Diese Tatsache ist dabei nichts Negatives, da die Autoren Arbeit in den Paketen geleistet haben, allerdings sollten Autoren, welche aktuell das Paket aktiv pflegen ebenfalls genannt werden, was in vielen Fällen nicht der Fall ist, wie bereits diskutiert wurde.
+Diese Tatsache ist dabei nichts Negatives, da die Autoren Arbeit in den Paketen geleistet haben, allerdings sollten Autoren, welche aktuell das Paket aktiv pflegen ebenfalls genannt werden.
 
 Im Allgemeinen lässt sich sagen, dass die Autoren in den betrachteten Listen nicht aktiv gepflegt werden und besonders in den meisten Fällen keine automatischen Prozesse vorhanden sind, welche die Autorenlisten aktualisieren.
 

@@ -5,6 +5,7 @@ In dieser Datei sind ebenfalls ausschließlich der Name des Pakets und die Anzah
 Aus diesem Grund wird zu Beginn eine Anfrage mittels \emph{aiohttp} an die von METACRAN bereitgestellte API gestellt, um die Metadaten des Pakets zu erhalten.
 In den Metadaten kann der Link eines GitHub-Repositorys enthalten sein.
 Falls kein Link zu einem GitHub-Repository vorhanden ist, wird das Paket nicht weiter betrachtet.
+In der \gls{cran} Liste betrifft dies beispielsweise sechs der 100 Pakete.
 
 Anschließend werden die weiteren Daten verarbeitet, welche von der API bereitgestellt werden.
 Beispielsweise wird das Feld \glqq Authors@R\grqq{} bereitgestellt.
@@ -45,7 +46,7 @@ Die Autoren werden in der Datei \path{cran_authors.csv} nachdem sie mit den Date
 Dabei wird nur der Name gespeichert ohne zusätzliche Informationen wie der ORCID iD, da dieses Vorgehen die Verarbeitung bei den unterschiedlichen aufgebauten Zeichenfolgen vereinfacht hat.
 Zudem wird diese Methode nur verwendet, falls die Verarbeitung der Zeichenfolge \glqq Authors@R\grqq{} fehlschlägt.
 
-Ein weiteres Feld, welches von der API zurückgegeben wird und verarbeitet wird, ist das Feld \glqq Maintainer\grqq{}.
+Ein weiteres Feld, welches von der API zurückgegeben und verarbeitet wird, ist das Feld \glqq Maintainer\grqq{}.
 Dieses Feld ist nicht in R formatiert, sondern eine einfache Zeichenfolge.
 Die Zeichenfolge enthält weniger Informationen als die \glqq Author\grqq{} Zeichenfolge.
 In ihr ist lediglich der Name und die E-Mail-Adresse des Maintainers enthalten.
@@ -57,9 +58,6 @@ Die Felder der Dateien sind in \autoref{tab:python_authors} aufgelistet.
 Das letzte Feld, welches von der API verarbeitet wird, ist das Feld \glqq Description\grqq{}.
 In diesem Feld ist die Beschreibung des Pakets enthalten.
 Dabei wird die Verarbeitung wie in \autoref{subsec:datenbeschaffung_pypi} für die Beschreibung von \gls{pypi} durchgeführt.
-Es wird ebenfalls die \gls{ner} Bibliothek \emph{spaCy} verwendet, um die Autoren zu extrahieren.
-Anschließend werden die Namen der extrahierten Autoren in der Datei \path{description_authors.csv} nach einem Abgleich mit den Git-Daten gespeichert.
-Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.
 
 \begin{table}
     \begin{tabularx}{\textwidth}{XL{10.2cm}}

@@ -1,17 +1,17 @@
 \section{Zitierformate}
 \label{sec:zitierformate}
-In der Wissenschaft gibt es viele verschiedene Zitierweisen, die sich je nach Fachgebiet unterscheiden.
+In wissenschaftlichen Arbeiten gibt es viele verschiedene Zitierweisen, die sich je nach Fachgebiet unterscheiden.
 In dieser Arbeit soll jedoch nicht auf die verschiedenen Zitierweisen eingegangen werden, sondern auf Zitierformate, welche für die Zitation verwendet werden können und die Datenstruktur hinter der Zitation beschreiben.
 Hierbei gibt es ebenfalls unterschiedliche Formate, wobei sich in dieser Arbeit auf das \gls{cff} und das \hologo{BibTeX}-Format beschränkt wird.
 Das \gls{cff} ist ein Format, welches speziell für die Zitation von Software entwickelt wurde, weshalb es in dieser Arbeit besonders interessant ist.
-Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{} Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann.
+Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{}, Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann.
 
 \subsection{Citation File Format}
 \label{subsec:citation-file-format}
 Das \gls{cff} ist ein Format, welches in der \mintinline{text}{CITATION.cff}-Datei gespeichert wird und in YAML 1.2 geschrieben wird. 
 Das Format beschreibt die Zitation von Software und kann von Menschen und Maschinen gelesen werden.
 Es enthält Metadaten, welche für die Zitation von Software benötigt werden.
-Außerdem wird es öffentlich auf GitHub verwaltet und ist dort weit verbreitet.
+Außerdem wird es öffentlich auf GitHub verwaltet.
 Insgesamt haben Stand 07.11.2024 2.512 Repositorys eine \mintinline{text}{CITATION.cff}-Datei.
 Softwareentwickler können das \gls{cff} in ihre Repositorys einbinden, um anderen die Zitation ihrer Software zu erleichtern und vorzugeben, wie die Software richtig zu zitieren ist \autocite{druskat_citation_2021}.
 
@@ -23,10 +23,10 @@ Ein weiteres Beispiel ist das Programm \emph{cffconvert}, welches das \gls{cff} 
 Außerdem kann das Programm genutzt werden, um \gls{cff}-Dateien zu validieren \autocite{spaaks_cffconvert_2021}.
 
 Zusätzlich wird das \gls{cff} von unterschiedlichen Plattformen unterstützt, wie z. B. von GitHub.
-Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann direkt im \hologo{BibTeX}-Format kopiert werden \autocites{druskat_citation_2021}{github_about_2024-2}.
+Erkennt GitHub eine \mintinline{text}{CITATION.cff}-Datei im Repository auf dem Standardbranch, wird sie automatisch auf der Repository-Startseite verlinkt und kann direkt im \hologo{BibTeX}-Format kopiert werden \autocites{druskat_citation_2021}{github_about_2024-1}.
 Ebenfalls ist es möglich, die in der Datei eingetragenen Autoren in der APA-Zitierweise zu kopieren.
 Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
-Eine weitere Plattform, welche unterstützt wird, ist Zotero, welches ein Literaturverwaltungsprogramm ist \autocites{druskat_citation_2021}{zotero_zotero_2024}.
+Eine weitere unterstützte Plattform ist Zotero, ein Programm zur Literaturverwaltung \autocites{druskat_citation_2021}{zotero_zotero_2024}.
 Falls der Benutzer das Browser-Plugin von Zotero installiert hat, liest dieses die Daten aus der \mintinline{text}{CITATION.cff}-Datei, welche in dem GitHub Repository gespeichert ist und importiert die Daten in Zotero.
 
 \begin{figure}
@@ -55,22 +55,23 @@ Dadurch ist es möglich, die Personen von den Entitäten zu unterscheiden.
 Ein weiteres Feld, welches in der Masterarbeit relevant ist, ist das \glqq preferred-citation\grqq{}-Feld.
 Mit diesem Feld ist es möglich, die Anerkennung für die Arbeit auf eine andere Arbeit zu übertragen \autocite{druskat_citation_2021}.
 Ein Beispiel hierfür ist ein Paper über die Software, welches bevorzugt zitiert werden soll, anstelle der eigentlichen Software.
-Hierbei können ebenfalls Personen und Entitäten angegeben werden in dem gleichen Format wie bereits beschrieben.
+Hierbei können ebenfalls Personen und Entitäten angegeben werden.
+Das Format entspricht dabei dem, welches bereits beschrieben worden ist.
 Durch die Angabe einer \glqq preferred-citation\grqq{} kann das Prinzip der Wichtigkeit vernachlässigt werden.
 Auf dieses Verhalten wird in der Diskussion konkreter eingegangen.
 
-Weitere in der Arbeit verwendete Felder sind \glqq type\grqq{}, \glqq year\grqq{}, \glqq month\grqq{}, \glqq date-released\grqq{}, \glqq date-published\grqq{}, \glqq doi\grqq{}, \glqq collection-doi\grqq{} und \glqq identifiers\grqq{} \autocite{druskat_citation_2021}.
+Weitere in der Arbeit verwendete Felder sind \glqq type\grqq{}, \glqq year\grqq{}, \glqq month\grqq{}, \glqq date-released\grqq{}, \glqq date-published\grqq{}, \glqq doi\grqq{}, \glqq collection-doi\grqq{} und \glqq identifiers\grqq{}.
 Das Feld \glqq type\grqq{} ist zwingend erforderlich, hat jedoch als Standardwert \glqq software\grqq{}, sodass dies nicht angegeben werden muss.
 Es gibt an, ob es sich um eine Software oder einen Datensatz handelt.
-Dabei sind lediglich die Werte \glqq software\grqq{} und \glqq dataset\grqq{} erlaubt.
+Dabei sind lediglich die Werte \glqq software\grqq{} oder \glqq dataset\grqq{} erlaubt.
 Das Feld \glqq date-released\grqq{} gibt an, wann die Software oder der Datensatz veröffentlicht wurde.
 Das Feld \glqq doi\grqq{} kann einen \glspl{doi} der Software oder des Datensatzes enthalten.
-Mittels \glqq identifiers\grqq{} können weitere Identifikatoren angegeben werden, wie z. B. eine \gls{doi} oder eine URL, wobei die \glqq identifiers\grqq{} mit einer Beschreibung erweitert werden können.
+Mittels \glqq identifiers\grqq{} können weitere Identifikatoren angeführt werden, wie z. B. eine \gls{doi} oder eine URL, wobei die \glqq identifiers\grqq{} mit einer Beschreibung erweitert werden können.
 Die beschriebenen Felder können zusätzlich alle unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um eine andere Arbeit zu referenzieren.
 
-Die Felder \glqq year\grqq{}, \glqq month\grqq{} und \glqq date-published\grqq{} können zusätzlich zu dem Feld \glqq date-released\grqq{} unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um das Jahr und das Datum der Veröffentlichung anzugeben.
-Außerdem können weitere Typen mittels \glqq type\grqq{} angegeben werden, wie beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
-Zusätzlich kann das Feld \glqq collection-doi\grqq{} angegeben werden, um auf eine Sammlung von Arbeiten zu verweisen, die die Arbeit enthält.
+Die Felder \glqq year\grqq{}, \glqq month\grqq{} und \glqq date-published\grqq{} können zusätzlich zu dem Feld \glqq date-released\grqq{} unter dem Feld \glqq preferred-citation\grqq{} angeführt werden, um das Jahr und das Datum der Veröffentlichung anzugeben.
+Außerdem können weitere Typen mittels \glqq type\grqq{} aufgeführt werden, wie beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
+Zusätzlich kann das Feld \glqq collection-doi\grqq{} verwendet werden, um auf eine Sammlung von Arbeiten zu verweisen, die die Arbeit enthält.
 Ein Beispiel einer \mintinline{text}{CITATION.cff}-Datei ist in \autoref{lst:cff_example} dargestellt.
 Dabei wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
 
@@ -85,23 +86,23 @@ Dabei wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
 \label{subsec:bibtex_format}
 \hologo{BibTeX} ist eine Software, welche zur Erstellung von Literaturangaben und -verzeichnissen in \LaTeX{}-Dokumenten verwendet wird.
 Außerdem existiert mit \hologo{BibTeX} ein gleichnamiges Format, welches in der \mintinline{text}{CITATION.bib}-Datei gespeichert wird und auf keinem anderen Format basiert.
-\hologo{BibTeX} ist ein weit verbreiteter Standard und wird von vielen verwendet, um Literatur zu zitieren.
-Insgesamt haben Stand 07.11.2024 2.144 Repositorys auf GitHub eine \mintinline{text}{CITATION.bib}-Datei.
+\hologo{BibTeX} ist ein weit verbreiteter Standard und wird von vielen Autoren in der Wissenschaft verwendet.
+Auf GitHub haben 2.144 Repositorys eine \mintinline{text}{CITATION.bib}-Datei enthalten (Stand 07.11.2024).
 Das Format beschreibt die Zitation von Literatur und kann von Menschen und Maschinen gelesen werden.
 Es beschränkt sich dabei nicht auf eine spezielle Art von Literatur, sondern kann für viele unterschiedliche Arten von Literatur verwendet werden.
 Beispielsweise können Bücher und Masterarbeiten in \hologo{BibTeX} zitiert werden \autocite{patashnik_bibtexing_1988}.
 Ein offizieller Literaturtyp für Software existiert nicht.
 In der Datei können mehrere Einträge vorhanden sein, wobei jeder Eintrag eine Literaturangabe darstellt.
 
-\hologo{BibTeX}-Dateien können von Menschen manuell erstellt werden und in das Repository eingebunden werden.
+\hologo{BibTeX}-Dateien können von Menschen manuell erstellt und in das Repository eingebunden werden.
 Außerdem existieren viele Literaturverwaltungsprogramme wie Zotero, welche \hologo{BibTeX}-Dateien erstellen und verarbeiten können \autocite{zotero_zotero_2024}.
 Ebenfalls ist die Integration in andere Plattformen möglich, wie z. B. in GitHub.
-Hier wird die \mintinline{text}{CITATION.bib}-Datei auf der Repository-Startseite verlinkt, sie lässt sich jedoch im Gegensatz zu dem \gls{cff} nicht direkt kopieren oder in andere Formate umwandeln \autocite{github_about_2024-2}.
+Hier wird die \mintinline{text}{CITATION.bib}-Datei auf der Repository-Startseite verlinkt, sie lässt sich jedoch im Gegensatz zu dem \gls{cff} nicht direkt kopieren oder in andere Formate umwandeln \autocite{github_about_2024-1}.
 
 In dem \hologo{BibTeX}-Format existieren verschiedene Felder, welche für die Zitation von Literatur relevant sind.
 Einige Felder sind dabei zwingend erforderlich und andere nicht.
 Welche Felder zwingend erforderlich sind, hängt vom Literaturtyp ab.
-Zudem sind die verfügbaren Felder vom Literaturtyp abhängig \autocite{patashnik_bibtexing_1988}.
+Zudem sind die verfügbaren Felder ebenfalls vom Literaturtyp abhängig \autocite{patashnik_bibtexing_1988}.
 In dieser Arbeit wird auf einige dieser Felder eingegangen, welche für die spätere Auswertung relevant sind.
 Das wichtigste Feld ist das \glqq author\grqq{}-Feld, welches die Autoren der Literatur enthält und zwingend erforderlich ist.
 Die Vor- und Nachnamen der Autoren werden mit einem Komma separiert und mehrere Autoren werden über ein \glqq and\grqq{} getrennt.

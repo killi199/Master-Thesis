@@ -2,7 +2,7 @@
 \label{sec:datenbeschaffung}
 % TODO Grafik einfügen von dem Prozess wie die einzelnen Quellen beschafft werden sowas wie Paket geht rein (PyPI und CRAN getrennt) -> PyPI wird untersucht, CFF untersucht usw. und ggf. jeweils was ausgegeben wird.
 In diesem Abschnitt wird beschrieben, wie die Top 100 Listen der Pakete erstellt wurden, welche in der Masterarbeit untersucht werden.
-Außerdem wird beschrieben, wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
+Außerdem wird erläutert, wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
 Hierbei wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
 Der Abschnitt ist in die einzelnen zu untersuchenden Quellen untergliedert.
 
@@ -11,19 +11,20 @@ Die erste Liste enthält die Top 100 \gls{pypi} Pakete, welche am häufigsten im
 Die zweite Liste enthält die Top 100 meist heruntergeladenen \gls{cran} Pakete im Zeitraum von 02.08.2024 bis 31.08.2024 \autocite{csardi_cranlogsapp_2024}.
 
 Zusätzlich zu den beiden Listen, welche ausschließlich \gls{pypi} und \gls{cran} Pakete mit ihren Namen auf der jeweiligen Plattform enthalten, werden noch drei weitere Listen erstellt und anschließend untersucht.
-Hierbei wurde eine Liste von Herrn Druskat untersucht, welche die Links zu allen Repositorys auf GitHub enthält, welche eine \gls{cff}-Datei enthalten.
+Hierbei wurde eine Liste vom Zweitgutachter untersucht, welche die Links zu allen Repositorys auf GitHub enthält, welche eine \gls{cff}-Datei enthalten.
 In der Liste sind 20.870 unterschiedliche Links enthalten, wobei einige der Links aufgrund von Umbenennungen auf das gleiche Repository zeigen.
 Die Liste wurde am 19.10.2024 um die Anzahl der Sterne auf GitHub erweitert, um über diese Metrik anschließend die Top 100 zu definieren.
 Dafür wurde ein Skript entwickelt, welches einmalig die gesamte Liste analysiert und für jedes Paket die GitHub-API verwendet, um die Anzahl der Sterne zu erhalten.
 
 Anschließend wurden aus der Liste die Top 100 Pakete ausgewählt und mittels ecosyste.ms um die Paketverwaltung und den Namen des Pakets in dem jeweiligen Verzeichnis erweitert \autocite{nesbitt_ecosystems_2024}.
-Ecosyste.ms ist eine Plattform, welche öffentlich zugängliche APIs bereitstellt, mit denen es möglich ist, Software-Metadaten zu erhalten.
+Ecosyste.ms ist eine Plattform, welche öffentlich zugängliche APIs bereitstellt, mit denen es möglich ist, Software-Metadaten abzufragen.
 Beispielsweise bietet eine API von ecosyste.ms die Möglichkeit, eine GitHub-URL zu übergeben und anschließend eine Liste von Metadaten zu erhalten, wie beispielsweise das Software-Verzeichnis, in welchem das Paket verwaltet wird.
 Die Liste besteht dabei teilweise aus vielen Einträgen, da beispielsweise ebenfalls Einträge für \emph{nightly} Versionen enthalten sind.
-Um jeweils nur einen Eintrag pro Paket zu erhalten, wird nur das Paket betrachtet, welches die meisten Downloads hat, da davon auszugehen ist, dass dies die Hauptversion des Pakets ist.
-Für jedes Paket wird zusätzlich eine \emph{purl} ausgegeben, mit derer es möglich ist, die doppelten Einträge in der Liste aller GitHub-Repositorys mit \gls{cff} zu identifizieren und anschließend nur jeweils einmal zu speichern \autocites{ombredanne_purl-spec_2024}{nesbitt_ecosystems_2024}.
+Um jeweils nur einen Eintrag pro Paket zu erhalten, wird nur das Paket betrachtet, welches die meisten Downloads hat.
+Es wurde davon ausgegangen, dass dies die Hauptversion des Pakets ist.
+Für jedes Paket wird zusätzlich eine \emph{purl} ausgegeben, mit der es möglich ist, die doppelten Einträge in der Liste aller GitHub-Repositorys mit \gls{cff} zu identifizieren und anschließend nur jeweils einmal zu speichern \autocites{ombredanne_purl-spec_2024}{nesbitt_ecosystems_2024}.
 
-Die Liste enthält anschließend 100 Pakete, welche nicht zwangsweise analysiert werden können, da sie beispielsweise nicht in \gls{cran} oder \gls{pypi} verwaltet werden oder gar keinen Code in der jeweiligen Sprache enthalten.
+Die Liste enthält anschließend 100 Pakete, welche nicht alle analysiert werden können, da sie beispielsweise nicht in \gls{cran} oder \gls{pypi} verwaltet werden.
 In solchen Fällen kann es sich beispielsweise um Dokumentation handeln, welche in GitHub verwaltet wird.
 Diese Pakete werden in der Datenbeschaffung nicht betrachtet.
 
@@ -53,7 +54,7 @@ Die anderen Quellen haben keine Beschränkung, da diese nicht so häufig aktuali
 Außerdem werden die Quellen jeweils für \gls{pypi} und \gls{cran} betrachtet, da sie allgemein für alle Pakete unabhängig von der Paketverwaltung verfügbar sind.
 
 In \nameref{subsec:datenbeschaffung_cran} ist es nicht möglich die Änderungen in der Zeit zu betrachten.
-In der \nameref{subsec:datenbeschaffung_pypi} Quelle ist es teilweise mit BigQuery möglich die Änderungszeitpunkte zu erhalten, jedoch ist dies mit Kosten verbunden und erfordert eine andere Vorgehensweise als bei den anderen zeitlichen Daten, da diese nicht direkt aus Git extrahiert werden können.
+In der \nameref{subsec:datenbeschaffung_pypi} Quelle ist es teilweise mit BigQuery möglich die Änderungszeitpunkte zu erhalten, jedoch ist dies mit finanziellen Kosten verbunden und erfordert eine andere Vorgehensweise als bei den anderen zeitlichen Daten, da diese nicht direkt aus Git extrahiert werden können.
 Die beiden Quellen werden aus diesem Grund nur in der neuesten Version betrachtet und enthalten keine Änderungshistorie.
 
 \input{kapitel/methodik/datenbeschaffung/git.tex}

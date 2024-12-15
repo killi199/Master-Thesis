@@ -8,11 +8,10 @@ Sie lassen sich aus dem Paket mithilfe des Paketverwaltungssystems auslesen oder
 Außerdem übernimmt das Paketverwaltungssystem das Installieren und meistens auch das Aktualisieren und Deinstallieren von Paketen.
 Zusätzlich wird das System verwendet, um fehlende Abhängigkeiten von Paketen automatisch zu installieren \autocite{spinellis_package_2012}.
 
-In dieser Arbeit wird auf zwei Software-Verzeichnisse eingegangen.
-Zum einen wird auf \gls{pypi} eingegangen, welches das Verzeichnis für Python ist und von der Paketverwaltung \emph{pip} verwendet wird.
-Zum anderen wird auf \gls{cran} eingegangen, welches das Verzeichnis für R ist.
+In dieser Arbeit wird auf die Software-Verzeichnisse \gls{pypi} und \gls{cran} eingegangen.
+\gls{pypi} ist das Verzeichnis für Python-Pakete und \gls{cran} ist das Verzeichnis für R-Pakete.
 In \gls{pypi} sind aktuell mehr als 500.000 unterschiedliche Projekte mit über 5 Millionen Veröffentlichungen verfügbar \autocite{python_software_foundation_pypi_2024}.
-Im Gegensatz dazu sind in \gls{cran} aktuell mehr als 20.000 Pakete verfügbar \autocite{cran_team_comprehensive_2024}.
+\gls{cran} listet aktuell mehr als 20.000 Pakete \autocite{cran_team_comprehensive_2024}.
 
 \subsection{PyPI}
 \label{subsec:paketverwaltung_pypi}
@@ -26,9 +25,6 @@ Ein Beispiel für verifizierte Daten sind Links, beispielsweise zu GitHub.
 Diese Links werden von \gls{pypi} als verifiziert angesehen, wenn der Upload des Pakets auf \gls{pypi} über eine GitHub-Action erfolgt.
 Zudem werden die Personen als verifiziert dargestellt, welche in \gls{pypi} als Owner oder Betreuer des Pakets eingetragen sind, sie haben somit einen Account bei \gls{pypi}.
 Der dargestellte Owner kann nicht über eine API abgefragt werden.
-
-Die dargestellten GitHub-Statistiken werden dabei von \gls{pypi} ermittelt und nicht über APIs ausgegeben.
-Das Ziel von \gls{pypi} ist es, dass alle Daten verifiziert werden können und keine Daten in der unverifizierten Form vorliegen.
 
 \begin{figure}
     \begin{center}
@@ -62,46 +58,47 @@ Weitere Daten sind unter dem Punkt \glqq Projekt-Links\grqq{} unter den verifizi
 Die Autoren und Maintainer aus den Metadaten müssen nicht den verifizierten Betreuern und Owner des Pakets auf \gls{pypi} entsprechen, da dies unterschiedliche Systeme sind.
 Zum einen sind es die Benutzer, welche Rechte auf \gls{pypi} haben, um das Paket dort anzupassen und zum anderen sind es die Personen, welche durch die Entwickler des Pakets angegeben werden.
 Die Autoren und Maintainer können jedoch ebenfalls verifiziert sein, wobei dies über die API noch nicht abgefragt werden kann, jedoch in der Weboberfläche bereits für einige Pakete dargestellt wird.
-Es gibt aktuell wenig Pakete, bei denen die Autoren verifiziert sind, ein Beispiel ist das Paket \emph{hololinked}, welches zum Zeitpunkt des Schreibens darüber verfügt.
+Es gibt aktuell wenig Pakete, bei denen die Autoren verifiziert sind, ein Beispiel ist das Paket \emph{hololinked}, welches zum Zeitpunkt der Erstellung dieser Arbeit darüber verfügt.
 \emph{Matplotlib} unterstützt dies aktuell noch nicht, wie in \autoref{fig:pypi_verified_unverified_details} dargestellt ist.
-Die verifizierten Betreuer und Owner können aktuell nicht über die JSON-API abgefragt werden, sondern müssen über die XML-RPC-API abgefragt werden, da diese die einzige API ist, welche die Daten zur Verfügung stellt.
+Die verifizierten Betreuer und Owner können aktuell nicht über die JSON-API abgerufen werden, sondern müssen über die XML-RPC-API abgefragt werden.
 
 \subsubsection*{PyPI XML-RPC}
 \label{subsubsec:pypi_xml_rpc}
 Die \gls{pypi} XML-RPC-API ist eine veraltete API, welche jedoch noch genutzt werden kann, um einige Informationen zu den Paketen abzufragen.
-Es wird empfohlen, diese API nicht mehr zu verwenden und auf den RSS-Feed oder die JSON-API umzusteigen \autocite{python_software_foundation_warehouse_2024}.
+Es wird empfohlen, diese API nicht mehr zu verwenden und den RSS-Feed oder die JSON-API als mögliche Alternativen zu verwenden \autocite{python_software_foundation_warehouse_2024}.
 Dadurch ist die API in der Anzahl der möglichen Anfragen stark limitiert und auch die Abstände zwischen den Anfragen müssen relativ groß sein.
 \gls{pypi} macht keine genauen Angaben darüber, wie viele Anfragen in welchem Zeitraum möglich sind.
 Diese API ist jedoch die einzige Quelle, um die Betreuer eines Pakets abzufragen, ohne einen Web-Scraper einsetzen zu müssen.
-Web-Scraping bezeichnet dabei das Extrahieren von Daten aus Webseiten, indem der HTML-Code der Webseite analysiert wird \autocite{richardson_beautifulsoup4_2024}.
+Web-Scraping bezeichnet das Extrahieren von Daten aus Webseiten, indem der HTML-Code der Webseite analysiert wird \autocite{richardson_beautifulsoup4_2024}.
 
 Die Betreuer, welche über die API ausgegeben werden, enthalten den Benutzernamen auf \gls{pypi}, ein Vollname wird hierbei nicht ausgegeben.
 Außerdem enthalten sie eine Rollenbezeichnung, welche entweder \emph{Maintainer} oder \emph{Owner} sein kann, welcher in der Oberfläche nicht dargestellt wird.
-Owner können dabei alle Änderungen am \gls{pypi} Projekt vornehmen und Betreuer können neue Versionen des Pakets veröffentlichen \autocite{ingram_deprecate_2023}.
-Der Benutzername für die Betreuer des Pakets \emph{matplotlib} sind in \autoref{fig:pypi_verified_unverified_details} unter dem Punkt \glqq Betreuer\grqq{} dargestellt.
+Owner können alle Änderungen am \gls{pypi} Projekt vornehmen und Betreuer können neue Versionen des Pakets veröffentlichen \autocite{ingram_deprecate_2023}.
+Die Benutzernamen für die Betreuer des Pakets \emph{matplotlib} sind in \autoref{fig:pypi_verified_unverified_details} unter dem Punkt \glqq Betreuer\grqq{} dargestellt.
 Aktuell stellt \gls{pypi} keine API bereit, um den Namen eines Benutzers abzufragen, sodass nur der Benutzername über eine API abgefragt werden kann \autocite{python_software_foundation_add_2024}.
 
 \subsubsection*{BigQuery}
 \label{subsubsec:pypi_bigquery}
 Ebenfalls bietet \gls{pypi} über Google BigQuery einen Datensatz an, in dem alle Pakete mit ihren Versionen und Metadaten enthalten sind \autocite{python_software_foundation_warehouse_2024}.
-BigQuery ist ein Dienst von Google, welcher auf der Infrastruktur der Google Cloud-Plattform ausgeführt wird \autocite{google_bigquery_2024}.
+BigQuery ist ein Dienst von Google, welcher auf der Infrastruktur der Google Cloud-Plattform ausgeführt wird.
+Der Dienst ist eine vollständig verwaltete Datenanalyseplattform, welche es ermöglicht, große Datenmengen zu analysieren und mittels SQL abgefragt werden kann \autocite{google_bigquery_2024}.
 Es ist möglich, den kompletten Datensatz auf BigQuery in mehreren einzelnen CSV-Dateien herunterzuladen.
 Dabei kann ausgewählt werden, welche Daten heruntergeladen werden sollen.
 
 Nicht alle Metadaten, welche über die JSON-API abgefragt werden können, stehen in der BigQuery zur Verfügung.
 Ebenfalls stehen nicht alle Daten der BigQuery in der JSON-API zur Verfügung.
-Die wichtigsten Daten sind in beiden Quellen enthalten.
-So sind beispielsweise der Autor und Maintainer und deren E-Mail-Adressen in beiden Quellen enthalten.
-Auch die Beschreibung, Version und Abhängigkeiten sind in beiden Quellen enthalten.
+Die wichtigsten Daten stehen in beiden Quellen zur Verfügung.
+Beispielsweise sind Autoren, Maintainer und deren E-Mail-Adressen in beiden enthalten.
+Ebenso umfassen beide Quellen die Beschreibung, Version und Abhängigkeiten.
 Die jeweiligen Daten, wie die Autoren eines Pakets, sind in beiden Quellen identisch.
 
 \subsection{CRAN}
 \label{subsec:paketverwaltung_cran}
 \gls{cran} selbst bietet keine API an, um die Metadaten der Pakete abzufragen.
-Jedoch gibt es das METACRAN-Projekt, welches eine Kollektion von kleinen Diensten für das \gls{cran}-Repository bereitstellt.
-Eines dieser Dienste ist eine API, welche die \gls{cran} Downloads bereitstellt.
+Jedoch gibt es das METACRAN-Projekt, welches eine Kollektion von kleinen Diensten für das \gls{cran}-Repository zur Verfügung stellt.
+Eines dieser Dienste ist eine API.
 Über diese API ist es unter anderem möglich, eine Liste der meist heruntergeladenen Pakete in einem bestimmten Zeitraum abzufragen \autocite{csardi_cranlogsapp_2024}.
-Ein weiterer Dienst, welcher durch das METACRAN-Projekt bereitgestellt wird, ist eine CouchDB, welche die Metadaten aller Pakete von \gls{cran} bereitstellt.
+Ein weiterer Dienst, welcher durch das METACRAN-Projekt verwaltet wird, ist eine CouchDB, welche die Metadaten aller Pakete von \gls{cran} bereitstellt.
 Dieser Dienst wird ebenfalls von dem R-Paket \emph{pkgsearch} genutzt, welches dazu dient, in R die Metadaten anderer Pakete abzufragen.
 Die beiden Projekte sind keine \gls{cran} Projekte, was bedeutet, dass sie nicht von den Entwicklern von \gls{cran} betrieben werden.
 Eine CouchDB ist eine Apache-Datenbank, welche nativ eine HTTP/JSON-API bereitstellt \autocite{the_apache_software_foundation_apache_2024}.
@@ -121,4 +118,4 @@ Zum anderen wird ein Feld \glqq Authors@R\grqq{} ausgegeben, welches die Autoren
 Dieses Feld enthält ebenfalls die Werte des Feldes \glqq Author\grqq{}, sowie ggf. eine E-Mail-Adresse des jeweiligen Autors. 
 Im Gegensatz zu \gls{pypi} gibt es bei \gls{cran} keine Benutzer für das Software-Verzeichnis.
 Außerdem lassen sich alle Metadaten über die gleiche API abfragen.
-Es wurden keine Informationen über mögliche Limitierungen in der Anzahl der Anfragen gefunden.
+Es konnten keine Informationen über mögliche Limitierungen in der Anzahl der Anfragen gefunden werden.

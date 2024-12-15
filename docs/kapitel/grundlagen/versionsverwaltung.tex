@@ -1,21 +1,20 @@
 \section{Versionsverwaltung}
 \label{sec:versionsverwaltung}
-Die Versionsverwaltung ist ein System, um verschiedene Versionen von Software zu verwalten.
-Es bietet Zugang zu Code und dessen Änderungen in der Vergangenheit.
+Die Versionsverwaltung ist ein System, um zumeist Quellcode und dessen Änderungen zu verwalten.
 Der Code und getätigte Änderungen werden in einem Repository gespeichert.
 Dadurch ist die Versionsverwaltung eine Art Logbuch, in dem alle Änderungen festgehalten werden.
 Dabei wird zusätzlich zu der Änderung der Autor und der Zeitpunkt der Änderung festgehalten \autocite{ponuthorai_version_2022}.
 Dies ermöglicht es in der Masterarbeit empirisch die Menge an Arbeit der einzelnen Autoren zu ermitteln.
 
 Zusätzlich zum Code können in einem Repository andere Dateien, wie beispielsweise eine README, eine Lizenz, und Zitationsinformationen, beispielsweise in Form einer \gls{cff}-Datei, gespeichert werden.
-Eine README-Datei ist eine Datei, welche Informationen über das Projekt enthält, beispielsweise wie es installiert und verwendet wird.
+Eine README-Datei ist eine Datei, welche in der Regel Informationen über das Projekt enthält, beispielsweise wie es installiert und verwendet wird.
 Sie wird standardmäßig im Stammverzeichnis des Repositorys gespeichert und wird an dieser Stelle auch von Diensten wie GitHub dargestellt.
 
 Es gibt zwei verschiedene Arten von Versionsverwaltungssystemen.
 Zum einen gibt es die zentralen Systeme, bei denen alle Änderungen zentral verwaltet werden, beispielsweise SVN.
 Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopie des gesamten Repositorys und dessen Vergangenheit hat \autocite{ponuthorai_version_2022}.
 Ein solches System ist Git, welches sich mit einem Marktanteil von ungefähr 75 \% gegenüber anderen Systemen durchgesetzt hat \autocite{lindner_version_2024}.
-Aus diesem Grund und weil Git-Repositorys in der Arbeit untersucht werden, wird auf Git eingegangen.
+Aus diesem Grund und weil Git-Repositorys in der Arbeit untersucht werden, wird im folgenden auf Git eingegangen.
 Dabei werden Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen.
 Außerdem wird auf grundlegende Funktionen von Git eingegangen, da diese für die Arbeit relevant sind.
 Der Aufbau der einzelnen Git-Komponenten ist in \autoref{fig:git} dargestellt.
@@ -55,7 +54,7 @@ Bei der Benutzung von Git ist ein Server nicht zwingend erforderlich, jedoch ste
 Der Git-Server ermöglicht die einfache kollaborative Entwicklung von Code, da dieser ständig erreichbar ist und zentral verwaltet wird \autocite{ponuthorai_version_2022}.
 Standardmäßig wird auf dem Git-Server die neueste Version des Repositorys gespeichert.
 Ein möglicher Git-Server ist GitHub, auf welchen im späteren Verlauf weiter eingegangen wird.
-Git-Anwendungen sind Programme, welche mit dem lokalen Repository interagieren \autocite{ponuthorai_version_2022}.
+Git-Anwendungen sind Programme, welche mit dem lokal auf dem Computer befindlichen Repository interagieren \autocite{ponuthorai_version_2022}.
 Diese können auf entfernte Git-Repositorys zugreifen, wie beispielsweise Repositorys, welche auf GitHub gehostet werden.
 Anschließend arbeiten die Programme auf der lokalen Kopie und können die Änderungen, wenn nötig, auf das entfernte Repository übertragen.
 
@@ -63,7 +62,7 @@ In Repositorys werden verschiedene Arten von Statistiken gespeichert.
 Git verwaltet Revisionen als \emph{Snapshot}.
 Anders als in anderen Systemen wird keine Serie von Änderungen gespeichert, sondern ein \emph{Snapshot} der Änderungen zu einem bestimmten Zeitpunkt erstellt \autocite{ponuthorai_version_2022}.
 Dies wird ein Commit genannt.
-An einem Commit werden verschiedene Metainformationen gespeichert, beispielsweise eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen.
+Mit einem Commit werden verschiedene Metainformationen gespeichert, beispielsweise eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen.
 
 Die Änderung wird dabei als zwei Zeitpunkte angegeben.
 Zum einen wird der Zeitpunkt der Änderung des Autors angegeben, also jener Zeitpunkt, zu dem der Autor die Änderung vorgenommen und committet hat, dies wird in Git \emph{author date} genannt.
@@ -78,14 +77,12 @@ Weitere Eigenschaften, welche sich aus dem Repository exportieren lassen, sind d
 Zudem lässt sich die Anzahl der geänderten Dateien ermitteln.
 Diese Werte können für das gesamte Repository oder für einzelne Autoren ermittelt werden.
 
-Ein Repository kann verschiedene Branches enthalten, muss jedoch mindestens einen enthalten.
-In der Vergangenheit wurde der Standardbranch \emph{master} genannt.
-Seit 2020 wird dieser jedoch in \emph{main} umbenannt, um rassistische Konnotationen zu vermeiden \autocite{github_githubrenaming_2024}.
+Ein Repository kann verschiedene Branches enthalten, muss jedoch mindestens einen Standardbranch enthalten.
 Ein Branch ist eine separate Entwicklungslinie, welche unabhängig von anderen Branches ist.
 Beim Erstellen von einem Branch wird der aktuelle Zustand des Branches, auf welchem der neue Branch erstellt wird, kopiert \autocite{ponuthorai_version_2022}.
 Dadurch können Änderungen in dem neuen Branch durchgeführt werden, ohne dass diese Änderungen den ursprünglichen Branch beeinflussen.
 Diese Änderungen werden mittels Commits festgehalten.
-Unterschiedliche Branches können anschließend zusammengeführt werden, um die Änderungen in einem Branch in einen anderen Branch zu übernehmen.
+Unterschiedliche Branches können anschließend zusammengeführt werden, um die Änderungen aus einem Branch in einen anderen Branch zu übernehmen.
 
 Die Statistiken der Repositorys können auf verschiedene Arten aufgearbeitet werden.
 Zum einen können einige direkt mittels Git-Befehlen ausgelesen werden \autocite{chacon_git_2024}.

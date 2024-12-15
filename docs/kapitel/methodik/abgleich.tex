@@ -1,63 +1,21 @@
 \section{Abgleich}
 \label{sec:abgleich}
-% TODO Grafik erstellen, die das ganze nochmal visualisiert
-In diesem Abschnitt wird beschrieben, wie die Autoren aus den unterschiedlichen Quellen, welche in der Datenbeschaffung erläutert wurden, abgeglichen werden.
-Dabei werden jeweils die Git-Autoren mit den Autoren aus den anderen Quellen abgeglichen.
-Für diesen Prozess wird keine \gls{ned} verwendet, sondern ein eigener Algorithmus, welcher auf die Daten angepasst ist.
-Dieser wurde entwickelt, indem die Autoren, welche durch die Datenbeschaffung erhalten wurden, in den Paketen eingesehen wurden.
-So wurde durch viel Probieren eine möglichst gute Lösung gefunden, welche im Folgenden beschrieben wird.
-Dies führt allerdings dazu, dass der entwickelte Algorithmus nicht in der Lage ist, zwei Autoren mit dem gleichen Namen zu unterscheiden, falls keine weiteren Daten wie eine E-Mail vorhanden sind.
+Dieser Abschnitt beschreibt den Abgleich von Autoren aus verschiedenen Quellen mit den Git-Autoren eines Pakets.
+Der entwickelte Algorithmus nutzt die in den Quellen verfügbaren Daten (Name, E-Mail, Benutzername), um Übereinstimmungen zu ermitteln.
+Dabei wird keine \gls{ned} verwendet, sondern ein an die Daten angepasster Ansatz.
 
-Als Eingabe erhält der Algorithmus eine Liste von Autoren, welche in einer Quelle (z. B. \gls{cff}) gefunden wurden und jeweils die Liste der Git-Autoren für das zu untersuchende Paket.
-In der Datenbeschaffung wurde gezeigt, dass die Autoren aus den Quellen einen Namen, eine E-Mail und einen Benutzernamen abhängig von der Quelle enthalten können.
-In dem Algorithmus wird ermittelt, wie viele von den Daten vorhanden sind, um im Verlauf einen Score berechnen zu können, wie viele der Daten übereinstimmen.
-Falls beispielsweise die Quelle \gls{cff} ist, kann der Name und die E-Mail vorhanden sein.
-Dadurch ergibt sich, dass maximal zwei Daten mit denen von Git übereinstimmen können.
-Falls die Quelle die Beschreibung ist, ist maximal eine Übereinstimmung möglich.
-Diese Daten werden für den Abgleich verwendet.
-Die eingegebene Liste der Git-Autoren muss für den Algorithmus nach der Anzahl der Commits sortiert sein, da der Algorithmus Personen mit den meisten Commits bevorzugt.
-Anschließend wird jeder Autor aus der Quelle mit jedem Git-Autor abgeglichen.
-Dabei werden alle Werte in Kleinbuchstaben umgewandelt, um zu gewährleisten, dass auch bei unterschiedlicher Schreibweise eine Übereinstimmung gefunden werden kann.
+Die Git-Autorenliste wird nach der Anzahl der Commits sortiert, um Autoren mit mehr Commits zu bevorzugen.
+Anschließend werden Autoren aus den Quellen mit den Git-Autoren verglichen. Der Abgleich erfolgt anhand von:
 
-Dabei wird so vorgegangen, dass die Daten, welche vorhanden sind, zum Vergleich herangezogen werden.
-Falls der Name vorhanden ist, wird dieser mit dem Namen des Git-Autors über das Keyword \emph{in} in Python verglichen.
-Dieses sorgt dafür, dass nur ein Teil der Zeichenkette in der anderen Zeichenkette vorhanden sein muss.
-Außerdem wird die andere Richtung ebenfalls probiert.
-Zusätzlich wird das Programm \emph{thefuzz} in der Version 0.22.1 verwendet, um eine unscharfe Suche zu ermöglichen \autocite{bachmann_thefuzz_2023}.
-Hierbei wird der Name des Autors aus der Quelle mit dem Namen des Git-Autors verglichen und auf eine Übereinstimmung von 80 \% oder mehr geprüft.
-Die Datenbeschaffung hat gezeigt, dass die Namen der Autoren manchmal Klammern enthalten, welche den beschriebenen Abgleich stören.
-Aus diesem Grund wird der zuvor beschriebene Abgleich erneut durchgeführt, wobei die Klammern in dem Namen entfernt worden sind.
+\begin{enumerate}
+    \item \textbf{Namen:} Namen werden in Kleinbuchstaben umgewandelt, um Schreibweisen zu vereinheitlichen. Mithilfe des Python-Keywords \emph{in} wird geprüft, ob ein Teil des Namens in einem anderen enthalten ist. Dieses Keyword erlaubt eine einfache Teilstring-Suche. Ergänzend wird \emph{thefuzz} in der Version 0.22.1 für eine unscharfe Suche verwendet. Dabei wird eine Ähnlichkeit von mindestens 80 \% als Übereinstimmung gewertet. Dies hilft, Namen mit leichten Abweichungen korrekt zuzuordnen.
+    \item \textbf{E-Mails:} Die E-Mails werden ebenfalls mit \emph{in} abgeglichen, um zu prüfen, ob eine der Adressen (ganz oder teilweise) in der anderen enthalten ist. Zusätzlich wird \emph{thefuzz} verwendet, um Ähnlichkeiten von mindestens 80 \% zu erkennen.
+    \item \textbf{Benutzernamen:} Benutzernamen aus den Quellen werden mit Teilen der Git-E-Mails (lokaler oder Domain-Teil) verglichen, da Git keine Benutzernamen direkt bereitstellt. Auch hier kommt das Keyword \emph{in} zum Einsatz, um einfache Übereinstimmungen zu finden, ergänzt durch die unscharfe Suche mit \emph{thefuzz}.
+\end{enumerate}
 
-Falls eine E-Mail vorhanden ist, wird diese mit der E-Mail des Git-Autors über das Keyword \emph{in} verglichen.
-Die andere Richtung wird ebenfalls probiert, also die E-Mail des Git-Autors mit der E-Mail des Autors aus der Quelle über das Keyword \emph{in} zu vergleichen.
-Zusätzlich wird erneut die unscharfe Suche zwischen der E-Mail des Autors aus der Quelle und der E-Mail des Git-Autors durchgeführt und auf eine Übereinstimmung von 80 \% oder mehr geprüft.
-Falls kein Abgleich über den Namen stattgefunden hat, wird ein Vergleich zwischen der E-Mail des Autors aus der Quelle und dem Namen des Git-Autors über das Keyword \emph{in} durchgeführt.
-Außerdem wird der Abgleich erneut über die unscharfe Suche mit einer Übereinstimmung von 80 \% oder mehr durchgeführt.
-Dies führt dazu, dass weitere Übereinstimmungen gefunden werden können, falls der Name zu keiner Übereinstimmung geführt hat.
-Dies liegt daran, dass viele Autoren in ihrer E-Mail-Adresse ihren Namen enthalten haben.
-Zudem hat die Datenbasis gezeigt, dass es vorkommt, dass in dem E-Mail Feld keine E-Mail angegeben wurde, sondern ein Name und als Resultat das Namensfeld nicht ausgefüllt wurde.
+Für jeden Vergleich wird ein Score berechnet, der die Übereinstimmungen relativ zur maximal möglichen Anzahl von Feldern darstellt.
+Der Git-Autor mit dem höchsten Score wird zugeordnet.
+Falls zwei Einträge in der Git-Liste existieren, welche einen gleichen Score erreichen, wird der Autor ausgewählt, welcher die meisten Commits hat.
+Falls keine Übereinstimmung gefunden wird, bleiben die Felder leer.
 
-Falls ein Benutzername vorhanden ist, wird dieser mit der E-Mail des Git-Autors verglichen, da aus den Git-Daten kein Benutzername extrahiert werden kann.
-Dies ist möglich, da viele Autoren für ihren Benutzernamen den lokal Teil der E-Mail verwenden.
-Für den Vergleich wird die E-Mail, falls sie ein @ Symbol enthält, an dieser Stelle getrennt.
-Anschließend wird der vordere lokale Teil für den Vergleich mit dem Benutzernamen aus der Quelle verwendet.
-Dabei wird der Vergleich erneut über das Keyword \emph{in} in beiden Richtungen durchgeführt.
-Zudem wird über die unscharfe Suche mit einer Übereinstimmung von 80 \% oder mehr geprüft, ob eine Übereinstimmung gefunden wurde.
-Dieser Prozess wird ebenfalls erneut für den Domain-Teil der E-Mail durchgeführt, sodass dieser ebenfalls mit dem Benutzernamen verglichen wird.
-
-Falls keiner dieser drei Vergleiche zu einem Erfolg geführt hat, wird der Name des Autors mit dem lokalen Teil der E-Mail des Git-Autors über die unscharfe Suche verglichen.
-Dabei muss erneut eine Übereinstimmung von 80 \% oder mehr vorhanden sein, um den Vergleich als gelungen zu bewerten.
-
-Anschließend wird der Score berechnet.
-Dabei wird die Anzahl der Übereinstimmungen durch die Anzahl der maximal möglichen Übereinstimmungen geteilt.
-Falls beispielsweise der Name und die E-Mail vorhanden sind, sind maximal zwei Übereinstimmungen möglich.
-Bei einer Übereinstimmung des Namens und der E-Mail ergibt sich ein Score von 1.
-Falls nur der Name übereinstimmt, ergibt sich ein Score von 0,5.
-Dieser Score wird für jeden Autor aus der Quelle mit jedem Git-Autor berechnet und in der Tabelle der Autoren aus der Quelle gespeichert.
-Anschließend wird für den Autor aus der Quelle der Git-Autor mit dem besten Score ausgewählt.
-Falls es zwei Einträge in der Git-Liste gibt, welche einen gleichen Score erreichen, wird der Autor ausgewählt, welcher die meisten Commits hat.
-Außerdem wird der Rang, welcher der Autor in der Git-Autorenliste belegt, zurückgegeben.
-Als Ergebnis des Abgleichs werden alle Autoren aus der Quelle, welche in den Algorithmus eingegeben wurden, zurückgegeben.
-Die Autoren werden dabei mit den Ergebnissen des Abgleichs verbunden, welche in \autoref{tab:abgleich_felder} dargestellt sind.
-Falls kein Abgleich für einen Autor möglich war, werden die Felder für diesen Autor leer gelassen.
-Anschließend wird das Ergebnis nach dem Rang sortiert, also nach der Anzahl der Commits, welche der Autor hat.
+Das Ergebnis enthält die Autoren aus den Quellen, ergänzt um die Ergebnisse des Abgleichs, welche in \autoref{tab:abgleich_felder} dargestellt sind.
