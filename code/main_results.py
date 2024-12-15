@@ -510,7 +510,7 @@ async def print_results(directory, full):
     cff_full_overall_results = overall_results[0]
 
     combined_overall_results = pd.DataFrame([cff_full_overall_results])
-    combined_overall_results.index = ['CFF Full']
+    combined_overall_results.index = ['Alle CFF']
 
     Path(f"overall_results").mkdir(parents=True, exist_ok=True)
 
