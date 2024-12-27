@@ -1,11 +1,11 @@
 \section{Datenbeschaffung}
 \label{sec:datenbeschaffung}
-In diesem Abschnitt wird beschrieben, wie die Top-100-Listen der Pakete erstellt wurden, welche in der Masterarbeit untersucht werden.
+In diesem Abschnitt wird beschrieben, wie die Top-100-Listen der Pakete erstellt wurden, welche in dieser Masterarbeit untersucht werden.
 Außerdem wird erläutert, wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
 Hierbei wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
 Der Abschnitt ist in die einzelnen zu untersuchenden Quellen untergliedert.
 
-Insgesamt werden in der Masterarbeit 5 Top-100-Listen untersucht.
+Insgesamt werden in dieser Masterarbeit 5 Top-100-Listen untersucht.
 Die erste Liste enthält die Top-100 \gls{pypi} Pakete, welche am häufigsten im August 2024 heruntergeladen wurden \autocite{kemenade_top-pypi-packages_2024}.
 Die zweite Liste enthält die Top-100 meist heruntergeladenen \gls{cran} Pakete im Zeitraum von 02.08.2024 bis 31.08.2024 \autocite{csardi_cranlogsapp_2024}.
 
@@ -45,7 +45,7 @@ Der Prozess, wie die Listen erstellt wurden und wie viele Ergebnisse aus der Dat
     \caption{Erstellung der Listen}
     \label{fig:erstellung_listen}
     \small
-    Die Abbildung zeigt den Prozess, wie die Top-100-Listen erstellt wurden. Dabei werden oben die Quellen für die Listen angegeben. Anschließend werden die Listen erstellt und durch die Datenbeschaffung untersucht. Am Schluss wird die mögliche Anzahl der Ergebnisse angegeben.
+    Die Abbildung zeigt den Prozess, wie die Top-100-Listen erstellt wurden. Dabei werden oben die Quellen für die Listen angegeben. Anschließend werden die Listen erstellt und untersucht, wobei die Pakete gefiltert werden. Am Schluss wird die mögliche Anzahl der Ergebnisse angegeben.
 \end{figure}
 
 Aus den Quellen \nameref{subsec:datenbeschaffung_git}, \nameref{subsec:datenbeschaffung_beschreibung}, \nameref{subsec:datenbeschaffung_cff} und \nameref{subsec:datenbeschaffung_bibtex} können zeitliche Informationen extrahiert werden, da diese in Git verwaltet werden.
@@ -54,7 +54,7 @@ Dabei ist die maximale Anzahl der Änderungen in die Vergangenheit für die Besc
 Die anderen Quellen haben keine Beschränkung, da diese nicht so häufig aktualisiert werden.
 Außerdem werden die Quellen jeweils für \gls{pypi} und \gls{cran} betrachtet, da sie allgemein für alle Pakete unabhängig von der Paketverwaltung verfügbar sind.
 
-In \nameref{subsec:datenbeschaffung_cran} ist es nicht möglich die Änderungen in der Zeit zu betrachten.
+In \nameref{subsec:datenbeschaffung_cran} ist es nicht möglich die Änderungen über einen Zeitraum zu betrachten.
 In der \nameref{subsec:datenbeschaffung_pypi} Quelle ist es teilweise mit BigQuery möglich die Änderungszeitpunkte zu erhalten, jedoch ist dies mit finanziellen Kosten verbunden und erfordert eine andere Vorgehensweise als bei den anderen zeitlichen Daten, da diese nicht direkt aus Git extrahiert werden können.
 Die beiden Quellen werden aus diesem Grund nur in der neuesten Version betrachtet und enthalten keine Änderungshistorie.
 

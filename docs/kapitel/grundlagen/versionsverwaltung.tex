@@ -4,7 +4,7 @@ Die Versionsverwaltung ist ein System, um zumeist Quellcode und dessen Änderung
 Der Code und getätigte Änderungen werden in einem Repository gespeichert.
 Dadurch ist die Versionsverwaltung eine Art Logbuch, in dem alle Änderungen festgehalten werden.
 Dabei wird zusätzlich zu der Änderung der Autor und der Zeitpunkt der Änderung festgehalten \autocite{ponuthorai_version_2022}.
-Dies ermöglicht es in der Masterarbeit empirisch die Menge an Arbeit der einzelnen Autoren zu ermitteln.
+Dies ermöglicht es empirisch die Menge an Arbeit der einzelnen Autoren zu ermitteln.
 
 Zusätzlich zum Code können in einem Repository andere Dateien, wie beispielsweise eine README, eine Lizenz, und Zitationsinformationen, beispielsweise in Form einer \gls{cff}-Datei, gespeichert werden.
 Eine README-Datei ist eine Datei, welche in der Regel Informationen über das Projekt enthält, beispielsweise wie es installiert und verwendet wird.
@@ -14,7 +14,7 @@ Es gibt zwei verschiedene Arten von Versionsverwaltungssystemen.
 Zum einen gibt es die zentralen Systeme, bei denen alle Änderungen zentral verwaltet werden, beispielsweise SVN.
 Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopie des gesamten Repositorys und dessen Vergangenheit hat \autocite{ponuthorai_version_2022}.
 Ein solches System ist Git, welches sich mit einem Marktanteil von ungefähr 75 \% gegenüber anderen Systemen durchgesetzt hat \autocite{lindner_version_2024}.
-Aus diesem Grund und weil Git-Repositorys in der Arbeit untersucht werden, wird im folgenden auf Git eingegangen.
+Aus diesem Grund und weil Git-Repositorys in dieser Arbeit untersucht werden, wird im folgenden auf Git eingegangen.
 Dabei werden Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen.
 Außerdem wird auf grundlegende Funktionen von Git eingegangen, da diese für die Arbeit relevant sind.
 Der Aufbau der einzelnen Git-Komponenten ist in \autoref{fig:git} dargestellt.
@@ -50,24 +50,23 @@ Dabei ist zu erkennen, dass Git in einen Git-Server und Git-Anwendungen aufgetei
     }
 \end{figure}
 
-Bei der Benutzung von Git ist ein Server nicht zwingend erforderlich, jedoch steigert dies die Komplexität der Verwaltung und ist komplizierter in der Handhabung.
-Der Git-Server ermöglicht die einfache kollaborative Entwicklung von Code, da dieser ständig erreichbar ist und zentral verwaltet wird \autocite{ponuthorai_version_2022}.
+Bei der Benutzung von Git ist ein Server nicht zwingend erforderlich.
+Dieser ermöglicht allerdings die einfache kollaborative Entwicklung von Code, da dieser ständig erreichbar ist und zentral verwaltet wird \autocite{ponuthorai_version_2022}.
 Standardmäßig wird auf dem Git-Server die neueste Version des Repositorys gespeichert.
-Ein möglicher Git-Server ist GitHub, auf welchen im späteren Verlauf weiter eingegangen wird.
-Git-Anwendungen sind Programme, welche mit dem lokal auf dem Computer befindlichen Repository interagieren \autocite{ponuthorai_version_2022}.
-Diese können auf entfernte Git-Repositorys zugreifen, wie beispielsweise Repositorys, welche auf GitHub gehostet werden.
+Ein Anbieter, welcher Git-Server bereitstellt ist GitHub, auf welchen im späteren Verlauf weiter eingegangen wird.
+Git-Anwendungen sind Programme, welche mit dem auf dem Computer befindlichen Repository interagieren \autocite{ponuthorai_version_2022}.
+Die Programme können ebenfalls auf entfernte Git-Repositorys zugreifen und diese klonen.
 Anschließend arbeiten die Programme auf der lokalen Kopie und können die Änderungen, wenn nötig, auf das entfernte Repository übertragen.
 
 In Repositorys werden verschiedene Arten von Statistiken gespeichert.
-Git verwaltet Revisionen als \emph{Snapshot}.
-Anders als in anderen Systemen wird keine Serie von Änderungen gespeichert, sondern ein \emph{Snapshot} der Änderungen zu einem bestimmten Zeitpunkt erstellt \autocite{ponuthorai_version_2022}.
+Anders als in anderen Systemen wird keine Serie von Änderungen gespeichert, sondern ein \emph{Snapshot} der gesamten Datei zu einem bestimmten Zeitpunkt erstellt \autocite{ponuthorai_version_2022}.
 Dies wird ein Commit genannt.
 Mit einem Commit werden verschiedene Metainformationen gespeichert, beispielsweise eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen.
 
-Die Änderung wird dabei als zwei Zeitpunkte angegeben.
+Die Änderung wird mit zwei Zeitpunkten angegeben.
 Zum einen wird der Zeitpunkt der Änderung des Autors angegeben, also jener Zeitpunkt, zu dem der Autor die Änderung vorgenommen und committet hat, dies wird in Git \emph{author date} genannt.
 Zum anderen wird der Zeitpunkt des Einfügens des Commits in das Repository gespeichert, dies wird in Git \emph{commit date} genannt.
-Der Commit kann von einer anderen Person, z. B. durch einen Projektverantwortlichen, mittels eines Pull Requests in das Repository übernommen worden sein.
+Der Commit kann von einer anderen Person, z.~B. durch einen Projektverantwortlichen, mittels eines Pull Requests in das Repository übernommen worden sein.
 Durch dieses Verhältnis ist der \emph{commit date} Zeitpunkt immer später oder gleich dem \emph{author date} Zeitpunkt.
 Außerdem ist gewährleistet, dass beide verantwortlichen Anerkennung für die geleistete Arbeit erhalten \autocite{chacon_pro_2024}.
 
@@ -95,7 +94,7 @@ Diese Werte werden ebenfalls in der Weboberfläche von GitHub angezeigt.
 
 GitHub ist eine Plattform, auf welcher Git-Repositorys gehostet werden können und dient somit als ein Git-Server.
 GitHub bietet zusätzliche Funktionen an, welche über die Standardfunktionen von Git hinausgehen.
-Diese umfassen unter anderem die kollaborative Entwicklung von Code, Automatisation mittels CI/CD, Sicherheitsaspekte, Projektmanagement, Team Administration und Client-Anwendungen zur Verwaltung von Repositorys \autocite{ponuthorai_version_2022}.
+Diese umfassen unter anderem die kollaborative Entwicklung von Code, Automatisierung mittels CI/CD, Sicherheitsaspekte, Projektmanagement, Team Administration und Client-Anwendungen zur Verwaltung von Repositorys \autocite{ponuthorai_version_2022}.
 Aktuell benutzen GitHub über 100 Millionen Entwickler und mehr als 4 Millionen Organisationen.
 Insgesamt verwaltet die Plattform über 420 Millionen Repositorys.
 Außerdem ist GitHub in 90 \% der Fortune 100 Unternehmen im Einsatz \autocite{github_about_2024}.

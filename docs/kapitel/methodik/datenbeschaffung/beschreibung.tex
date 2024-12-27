@@ -2,7 +2,7 @@
 \label{subsec:datenbeschaffung_beschreibung}
 In diesem Abschnitt wird anders als zuvor keine API angefragt, sondern auf den bereits heruntergeladenen Git-Daten die Analyse durchgeführt.
 Untersucht wird die Beschreibung, welche in der \path{README.md}-Datei des Repositorys enthalten ist.
-Diese Datei wird in Git verwaltet, wodurch Änderungen in der Zeit betrachtet werden können.
+Diese Datei wird in Git verwaltet, wodurch Änderungen über einen Zeitraum betrachtet werden können.
 Aus diesem Grund wird das Programm \emph{GitPython} verwendet, um die letzten 50 Änderungen der Datei auf dem Standardbranch zu erhalten.
 Anschließend wird für jede Änderung die Beschreibung wie zuvor mit \emph{spaCy} analysiert.
 Für jeden Zeitpunkt wird eine CSV-Datei mit dem Namen \path{TIMESTAMP_readme_authors_new.csv} erstellt, wobei \emph{TIMESTAMP} durch den konkreten Zeitpunkt der Änderung der Datei ersetzt wird.

@@ -2,7 +2,7 @@
 \label{subsec:datenbeschaffung_git}
 Die Git-Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
 Sämtliche anderen Quellen werden mit den Git-Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
-Zu Beginn muss das Repository von GitHub geclont werden, um die Daten lokal verarbeiten zu können.
+Zu Beginn muss das Repository von GitHub geklont werden, um die Daten lokal verarbeiten zu können.
 Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz.
 Die Bibliothek bietet eine Schnittstelle, um Git-Befehle in Python zu verwenden \autocite{thiel_gitpython_2024}.
 Beim Aufruf der Funktion wurde kein Branch spezifiziert, weshalb der Branch ausgewählt wird, auf welchen aktuell der \emph{HEAD} vom remote Repository zeigt.
@@ -17,6 +17,7 @@ Ausgegeben wird eine Liste aller Autoren, welche in dem Repository Änderungen v
 Diese Liste enthält unter anderem den Namen, die E-Mail, die Anzahl der Einfügungen, Löschungen, geänderten Zeilen, Dateien, Commits, sowie den ersten und letzten Commit, welche alle am Ende des Prozesses gespeichert werden.
 Die Anzahl der Commits beinhaltet keine Merge-Commits.
 Dieses Verhalten von \emph{git-quick-stats} ist erwünscht, da diese nicht relevant für die Analyse sind.
+In dieser Masterarbeit werden ausschließlich die Autoren betrachtet, welche Änderungen an dem Code vorgenommen haben und nicht jene, die ausschließlich Änderungen von anderen in das Repository übernommen haben.
 
 Die E-Mail-Adresse wird anschließend in Kleinbuchstaben umgewandelt, um die Daten zu vereinheitlichen.
 Zusätzlich wird eine Gruppierung auf der E-Mail durchgeführt und die anderen Werte summiert, mit Ausnahme des ersten und letzten Commits, bei denen der älteste und neueste Commit ausgewählt werden.

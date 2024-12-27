@@ -8,12 +8,12 @@ Aus diesem Grund hat die \glqq FORCE11 Software Citation Working Group\grqq{} Pr
 Im Folgenden werden die Prinzipien vorgestellt und erläutert \autocite{smith_software_2016}:
 
 \begin{enumerate}
-    \item \textbf{Wichtigkeit:} Software sollte ein seriöses und zitierbares Produkt wissenschaftlicher Arbeit sein. Software-Zitierungen sollten im wissenschaftlichen Kontext die gleiche Bedeutung zugeschrieben bekommen wie Zitierungen anderer Forschungsprodukte, wie Publikationen. Sie sollten wie Publikationen auch in der Arbeit enthalten sein, z. B. in der Referenzliste eines Artikels.
+    \item \textbf{Wichtigkeit:} Software sollte ein seriöses und zitierbares Produkt wissenschaftlicher Arbeit sein. Software-Zitierungen sollten im wissenschaftlichen Kontext die gleiche Bedeutung zugeschrieben bekommen wie Zitierungen anderer Forschungsprodukte. Sie sollten wie Publikationen auch in der Arbeit enthalten sein, z.~B. in der Referenzliste eines Artikels.
     \item \textbf{Anerkennung und Zuschreibung:} Softwarezitate sollten die wissenschaftliche Anerkennung und die normative, rechtliche Würdigung aller Mitwirkenden an der Software ermöglichen, wobei anerkannt wird, dass ein einziger Stil oder ein Mechanismus für die Namensnennung nicht auf jede Software anwendbar sein kann.
     \item \textbf{Eindeutige Identifikation:} Ein Softwarezitat sollte eine Methode zur Identifikation enthalten, die maschinell verwertbar, weltweit eindeutig und interoperabel ist und zumindest von einer Gemeinschaft der entsprechenden Fachleute und vorzugsweise von allgemeinen Forschern anerkannt wird.
     \item \textbf{Persistenz:} Eindeutige Identifikatoren und Metadaten, die die Software und ihre Verwendung beschreiben, sollten bestehen bleiben – auch über die Lebensdauer der Software hinaus.
     \item \textbf{Zugänglichkeit:} Softwarezitate sollten den Zugang zur Software selbst und zu den zugehörigen Metadaten, Dokumentationen, Daten und anderen Materialien erleichtern, die sowohl für Menschen als auch für Maschinen notwendig sind, um die referenzierte Software sachkundig nutzen zu können.
-    \item \textbf{Spezifizität:} Softwarezitate sollten die Identifikation und den Zugang zu der spezifischen Version der verwendeten Software erleichtern. Die Identifizierung der Software sollte so spezifisch wie nötig sein, z. B. durch Versionsnummern, Revisionsnummern oder Varianten wie Plattformen.
+    \item \textbf{Spezifizität:} Softwarezitate sollten die Identifikation und den Zugang zu der spezifischen Version der verwendeten Software erleichtern. Die Identifizierung der Software sollte so spezifisch wie nötig sein, z.~B. durch Versionsnummern, Revisionsnummern oder Varianten wie Plattformen.
 \end{enumerate}
 
 In dieser Arbeit wird verstärkt auf das Prinzip der Wichtigkeit eingegangen, da besonders im \gls{cff}- und \hologo{BibTeX}-Format die Möglichkeit besteht, nicht die Software, sondern beispielsweise einen Artikel anzugeben.
@@ -31,7 +31,7 @@ Einige dieser Gründe werden im Folgenden genannt \autocite{smith_software_2016}
 \end{itemize}
 
 Wie bereits erwähnt, werden Autoren in unterschiedlichen Quellen genannt.
-Einige dieser Quellen werden in der Masterarbeit untersucht, wie beispielsweise das \gls{cff}- und \hologo{BibTeX}-Format.
+Einige dieser Quellen werden in dieser Masterarbeit untersucht, wie beispielsweise das \gls{cff}- und \hologo{BibTeX}-Format.
 Die Autoren in diesen Quellen werden vom jeweiligen Softwareprojekt angegeben.
 Falls an dem Projekt nicht nur Softwareentwickler beteiligt sind, sondern beispielsweise auch Grafikdesigner oder Übersetzer, so sollten diese ebenfalls in den Quellen zitiert werden.
 Dies ist wichtig, da diese Personen ebenfalls einen Beitrag zum Projekt geleistet haben und somit auch Anerkennung verdienen.
@@ -42,17 +42,15 @@ Bei der Verwendung von \glqq All Contributors\grqq{} werden die Mitwirkenden sta
 Außerdem wird eine \mintinline{text}{.all-contributorsrc}-Datei erstellt, welche im JSON-Format die Mitwirkenden und deren Beiträge enthält.
 Die Liste wird automatisch generiert und aktualisiert, sodass sie den Spezifikationen von \glqq All Contributors\grqq{} entspricht.
 Über einen Befehl in einem Issue oder einem Pull Request kann ein neuer Mitwirkender hinzugefügt werden.
-Autoren, welche keinen Code beigetragen haben, stellen im weiteren Verlauf der Masterarbeit ein Problem dar, da diese nicht mit den Autoren aus den Quellen abgeglichen werden können, da sie keine Commits haben.
+Autoren, welche keinen Code beigetragen haben, stellen im weiteren Verlauf dieser Masterarbeit ein Problem dar.
+Sie können nicht mit den Autoren aus den Quellen abgeglichen werden, da sie keine Commits haben.
 Dies wird in \autoref{sec:abgleich} genauer erläutert.
 In \autoref{sec:versionsverwaltung} wird auf die Begriffe Pull Request, Issue und Commit eingegangen.
 
 % TODO ggf. darauf noch eingehen? https://google.github.io/opencasebook/authorship/
-In der Arbeit werden Pakete untersucht, bei denen der Quellcode öffentlich auf GitHub zugänglich ist und von einer Gemeinschaft an Entwicklern weiterentwickelt werden kann.
-Die Entwickler arbeiten dabei in der Regel ehrenamtlich und ohne Bezahlung an der Software, wobei einige der untersuchten Pakete auch von Organisationen veröffentlicht werden, wie beispielsweise die \glqq google-auth-library-python
-\grqq{} von Google.
-Diese wird primär von Google Mitarbeitern entwickelt und gepflegt.
-Wie bereits beschrieben sind Prinzipien und Gründe definiert, warum Software ebenfalls zitiert werden sollte.
+In dieser Arbeit werden Pakete untersucht, bei denen der Quellcode öffentlich auf GitHub zugänglich ist und von einer Gemeinschaft an Entwicklern weiterentwickelt werden kann.
+Die Entwickler arbeiten dabei in der Regel ehrenamtlich und ohne Bezahlung an der Software, wobei einige der untersuchten Pakete auch von Unternehmen veröffentlicht werden, wie beispielsweise die \glqq google-auth-library-python\grqq{} von Google.
 Welche Autoren in den Quellen angegeben werden sollten, ist jedoch nicht so genau definiert, wie es beispielsweise im Bereich von wissenschaftlich-medizinischen Artikeln der Fall ist.
 In diesem Bereich hat das \glqq International Commitee of Medical Journal Editors\grqq{} Richtlinien für die Rolle von Autoren und Beitragenden in wissenschaftlichen Artikeln definiert \autocite{icmje_icmje_2024}.
-Aus diesem Grund ist unter anderem die Menge der Autoren, welche in den Quellen angegeben werden, unterschiedlich und hängt von dem jeweiligen Projekt ab.
+Aus diesem Grund ist die Menge der Autoren, welche in den Quellen angegeben werden, unterschiedlich und hängt von dem jeweiligen Projekt ab.
 Außerdem ist es möglich, dass ausschließlich Autoren in den Quellen angegeben werden, welche aktuell nicht mehr an dem Projekt beteiligt sind.

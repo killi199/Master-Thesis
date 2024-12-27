@@ -14,10 +14,10 @@ Welche Werte dort enthalten sind, können die Paketentwickler selbst entscheiden
 Beispielsweise geben einige Paketentwickler mehrere Autoren mit Komma separiert an.
 Diese werden aufgeteilt und als einzelne Autoren gespeichert.
 Ebenfalls werden die E-Mail-Adressen anhand des Kommas separiert und jeweils mit dem Namen des Autors verbunden.
-Dies geschieht so, dass der 1. Name mit der 1. E-Mail verbunden wird, der 2. Name mit der 2. E-Mail und so weiter.
+Dies geschieht so, dass der erste Name mit der ersten E-Mail verbunden wird, der zweite Name mit der zweiten E-Mail und so weiter.
 Falls ein Autor keine E-Mail angegeben hat, wird der Name ohne E-Mail gespeichert und falls nur eine E-Mail angegeben ist, wird diese ohne einen Namen gespeichert.
 
-Ebenfalls geben einige Paketentwickler keine E-Mail im E-Mail-Feld an, sondern nur den Namen und schreiben in das Namensfeld, zusätzlich eine E-Mail-Adresse, auch der andere Weg ist möglich.
+Ebenfalls geben einige Paketentwickler keine E-Mail im E-Mail-Feld an, sondern nur den Namen und schreiben in das Namensfeld, zusätzlich eine E-Mail-Adresse.
 Es gibt verschiedene weitere Sonderfälle, die nicht alle aufgezählt sind, da sie gleich behandelt werden.
 In diesen Sonderfällen wird keine weitere Betrachtung vorgenommen und die Daten so gespeichert, wie sie von der API zurückgegeben wurden.
 Anschließend erfolgt der Abgleich der Daten mit den zuvor beschafften Git-Daten anhand des in \autoref{sec:abgleich} beschriebenen Prozess, wobei die möglichen Sonderfälle berücksichtigt sind.
@@ -44,7 +44,7 @@ Die API liefert den Benutzernamen sowie die Rolle des Autors.
 Die Rolle kann dabei \emph{Maintainer} oder \emph{Owner} sein.
 \emph{Owner} ist hierbei nicht der \emph{Owner}, welcher in \autoref{fig:pypi_verified_unverified_details} unter \emph{Owner} aufgeführt ist, sondern in diesem konkreten Fall sind alle drei Betreuer des Pakets als \emph{Owner} angegeben.
 Der Benutzer \grqq Matplotlib\glqq{}, welcher unter \emph{Owner} aufgeführt ist, wird nicht über die API zurückgegeben.
-Dieser wird jedoch auch nicht benötigt, da unter \emph{Owner} immer eine Organisation angeführt wird und in der Masterarbeit nur Personen betrachtet werden.
+Dieser wird jedoch auch nicht benötigt, da unter \emph{Owner} immer eine Organisation angeführt wird und in dieser Masterarbeit nur Personen betrachtet werden.
 Im Allgemeinen wird aus der Dokumentation der XML-RPC-API nicht deutlich, welche Daten zurückgegeben werden.
 
 Anschließend werden alle verifizierten Autoren, welche durch die API zurückgegeben wurden, analysiert, unabhängig von der angegebenen Rolle.

@@ -12,7 +12,7 @@
 \chapter{Diskussion}
 \label{chap:diskussion}
 In diesem Kapitel wird die Arbeit diskutiert und die Ergebnisse interpretiert.
-Zuerst wird auf die grundlegenden Limitierungen der Arbeit eingegangen und wie diese die Ergebnisse beeinflussen.
+Zuerst wird auf die grundlegenden Limitierungen dieser Arbeit eingegangen und wie diese die Ergebnisse beeinflussen.
 Diese Limitierungen können nicht vollständig behoben werden.
 Anschließend erfolgt eine Diskussion über die Qualität des Abgleichs der Autoren.
 Daraufhin wird diskutiert, was Softwareentwickler leisten müssen, um zitiert zu werden.
@@ -21,7 +21,7 @@ Zuletzt wird erörtert, wie sorgfältig die Autoren in den untersuchten Listen g
 
 \section{Limitierungen}
 \label{sec:limitierungen}
-In diesem Kapitel wird strukturiert auf folgende Limitierungen eingegangen, welche bei der Erstellung der Arbeit aufgetreten sind:
+In diesem Kapitel wird strukturiert auf folgende Limitierungen eingegangen, welche bei der Erstellung dieser Arbeit aufgetreten sind:
 \begin{itemize}
     \item \textbf{Git Statistik:} Doppelte Autoren innerhalb der Git-Autoren.
     \item \textbf{Autoren ohne Commits:} Autoren, welche als Autor genannt werden, aber keinen Quellcode geschrieben haben.
@@ -55,9 +55,9 @@ Aber auch bei einem erneuten Abgleich würde dies die Ergebnisse durch die Ungen
 
 \subsection*{Autoren ohne Commits}
 \label{sec:autoren_ohne_commits}
-Eine weitere Limitierung, welche bereits im Verlauf der Masterarbeit häufiger thematisiert wurde, ist, dass Autoren als Autor genannt werden können und auch sollten, obwohl sie keinen Quellcode geschrieben haben.
-Eine reine Betrachtung der geleisteten Arbeit anhand der Änderungen am Quellcode, wie sie in der Masterarbeit durchgeführt wurde, ist daher nicht ausreichend, um das gesamte Spektrum der Arbeit von Autoren zu erfassen.
-Aus diesem Grund kommt es in der Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht als Git-Autoren gelistet sind.
+Eine weitere Limitierung, welche bereits im Verlauf dieser Masterarbeit häufiger thematisiert wurde, ist, dass Autoren als Autor genannt werden können und auch sollten, obwohl sie keinen Quellcode geschrieben haben.
+Eine reine Betrachtung der geleisteten Arbeit anhand der Änderungen am Quellcode, wie sie in dieser Masterarbeit durchgeführt wurde, ist daher nicht ausreichend, um das gesamte Spektrum der Arbeit von Autoren zu erfassen.
+Aus diesem Grund kommt es in dieser Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht als Git-Autoren gelistet sind.
 Dadurch können Ergebnisse wie beispielsweise in \autoref{fig:common_authors_2} schlechter ausfallen, da nur auf Git-Autoren geprüft wird.
 Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentation gearbeitet haben oder an der Organisation des Projekts beteiligt waren.
 
@@ -66,13 +66,13 @@ Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentat
 In einigen Quellen werden Autoren durch die Entwickler nicht direkt genannt, sondern es wird auf eine andere Quelle verwiesen, in welcher die Autoren genannt werden.
 Beispielsweise wird in \emph{pandas} in der \gls{cff}-Datei als Name \glqq The pandas development team\grqq{} und anschließend die Webseite \url{https://pandas.pydata.org/about/team.html} angegeben.
 Auf dieser Seite sind anschließend alle aktiven Autoren gelistet.
-In der Masterarbeit stehen lediglich die Autoren in der \gls{cff}-Datei mit Vor- und Nachnamen im Fokus.
+In dieser Masterarbeit stehen lediglich die Autoren in der \gls{cff}-Datei mit Vor- und Nachnamen im Fokus.
 Es erfolgt keine zusätzliche Analyse anderer Quellen, die möglicherweise erwähnt sind.
 Daher kann es wie im Fall von \emph{pandas} passieren, dass Autoren, die nicht direkt genannt sind, jedoch auf einer anderen Seite gelistet werden, unberücksichtigt bleiben.
-Dies schränkt die Ergebnisse der Masterarbeit ein, da nicht alle Autoren einbezogen sind.
+Dies schränkt die Ergebnisse dieser Masterarbeit ein, da nicht alle Autoren einbezogen sind.
 Eine Betrachtung der verlinkten Seiten würde jedoch einen erheblichen Mehraufwand bedeuten, da für jedes Paket die verlinkten Seiten analysiert werden müssten.
 Außerdem sind die verlinkten Seiten unterschiedlich aufgebaut, sodass die Komplexität dadurch ebenfalls gesteigert wäre.
-Aus diesem Grund wurde in der Masterarbeit darauf verzichtet, die verlinkten Seiten zu analysieren und mit weniger genannten Autoren gearbeitet.
+Aus diesem Grund wurde in dieser Masterarbeit darauf verzichtet, die verlinkten Seiten zu analysieren und mit weniger genannten Autoren gearbeitet.
 
 \subsection*{Ausführungszeit der Datenbeschaffung}
 \label{sec:ausfuehrungszeit_der_datenbeschaffung}
@@ -92,20 +92,19 @@ Bei Betrachtung aller Quellen hätte dieser Prozess erheblich mehr Zeit in Anspr
 \section{Wie gut können Autoren untereinander abgeglichen werden?}
 \label{sec:abgleich_diskussion}
 In den Tabellen \ref{tab:matching_results_auto}, \ref{tab:matching_results_auto_anhang}, \ref{tab:matching_results_manual},\ref{tab:cran_matching_results_manual_anhang}, \ref{tab:pypi_matching_results_manual_anhang}, \ref{tab:cff_matching_results_manual_anhang}, \ref{tab:pypi_cff_matching_results_manual_anhang} und \ref{tab:cran_cff_matching_results_manual_anhang} wurden die Ergebnisse des Abgleichs der Autoren dargestellt.
-In \autoref{tab:matching_results_manual} ist aufgefallen, dass viele Autoren in den Python Quellen keine Personen sind.
+In \autoref{tab:matching_results_manual} fällt auf, dass viele Autoren in den Python Quellen keine Personen sind.
 Dies ist darauf zurückzuführen, dass in den Quellen häufig Organisationen als Autoren genannt werden und keine individuellen Personen aufgeführt werden.
-Dies ist besonders der Fall, da die Top-100-Listen betrachtet wurden, welche häufig von Organisationen verwaltet werden und nicht von einzelnen Entwicklern gepflegt werden.
 Beispielsweise sind in der \gls{pypi} Liste vier Pakete enthalten, welche bereits den Namen Google enthalten.
 In allen vier Paketen sind in den Quellen \gls{pypi} Maintainer und Python Autoren keine Personen, sondern ausschließlich \glqq gcloudpypi\grqq{}, \glqq google\_opensource\grqq{} und \glqq Google LLC\grqq{} genannt.
-Hier lässt sich diskutieren, ob eine Nennung von individuellen Personen dennoch erfolgen sollte, auch wenn sie beispielsweise bei einer Organisation wie Google angestellt sind und für diese arbeiten.
+Hier lässt sich diskutieren, ob eine Nennung von individuellen Personen dennoch erfolgen sollte, auch wenn sie beispielsweise bei einem Unternehmen wie Google angestellt sind und für diese arbeiten.
 Dies soll allerdings kein Thema für diese Arbeit sein.
 
-In \autoref{tab:matching_results_manual} ist aufgefallen, dass die README und die Beschreibung schlechte F1-Scores haben.
+In \autoref{tab:matching_results_manual} fällt auf, dass die README und die Beschreibung schlechte F1-Scores haben.
 Dies liegt daran, dass die \gls{ner} viele Ergebnisse liefert, unter anderem \gls{fp}, welche anschließend primär falsch zugeordnet werden.
 Ebenfalls sind viele \gls{fn} Ergebnisse enthalten, da die \gls{ner} ebenfalls Benutzernamen erkennt, wie bereits erläutert wurde.
-Außerdem ist aufgefallen, dass viele \gls{tn} in den Ergebnissen enthalten sind.
+Außerdem fällt auf, dass viele \gls{tn} in den Ergebnissen enthalten sind.
 Dies ist darauf zurückzuführen, dass die verwendete \gls{ner} viele Entitäten erkennt, welche nicht relevant sind, da es sich beispielsweise nicht um Personen handelt.
-Dies ist besonders verwunderlich, dass in der Methodik beschrieben wurde, dass nur Personen durch die \gls{ner} erkannt werden sollen.
+Dies ist besonders verwunderlich, da in der Methodik beschrieben wurde, dass die \gls{ner} nur Personen erkennen soll.
 
 Zudem ist in \autoref{tab:matching_results_manual} aufgefallen, dass die \hologo{BibTeX}-Quelle den schlechtesten F1-Score hat.
 Dies ist darin begründet, dass nur die ersten beiden Autoren in jeder \hologo{BibTeX}-Datei betrachtet wurden.
@@ -116,13 +115,13 @@ In den anderen beiden Dateien sind mehr Autoren enthalten, wobei viele der Autor
 Bei einer Betrachtung aller Autoren wäre der F1-Score für die \hologo{BibTeX}-Quelle besser ausgefallen.
 In diesem Fall verschlechtern die beiden nicht abgeglichenen Autoren aufgrund der insgesamt geringen Anzahl an betrachteten Autoren den F1-Score erheblich.
 
-Außerdem ist aufgefallen, dass insgesamt viele \gls{fp} in den Ergebnissen enthalten sind.
+Außerdem fällt auf, dass insgesamt viele \gls{fp} in den Ergebnissen enthalten sind.
 Diese sind dadurch begründet, dass das Keyword \emph{in} in \autoref{sec:abgleich} verwendet wird.
-In der manuellen Überprüfung der Ergebnisse ist aufgefallen, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
+Bei der manuellen Überprüfung der Ergebnisse fällt auf, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
 In diesen Fällen ist es möglich, fast jeden Autor aus der Quelle mit diesem speziellen Git Autor abzugleichen, da der Autor der Quelle nur diesen Buchstaben in seinem Namen enthalten haben muss.
 Falls über keine weiteren Attribute der Abgleich erfolgen kann, bedeutet dies immer, dass ein falscher Abgleich stattfindet.
 
-Im Allgemeinen konnte gezeigt werden, dass der Abgleich der Autoren gut funktioniert hat, da ein F1-Score von über 0,9, welcher erreicht wurde, als gut zu bewerten ist.
+Im Allgemeinen konnte gezeigt werden, dass der Abgleich der Autoren gut funktioniert hat, da ein F1-Score von über 0,9 als gut zu bewerten ist.
 Außerdem wurde in diesem Abschnitt diskutiert, warum einige Quellen schlechtere Ergebnisse haben.
 Hierbei wurde deutlich, dass die schlechteren Ergebnisse primär nicht durch den Abgleich verursacht wurden, sondern durch andere Faktoren, wie beispielsweise die \gls{ner} oder die Anzahl der manuell betrachteten Autoren in den \hologo{BibTeX}-Dateien.
 Bei einer Betrachtung des F1-Scores ohne diese Gegebenheiten würde dieser nochmals verbessert werden.
@@ -152,7 +151,7 @@ Und diese Autoren müssten in den drei Jahren auch aktiv am Projekt beteiligt ge
 Ebenfalls spiegelt die \autoref{fig:total_authors_no_commits} dieses Verhalten wider.
 Hier wird deutlich, dass viele genannte Autoren keinen Commit in den letzten Jahren getätigt haben.
 Jedoch muss berücksichtigt werden, dass inaktive Repositorys mit in diese Statistik einfließen, welche ebenfalls Autoren enthalten, welche nicht mehr aktiv am Projekt beteiligt sind, da das Projekt eingestellt wurde.
-Auf die Inaktivität von Autoren und deren pflege wird im nächsten Abschnitt genauer eingegangen.
+Auf die Inaktivität von Autoren und deren Pflege wird im nächsten Abschnitt genauer eingegangen.
 
 \section{Wie gut werden Autoren in den einzelnen Quellen gepflegt?}
 \label{sec:autoren_pflege_diskussion}
@@ -188,4 +187,4 @@ Eine zusätzliche Auffälligkeit, welche die Pflege und Nennung der Autoren indi
 Hier wird deutlich, dass in vielen Fällen, in denen eine \glqq preferred citation\grqq{} angegeben ist, diese auf ein Paper verweist und nicht auf die Software.
 Falls Autoren von wissenschaftlichen Arbeiten ausschließlich diese Referenz zitieren, stellt dies ist Verstoß gegen das Prinzip der Wichtigkeit dar, welches in \autoref{sec:software-zitation} beschrieben wurde.
 Dies könnte durch die Autoren von Software verhindert werden, indem sie keine \glqq preferred citation\grqq{} angeben, sondern ausschließlich die Software und weitere Referenzen in der \gls{cff} als \glqq references\grqq{} angeben.
-Diese Referenzen wurden in der Masterarbeit allerdings nicht untersucht.
+Diese Referenzen wurden in dieser Masterarbeit allerdings nicht untersucht.

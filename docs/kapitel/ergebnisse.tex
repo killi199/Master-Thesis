@@ -2,7 +2,7 @@
 \label{chap:ergebnisse}
 % TODO ggf. noch weitere full cff graphen hinzufügen
 % TODO ggf. noch auf die Daten in #20 eingehen? Das dann mit und ohne Zeitverlauf?
-In diesem Kapitel werden die Ergebnisse der Masterarbeit präsentiert.
+In diesem Kapitel werden die Ergebnisse dieser Masterarbeit präsentiert.
 Das Kapitel ist in zwei Abschnitte unterteilt.
 Zum einen werden die Ergebnisse der Gegenwart in \autoref{sec:neuste_ergebnisse} präsentiert.
 Hierbei werden die jeweils neuesten Dateien aus der Datenbeschaffung untersucht und Statistiken aufgeführt, welche in Verbindung mit diesen Daten stehen.
@@ -13,20 +13,20 @@ In dem \autoref{sec:neuste_ergebnisse} wird zu Beginn auf die Statistiken des Ab
 Der Abgleich hat einen direkten Einfluss auf viele weitere Statistiken.
 
 Die benötigten Daten für die Untersuchungen wurden in der Zeitspanne September 2024 bis November 2024 beschafft.
-Dies liegt daran, dass die Repositorys lokal gespeichert werden und bei der Entwicklung der Arbeit die Daten nicht erneut beschafft werden mussten.
+Dies liegt daran, dass die Repositorys lokal gespeichert werden, um diese bei der Erstellung dieser Arbeit nicht erneut beschaffen zu müssen.
 Die Daten einer Liste wurden jeweils an einem Tag beschafft, um eine Vergleichbarkeit zu gewährleisten.
 In dem gesamten Kapitel wird \emph{matplotlib} in der Version 3.9.2 verwendet, um die Grafiken zu erstellen \autocites{hunter_matplotlib_2007}{hunter_matplotlib_2024}.
 
 \section{Ergebnisse der Gegenwart}
 \label{sec:neuste_ergebnisse}
-Da die Ergebnisse der Masterarbeit direkt abhängig von der Qualität des Abgleichs sind, wurde diese untersucht.
+Da die Ergebnisse dieser Masterarbeit direkt abhängig von der Qualität des Abgleichs sind, wurde diese untersucht.
 Dies wurde auf zwei Arten durchgeführt.
 Zum einen wurde automatisch die Anzahl der abgeglichenen und der nicht abgeglichenen Autoren untersucht.
 Zum anderen wurden manuell für eine ausgewählte Menge an Personen die Ergebnisse händisch überprüft.
 Es wurde in beiden Fällen die Überprüfung ausschließlich auf den neuesten Versionen der Daten durchgeführt.
 
 Die automatische Überprüfung erfolgt bei der Auswertung der Daten aus der Datenbeschaffung.
-Dabei wird für jede Liste und für jede Quelle z. B. \gls{cff} die Anzahl der abgeglichenen Autoren und der insgesamt vorhandenen Autoren ermittelt.
+Dabei wird für jede Liste und für jede Quelle z.~B. \gls{cff} die Anzahl der abgeglichenen Autoren und der insgesamt vorhandenen Autoren ermittelt.
 Hierbei wurde die gesamte Menge an Autoren betrachtet.
 Die Ergebnisse für die Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} sind in \autoref{tab:matching_results_auto} dargestellt.
 Für die weiteren Listen sind die Ergebnisse in \autoref{tab:matching_results_auto_anhang} zu finden.
@@ -57,15 +57,15 @@ Für die weiteren Listen sind die Ergebnisse in \autoref{tab:matching_results_au
 In den Ergebnissen ist auffällig, dass die Autoren in der README-Datei und in der Beschreibung der Pakete am schlechtesten abgeglichen werden konnten.
 Dies liegt daran, dass hierbei die \gls{ner} verwendet wurde und diese nicht immer korrekt arbeitet.
 Hierbei kommt es häufig vor, dass Entitäten erkannt werden, welche keine Person darstellen.
-Außerdem werden Personen mit weiteren Zusätzen wie z. B. dem Anfang einer Internetadresse zurückgegeben, was den Abgleich erschwert.
-Zusätzlich werden in der README und der Beschreibung häufig Personen genannt, welche z. B. Vorarbeit für die Software geleistet haben, aber in der Software selbst keinen Code beigetragen haben.
+Außerdem werden Personen mit weiteren Zusätzen wie z.~B. dem Anfang einer Internetadresse zurückgegeben, was den Abgleich erschwert.
+Zusätzlich werden in der README und der Beschreibung häufig Personen genannt, welche z.~B. Vorarbeit für die Software geleistet haben, aber in der Software selbst keinen Code beigetragen haben.
 Diese Personen können nicht abgeglichen werden.
 Die Python Maintainer konnten ebenfalls schlecht abgeglichen werden, da viele Pakete in diesem Feld keine Personen, sondern Organisationen nennen.
 
 Allgemein bietet dieses Vorgehen keine Aussage darüber, ob die Personen nicht abgeglichen worden sind, weil sie keinen Code beigetragen haben oder weil sie nicht gefunden wurden.
 Zudem werden Personen, welche fälschlicherweise mit einer anderen Person abgeglichen wurden, in diesem Verfahren als gut bewertet.
 Um diese Fälle ebenfalls betrachten zu können, wurde manuell eine Auswahl an Autoren überprüft.
-Es wurden nicht alle Autoren überprüft, da dies den zeitlichen Rahmen der Arbeit überschritten hätte.
+Es wurden nicht alle Autoren überprüft, da dies den zeitlichen Rahmen dieser Arbeit überschritten hätte.
 Aus diesem Grund wurden die Autoren für jedes Paket und jede Quelle zufällig neu angeordnet und gespeichert.
 Anschließend wurden jeweils die ersten beiden Autoren anhand von vier Kriterien überprüft.
 Falls nur ein Autor in einer Quelle genannt wurde, wurde nur dieser überprüft.
@@ -74,7 +74,7 @@ Ein Autor ist als richtig positiv klassifiziert worden, falls er richtig zugeord
 Falls der Autor mehrfach in der Git-Autorenliste vorkommt, wurde der Autor als richtig positiv klassifiziert unabhängig davon, mit welchem von den doppelten Einträgen der Autor zugeordnet wurde.
 Aus diesen Daten wurde der F1-Score berechnet.
 
-Außerdem wurde angegeben, ob es sich um keine Person handelt, sondern z. B. um eine Organisation.
+Außerdem wurde angegeben, ob es sich um keine Person handelt, sondern z.~B. um eine Organisation.
 In diesen Fällen wurde der Eintrag dennoch in eine der vier Kategorien eingeteilt, wobei primär die Kategorie \gls{fp} verwendet wurde, falls es eine Zuordnung gab.
 Falls die Zuordnung allerdings mit einem Git-Autor erfolgt ist, welcher beispielsweise ein Bot der Organisation ist, wurde der Eintrag als \gls{tp} eingeteilt, da es keinen Mechanismus in der Datenbeschaffung gibt, welcher Personen von nicht Personen unterscheiden kann.
 Es wurde lediglich in der Datenbeschaffung darauf geachtet, möglichst keine Quellen zu berücksichtigen, welche keine Personen enthalten.
@@ -117,7 +117,7 @@ Hier werden insgesamt nur vier Autoren betrachtet, zusätzlich ist der F1-Score 
 Aus den gesammelten Daten wurden weitere Statistiken berechnet.
 Dabei muss berücksichtigt werden, dass einige Statistiken auf dem Abgleich basieren und somit nur so gut sind, wie der Abgleich selbst.
 Außerdem basieren einige Statistiken auf den Metriken der Commits und geänderten Zeilen.
-Die Abbildung \autoref{fig:commits_vs_changed_lines} stellt das Verhältnis der Commits und der geänderten Zeilen für die Autoren in den Paketen der Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dar.
+Die \autoref{fig:commits_vs_changed_lines} stellt das Verhältnis der Commits und der geänderten Zeilen für die Autoren in den Paketen der Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dar.
 Für die anderen Listen sind die Ergebnisse in \autoref{fig:commits_vs_changed_lines_anhang} dargestellt.
 Ein Punkt stellt dabei einen Autor dar.
 Es ist zu erkennen, dass einige Autoren nur einen Commit getätigt haben und dabei viele Zeilen geändert haben.
@@ -149,7 +149,7 @@ In der konkreten Abbildung sind die Listen \gls{pypi} \gls{cff} und \gls{cran} \
 Die Abbildungen für die weiteren Listen sind in \autoref{fig:common_authors_anhang} dargestellt.
 Außerdem werden für jede Liste zwei unterschiedliche Abbildungen dargestellt.
 Die eine Abbildung bemisst die Top-Git-Autoren an der Anzahl der Commits und die jeweils andere an der Anzahl der geänderten Zeilen.
-Falls beispielsweise der Autor mit den meisten Commits in einer Quelle z. B. \gls{cff} genannt wird und die Autoren an den Commits bemessen werden und zusätzlich nur der Top-Autor betrachtet wird, so wird in der Abbildung bei $x=1$ dargestellt, dass 100 \% der Git-Autoren in der \gls{cff} genannt werden.
+Falls beispielsweise der Autor mit den meisten Commits in einer Quelle z.~B. \gls{cff} genannt wird und die Autoren an den Commits bemessen werden und zusätzlich nur der Top-Autor betrachtet wird, so wird in der Abbildung bei $x=1$ dargestellt, dass 100 \% der Git-Autoren in der \gls{cff} genannt werden.
 
 Bei der Betrachtung von immer mehr Git-Autoren sinkt der Anteil der genannten Autoren in den Quellen.
 Beispielsweise werden in \autoref{fig:common_authors_pypi_cff} von 100 betrachteten Top-Git-Autoren gemessen nach Commits nahezu 0 \% als Python Maintainer genannt, jedoch werden knapp 10 \% in der \gls{cff} preferred citation angegeben.
@@ -207,7 +207,7 @@ Dadurch sind alle Git-Autoren zu 100 \% als \gls{pypi} Maintainer genannt und es
     \caption{Anteil der Top-Git-Autoren an den genannten Autoren}
     \label{fig:common_authors}
     \small
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top-Git-Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git-Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git-Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Top-Git-Autoren in der Zitation. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git-Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git-Autoren dar. Für die \gls{cff} Linie in \autoref{fig:common_authors_pypi_cff} gilt: Die Top x Commiter sind zu y \% in der \gls{cff} gelistet.
 \end{figure}
 
 Weitere Abbildungen, welche den Anteil zwischen genannten Autoren und den Top-Git-Autoren darstellen, sind in \autoref{fig:common_authors_2} abgebildet.
@@ -219,6 +219,7 @@ In allen Abbildungen wird der Anteil der genannten Autoren unter den Top-Git-Aut
 Durch dieses Verhältnis steigen die Linien, da mehr genannte Autoren unter den Top-Git-Autoren bei steigender Anzahl derer sind.
 
 Die Abbildungen zeigen beispielsweise für $x=0$ immer, dass 0 \% der genannten Autoren unter den Top-0-Git-Autoren sind.
+Dies liegt daran, dass immer null Autoren unter den ersten null Git-Autoren sind.
 Der Anteil kann dabei 100 \% erreichen, falls alle genannten Autoren in einer Quelle auch tatsächlich unter den Top-200-Git-Autoren sind und somit Quellcode entwickelt haben.
 Dabei muss berücksichtigt werden, dass nicht abgeglichene Autoren ebenfalls berücksichtigt werden.
 Falls ein Autor nicht abgeglichen wurde, wird dieser als nicht unter den Top-Git-Autoren betrachtet und der Graph kann keine 100 \% für die Quelle erreichen.
@@ -268,7 +269,7 @@ Dieser ist jedoch erst auf Rang 37 der Top-Git-Autoren gemessen nach Commits gel
     \caption{Anteil der genannten Autoren unter den Top-Git-Autoren}
     \label{fig:common_authors_2}
     \small
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top-Git-Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git-Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git-Autoren dar. Für die blaue Linie in \autoref{fig:common_authors_pypi_cff} gilt: Autoren in der \gls{cff} sind zu y \% unter den Top x Commitern.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der genannten Autoren unter den Top-Git-Autoren. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse wird die Anzahl der betrachteten Git-Autoren für \autoref{fig:common_authors_pypi_cff} und \autoref{fig:common_authors_cran_cff} sortiert nach der Anzahl der Commits und für \autoref{fig:common_authors_by_lines_pypi_cff} und \autoref{fig:common_authors_by_lines_cran_cff} sortiert nach der Anzahl der geänderten Zeilen angegeben. Die y-Achse stellt jeweils den Anteil der genannten Autoren an den Git-Autoren dar. Für die \gls{cff} Linie in \autoref{fig:common_authors_pypi_cff} gilt: Autoren in der \gls{cff} sind zu y \% unter den Top x Commitern.
 \end{figure}
 
 In \autoref{fig:total_authors_no_commits} wird der Anteil der genannten Autoren in unterschiedlichen Quellen ohne Commits in den Paketen der Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} dargestellt.
@@ -298,7 +299,7 @@ Die Linien im Hintergrund stellen erneut ein einzelnes Paket einer einzelnen Que
     \caption{Autoren ohne Commits}
     \label{fig:total_authors_no_commits}
     \small
-    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse werden die Jahre dargestellt. Die y-Achse stellt den Anteil der Autoren ohne Commits dar. Für die blaue Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
+    Die Abbildungen zeigen für die Pakete in den Listen \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} den Anteil der Autoren ohne Commits. Die Linien stellen die unterschiedlichen Quellen dar. Auf der x-Achse werden die Jahre dargestellt. Die y-Achse stellt den Anteil der Autoren ohne Commits dar. Für die \gls{cff} Linie gilt in beiden Abbildungen: y \% der Autoren in der \gls{cff} haben seit dem Jahr x keinen Commit getätigt.
 \end{figure}
 
 Die \autoref{fig:overall_valid_cff_not_full} zeigt den Anteil der validen und invaliden \gls{cff}-Dateien in allen fünf Listen.
@@ -496,7 +497,7 @@ Außerdem ist auffällig, dass 14 der Pakete in der \gls{pypi} \gls{cff} Liste e
 \section{Ergebnisse mit Zeitverlauf}
 \label{sec:gesamtheit_ergebnisse}
 In diesem Abschnitt werden anders als zuvor die Daten mit Zeitbetrachtung analysiert und nicht lediglich die jeweils neueste Version untersucht.
-Dadurch ist es möglich, Veränderungen in der Zeit zu betrachten und zu analysieren.
+Dadurch ist es möglich, Veränderungen über einen Zeitraum zu betrachten und zu analysieren.
 Jedoch ist dies nur für die Quellen \gls{cff}, \glqq preferred-citation\grqq{} \gls{cff} und die README-Dateien möglich, da in den anderen Quellen keine Zeitinformation vorhanden sind.
 
 Die \autoref{fig:valid_cff_by_time} zeigt für die \gls{pypi} \gls{cff} und \gls{cran} \gls{cff} Listen, sowie für alle \gls{cff}-Dateien auf GitHub, wie viele der \gls{cff}-Dateien valide sind.

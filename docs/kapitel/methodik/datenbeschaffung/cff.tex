@@ -3,7 +3,7 @@
 In diesem Unterabschnitt wird ähnlich wie im vorherigen Unterabschnitt die \gls{cff}-Datei untersucht.
 Der Unterabschnitt ist dabei aufgeteilt in die allgemeinen Daten, welche für \gls{cff} und \grqq preferred-citation\glqq{} gelten und die spezifischen Daten, welche ausschließlich für die \grqq preferred-citation\glqq{} gelten.
 Die beiden Daten werden jeweils in einer \path{CITATION.cff}-Datei gespeichert, wie es in den Grundlagen erläutert wurde.
-Es wird ebenfalls ein zeitlicher Verlauf der Daten betrachtet, um die Änderungen in der Zeit zu analysieren.
+Es wird ebenfalls ein zeitlicher Verlauf der Daten betrachtet, um die Änderungen über einen Zeitraum zu analysieren.
 Dabei wird der Verlauf nicht auf 50 Zeitpunkte beschränkt, sondern in der gesamten Historie betrachtet.
 Da die \gls{cff}-Datei in YAML geschrieben wird, wird die Bibliothek \emph{pyyaml} in der Version 6.0.2 verwendet, um die Datei zu lesen \autocite{simonov_pyyaml_2024}.
 
@@ -31,7 +31,7 @@ In den beiden Dateien werden ebenfalls die Zeitpunkte \emph{commit date} und \em
 
 In den Dateien wird ebenfalls gespeichert, ob die \gls{cff}-Datei valide ist.
 Hierbei wird das Programm \emph{cffconvert} in der Version 2.0.0 verwendet, um die Validität zu überprüfen \autocite{spaaks_cffconvert_2021}.
-Außerdem benötigt \emph{cffconvert} die Programme \emph{jsonschema} und \emph{pykwalify}, welche in der Masterarbeit in der Version 4.23.0 und 1.8.0 verwendet werden \autocites{berman_jsonschema_2024}{grokzen_pykwalify_2020}.
+Außerdem benötigt \emph{cffconvert} die Programme \emph{jsonschema} und \emph{pykwalify}, welche in dieser Masterarbeit in der Version 4.23.0 und 1.8.0 verwendet werden \autocites{berman_jsonschema_2024}{grokzen_pykwalify_2020}.
 Diese werden von \emph{cffconvert} benötigt, um die \gls{cff}-Datei zu validieren.
 Zusätzlich wird gespeichert, ob die \gls{cff}-Datei mit dem Tool \emph{cffinit} erstellt wurde \autocite{spaaks_cffinit_2023}.
 Dies ist möglich, da \emph{cffinit} in der \gls{cff}-Datei mehrere Kommentare einfügt, welche auf das Tool hinweisen.
@@ -44,7 +44,7 @@ Alle weiteren Informationen werden direkt aus der \gls{cff}-Datei extrahiert und
 Falls ein Wert dabei nicht in der \gls{cff}-Datei vorhanden ist, wird der Eintrag in der CSV-Datei leer gelassen.
 Im Folgenden werden die Daten, welche direkt extrahiert werden, beschrieben.
 Eine extrahierte Information, welche in beiden Dateien, also der \path{cff.csv} und \path{cff_preferred_citation.csv} gespeichert wird, ist die \gls{doi} aus dem \gls{cff} Feld \glqq identifiers\grqq{}.
-In der Masterarbeit wird ausschließlich die erste \gls{doi} in der Liste der \glqq identifiers\grqq{} betrachtet.
+In dieser Masterarbeit wird ausschließlich die erste \gls{doi} in der Liste der \glqq identifiers\grqq{} betrachtet.
 Diese wird in der allgemeinen Datei gespeichert, um später zu überprüfen, ob eine \gls{doi} in diesem Feld vorhanden ist.
 
 Zusätzlich wird in beiden Fällen das Feld \glqq date-released\grqq{} und die \glqq doi\grqq{} extrahiert und gespeichert.

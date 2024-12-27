@@ -14,12 +14,7 @@ Der Abgleich der Autoren ist hierbei nur möglich, falls in der Datenbeschaffung
 Falls ein Abgleich zwingend erforderlich ist, beispielsweise bei der Untersuchung, wie lange ein Autor durchschnittlich in einer Quelle genannt ist, wird ein einfacher Vergleich des Namens über die Quelle durchgeführt.
 Dieser Vergleich ist jedoch nicht immer korrekt, da beispielsweise Namensänderungen in den Quellen so nicht berücksichtigt werden können, falls kein Abgleich in der Datenbeschaffung möglich war.
 
-Das Skript ist so aufgebaut, dass nicht alle Daten auf einmal geladen werden, sondern jede Datei einzeln geladen und verarbeitet wird.
-Dies bietet den Vorteil, dass auch mit weniger Arbeitsspeicher gearbeitet werden kann und die Daten nicht alle auf einmal im Arbeitsspeicher gehalten werden müssen.
-Jedoch birgt dies auch Nachteile, beispielsweise dass zu keinem Zeitpunkt bekannt ist, wie viele Autoren maximal in einer Quelle vorkommen.
-Diese Information ist erst vorhanden, wenn alle Daten vollständig verarbeitet worden sind.
-
-Zusätzlich ist die Aggregierung der Daten unterteilt in die Aggregierung der vollständigen Daten und die Aggregierung der neuesten Daten.
+Die Aggregierung der Daten ist unterteilt in die der vollständigen und die der neuesten Daten.
 In der vollständigen Datenverarbeitung werden Ergebnisse extrahiert, die die gesamte Historie der Daten betrachten.
 Hier werden alle Daten mit ihren Zeitstempeln verarbeitet.
 In der neuesten Datenverarbeitung werden nur die Daten betrachtet, die auf dem neuesten Stand der untersuchten Software sind.
