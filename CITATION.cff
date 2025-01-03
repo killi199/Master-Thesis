@@ -7,7 +7,7 @@ authors:
     family-names: "Jahrens"
     email: "k.jahrens@stud.hs-wismar.de"
   - name: "Hochschule Wismar"
-date-released: "2025-01-01"
+date-released: "2025-01-05"
 doi: "10.1000/182"
 identifiers:
   - description: "The DOI of the work."
@@ -21,8 +21,8 @@ preferred-citation:
   type: thesis
   year: 2025
   month: 01
-  date-published: "2025-01-01"
-  date-released: "2025-01-01"
+  date-published: "2025-01-05"
+  date-released: "2025-01-05"
   doi: "10.1000/182"
   collection-doi: "10.1000/182"
   identifiers:
