@@ -8,7 +8,7 @@ Falls kein Link zu einem GitHub-Repository vorhanden ist, wird das Paket nicht w
 In der \gls{cran} Liste betrifft dies beispielsweise sechs der 100 Pakete.
 
 Anschließend werden die weiteren Daten verarbeitet, welche von der API bereitgestellt werden.
-Beispielsweise wird das Feld \glqq Authors@R\grqq{} bereitgestellt.
+Beispielsweise wird das Feld \emph{Authors@R} bereitgestellt.
 Dieses Feld beinhaltet die Autoren mit dem Namen, der E-Mail und einer ORCID iD des Pakets in einer in R formatierten Zeichenfolge.
 Dabei müssen nicht zwingend alle Informationen vorhanden sein.
 Des Weiteren haben Autoren eine Rolle zugeordnet.
@@ -17,15 +17,26 @@ Es existieren allerdings Standards, welche eingehalten werden sollten.
 Einem Autor können mehrere Rollen zugewiesen sein.
 Im R Journal wurden folgende Rollen definiert \autocite{hornik_who_2011}:
 
-\begin{itemize}
-    \item \glqq \emph{aut}\grqq{} (Autor): Vollständige Autoren, die wesentliche Beiträge zu dem Paket geleistet haben und in der Zitation des Pakets auftauchen sollten.
-    \item \glqq \emph{com}\grqq{} (Complier): Personen, die Code (möglicherweise in anderen Sprachen) gesammelt, aber keine weiteren wesentlichen Beiträge zum Paket geleistet haben.
-    \item \glqq \emph{ctb}\grqq{} (Mitwirkender): Autoren, die kleinere Beiträge geleistet haben (z.~B. Code-Patches usw.), die aber nicht in der Auflistung der Autoren auftauchen sollten.
-    \item \glqq \emph{cph}\grqq{} (Urheberrechtsinhaber): Personen, die das Urheberrecht an dem Paket besitzen.
-    \item \glqq \emph{cre}\grqq{} (Maintainer): Paket Maintainer
-    \item \glqq \emph{ths}\grqq{} (Betreuer der Thesis): Betreuer der Thesis, wenn das Paket Teil einer Thesis ist.
-    \item \glqq \emph{trl}\grqq{} (Übersetzer): Übersetzer nach R, wenn der R-Code eine Übersetzung aus einer anderen Sprache (typischerweise S) ist.
-\end{itemize}
+\textbf{Autor (aut):}\\
+Vollständige Autoren, die wesentliche Beiträge zu dem Paket geleistet haben und in der Zitation des Pakets auftauchen sollten.
+
+\textbf{Compiler (com):}\\
+Personen, die Code (möglicherweise in anderen Sprachen) gesammelt, aber keine weiteren wesentlichen Beiträge zum Paket geleistet haben.
+
+\textbf{Mitwirkender (ctb):}\\
+Autoren, die kleinere Beiträge geleistet haben (z.~B. Code-Patches usw.), die aber nicht in der Auflistung der Autoren auftauchen sollten.
+
+\textbf{Urheberrechtsinhaber (cph):}\\
+Personen, die das Urheberrecht an dem Paket besitzen.
+
+\textbf{Maintainer (cre):}\\
+Paket Maintainer
+
+\textbf{Betreuer der Thesis (ths):}\\
+Betreuer der Thesis, wenn das Paket Teil einer Thesis ist.
+
+\textbf{Übersetzer (trl):}\\
+Übersetzer nach R, wenn der R-Code eine Übersetzung aus einer anderen Sprache (typischerweise S) ist.
 
 Die Daten aus der Zeichenfolge werden mit der Software \emph{rpy2} in der Version 3.5.16 verarbeitet \autocite{gautier_rpy2_2024}.
 \emph{Rpy2} ist eine Software, welche es ermöglicht R-Code in Python auszuführen.
@@ -34,7 +45,7 @@ Anschließend werden die Autoren, welche die Rolle \emph{aut} zugeordnet haben, 
 In der Datei wird, falls vorhanden, der Name, die E-Mail-Adresse und die ORCID iD der Autoren gespeichert.
 Die Felder der Datei sind in \autoref{tab:cran_authors} aufgelistet.
 
-Falls das Feld \glqq Authors@R\grqq{} keine Zeichenfolge enthält oder beim Verarbeiten der Zeichenfolge ein Fehler auftritt, wird das durch die API zurückgegebene Feld \glqq Author\grqq{} verarbeitet.
+Falls das Feld \emph{Authors@R} keine Zeichenfolge enthält oder beim Verarbeiten der Zeichenfolge ein Fehler auftritt, wird das durch die API zurückgegebene Feld \emph{Author} verarbeitet.
 In dem Feld stehen ebenfalls die Autoren des Pakets, jedoch ohne die zusätzliche Information der E-Mail.
 Außerdem ist das Feld nicht in R formatiert, sodass die Zeichenfolge mittels eines regulären Ausdrucks verarbeitet wird.
 Die Folge ist dabei unterschiedlich in verschiedenen Paketen, sodass keine allgemeine Regel definiert werden kann.
@@ -44,18 +55,18 @@ Falls eine Rolle angegeben ist, werden nur jene Autoren verarbeitet, welche als 
 Andernfalls werden alle Autoren verarbeitet.
 Die Autoren werden in der Datei \path{cran_authors.csv} nachdem sie mit den Daten aus Git abgeglichen wurden gespeichert.
 Dabei wird nur der Name gespeichert ohne zusätzliche Informationen wie der ORCID iD, da dieses Vorgehen die Verarbeitung bei den unterschiedlichen aufgebauten Zeichenfolgen vereinfacht hat.
-Zudem wird diese Methode nur verwendet, falls die Verarbeitung der Zeichenfolge \glqq Authors@R\grqq{} fehlschlägt.
+Zudem wird diese Methode nur verwendet, falls die Verarbeitung der Zeichenfolge \emph{Authors@R} fehlschlägt.
 
-Ein weiteres Feld, welches von der API zurückgegeben und verarbeitet wird, ist das Feld \glqq Maintainer\grqq{}.
+Ein weiteres Feld, welches von der API zurückgegeben und verarbeitet wird, ist das Feld \emph{Maintainer}.
 Dieses Feld ist nicht in R formatiert, sondern eine einfache Zeichenfolge.
-Die Zeichenfolge enthält weniger Informationen als die \glqq Author\grqq{} Zeichenfolge.
+Die Zeichenfolge enthält weniger Informationen als die \emph{Author} Zeichenfolge.
 In ihr ist lediglich der Name und die E-Mail-Adresse des Maintainers enthalten.
 Außerdem ist immer nur ein Maintainer angegeben, welcher verarbeitet wird.
 Die Daten werden nach dem Abgleich mit den Daten aus Git in der Datei \path{cran_maintainers.csv} gespeichert.
 Ausgegeben wird in der Datei der Name und die E-Mail-Adresse des Maintainers.
 Die Felder der Dateien sind in \autoref{tab:python_authors} aufgelistet.
 
-Das letzte Feld, welches von der API verarbeitet wird, ist das Feld \glqq Description\grqq{}.
+Das letzte Feld, welches von der API verarbeitet wird, ist das Feld \emph{Description}.
 In diesem Feld ist die Beschreibung des Pakets enthalten.
 Dabei wird die Verarbeitung wie in \autoref{subsec:datenbeschaffung_pypi} für die Beschreibung von \gls{pypi} durchgeführt.
 

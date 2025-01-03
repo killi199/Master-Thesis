@@ -15,12 +15,12 @@ Im weiteren Verlauf wurde auf die Disambiguierung von Autoren eingegangen.
 Daraufhin entstand eine Software, die es erlaubt, die Autorenangaben aus den Datenquellen zu extrahieren und diese untereinander abzugleichen.
 Die generierten Daten wurden analysiert und graphisch aufbereitet.
 Dabei sind Diskrepanzen beispielsweise bei der Nennung der Top-Git-Autoren in den Datenquellen aufgefallen.
-Diese Diskrepanzen wurden diskutiert und die Fragen beantwortet, wie gut der entwickelte Abgleich der Autoren funktioniert (\textbf{F1}) und was ein Autor machen muss, damit er in den Autorenangaben gelistet wird (\textbf{F2}).
-Außerdem wurde die Frage beantwortet, wie gut Autoren gepflegt werden (\textbf{F3}).
-
-Im Allgemeinen hat die Arbeit gezeigt, dass es möglich ist, Autorenangaben aus verschiedenen Datenquellen zu extrahieren und diese untereinander abzugleichen.
-Dadurch ist aufgefallen, dass die Qualität der Autorenangaben in den Datenquellen unterschiedlich ist.
-Es wurde zudem gezeigt, dass in vielen Paketen die Autoren nicht gut gepflegt werden.
+Diese Diskrepanzen wurden diskutiert und die Frage beantwortet, wie gut der entwickelte Abgleich der Autoren funktioniert (\textbf{F1}).
+Dabei wurde deutlich, dass es möglich ist, die Autorenangaben aus verschiedenen Datenquellen zu extrahieren und untereinander abzugleichen.
+Außerdem wurde die Frage beantwortet, was ein Autor machen muss, damit er in den Autorenangaben gelistet wird (\textbf{F2}).
+Hierbei wurde gezeigt, dass diese Frage nicht allgemeingültig beantwortet werden kann, allerdings erhöhen viele getätigte Commits die Chancen genannt zu werden, wobei auch Autoren mit den meisten Commits in einem Repository nicht genannt werden.
+Abschließend wurde die Frage diskutiert, wie gut Autoren gepflegt werden (\textbf{F3}).
+Es wurde deutlich, dass die Qualität der Autorenangaben in den Datenquellen unterschiedlich ist und in vielen Paketen die Autoren nicht gut gepflegt werden.
 Hier besteht Verbesserungsbedarf, um die Qualität der Autorenangaben zu steigern und die Arbeit jedes einzelnen Entwicklers angemessen zu würdigen.
 
 \section{Ausblick}
@@ -31,14 +31,14 @@ In weiteren Arbeiten könnte dies um Quellen ergänzt werden, welche ebenfalls e
 Außerdem wurden in dieser Masterarbeit ausschließlich GitHub-Repositorys betrachtet, obwohl es weitere Plattformen wie GitLab gibt, welche auf die gleiche Weise analysiert werden könnten.
 
 Ebenfalls könnten die betrachteten Quellen um weitere Datenpunkte ergänzt werden.
-Beispielsweise sind im \gls{cff} weitere Referenzen zu anderen Arbeiten unter dem Feld \glqq references\grqq{} aufgelistet.
+Beispielsweise sind im \gls{cff} weitere Referenzen zu anderen Arbeiten unter dem Feld \emph{references} aufgelistet.
 In \hologo{BibTeX}-Dateien werden ebenfalls weitere Daten gespeichert, welche aktuell noch nicht betrachtet worden sind, allerdings für eine noch detailliertere Analyse genutzt werden könnten.
 
 Ein weiteres Problem, welches in dieser Masterarbeit auftrat, war die Disambiguierung von Autoren.
 Es wurde gezeigt, dass der Abgleich der Autoren nicht immer korrekt funktioniert und es wurden Gründe wie beispielsweise der Vergleich von nur einem Buchstaben als eines der Probleme erkannt.
 In weiteren Arbeiten könnte die Disambiguierung von Autoren weiter verbessert werden und so eine direkte Verbesserung der Ergebnisse erzielt werden.
 
-Zusätzlich wurden in der Datenbeschaffung Daten erzeugt, welche in dieser Masterarbeit noch nicht ausgewertet wurden.
+Zusätzlich wurden in der Datenbeschaffung Daten erstellt, welche in dieser Masterarbeit noch nicht ausgewertet wurden.
 Dies betrifft die Git-Daten zu den Zeitpunkten einer Änderung an den Autorenangaben.
 Aus diesen Daten könnte bei einer Analyse beispielsweise geschlussfolgert werden, wie sich die Git-Autoren über die Zeit verändern und bei wie vielen Commits ein Autor einer Quelle hinzugefügt wurde.
 Dies ist allerdings nur umsetzbar, falls die Entwickler häufiger ihre Autorenangaben aktualisieren, besonders jene mit zeitlichem Verlauf wie das \gls{cff}.

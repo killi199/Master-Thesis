@@ -2,7 +2,7 @@
 \label{subsec:datenbeschaffung_git}
 Die Git-Daten sind die grundlegenden Daten, welche für die weiteren Schritte benötigt werden.
 Sämtliche anderen Quellen werden mit den Git-Daten über den in \autoref{sec:abgleich} beschriebenen Prozess abgeglichen.
-Zu Beginn muss das Repository von GitHub geklont werden, um die Daten lokal verarbeiten zu können.
+Zu Beginn muss das Repository von GitHub heruntergeladen werden, um die Daten lokal verarbeiten zu können.
 Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz.
 Die Bibliothek bietet eine Schnittstelle, um Git-Befehle in Python zu verwenden \autocite{thiel_gitpython_2024}.
 Beim Aufruf der Funktion wurde kein Branch spezifiziert, weshalb der Branch ausgewählt wird, auf welchen aktuell der \emph{HEAD} vom remote Repository zeigt.
@@ -21,7 +21,7 @@ In dieser Masterarbeit werden ausschließlich die Autoren betrachtet, welche Än
 
 Die E-Mail-Adresse wird anschließend in Kleinbuchstaben umgewandelt, um die Daten zu vereinheitlichen.
 Zusätzlich wird eine Gruppierung auf der E-Mail durchgeführt und die anderen Werte summiert, mit Ausnahme des ersten und letzten Commits, bei denen der älteste und neueste Commit ausgewählt werden.
-Der Name des Autors wird dabei ebenfalls summiert, was in dem Kontext bedeutet, dass Namen aneinander gehängt werden.
+Der Name wird hintereinander gehängt, sodass beispielsweise bei einer Namensänderung von \glqq Max M.\grqq{} zu \glqq Max Mustermann\grqq{} der Name \glqq Max M.Max Mustermann\grqq{} entsteht.
 Das Gruppieren ist notwendig, da die Autoren den Namen und die E-Mail-Adressen in Git eigenständig festlegen können, wie in \autoref{sec:versionsverwaltung} beschrieben wurde.
 Durch dieses Vorgehen wird gewährleistet, dass zumindest keine E-Mail-Adressen doppelt vorhanden sind, falls ein Autor unterschiedliche Schreibweisen für seinen Namen verwendet.
 Die gruppierten Daten werden nach der Anzahl der Commits sortiert in der Datei \path{git_contributors.csv} gespeichert.

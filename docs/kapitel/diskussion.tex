@@ -21,16 +21,8 @@ Zuletzt wird erörtert, wie sorgfältig die Autoren in den untersuchten Listen g
 
 \section{Limitierungen}
 \label{sec:limitierungen}
-In diesem Kapitel wird strukturiert auf folgende Limitierungen eingegangen, welche bei der Erstellung dieser Arbeit aufgetreten sind:
-\begin{itemize}
-    \item \textbf{Git Statistik:} Doppelte Autoren innerhalb der Git-Autoren.
-    \item \textbf{Autoren ohne Commits:} Autoren, welche als Autor genannt werden, aber keinen Quellcode geschrieben haben.
-    \item \textbf{Verlinkung auf andere Quellen:} In manchen Fällen wird in Quellen auf eine andere Quelle verwiesen.
-    \item \textbf{Ausführungszeit der Datenbeschaffung:} Die Ausführungszeit ist sehr lang.
-\end{itemize}
-
 \subsection*{Git Statistik}
-\label{sec:git_statistik}
+\label{subsec:git_statistik}
 In \autoref{sec:versionsverwaltung} wurde beschrieben, dass Autoren in Git ihren Namen und ihre E-Mail-Adresse ohne Einschränkungen eigenständig eintragen können.
 Dies bedeutet ebenfalls, dass ein Autor im Verlauf der Zeit seinen Namen und/ oder die E-Mail-Adresse ändern kann.
 Dadurch kann ein und dieselbe Person mit unterschiedlichen Git Namen unterschiedlich viele Commits erstellt haben.
@@ -38,8 +30,8 @@ Dies ist für die Masterarbeit nicht erwünscht, da möglichst ein Autor nur ein
 In der Datenbeschaffung wurde versucht, dieses Problem zu lösen, indem die E-Mail-Adresse als eindeutiger Identifikator genutzt wird und gleiche E-Mail-Adressen zu einem Autor zusammengefasst werden.
 Allerdings behebt dies nicht das Problem vollständig, da ein Autor seine E-Mail-Adresse ebenfalls ändern kann und diese nicht erneut abgeglichen wird.
 
-Ein Abgleich, wie in \autoref{sec:abgleich} beschrieben, ist ebenfalls nicht möglich, da dies die Ergebnisse verfälschen könnte, da beispielsweise Autoren mit dem gleichen Namen zusammengefasst werden würden, obwohl es sich um unterschiedliche Autoren handelt.
-Die anderen Probleme, welche in \autoref{sec:abgleich} beschrieben wurden, sind ebenfalls nicht zu vernachlässigen.
+Ein Abgleich, wie in \autoref{sec:abgleich} beschrieben, bei dem keine Unterscheidung von Namensvettern möglich ist, ist ebenfalls nicht möglich. 
+Dies ist darin begründet, dass dadurch die Ergebnisse verfälscht werden könnten, da beispielsweise Autoren mit dem gleichen Namen zusammengefasst werden würden, obwohl es sich um unterschiedliche Autoren handelt.
 Eine Möglichkeit, dieses Problem zu lösen, wäre die Verwendung der GitHub-API, welche automatisch die Git-Autoren anhand der in GitHub eingetragenen E-Mail-Adressen zusammenfasst.
 Ein weiterer Vorteil, der durch die Nutzung der GitHub-API bestehen würde, ist, dass dabei die Benutzernamen der GitHub-Benutzer abgefragt werden könnten.
 Diese werden häufig in der README und der Beschreibung mit einem @-Zeichen angegeben, um auf diese zu verweisen.
@@ -54,7 +46,7 @@ Diese Limitierung in der Datenbeschaffung verfälscht die Gesamtergebnisse.
 Aber auch bei einem erneuten Abgleich würde dies die Ergebnisse durch die Ungenauigkeit des Abgleichs verfälschen.
 
 \subsection*{Autoren ohne Commits}
-\label{sec:autoren_ohne_commits}
+\label{subsec:autoren_ohne_commits}
 Eine weitere Limitierung, welche bereits im Verlauf dieser Masterarbeit häufiger thematisiert wurde, ist, dass Autoren als Autor genannt werden können und auch sollten, obwohl sie keinen Quellcode geschrieben haben.
 Eine reine Betrachtung der geleisteten Arbeit anhand der Änderungen am Quellcode, wie sie in dieser Masterarbeit durchgeführt wurde, ist daher nicht ausreichend, um das gesamte Spektrum der Arbeit von Autoren zu erfassen.
 Aus diesem Grund kommt es in dieser Arbeit dazu, dass Autoren im Abgleich nicht erkannt werden, da sie keinen Quellcode geschrieben haben und somit nicht als Git-Autoren gelistet sind.
@@ -62,7 +54,7 @@ Dadurch können Ergebnisse wie beispielsweise in \autoref{fig:common_authors_2} 
 Es werden keine Autoren berücksichtigt, welche beispielsweise an der Dokumentation gearbeitet haben oder an der Organisation des Projekts beteiligt waren.
 
 \subsection*{Verlinkung auf andere Quellen}
-\label{sec:verlinkung_auf_andere_quellen}
+\label{subsec:verlinkung_auf_andere_quellen}
 In einigen Quellen werden Autoren durch die Entwickler nicht direkt genannt, sondern es wird auf eine andere Quelle verwiesen, in welcher die Autoren genannt werden.
 Beispielsweise wird in \emph{pandas} in der \gls{cff}-Datei als Name \glqq The pandas development team\grqq{} und anschließend die Webseite \url{https://pandas.pydata.org/about/team.html} angegeben.
 Auf dieser Seite sind anschließend alle aktiven Autoren gelistet.
@@ -75,19 +67,22 @@ Außerdem sind die verlinkten Seiten unterschiedlich aufgebaut, sodass die Kompl
 Aus diesem Grund wurde in dieser Masterarbeit darauf verzichtet, die verlinkten Seiten zu analysieren und mit weniger genannten Autoren gearbeitet.
 
 \subsection*{Ausführungszeit der Datenbeschaffung}
-\label{sec:ausfuehrungszeit_der_datenbeschaffung}
+\label{subsec:ausfuehrungszeit_der_datenbeschaffung}
 Eine weitere Limitierung ist die Laufzeit der Datenbeschaffung.
 Diese wird besonders durch den Aufruf von \emph{git-quick-stats} beeinflusst, da das Programm für große Repositorys eine lange Laufzeit hat.
 Beispielsweise benötigt die Ausführung des Programms für das Paket \emph{pytorch} 1 Minute und 22 Sekunden.
 Außerdem hat die \gls{ner} für die README und die Beschreibung eine hohe Laufzeit, weswegen für die README nur die letzten 50 Commits betrachtet werden.
 Die Laufzeit der \gls{ner} beträgt für die README von \emph{pytorch} 3,3588 Sekunden.
 Bei einer Ausführung der \gls{ner} für 50 Versionen der README entspricht dies bereits einer Laufzeit von 2 Minuten und 80 Sekunden.
+
 Um die Laufzeit weiter zu reduzieren, beispielsweise um sämtliche \gls{cff} Pakete auf GitHub analysieren zu können, wurde auf Faktoren, welche die Laufzeit erheblich erhöhen, verzichtet.
 Aus diesem Grund wurden bei der Analyse ausschließlich die \gls{cff}-Dateien betrachtet.
 Zudem wurden für den Abgleich die Git-Autoren benötigt, welche ausschließlich in der neuesten Version beschafft wurden, sodass \emph{git-quick-stats} nur einmal aufgerufen werden musste.
 Dadurch konnte die Laufzeit der Datenbeschaffung für die gesamte \gls{cff} Liste mit 20.870 Einträgen auf dem internen HPC Server der Hochschule Wismar auf 55 Stunden reduziert werden.
 Der Server hat zwei Intel Xeon Gold 6346 Prozessoren mit jeweils 3,1 GHz je 16 Kerne verbaut.
 Bei Betrachtung aller Quellen hätte dieser Prozess erheblich mehr Zeit in Anspruch genommen.
+Allerdings muss berücksichtigt werden, dass das Programm nicht täglich, sondern einmalig ausgeführt wird, um die Daten zu einem bestimmten Zeitpunkt zu beschaffen.
+Falls ausgelassene Daten für künftige Arbeiten benötigt werden, könnten diese dem Prozess erneut ergänzt werden.
 
 \section{Wie gut können Autoren untereinander abgeglichen werden?}
 \label{sec:abgleich_diskussion}
@@ -120,6 +115,8 @@ Diese sind dadurch begründet, dass das Keyword \emph{in} in \autoref{sec:abglei
 Bei der manuellen Überprüfung der Ergebnisse fällt auf, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
 In diesen Fällen ist es möglich, fast jeden Autor aus der Quelle mit diesem speziellen Git Autor abzugleichen, da der Autor der Quelle nur diesen Buchstaben in seinem Namen enthalten haben muss.
 Falls über keine weiteren Attribute der Abgleich erfolgen kann, bedeutet dies immer, dass ein falscher Abgleich stattfindet.
+Dieses Problem entsteht grundlegend dadurch, dass es kaum Einschränkungen bei der Wahl des Namens und der E-Mail-Adresse in Git gibt.
+Außerdem führt das Problem im Allgemeinen zu schlechteren Ergebnissen im Abgleich, da die zu untersuchenden Daten nicht standardisiert sind.
 
 Im Allgemeinen konnte gezeigt werden, dass der Abgleich der Autoren gut funktioniert hat, da ein F1-Score von über 0,9 als gut zu bewerten ist.
 Außerdem wurde in diesem Abschnitt diskutiert, warum einige Quellen schlechtere Ergebnisse haben.
@@ -142,7 +139,7 @@ Dies jedoch keine Garantie dafür genannt zu werden und in den meisten Fällen w
 
 Ein möglicher Schritt, welcher jedoch nicht umsetzbar ist, ist bei der Gründung des Paketes beteiligt zu sein.
 Dies geht aus der \autoref{fig:added_removed_authors} hervor.
-Sie zeigt, dass die meisten Autoren direkt zu Beginn genannt werden und anschließend kaum weitere Autoren hinzugefügt werden.
+Sie zeigt das Problem, dass die meisten Autoren direkt zu Beginn genannt werden und anschließend kaum weitere Autoren hinzugefügt werden und somit die Autorenliste nicht aktiv gepflegt wird.
 Insgesamt wurden in allen Paketen der untersuchten Listen nur neun Autoren, der \gls{cff} oder \hologo{BibTeX}-Datei nachträglich hinzugefügt.
 \autoref{fig:added_removed_authors_without_readme} zeigt jedoch, dass in den Dateien viel mehr Autoren insgesamt enthalten sind.
 Hierbei muss allerdings beachtet werden, dass die \gls{cff}-Datei erst seit 2021 vermehrt verwendet wird, wie aus \autoref{fig:valid_cff_by_time} hervorgeht.
@@ -182,9 +179,10 @@ Des Weiteren zeigen die Tabellen \ref{tab:average_lifespans} und \ref{tab:averag
 Diese Tatsache ist dabei nichts Negatives, da die Autoren Arbeit in den Paketen geleistet haben, allerdings sollten Autoren, welche aktuell das Paket aktiv pflegen ebenfalls genannt werden.
 
 Im Allgemeinen lässt sich sagen, dass die Autoren in den betrachteten Listen nicht aktiv gepflegt werden und besonders in den meisten Fällen keine automatischen Prozesse vorhanden sind, welche die Autorenlisten aktualisieren.
+Dies könnte unter anderem daran liegen, dass viele der Pakete nicht in der Wissenschaft entstanden sind, sondern beispielsweise in Unternehmen, bei denen die Pflege der Autorenlisten nicht so wichtig ist, sondern die Nennung des Unternehmens im Fokus steht.
 
 Eine zusätzliche Auffälligkeit, welche die Pflege und Nennung der Autoren indirekt betrifft, zeigt \autoref{fig:citation_counts}.
-Hier wird deutlich, dass in vielen Fällen, in denen eine \glqq preferred citation\grqq{} angegeben ist, diese auf ein Paper verweist und nicht auf die Software.
-Falls Autoren von wissenschaftlichen Arbeiten ausschließlich diese Referenz zitieren, stellt dies ist Verstoß gegen das Prinzip der Wichtigkeit dar, welches in \autoref{sec:software-zitation} beschrieben wurde.
-Dies könnte durch die Autoren von Software verhindert werden, indem sie keine \glqq preferred citation\grqq{} angeben, sondern ausschließlich die Software und weitere Referenzen in der \gls{cff} als \glqq references\grqq{} angeben.
+Hier wird deutlich, dass in vielen Fällen, in denen eine \emph{preferred-citation} angegeben ist, diese auf ein Paper verweist und nicht auf die Software.
+Falls Autoren von wissenschaftlichen Arbeiten ausschließlich diese Referenz zitieren, stellt dies einen Verstoß gegen das Prinzip der Wichtigkeit dar, welches in \autoref{sec:software-zitation} beschrieben wurde.
+Dies könnte durch die Autoren von Software verhindert werden, indem sie keine \emph{preferred-citation} angeben, sondern ausschließlich die Software und weitere Referenzen in der \gls{cff} als \emph{references} angeben.
 Diese Referenzen wurden in dieser Masterarbeit allerdings nicht untersucht.

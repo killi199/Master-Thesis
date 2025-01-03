@@ -1,8 +1,7 @@
 \section{Zitierformate}
 \label{sec:zitierformate}
-In wissenschaftlichen Arbeiten gibt es viele verschiedene Zitierweisen, die sich je nach Fachgebiet unterscheiden.
-In dieser Arbeit soll jedoch nicht auf die verschiedenen Zitierweisen eingegangen werden, sondern auf Zitierformate, welche für die Zitation verwendet werden können und die Datenstruktur hinter der Zitation beschreiben.
-Hierbei gibt es ebenfalls unterschiedliche Formate, wobei sich in dieser Arbeit auf das \gls{cff} und das \hologo{BibTeX}-Format beschränkt wird.
+In diesem Abschnitt wird auf unterschiedliche Zitierformate eingegangen, welche die Datenstruktur hinter einer Zitation beschreiben.
+In dieser Arbeit wird sich auf das \gls{cff} und das \hologo{BibTeX}-Format beschränkt.
 Das \gls{cff} ist ein Format, welches speziell für die Zitation von Software entwickelt wurde, weshalb es in dieser Arbeit besonders interessant ist.
 Das \hologo{BibTeX}-Format wird dazu verwendet, um zumeist in Verbindung mit \LaTeX{}, Bibliographien zu erstellen und ist daher ebenfalls von Interesse, da es auch für Software verwendet werden kann.
 
@@ -39,36 +38,35 @@ Die Funktionen sind in \autoref{fig:gh_cff_link} dargestellt.
 \end{figure}
 
 In dem \gls{cff} existieren verschiedene Felder, welche für die Zitation von Software relevant sind.
-Das wichtigste Feld ist das \glqq authors\grqq{}-Feld, welches die Autoren der Software enthält und zwingend erforderlich ist.
+Das wichtigste Feld ist das \emph{authors}-Feld, welches die Autoren der Software enthält und zwingend erforderlich ist.
 In diesem Feld können die Autoren als Liste angegeben werden.
 Ein Autor ist dabei entweder eine Person oder eine Entität.
 Eine Entität kann beispielsweise eine Organisation sein.
-Die Entität kann mit einem Namen mittels \glqq name\grqq{} angegeben werden \autocite{druskat_citation_2021}.
+Die Entität kann mit einem Namen mittels \emph{name} angegeben werden \autocite{druskat_citation_2021}.
 Sie kann ebenfalls eine OORCID iD und eine E-Mail-Adresse enthalten.
 Besonders wichtig für diese Arbeit ist die Referenz auf eine Person, da dies die einzige Information ist, welche aus Git extrahiert werden kann.
-Eine Person enthält ebenfalls die genannten Werte einer Entität und wird jedoch über den Vor- und Nachname separiert mittels \glqq given-names\grqq{} und \glqq family-names\grqq{} angegeben.
+Eine Person enthält ebenfalls die genannten Werte einer Entität und wird jedoch über den Vor- und Nachname separiert mittels \emph{given-names} und \emph{family-names} angegeben.
 Dadurch ist es möglich, die Personen von den Entitäten zu unterscheiden.
 
-Ein weiteres Feld ist das \glqq preferred-citation\grqq{}-Feld.
+Ein weiteres Feld ist das \emph{preferred-citation}-Feld.
 Mit diesem Feld ist es möglich, die Anerkennung für die Arbeit auf eine andere Arbeit zu übertragen \autocite{druskat_citation_2021}.
 Ein Beispiel hierfür ist ein Paper über die Software, welches bevorzugt zitiert werden soll, anstelle der eigentlichen Software.
 Hierbei können ebenfalls Personen und Entitäten angegeben werden.
-Das Format entspricht dabei dem, welches bereits beschrieben worden ist.
-Durch die Angabe einer \glqq preferred-citation\grqq{} kann das Prinzip der Wichtigkeit vernachlässigt werden.
+Durch die Angabe einer \emph{preferred-citation} kann das Prinzip der Wichtigkeit vernachlässigt werden.
 Auf dieses Verhalten wird in der Diskussion konkreter eingegangen.
 
-Weitere in dieser Arbeit verwendete Felder sind \glqq type\grqq{}, \glqq year\grqq{}, \glqq month\grqq{}, \glqq date-released\grqq{}, \glqq date-published\grqq{}, \glqq doi\grqq{}, \glqq collection-doi\grqq{} und \glqq identifiers\grqq{}.
-Das Feld \glqq type\grqq{} ist zwingend erforderlich, hat jedoch als Standardwert \glqq software\grqq{}, sodass dies nicht angegeben werden muss.
+Weitere in dieser Arbeit verwendete Felder sind \emph{type}, \emph{year}, \emph{month}, \emph{date-released}, \emph{date-published}, \emph{doi}, \emph{collection-doi} und \emph{identifiers}.
+Das Feld \emph{type} ist zwingend erforderlich, hat jedoch als Standardwert \glqq software\grqq{}, sodass dies nicht angegeben werden muss.
 Es gibt an, ob es sich um eine Software oder einen Datensatz handelt.
 Dabei sind lediglich die Werte \glqq software\grqq{} oder \glqq dataset\grqq{} erlaubt.
-Das Feld \glqq date-released\grqq{} gibt an, wann die Software oder der Datensatz veröffentlicht wurde.
-Das Feld \glqq doi\grqq{} kann einen \glspl{doi} der Software oder des Datensatzes enthalten.
-Mittels \glqq identifiers\grqq{} können weitere Identifikatoren angeführt werden, wie z.~B. eine \gls{doi} oder eine URL, wobei die \glqq identifiers\grqq{} mit einer Beschreibung erweitert werden können.
-Die beschriebenen Felder können zusätzlich alle unter dem Feld \glqq preferred-citation\grqq{} angegeben werden, um eine andere Arbeit zu referenzieren.
+Das Feld \emph{date-released} gibt an, wann die Software oder der Datensatz veröffentlicht wurde.
+Das Feld \emph{doi} kann einen \glspl{doi} der Software oder des Datensatzes enthalten.
+Mittels \emph{identifiers} können weitere Identifikatoren angeführt werden, wie z.~B. eine \gls{doi} oder eine URL, wobei die \emph{identifiers} mit einer Beschreibung erweitert werden können.
+Die beschriebenen Felder können zusätzlich alle unter dem Feld \emph{preferred-citation} angegeben werden, um eine andere Arbeit zu referenzieren.
 
-Die Felder \glqq year\grqq{}, \glqq month\grqq{} und \glqq date-published\grqq{} können zusätzlich zu dem Feld \glqq date-released\grqq{} unter dem Feld \glqq preferred-citation\grqq{} angeführt werden, um das Jahr und das Datum der Veröffentlichung anzugeben.
-Außerdem können weitere Typen mittels \glqq type\grqq{} aufgeführt werden, wie beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
-Zusätzlich kann das Feld \glqq collection-doi\grqq{} verwendet werden, um auf eine Sammlung von Arbeiten zu verweisen, die die Arbeit enthält.
+Die Felder \emph{year}, \emph{month} und \emph{date-published} können zusätzlich zu dem Feld \emph{date-released} unter dem Feld \emph{preferred-citation} angeführt werden, um das Jahr und das Datum der Veröffentlichung anzugeben.
+Außerdem können weitere Typen mittels \emph{type} aufgeführt werden, wie beispielsweise \glqq thesis\grqq{} oder \glqq manual\grqq{}, sodass diese Arbeiten ebenfalls referenziert werden können.
+Zusätzlich kann das Feld \emph{collection-doi} verwendet werden, um auf eine Sammlung von Arbeiten zu verweisen, die die Arbeit enthält.
 Ein Beispiel einer \mintinline{text}{CITATION.cff}-Datei ist in \autoref{lst:cff_example} dargestellt.
 Dabei wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
 
@@ -77,6 +75,8 @@ Dabei wurde sich auf die beschriebenen und notwendigen Felder beschränkt.
     \inputminted{yaml}{../CITATION.cff}
     \caption{Beispiel einer \mintinline{text}{CITATION.cff}-Datei}
     \label{lst:cff_example}
+    \small
+    In dem Listing ist die \gls{cff}-Datei dieser Arbeit dargestellt. Dabei wurden primär Felder angegeben, welche in der Masterarbeit verwendet werden.
 \end{listing}
 
 \subsection{\hologo{BibTeX}}
@@ -97,13 +97,12 @@ Ebenfalls ist die Integration in andere Plattformen möglich, wie z.~B. in GitHu
 Hier wird die \mintinline{text}{CITATION.bib}-Datei auf der Repository-Startseite verlinkt, sie lässt sich jedoch im Gegensatz zu dem \gls{cff} nicht direkt kopieren oder in andere Formate umwandeln \autocite{github_about_2024-1}.
 
 In dem \hologo{BibTeX}-Format existieren verschiedene Felder, welche für die Zitation von Literatur relevant sind.
-Einige Felder sind dabei zwingend erforderlich und andere nicht.
-Welche Felder zwingend erforderlich sind, hängt vom Literaturtyp ab.
+Welche Felder zwingend erforderlich sind, hängt vom jeweiligen Literaturtyp ab, während andere optional bleiben.
 Zudem sind die verfügbaren Felder ebenfalls vom Literaturtyp abhängig \autocite{patashnik_bibtexing_1988}.
 In dieser Arbeit wird auf einige dieser Felder eingegangen, welche für die spätere Auswertung relevant sind.
-Das wichtigste Feld ist das \glqq author\grqq{}-Feld, welches die Autoren der Literatur enthält und zwingend erforderlich ist.
+Das wichtigste Feld ist das \emph{author}-Feld, welches die Autoren der Literatur enthält und zwingend erforderlich ist.
 Die Vor- und Nachnamen der Autoren werden mit einem Komma separiert und mehrere Autoren werden über ein \glqq and\grqq{} getrennt.
-Weitere Felder, welche für die Masterarbeit verwendet werden, sind \glqq year\grqq{} und \glqq month\grqq{}, welche das Jahr und den Monat der Veröffentlichung angeben.
+Weitere Felder, welche für die Masterarbeit verwendet werden, sind \emph{year} und \emph{month}, welche das Jahr und den Monat der Veröffentlichung angeben.
 Ein Beispiel einer \mintinline{text}{CITATION.bib}-Datei ist in \autoref{lst:bibtex_example} dargestellt.
 Es ist zu erkennen, dass in dem \hologo{BibTeX}-Eintrag Informationen fehlen, welche in dem \gls{cff}-Eintrag vorhanden waren.
 Dies liegt daran, dass in dem \hologo{BibTeX}-Eintrag nur eine Referenz auf die Masterarbeit möglich ist und nicht auf die entwickelte Software.
@@ -113,4 +112,6 @@ Dies liegt daran, dass in dem \hologo{BibTeX}-Eintrag nur eine Referenz auf die 
   \inputminted{text}{../CITATION.bib}
   \caption{Beispiel einer \mintinline{text}{CITATION.bib}-Datei}
   \label{lst:bibtex_example}
+  \small
+  In dem Listing ist die \hologo{BibTeX}-Datei dieser Arbeit dargestellt. Dabei wurden primär Felder angegeben, welche in der Masterarbeit verwendet werden.
 \end{listing}

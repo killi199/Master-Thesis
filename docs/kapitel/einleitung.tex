@@ -2,15 +2,16 @@
 \label{chap:einleitung}
 \section{Motivation}
 \label{sec:motivation}
-Die Wissenschaft wurde in den letzten Jahrzehnten zunehmend digitalisiert und ist mittlerweile deutlich stärker auf \gls{oss} angewiesen als zuvor.
+Die Wissenschaft wurde in den letzten Jahrzehnten zunehmend digitalisiert und ist mittlerweile deutlich stärker auf \gls{oss} angewiesen.
 In wissenschaftlichen Arbeiten werden längst nicht mehr nur Paper und Bücher veröffentlicht, sondern auch Software, Daten und andere digitale Artefakte.
 Dies steigert die Reproduzierbarkeit und Nachvollziehbarkeit der Arbeiten.
 Der Wandel der Wissenschaft bringt allerdings die Herausforderung mit sich, Software angemessen zu würdigen.
-Neue Zitierformate und -weisen werden unerlässlich, um diesen Ansprüchen gerecht zu werden.
+Neue Zitierformate werden unerlässlich, um diesen Ansprüchen gerecht zu werden.
 Außerdem benötigt es eine gerechte Würdigung der einzelnen Autoren\footnote{Aus Gründen der besseren Lesbarkeit wird auf die gleichzeitige Verwendung der Sprachformen männlich, weiblich und divers (m/w/d) verzichtet. Sämtliche Personenbezeichnungen gelten gleichermaßen für alle Geschlechter.}, die maßgeblich zur Weiterentwicklung von \gls{oss} beitragen.
 
-Oftmals engagieren sich Softwareentwickler dafür in ihrer Freizeit, um die Qualität und Funktionalität der Software zu verbessern.
-Dabei kommt es immer wieder vor, dass ihre Arbeit nicht anerkannt wird, da sie nicht als Autor der Software oder sogar ihres Beitrags genannt werden.
+Viele Menschen beteiligen sich regelmäßig und freiwillig an der Entwicklung von \gls{oss}.
+Sie entwickeln neue Funktionen, lösen Probleme oder verbessern die Codequalität.
+Selbst wenn sie einen signifikanten Beitrag zum aktuellen Stand des Projekts beigetragen haben, kann es vorkommen, dass sie gar nicht als Autor aufgeführt werden.
 Dies ist beispielsweise dem Entwickler Ariel Miculas widerfahren, welcher einen Beitrag zum Linux-Kernel geleistet hat und nicht als Autor genannt wurde \autocite{miculas_how_2023}.
 Im Gegensatz zu wissenschaftlichen Arbeiten ist die Autorschaft von Software nicht semantisch geklärt \autocite{schmidt_software_nodate}.
 
@@ -38,11 +39,12 @@ Dies soll jedoch nicht Inhalt dieser Arbeit sein.
 
 \section{Gliederung}
 \label{sec:gliederung}
-In dieser Arbeit wird Software erzeugt, die es erlaubt, für eine beliebige Liste an \gls{cran}- oder \gls{pypi}-Repositorys Autorenangaben aus verschiedenen Datenquellen zu extrahieren, diese im Anschluss zu aggregieren und graphisch aufzuarbeiten.
+In dieser Arbeit wird Software entwickelt, die es erlaubt, für eine beliebige Liste an \gls{cran}- oder \gls{pypi}-Repositorys Autorenangaben aus verschiedenen Datenquellen zu extrahieren, diese im Anschluss zu aggregieren und graphisch aufzuarbeiten.
 Dabei werden in \autoref{chap:grundlagen} die benötigten Grundlagen geschaffen, um beispielsweise die Themen Versionsverwaltung, Paketverwaltung, Software-Verzeichnisse und im Allgemeinen verschiedene Zitierformate für Software verstehen zu können.
-Sie werden benötigt, um in \autoref{chap:methodik} Software zu entwickeln, über die Autorenangaben aus verschiedenen Datenquellen extrahiert und abgeglichen werden können.
+Sie werden benötigt, um in \autoref{chap:methodik} die grundlegenden Bestandteile und Funktionen der entwickelten Software vorzustellen, die Autorenangaben aus verschiedenen Datenquellen extrahiert und abgleicht.
+Dabei werden die wesentlichen Designentscheidungen und ihre Umsetzung erläutert.
 Anschließend werden die Ergebnisse in \autoref{chap:ergebnisse} präsentiert.
-Dabei wird auf Ergebnisse der Gegenwart und jene mit Zeitverlauf eingegangen.
+Dabei wird auf Ergebnisse der Gegenwart und jene mit Zeitverlauf in der Vergangenheit eingegangen.
 Im darauffolgenden \autoref{chap:diskussion} werden die Probleme und Herausforderungen dieser Arbeit diskutiert.
 Außerdem werden die Forschungsfragen beantwortet.
 Im \autoref{cap:fazit_ausblick} wird die Arbeit zusammengefasst und ein Ausblick auf weitere Forschungsansätze gegeben, welche mit dieser Arbeit möglich geworden sind.

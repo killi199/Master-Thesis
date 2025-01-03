@@ -14,44 +14,11 @@ Es gibt zwei verschiedene Arten von Versionsverwaltungssystemen.
 Zum einen gibt es die zentralen Systeme, bei denen alle Änderungen zentral verwaltet werden, beispielsweise SVN.
 Zum anderen gibt es die verteilten Systeme, bei denen jeder Entwickler eine Kopie des gesamten Repositorys und dessen Vergangenheit hat \autocite{ponuthorai_version_2022}.
 Ein solches System ist Git, welches sich mit einem Marktanteil von ungefähr 75 \% gegenüber anderen Systemen durchgesetzt hat \autocite{lindner_version_2024}.
-Aus diesem Grund und weil Git-Repositorys in dieser Arbeit untersucht werden, wird im folgenden auf Git eingegangen.
-Dabei werden Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen.
+Im Folgenden wird auf Git eingegangen und Begriffe erklärt, mit denen es möglich ist, die geleistete Arbeit von einzelnen Autoren innerhalb eines Repositorys zu untersuchen.
 Außerdem wird auf grundlegende Funktionen von Git eingegangen, da diese für die Arbeit relevant sind.
-Der Aufbau der einzelnen Git-Komponenten ist in \autoref{fig:git} dargestellt.
-Dabei ist zu erkennen, dass Git in einen Git-Server und Git-Anwendungen aufgeteilt wurde.
 
-\begin{figure}
-    {   
-        \begin{center}
-            \begin{tikzpicture}
-                [
-                    block/.style = {rectangle, draw, fill=blue!20, text width=8cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
-                    client/.style = {rectangle, draw, fill=blue!20, text width=3.5cm, text centered, minimum height=1.5cm, rounded corners=0.2cm},
-                    arrow/.style = {thick,<->,>=stealth}
-                ]
-        
-                \node (server) [block] {Git-Repository-Hosting-Plattform};
-                \node (cli) [client, below=of server, xshift=-2.25cm] {Git-Befehlszeile};
-                \node (gui) [client, below=of server, xshift=+2.25cm] {Git-GUI Anwendungen};
-            
-                \draw[arrow] (cli.north) -- (server.south -| cli.north);
-                \draw[arrow] (gui.north) -- (server.south -| gui.north);
-                \draw[arrow] (cli) -- (gui);
-
-                \node[left=0.1cm of server] {Git-Server};
-                \node[left=0.1cm of cli] {Git-Anwendungen};
-            
-            \end{tikzpicture}
-        \end{center}
-        \caption{Übersicht über die Git-Komponenten}
-        \label{fig:git}
-        \small
-        Die Git-Komponenten bestehen aus einem Git-Server, welcher das Repository hostet, und Git-Anwendungen, welche auf das Repository zugreifen (indirekt aus \cite{ponuthorai_version_2022}).
-    }
-\end{figure}
-
-Bei der Benutzung von Git ist ein Server nicht zwingend erforderlich.
-Dieser ermöglicht allerdings die einfache kollaborative Entwicklung von Code, da dieser ständig erreichbar ist und zentral verwaltet wird \autocite{ponuthorai_version_2022}.
+Bei der Benutzung von Git kann ein Server verwendet werden.
+Dieser ermöglicht eine einfache kollaborative Entwicklung von Code, da er ständig erreichbar ist und zentral verwaltet wird \autocite{ponuthorai_version_2022}.
 Standardmäßig wird auf dem Git-Server die neueste Version des Repositorys gespeichert.
 Ein Anbieter, welcher Git-Server bereitstellt ist GitHub, auf welchen im späteren Verlauf weiter eingegangen wird.
 Git-Anwendungen sind Programme, welche mit dem auf dem Computer befindlichen Repository interagieren \autocite{ponuthorai_version_2022}.
@@ -64,11 +31,11 @@ Dies wird ein Commit genannt.
 Mit einem Commit werden verschiedene Metainformationen gespeichert, beispielsweise eine Commit-Nachricht, der Autor und der Zeitpunkt der Änderungen.
 
 Die Änderung wird mit zwei Zeitpunkten angegeben.
-Zum einen wird der Zeitpunkt der Änderung des Autors angegeben, also jener Zeitpunkt, zu dem der Autor die Änderung vorgenommen und committet hat, dies wird in Git \emph{author date} genannt.
+Zum einen wird der Zeitpunkt der Änderung des Autors angegeben, dies wird in Git \emph{author date} genannt.
 Zum anderen wird der Zeitpunkt des Einfügens des Commits in das Repository gespeichert, dies wird in Git \emph{commit date} genannt.
 Der Commit kann von einer anderen Person, z.~B. durch einen Projektverantwortlichen, mittels eines Pull Requests in das Repository übernommen worden sein.
 Durch dieses Verhältnis ist der \emph{commit date} Zeitpunkt immer später oder gleich dem \emph{author date} Zeitpunkt.
-Außerdem ist gewährleistet, dass beide verantwortlichen Anerkennung für die geleistete Arbeit erhalten \autocite{chacon_pro_2024}.
+Außerdem ist gewährleistet, dass beide Verantwortlichen Anerkennung für die geleistete Arbeit erhalten \autocite{chacon_pro_2024}.
 
 Die Commit-Nachricht, sowie der Autor mit E-Mail-Adresse und Namen können in den Einstellungen von Git frei gewählt werden, müssen jedoch vorhanden sein, um einen Commit erstellen zu können.
 Mehrere Commits bilden die Commit-Historie bzw. die Vergangenheit eines Repositorys.
@@ -82,22 +49,66 @@ Beim Erstellen von einem Branch wird der aktuelle Zustand des Branches, auf welc
 Dadurch können Änderungen in dem neuen Branch durchgeführt werden, ohne dass diese Änderungen den ursprünglichen Branch beeinflussen.
 Diese Änderungen werden mittels Commits festgehalten.
 Unterschiedliche Branches können anschließend zusammengeführt werden, um die Änderungen aus einem Branch in einen anderen Branch zu übernehmen.
+Ein Beispiel für einen solchen Workflow ist in \autoref{fig:git_workflow} dargestellt.
+
+\begin{figure}
+    {   
+        \begin{center}
+            \begin{tikzpicture}
+                [
+                    commit/.style={circle, draw, minimum size=1cm, inner sep=0pt},
+                    edge/.style={->, thick},
+                    main/.style={draw=colorbrewer@blue, fill=colorbrewer@lightblue},
+                    feature/.style={draw=colorbrewer@green, fill=colorbrewer@lightgreen},
+                ]
+        
+                % Main branch
+                \node[commit, main] (c1) at (0, 4) {C1};
+                \node[commit, main] (c2) at (2, 4) {C2};
+                \node[commit, main] (c3) at (4, 4) {C3};
+
+                % Feature branch
+                \node[commit, feature] (f1) at (2, 2) {F1};
+                \node[commit, feature] (f2) at (4, 2) {F2};
+
+                % Connections
+                \draw[edge, colorbrewer@blue] (c1) -- (c2);
+                \draw[edge, colorbrewer@blue] (c2) -- (c3);
+
+                \draw[edge, colorbrewer@green] (c1) -- (f1);
+                \draw[edge, colorbrewer@green] (f1) -- (f2);
+
+                % Merge back
+                \draw[edge, dashed, gray] (f2) -- (c3);
+
+                % Legend
+                \draw[colorbrewer@blue, thick] (6, 4) -- ++(1, 0) node[right] {Main Branch};
+                \draw[colorbrewer@green, thick] (6, 3.5) -- ++(1, 0) node[right] {Feature Branch};
+                \draw[dashed, gray, thick] (6, 3) -- ++(1, 0) node[right] {Merge};
+            
+            \end{tikzpicture}
+        \end{center}
+        \caption{Git-Workflow}
+        \label{fig:git_workflow}
+        \small
+        In dieser Abbildung stellen Kreise Commits dar. Die unterschiedlichen Farben repräsentieren Commits einzelner Branches. Die gestrichelte Linie stellt eine Zusammenführung der Branches dar.
+    }
+\end{figure}
 
 Die Statistiken der Repositorys können auf verschiedene Arten aufgearbeitet werden.
 Zum einen können einige direkt mittels Git-Befehlen ausgelesen werden \autocite{chacon_git_2024}.
 Andere wiederum benötigen komplexere Abfragen, welche beispielsweise mittels Skripten oder speziellen Programmen ausgelesen werden können.
-Ein Beispiel für ein Programm, welches Git-Statistiken aufarbeitet, ist \emph{git-quick-stats} \autocite{mestan_git-quick-stats_2024}.
-Außerdem bieten Onlinedienste zur Versionsverwaltung, wie GitHub, Statistiken über APIs an, welche jedoch im Umfang der Anfragen limitiert sind \autocite{github_rate_2022}.
+Ein Beispiel für ein solches Programm ist \emph{git-quick-stats} \autocite{mestan_git-quick-stats_2024}.
+Außerdem bieten Onlinedienste zur Versionsverwaltung, wie GitHub, Statistiken über APIs an, welche jedoch im Umfang der Anfragen limitiert sind.
+GitHub erlaubt beispielsweise für authentifizierte Nutzer 5.000 Anfragen pro Stunde \autocite{github_rate_2022}.
 Bei der Benutzung der API von GitHub zum Abfragen der Autoren eines Repositorys werden automatisch alle E-Mail-Adressen der Autoren in Git mit den E-Mail-Adressen, welche die Autoren in GitHub angegeben haben, abgeglichen \autocite{github_rest-api-endpunkte_2022}.
 Dadurch werden die Autoren eindeutig zugeordnet und deren Commits addiert.
 Diese Werte werden ebenfalls in der Weboberfläche von GitHub angezeigt.
 
-GitHub ist eine Plattform, auf welcher Git-Repositorys gehostet werden können und dient somit als ein Git-Server.
-GitHub bietet zusätzliche Funktionen an, welche über die Standardfunktionen von Git hinausgehen.
+GitHub bietet neben der Bereitstellung eines Git-Servers zusätzliche Funktionen an, welche über die Standardfunktionen von Git hinausgehen.
 Diese umfassen unter anderem die kollaborative Entwicklung von Code, Automatisierung mittels CI/CD, Sicherheitsaspekte, Projektmanagement, Team Administration und Client-Anwendungen zur Verwaltung von Repositorys \autocite{ponuthorai_version_2022}.
 Aktuell benutzen GitHub über 100 Millionen Entwickler und mehr als 4 Millionen Organisationen.
-Insgesamt verwaltet die Plattform über 420 Millionen Repositorys.
-Außerdem ist GitHub in 90 \% der Fortune 100 Unternehmen im Einsatz \autocite{github_about_2024}.
+Insgesamt verwaltet die Plattform über 420 Millionen Repositorys \autocite{github_about_2024}.
 Um die zusätzlichen Funktionen von GitHub bereitzustellen, werden sogenannte Issues, Pull Requests, geschützte Branches, Actions, Diskussionen und Wikis eingesetzt.
 GitHub-Issues sind eine Möglichkeit, um Probleme und Aufgaben zu verfolgen.
 Pull Requests dienen dazu, Änderungen in einem Branch eines Repositorys anzufragen und über diese zu informieren.

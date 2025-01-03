@@ -31,9 +31,10 @@ Die Beschreibung wird als unstrukturierter Text zurückgegeben.
 Dieser Text wird mittels der \gls{ner} Bibliothek \emph{spaCy} in der Version 3.7.6 verarbeitet, um die Autoren zu extrahieren \autocite{honnibal_spacy_2024}.
 Dabei wird das Programm so verwendet, dass nur die Entitäten \emph{PERSON} extrahiert werden.
 Als Modell wurde das \texttt{en\_core\_web\_trf} verwendet, welches auf Englisch trainiert ist und eine höhere Genauigkeit aufweist als das \texttt{en\_core\_web\_sm} Modell.
-Das \texttt{en\_core\_web\_sm} Modell hat einen F Score von 0.846, wohingegen das \texttt{en\_core\_web\_trf} Modell einen F Score von 0.902 aufweist.
-Durch die Verwendung des genaueren Modells ist die Laufzeit erhöht. 
-In Experimenten hat sich jedoch gezeigt, dass das kleinere Modell keine guten Ergebnisse für die Beschreibungen liefert, da sehr viele Entitäten fälschlicherweise als Autoren erkannt werden.
+Das \texttt{en\_core\_web\_sm} Modell hat einen F1 Score von 0.846, wohingegen das \texttt{en\_core\_web\_trf} Modell einen F1 Score von 0.902 aufweist.
+Der F1-Score ist ein Maß für die Genauigkeit eines Modells, dabei liegt der Score zwischen 0 und 1, wobei 1 die höchste Genauigkeit darstellt \autocite{sasaki_truth_2007}.
+Durch die Verwendung des genaueren Modells von \emph{spaCy} ist die Laufzeit erhöht.
+In Experimenten hat sich jedoch gezeigt, dass das kleinere Modell keine guten Ergebnisse für die Beschreibungen liefert, da viele Entitäten fälschlicherweise als Autoren erkannt werden.
 Die extrahierten Autoren werden ebenfalls mit den Git-Daten abgeglichen und in der Datei \path{description_authors.csv} gespeichert.
 Der Inhalt umfasst den Namen des Autors, sowie die Daten aus dem Abgleich mit Git.
 Die Felder der Datei sind in \autoref{tab:description_authors} aufgelistet.

@@ -1,9 +1,9 @@
 \section{Software-Verzeichnisse und Paketverwaltung}
 \label{sec:paketverwaltung}
 Im Gegensatz zur Versionsverwaltung verwaltet die Paketverwaltung keinen Code und dessen Änderungen, sondern fertige Softwarepakete, welche von Entwicklern erstellt und in einem Software-Verzeichnis abgelegt werden.
-Inhalt eines Pakets können beispielsweise standardisierter Code von Software-Modulen sein oder kompilierter Code.
+Inhalt eines Pakets können standardisierter Code von Software-Modulen oder kompilierter Code sein.
 Zusätzlich werden in einem Paket Metadaten gespeichert.
-Diese Metadaten können beispielsweise eine Beschreibung, Version, Abhängigkeiten und Autoren des Pakets enthalten.
+Diese Metadaten können eine Beschreibung, Version, Abhängigkeiten und Autoren des Pakets enthalten.
 Sie lassen sich aus dem Paket mithilfe des Paketverwaltungssystems auslesen oder über APIs des Software-Verzeichnisses abrufen.
 Außerdem übernimmt das Paketverwaltungssystem das Installieren und meistens auch das Aktualisieren und Deinstallieren von Paketen.
 Zusätzlich wird das System verwendet, um fehlende Abhängigkeiten von Paketen automatisch zu installieren \autocite{spinellis_package_2012}.
@@ -58,7 +58,8 @@ Weitere Daten sind unter dem Punkt \glqq Projekt-Links\grqq{} unter den verifizi
 Die Autoren und Maintainer aus den Metadaten müssen nicht den verifizierten Betreuern und Owner des Pakets auf \gls{pypi} entsprechen, da dies unterschiedliche Systeme sind.
 Zum einen sind es die Benutzer, welche Rechte auf \gls{pypi} haben, um das Paket dort anzupassen und zum anderen sind es die Personen, welche durch die Entwickler des Pakets angegeben werden.
 Die Autoren und Maintainer können jedoch ebenfalls verifiziert sein, wobei dies über die API noch nicht abgefragt werden kann, jedoch in der Weboberfläche bereits für einige Pakete dargestellt wird.
-Es gibt aktuell wenig Pakete, bei denen die Autoren verifiziert sind, ein Beispiel ist das Paket \emph{hololinked}, welches zum Zeitpunkt der Erstellung dieser Arbeit darüber verfügt.
+Es gibt aktuell wenige Pakete, bei denen die Autoren verifiziert sind.
+Ein Beispiel ist das Paket \emph{hololinked}, das Stand 28.12.2024 solche Angaben enthält \autocite{venkatasubramanian_vaidyanathan_hololinked_2024}.
 \emph{Matplotlib} unterstützt dies aktuell noch nicht, wie in \autoref{fig:pypi_verified_unverified_details} dargestellt ist.
 Die verifizierten Betreuer und Owner können aktuell nicht über die JSON-API abgerufen werden, sondern müssen über die XML-RPC-API abgefragt werden.
 
@@ -66,7 +67,7 @@ Die verifizierten Betreuer und Owner können aktuell nicht über die JSON-API ab
 \label{subsubsec:pypi_xml_rpc}
 Die \gls{pypi} XML-RPC-API ist eine veraltete API, welche jedoch noch genutzt werden kann, um einige Informationen zu den Paketen abzufragen.
 Es wird empfohlen, diese API nicht mehr zu verwenden und den RSS-Feed oder die JSON-API als mögliche Alternativen zu verwenden \autocite{python_software_foundation_warehouse_2024}.
-Dadurch ist die API in der Anzahl der möglichen Anfragen stark limitiert und auch die Abstände zwischen den Anfragen müssen relativ groß sein.
+Außerdem ist die API in der Anzahl der möglichen Anfragen stark limitiert und auch die Abstände zwischen den Anfragen müssen groß sein.
 \gls{pypi} macht keine genauen Angaben darüber, wie viele Anfragen in welchem Zeitraum möglich sind.
 Diese API ist jedoch die einzige Quelle, um die Betreuer eines Pakets abzufragen, ohne einen Web-Scraper einsetzen zu müssen.
 Web-Scraping bezeichnet das Extrahieren von Daten aus Webseiten, indem der HTML-Code der Webseite analysiert wird \autocite{richardson_beautifulsoup4_2024}.
@@ -112,10 +113,10 @@ Aus diesem Grund gibt es in \gls{cran} keine Unterscheidung zwischen verifiziert
 Die Metadaten der einzelnen Pakete, welche über die METACRAN-API erreichbar sind, sind dabei ähnlich zu denen in \gls{pypi} \autocite{csardi_pkgsearch_2023}.
 Es werden beispielsweise die Autoren, Maintainer, eine Beschreibung, die Version und Abhängigkeiten über die API ausgegeben.
 Die Autoren werden in zwei unterschiedlichen Formaten ausgegeben.
-Zum einen wird ein Feld \glqq Author\grqq{} ausgegeben, welches die Autoren in einer Zeichenfolge enthält.
+Zum einen wird ein Feld \emph{Author} ausgegeben, welches die Autoren in einer Zeichenfolge enthält.
 Dieses Feld enthält den Namen der Autoren, sowie ggf. deren Rolle und ORCID iD.
-Zum anderen wird ein Feld \glqq Authors@R\grqq{} ausgegeben, welches die Autoren in einem R-Format ausgibt.
-Dieses Feld enthält ebenfalls die Werte des Feldes \glqq Author\grqq{}, sowie ggf. eine E-Mail-Adresse des jeweiligen Autors. 
+Zum anderen wird ein Feld \emph{Authors@R} ausgegeben, welches die Autoren in einem R-Format ausgibt.
+Dieses Feld enthält ebenfalls die Werte des Feldes \emph{Author}, sowie ggf. eine E-Mail-Adresse des jeweiligen Autors. 
 Im Gegensatz zu \gls{pypi} gibt es bei \gls{cran} keine Benutzer für das Software-Verzeichnis.
 Außerdem lassen sich alle Metadaten über die gleiche API abfragen.
 Es konnten keine Informationen über mögliche Limitierungen in der Anzahl der Anfragen gefunden werden.

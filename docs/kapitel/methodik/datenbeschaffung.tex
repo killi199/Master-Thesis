@@ -1,16 +1,15 @@
 \section{Datenbeschaffung}
 \label{sec:datenbeschaffung}
-In diesem Abschnitt wird beschrieben, wie die Top-100-Listen der Pakete erstellt wurden, welche in dieser Masterarbeit untersucht werden.
-Außerdem wird erläutert, wie das Skript zur Datenbeschaffung aus den einzelnen Quellen aufgebaut ist.
-Hierbei wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
+In diesem Abschnitt wird \emph{tqdm} in der Version 4.66.5 verwendet, um den Fortschritt der Datenbeschaffung anzuzeigen \autocite{costa-luis_tqdm_2024}.
 Der Abschnitt ist in die einzelnen zu untersuchenden Quellen untergliedert.
 
 Insgesamt werden in dieser Masterarbeit 5 Top-100-Listen untersucht.
 Die erste Liste enthält die Top-100 \gls{pypi} Pakete, welche am häufigsten im August 2024 heruntergeladen wurden \autocite{kemenade_top-pypi-packages_2024}.
 Die zweite Liste enthält die Top-100 meist heruntergeladenen \gls{cran} Pakete im Zeitraum von 02.08.2024 bis 31.08.2024 \autocite{csardi_cranlogsapp_2024}.
+Beide Listen wurden direkt aus den genannten Quellen entnommen, wobei sie auf 100 Einträge limitiert worden sind.
 
 Zusätzlich zu den beiden Listen, welche ausschließlich \gls{pypi} und \gls{cran} Pakete mit ihren Namen auf der jeweiligen Plattform enthalten, werden noch drei weitere Listen erstellt und anschließend untersucht.
-Hierbei wurde eine Liste vom Zweitgutachter untersucht, welche die Links zu allen Repositorys auf GitHub enthält, welche eine \gls{cff}-Datei enthalten.
+Hierbei wurde eine Liste vom Zweitgutachter dieser Arbeit untersucht, welche die Links zu allen Repositorys auf GitHub enthält, welche eine \gls{cff}-Datei enthalten.
 In der Liste sind 20.870 unterschiedliche Links enthalten, wobei einige der Links aufgrund von Umbenennungen auf das gleiche Repository zeigen.
 Die Liste wurde am 19.10.2024 um die Anzahl der Sterne auf GitHub erweitert, um über diese Metrik anschließend die Top-100 zu definieren.
 Dafür wurde ein Skript entwickelt, welches einmalig die gesamte Liste analysiert und für jedes Paket die GitHub-API verwendet, um die Anzahl der Sterne zu erhalten.

@@ -196,6 +196,11 @@
 \definecolor{solarized@base3}{HTML}{FDF6E3}
 \definecolor{solarized@base03}{HTML}{002B36}
 
+\definecolor{colorbrewer@blue}{HTML}{1F78B4}
+\definecolor{colorbrewer@lightblue}{HTML}{A6CEE3}
+\definecolor{colorbrewer@green}{HTML}{33A02C}
+\definecolor{colorbrewer@lightgreen}{HTML}{B2DF8A}
+
 % ==============
 %  Localization
 % ==============
