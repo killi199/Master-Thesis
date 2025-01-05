@@ -9,7 +9,7 @@ Da die \gls{cff}-Datei in YAML geschrieben wird, wird die Bibliothek \emph{pyyam
 
 In der \gls{cff} können für die eigentliche Zitation und für die \emph{preferred-citation} Autoren angegeben werden.
 Diese werden jeweils getrennt extrahiert, anschließend mit den neuesten Git-Daten abgeglichen und in separaten Dateien gespeichert.
-Dabei werden nur die Autoren betrachtet, welche Personen sind und keine Entitäten wie beispielsweise Organisationen.
+Dabei werden nur die Autoren betrachtet, welche Personen sind und keine Entitäten, wie beispielsweise Organisationen.
 Die Autoren werden in der Datei \path{TIMESTAMP_cff_authors_new.csv} gespeichert, wobei \emph{TIMESTAMP} durch den Zeitpunkt der Änderung ersetzt wird.
 Die Autoren aus der \emph{preferred-citation} werden in der Datei \path{TIMESTAMP_cff_preferred_citation_authors_new.csv} gespeichert.
 In beiden Dateien sind der Name, die E-Mail, die ORCID iD und die Git-Daten, welche durch den Abgleich ermittelt wurden, enthalten.
@@ -23,7 +23,7 @@ Dadurch entstehen die beiden Dateien \path{TIMESTAMP_cff_authors.csv} und \path{
 Enthalten sind die gleichen Informationen wie in den \glqq new\grqq{} Dateien.
 
 Zudem können in beiden Fällen ähnlich wie bei der Beschreibung allgemeine Daten extrahiert werden.
-Hierbei wird wie in der Beschreibung eine weitere CSV-Datei erstellt, welche die allgemeinen Daten enthält.
+Hierbei wird wie für die Beschreibung eine weitere CSV-Datei erstellt, welche die allgemeinen Daten enthält.
 In dem Fall der \gls{cff} werden zwei allgemeine Dateien erstellt, einmal für die \gls{cff} und einmal für die \emph{preferred-citation}.
 Die Dateien heißen \path{cff.csv} und \path{cff_preferred_citation.csv}.
 Die Felder der \path{cff.csv}-Datei sind in \autoref{tab:cff} aufgelistet und die der \path{cff_preferred_citation.csv}-Datei in \autoref{tab:cff_preferred_citation}.
@@ -49,7 +49,7 @@ Diese wird in der allgemeinen Datei gespeichert, um später zu überprüfen, ob 
 
 Zusätzlich wird in beiden Fällen das Feld \emph{date-released} und die \emph{doi} extrahiert und gespeichert.
 Die \emph{doi} wird in den allgemeinen Dateien gespeichert, um im weiteren Verlauf zu überprüfen, ob eine \gls{doi} in der \gls{cff}-Datei vorhanden ist.
-Als letzte gemeinsame Information wird die \emph{type} extrahiert und in den allgemeinen Dateien gespeichert.
+Als letzte gemeinsame Information wird der \emph{type} extrahiert und in den allgemeinen Dateien gespeichert.
 Dabei können wie in den Grundlagen erwähnt für die allgemeinen Informationen in der \gls{cff} nur \glqq software\grqq{} und \glqq dataset\grqq{} vorkommen.
 Für die allgemeinen Daten der \emph{preferred-citation} können weitere Typen vorkommen, welche in den Grundlagen erläutert wurden.
 

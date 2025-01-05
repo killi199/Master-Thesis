@@ -43,7 +43,8 @@ Im Folgenden werden auf einige der Zugriffsmöglichkeiten eingegangen, welche mi
 \label{subsubsec:pypi_json_api}
 Die JSON-API ist die bevorzugt zu verwendende API von \gls{pypi} und bietet die Möglichkeit, die Metadaten eines Pakets abzufragen \autocite{python_software_foundation_warehouse_2024}.
 Diese API ist nicht in der Anzahl der Anfragen beschränkt.
-Daten der neuesten Version des Pakets werden von der API zurückgegeben.
+In einer Anfrage liefert sie wichtige Metadaten ausschließlich für die neueste Version des Pakets.
+Für die Abfrage der Metadaten einer älteren Version des Pakets muss eine weitere Anfrage gestellt werden.
 Die Werte in den Metadaten stammen aus den Daten, welche beim Hochladen auf \gls{pypi} angegeben wurden.
 Die Daten des ersten Uploads eines Releases werden dabei als Metadaten der Version gespeichert und bei weiteren Uploads dieser Version nicht überschrieben.
 

@@ -29,7 +29,7 @@ Zusätzlich zu den Informationen der Autoren und Maintainer wird die Beschreibun
 Einige Pakete haben in der Beschreibung ebenfalls Autoren angegeben, welche zusätzlich verarbeitet werden.
 Die Beschreibung wird als unstrukturierter Text zurückgegeben.
 Dieser Text wird mittels der \gls{ner} Bibliothek \emph{spaCy} in der Version 3.7.6 verarbeitet, um die Autoren zu extrahieren \autocite{honnibal_spacy_2024}.
-Dabei wird das Programm so verwendet, dass nur die Entitäten \emph{PERSON} extrahiert werden.
+Dabei wird das Programm so verwendet, dass nur die Entitäten \glqq PERSON\grqq{} extrahiert werden.
 Als Modell wurde das \texttt{en\_core\_web\_trf} verwendet, welches auf Englisch trainiert ist und eine höhere Genauigkeit aufweist als das \texttt{en\_core\_web\_sm} Modell.
 Das \texttt{en\_core\_web\_sm} Modell hat einen F1 Score von 0.846, wohingegen das \texttt{en\_core\_web\_trf} Modell einen F1 Score von 0.902 aufweist.
 Der F1-Score ist ein Maß für die Genauigkeit eines Modells, dabei liegt der Score zwischen 0 und 1, wobei 1 die höchste Genauigkeit darstellt \autocite{sasaki_truth_2007}.
@@ -46,7 +46,6 @@ Die Rolle kann dabei \emph{Maintainer} oder \emph{Owner} sein.
 \emph{Owner} ist hierbei nicht der \emph{Owner}, welcher in \autoref{fig:pypi_verified_unverified_details} unter \emph{Owner} aufgeführt ist, sondern in diesem konkreten Fall sind alle drei Betreuer des Pakets als \emph{Owner} angegeben.
 Der Benutzer \grqq Matplotlib\glqq{}, welcher unter \emph{Owner} aufgeführt ist, wird nicht über die API zurückgegeben.
 Dieser wird jedoch auch nicht benötigt, da unter \emph{Owner} immer eine Organisation angeführt wird und in dieser Masterarbeit nur Personen betrachtet werden.
-Im Allgemeinen wird aus der Dokumentation der XML-RPC-API nicht deutlich, welche Daten zurückgegeben werden.
 
 Anschließend werden alle verifizierten Autoren, welche durch die API zurückgegeben wurden, analysiert, unabhängig von der angegebenen Rolle.
 Da die Autoren ausschließlich mit dem Benutzernamen zurückgegeben werden, wird ein Web-Scraper benötigt, um den vollständigen Namen des Autors zu erhalten.
@@ -89,7 +88,7 @@ Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
     \caption[Felder der \texttt{python\_authors.csv}, \texttt{python\_maintainers.csv} und \texttt{cran\_ maintainers.csv}-Datei]{Felder der \texttt{python\_authors.csv}, \texttt{python\_maintainers.csv} und \texttt{cran\_maintainers.csv}-Datei}
     \label{tab:python_authors}
     \small
-    Die Tabelle zeigt die Felder der \path{python\_authors.csv}, \path{python\_maintainers.csv} und \path{cran\_maintainers.csv}-Datei. Für jeden Autor oder Maintainer der betrachteten Software wird der Name und die E-Mail gespeichert, falls diese angegeben wurde. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+    Die Tabelle zeigt die Felder der \path{python_authors.csv}, \path{python_maintainers.csv} und \path{cran_maintainers.csv}-Datei. Für jeden Autor oder Maintainer der betrachteten Software wird der Name und die E-Mail gespeichert, falls diese angegeben wurde. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
 \end{table}
 
 \begin{table}
@@ -102,7 +101,7 @@ Die Felder der Datei sind in \autoref{tab:pypi_maintainers} aufgelistet.
     \caption[Felder der \texttt{description\_authors.csv}, \texttt{TIMESTAMP\_readme\_authors (\_new).csv} und \texttt{TIMESTAMP\_bib\_authors(\_new).csv}-Datei]{Felder der \texttt{description\_authors.csv}, \texttt{TIMESTAMP\_readme\_authors(\_new).csv} und \texttt{TIMESTAMP\_bib\_authors(\_new).csv}-Datei}
     \label{tab:description_authors}
     \small
-    Die Tabelle zeigt die Felder der \path{description\_authors.csv}, \path{TIMESTAMP\_readme\_authors(\_new).csv} und \path{TIMESTAMP\_bib\_authors(\_new).csv}-Datei. Für jeden Autor der betrachteten Software wird der Name gespeichert, welcher durch die \gls{ner} ermittelt wurde. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
+    Die Tabelle zeigt die Felder der \path{description_authors.csv}, \path{TIMESTAMP_readme_authors(_new).csv} und \path{TIMESTAMP_bib_authors(_new).csv}-Datei. Für jeden Autor der betrachteten Software wird der Name gespeichert, welcher durch die \gls{ner} ermittelt wurde. Außerdem werden weitere Felder durch den Abgleich mit Git in der Datei gespeichert, welche in \autoref{tab:abgleich_felder} aufgelistet sind.
 \end{table}
 
 \begin{table}

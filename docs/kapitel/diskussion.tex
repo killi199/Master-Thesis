@@ -80,12 +80,12 @@ In \autoref{tab:matching_results_manual} fällt auf, dass viele Autoren in den P
 Dies ist darauf zurückzuführen, dass in den Quellen häufig Organisationen als Autoren genannt werden und keine individuellen Personen aufgeführt werden.
 Beispielsweise sind in der \gls{pypi} Liste vier Pakete enthalten, welche bereits den Namen Google enthalten.
 In allen vier Paketen sind in den Quellen \gls{pypi} Maintainer und Python Autoren keine Personen, sondern ausschließlich \glqq gcloudpypi\grqq{}, \glqq google\_opensource\grqq{} und \glqq Google LLC\grqq{} genannt.
-Hier lässt sich diskutieren, ob eine Nennung von individuellen Personen dennoch erfolgen sollte, auch wenn sie beispielsweise bei einem Unternehmen wie Google angestellt sind und für diese arbeiten.
+Hier lässt sich diskutieren, ob eine Nennung von individuellen Personen dennoch erfolgen sollte, auch wenn sie beispielsweise bei einem Unternehmen wie Google angestellt sind und für dieses arbeiten.
 Dies soll allerdings kein Thema für diese Arbeit sein.
 
 In \autoref{tab:matching_results_manual} fällt auf, dass die README und die Beschreibung schlechte F1-Scores haben.
 Dies liegt daran, dass die \gls{ner} viele Ergebnisse liefert, unter anderem \gls{fp}, welche anschließend primär falsch zugeordnet werden.
-Ebenfalls sind viele \gls{fn} Ergebnisse enthalten, da die \gls{ner} ebenfalls Benutzernamen erkennt, wie bereits erläutert wurde.
+Ebenfalls sind viele \gls{fn} Ergebnisse enthalten, da die \gls{ner} ebenfalls Benutzernamen erkennt.
 Außerdem fällt auf, dass viele \gls{tn} in den Ergebnissen enthalten sind.
 Dies ist darauf zurückzuführen, dass die verwendete \gls{ner} viele Entitäten erkennt, welche nicht relevant sind, da es sich beispielsweise nicht um Personen handelt.
 Dies ist besonders verwunderlich, da in der Methodik beschrieben wurde, dass die \gls{ner} nur Personen erkennen soll.
@@ -100,7 +100,7 @@ Bei einer Betrachtung aller Autoren wäre der F1-Score für die \hologo{BibTeX}-
 In diesem Fall verschlechtern die beiden nicht abgeglichenen Autoren aufgrund der insgesamt geringen Anzahl an betrachteten Autoren den F1-Score erheblich.
 
 Außerdem fällt auf, dass insgesamt viele \gls{fp} in den Ergebnissen enthalten sind.
-Diese sind dadurch begründet, dass das Keyword \emph{in} in \autoref{sec:abgleich} verwendet wird.
+Diese sind dadurch begründet, dass das Python-Keyword \emph{in} in \autoref{sec:abgleich} für den Abgleich verwendet wird.
 Bei der manuellen Überprüfung der Ergebnisse fällt auf, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
 In diesen Fällen ist es möglich, fast jeden Autor aus der Quelle mit diesem speziellen Git Autor abzugleichen, da der Autor der Quelle nur diesen Buchstaben in seinem Namen enthalten haben muss.
 Falls über keine weiteren Attribute der Abgleich erfolgen kann, bedeutet dies immer, dass ein falscher Abgleich stattfindet.
@@ -155,7 +155,7 @@ Des Weiteren ist die hohe Anzahl der invaliden \gls{cff}-Dateien, welche in \aut
 
 Auch zeigt die Häufigkeit, mit der die Quellen aktualisiert werden, dass scheinbar kein großes Interesse darin besteht, die Autorenlisten zu pflegen.
 Aus \autoref{tab:average_time_last_update} wird deutlich, dass zwei der drei untersuchten Quellen in fast jeder Liste durchschnittlich das letzte Jahr nicht aktualisiert wurden.
-Die README wird dabei öfter aktualisiert, wobei berücksichtigt werden muss, dass in der README nicht nur Autoren, sondern auch in vielen Fällen beispielsweise die Dokumentation vorhanden ist.
+Die README wird dabei öfter aktualisiert, wobei berücksichtigt werden muss, dass in der README nicht nur Autoren, sondern in vielen Fällen beispielsweise auch die Dokumentation vorhanden ist.
 Außerdem muss berücksichtigt werden, dass ein Jahr in der Softwareentwicklung keine lange Zeit ist und neue Autoren innerhalb dieser Zeit kaum hinzugefügt werden können, da ein Einarbeiten und etablieren in ein großes Softwareprojekt innerhalb eines Jahres schwer möglich ist.
 Dahingegen ist dies bei der \hologo{BibTeX} Quelle anders, da hier die letzte Aktualisierung zwei bis drei Jahre zurückliegt in der die Autorenliste ggf. um weitere Autoren ergänzt hätte werden können.
 
@@ -172,6 +172,6 @@ Dies könnte unter anderem daran liegen, dass viele der Pakete nicht in der Wiss
 
 Eine zusätzliche Auffälligkeit, welche die Pflege und Nennung der Autoren indirekt betrifft, zeigt \autoref{fig:citation_counts}.
 Hier wird deutlich, dass in vielen Fällen, in denen eine \emph{preferred-citation} angegeben ist, diese auf ein Paper verweist und nicht auf die Software.
-Falls Autoren von wissenschaftlichen Arbeiten ausschließlich diese Referenz zitieren, stellt dies einen Verstoß gegen das Prinzip der Wichtigkeit dar, welches in \autoref{sec:software-zitation} beschrieben wurde.
+Falls Autoren von wissenschaftlichen Arbeiten ausschließlich diese Referenz zitieren, stellt dies einen Verstoß gegen das Prinzip der Wichtigkeit dar.
 Dies könnte durch die Autoren von Software verhindert werden, indem sie keine \emph{preferred-citation} angeben, sondern ausschließlich die Software und weitere Referenzen in der \gls{cff} als \emph{references} angeben.
 Diese Referenzen wurden in dieser Masterarbeit allerdings nicht untersucht.
