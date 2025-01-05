@@ -69,8 +69,8 @@ Aus diesem Grund wurden die Autoren für jedes Paket und jede Quelle zufällig n
 Anschließend wurden jeweils die ersten beiden Autoren anhand von vier Kriterien überprüft.
 Falls nur ein Autor in einer Quelle genannt wurde, wurde nur dieser überprüft.
 Jeder Autor wurde einer der vier Kategorien \gls{tp}, \gls{fn}, \gls{fp} oder \gls{tn} zugeordnet.
-Ein Autor ist als richtig positiv klassifiziert worden, falls er richtig zugeordnet wurde.
-Falls der Autor mehrfach in der Git-Autorenliste vorkommt, wurde der Autor als richtig positiv klassifiziert unabhängig davon, mit welchem von den doppelten Einträgen der Autor zugeordnet wurde.
+Ein Autor ist als \gls{tp} klassifiziert worden, falls er richtig zugeordnet wurde.
+Falls der Autor mehrfach in der Git-Autorenliste vorkommt, wurde der Autor als \gls{tp} klassifiziert unabhängig davon, mit welchem von den doppelten Einträgen der Autor zugeordnet wurde.
 Aus diesen Daten wurde der F1-Score berechnet.
 
 Außerdem wurde angegeben, ob es sich um keine Person handelt, sondern z.~B. um eine Organisation.
@@ -529,7 +529,7 @@ Außerdem lässt sich erkennen, dass ab 2018 die ersten GitHub-Repositorys eine 
 \end{figure}
 
 \subsection*{Hinzugefügte und entfernte Autoren}
-Die \autoref{fig:added_removed_authors} zeigt für alle fünf Listen, wie viele Autoren in den einzelnen Quellen hinzugefügt und gelöscht wurden.
+Die \autoref{fig:added_removed_authors} zeigt für alle fünf Listen, wie viele Autoren in den einzelnen Quellen hinzugefügt und entfernt wurden.
 Dabei werden ausschließlich genannten Autoren in dem \gls{cff}, \hologo{BibTeX} und der README-Datei betrachtet, da nur bei diesen Quellen eine zeitliche Betrachtung möglich ist.
 Außerdem wird in der Abbildung gezeigt, wie viele Autoren nachträglich den Dateien hinzugefügt wurden, nachdem die Datei das erste Mal erstellt wurde.
 Die Informationen der Abbildungen werden ebenfalls erneut ohne die README Autoren dargestellt, da diese vielen Änderungen aufgrund der verwendeten \gls{ner} unterliegen.
@@ -539,7 +539,6 @@ Dieser Abgleich wird ausschließlich dann durchgeführt, falls die Datenbeschaff
 In diesem Fall wird ein erneuter Abgleich des Autors anhand des Namens durchgeführt.
 Dies führt dazu, dass, falls ein Abgleich in der Datenbeschaffung für einen Autor nicht erfolgreich war, dieser bei einer Namensänderung in der Grafik als gelöschter und hinzugefügter Autor betrachtet wird.
 Der erneute Abgleich über den Namen kann dies nicht verhindern, allerdings sorgt er dafür, dass auch nicht abgeglichene Autoren in der Grafik als gelöschte und hinzugefügte Autoren betrachtet werden können.
-Zusätzlich ermöglicht dies im späteren Verlauf eine Analyse darüber, wie lange ein Autor durchschnittlich in einer Quelle genannt wird.
 
 In \autoref{fig:added_removed_authors_without_readme} ist zu erkennen, dass in der \gls{pypi} \gls{cff} Liste die meisten Autoren in den betrachteten Quellen genannt werden.
 Außerdem ist auffällig, dass in der \gls{cran} und der \gls{pypi} Liste in den Quellen nur Autoren hinzugefügt und keine gelöscht wurden.
