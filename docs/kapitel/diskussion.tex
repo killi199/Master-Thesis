@@ -19,7 +19,7 @@ Dies ist für die Masterarbeit nicht erwünscht, da möglichst ein Autor nur ein
 In der Datenbeschaffung wurde versucht, dieses Problem zu lösen, indem die E-Mail-Adresse als eindeutiger Identifikator genutzt wird und gleiche E-Mail-Adressen zu einem Autor zusammengefasst werden.
 Allerdings behebt dies nicht das Problem vollständig, da ein Autor seine E-Mail-Adresse ebenfalls ändern kann und diese nicht erneut abgeglichen wird.
 
-Ein Abgleich, wie in \autoref{sec:abgleich} beschrieben, bei dem keine Unterscheidung von Namensvettern möglich ist, ist ebenfalls nicht möglich. 
+Ein Abgleich, wie in \autoref{sec:abgleich} beschrieben, bei dem keine Unterscheidung von Namensvettern möglich ist, ist ebenfalls nicht durchführbar.
 Dies ist darin begründet, dass dadurch die Ergebnisse verfälscht werden könnten, da beispielsweise Autoren mit dem gleichen Namen zusammengefasst werden würden, obwohl es sich um unterschiedliche Autoren handelt.
 Eine Möglichkeit, dieses Problem zu lösen, wäre die Verwendung der GitHub-API, welche automatisch die Git-Autoren anhand der in GitHub eingetragenen E-Mail-Adressen zusammenfasst.
 Ein weiterer Vorteil, der durch die Nutzung der GitHub-API bestehen würde, ist, dass dabei die Benutzernamen der GitHub-Benutzer abgefragt werden könnten.
@@ -83,7 +83,7 @@ In allen vier Paketen sind in den Quellen \gls{pypi} Maintainer und Python Autor
 Hier lässt sich diskutieren, ob eine Nennung von individuellen Personen dennoch erfolgen sollte, auch wenn sie beispielsweise bei einem Unternehmen wie Google angestellt sind und für dieses arbeiten.
 Dies soll allerdings kein Thema für diese Arbeit sein.
 
-In \autoref{tab:matching_results_manual} fällt auf, dass die README und die Beschreibung schlechte F1-Scores haben.
+In \autoref{tab:matching_results_manual} ist sichtbar, dass die README und die Beschreibung schlechte F1-Scores haben.
 Dies liegt daran, dass die \gls{ner} viele Ergebnisse liefert, unter anderem \gls{fp}, welche anschließend primär falsch zugeordnet werden.
 Ebenfalls sind viele \gls{fn} Ergebnisse enthalten, da die \gls{ner} ebenfalls Benutzernamen erkennt.
 Außerdem fällt auf, dass viele \gls{tn} in den Ergebnissen enthalten sind.
@@ -101,7 +101,7 @@ In diesem Fall verschlechtern die beiden nicht abgeglichenen Autoren aufgrund de
 
 Außerdem fällt auf, dass insgesamt viele \gls{fp} in den Ergebnissen enthalten sind.
 Diese sind dadurch begründet, dass das Python-Keyword \emph{in} in \autoref{sec:abgleich} für den Abgleich verwendet wird.
-Bei der manuellen Überprüfung der Ergebnisse fällt auf, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
+Bei der manuellen Überprüfung der Ergebnisse wurde deutlich, dass in einigen Git-Autorenlisten Autoren enthalten sind, welche einen Namen mit nur einem oder zwei Buchstaben haben.
 In diesen Fällen ist es möglich, fast jeden Autor aus der Quelle mit diesem speziellen Git Autor abzugleichen, da der Autor der Quelle nur diesen Buchstaben in seinem Namen enthalten haben muss.
 Falls über keine weiteren Attribute der Abgleich erfolgen kann, bedeutet dies immer, dass ein falscher Abgleich stattfindet.
 Dieses Problem entsteht grundlegend dadurch, dass es kaum Einschränkungen bei der Wahl des Namens und der E-Mail-Adresse in Git gibt.
@@ -168,7 +168,7 @@ Des Weiteren zeigen die Tabellen \ref{tab:average_lifespans} und \ref{tab:averag
 Diese Tatsache ist dabei nichts Negatives, da die Autoren Arbeit in den Paketen geleistet haben, allerdings sollten Autoren, welche aktuell das Paket aktiv pflegen ebenfalls genannt werden.
 
 Im Allgemeinen lässt sich sagen, dass die Autoren in den betrachteten Listen nicht aktiv gepflegt werden und besonders in den meisten Fällen keine automatischen Prozesse vorhanden sind, welche die Autorenlisten aktualisieren.
-Dies könnte unter anderem daran liegen, dass viele der Pakete nicht in der Wissenschaft entstanden sind, sondern beispielsweise in Unternehmen, bei denen die Pflege der Autorenlisten nicht so wichtig ist, sondern die Nennung des Unternehmens im Fokus steht.
+Dies könnte unter anderem daran liegen, dass viele der Pakete nicht in der Wissenschaft entstanden sind, sondern beispielsweise in Unternehmen, bei denen die Pflege der Autorenlisten keine Priorität hat, sondern die Nennung des Unternehmens im Fokus steht.
 
 Eine zusätzliche Auffälligkeit, welche die Pflege und Nennung der Autoren indirekt betrifft, zeigt \autoref{fig:citation_counts}.
 Hier wird deutlich, dass in vielen Fällen, in denen eine \emph{preferred-citation} angegeben ist, diese auf ein Paper verweist und nicht auf die Software.
