@@ -91,7 +91,7 @@ Eine weitere Auffälligkeit ist die geringe Anzahl an \hologo{BibTeX} Autoren.
 Hier werden insgesamt nur vier Autoren betrachtet, zusätzlich ist der F1-Score mit 0,8000 am schlechtesten für diese Quelle.
 
 \begin{table}
-    \begin{tabularx}{\textwidth}{XR{.8cm}R{.8cm}R{.8cm}R{.8cm}R{2.8cm}R{2cm}}
+    \begin{tabularx}{\textwidth}{XR{.81cm}R{.81cm}R{.81cm}R{.81cm}R{2.8cm}R{1.9cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{tp}} & \textbf{\gls{fn}} & \textbf{\gls{fp}} & \textbf{\gls{tn}} & \textbf{Keine Person} & \textbf{F1-Score} \\ \midrule
         Beschreibung                 & 87   & 5  & 18  & 125 & 15  & 0,8832 \\
@@ -113,6 +113,7 @@ Hier werden insgesamt nur vier Autoren betrachtet, zusätzlich ist der F1-Score 
     In der Tabelle sind die Ergebnisse des manuellen Abgleichs für alle Listen eingetragen. Dabei wurde für jede Quelle die Anzahl der \gls{tp}, \gls{fn}, \gls{fp} und \gls{tn} Autoren ermittelt. Zusätzlich wurde angegeben, ob es sich um keine Person handelt und der F1-Score berechnet.
 \end{table}
 
+\newpage
 \subsection*{Commits gegenüber geänderten Zeilen}
 Aus den gesammelten Daten wurden weitere Statistiken berechnet.
 Dabei muss berücksichtigt werden, dass einige Statistiken auf dem Abgleich basieren und somit nur so gut sind, wie der Abgleich selbst.
@@ -153,9 +154,9 @@ Die eine Abbildung bemisst die Top-Git-Autoren an der Anzahl der Commits und die
 Falls beispielsweise der Autor mit den meisten Commits in einer Quelle z.~B. \gls{cff} genannt wird und die Autoren an den Commits bemessen werden und zusätzlich nur der Top-Autor betrachtet wird, so wird in der Abbildung bei $x=1$ dargestellt, dass 100 \% der Git-Autoren in der \gls{cff} genannt werden.
 
 Bei der Betrachtung von immer mehr Git-Autoren sinkt der Anteil der genannten Autoren in den Quellen.
-Beispielsweise werden in \autoref{fig:common_authors_pypi_cff} von 100 betrachteten Top-Git-Autoren gemessen nach Commits nahezu 0 \% als Python Maintainer genannt, jedoch werden knapp 10 \% in der \gls{cff} preferred citation angegeben.
+Beispielsweise werden in \autoref{fig:common_authors_pypi_cff} von 100 betrachteten Top-Git-Autoren gemessen nach Commits nahezu 0 \% als Python Maintainer genannt, jedoch werden knapp 10 \% unter dem \gls{cff} \emph{preferred-citation} Feld angegeben.
 Dabei muss berücksichtigt werden, dass unterschiedliche Quellen unterschiedlich häufig vorkommen.
-Beispielsweise haben weniger Pakete \gls{cff} preferred citation Autoren angegeben als \gls{cff} Autoren, da diese zwingend angegeben werden müssen.
+Beispielsweise haben weniger Pakete Autoren unter dem \gls{cff} Feld \emph{preferred-citation} angegeben als direkte \gls{cff} Autoren, da diese zwingend angegeben werden müssen.
 Dadurch kann es dazu kommen, dass nur ein Paket eine bestimmte Quelle angegeben hat und wenn dieses Paket in der Quelle viele Autoren nennt, ist der Anteil der genannten Autoren in der gesamten Quelle hoch.
 
 Im Hintergrund der Abbildungen werden weitere Linien präsentiert, welche nicht in der Legende aufgeführt sind.
@@ -344,7 +345,7 @@ Dabei ist auffällig, dass der Anteil der validen \gls{cff}-Dateien zwar größe
 \end{figure}
 
 \subsection*{Typ der Zitation}
-\autoref{fig:citation_counts} zeigt für die Quellen \gls{cff}, \emph{preferred-citation} \gls{cff} und \hologo{BibTeX} den angegebenen Typ der Zitation.
+\autoref{fig:citation_counts} zeigt für die Quellen \gls{cff}, \gls{cff} \emph{preferred-citation} und \hologo{BibTeX} den angegebenen Typ der Zitation.
 Anhand der Abbildungen ist außerdem zu erkennen, wie oft welche Quelle in den Listen vorkommt.
 Beispielsweise haben zwei der Top-100 \gls{cran} Pakete eine \gls{cff} angegeben und fünf der Top-100 \gls{pypi} Pakete.
 Von diesen fünf Paketen hat kein Paket das Feld \emph{preferred-citation} angegeben.
@@ -369,7 +370,7 @@ Alle anderen 638 Pakete haben einen anderen Typ der Zitation angegeben und sind 
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/citation_counts_preferred_citation_cff.svg}
-        \caption{\emph{preferred-citation} \gls{cff}}
+        \caption{\gls{cff} \emph{preferred-citation}}
         \label{fig:citation_counts_preferred_citation_cff}
     \end{subfigure}
     \begin{center}
@@ -402,7 +403,7 @@ Auffällig ist außerdem, dass in der \emph{preferred-citation} in \autoref{fig:
     \begin{subfigure}{.5\textwidth}
         \centering
         \includesvg[width=.95\linewidth,inkscapelatex=false]{bilder/preferred_citation_doi.svg}
-        \caption{\emph{preferred-citation} \gls{cff}}
+        \caption{\gls{cff} \emph{preferred-citation}}
         \label{fig:preferred_citation_doi}
     \end{subfigure}
     \begin{center}
@@ -431,7 +432,7 @@ In der Tabelle lässt sich beispielsweise ablesen, dass die README über alle Pa
 Es ist außerdem auffällig, dass die README-Dateien am aktuellsten sind und die \hologo{BibTeX}-Dateien am längsten nicht aktualisiert wurden.
 
 \begin{table}
-    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
+    \begin{tabularx}{\textwidth}{XR{1.42cm}R{1.2cm}R{.93cm}R{2.2cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ 
         \midrule
@@ -606,13 +607,13 @@ Insgesamt ergibt das $\frac{2+0+0}{3}\approx1$, wodurch der Wert in der Zelle be
 Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da die eigentlichen Autoren bis zum Tag des Schreibens nicht entfernt worden sind.
 
 \begin{table}
-    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
+    \begin{tabularx}{\textwidth}{XR{1.42cm}R{1.2cm}R{.93cm}R{2.2cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
-        README                                    & 730    & 398    & 174    & 159    & 187 \\
-        \gls{cff}                                 & \infty & \infty & 1      & 333    & 198 \\
-        \emph{preferred-citation} \gls{cff}       & \infty &        & 512    & 512    & 140 \\
-        \hologo{BibTeX}                           &        & \infty & \infty & \infty &     \\
+        README                       & 730    & 398    & 174    & 159    & 187 \\
+        \gls{cff}                    & \infty & \infty & 1      & 333    & 198 \\
+        \gls{cff} preferred citation & \infty &        & 512    & 512    & 140 \\
+        \hologo{BibTeX}              &        & \infty & \infty & \infty &     \\
         \bottomrule
     \end{tabularx}
     \caption{Durchschnittliche Verweildauer der Autoren in den Quellen}
@@ -622,13 +623,13 @@ Nach manueller Prüfung wäre dies somit ein Fall für das \infty{} Zeichen, da 
 \end{table}
 
 \begin{table}
-    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
+    \begin{tabularx}{\textwidth}{XR{1.42cm}R{1.2cm}R{.93cm}R{2.2cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
-        README                                    & 1082 & 1088 & 364  & 394  & 398 \\
-        \gls{cff}                                 & 1021 & 257  & 850  & 651  & 745 \\
-        \emph{preferred-citation} \gls{cff}       & 1021 &      & 676  & 559  & 723 \\
-        \hologo{BibTeX}                           &      & 1197 & 1200 & 1200 &     \\
+        README                       & 1082 & 1088 & 364  & 394  & 398 \\
+        \gls{cff}                    & 1021 & 257  & 850  & 651  & 745 \\
+        \gls{cff} preferred citation & 1021 &      & 676  & 559  & 723 \\
+        \hologo{BibTeX}              &      & 1197 & 1200 & 1200 &     \\
         \bottomrule
     \end{tabularx}
     \caption{Durchschnittliche Verweildauer der Autoren in den Quellen inkl. Autoren, welche nie entfernt wurden}
@@ -646,7 +647,7 @@ Beispielsweise wurde diese in der \gls{pypi} \gls{cff} Liste im Durchschnitt all
 Hingegen wird die \hologo{BibTeX}-Datei in der \gls{pypi} Liste im Durchschnitt nur alle 676 Tage aktualisiert.
 
 \begin{table}
-    \begin{tabularx}{\textwidth}{XR{1.3cm}R{1.3cm}R{1.3cm}R{2.4cm}R{2.6cm}}
+    \begin{tabularx}{\textwidth}{XR{1.42cm}R{1.2cm}R{.93cm}R{2.2cm}R{2.6cm}}
         \toprule
         \textbf{Quelle} & \textbf{\gls{cran}} & \textbf{\gls{pypi}} & \textbf{\gls{cff}} & \textbf{\gls{pypi} \gls{cff}} & \textbf{\gls{cran} \gls{cff}} \\ \midrule
         README          & 125 & 149 & 30 & 28 & 45 \\

@@ -403,7 +403,7 @@
           \rule{\textwidth}{0.5pt}
         \end{flushleft}
       \end{minipage}
-      \begin{minipage}{0.19\textwidth}
+      \begin{minipage}{0.1\textwidth}
         \begin{flushright}
           \resizebox{!}{6\baselineskip}{%
             \begin{tikzpicture}[y=1cm, x=1cm, yscale=1, xscale=1, inner sep=0pt, outer sep=0pt]
@@ -559,7 +559,7 @@
         \end{flushright}
       \end{minipage}
       \hspace{1cm}
-      \begin{minipage}{0.19\textwidth}
+      \begin{minipage}{0.1\textwidth}
         \begin{flushright}
           \resizebox{!}{6\baselineskip}{%
             \begin{tikzpicture}[y=1cm, x=1cm, yscale=1, xscale=1, inner sep=0pt, outer sep=0pt]

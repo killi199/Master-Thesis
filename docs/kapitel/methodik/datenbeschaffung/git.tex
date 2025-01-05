@@ -7,22 +7,22 @@ Dabei kommt die \gls{oss} \emph{GitPython} in der Version 3.1.43 zum Einsatz.
 Die Bibliothek bietet eine Schnittstelle, um Git-Befehle in Python zu verwenden \autocite{thiel_gitpython_2024}.
 Beim Aufruf der Funktion wurde kein Branch spezifiziert, weshalb der Branch ausgewählt wird, auf welchen aktuell der \emph{HEAD} vom remote Repository zeigt.
 Dieser Branch ist in der Regel der Standardbranch, auf welchem die Analyse durchgeführt werden soll.
-Für das Clonen muss außerdem der Link zum GitHub-Repository angegeben werden, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
+Für das Herunterladen muss außerdem der Link zum GitHub-Repository angegeben werden, welcher aus der \gls{pypi} oder \gls{cran} Quelle stammt.
 Auf diese Quellen wird in den nächsten Abschnitten eingegangen.
 
 Die Auswertung des Repositorys wird mit \emph{git-quick-stats} in der Version 2.3.0 durchgeführt \autocite{arzzen_git-quick-stats_2021}.
 \emph{Git-quick-stats} bietet einfache und effiziente Möglichkeiten, um verschiedene Statistiken in einem Git-Repository zu ermitteln.
 Das Tool wird in dem Python-Skript mit dem Befehl \emph{git-quick-stats -T} aufgerufen, um detaillierte Statistiken zu erhalten.
 Ausgegeben wird eine Liste aller Autoren, welche in dem Repository Änderungen vorgenommen haben.
-Diese Liste enthält unter anderem den Namen, die E-Mail, die Anzahl der Einfügungen, Löschungen, geänderten Zeilen, Dateien, Commits, sowie den ersten und letzten Commit, welche alle am Ende des Prozesses gespeichert werden.
+Diese Liste enthält den Namen, die E-Mail, die Anzahl der Einfügungen, Löschungen, geänderten Zeilen, Dateien, Commits, sowie den ersten und letzten Commit, welche alle am Ende des Prozesses gespeichert werden.
 Die Anzahl der Commits beinhaltet keine Merge-Commits.
 Dieses Verhalten von \emph{git-quick-stats} ist erwünscht, da diese nicht relevant für die Analyse sind.
-In dieser Masterarbeit werden ausschließlich die Autoren betrachtet, welche Änderungen an dem Code vorgenommen haben und nicht jene, die ausschließlich Änderungen von anderen in das Repository übernommen haben.
+In dieser Masterarbeit werden ausschließlich die Autoren betrachtet, welche Änderungen an dem Code vorgenommen haben.
 
 Die E-Mail-Adresse wird anschließend in Kleinbuchstaben umgewandelt, um die Daten zu vereinheitlichen.
 Zusätzlich wird eine Gruppierung auf der E-Mail durchgeführt und die anderen Werte summiert, mit Ausnahme des ersten und letzten Commits, bei denen der älteste und neueste Commit ausgewählt werden.
 Der Name wird hintereinander gehängt, sodass beispielsweise bei einer Namensänderung von \glqq Max M.\grqq{} zu \glqq Max Mustermann\grqq{} der Name \glqq Max M.Max Mustermann\grqq{} entsteht.
-Das Gruppieren ist notwendig, da die Autoren den Namen und die E-Mail-Adressen in Git eigenständig festlegen können, wie in \autoref{sec:versionsverwaltung} beschrieben wurde.
+Das Gruppieren ist notwendig, da die Autoren den Namen und die E-Mail-Adressen in Git eigenständig festlegen können.
 Durch dieses Vorgehen wird gewährleistet, dass zumindest keine E-Mail-Adressen doppelt vorhanden sind, falls ein Autor unterschiedliche Schreibweisen für seinen Namen verwendet.
 Die gruppierten Daten werden nach der Anzahl der Commits sortiert in der Datei \path{git_contributors.csv} gespeichert.
 In \autoref{tab:git_contributors} sind die Felder der Datei aufgelistet.
