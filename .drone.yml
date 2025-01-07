@@ -4,18 +4,27 @@ type: docker
 name: make
 
 steps:
-- name: make project
+- name: make thesis
   image: aergus/latex:2024-05-12
   commands:
     - apt-get update
     - apt-get -y install inkscape
     - make clean -C ./docs
     - make all -C ./docs
+    
+- name: make presentation
+  image: aergus/latex:2024-05-12
+  commands:
+    - apt-get update
+    - apt-get -y install inkscape
+    - make clean -C ./presentation
+    - make all -C ./presentation
 
 - name: pdf push main
   image: aergus/latex:2024-05-12
   commands:
     - git add ./docs/thesis.pdf -f
+    - git add ./presentation/example.pdf -f
     - git commit -m "Update PDF automatically [CI SKIP]"
     - git push --set-upstream origin main  
   when:
@@ -24,4 +33,5 @@ steps:
     status:
       - success
   depends_on:
-    - make project
+    - make thesis
+    - make presentation

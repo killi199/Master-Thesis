@@ -1,0 +1,17 @@
+{
+	"name": "Thesis-Latex",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"James-Yu.latex-workshop",
+				"streetsidesoftware.code-spell-checker",
+				"streetsidesoftware.code-spell-checker-german",
+				"valentjn.vscode-ltex",
+				"Gruntfuggly.todo-tree"
+			]
+		}
+	}
+}

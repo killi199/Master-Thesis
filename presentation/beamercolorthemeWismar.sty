@@ -1,0 +1,119 @@
+\mode<presentation>
+
+% =============
+%  base colors
+% =============
+
+\def\lightness{10}
+
+% charcoal / gray (HKS 97)
+\definecolor{hswgray}{RGB/HTML}{47,50,41/2F3229}
+\colorlet{hswcharcoal}{hswgray}
+\colorlet{hswbase}{hswgray}
+
+% silver / light gray (HKS 99)
+\definecolor{hswlgray}{RGB/HTML}{175,175,175/AFAFAF}
+\colorlet{hswlightgray}{hswlgray}
+\colorlet{hswsilver}{hswlgray}
+
+% blue (HKS 50) -- faculty of engineering
+\definecolor{fiwblue}{RGB/HTML}{0,177,219/00B1DB}
+\colorlet{fiwblue-light}{fiwblue!\lightness!white}
+
+% green (HKS 65) -- business school
+\definecolor{fwwgreen}{RGB/HTML}{51,153,51/339933}
+\colorlet{fwwgreen-light}{fwwgreen!\lightness!white}
+
+% orange (HKS 7) -- faculty of architecture and design
+\definecolor{fgorange}{RGB/HTML}{255,93,2/FF5D02}
+\colorlet{fgorange-light}{fgorange!\lightness!white}
+
+\definecolor{warning}{RGB/HTML}{223,74,67/DF4A43}
+\colorlet{warning-light}{warning!\lightness!white}
+
+% ================
+%  default colors
+% ================
+
+\colorlet{themecolor}{hswgray}
+\colorlet{themecolor-light}{themecolor!\lightness!white}
+\colorlet{barsega}{fiwblue}
+\colorlet{barsegb}{fwwgreen}
+\colorlet{barsegc}{fgorange}
+
+% =================
+%  Beamer's colors
+% =================
+
+\setbeamercolor*{palette primary}{fg=themecolor, bg=white}
+\setbeamercolor*{palette secondary}{fg=hswbase, bg=white}
+\setbeamercolor*{palette tertiary}{fg=white, bg=themecolor}
+\setbeamercolor*{palette quaternary}{fg=hswbase, bg=themecolor-light}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+\setbeamercolor*{normal text}{parent=palette secondary}
+
+\setbeamercolor*{title}{parent=palette primary}
+\setbeamercolor*{subtitle}{parent=palette secondary}
+\setbeamercolor*{institute}{fg=themecolor}
+\setbeamercolor*{author}{fg=hswbase}
+\setbeamercolor*{date}{fg=hswbase}
+\setbeamercolor*{url}{fg=themecolor}
+
+\setbeamercolor*{frametitle}{fg=red}
+\setbeamercolor*{framesubtitle}{fg=hswbase}
+
+\setbeamercolor*{navigation symbols}{fg=hswlightgray}
+\setbeamercolor*{navigation symbols dimmed}{fg=hswlightgray!50}
+
+\setbeamercolor*{item}{fg=hswbase, bg=white}
+\setbeamercolor*{section in toc}{fg=hswbase}
+\setbeamercolor*{subsection in toc}{fg=hswbase}
+
+\setbeamercolor*{section number projected}{fg=themecolor, bg=white}
+\setbeamercolor*{subsection number projected}{fg=themecolor, bg=white}
+
+\setbeamercolor*{toptext}{fg=hswbase}
+
+\setbeamercolor*{caption}{fg=hswbase, bg=hswbase}
+\setbeamercolor*{caption name}{fg=themecolor}
+
+\setbeamercolor*{section name}{fg=themecolor}
+\setbeamercolor*{subsection name}{fg=themecolor}
+
+\setbeamercolor*{frametitle}{fg=themecolor}
+\setbeamercolor*{framesubtitle}{fg=themecolor}
+
+\setbeamercolor*{block title}{parent=palette tertiary}
+\setbeamercolor*{block body}{fg=hswbase, bg=themecolor-light}
+
+\setbeamercolor*{block title example}{fg=white, bg=fwwgreen}
+\setbeamercolor*{block body example}{fg=hswbase, bg=fwwgreen-light}
+
+\setbeamercolor*{block title alerted}{fg=white, bg=warning}
+\setbeamercolor*{block body alerted}{fg=hswbase, bg=warning-light}
+
+\setbeamercolor*{footer}{fg=hswgray, bg=themecolor!3!white}
+\setbeamercolor*{section in head/foot}{fg=hswlightgray, bg=white}
+
+\setbeamercolor*{mini frame}{fg=hswgray}
+\setbeamercolor*{mini frame}{fg=hswlightgray,bg=hswlightgray!50}
+
+\setbeamercolor*{qed symbol}{fg=hswbase}
+
+\setbeamercolor*{bibliography item}{fg=hswbase}
+\setbeamercolor*{bibliography entry title}{fg=hswbase}
+\setbeamercolor*{bibliography entry author}{fg=hswbase}
+\setbeamercolor*{bibliography entry location}{fg=hswbase}
+\setbeamercolor*{bibliography entry note}{fg=hswbase}
+
+\setbeamercolor*{abstract title}{fg=themecolor}
+\setbeamercolor*{abstract}{fg=hswbase}
+
+\setbeamercolor*{title in head/foot}{parent=palette quaternary}
+\setbeamercolor*{date in head/foot}{parent=palette quaternary}
+
+\setbeamercolor*{footnote}{parent=palette secondary}
+\setbeamercolor*{footnote mark}{parent=palette secondary}
+
+\mode<all>

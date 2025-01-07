@@ -1,0 +1,183 @@
+\mode
+<presentation>
+
+% set enumeration styles
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{enumerate items}[default]
+\setbeamertemplate{bibliography item}[text]
+
+\newlength{\hsw@margin}
+\setlength{\hsw@margin}{5mm}
+
+\setbeamersize{text margin left=\hsw@margin}
+\setbeamersize{text margin right=\hsw@margin}
+\setbeamersize{sidebar width left=0mm}
+\setbeamersize{sidebar width right=0mm}
+
+% FYI: miniframes are the "little navigation symbols"
+% \setbeamersize{mini frame offset=10cm}
+% \setbeamersize{mini frame size=1cm}
+
+\def\titlepagebackground{%
+    \begin{tikzpicture}
+        \useasboundingbox (0,0) rectangle(\paperwidth,\paperheight);
+        \fill[top color=white, bottom color=hswsilver!15!white, shading angle=62.5]
+        (0,0) --
+        (\paperwidth,0) --
+        (\paperwidth,\paperheight) --
+        (0,\paperheight) --
+        cycle;
+        \filldraw[themecolor]
+        (\paperwidth,\paperheight) --
+        (\paperwidth,0) --
+        (\paperwidth-180,0) --
+        +(62.5:1.127\paperheight) -- % h = c * sin(ɑ) --> c = ...
+        cycle;
+        \node at (\paperwidth-66,3.33) {\pgfuseimage{hswlogofull}};
+        \ifx\colortheme\empty
+            \draw[barsega, line width=2] (\paperwidth-181,-0.1) -- +(62.5:1.142\paperheight);
+            \draw[barsegb, line width=2] (\paperwidth-181,-0.1) -- +(62.5:0.752\paperheight);
+            \draw[barsegc, line width=2] (\paperwidth-181,-0.1) -- +(62.5:0.367\paperheight);
+        \fi
+    \end{tikzpicture}
+}
+
+\setbeamertemplate{title page}{%
+    \begin{beamercolorbox}[left, wd=0.9\textwidth, ignorebg]{title}
+        \usebeamerfont{title}\inserttitle
+    \end{beamercolorbox}
+
+    \vspace{5mm}
+
+    \begin{beamercolorbox}[left, wd=0.7\textwidth, ignorebg]{subtitle}
+        \usebeamerfont{subtitle}\insertsubtitle
+    \end{beamercolorbox}
+
+    \vfill
+
+    \begin{beamercolorbox}[left, ignorebg]{date}
+        \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}
+
+    \vspace{5mm}
+
+    \ifx\insertinstitute\empty\else
+        \begin{beamercolorbox}[left, ignorebg]{institute}
+            \usebeamerfont{institute}\insertinstitute
+        \end{beamercolorbox}
+        \vspace{1mm}
+    \fi
+
+    \begin{beamercolorbox}[left, ignorebg]{author}
+        \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+
+    \ifx\inserthomepage\empty\else
+        \vspace{1mm}
+        \begin{beamercolorbox}[left, ignorebg]{homepage}
+            \usebeamerfont{homepage}\inserthomepage
+        \end{beamercolorbox}
+    \fi
+
+    \vspace{-15mm}
+}
+
+\setbeamertemplate{section page}{%
+    \vfill
+    \begin{beamercolorbox}{section name}
+        \centering\usebeamerfont{section title}\insertsection
+    \end{beamercolorbox}
+    \vfill
+}
+
+\setbeamertemplate{subsection in toc}{%
+    \leavevmode\leftskip=5ex%
+    \llap{%
+        \usebeamerfont*{section number projected}%
+        \usebeamercolor[bg]{section number projected}%
+        \vrule width2.25ex height1.85ex depth.4ex%
+        \hskip-2.25ex%
+        \hbox to2.25ex{\color{fg}\inserttocsectionnumber.\inserttocsubsectionnumber}}%
+    \kern1.25ex\inserttocsubsection\par
+}
+
+\setbeamertemplate{itemize item}{\raisebox{0.5ex}{\scalebox{0.4}{\fcolorbox{hswbase}{hswbase}{}}}}
+\setbeamertemplate{itemize subitem}{\raisebox{0.5ex}{\scalebox{0.4}{\fcolorbox{hswbase}{white}{}}}}
+\setbeamertemplate{itemize subsubitem}{\raisebox{0.5ex}{\scalebox{0.4}{\fcolorbox{hswbase}{hswbase}{}}}}
+
+\setbeamertemplate{frametitle}{%
+    \vspace{2mm}
+    \begin{beamercolorbox}[left]{frametitle}
+        \usebeamerfont{frametitle}\insertframetitle
+    \end{beamercolorbox}
+    \ifx\insertframesubtitle\empty\else
+        \begin{beamercolorbox}[left]{framesubtitle}
+            \usebeamerfont{framesubtitle}\insertframesubtitle
+        \end{beamercolorbox}
+    \fi
+    \vspace{2mm}
+}
+
+\defbeamertemplate*{block begin}{Wismar}{
+\par\vskip\medskipamount%
+\ifx\insertblocktitle\empty%
+    \relax%
+\else%
+    \begin{beamercolorbox}[colsep*=0.75ex]{block title}
+        \usebeamerfont*{block title}\insertblocktitle%
+    \end{beamercolorbox}%
+\fi
+{\parskip0pt\par}%
+\ifbeamercolorempty[bg]{block title}
+{}
+{\ifbeamercolorempty[bg]{block body}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body}%
+\begin{beamercolorbox}[colsep*=0.75ex,vmode]{block body}%
+\ifbeamercolorempty[bg]{block body}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\defbeamertemplate*{block example begin}{Wismar}{
+\par\vskip\medskipamount%
+\ifx\insertblocktitle\empty%
+    \relax%
+\else%
+    \begin{beamercolorbox}[colsep*=0.75ex]{block title example}
+        \usebeamerfont*{block title example}\insertblocktitle%
+    \end{beamercolorbox}%
+\fi
+{\parskip0pt\par}%
+\ifbeamercolorempty[bg]{block title example}
+{}
+{\ifbeamercolorempty[bg]{block body example}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body example}%
+\begin{beamercolorbox}[colsep*=0.75ex,vmode]{block body example}%
+\ifbeamercolorempty[bg]{block body example}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\defbeamertemplate*{block alerted begin}{Wismar}{
+\par\vskip\medskipamount%
+\ifx\insertblocktitle\empty%
+    \relax%
+\else%
+    \begin{beamercolorbox}[colsep*=0.75ex]{block title alerted}
+        \usebeamerfont*{block title alerted}\insertblocktitle%
+    \end{beamercolorbox}%
+\fi
+{\parskip0pt\par}%
+\ifbeamercolorempty[bg]{block title alerted}
+{}
+{\ifbeamercolorempty[bg]{block body alerted}{}{\nointerlineskip\vskip-0.5pt}}%
+\usebeamerfont{block body alerted}%
+\begin{beamercolorbox}[colsep*=0.75ex,vmode]{block body alerted}%
+\ifbeamercolorempty[bg]{block body alerted}{\vskip-.25ex}{\vskip-.75ex}\vbox{}%
+}
+
+\setbeamertemplate{footnote}{%
+    \begin{beamercolorbox}[ht=1.5ex, dp=1ex]{footnote}
+        \usebeamerfont{footnote}\insertfootnotemark\insertfootnotetext
+    \end{beamercolorbox}
+    \vspace{0.25ex}
+}
+
+\mode
+<all>

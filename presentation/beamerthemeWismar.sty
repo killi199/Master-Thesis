@@ -1,0 +1,108 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeWismar}[2023/09/04 v1.0.0 University of Applied Sciences Wismar Beamer Theme]
+
+\mode<presentation>
+
+% Required packages
+\RequirePackage{tikz}
+\RequirePackage{hyperref}
+
+% HSW logo in different colors
+\pgfdeclareimage[height=4.5cm]{hswlogofull}{hswlogofull}
+
+% "fisherman" logo as TikZ figure; generated with svg2tikz (https://github.com/xyz2tex/svg2tikz)
+% svg2tikz --figonly --output-unit mm --crop --notext logo.svg
+%
+% first argument sets the color
+\newcommand{\fisherman}[1][red]{%
+	\path[fill=#1,nonzero rule,scale=1.3333]
+	(21.5284, 39.3604) --
+	(30.2472, 43.4426) --
+	(22.6044, 43.4426) --
+	(32.3091, 47.9871) --
+	(33.5153, 50.3022).. controls (34.1003, 51.4743) and (35.3137, 52.2877) ..
+	(36.7131, 52.2877).. controls (37.7021, 52.2877) and (38.5908, 51.8815) ..
+	(39.2369, 51.2314) --
+	(41.0755, 52.0913) --
+	(41.0755, 48.5131) --
+	(46.8881, 48.9648) --
+	(46.8881, 49.1685) --
+	(48.6997, 49.1685) --
+	(48.6997, 45.1728) --
+	(46.8881, 45.1728) --
+	(46.8881, 45.3765) --
+	(43.8319, 45.6130) --
+	(43.5404, 43.8252) --
+	(44.8344, 43.4426) --
+	(41.8568, 34.7807) --
+	(33.9275, 34.7807) --
+	(26.7301, 20.9552) --
+	(23.9056, 19.6333) --
+	(22.8388, 17.5839).. controls (22.4771, 16.8708) and (22.4679, 16.8727) ..
+	(23.1645, 16.5070) --
+	(27.5042, 14.2477) --
+	(26.8925, 13.0714) --
+	(14.1346, 13.0714) --
+	(18.9053, 22.2358) --
+	(0.0, 39.3604) --
+	cycle(39.8269, 46.1144) --
+	(38.436, 43.44160) --
+	(36.2945, 43.4416) --
+	(39.1956, 40.8145) --
+	(41.2729, 44.8050) --
+	(39.8269, 46.1144);
+}
+
+\newcommand{\fishermanflag}[1][red]{%
+	\def\scalefig{0.02}
+	\begin{tikzpicture}[y=1mm, x=1mm, yscale=\scalefig, xscale=\scalefig, inner sep=0pt, outer sep=0pt]
+		\fill[#1] (-17, 80) -- (-17, 5) -- (75, 5) -- +(62.5:84.55364601) -- cycle;
+		\fisherman[white]
+	\end{tikzpicture}
+}
+
+\DeclareRobustCommand*\homepage[1]{\gdef\hsw@homepage{#1}}
+\gdef\hsw@homepage{}
+\newcommand{\inserthomepage}{\hsw@homepage}
+
+% color theme switch
+\gdef\colortheme{}
+
+% change URL font to default font
+\urlstyle{sf}
+
+% order matters!
+% \useoutertheme{smoothbars} % default navigation appearance
+\useoutertheme{Wismar}
+\useinnertheme{rectangles} % default itemize symbols
+\useinnertheme{Wismar}
+\usecolortheme{Wismar}
+\usefonttheme{Wismar}
+
+% set background for title page only
+\let\oldmaketitle\maketitle
+\renewcommand{\maketitle}{%
+	{
+			\setbeamertemplate{navigation symbols}{}
+			\setbeamertemplate{footline}{}
+			\usebackgroundtemplate{\titlepagebackground} % see beamerinnerthemeWismar.sty:21
+			\oldmaketitle
+		}
+}
+
+\newcommand{\closing}[1]{%
+	% TODO default value if #1 is empty?
+	\begin{beamercolorbox}[center]{title}
+		\usebeamerfont{title}#1
+	\end{beamercolorbox}
+}
+
+\newcommand{\finalpage}[1]{%
+	\ifbeamer@inframe\closing{#1}\else\frame{\closing{#1}}\fi
+}
+
+\mode
+<all>
+
+\endinput
+

@@ -1,0 +1,31 @@
+\mode
+<presentation>
+
+\setbeamertemplate{headline}{}
+
+\setbeamertemplate{mini frames}{}
+
+\setbeamertemplate{footline}{%
+    \vspace{-1.25ex} % XXX where does this space even come from?
+    \leavevmode%
+    \hbox{%
+        % XXX if shorttitle was not supplied, title will be inserted in its place; only empty if specified explicitly!
+        \begin{beamercolorbox}[wd=.666666\paperwidth,ht=2.5ex,dp=1ex,left]{title in head/foot}%
+            \usebeamerfont{author in head/foot}%
+            \hskip-1.1ex\raisebox{-1ex}{\resizebox{!}{3.5ex}{\fishermanflag[themecolor]}}% % TODO make this a hyperref to the homepage?
+            \insertshortauthor\expandafter\ifblank\expandafter{\beamer@shorttitle}{}{:~\insertshorttitle}%
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=1ex,leftskip=2ex,rightskip=2ex,sep=0pt]{date in head/foot}%
+            \hfill%
+            \usebeamerfont{date in head/foot}%
+            \insertshortdate{}%
+            \hfill%
+            \usebeamercolor[fg]{page number in head/foot}%
+            \usebeamerfont{page number in head/foot}%
+            \insertframenumber/\inserttotalframenumber
+        \end{beamercolorbox}}%
+    % \vskip0pt%
+}
+
+\mode
+<all>
