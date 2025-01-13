@@ -1,8 +1,8 @@
 \documentclass[%
-  handout,
-  aspectratio=1610,
-  10pt,
-  onlytextwidth, % requires Beamer v3.65 or newer
+    handout,
+    aspectratio=1610,
+    10pt,
+    onlytextwidth, % requires Beamer v3.65 or newer
 ]{beamer}
 
 \usepackage[T1]{fontenc}
@@ -16,28 +16,28 @@
 \usepackage{tabularx}
 \usepackage{csquotes}
 \usepackage[  
-  style=numeric,
-  sorting=nyt,
-  sortcites,
-  backend=biber   % use modern bibliography backend
+    style=numeric,
+    sorting=nyt,
+    sortcites,
+    backend=biber   % use modern bibliography backend
 ]{biblatex}
 
 % alternative: FiraSans
 \usepackage[scaled]{helvet}
 
 \pdfstringdefDisableCommands{%
-  \def\\{}%
+    \def\\{}%
 }
 
 \AtBeginSection[]{
-  \begin{frame}
-  \vfill
-  \centering
-  \begin{beamercolorbox}[sep=8pt,center,rounded=true]{title}
-    \usebeamerfont{part title}\insertsectionhead\par%
-  \end{beamercolorbox}
-  \vfill
-  \end{frame}
+    \begin{frame}
+    \vfill
+    \centering
+    \begin{beamercolorbox}[sep=8pt,center,rounded=true]{title}
+        \usebeamerfont{part title}\insertsectionhead\par%
+    \end{beamercolorbox}
+    \vfill
+    \end{frame}
 }
 
 \definecolor{links}{HTML}{3333B2}
@@ -86,7 +86,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 \maketitle
 
 \begin{frame}{Gliederung}
-  \tableofcontents
+    \tableofcontents
 \end{frame}
 
 \section{Motivation}
@@ -96,7 +96,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 \section{Diskussion}
 
 \begin{frame}{Literaturverzeichnis}
-  \printbibliography
+    \printbibliography
 \end{frame}
 
 % \finalpage{Fragen}
