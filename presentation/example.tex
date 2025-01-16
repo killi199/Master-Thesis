@@ -16,6 +16,9 @@
 \usepackage{ragged2e}
 \usepackage{tabularx}
 \usepackage{csquotes}
+\usepackage{hologo}
+\usepackage{minted}
+\usepackage{fontawesome5}
 \usepackage[  
     style=numeric,
     sorting=nyt,
@@ -25,6 +28,26 @@
 
 % alternative: FiraSans
 \usepackage[scaled]{helvet}
+
+\setminted{
+  autogobble=true,
+  bgcolor=white,
+  breakautoindent=true,
+  breaklines=true,
+  escapeinside=§§,
+  fontfamily=tt,
+  fontsize=\footnotesize,
+  frame=leftline,
+  framerule=0pt,
+  framesep=0.2em, % sufficient for up to 4 digits
+  numbers=left,
+  numbersep=0.2em,
+  showspaces=false,
+  showtabs=false,
+  style=vs, % see: https://pygments.org/styles/
+  tabsize=4,
+  xleftmargin=1.5em,
+}
 
 \pdfstringdefDisableCommands{%
     \def\\{}%
@@ -168,6 +191,83 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
         \item Es werden die Verzeichnisse PyPI (Python) und CRAN (R) untersucht
         \item Für beide Verzeichnisse stehen APIs zur Verfügung, welche die Metadaten bereitstellen
     \end{itemize}
+\end{frame}
+
+% Sagen, dass in yaml geschrieben ist
+% Auf das rechte eingehen (Unterschied given-names und name)
+% Auf preferred citation eingehen -> Anerkennung für die Arbeit auf eine andere Arbeit übertragen. Kann die Wichtigkeit vernachlässigen, wenn nur das zitiert wird
+\begin{frame}{Zitierformat – Citation File Format}
+    \begin{columns}
+        \begin{column}[t]{0.49\textwidth}
+            \justifying
+            \begin{itemize}
+                \item Wird als Datei z.~B. in einem Git-Repository gespeichert
+                \item Auf GitHub \href{https://github.com/citation-file-format}{\color{black}{\faGithub}} verwaltet
+                \item 2.512 Repositorys auf GitHub haben eine CFF-Datei (Stand 07.11.2024)
+                \item Dient dazu anderen die Zitation der Software zu erleichtern
+                \item Kann unter anderem durch Programme wie \emph{cffinit} erstellt werden \autocite{spaaks_cffinit_2023}
+                \item \emph{cffconvert} bietet die Möglichkeit der Validation und der Umwandlung z.~B. in \hologo{BibTeX} \autocite{spaaks_cffconvert_2021}
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.49\textwidth}
+            \justifying
+            \inputminted[fontsize=\scriptsize]{yaml}{./CITATION_small.cff}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Auf das rechte eingehen
+% Auf author eingehen, dass weitere Autoren genannt werden können
+\begin{frame}{Zitierformat – \hologo{BibTeX}}
+    \begin{columns}
+        \begin{column}[t]{0.49\textwidth}
+            \justifying
+            \begin{itemize}
+                \item Software, zur Erstellung von Literaturangaben und -verzeichnissen in \LaTeX-Dokumenten
+                \item Gleichnamiges Format, wird als Datei z.~B. in einem Git-Repository gespeichert
+                \item 2.144 Repositorys auf GitHub haben eine \hologo{BibTeX}-Datei (Stand 07.11.2024)
+                \item Kein offizieller Literaturtyp für Software
+                \item Kann unter anderem durch Programme wie Zotero erstellt werden \autocite{zotero_zotero_2024}
+                \item Felder vom Literaturtyp abhängig
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.49\textwidth}
+            \justifying
+            \inputminted{text}{../CITATION.bib}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Sagen wofür die später notwendig ist (Anhand des Bsp. sieht man es)
+\begin{frame}{Named Entity Recognition}
+    \begin{itemize}
+        \item Beschreibt den Prozess der automatischen Erkennung und Klasseneinteilung von Substantiven (Entitäten) im Text
+        \item Typische Entitäten sind Personen, Orte oder Organisationen
+        \item Viele Anwendungsgebiete bspw. Informationsextraktion aus Texten
+    \end{itemize}
+    \begin{exampleblock}{Pytorch README}
+        \emph{\textbf{PyTorch}} (Organisation) \emph{is currently maintained by \textbf{Soumith Chintala}} (Person)\emph{, \textbf{Gregory Chanan}} (Person)\emph{, \textbf{Dmytro Dzhulgakov}} (Person)\emph{, \textbf{Edward Yang}} (Person)\emph{, and \textbf{Nikita Shulga}} (Person) \emph{with major contributions coming from \textbf{hundreds}} (Digit) \emph{of talented individuals in various forms and means.}
+    \end{exampleblock}
+\end{frame}
+
+% TODO doch noch erwähnen?
+%\begin{frame}{Named Entity Disambiguation}
+%    \begin{itemize}
+%        \item Gruppiert verschiedene Nennungen derselben Entität und unterscheidet gleiche Nennungen verschiedener Entitäten
+%    \end{itemize}
+%\end{frame}
+
+% Sagen wofür die später notwendig ist (Anhand des bsp. sieht man es)
+\begin{frame}{Unscharfe Suche}
+    \begin{itemize}
+        \item Findet ähnliche Zeichenfolgen, die sich in ihrer Schreibweise unterscheiden
+        \item Als Ergebnis wird zumeist eine Distanz zwischen zwei Zeichenfolgen in Prozent angegeben
+        \item Viele Anwendungsgebiete bspw. die Suche eines Namens in einem Index
+    \end{itemize}
+    \begin{exampleblock}{Unscharfe Suche}
+        Soumith Chintala \leftrightarrow{} Soumith \textbf{S.} Chintala: 91 \% \\
+        S\textbf{ou}mith Chintala \leftrightarrow{} S\textbf{uo}mith Chintala: 94 \%
+    \end{exampleblock}
 \end{frame}
 
 \section{Methodik}
