@@ -19,6 +19,7 @@
 \usepackage{hologo}
 \usepackage{minted}
 \usepackage{fontawesome5}
+\usepackage{svg}
 \usepackage[  
     style=numeric,
     sorting=nyt,
@@ -271,7 +272,66 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 \end{frame}
 
 \section{Methodik}
-% TODO NER, Unscharfe Suche erwähnen
+
+\begin{frame}{Datenbeschaffung}
+    \begin{columns}
+        \begin{column}[t]{0.39\textwidth}
+            \begin{itemize}
+                \item Datenbeschaffung für jeweils ein Paket (PyPI oder CRAN)
+                \item Git, \hologo{BibTeX}, CFF und README werden zu Änderungszeitpunkten beschafft
+                \item Beschreibung und README setzt NER ein
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.59\textwidth}
+            \begin{center}
+                \includesvg[height=.79\textheight,inkscapelatex=false]{../docs/bilder/Ablauf.svg}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Übergang zur vorherigen Folie: Welche Pakete werden denn untersucht? -> Top 100 Listen
+\begin{frame}{Top-100-Listen}
+    \begin{columns}
+        \begin{column}[t]{0.39\textwidth}
+            \begin{itemize}
+                \item 5 Top-100-Listen wurden erstellt und untersucht:
+                \begin{enumerate}
+                    \item Top-100 PyPI
+                    \item Top-100 CRAN
+                    \item Top-100 CFF
+                    \item Top-100 PyPI CFF
+                    \item Top-100 CRAN CFF
+                \end{enumerate}
+                \item Top-100 definiert an der Anzahl der Downloads (PyPI, CRAN) bzw. Sterne (CFF) auf GitHub
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.59\textwidth}
+            \begin{center}
+                \includesvg[height=.79\textheight,inkscapelatex=false]{../docs/bilder/Listen.svg}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% TODO hier kann ich noch viel mehr erzählen auch zu den einzelnen Quellen jeweils falls ich noch mehr brauche
+
+\begin{frame}{Abgleich}
+    \begin{itemize}
+        \item Abgleich jeweils zwischen Git und einer weiteren Quelle
+        \item Vereinfachung: Abgleich der Git-Autoren des aktuellen Stands mit den Quellen
+        \item Abgleich verwendet Python \emph{in} und die unscharfe Suche
+        \item Abgleich erfolgt anhand:
+        \begin{itemize}
+            \item Name
+            \item E-Mail
+            \item Benutzername
+        \end{itemize}
+        \item Für jeden Vergleich zweier Autoren wird ein Score berechnet
+        \item Die Kombination mit dem besten Score wird ausgewählt
+        \item Autoren mit mehr Commits werden bevorzugt
+    \end{itemize}
+\end{frame}
 
 \section{Ergebnisse}
 \section{Diskussion}
