@@ -20,6 +20,7 @@
 \usepackage{minted}
 \usepackage{fontawesome5}
 \usepackage{svg}
+\usepackage{booktabs}
 \usepackage[  
     style=numeric,
     sorting=nyt,
@@ -333,8 +334,148 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
     \end{itemize}
 \end{frame}
 
+% TODO Hier habe ich einige Ergebnisse ausgelassen kann hier noch mehr machen falls ich es benötige
 \section{Ergebnisse}
+
+\begin{frame}{Abgleich}
+    \begin{itemize}
+        \item Ergebnisse sind abhängig vom Abgleich % Deswegen wird die Qualität des Abgleichs untersucht
+        \item Manuelle Prüfung von jeweils 2 Autoren jeder Quelle jedes Pakets
+        \item Einteilung in:
+        \begin{itemize}
+            \item \textcolor{links}{\textbf{TP}}: richtig als positiv klassifiziert
+            \item \textcolor{links}{\textbf{FN}}: fälschlicherweise als negativ klassifiziert (obwohl positiv)
+            \item \textcolor{links}{\textbf{FP}}: fälschlicherweise als positiv klassifiziert (obwohl negativ)
+            \item \textcolor{links}{\textbf{TN}}: richtig als negativ klassifiziert
+        \end{itemize}
+        \item Berechnung des F1-Scores, ein Maß für die Genauigkeit eines Modells, welcher zwischen 0 und 1 liegt, wobei 1 die höchste Genauigkeit darstellt
+        \item Angabe, ob es sich bei dem betrachteten Autor um keine Person handelt
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Abgleich}
+    \begin{tabularx}{\textwidth}{XR{.81cm}R{.81cm}R{.81cm}R{.81cm}R{2.8cm}R{1.9cm}}
+        \toprule
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score}                \\ \midrule
+        Beschreibung                       & 87   & 5  & 18  & \textcolor{links}{125} & 15                     & \textcolor{links}{0,8832} \\
+        README                             & 81   & 21 & 11  & \textcolor{links}{143} & 26                     & \textcolor{links}{0,8351} \\
+        CFF                                & 168  & 13 & 3   & 24                     & 3                      & 0,9545                    \\
+        CFF preferred citation             & 78   & 8  & 2   & 13                     & 0                      & 0,9398                    \\
+        PyPI Maintainer                    & 294  & 2  & 32  & 48                     & \textcolor{links}{50}  & 0,9453                    \\
+        Python Autoren                     & 155  & 4  & 35  & 43                     & \textcolor{links}{75}  & 0,8883                    \\
+        Python Maintainer                  & 30   & 0  & 5   & 21                     & 25                     & 0,9231                    \\
+        CRAN Autoren                       & 269  & 4  & 3   & 19                     & 1                      & 0,9872                    \\
+        CRAN Maintainer                    & 193  & 2  & 0   & 0                      & 0                      & 0,9948                    \\
+        \textcolor{links}{\hologo{BibTeX}} & 4    & 2  & 0   & 0                      & 0                      & 0,8000                    \\ \midrule
+        Summe                              & 1359 & 61 & 109 & 436                    & 195                    & \textcolor{links}{0,9411} \\
+        \bottomrule
+    \end{tabularx}
+\end{frame}
+
+% Linien im Hintergrund erklären/ Gilt auch für die nachfolgenden Abbildungen
+% Bei Betrachtung immer mehr Autoren sinkt der Anteil derer die genannt werden
+% Einige Linien beginnen erst bei x > 1 -> der Top Autor wird in diesen Fällen nicht genannt
+% Einige Linien laufen bei 100 % -> Bei diesen werden alle Git Autoren in der Quelle genannt (meist bei wenigen Git Autoren)
+\begin{frame}{Top-Git-Autoren an genannten Autoren}
+    \begin{columns}
+        \begin{column}[t]{0.29\textwidth}
+            \begin{itemize}
+                \item Anteil der Top-Git-Autoren an den genannten Autoren
+                \item Betrachtet PyPI CFF Liste
+                \item Für CFF-Linie gilt: Die Top \emph{x} Commiter sind zu \emph{y} \% in der CFF gelistet
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.69\textwidth}
+            \begin{center}
+                \includesvg[height=.79\textheight,inkscapelatex=false]{../docs/bilder/common_authors/1_pypi_cff.svg}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Bei Betrachtung immer mehr Autoren steigt der Anteil derer, die Code beigetragen haben
+% Einige Linien beginnen erst bei x > 1 -> kein Autor in der Quelle ist unter den x Top-Git-Autoren
+% Der Graph kann 100% erreichen, falls alle genannten Autoren tatsächlich code beigetragen haben
+\begin{frame}{Genannte Autoren unter Top-Git-Autoren}
+    \begin{columns}
+        \begin{column}[t]{0.29\textwidth}
+            \begin{itemize}
+                \item Anteil der genannten Autoren unter den Top-Git-Autoren
+                \item Betrachtet PyPI CFF Liste
+                \item Für CFF-Linie gilt: Autoren in der CFF sind zu \emph{y} \% unter den Top \emph{x} Commitern
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.69\textwidth}
+            \begin{center}
+                \includesvg[height=.79\textheight,inkscapelatex=false]{../docs/bilder/common_authors_2/2_pypi_cff.svg}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% Mit steigender Jahreszahl steigt der Anteil der Autoren, welche keinen Commit getätigt haben
+% Ende der x Achse Tag der Datenbeschaffung hier sind 100 % nicht möglich, da keine Commits in der zukunft getätigt werden können
+% In der README genannte Autoren ab 2020 anteilig am schlechtesten
+\begin{frame}{Autoren ohne Commits}
+    \begin{columns}
+        \begin{column}[t]{0.29\textwidth}
+            \begin{itemize}
+                \item Anteil der genannten Autoren ohne Commits
+                \item Betrachtet PyPI CFF Liste
+                \item Für CFF-Linie gilt: \emph{y} \% der Autoren in der CFF haben seit dem Jahr \emph{x} keinen Commit getätigt
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.69\textwidth}
+            \begin{center}
+                \includesvg[height=.79\textheight,inkscapelatex=false]{../docs/bilder/total_authors_no_commits/3_pypi_cff.svg}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+% 2017 die ersten CFF dateien
+% Mitte 2021 steigt die Anzahl der CFF Dateien schnell
+% zwar mehr valide als invalide cff aber dennoch viel invalide
+% CFF init wird kaum verwendet
+\begin{frame}{Validität der CFF-Dateien}
+    \begin{columns}
+        \begin{column}[t]{0.29\textwidth}
+            \begin{itemize}
+                \item Validität der CFF-Dateien über die Zeit
+                \item Betrachtet alle CFF-Dateien auf GitHub
+                \item Jedes Repository nur einmalig betrachtet
+            \end{itemize}
+        \end{column}
+        \begin{column}[t]{0.69\textwidth}
+            \begin{center}
+                \includesvg[height=.79\textheight,inkscapelatex=false]{../docs/bilder/valid_cff_by_time/overall_valid_cff_alle_cff.svg}
+            \end{center}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Aktualisierung der Quellen}
+    \begin{itemize}
+        \item Durchschnittliche Zeit zwischen der Aktualisierung der Quellen
+        \item Zeit in Tagen
+        \item Nie aktualisierte Dateien werden nicht berücksichtigt
+    \end{itemize}
+    \vspace*{10mm}
+    \begin{tabularx}{\textwidth}{XR{1.42cm}R{1.2cm}R{.93cm}R{2.2cm}R{2.6cm}}
+        \toprule
+        \textbf{Quelle} & \textbf{CRAN} & \textbf{PyPI} & \textbf{CFF} & \textbf{PyPI CFF} & \textbf{CRAN CFF} \\ \midrule
+        README          & 125 & 149 & 30 & \textcolor{links}{28} & 45 \\
+        CFF             & 24  & 132 & 95 & \textcolor{links}{98} & 91 \\
+        \hologo{BibTeX} &     & \textcolor{links}{676} &    &    &    \\
+        \bottomrule
+    \end{tabularx}
+\end{frame}
+
 \section{Diskussion}
+
+% TODO Fazit in der Verteidigung ziehen! Richtiges Fazit also den Titel erfüllen und keine Zusammenfassung
+\begin{frame}{Fazit}
+\end{frame}
 
 \begin{frame}{Literaturverzeichnis}
     \printbibliography
