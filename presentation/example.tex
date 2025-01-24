@@ -101,6 +101,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 % TODO ich kann in der Präsentation nicht davon ausgehen, dass die Arbeit gelesen wurde! Somit muss ich auch den kompletten Kontext rüber bringen und die Ziele und was wir überhaupt machen und warum mindestens 30min höchstens 45 min Vortrag sollte so 20 Minuten gehen
 % TODO Schlachtplan für die Verteidigung überlegen. Die ganzen Entscheidungen gewisse Dinge auszuschließen und nicht auszuwerten sollte ich gut Begründen können
 % TODO nochmal Simons Anmerkungen lesen und hier berücksichtigen!
+% TODO Flo hatte 38 Seiten  und hatt 30+ minuten geredet
 
 % Schlachtplan für die Verteidigung:
 % Warum habe ich kaum Graphen für alle CFF?
@@ -473,8 +474,71 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 
 \section{Diskussion}
 
+\begin{frame}{Limitierungen}
+    % Die Limitierungen schränken die Qualität der Ergebnisse der MA ein
+    \begin{itemize}
+        \item Git Statistik
+        \begin{itemize}
+            \item Änderungen von Namen und/oder E-Mail in Git % Autoren werden doppelt vorkommen ist nicht erwünscht lässt sich aber kaum umgehen E-Mail wird bereits gruppiert
+            \item README enthält oft GitHub Benutzernamen, welche erkannt aber nicht aus Git beschafft werden
+        \end{itemize}
+        \item Autoren ohne Commits
+        \begin{itemize}
+            \item Autoren ohne Quellcode sollten (und werden) auch als Autor genannt werden
+            \item Reine Betrachtung der Git-Autoren verfälscht die Ergebnisse
+        \end{itemize}
+        \item Verlinkung auf andere Quellen
+        \begin{itemize}
+            \item Einige Quellen verweisen auf andere Quellen z.~B. Internetseiten mit Autoren
+            \item Analyse derer ist schwierig, da kein einheitliches Format und wurde deswegen nicht vorgenommen
+        \end{itemize}
+        \item Ausführungszeit der Datenbeschaffung
+        \begin{itemize}
+            \item \emph{git-quick-stats}, für die Beschaffung der Git-Autoren hat lange Laufzeit (\emph{pytorch} 1 Minute 22 Sekunden)
+            \item NER für Beschreibung und README hat ebenfalls eine lange Laufzeit (\emph{pytorch} 2 Minuten 48 Sekunden)
+            \item Analyse aller Daten für alle Pakete benötigt viel Zeit und wurde dadurch nicht durchgeführt
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Wie gut können Autoren untereinander abgeglichen werden?}
+    \begin{itemize}
+        \item Viele Autoren in Python Quellen sind keine Personen, sondern Organisationen
+        \item Diese verschlechtern die Ergebnisse, da sie falsch zugeordnet werden können
+        \item README und Beschreibung haben schlechte F1-Scores, was in der NER begründet liegt, da diese bereits Fehler macht
+        \item \hologo{BibTeX} hat schlechtesten F1-Score mit 0,8, durch den Aufbau der manuellen Überprüfung und der geringen Anzahl an \hologo{BibTeX}-Dateien
+        \item Viele FP in den Ergebnissen, durch die Verwendung von Python \emph{in} und Autoren mit wenigen Buchstaben in Git
+        \item Im Allgemeinen funktioniert der Abgleich gut, da ein F1-Score von 0,9411 berechnet wurde, welcher größer als 0,9 ist
+        \item F1-Score könnte noch besser sein, ohne die genannten Gegebenheiten
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Was muss ein Softwareentwickler leisten, um als Autor genannt zu werden?}
+    \begin{itemize}
+        \item Frage lässt sich nur Allgemeingültig beantworten, da Daten allgemeingültig untersucht wurden
+        \item Autoren mit vielen Commits werden häufiger als Autor genannt \rightarrow{} viele Commits haben
+        \item Allerdings: Autoren mit den meisten Commits werden auch manchmal nicht genannt
+        \item Bei der Gründung des Pakets dabei sein, allerdings im Nachhinein nicht umsetzbar
+        \item Autoren werden nachträglich selten hinzugefügt % Darauf geht die nächste Folie weiter ein
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Wie gut werden Autoren in den einzelnen Quellen gepflegt?}
+    \begin{itemize}
+        \item In allen Paketen der 5 Listen nur 9 Autoren nachträglich dem CFF oder der \hologo{BibTeX}-Datei hinzugefügt
+        \item Viele genannte Autoren nicht unter den Top-200-Git-Autoren bspw. Autor hat Projekt verlassen oder Autor konnte nicht abgeglichen werden
+        \item Hohe Anzahl der invaliden CFF zeigt, dass die Pflege der Autoren nicht besonders wichtig ist
+        \item Geringe Aktualisierungsrate der Quellen
+        \item Allgemein: Autoren in den betrachteten Listen werden nicht aktiv gepflegt und keine automatischen Prozesse vorhanden
+        \item Begründung: Viele Pakete nicht in der Wissenschaft entstanden sondern bspw. in Unternehmen % Bei diesen steht die Nennung einzelner Autoren nicht im Fokus, sondern die Nennung des Unternehmens
+    \end{itemize}
+\end{frame}
+
 % TODO Fazit in der Verteidigung ziehen! Richtiges Fazit also den Titel erfüllen und keine Zusammenfassung
 \begin{frame}{Fazit}
+    \begin{itemize}
+        \item 
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Literaturverzeichnis}
