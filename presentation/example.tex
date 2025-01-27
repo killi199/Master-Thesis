@@ -98,10 +98,8 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 
 \addbibresource{quellen.bib}
 
-% TODO ich kann in der Präsentation nicht davon ausgehen, dass die Arbeit gelesen wurde! Somit muss ich auch den kompletten Kontext rüber bringen und die Ziele und was wir überhaupt machen und warum mindestens 30min höchstens 45 min Vortrag sollte so 20 Minuten gehen
 % TODO Schlachtplan für die Verteidigung überlegen. Die ganzen Entscheidungen gewisse Dinge auszuschließen und nicht auszuwerten sollte ich gut Begründen können
 % TODO nochmal Simons Anmerkungen lesen und hier berücksichtigen!
-% TODO Alles durch LanguageTool laufen lassen
 
 % Schlachtplan für die Verteidigung:
 % Warum habe ich kaum Graphen für alle CFF?
@@ -125,7 +123,6 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 
 \section{Einleitung}
 
-% TODO das so genau aus Forschungsseminar übernommen noch ändern?
 \begin{frame}{Motivation}
     \begin{itemize}
         \item Software spielt zentrale Rolle in der Wissenschaft
@@ -155,15 +152,14 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 
 \section{Grundlagen}
 
-% TODO das nochmal durch gucken
 \begin{frame}{Prinzipien der Software-Zitation \autocite{smith_software_2016}}
     \begin{enumerate}
-        \item \textcolor{links}{\textbf{Wichtigkeit}}: Software sollte ein seriöses und zitierbares Produkt wissenschaftlicher Arbeit sein.
-        \item \textcolor{links}{\textbf{Anerkennung und Zuschreibung}}: Softwarezitate sollten die wissenschaftliche Anerkennung und die normative, rechtliche Würdigung aller Mitwirkenden an der Software ermöglichen.
-        \item \textcolor{links}{\textbf{Eindeutige Identifikation}}: Ein Softwarezitat sollte eine Methode zur Identifikation enthalten, die maschinell verwertbar, weltweit eindeutig und interoperabel ist.
-        \item \textcolor{links}{\textbf{Persistenz}}: Eindeutige Identifikatoren und Metadaten, die die Software und ihre Verwendung beschreiben, sollten bestehen bleiben – auch über die Lebensdauer der Software hinaus.
-        \item \textcolor{links}{\textbf{Zugänglichkeit}}: Softwarezitate sollten den Zugang zur Software selbst und weiteren Materialien erleichtern, um sie sachkundig nutzen zu können.
-        \item \textcolor{links}{\textbf{Spezifizität}}: Softwarezitate sollten die Identifikation und den Zugang zu der spezifischen Version der verwendeten Software erleichtern. Die Identifizierung der Software sollte so spezifisch wie nötig sein.
+        \item \textcolor{links}{\textbf{Wichtigkeit}}: Software sollte ein seriöses und zitierbares Produkt wissenschaftlicher Arbeit sein
+        \item \textcolor{links}{\textbf{Anerkennung und Zuschreibung}}: Softwarezitate sollten die wissenschaftliche Anerkennung und die normative, rechtliche Würdigung aller Mitwirkenden an der Software ermöglichen
+        \item \textcolor{links}{\textbf{Eindeutige Identifikation}}: Ein Softwarezitat sollte eine Methode zur Identifikation enthalten, die maschinell verwertbar, weltweit eindeutig und interoperabel ist
+        \item \textcolor{links}{\textbf{Persistenz}}: Eindeutige Identifikatoren und Metadaten, die die Software und ihre Verwendung beschreiben, sollten bestehen bleiben – auch über die Lebensdauer der Software hinaus
+        \item \textcolor{links}{\textbf{Zugänglichkeit}}: Softwarezitate sollten den Zugang zur Software selbst und weiteren Materialien erleichtern, um sie sachkundig nutzen zu können
+        \item \textcolor{links}{\textbf{Spezifizität}}: Softwarezitate sollten die Identifikation und den Zugang zu der spezifischen Version der verwendeten Software erleichtern. Die Identifizierung der Software sollte so spezifisch wie nötig sein
     \end{enumerate}
 \end{frame}
 
@@ -478,7 +474,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
         \item Git Statistik
         \begin{itemize}
             \item Änderungen von Namen und/oder E-Mail in Git % Autoren werden doppelt vorkommen ist nicht erwünscht lässt sich aber kaum umgehen E-Mail wird bereits gruppiert
-            \item README enthält oft GitHub Benutzernamen, welche erkannt aber nicht aus Git beschafft werden
+            \item README enthält oft GitHub Benutzernamen, welche erkannt, aber nicht aus Git beschafft werden
         \end{itemize}
         \item Autoren ohne Commits
         \begin{itemize}
@@ -487,7 +483,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
         \end{itemize}
         \item Verlinkung auf andere Quellen
         \begin{itemize}
-            \item Einige Quellen verweisen auf andere Quellen z.~B. Internetseiten mit Autoren
+            \item Einige Quellen verweisen auf andere Quellen, z.~B. Internetseiten mit Autoren
             \item Analyse derer ist schwierig, da kein einheitliches Format und wurde deswegen nicht vorgenommen
         \end{itemize}
         \item Ausführungszeit der Datenbeschaffung
@@ -501,7 +497,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 
 \begin{frame}{Wie gut können Autoren untereinander abgeglichen werden?}
     \begin{itemize}
-        \item Viele Autoren in Python Quellen sind keine Personen, sondern Organisationen
+        \item Viele Autoren in Python-Quellen sind keine Personen, sondern Organisationen
         \item Diese verschlechtern die Ergebnisse, da sie falsch zugeordnet werden können
         \item README und Beschreibung haben schlechte F1-Scores, was in der NER begründet liegt, da diese bereits Fehler macht
         \item \hologo{BibTeX} hat schlechtesten F1-Score mit 0,8, durch den Aufbau der manuellen Überprüfung und der geringen Anzahl an \hologo{BibTeX}-Dateien
@@ -513,7 +509,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 
 \begin{frame}{Was muss ein Softwareentwickler leisten, um als Autor genannt zu werden?}
     \begin{itemize}
-        \item Frage lässt sich nur Allgemeingültig beantworten, da Daten allgemeingültig untersucht wurden
+        \item Frage lässt sich nur allgemeingültig beantworten, da Daten allgemeingültig untersucht wurden
         \item Autoren mit vielen Commits werden häufiger als Autor genannt \rightarrow{} viele Commits haben
         \item Allerdings: Autoren mit den meisten Commits werden auch manchmal nicht genannt
         \item Bei der Gründung des Pakets dabei sein, allerdings im Nachhinein nicht umsetzbar
@@ -528,7 +524,7 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
         \item Hohe Anzahl der invaliden CFF zeigt, dass die Pflege der Autoren nicht besonders wichtig ist
         \item Geringe Aktualisierungsrate der Quellen
         \item Allgemein: Autoren in den betrachteten Listen werden nicht aktiv gepflegt und keine automatischen Prozesse vorhanden
-        \item Begründung: Viele Pakete nicht in der Wissenschaft entstanden sondern bspw. in Unternehmen % Bei diesen steht die Nennung einzelner Autoren nicht im Fokus, sondern die Nennung des Unternehmens
+        \item Begründung: Viele Pakete nicht in der Wissenschaft entstanden, sondern bspw. in Unternehmen % Bei diesen steht die Nennung einzelner Autoren nicht im Fokus, sondern die Nennung des Unternehmens
     \end{itemize}
 \end{frame}
 
