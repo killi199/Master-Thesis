@@ -117,10 +117,6 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 % title page
 \maketitle
 
-\begin{frame}{Gliederung}
-    \tableofcontents
-\end{frame}
-
 \section{Einleitung}
 
 \begin{frame}{Motivation}
@@ -449,23 +445,6 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
     \end{columns}
 \end{frame}
 
-\begin{frame}{Aktualisierung der Quellen}
-    \begin{itemize}
-        \item Durchschnittliche Zeit zwischen der Aktualisierung der Quellen
-        \item Zeit in Tagen
-        \item Nie aktualisierte Dateien werden nicht berücksichtigt
-    \end{itemize}
-    \vspace*{10mm}
-    \begin{tabularx}{\textwidth}{XR{1.42cm}R{1.2cm}R{.93cm}R{2.2cm}R{2.6cm}}
-        \toprule
-        \textbf{Quelle} & \textbf{CRAN} & \textbf{PyPI} & \textbf{CFF} & \textbf{PyPI CFF} & \textbf{CRAN CFF} \\ \midrule
-        README          & 125 & 149 & 30 & \textcolor{links}{28} & 45 \\
-        CFF             & 24  & 132 & 95 & \textcolor{links}{98} & 91 \\
-        \hologo{BibTeX} &     & \textcolor{links}{676} &    &    &    \\
-        \bottomrule
-    \end{tabularx}
-\end{frame}
-
 \section{Diskussion}
 
 \begin{frame}{Limitierungen}
@@ -522,7 +501,6 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
         \item In allen Paketen der 5 Listen nur 9 Autoren nachträglich dem CFF oder der \hologo{BibTeX}-Datei hinzugefügt
         \item Viele genannte Autoren nicht unter den Top-200-Git-Autoren bspw. Autor hat Projekt verlassen oder Autor konnte nicht abgeglichen werden
         \item Hohe Anzahl der invaliden CFF zeigt, dass die Pflege der Autoren nicht besonders wichtig ist
-        \item Geringe Aktualisierungsrate der Quellen
         \item Allgemein: Autoren in den betrachteten Listen werden nicht aktiv gepflegt und keine automatischen Prozesse vorhanden
         \item Begründung: Viele Pakete nicht in der Wissenschaft entstanden, sondern bspw. in Unternehmen % Bei diesen steht die Nennung einzelner Autoren nicht im Fokus, sondern die Nennung des Unternehmens
     \end{itemize}
