@@ -209,28 +209,6 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
     \end{columns}
 \end{frame}
 
-% Auf das rechte eingehen
-% Auf author eingehen, dass weitere Autoren genannt werden können
-\begin{frame}{Zitierformat – \hologo{BibTeX}}
-    \begin{columns}
-        \begin{column}[t]{0.49\textwidth}
-            \justifying
-            \begin{itemize}
-                \item Software, zur Erstellung von Literaturangaben und -verzeichnissen in \LaTeX-Dokumenten
-                \item Gleichnamiges Format, wird als Datei z.~B. in einem Git-Repository gespeichert
-                \item 2.144 Repositorys auf GitHub haben eine \hologo{BibTeX}-Datei (Stand 07.11.2024)
-                \item Kein offizieller Literaturtyp für Software
-                \item Kann unter anderem durch Programme wie Zotero erstellt werden \autocite{zotero_zotero_2024}
-                \item Felder vom Literaturtyp abhängig
-            \end{itemize}
-        \end{column}
-        \begin{column}[t]{0.49\textwidth}
-            \justifying
-            \inputminted{text}{../CITATION.bib}
-        \end{column}
-    \end{columns}
-\end{frame}
-
 % Sagen wofür die später notwendig ist (Anhand des Bsp. sieht man es)
 \begin{frame}{Named Entity Recognition}
     \begin{itemize}
@@ -337,18 +315,18 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 \begin{frame}{Abgleich}
     \begin{tabularx}{\textwidth}{XR{.81cm}R{.81cm}R{.81cm}R{.81cm}R{2.8cm}R{1.9cm}}
         \toprule
-        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score}                \\ \midrule
-        Beschreibung                       & 87   & 5  & 18  & \textcolor{links}{125} & 15                     & \textcolor{links}{0,8832} \\
-        README                             & 81   & 21 & 11  & \textcolor{links}{143} & 26                     & \textcolor{links}{0,8351} \\
-        CFF                                & 168  & 13 & 3   & 24                     & 3                      & 0,9545                    \\
-        CFF preferred citation             & 78   & 8  & 2   & 13                     & 0                      & 0,9398                    \\
-        PyPI Maintainer                    & 294  & 2  & 32  & 48                     & \textcolor{links}{50}  & 0,9453                    \\
-        Python Autoren                     & 155  & 4  & 35  & 43                     & \textcolor{links}{75}  & 0,8883                    \\
-        Python Maintainer                  & 30   & 0  & 5   & 21                     & 25                     & 0,9231                    \\
-        CRAN Autoren                       & 269  & 4  & 3   & 19                     & 1                      & 0,9872                    \\
-        CRAN Maintainer                    & 193  & 2  & 0   & 0                      & 0                      & 0,9948                    \\
-        \textcolor{links}{\hologo{BibTeX}} & 4    & 2  & 0   & 0                      & 0                      & 0,8000                    \\ \midrule
-        Summe                              & 1359 & 61 & 109 & 436                    & 195                    & \textcolor{links}{0,9411} \\
+        \textbf{Quelle} & \textbf{TP} & \textbf{FN} & \textbf{FP} & \textbf{TN} & \textbf{Keine Person} & \textbf{F1-Score}    \\ \midrule
+        Beschreibung           & 87   & 5  & 18  & \textcolor{links}{125} & 15                     & \textcolor{links}{0,8832} \\
+        README                 & 81   & 21 & 11  & \textcolor{links}{143} & 26                     & \textcolor{links}{0,8351} \\
+        CFF                    & 168  & 13 & 3   & 24                     & 3                      & 0,9545                    \\
+        CFF preferred citation & 78   & 8  & 2   & 13                     & 0                      & 0,9398                    \\
+        PyPI Maintainer        & 294  & 2  & 32  & 48                     & \textcolor{links}{50}  & 0,9453                    \\
+        Python Autoren         & 155  & 4  & 35  & 43                     & \textcolor{links}{75}  & 0,8883                    \\
+        Python Maintainer      & 30   & 0  & 5   & 21                     & 25                     & 0,9231                    \\
+        CRAN Autoren           & 269  & 4  & 3   & 19                     & 1                      & 0,9872                    \\
+        CRAN Maintainer        & 193  & 2  & 0   & 0                      & 0                      & 0,9948                    \\
+        \hologo{BibTeX}        & 4    & 2  & 0   & 0                      & 0                      & 0,8000                    \\ \midrule
+        Summe                  & 1359 & 61 & 109 & 436                    & 195                    & \textcolor{links}{0,9411} \\
         \bottomrule
     \end{tabularx}
 \end{frame}
@@ -394,26 +372,6 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
     \end{columns}
 \end{frame}
 
-% Mit steigender Jahreszahl steigt der Anteil der Autoren, welche keinen Commit getätigt haben
-% Ende der x Achse Tag der Datenbeschaffung hier sind 100 % nicht möglich, da keine Commits in der zukunft getätigt werden können
-% In der README genannte Autoren ab 2020 anteilig am schlechtesten
-\begin{frame}{Autoren ohne Commits}
-    \begin{columns}
-        \begin{column}[t]{0.29\textwidth}
-            \begin{itemize}
-                \item Anteil der genannten Autoren ohne Commits
-                \item Betrachtet PyPI CFF Liste
-                \item Für CFF-Linie gilt: \emph{y} \% der Autoren in der CFF haben seit dem Jahr \emph{x} keinen Commit getätigt
-            \end{itemize}
-        \end{column}
-        \begin{column}[t]{0.69\textwidth}
-            \begin{center}
-                \includesvg[height=.79\textheight,inkscapelatex=false]{../docs/bilder/total_authors_no_commits/3_pypi_cff.svg}
-            \end{center}
-        \end{column}
-    \end{columns}
-\end{frame}
-
 % 2017 die ersten CFF dateien
 % Mitte 2021 steigt die Anzahl der CFF Dateien schnell
 % zwar mehr valide als invalide cff aber dennoch viel invalide
@@ -437,39 +395,11 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 
 \section{Diskussion}
 
-\begin{frame}{Limitierungen}
-    % Die Limitierungen schränken die Qualität der Ergebnisse der MA ein
-    \begin{itemize}
-        \item Git Statistik
-        \begin{itemize}
-            \item Änderungen von Namen und/oder E-Mail in Git % Autoren werden doppelt vorkommen ist nicht erwünscht lässt sich aber kaum umgehen E-Mail wird bereits gruppiert
-            \item README enthält oft GitHub Benutzernamen, welche erkannt, aber nicht aus Git beschafft werden
-        \end{itemize}
-        \item Autoren ohne Commits
-        \begin{itemize}
-            \item Autoren ohne Quellcode sollten (und werden) auch als Autor genannt werden
-            \item Reine Betrachtung der Git-Autoren verfälscht die Ergebnisse
-        \end{itemize}
-        \item Verlinkung auf andere Quellen
-        \begin{itemize}
-            \item Einige Quellen verweisen auf andere Quellen, z.~B. Internetseiten mit Autoren
-            \item Analyse derer ist schwierig, da kein einheitliches Format und wurde deswegen nicht vorgenommen
-        \end{itemize}
-        \item Ausführungszeit der Datenbeschaffung
-        \begin{itemize}
-            \item \emph{git-quick-stats}, für die Beschaffung der Git-Autoren hat lange Laufzeit (\emph{pytorch} 1 Minute 22 Sekunden)
-            \item NER für Beschreibung und README hat ebenfalls eine lange Laufzeit (\emph{pytorch} 2 Minuten 48 Sekunden)
-            \item Analyse aller Daten für alle Pakete benötigt viel Zeit und wurde dadurch nicht durchgeführt
-        \end{itemize}
-    \end{itemize}
-\end{frame}
-
 \begin{frame}{Wie gut können Autoren untereinander abgeglichen werden?}
     \begin{itemize}
         \item Viele Autoren in Python-Quellen sind keine Personen, sondern Organisationen
         \item Diese verschlechtern die Ergebnisse, da sie falsch zugeordnet werden können
         \item README und Beschreibung haben schlechte F1-Scores, was in der NER begründet liegt, da diese bereits Fehler macht
-        \item \hologo{BibTeX} hat schlechtesten F1-Score mit 0,8, durch den Aufbau der manuellen Überprüfung und der geringen Anzahl an \hologo{BibTeX}-Dateien
         \item Viele FP in den Ergebnissen, durch die Verwendung von Python \emph{in} und Autoren mit wenigen Buchstaben in Git
         \item Im Allgemeinen funktioniert der Abgleich gut, da ein F1-Score von 0,9411 berechnet wurde, welcher größer als 0,9 ist
         \item F1-Score könnte noch besser sein, ohne die genannten Gegebenheiten
@@ -489,7 +419,6 @@ E-Mail: \href{mailto:k.jahrens@stud.hs-wismar.de}{k.jahrens@stud.hs-wismar.de}}
 \begin{frame}{Wie gut werden Autoren in den einzelnen Quellen gepflegt?}
     \begin{itemize}
         \item In allen Paketen der 5 Listen nur 9 Autoren nachträglich dem CFF oder der \hologo{BibTeX}-Datei hinzugefügt
-        \item Viele genannte Autoren nicht unter den Top-200-Git-Autoren bspw. Autor hat Projekt verlassen oder Autor konnte nicht abgeglichen werden
         \item Hohe Anzahl der invaliden CFF zeigt, dass die Pflege der Autoren nicht besonders wichtig ist
         \item Allgemein: Autoren in den betrachteten Listen werden nicht aktiv gepflegt und keine automatischen Prozesse vorhanden
         \item Begründung: Viele Pakete nicht in der Wissenschaft entstanden, sondern bspw. in Unternehmen % Bei diesen steht die Nennung einzelner Autoren nicht im Fokus, sondern die Nennung des Unternehmens
