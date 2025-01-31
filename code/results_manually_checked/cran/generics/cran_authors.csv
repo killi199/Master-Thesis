@@ -1,4 +1,0 @@
-name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Hadley Wickham,hadley@rstudio.com,,3,1000,667,1667,131,33,2018-08-24 17:14:42+00:00,2023-10-30 21:39:32+00:00,0.5,0
-Max Kuhn,max@rstudio.com,,1,2606,7059,9665,258,53,2018-09-17 12:48:32+00:00,2022-07-05 21:25:22+00:00,0.5,0
-Davis Vaughan,davis@rstudio.com,,1,2606,7059,9665,258,53,2018-09-17 12:48:32+00:00,2022-07-05 21:25:22+00:00,1.0,0

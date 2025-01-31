@@ -1,4 +1,0 @@
-name,email,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Mitchell Wortsman,,3,4060,82,4142,77,38,2021-07-28 23:24:40+00:00,2023-11-02 04:29:35+00:00,0.5,1
-Gabriel Ilharco,Ross Wightman <ross@huggingface.co>,1,6675,3362,10037,432,158,2022-01-09 22:35:56+00:00,2024-10-21 22:05:26+00:00,0.5,1
-Romain Beaumont,,2,2640,326,2966,130,64,2022-04-05 21:11:15+00:00,2024-01-08 10:35:29+00:00,0.5,0

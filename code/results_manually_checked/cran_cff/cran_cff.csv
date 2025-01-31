@@ -1,8 +1,0 @@
-source,TP,FN,FP,TN,no_person,f1_score
-cff_authors_new,80,8,0,6,0,0.952380
-cff_preferred_citation_authors_new,54,6,0,4,0,0.947368
-cran_authors,132,3,2,10,0,0.981413
-cran_maintainers,99,1,0,0,0,0.994975
-description_authors,18,1,0,31,1,0.972972
-readme_authors_new,22,12,0,49,3,0.785714
-summe,405,31,2,100,4,0.960854

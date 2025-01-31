@@ -1,6 +1,0 @@
-name,email,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-,Cody Fincher <cody@litestar.dev>,9,31361,20366,51727,830,117,2022-07-09 19:49:43+00:00,2024-11-06 14:46:40+00:00,0.5,1
-,Janek Nouvertné <janek@litestar.dev>,5,16786,9788,26574,828,162,2023-08-18 19:36:51+00:00,2024-10-21 08:04:23+00:00,0.5,1
-,Peter Schutt <peter@litestar.dev>,4,31865,15347,47212,1625,194,2022-05-24 01:23:14+00:00,2023-10-12 05:42:29+00:00,0.5,0
-,Na'aman Hirschfeld <nhirschfeld@gmail.com>,1,131549,88743,220292,9165,577,2021-12-22 08:38:46+00:00,2023-09-08 15:46:56+00:00,0.5,0
-,Jacob Coffee <jacob@litestar.dev>,7,8363,7827,16190,450,129,2023-01-12 04:28:11+00:00,2024-09-20 01:18:37+00:00,0.5,0

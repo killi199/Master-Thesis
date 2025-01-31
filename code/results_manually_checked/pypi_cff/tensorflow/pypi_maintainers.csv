@@ -1,4 +1,0 @@
-login,name,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-tf-nightly,TensorFlow Nightly Team,1077,163,62,225,13,9,2018-12-22 02:35:47+00:00,2019-08-20 22:33:05+00:00,0.5,0
-mihaimaruseac,Mihai Maruseac,6,65147,75573,140720,3625,1393,2018-09-13 03:07:53+00:00,2024-08-07 05:10:23+00:00,1.0,0
-rostam,Rostam Dinyari,2254,76,65,141,4,2,2021-03-18 17:51:56+00:00,2021-03-18 22:16:01+00:00,0.5,0

@@ -1,4 +1,0 @@
-name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Thomas Lin Pedersen,thomasp85@gmail.com,0000-0002-5147-4711,2,602,389,991,46,11,2020-04-21 19:11:54+00:00,2020-04-27 09:13:26+00:00,1.0,0
-Hadley Wickham,hadley@posit.co,0000-0003-4757-117X,3,277,4886,5163,69,9,2022-12-19 13:46:39+00:00,2022-12-20 13:21:46+00:00,0.5,0
-Claus O. Wilke,wilke@austin.utexas.edu,Original author,1,21866,22100,43966,788,197,2018-12-29 06:05:35+00:00,2022-12-13 01:30:48+00:00,1.0,0

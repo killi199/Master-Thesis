@@ -1,4 +1,0 @@
-name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Simon Couch,simon.couch@posit.co,0000-0001-5676-5107,1,22204,21483,43687,4957,476,2020-05-18 20:37:52+00:00,2024-05-17 14:20:31+00:00,0.5,0
-Alex Hayes,alexpghayes@gmail.com,0000-0002-4985-5160,2,111829,137671,249500,5191,205,2017-12-13 21:11:03+00:00,2021-06-06 18:18:33+00:00,1.0,0
-David Robinson,admiral.david@gmail.com,,14,3797,4677,8474,140,14,2017-11-19 12:06:32+00:00,2018-07-16 15:07:37+00:00,1.0,0

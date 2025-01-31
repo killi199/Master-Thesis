@@ -1,4 +1,0 @@
-name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Hadley Wickham,hadley@posit.co,,1,82704,72285,154989,6409,1949,2012-10-28 13:37:45+00:00,2024-04-01 21:24:21+00:00,0.5,0
-Edgar Ruiz,,,8,2550,982,3532,165,29,2017-04-26 20:40:30+00:00,2019-02-06 17:28:18+00:00,0.5,0
-Maximilian Girlich,,,3,32861,10852,43713,2132,315,2019-01-02 19:50:04+00:00,2023-11-02 05:14:59+00:00,0.5,0

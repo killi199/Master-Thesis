@@ -1,7 +1,0 @@
-name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Kevin Ushey,kevinushey@gmail.com,,,,,,,,,,0.0,0
-Jim Hester,,,1.0,16956.0,12671.0,29627.0,876.0,233.0,2015-04-21 19:22:28+00:00,2021-11-30 14:39:48+00:00,0.5,0
-Kirill Müller,krlmlr+r@mailbox.org,,6.0,81.0,59.0,140.0,17.0,8.0,2017-02-07 13:23:28+00:00,2019-12-28 08:33:51+00:00,1.0,0
-Lionel Henry,lionel@posit.co,,2.0,5880.0,3569.0,9449.0,309.0,132.0,2017-01-31 00:37:46+00:00,2024-07-31 11:42:22+00:00,0.5,0
-Winston Chang,,,,,,,,,,,0.0,0
-Hadley Wickham,hadley@posit.co,,4.0,772.0,486.0,1258.0,101.0,39.0,2018-03-14 20:12:05+00:00,2024-07-29 21:03:21+00:00,0.5,0

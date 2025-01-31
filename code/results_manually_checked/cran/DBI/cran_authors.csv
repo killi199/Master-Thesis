@@ -1,4 +1,0 @@
-name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-Kirill Müller,kirill@cynkra.com,0000-0002-1416-3412,3.0,12857.0,8850.0,21707.0,627.0,119.0,2023-08-26 15:21:18+00:00,2024-08-30 09:45:34+00:00,1.0,0
-Hadley Wickham,,,2.0,9257.0,5809.0,15066.0,663.0,129.0,2013-10-16 13:52:37+00:00,2023-11-10 16:10:58+00:00,0.5,0
-R Special Interest Group on Databases (R-SIG-DB),,,,,,,,,,,0.0,0

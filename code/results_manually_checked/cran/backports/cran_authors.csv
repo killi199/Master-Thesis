@@ -1,4 +1,0 @@
-name,email,ORCID,rank,insertions,deletions,lines_changed,files,commits,first_commit,last_commit,score,checked
-R Core Team,,,,,,,,,,,0.0,0
-Duncan Murdoch,murdoch.duncan@gmail.com,,2.0,535.0,10.0,545.0,29.0,6.0,2020-08-03 07:13:14+00:00,2023-03-10 10:52:17+00:00,0.5,0
-Michel Lang,michellang@gmail.com,0000-0001-9754-0393,1.0,3864.0,1105.0,4969.0,544.0,149.0,2016-02-12 08:11:37+00:00,2024-08-12 09:35:38+00:00,1.0,0
